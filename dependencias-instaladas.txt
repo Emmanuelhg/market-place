@@ -1,0 +1,14 @@
+SDK DE FIREBASE:
+npm install --save firebase
+
+JQUERY DATATABLE PLUGIN:
+npm i angular-datatables
+npm i @types/datatables.net --save-dev
+
+CONFIRMATION POPOVER PLUGIN:
+npm install --save angular-confirmation-popover
+
+NOTIE ALERT PLUGIN:
+npm install notie
+
+
