@@ -28,5 +28,7 @@ export class ProductsModel{
 	vertical_slider:string;
 	video:string;
 	views:number;
+	//peso unidades 
+	weight:number;
 
 }

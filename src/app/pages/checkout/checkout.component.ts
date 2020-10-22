@@ -73,7 +73,7 @@ export class CheckoutComponent implements OnInit {
 
 
 		/*=============================================
-		Validar si existe usuario autenticado
+		Validar si existe usuario autenticado 
 		=============================================*/
 
 		this.usersService.authActivate().then(resp=>{

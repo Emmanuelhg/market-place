@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Path, Email } from '../../../config';
 import { Rating,
-       DinamicRating, 
-       DinamicReviews, 
-       DinamicPrice,
-       CountDown,
-       ProgressBar,
-       Tabs,
-       SlickConfig,
-       ProductLightbox,
-       Quantity,
-       Tooltip,
-       Sweetalert } from '../../../functions';
+         DinamicRating, 
+         DinamicReviews, 
+         DinamicPrice,
+         CountDown,
+         ProgressBar,
+         Tabs,
+         SlickConfig,
+         ProductLightbox,
+         Quantity,
+         Tooltip,
+         Sweetalert } from '../../../functions';
        
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -34,14 +34,14 @@ declare var $:any;
   styleUrls: ['./product-left.component.css']
 })
 export class ProductLeftComponent implements OnInit {
-path:string = Path.url; 
+    path:string = Path.url; 
     product:any[]= [];
     rating:any[] = [];
-  reviews:any[] = [];
-  price:any[] = [];
-  preload:boolean = false;
-  render:boolean = true;
-  countd:any[] = [];
+    reviews:any[] = [];
+    price:any[] = [];
+    preload:boolean = false;
+    render:boolean = true;
+    countd:any[] = [];
     gallery:any[] = [];
     renderGallery:boolean = true;
     video:string = null;
@@ -60,12 +60,12 @@ path:string = Path.url;
 
 
     constructor(private activateRoute: ActivatedRoute,
-              private productsService: ProductsService,
-                  private usersService: UsersService,
-                  private messagesService: MessagesService,
-                  private storesService: StoresService,
-              private router: Router,
-               private http: HttpClient) {
+                private productsService: ProductsService,
+                private usersService: UsersService,
+                private messagesService: MessagesService,
+                private storesService: StoresService,
+                private router: Router,
+                private http: HttpClient) {
 
           this.messages = new MessagesModel();
 
@@ -81,6 +81,7 @@ path:string = Path.url;
         this.productsFnc(resp);   
 
       })
+
 
         /*=============================================
         Traer preguntas y respuestas del producto

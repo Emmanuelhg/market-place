@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Path } from '../../config';
 
 declare var jQuery:any;
 declare var $:any;
 
-import { CategoriesService } from '../../services/categories.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
+import { NegocioService } from '../../services/negocio.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,112 +14,39 @@ import { SubCategoriesService } from '../../services/sub-categories.service';
 })
 export class FooterComponent implements OnInit {
 
-	path:string = Path.url;	
-	categories:any[] = [];
-	render:boolean = true;
-	categoriesList:any[] = [];
+	path:string = Path.url;
+	colores:any[] = [];
+	colorprincipal:any[] = [];
+	negocio: any[] = [];
+	//codigo:string = Codigo.url;
+    //nombre:string = Nombre.url;
 
-	constructor(private categoriesService: CategoriesService, private subCategoriesService: SubCategoriesService) { }
+	constructor(private negocioService: NegocioService) { }
 
 	ngOnInit(): void {
 
-		/*=============================================
-		Tomamos la data de las categorías
-		=============================================*/
+		let getColor = [];
 
-		this.categoriesService.getData()
-		.subscribe(resp => {
-			
-			let i;
+       this.negocioService.find()
+       .subscribe(resp=>{
+           
+           console.log("resp", resp);
 
-			for(i in resp){
+          let tomarColor = (colorprincipal,callback)=>{
 
-				this.categories.push(resp[i]);
-			
-				/*=============================================
-				Separamos los nombres de categorías
-				=============================================*/
+          	let idColor =  colorprincipal.find (colorprincipal =>{
 
-				this.categoriesList.push(resp[i].name)
+              return colorprincipal.colorprincipal === colorprincipal;
 
-			}
+          	})
+          	console.log("colorprincipal", colorprincipal);
 
-		})
-	}
+          }
+           
 
-	/*=============================================
-	Función que nos avisa cuando finaliza el renderizado de Angular
-	=============================================*/
+       })
 
-	callback(){
+	}	
 
-		if(this.render){
+}  
 
-			this.render = false;
-
-			let arraySubCategories = [];
-
-			/*=============================================
-			Separar las categorías
-			=============================================*/
-
-			this.categoriesList.forEach(category=>{
-				
-				/*=============================================
-				Tomamos la colección de las sub-categorías filtrando con los nombres de categoría
-				=============================================*/
-
-				this.subCategoriesService.getFilterData("category", category)
-				.subscribe(resp=>{
-					
-					/*=============================================
-					Hacemos un recorrido por la colección general de subcategorias y clasificamos las subcategorias y url
-					de acuerdo a la categoría que correspondan
-					=============================================*/
-
-					let i;
-
-					for(i in resp){
-
-						arraySubCategories.push({
-
-							"category": resp[i].category,
-							"subcategory": resp[i].name,
-							"url": resp[i].url
-
-						})
-
-					}
-
-					/*=============================================
-					Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
-					=============================================*/
-
-					for(i in arraySubCategories){
-
-						if(category == arraySubCategories[i].category){		
-
-							$(`[category-footer='${category}']`).after(
-
-								`<a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a>`
-
-		                    )
-
-
-						}
-
-
-					}
-
-
-											
-
-				})
-
-			})			
-
-		}
-
-	}
-
-}

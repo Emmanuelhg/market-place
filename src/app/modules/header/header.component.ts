@@ -6,6 +6,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { ProductsService } from '../../services/products.service';
 import { UsersService } from '../../services/users.service';
+//import { ColoresService } from '../../services/colores.service';
 
 import { Router } from '@angular/router';
 
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
 	render:boolean = true;
 	authValidate:boolean = false;
 	picture:string;
+	colores:number =0;
 	wishlist:number = 0;
 	shoppingCart:any[] = [];
 	totalShoppingCart:number = 0;
@@ -35,6 +37,7 @@ export class HeaderComponent implements OnInit {
 		        private subCategoriesService: SubCategoriesService,
 		        private productsService: ProductsService,
 		        private usersService: UsersService,
+		        //private coloresService: ColoresService,
 		        private router:Router) { }
 
 	ngOnInit(): void {
@@ -223,6 +226,20 @@ export class HeaderComponent implements OnInit {
 		window.open(`search/${Search.fnc(search)}`, '_top')
 
 	}
+
+	/*=============================================
+	Cambio de colores
+
+	removerColor(){
+       this.scoloresService.getFilterData("colores1", colores[i])
+	   .subscribe(resp =>{
+					console.log("colores", colores);
+
+		}				
+	}
+	=============================================*/
+
+	
 
 	/*=============================================
 	Función que nos avisa cuando finaliza el renderizado de Angular
