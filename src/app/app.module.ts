@@ -31,7 +31,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { HomeBannerComponent } from './pages/home/home-banner/home-banner.component';
 import { HomeFeaturesComponent } from './pages/home/home-features/home-features.component';
-import { HomePromotionsComponent } from './pages/home/home-promotions/home-promotions.component';
+//import { HomePromotionsComponent } from './pages/home/home-promotions/home-promotions.component';
 import { HomeHotTodayComponent } from './pages/home/home-hot-today/home-hot-today.component';
 import { HomeTopCategoriesComponent } from './pages/home/home-top-categories/home-top-categories.component';
 import { HomeShowcaseComponent } from './pages/home/home-showcase/home-showcase.component';
@@ -85,7 +85,7 @@ import { AccountMessagesComponent } from './pages/account/account-profile/accoun
     Error404Component,
     HomeBannerComponent,
     HomeFeaturesComponent,
-    HomePromotionsComponent,
+    //HomePromotionsComponent,
     HomeHotTodayComponent,
     HomeTopCategoriesComponent,
     HomeShowcaseComponent,

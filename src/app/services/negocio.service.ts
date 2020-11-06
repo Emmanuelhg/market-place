@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Api } from '../config';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class NegocioService {
 
     constructor(private http:HttpClient) { }
 
-    find(){
+    getData(){
 
 		return this.http.get(`${this.api}negocio.json`);
 
@@ -19,8 +20,13 @@ export class NegocioService {
 
 	getFilterData(orderBy:string, equalTo:string){
 
-		return this.http.get(`${this.api}negocio.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
+		return this.http.get(`${this.api}negocio.json?&print=pretty`);
 
 	}
 
+	getLimitData(startAt:string, limitToFirst:number ){
+
+		return this.http.get(`${this.api}negocio.json?orderBy="$key"&startAt="${startAt}"&limitToFirst=${limitToFirst}&print=pretty`);
+    }
+    
 }

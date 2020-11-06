@@ -1,101 +1,153 @@
 <!--=====================================
-Menú
-======================================-->  
+Header Content
+======================================-->
 
-<header class="header header--standard header--market-place-4" data-sticky="true">
+<header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true" >
 
-    <div class="header__top">
+     <div class="header__content">
+
+        <div class="container">
+
+            <div class="nav" >
+
+                        <a href="#" target="central"><h6>SHOP</h6></a> 
+                        <a href="#" target="central"><h6>BUILD</h6></a>
+                        <a href="#"><h6>OUR STORY</h6></a>
+
+                            <style>
+
+                                .nav {
+
+                                float: left;
+
+                                }
+
+                                a{
+                                    margin-top: 5px;
+                                    margin-left: 5px;
+                                    margin-right: 5px;
+                                }
+
+                            </style>
+            </div> 
+
+            <!--=====================================
+            Logo
+            ======================================-->
+
+            <div align="center">
+
+                <a routerLink="/">
+                    <img src="{{path}}img/template/logo_light.png" align="center">
+                </a>
+
+            </div> 
 
 
-                <div class="nav" >
+            <div class="header__content-right">
 
-                    <a href="#" target="central"><h6>Busacar</h6></a> 
-                    <a href="#" target="central"><h6>Inicar sesión</h6></a>
-                    <a href="#"><h6>Carro</h6></a>
-
-                    <style>
-
-                        .nav {
-
-                        float: right;
-
-                        }
-
-                    a{
-                        margin-top: 5px;
-                        margin-left: 5px;
-                        margin-right: 5px;
-                    }
-
-                    </style>
-
-
-                </div>   
-
-    </div>
-
-
-    <!--=====================================
-        Header Content
-        ======================================-->
-
-        <div class="header__content">
-
-            <div class="container">
-
-                <div class="header__content-left">
+                <div class="header__actions">
 
                     <!--=====================================
-                    Logo
+                    Buscar
                     ======================================-->
 
-                    <a class="ps-logo" routerLink="/">
-                        <img src="{{path}}img/template/logo_light.png" alt="">
-                    </a>
+                        <div 
+                        *ngIf="!authValidate"
+                        class="ps-block--user-header"
+                        >
+                            <div class="ps-block__left">
 
-                </div><!-- Termina la imagen-->
+                                <i class="icon-magnifier"></i>
+
+                            </div>
+                        </div>
+
+                    <!--=====================================
+                    Cart
+                    ======================================-->
+
+                       <div class="ps-cart--mini">
+
+                            <a class="header__extra" routerLink="checkout">
+                                <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
+                            </a>
+
+                            <div 
+                            *ngIf="shoppingCart.length > 0"
+                            class="ps-cart__content">
+
+                                <div class="ps-cart__items">
+
+                                    <div 
+                                    *ngFor="let product of shoppingCart; let lastShopping = last"
+                                    class="ps-product--cart-mobile">
+
+                                        <div class="ps-product__thumbnail">
+                                            <a href="product/{{product.url}}">
+                                                <img src="{{path}}img/products/{{product.category}}/{{product.image}}" >
+                                            </a>
+                                        </div>
+
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
+                                                <i class="icon-cross"></i>
+                                            </a>
+                                            <a href="product/{{product.url}}">{{product.name}}</a>
+
+                                            <div [innerHTML]="product.details"></div>                                        
+                                            <small class="ps-product text-left p-0 m-0">
+                                                
+                                                Quantity:
+                                                <span class="qShoppingHeader">{{product.quantity}}</span> 
+                                                x Shipping: $
+                                                <span class="sShoppingHeader">{{product.shipping}}</span> 
+                                                + 
+                                                <span class="pShoppingHeader" [innerHTML]="product.price"></span>
+
+                                            </small>
+                                        </div>
+
+                                    {{ lastShopping ? callbackShopping() : ""}}
+
+                                    </div>
+   
+
+                                </div>
+
+                                <div class="ps-cart__footer">
+
+                                    <div [innerHTML]="subTotal"></div>
+                                    <figure>
+                                        <a class="ps-btn" routerLink="shopping-cart">View Cart</a>
+                                        <a class="ps-btn" routerLink="checkout">Checkout</a>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
 
-                <div class="nav"> 
 
-                    <a href="#" target="central"><h6>TIENDA</h6></a> 
+                </div> 
 
-                </div>
+            </div>       
 
-                <div class="nav"> 
+        </div>  
 
-                    <a href="#" target="central"><h6>CONSTRUYE UN BOXFOX</h6></a> 
+    </div>  
 
-                </div>
-
-                 <div class="nav"> 
-
-                    <a href="#" target="central"><h6>MERCADO</h6></a> 
-
-                </div>
-
-                <div class="nav"> 
-
-                    <a href="#" target="central"><h6>ACERCA DE</h6></a> 
-
-                </div>
-
-                <div class="nav"> 
-
-                    <a href="#" target="central"><h6>REGALOS CORPORATIVOS</h6></a>
-
-                </div>
-
-                <div class="nav"> 
-
-                    <a href="#" target="central"><h6>LA FLOTA DE ZORROS</h6></a> 
-
-                </div>
-
-
-            </div><!-- End Container-->
-
-        </div><!-- End Header Content-->
+    <script>
+    
+    // This function displays Smart Payment Buttons on your web page.     
+     function cambiarFondo(x){
+              var fondo =document.getElementById("fondo");
+             fondo.style.background=x.value;
+         }
+    </script>
+             
 
 </header>
                    

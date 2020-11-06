@@ -7,6 +7,7 @@ declare var $:any;
 
 import { NegocioService } from '../../services/negocio.service';
 
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -15,38 +16,89 @@ import { NegocioService } from '../../services/negocio.service';
 export class FooterComponent implements OnInit {
 
 	path:string = Path.url;
-	colores:any[] = [];
-	colorprincipal:any[] = [];
-	negocio: any[] = [];
-	//codigo:string = Codigo.url;
-    //nombre:string = Nombre.url;
+	color:any[] = [];
+	colorCambio:any[] = [];
+    render:boolean = true;0
+    // colo1= document.getElemntById("f2");
+    //document.div.style.backgroundColor="#a4fc00";
 
 	constructor(private negocioService: NegocioService) { }
 
 	ngOnInit(): void {
 
-		let getColor = [];
-
-       this.negocioService.find()
+       this.negocioService.getData()
        .subscribe(resp=>{
-           
-           console.log("resp", resp);
+          
+           let i;
 
-          let tomarColor = (colorprincipal,callback)=>{
+           for(i in resp){
 
-          	let idColor =  colorprincipal.find (colorprincipal =>{
+           	this.color.push(resp[i]);
 
-              return colorprincipal.colorprincipal === colorprincipal;
+           	this.colorCambio.push(resp[1].colorprincipal)
 
-          	})
-          	console.log("colorprincipal", colorprincipal);
+ 		      
+           let hola = document.getElementById('f2');
 
-          }
-           
+           let estoyhastalaverga = hola.style;
+
+           estoyhastalaverga.backgroundColor=resp[i].colorprincipal;   
+             
+           }
+
 
        })
+           let hola = document.getElementById('f2');
 
+           let estoyhastalaverga = hola.style;
+
+            console.log("estoy hasta la madre", estoyhastalaverga);
+
+
+       // document.documentElement.style.setProperty(`--${colo}`, '#a4fc00');  getElementById('loaded');
+
+       
+        // document.style.backgroundColor="#a4fc00";
+       
 	}	
 
-}  
 
+   callback(){
+
+	   	if (this.render){
+
+	   		this.render = false;
+
+	   		let arrayColor =[];
+
+	   		this.colorCambio.forEach(colorprincipal=>{
+
+
+	   			this.negocioService.getFilterData("colorCambio", colorprincipal)
+                .subscribe(resp=>{
+
+                	let i;
+
+                	for(i in resp){
+                        
+                        arrayColor.push({
+
+                        	"colorCambio":resp[i].colorprincipal,
+                        	"colorCambio2":resp[i].colorprincipal2
+                        })
+
+                	}
+
+                	console.log("colorprincipal",colorprincipal);
+
+          
+                })
+
+
+	   		})
+	   	
+	   	}
+
+   }
+
+}  

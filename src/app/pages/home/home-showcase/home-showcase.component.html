@@ -1,12 +1,39 @@
-	<!--=====================================
+<!--=====================================
 Section Gray
 ======================================-->  
 
 <div class="ps-section--gray">
 
+
+
     <div 
 	*ngIf="!cargando"
     class="container">
+
+        <div>
+
+        <p class="div2" style="color:#e4ecf0">SHOP CURATED</p>
+
+            <style>
+
+                .div2 {
+
+                      background-color: #0e0e0f;         
+                      left: 36%;
+                      position: relative;
+                      top: -23px;
+                      width: 406px;
+                      text-align: center;
+                      border:0px 
+                      dotted #000; 
+                      padding:9px;
+
+                     }
+            
+
+            </style>
+        
+       </div>
 
     	<!--=====================================
 		Products of category
@@ -16,34 +43,7 @@ Section Gray
 		*ngFor="let category of categories; let lastIndex = last; let i = index"
         class="ps-block--products-of-category">
 
-        	<!--=====================================
-			Menu subcategory
-			======================================-->  
-
-            <div class="ps-block__categories">
-
-                <h3>{{category.name}}</h3>
-
-                    <ul [attr.category-showcase]="category.name">
-                      
-                    </ul>
-
-                    <a class="ps-block__more-link" routerLink="products/{{category.url}}">View All</a>
-
-            </div>
-
-            <!--=====================================
-			Vertical Slider Category
-			======================================-->  
-
-            <div class="ps-block__slider">
-
-                <div [attr.category-sl]="category.url">
-
-                </div>
-
-            </div>
-
+        
             <!--=====================================
 			Block Product Box
 			======================================-->  

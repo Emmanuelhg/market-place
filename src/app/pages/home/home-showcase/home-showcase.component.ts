@@ -62,7 +62,7 @@ export class HomeShowcaseComponent implements OnInit {
 
 			getCategories.forEach((category, index)=>{
 
-				if(index < 6){
+				if(index < 2){
 
 					this.categories[index] = getCategories[index];
 					this.cargando = false;
@@ -135,7 +135,7 @@ export class HomeShowcaseComponent implements OnInit {
 				/*=============================================
 				Tomamos la colección de los productos filtrando con las url's de categorías
 				=============================================*/
-				this.productsService.getFilterDataWithLimit("category", category.url, 6)
+				this.productsService.getFilterDataWithLimit("category", category.url, 3)
 				.subscribe(resp=>{ 
 					
 					let i;

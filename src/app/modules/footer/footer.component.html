@@ -1,31 +1,39 @@
 <!--=====================================
-Footer
+Footer    
+#fcd7f5  
 ======================================-->  
  
-    <footer class="ps-foot" >
+<footer class="ps-foot" id="footer-test" >
 
         <div>
 
             <div
-            
-             class="ps-footer__widgetstx">
+             class="ps-footer__widgets " id="f2" 
+             
+             >
+
 
                 <style>
-                    .ps-footer__widgetstx {
-                          background-color: '$colorprincipal'; 
-                          display: -webkit-box;
-                          display: flex;
-                          -webkit-box-orient: horizontal;
-                          -webkit-box-direction: normal;
-                                  flex-flow: row nowrap;
-                          -webkit-box-pack: justify;
-                                  justify-content: space-between;
-                          padding-bottom: 35px;
-                        }                    
-                </style>
+  
+                  
 
+                  .ps-footer__widgetst {
+
+                    background: var(--hola);
+                    display: -webkit-box;
+                    display: flex;
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                            flex-flow: row nowrap;
+                    -webkit-box-pack: justify;
+                            justify-content: space-between;
+                    padding-bottom: 35px;
+                  }
+              
+                </style>
+            
             	<!--=====================================
-      				Contactanos  #f0ec0c               
+      				Contactanos                  
       				======================================-->  
 
                 <aside class="widget widget_footer widget_contact-us">
@@ -36,10 +44,11 @@ Footer
 
                     <div class="widget_content">
 
-                       <h4>BOXFOX es lo ideal para regalar. Compre cajas de regalo personalizadas  <br><br> y personalizadas para amigos y familiares. Compre curaciones empaquetadas, cree <br><br> un BOXFOX personalizado o personalice cajas de regalo corporativas.</h4><br>
-
-                            <input class="form-control" type="email" placeholder="Introduce tu correo electrónico">
-                            <button class="ps-btnng">UNIRSEJOIN</button>
+                       <h4>Lorem ipsum dolor sit amet, consectetuer<br>
+                          adipiscing elit, sed diam nonummy nibh<br>
+                          euismod tincidunt ut laoreet dolore<br>
+                          magna aliquam erat volutpat. Ut wisi <br>
+                          enim ad minim veniam, quis nostrud.</h4><br>
 
                             <style> 
                                 aside{
@@ -56,52 +65,73 @@ Footer
 
                 <!--=====================================
         				Quick Links
+                *ngFor="let color of colorprincipal"
+
+                <li><a href="#"><h4>{{colorprincipal}}</h4></a></li> 
         				======================================-->  
 
                 <aside class="widget widget_footer">
 
-                    <ul class="ps-list--link">
+                    <ul 
+                    *ngFor="let negocio of color; let lastIndex = last"
+                    class="ps-list--link">
 
-                        <li><a href="#"><h4>TIENDA</h4></a></li>
+                        <li><a href="#"><h4>CONTAC</h4></a></li>
 
-                        <li><a href="#"><h4>CONSTRUYE UN BOXFOX</h4></a></li>
+                        <li><a href="#"><h4>ABOUT US</h4></a></li>
 
-                        <li><a href="#"><h4>MERCADO</h4></a></li>
+                        <li><a href="#"><h4>{{negocio.colorprincipal}}</h4></a></li>
 
-                        <li><a href="#"><h4>ACERCA DE</h4></a></li>
+                        <li><a href="#"><h4>{{negocio.colorprincipal2}}</h4></a></li>
 
-                        <li><a href="faqs.html"><h4>REGALOS CORPORATIVOS</h4></a></li>
+                          {{ lastIndex ? callback() : ""}}
 
-                         <li><a href="#"><h4>LA FLOTA DE ZORROS</h4></a></li> 
-
-                       
 
                     </ul>
  
                 </aside>
+
+                <p></p>
 
                 
 
                 <!--=====================================
 				Bussiness
 
-                Preguntas? Estamos a su disposición de lunes a viernes, de 9 a. M. A 6 p. M., Hora del Pacífico.
+                <ul 
+          *ngFor="let negocio of color; let lastIndex = last"
+          id="ps-list--linkt">
+
+            <li><a href="#"><h4>{{negocio.colorprincipal}}</h4></a></li>
+
+             {{ lastIndex ? callback() : ""}}
+
+         </ul> 
+
+         <style>
+
+          #ps-list--linkt{
+            display: none;
+           }
+
+         </style> 
+
 				======================================-->  
 
                 <aside class="widget widget_footer">
 
-                    <h2>CHARLEMOS</h2>
+                    <h2>LET'S CHAT</h2>
 
 
                        <div class="widget_content">
 
-                           <h4><a href ="#">¿Preguntas? Estamos a su disposición <br>
-                            de lunes a viernes, de 9 a. M. A 6 p. M.,<br> Hora del Pacífico.<br>
+                           <h4><a href ="#">QUESTION?<br>
+                            
                      
 
                             _______________________________<br>
 
-                            hello@shopboxfox.com <br>
+                            shopetre@shopboxfox.com <br>
 
                             _______________________________
 
@@ -110,9 +140,7 @@ Footer
 
                           <ul class="ps-list--social">
                             <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a class="google-plus" href="#"><i class="fab fa-youtube"></i></a></li>
-                            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fab fa-email"></i></a></li>                    
                         </ul>
 
                      </div>
@@ -124,5 +152,7 @@ Footer
 
         </div>
 
+
+      <script src="footer.component.ts"></script>  
     </footer>
 

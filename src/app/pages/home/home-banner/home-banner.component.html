@@ -5,7 +5,7 @@ Home Banner
 <div 
 *ngIf="!preload"
 class="ps-home-banner">
-    <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
+    <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="flase" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
 
         <div 
 		*ngFor="let slide of banner_home; let i = index; let lastIndex = last" 
@@ -14,12 +14,8 @@ class="ps-home-banner">
         >
         	<img src="{{path}}img/products/{{category[i]}}/horizontal/{{ slide['IMG tag']}}" alt="">
             <div class="ps-banner__content">
-                <h4>{{ slide["H4 tag"]}}</h4>
-                <h3>{{ slide["H3-1 tag"]}}</h3>
-                <h3> {{ slide["H3-2 tag"]}} <br/> 
-                	<p>{{ slide["H3-3 tag"]}} <strong> {{ slide["H3-4s tag"]}}</strong></p>
-                </h3>
-                <a class="ps-btn" routerLink="product/{{url[i]}}"> {{ slide["Button tag"]}} </a>
+            
+                
             </div>
 
         {{ lastIndex ? callback() : "" }}   
@@ -29,8 +25,10 @@ class="ps-home-banner">
 
 </div><!-- End Home Banner-->
 
+
 <!--=====================================
-Preload
+Preload <h4>Hola</h4>  
+
 ======================================-->
 <div
 *ngIf="preload"
@@ -39,4 +37,49 @@ class="d-flex justify-content-center">
     <div class="spinner-border text-muted my-5"></div>
 
 </div>
+
+<div  class="box">
+
+
+
+  <style>
+
+     .box {
+          border: 180px solid #e4ecf0;
+        }
+            
+  </style>
+
+   
+
+</div>
+
+<div>
+
+    <p class="div2" style="color:#e4ecf0">HOW IT WORKS</p>
+
+    <style>
+
+        .div2 {
+
+          background-color: #0e0e0f;         
+          left: 37%;
+          position: relative;
+          top: -23px;
+          width: 406px;
+          text-align: center;
+          border:0px 
+          dotted #000; 
+          padding:9px;
+
+         }
+        
+
+    </style>
+    
+</div>
+
+    
+
+
 
