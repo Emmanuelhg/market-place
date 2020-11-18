@@ -4,47 +4,7 @@
 
     <header class="header header--mobile" data-sticky="true">
 
-        <div class="header__top">
-
-            <div class="header__left">
-
-                <ul class="d-flex justify-content-center">
-					<li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
-					<li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>					
-					<li><a href="#" target="_blank"><i class="fab fa-twitter mr-4"></i></a></li>
-					<li><a href="#" target="_blank"><i class="fab fa-youtube mr-4"></i></a></li>
-				</ul>
-            </div>
-
-            <div class="header__right">
-
-                <ul class="navigation__extra">
-                    
-                    <li><a routerLink="become-a-vendor">Sell on MarketPlace</a></li>
-                    <li><a href="#">Store List</a></li>
-                    <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>    
-
-                    <li>
-
-                        <div class="ps-dropdown language"><a href="#"><img src="{{path}}img/template/en.png" alt="">English</a>
-
-                            <ul class="ps-dropdown-menu">
-
-                                <li><a href="#"><img src="{{path}}img/template/es.png" alt=""> Español</a></li>
-
-                            </ul>
-
-                        </div>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <div class="navigation--mobile">
+        <div class="navigation--mobile" id="f10">
 
             <div class="navigation__left">
 
@@ -54,8 +14,10 @@
 
                 <div class="menu--product-categories">
                     
-                    <div class="ps-shop__filter-mb mt-4" id="filter-sidebar">
-                    	<i class="icon-menu "></i>
+                    <div class="ps-shop__filter-mb mt-4" id="filter-sidebar">                   	 
+                        
+                        <h6 class="menu__toggle">SHOP</h6>
+                         
                     </div>
 
 	            	<div class="ps-filter--sidebar">
@@ -98,15 +60,67 @@
 
                 </div><!-- End menu-->
 
-            	<a class="ps-logo pl-3 pl-sm-5" routerLink="/">
-            		<img src="{{path}}img/template/logo_light.png" class="pt-3" alt="">
-            	</a>
+                <a href="#"><h6 class="menu__toggle">BUILD</h6></a>
 
+                <a href="#"><h6 class="menu__toggle">OUR STORY</h6></a>
+
+            
+                 <style>
+
+                                .nav {
+
+                                float: left;
+
+                                }
+
+                                h6{
+                                    size: 14px;  
+                                    margin-top: 44px;
+                                    margin-left: 0px;
+                                    margin-right: 13px;
+                                }
+
+                            </style>
+
+                           
             </div>
+          
+
+                <a class="ps-logo pl-3 pl-sm-10" routerLink="/">
+                   
+                   <img src="{{path}}img/template/logo.png" align="center" class="pt-3"> 
+
+                </a>
+
 
             <div class="navigation__right">
 
                 <div class="header__actions">
+
+                    <!--=====================================
+        Search
+        ======================================-->
+
+        <div class="ps-search--mobile">
+
+            <form class="ps-form--search-mobile">
+                <div class="form-group--nest">
+                    
+                    <input 
+                    (keyup.enter)="goSearch(search.value)"
+                    #search
+                    class="form-control" 
+                    type="text" 
+                    placeholder="Search something...">
+                    
+                    <button type="button"
+                    (click)="goSearch(search.value)"
+                    ><i class="icon-magnifier"></i></button>
+                    
+                </div>
+            </form>
+
+        </div>    
 
                 	<!--=====================================
                     Cart
@@ -174,25 +188,6 @@
 
                     </div>
 
-                    <!--=====================================
-					Login and Register
-					======================================-->
-
-                    <div 
-                    *ngIf="!authValidate"
-                    class="ps-block--user-header">
-
-                        <div class="ps-block__left">
-                        	<a routerLink="login"><i class="icon-user"></i></a>
-                        </div>
-
-                        <div class="ps-block__right">
-                        	<a routerLink="login">Login</a>
-                            <a routerLink="register">Register</a>
-                        </div>
-
-                    </div>
-
                      <!--=====================================
                      Go to Account
                     ======================================-->
@@ -217,29 +212,6 @@
 
         </div>
 
-        <!--=====================================
-		Search
-		======================================-->
-
-        <div class="ps-search--mobile">
-
-            <form class="ps-form--search-mobile">
-                <div class="form-group--nest">
-                    
-                    <input 
-                    (keyup.enter)="goSearch(search.value)"
-                    #search
-                    class="form-control" 
-                    type="text" 
-                    placeholder="Search something...">
-                    
-                    <button type="button"
-                    (click)="goSearch(search.value)"
-                    ><i class="icon-magnifier"></i></button>
-                    
-                </div>
-            </form>
-
-        </div>
+        
 
     </header> <!-- End Header Mobile -->

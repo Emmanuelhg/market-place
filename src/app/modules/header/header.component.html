@@ -1,18 +1,69 @@
 <!--=====================================
-Header Content
+Header Content 
+<a href="#" target="central"><h6>SHOP</h6></a>  
 ======================================-->
 
 <header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true" >
 
-     <div class="header__content">
+     <div class="header__content" id="f2">
 
-        <div class="container">
+        <div class="container" id="f2">
 
-            <div class="nav" >
+            <div class="nav" id="f3">
 
-                        <a href="#" target="central"><h6>SHOP</h6></a> 
-                        <a href="#" target="central"><h6>BUILD</h6></a>
-                        <a href="#"><h6>OUR STORY</h6></a>
+
+                    <div class="menu--product-categories">
+                        
+                        
+                             <h6 class="menu__toggle">SHOP</h6>
+                        
+
+                        <div class="menu__content">
+                            <ul class="menu--dropdown">
+                           
+                                <li 
+                                *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                class="menu-item-has-children has-mega-menu">
+                                    
+                                    <a routerLink="products/{{category.url}}" target="_top">
+                                        <i class="{{category.icon}}"></i> {{category.name}}
+                                    </a>
+
+                                    <div class="mega-menu">
+
+                                        <div 
+                                        *ngFor="let title of arrayTitleList[i]"
+                                        class="mega-menu__column">
+
+                                            <h4>{{title}}
+                                                <span class="sub-toggle"></span>
+                                            </h4>
+
+                                            <ul class="mega-menu__list" [attr.titleList]="title">
+                                              
+                                            </ul>
+
+                                        </div>
+                                        
+                                    </div>  
+
+                                {{ lastIndex ? callback() : "" }}
+                                    
+                                </li>
+                             
+                            </ul>
+
+                        </div>
+
+                    </div><!-- End menu-->
+
+
+
+                             <h6 class="menu__toggle">BUILD</h6>
+
+                
+
+                        <a href="#"><h6 class="menu__toggle">OUR STORY</h6></a>
 
                             <style>
 
@@ -22,10 +73,11 @@ Header Content
 
                                 }
 
-                                a{
-                                    margin-top: 5px;
-                                    margin-left: 5px;
-                                    margin-right: 5px;
+                                h6{
+                                    size: 14px;  
+                                    margin-top: 20px;
+                                    margin-left: 11px;
+                                    margin-right: 27px;
                                 }
 
                             </style>
@@ -33,12 +85,12 @@ Header Content
 
             <!--=====================================
             Logo
-            ======================================-->
+            ======================================-->   
 
             <div align="center">
 
                 <a routerLink="/">
-                    <img src="{{path}}img/template/logo_light.png" align="center">
+                    <img src="{{path}}img/template/logo.png" align="center">
                 </a>
 
             </div> 
@@ -53,13 +105,25 @@ Header Content
                     ======================================-->
 
                         <div 
-                        *ngIf="!authValidate"
-                        class="ps-block--user-header"
-                        >
+                        class="ps-block--user-header">
                             <div class="ps-block__left">
 
-                                <i class="icon-magnifier"></i>
+                                <form class="ps-form--quick-search"> 
+                                    
+                                    <input 
+                                    (keyup.enter)="goSearch(search.value)"
+                                    #search
+                                    class="form-control" 
+                                    type="text" 
+                                    placeholder="I'm shopping">
 
+                                    <button  type="button" 
+                                    (click)="goSearch(search.value)"
+                                    > <i class="icon-magnifier"></i>
+                                    </button>
+
+                                </form>
+                                
                             </div>
                         </div>
 
@@ -139,14 +203,11 @@ Header Content
 
     </div>  
 
-    <script>
-    
-    // This function displays Smart Payment Buttons on your web page.     
-     function cambiarFondo(x){
-              var fondo =document.getElementById("fondo");
-             fondo.style.background=x.value;
-         }
-    </script>
+    <style>
+      header{
+         border-bottom: solid #0e0e0f;
+      }
+    </style>
              
 
 </header>

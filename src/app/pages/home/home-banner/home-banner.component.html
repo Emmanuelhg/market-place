@@ -5,7 +5,7 @@ Home Banner
 <div 
 *ngIf="!preload"
 class="ps-home-banner">
-    <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="flase" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
+    <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
 
         <div 
 		*ngFor="let slide of banner_home; let i = index; let lastIndex = last" 
@@ -22,6 +22,8 @@ class="ps-home-banner">
         </div>
 
     </div>
+
+    
 
 </div><!-- End Home Banner-->
 
@@ -45,7 +47,8 @@ class="d-flex justify-content-center">
   <style>
 
      .box {
-          border: 180px solid #e4ecf0;
+          border: 180px solid #E8E6E1;
+          
         }
             
   </style>
@@ -54,30 +57,7 @@ class="d-flex justify-content-center">
 
 </div>
 
-<div>
 
-    <p class="div2" style="color:#e4ecf0">HOW IT WORKS</p>
-
-    <style>
-
-        .div2 {
-
-          background-color: #0e0e0f;         
-          left: 37%;
-          position: relative;
-          top: -23px;
-          width: 406px;
-          text-align: center;
-          border:0px 
-          dotted #000; 
-          padding:9px;
-
-         }
-        
-
-    </style>
-    
-</div>
 
     
 

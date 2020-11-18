@@ -207,20 +207,9 @@ export class HomeShowcaseComponent implements OnInit {
 
 									disccount = `<div class="ps-product__badge">-${value}%</div>`;
 
-									price = `<p class="ps-product__price sale">$${offer} <del>$${arrayProducts[i].price} </del></p>`
-
-								}else{
-
 									
-
-									price = `<p class="ps-product__price">$${arrayProducts[i].price} </p>`
 								}
 							
-							}else{
-
-								
-
-								price = `<p class="ps-product__price">$${arrayProducts[i].price} </p>`
 							}
 
 							/*=============================================
@@ -283,13 +272,16 @@ export class HomeShowcaseComponent implements OnInit {
 				                                <select class="ps-rating productRating" data-read-only="true">
 
 				                                </select>
+		                                         
+		                                         <button type="button" >
+		                                          <i>EXPLORE</i>
+			                                    </button>
 
-				                                <span>${rating}</span>
+
 
 				                            </div>
 
-				                            ${price}
-
+				                            
 				                        </div>
 
 				                    </div>
@@ -298,30 +290,7 @@ export class HomeShowcaseComponent implements OnInit {
 
 			                `)
 
-			                /*=============================================
-							Clasificamos la cantidad de estrellas según la calificación
-							=============================================*/	
-
-							let arrayRating = $(".productRating");
-
-							for(let i = 0; i < arrayRating.length; i++){
-
-								for(let f = 1; f <= 5; f++){
-								
-									$(arrayRating[i]).append(
-
-										`<option value="2">${f}</option>`
-									)
-
-									if(rating == f){
-
-										$(arrayRating[i]).children('option').val(1)
-
-									}
-
-								}
-							
-							}
+			               
 
 							/*=============================================
 							Ejecutar funciones globales con respecto a las Reseñas

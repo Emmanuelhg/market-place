@@ -6,7 +6,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
 import { ProductsService } from '../../services/products.service';
 import { UsersService } from '../../services/users.service';
-//import { ColoresService } from '../../services/colores.service';
+import { NegocioService } from '../../services/negocio.service';
 
 import { Router } from '@angular/router';
 
@@ -33,14 +33,60 @@ export class HeaderComponent implements OnInit {
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
 
+	color:any[] = [];
+	colorCambio:any[] = [];
+    letra:any[] = [];
+    colorLetra:any[] = [];
+
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
 		        private productsService: ProductsService,
 		        private usersService: UsersService,
-		        //private coloresService: ColoresService,
+		        private negocioService: NegocioService,
 		        private router:Router) { }
 
 	ngOnInit(): void {
+
+		// Llamar los nuevos colores y texto
+
+		this.negocioService.getData()
+       .subscribe(resp=>{
+          
+           let i;
+
+           for(i in resp){
+
+           	this.color.push(resp[i]);
+
+           	this.colorCambio.push(resp[i].colorbotonheaders);
+            this.colorLetra.push(resp[i].textotopheader)
+
+ 		   // Colores   
+           let hola = document.getElementById('f2');
+
+           let estoyhastalaverga = hola.style;
+
+           estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
+
+           // Texto
+             let tex = document.getElementById('f3');
+
+    		let textonuevo = tex.style;
+
+    		textonuevo.fontFamily=resp[i].textotopheader;
+
+            }
+
+
+       })
+           let hola = document.getElementById('f2');
+
+           let estoyhastalaverga = hola.style;
+
+           let tex = document.getElementById('f3');
+
+           let textonuevo = tex.style;
+
 
 		/*=============================================
 		Validar si existe usuario autenticado

@@ -8,9 +8,7 @@ Footer
         <div>
 
             <div
-             class="ps-footer__widgets " id="f2" 
-             
-             >
+             class="ps-footer__widgets" id="f1" >
 
 
                 <style>
@@ -38,54 +36,44 @@ Footer
 
                 <aside class="widget widget_footer widget_contact-us">
 
-                    <img src="{{path}}img/template/logo_light.png">
+                    <img src="{{path}}img/template/logo.png">
                     <br>
                     <br>
 
                     <div class="widget_content">
 
-                       <h4>Lorem ipsum dolor sit amet, consectetuer<br>
+                       <h4 id="f4">Lorem ipsum dolor sit amet, consectetuer<br>
                           adipiscing elit, sed diam nonummy nibh<br>
                           euismod tincidunt ut laoreet dolore<br>
                           magna aliquam erat volutpat. Ut wisi <br>
                           enim ad minim veniam, quis nostrud.</h4><br>
 
-                            <style> 
-                                aside{
-                                    margin-top: 80px;
-                                    margin-left: 80px;
-                                    margin-right: 80px;
-                                }
-
-                            </style>
-                           
+                            
                     </div>
 
                 </aside>
 
                 <!--=====================================
         				Quick Links
-                *ngFor="let color of colorprincipal"
-
-                <li><a href="#"><h4>{{colorprincipal}}</h4></a></li> 
-        				======================================-->  
-
-                <aside class="widget widget_footer">
-
-                    <ul 
+               <ul 
                     *ngFor="let negocio of color; let lastIndex = last"
-                    class="ps-list--link">
+                    class="ps-list--link"
 
-                        <li><a href="#"><h4>CONTAC</h4></a></li>
 
-                        <li><a href="#"><h4>ABOUT US</h4></a></li>
+                     <li><a href="#"><h4>{{negocio.colorbotonheaders}}</h4></a></li>
 
-                        <li><a href="#"><h4>{{negocio.colorprincipal}}</h4></a></li>
 
-                        <li><a href="#"><h4>{{negocio.colorprincipal2}}</h4></a></li>
 
                           {{ lastIndex ? callback() : ""}}
+        				======================================-->  
 
+                <aside class="widget widget_footer" >
+
+                    <ul class="ps-list--link">
+
+                        <li ><a href="#"><h4 id="f3">CONTAC</h4></a></li>
+
+                        <li ><a href="#"><h4>ABOUT US</h4></a></li>
 
                     </ul>
  
@@ -118,14 +106,14 @@ Footer
 
 				======================================-->  
 
-                <aside class="widget widget_footer">
+                <aside class="widget widget_footer" id="f3">
 
-                    <h2>LET'S CHAT</h2>
+                    <h2 id="f3">LET'S CHAT</h2>
 
 
                        <div class="widget_content">
 
-                           <h4><a href ="#">QUESTION?<br>
+                           <a href ="#"><h4 id="f3">QUESTION?<br>
                             
                      
 
@@ -134,14 +122,22 @@ Footer
                             shopetre@shopboxfox.com <br>
 
                             _______________________________
-
+                             
+                             </h4>
                           </a>
-                          </h4>
+                          
 
                           <ul class="ps-list--social">
-                            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fab fa-email"></i></a></li>                    
+                            <li><a class="facebook" href="#"><img  class="img2" src="{{path}}/img/icons/icons8correo.png"></a></li>
+                            <li><a class="twitter" href="#"><img  class="img2" src="{{path}}/img/icons/icons8instagram.png"></a></li>                    
                         </ul>
+
+                        <style>
+                          .img2{
+                               width: 25px;
+                               height: 25px;
+                              }
+                        </style>
 
                      </div>
      
@@ -152,7 +148,18 @@ Footer
 
         </div>
 
+        <style> 
 
-      <script src="footer.component.ts"></script>  
+            aside{
+                margin-top: 80px;
+                margin-left: 80px;
+                margin-right: 80px;
+                
+            }
+
+
+        </style>
+                           
+
     </footer>
 

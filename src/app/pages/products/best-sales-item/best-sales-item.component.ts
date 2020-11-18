@@ -111,7 +111,7 @@ export class BestSalesItemComponent implements OnInit {
 
 		getSales.forEach((product, index)=>{
 
-			if(index < 10){
+			if(index < 2){
 
 				this.bestSalesItem.push(product);
 				

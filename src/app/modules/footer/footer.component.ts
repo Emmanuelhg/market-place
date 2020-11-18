@@ -18,7 +18,9 @@ export class FooterComponent implements OnInit {
 	path:string = Path.url;
 	color:any[] = [];
 	colorCambio:any[] = [];
-    render:boolean = true;0
+    render:boolean = true;
+    letra:any[] = [];
+    colorLetra:any[] = [];
     // colo1= document.getElemntById("f2");
     //document.div.style.backgroundColor="#a4fc00";
 
@@ -26,7 +28,8 @@ export class FooterComponent implements OnInit {
 
 	ngOnInit(): void {
 
-       this.negocioService.getData()
+       
+		this.negocioService.getData()
        .subscribe(resp=>{
           
            let i;
@@ -35,33 +38,37 @@ export class FooterComponent implements OnInit {
 
            	this.color.push(resp[i]);
 
-           	this.colorCambio.push(resp[1].colorprincipal)
+           	this.colorCambio.push(resp[i].colorfooter);
+            this.colorLetra.push(resp[i].textodescripcionfooter)
 
- 		      
-           let hola = document.getElementById('f2');
-
-           let estoyhastalaverga = hola.style;
-
-           estoyhastalaverga.backgroundColor=resp[i].colorprincipal;   
-             
-           }
-
-
-       })
-           let hola = document.getElementById('f2');
+ 		   // Colores   
+           let hola = document.getElementById('f1');
 
            let estoyhastalaverga = hola.style;
 
-            console.log("estoy hasta la madre", estoyhastalaverga);
+           estoyhastalaverga.backgroundColor=resp[i].colorfooter;   
 
+           // Texto
+             let tex = document.getElementById('f4');
 
-       // document.documentElement.style.setProperty(`--${colo}`, '#a4fc00');  getElementById('loaded');
+    		let textonuevo = tex.style;
 
+    		textonuevo.fontFamily=resp[i].textodescripcionfooter;
+
+            }
        
-        // document.style.backgroundColor="#a4fc00";
-       
-	}	
+	    })	
 
+           let hola = document.getElementById('f1');
+
+           let estoyhastalaverga = hola.style;
+
+           let tex = document.getElementById('f4');
+
+           let textonuevo = tex.style;
+
+
+        }
 
    callback(){
 
@@ -71,10 +78,10 @@ export class FooterComponent implements OnInit {
 
 	   		let arrayColor =[];
 
-	   		this.colorCambio.forEach(colorprincipal=>{
+	   		this.colorCambio.forEach(colorfooter=>{
 
 
-	   			this.negocioService.getFilterData("colorCambio", colorprincipal)
+	   			this.negocioService.getFilterData("colorCambio", colorfooter)
                 .subscribe(resp=>{
 
                 	let i;
@@ -83,13 +90,13 @@ export class FooterComponent implements OnInit {
                         
                         arrayColor.push({
 
-                        	"colorCambio":resp[i].colorprincipal,
-                        	"colorCambio2":resp[i].colorprincipal2
+                        	"colorCambio":resp[i].colorfooter
+                        	
                         })
 
                 	}
 
-                	console.log("colorprincipal",colorprincipal);
+                	console.log("colorprincipal",colorfooter);
 
           
                 })
