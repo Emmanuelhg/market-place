@@ -1,0 +1,99 @@
+<div class="ps-breadcrumb">
+    
+    <!-- Barra de números -->
+	<div class="contrainer">
+		<div>
+			<ul class="progressbar">
+     			<a class="activetwo" routerLink="/selecction-caja">Step 1</a>
+     			<a class="activetwo">Step 2</a>
+         		<a class="activetwo">Step 3</a>
+	        	<a >Done!</a>
+			</ul>
+			<br>
+   	 	</div><br>
+   	 </div><br>
+
+   	 <!-- Descripción  -->
+     <div class="imagecontainer"> <p class="parrafo">DONE!</p><br></div>
+   	 <div class="imagecontainer"> <h2><b>CURATING YOUR BOX</b><br><br><br></h2></div>
+   	 <br>
+   	 <style>
+   	 	.contrainer{
+        width: 100%;
+        display:block;  
+	    }
+
+	    .progressbar{
+	        counter-reset: step;
+	    }
+	    .progressbar a{
+	        list-style-type: none;
+	        float: left;
+	        width: 24.33%;
+	        position: relative;
+	        text-align: center;
+	    }
+	    .progressbar a:before{
+	        content: counter(step);
+	        counter-increment:step;
+	        width: 30px;
+	        height: 30px;
+	        line-height: 27px;
+	        border: 1px solid #ddd;
+	        display: block;
+	        text-align: center;
+	        margin: 0 auto 100px auto;
+	        border-radius: 50px;
+	        background-color: white;
+	    }    
+	    .progressbar a:after{
+	        content: '';
+	        position: absolute;
+	        width: 100%;
+	        height: 1px;
+	        background-color: #ddd;
+	        top: 15px;
+	        left: -50%;
+	        z-index: -1;
+	    }
+	    .progressbar a:first-child:after{
+	        content: none;
+	    }
+	    .progressbar a.active{
+	    	display: block;
+	        color: #C4AE9D;
+	    }
+	    .progressbar a.active:before{
+	    	background-color: #C4AE9D;
+	        border-color:#C4AE9D;
+	    }
+	    .progressbar a.active + a:after{
+	        background-color: #C4AE9D;
+	    }
+
+	    /*Progressbar before*/
+
+	    .progressbar a.activetwo{
+	    	display: block;
+	        color: #F0B27A;
+	    }
+	    .progressbar a.activetwo:before{
+	    	background-color: #F0B27A;
+	        border-color:#F0B27A;
+	    }
+	    .progressbar a.activetwo + a:after{
+	        background-color:#F0B27A;
+	    }
+	    /*Caja de productos*/
+	    
+	    .imagecontainer{
+	    	display: flex;
+	    	justify-content:center;
+	    	width: 100%
+	    }
+	    .parrafo{
+			 margin-top:155px;
+			 font-size: 3.4rem;
+		}
+   	 </style>
+</div>

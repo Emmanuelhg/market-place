@@ -2,7 +2,7 @@
 Home Banner
 ======================================-->  
 
-<div 
+<!-- <div 
 *ngIf="!preload"
 class="ps-home-banner">
     <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
@@ -25,7 +25,12 @@ class="ps-home-banner">
 
     
 
-</div><!-- End Home Banner-->
+</div> End Home Banner--> 
+
+ <div class="navImage">
+
+
+       </div>
 
 
 <!--=====================================
@@ -36,11 +41,62 @@ Preload <h4>Hola</h4>
 *ngIf="preload"
 class="d-flex justify-content-center">
     
-    <div class="spinner-border text-muted my-5"></div>
+    <div class="spinner-border text-muted my-5">
+      
+      
+    </div>
+
+    <style>
+        
+        .navImage {
+           background-color: #490D40;
+           background: url(https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/ddndy4m-5568bbcd-eda8-46f1-890b-83b8d3de0e62.png?alt=media&token=4ad4a70d-2172-41b6-bfc0-b593b3a36e56) no-repeat center center;
+           width: 100%;
+           background-size: cover;
+           height: 500px;
+           margin-top: -85px;
+           
+           .heading {
+              color: white;
+              text-align: center;
+              padding-top: 200px;
+           }
+
+           .col-3 {
+                -ms-flex: 0 0 25%;
+                flex: -2 7 45%;
+                max-width: 45%;
+            }
+
+           a {
+              text-align: center;
+              padding: 20px 60px;
+              size: 20px;
+              
+               .btn {
+                 background-color: transparent;
+                 color: white;
+                 border: 1px solid white;
+                 padding: 10px;
+                 font-size: 1.2em;
+                     
+                  &:hover {
+                     color: #C57ED3;
+                     border-color: #C57ED3;
+                  }
+              }
+           }
+
+           
+        }
+    </style>
+
+
+
 
 </div>
 
-<div  class="box">
+<!-- <div  class="box">
 
 
 
@@ -55,7 +111,7 @@ class="d-flex justify-content-center">
 
    
 
-</div>
+</div> -->
 
 
 

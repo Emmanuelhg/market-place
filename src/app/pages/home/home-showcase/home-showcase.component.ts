@@ -242,7 +242,7 @@ export class HomeShowcaseComponent implements OnInit {
 							}
 
 							/*=============================================
-							Imprimimos los productos en el HTML
+							Imprimimos los productos en el HTML 
 							=============================================*/	
 
 							$(`[category-pb='${arrayProducts[i].category}']`).append(`
@@ -272,12 +272,12 @@ export class HomeShowcaseComponent implements OnInit {
 				                                <select class="ps-rating productRating" data-read-only="true">
 
 				                                </select>
+
+		                                        <div> 
+		                                         <button class="ps-btn" href="">Ejemplo</button>
 		                                         
-		                                         <button type="button" >
-		                                          <i>EXPLORE</i>
-			                                    </button>
 
-
+		                                         </div>
 
 				                            </div>
 

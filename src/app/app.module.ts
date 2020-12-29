@@ -68,6 +68,10 @@ import { AccountMySalesComponent } from './pages/account/account-profile/account
 import { AccountOrdersComponent } from './pages/account/account-profile/account-orders/account-orders.component';
 import { AccountDisputesComponent } from './pages/account/account-profile/account-disputes/account-disputes.component';
 import { AccountMessagesComponent } from './pages/account/account-profile/account-messages/account-messages.component';
+import { SelecctionCajaComponent } from './pages/selecction-caja/selecction-caja.component';
+import { SelecctionPasoDosComponent } from './pages/selecction-paso-dos/selecction-paso-dos.component';
+import { SelecctionPasoTresComponent } from './pages/selecction-paso-tres/selecction-paso-tres.component';
+import { DoneComponent } from './pages/done/done.component';
 
 
 @NgModule({
@@ -121,7 +125,11 @@ import { AccountMessagesComponent } from './pages/account/account-profile/accoun
     AccountMySalesComponent,
     AccountOrdersComponent,
     AccountDisputesComponent,
-    AccountMessagesComponent
+    AccountMessagesComponent,
+    SelecctionCajaComponent,
+    SelecctionPasoDosComponent,
+    SelecctionPasoTresComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,

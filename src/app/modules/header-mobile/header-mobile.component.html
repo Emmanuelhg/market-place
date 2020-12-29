@@ -1,217 +1,65 @@
 <!--=====================================
 	Header Mobile
 	======================================-->
+<header class="header header--mobile" data-sticky="true">
 
-    <header class="header header--mobile" data-sticky="true">
+    <div class="header__top">
 
-        <div class="navigation--mobile" id="f10">
-
-            <div class="navigation__left">
-
-        	  	<!--=====================================
-				Menu Mobile
-				======================================-->
-
-                <div class="menu--product-categories">
-                    
-                    <div class="ps-shop__filter-mb mt-4" id="filter-sidebar">                   	 
-                        
-                        <h6 class="menu__toggle">SHOP</h6>
-                         
+        <!--Menu-->
+                    <div class="col-3">
+                        <div class="d-flex justify-content-around">
+                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    {{ lastIndex ? callback() : ""}}</a>
+                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}</a>
+                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_3}}    {{ lastIndex ? callback() : ""}}</a>
+                        </div>
                     </div>
 
-	            	<div class="ps-filter--sidebar">
-
-					    <div class="ps-filter__header">
-					        <h3>Categories</h3><a class="ps-btn--close ps-btn--no-boder" href="#"></a>
-					    </div>
-
-					    <div class="ps-filter__content">
-
-					        <aside class="widget widget_shop">
-
-					            <ul class="ps-list--categories">
-					               
-					                <li 
-									*ngFor="let category of categories; let lastIndex = last"
-					                class="current-menu-item menu-item-has-children">
-
-					                	<a routerLink="products/{{category.url}}"><strong>{{category.name}}</strong></a>
-
-					                	<span class="sub-toggle">
-					                		<i class="fa fa-angle-down"></i>
-					                	</span>
-
-					                    <ul class="sub-menu" [attr.category]="category.name">
-
-					                    </ul>
-
-					                {{ lastIndex ? callback() : "" }}
-
-					                </li>
-    
-					            </ul>
-
-					        </aside>   
-
-					    </div>
-
-					</div>        
-
-                </div><!-- End menu-->
-
-                <a href="#"><h6 class="menu__toggle">BUILD</h6></a>
-
-                <a href="#"><h6 class="menu__toggle">OUR STORY</h6></a>
-
-            
-                 <style>
-
-                                .nav {
-
-                                float: left;
-
-                                }
-
-                                h6{
-                                    size: 14px;  
-                                    margin-top: 44px;
-                                    margin-left: 0px;
-                                    margin-right: 13px;
-                                }
-
-                            </style>
-
-                           
-            </div>
-          
-
-                <a class="ps-logo pl-3 pl-sm-10" routerLink="/">
-                   
-                   <img src="{{path}}img/template/logo.png" align="center" class="pt-3"> 
-
-                </a>
+    </div>  
+                
+                <div class="navImage">
 
 
-            <div class="navigation__right">
-
-                <div class="header__actions">
-
-                    <!--=====================================
-        Search
-        ======================================-->
-
-        <div class="ps-search--mobile">
-
-            <form class="ps-form--search-mobile">
-                <div class="form-group--nest">
-                    
-                    <input 
-                    (keyup.enter)="goSearch(search.value)"
-                    #search
-                    class="form-control" 
-                    type="text" 
-                    placeholder="Search something...">
-                    
-                    <button type="button"
-                    (click)="goSearch(search.value)"
-                    ><i class="icon-magnifier"></i></button>
                     
                 </div>
-            </form>
 
-        </div>    
+                        <style>
+                            
+                            .navImage {
+                               background-color: #490D40;
+                               background: url(https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/ddndy4m-5568bbcd-eda8-46f1-890b-83b8d3de0e62.png?alt=media&token=4ad4a70d-2172-41b6-bfc0-b593b3a36e56) no-repeat center center;
+                               background-size: cover;
+                               height: 500px;
+                               margin-top: -85px;
+                               
+                               .heading {
+                                  color: white;
+                                  text-align: center;
+                                  padding-top: 200px;
+                               }
 
-                	<!--=====================================
-                    Cart
-                    ======================================-->
+                               img{
+                                 max-width: 35%;
+                               }
 
-                    <div class="ps-cart--mini">
-
-                        <a class="header__extra" routerLink="shopping-cart">
-                            <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
-                        </a>
-
-                        <div 
-                        *ngIf="shoppingCart.length > 0"
-                        class="ps-cart__content">
-
-                            <div class="ps-cart__items">
-
-                                <div 
-                                *ngFor="let product of shoppingCart; let lastShopping = last"
-                                class="ps-product--cart-mobile">
-
-                                    <div class="ps-product__thumbnail">
-                                        <a href="product/{{product.url}}">
-                                            <img src="{{path}}img/products/{{product.category}}/{{product.image}}" >
-                                        </a>
-                                    </div>
-
-                                    <div class="ps-product__content text-left">
-                                        <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
-                                            <i class="icon-cross"></i>
-                                        </a>
-                                        <a href="product/{{product.url}}">{{product.name}}</a>
-                                        
-                                        <div [innerHTML]="product.details"></div>                                        
-                                        <small class="ps-product text-left p-0 m-0">
-                                            
-                                            Quantity:
-                                            <span class="qShoppingHeaderM">{{product.quantity}}</span> 
-                                            x Shipping: $
-                                            <span class="sShoppingHeaderM">{{product.shipping}}</span> 
-                                            + 
-                                            <span class="pShoppingHeaderM" [innerHTML]="product.price"></span>
-
-                                        </small>
-                                    </div>
-
-                                {{ lastShopping ? callbackShopping() : ""}}
-
-                                </div>
-
-
-                            </div>
-
-                            <div class="ps-cart__footer">
-
-                                <div [innerHTML]="subTotal"></div>
-                                <figure>
-                                    <a class="ps-btn" href="shopping-cart">View Cart</a>
-                                    <a class="ps-btn" href="checkout">Checkout</a>
-                                </figure>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                     <!--=====================================
-                     Go to Account
-                    ======================================-->
-
-                    <div 
-                     *ngIf="authValidate"
-                    class="ps-block--user-header">
-                        <div class="ps-block__left text-right">
-                            <a routerLink="account">
-                                <div [innerHTML]="picture" style="width:40px"></div>
-                            </a>            
-                        </div>
-                        <div class="ps-block__right">
-                            <a routerLink="account">My Account</a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        
+                               a {
+                                  text-align: center;
+                                  padding: 20px 60px;
+                                  size: 20px;
+                                  
+                                   .btn {
+                                     background-color: transparent;
+                                     color: white;
+                                     border: 1px solid white;
+                                     padding: 10px;
+                                     font-size: 1.2em;
+                                         
+                                      &:hover {
+                                         color: #C57ED3;
+                                         border-color: #C57ED3;
+                                      }
+                                  }
+                               }
+                            }
+                        </style>
 
     </header> <!-- End Header Mobile -->

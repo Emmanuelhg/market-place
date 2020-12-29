@@ -12,6 +12,10 @@ import { AccountComponent } from './pages/account/account.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { BecomeAVendorComponent } from './pages/become-a-vendor/become-a-vendor.component';
+import { SelecctionCajaComponent } from './pages/selecction-caja/selecction-caja.component';
+import { SelecctionPasoDosComponent } from './pages/selecction-paso-dos/selecction-paso-dos.component';
+import { SelecctionPasoTresComponent } from './pages/selecction-paso-tres/selecction-paso-tres.component';
+import { DoneComponent } from './pages/done/done.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -28,6 +32,10 @@ const routes: Routes = [
 	{path: 'shopping-cart', component: ShoppingCartComponent  },
 	{path: 'checkout', component: CheckoutComponent,  canActivate: [ AuthGuard ]},
 	{path: 'become-a-vendor', component: BecomeAVendorComponent},
+	{path: 'selecction-caja', component: SelecctionCajaComponent},
+	{path: 'selecction-paso-dos', component: SelecctionPasoDosComponent},
+	{path: 'selecction-paso-tres', component: SelecctionPasoTresComponent},
+	{path: 'done', component: DoneComponent},
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 ];

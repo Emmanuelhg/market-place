@@ -1,0 +1,434 @@
+<style>
+	.contrainer{
+        width: 100%;
+        display:block;  
+    }
+    .progressbar{
+        counter-reset: step;
+    }
+    .progressbar a{
+        list-style-type: none;
+        float: left;
+        width: 24.33%;
+        position: relative;
+        text-align: center;
+    }
+    .progressbar a:before{
+        content: counter(step);
+        counter-increment:step;
+        width: 30px;
+        height: 30px;
+        line-height: 27px;
+        border: 1px solid #ddd;
+        display: block;
+        text-align: center;
+        margin: 0 auto 100px auto;
+        border-radius: 50px;
+        background-color: white;
+    }    
+    .progressbar a:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #ddd;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+    .progressbar a:first-child:after{
+        content: none;
+    }
+    .progressbar a.active{
+    	display: block;
+        color: #C4AE9D;
+    }
+    .progressbar a.active:before{
+    	background-color: #C4AE9D;
+        border-color:#C4AE9D;
+    }
+    .progressbar a.active + a:after{
+        background-color: #C4AE9D;
+    }
+
+    
+    .imagecontainer{
+    	display: flex;
+    	justify-content:center;
+    	width: 100%
+    }
+
+    #transition-image{
+    	position: absolute;
+    	top: 0px:
+    	left:0px;
+    	opacity: 0;
+    	transition: opacity 0.5s ease;
+
+    }
+    #transition-image:hover{
+    	opacity: 1;
+    }
+
+     /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+a.animated-button.thar-three {
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	border: 2px solid #F7CA18;
+	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+0s;
+}
+a.animated-button.thar-three:hover {
+	color: #000 !important;
+	background-color: transparent;
+	text-shadow: nthree;
+}
+a.animated-button.thar-three:hover:before {
+	left: 0%;
+	right: auto;
+	width: 100%;
+}
+a.animated-button.thar-three:before {
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 100%;
+	width: 0px;
+	z-index: -1;
+	content: '';
+	color: #000 !important;
+	background: #F7CA18;
+	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+0s;
+}
+
+  
+    /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+	a.animated-button.thar-three {
+		 margin-top: 93px;
+	    background-color: white;
+		color: black;
+		cursor: pointer;
+		display: block;
+		position: absolute;
+		border: 2px solid black;
+		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+	0s;
+	}
+	a.animated-button.thar-three:hover {
+		color: #000 !important;
+		background-color: transparent;
+		text-shadow: nthree;
+	}
+	a.animated-button.thar-three:hover:before {
+		left: 0%;
+		right: auto;
+		width: 100%;
+	}
+	a.animated-button.thar-three:before {
+		display: block;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		height: 100%;
+		width: 0px;
+		z-index: -1;
+		content: '';
+		color: #000 !important;
+		background: #C4AE9D; 
+		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+	}
+
+	.parrafo{
+		 margin-top:155px;
+		 font-size: 3.4rem;
+
+	}
+
+	.images{
+		/*background-color: blue;*/
+		width: 100%;
+   		display: flex;
+   		justify-content: center;
+    }
+
+   	.img-contrainer{
+        background-color: black;
+        height: 395px;
+        width: 500px;
+        display: flex;
+        position: relative;
+    }
+    
+    .img-contrainer img{
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+
+
+
+	.img-contrainer_izquierda{
+		padding: 10px;
+		background-color: green; 
+		position: relative;
+        
+	}
+
+	.img-contrainer_derecha{
+		padding: 10px;
+		background-color: yellow;
+       	position: relative;
+    }
+
+    .img-contrainer_derecha img{
+		width: 100%;
+		object-fit: cover;
+    }
+
+    .img-contrainer_izquierda img{
+		width: 100%;
+		object-fit: cover;
+    }
+
+    #aks:hover {
+    	background: url('http://dummyimage.com/100x100/eb00eb/fff');
+	}
+	/*Esto es lo bueno*/
+
+	.div-imagen {
+	  padding: 0px 20px;
+	  display:inline-block;
+	  position:relative;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  border: black;
+	}
+
+	/*.div-imagen:before{
+		content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(255,255,255,0.75);
+	    border: solid 2px #36c069;
+	    z-index: 100;
+	    opacity: 0;
+	    -webkit-transition: opacity 0.25s ease-in-out;
+	    -moz-transition: opacity 0.25s ease-in-out;
+	    -ms-transition: opacity 0.25s ease-in-out;
+	    -o-transition: opacity 0.25s ease-in-out;
+	    transition: opacity 0.25s ease-in-out;
+	}*/
+
+	.div-imagen > div {
+	  position:absolute;
+	  top:0;
+	  left:0;
+	  z-index:-1;
+	  padding:10px;
+	  margin:0;
+
+	}
+
+	.desvanecer:hover {
+	  opacity: 0.5;
+	  -webkit-transition: opacity 500ms;
+	  -moz-transition: opacity 500ms;
+	  -o-transition: opacity 500ms;
+	  -ms-transition: opacity 500ms;
+	  transition: opacity 500ms;
+	}
+	.divtexcontainer{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+	p{  
+	    text-align:center;
+        color: black;
+		font-size: 40px;
+		margin: auto;
+	}
+ 
+</style>
+<div class="ps-breadcrumb">
+
+	<!-- Barra de números -->
+	<div class="contrainer">
+		<div>
+			<ul class="progressbar">
+     			<a class="active" >Step 1</a>
+     			<a >Step 2</a>
+         		<a >Step 3</a>
+	        	<a >Done!</a>
+			</ul>
+			<br>
+   	 	</div><br>
+   	 </div><br>
+
+
+   	 <!-- Texto selección -->
+        
+   		<div class="imagecontainer"> <p class="parrafo"> Steof 1 of 3 </p><br></div>
+   		<div class="imagecontainer"> <h2><b>CHOOSE YOUR BOX </b><br><br><br></h2></div>
+       
+       <!-- Imáges de cajas -->
+      <div class="images"> 
+	        <div class="div-imagen">
+	        	<div class="divtexcontainer">
+	   			   <p>{{prueba}}</p>
+	  			</div>
+	 		    <img class="desvanecer" src="{{path}}img/products_etre/product.jpg">
+	        </div>
+
+		   <div class="div-imagen">
+		    	<div class="divtexcontainer">
+					   <p>Texto prueba 2</p>
+				</div>
+				    <img class="desvanecer" src="{{path}}img/products_etre/product2.jpg">
+		   </div>
+
+       </div>
+        <!-- Botón continuar -->
+    	<div class="imagecontainer">
+	    	  <a  routerLink="/selecction-paso-dos" 
+	    	  class="btn btn-sm animated-button thar-three">CONTINUE</a>
+	    </div> 
+   
+</div>
+
+<br><br><br><br><br><br><br><br>
+

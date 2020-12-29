@@ -32,11 +32,15 @@ export class HeaderComponent implements OnInit {
 	totalShoppingCart:number = 0;
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
-
+    
+    personalization:any[] = [];
 	color:any[] = [];
 	colorCambio:any[] = [];
     letra:any[] = [];
     colorLetra:any[] = [];
+    letraMenu1:any[] = [];
+    letraMenu2:any[] = [];
+    letraMenu3:any[] = [];
 
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
@@ -50,7 +54,10 @@ export class HeaderComponent implements OnInit {
 		// Llamar los nuevos colores y texto
 
 		this.negocioService.getData()
-       .subscribe(resp=>{
+        .subscribe(resp=>{
+
+
+
           
            let i;
 
@@ -59,37 +66,125 @@ export class HeaderComponent implements OnInit {
            	this.color.push(resp[i]);
 
            	this.colorCambio.push(resp[i].colorbotonheaders);
-            this.colorLetra.push(resp[i].textotopheader)
-
- 		   // Colores   
-           let hola = document.getElementById('f2');
-
-           let estoyhastalaverga = hola.style;
-
-           estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
-
-           // Texto
-             let tex = document.getElementById('f3');
-
-    		let textonuevo = tex.style;
-
-    		textonuevo.fontFamily=resp[i].textotopheader;
-
-            }
+            this.colorLetra.push(resp[i].textotopheader);
+            this.letraMenu1.push(resp[i].title_menu_1);
+            
 
 
+ 		   // // Colores        
+      //      let hola = document.getElementById('f2');
+
+      //      let estoyhastalaverga = hola.style;
+
+      //      estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
+
+      //      // Texto
+      //        let tex = document.getElementById('f3');
+
+    		// let textonuevo = tex.style;
+
+    		// textonuevo.fontFamily=resp[i].textotopheader;
+
+    		// // Texto Menú 1
+      //        let texmenu = document.getElementById('f10');
+
+      //        let textomenu = texmenu.style;
+
+      //       textomenu.fontFamily=resp[i].title_menu_1;
+            
+
+           }
+
+            console.log(resp);
        })
-           let hola = document.getElementById('f2');
+ 
+        
+           // // Colores
+           // let hola = document.getElementById('f2');
 
-           let estoyhastalaverga = hola.style;
+           // let estoyhastalaverga = hola.style;
+           // // Texto
 
-           let tex = document.getElementById('f3');
+           // let tex = document.getElementById('f3');
 
-           let textonuevo = tex.style;
+           // let textonuevo = tex.style;
+
+           //  // Texto Menú 1
+
+           // let texmenu = document.getElementById('f10');
+
+           //  let textomenu = texmenu.style;
+
+
+
+
+  //  // Menú navegación           
+
+  //  this.negocioService.getData()
+  // .subscribe(resp=>{
+
+  //   let i;
+
+  //   for (i in resp){
+
+  //     this.personalization.push(resp[i]);
+     
+  //     this.letraMenu1.push(resp[i].title_menu_1)
+  //     this.letraMenu2.push(resp[i].title_menu_2)
+  //     this.letraMenu3.push(resp[i].title_menu_3)
+
+  //     // Texto Menú 1
+  //            let texmenu = document.getElementById('f10');
+
+  //       let textomenu = texmenu.style;
+
+  //       textomenu.fontFamily=resp[i].title_menu_1;
+
+
+  //           // Texto Menú 2
+  //            let texmenu2 = document.getElementById('f11');
+
+  //       let textomenu2 = texmenu2.style;
+
+  //       textomenu2.fontFamily=resp[i].title_menu_2;
+           
+
+  //          // Texto Menú 3
+  //            let texmenu3 = document.getElementById('f12');
+
+  //       let textomenu3 = texmenu3.style;
+
+  //       textomenu3.fontFamily=resp[i].title_menu_3;
+
+  //   }
+    
+  // })
+
+  //   // Texto Menú 1
+
+  //     let texmenu = document.getElementById('f10');
+
+  //     let textomenu = texmenu.style;
+
+  //     // Texto Menú 2
+
+  //     let texmenu2 = document.getElementById('f11');
+
+  //     let textomenu2 = texmenu2.style;
+
+  //     // Texto Menú 3
+
+  //     let texmenu3 = document.getElementById('f12');
+
+  //     let textomenu3 = texmenu3.style;
+   
+
+           
+
 
 
 		/*=============================================
-		Validar si existe usuario autenticado
+		Validar si existe usuario autenticado                 
 		=============================================*/
 		this.usersService.authActivate().then(resp =>{
 
@@ -284,8 +379,7 @@ export class HeaderComponent implements OnInit {
 		}				
 	}
 	=============================================*/
-
-	
+   
 
 	/*=============================================
 	Función que nos avisa cuando finaliza el renderizado de Angular

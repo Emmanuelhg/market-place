@@ -29,7 +29,9 @@ export class BestSalesItemComponent implements OnInit {
 	rating:any[] = [];
 	reviews:any[] = [];
 	price:any[] = [];
-	cargando:boolean = false;
+	preload:boolean = false;
+	placeholder:any[] = [0,1,2,3];
+	notFound:boolean = false;
 
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,
@@ -38,7 +40,7 @@ export class BestSalesItemComponent implements OnInit {
 
   	ngOnInit(): void {
 
-  		this.cargando = true;
+  		this.preload = true;
 
   		/*=============================================
 		Capturamos el parámetro URL
@@ -65,8 +67,17 @@ export class BestSalesItemComponent implements OnInit {
 
 				this.productsService.getFilterData("sub_category", params)
 				.subscribe(resp2=>{
+					
+					if(Object.keys(resp2).length > 0){
 		
-					this.productsFnc(resp2);			
+						this.productsFnc(resp2);
+
+					}else{
+
+						this.preload = false;
+						this.notFound = true;
+					
+					}			
 					
 				})
 
@@ -111,7 +122,7 @@ export class BestSalesItemComponent implements OnInit {
 
 		getSales.forEach((product, index)=>{
 
-			if(index < 2){
+			if(index < 4){
 
 				this.bestSalesItem.push(product);
 				
@@ -121,7 +132,7 @@ export class BestSalesItemComponent implements OnInit {
 
 				this.price.push(DinamicPrice.fnc(this.bestSalesItem[index]));
 
-				this.cargando = false;
+				this.preload = false;
 
 				setTimeout(function(){
 

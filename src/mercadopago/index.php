@@ -33,7 +33,7 @@ Petición a la API de Cambio de Moneda
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://free.currconv.com/api/v7/convert?q=USD_COP&compact=ultra&apiKey=7a9895a5bd6ab8e8d6c9",
+  CURLOPT_URL => "http://free.currconv.com/api/v7/convert?q=USD_MXN&compact=ultra&apiKey=7a9895a5bd6ab8e8d6c9",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
