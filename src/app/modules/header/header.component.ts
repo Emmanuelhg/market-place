@@ -55,10 +55,7 @@ export class HeaderComponent implements OnInit {
 
 		this.negocioService.getData()
         .subscribe(resp=>{
-
-
-
-          
+        
            let i;
 
            for(i in resp){

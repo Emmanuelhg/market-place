@@ -39,6 +39,7 @@
     .progressbar a:first-child:after{
         content: none;
     }
+
     .progressbar a.active{
     	display: block;
         color: #C4AE9D;
@@ -50,7 +51,20 @@
     .progressbar a.active + a:after{
         background-color: #C4AE9D;
     }
-
+    /*Clase súper active */
+    .progressbar a.superActive{
+        display: block;
+        color: #b0714a;
+    }
+    .progressbar a.superActive:before{
+        background-color: #b0714a;
+        border-color:#b0714a;
+    }
+    .progressbar a.superActive + a:after{
+        background-color: #b0714a;
+    }
+    
+    /*Imáges*/
     
     .imagecontainer{
     	display: flex;
@@ -386,14 +400,14 @@ a.animated-button.thar-three:before {
 </style>
 <div class="ps-breadcrumb">
 
-	<!-- Barra de números -->
+	<!-- Barra de números  -->
 	<div class="contrainer">
 		<div>
 			<ul class="progressbar">
-     			<a class="active" >Step 1</a>
-     			<a >Step 2</a>
-         		<a >Step 3</a>
-	        	<a >Done!</a>
+     			<a id="step1"  class="superActive" >Step 1</a>
+     			<a id="step2"  dir="true">Step 2</a>
+         		<a id="step3" >Step 3</a>
+	        	<a id="step4" >Done!</a>
 			</ul>
 			<br>
    	 	</div><br>
@@ -409,22 +423,31 @@ a.animated-button.thar-three:before {
       <div class="images"> 
 	        <div class="div-imagen">
 	        	<div class="divtexcontainer">
-	   			   <p>{{prueba}}</p>
+	   			   <p>Texto prueba 1</p>
 	  			</div>
-	 		    <img class="desvanecer" src="{{path}}img/products_etre/product.jpg">
+                     <!--  id="img_izquierda"  -->
+	 		    <img  
+                 id="img_izquierda"
+	    	     (click)="selectBox(0)"
+	 		     class="desvanecer" src="{{path}}img/products_etre/product.jpg">
 	        </div>
 
 		   <div class="div-imagen">
 		    	<div class="divtexcontainer">
 					   <p>Texto prueba 2</p>
 				</div>
-				    <img class="desvanecer" src="{{path}}img/products_etre/product2.jpg">
+				    <img
+                     id="img_derecha"
+                     (click)="selectBox(1)"
+				     class="desvanecer" src="{{path}}img/products_etre/product2.jpg">
 		   </div>
 
        </div>
         <!-- Botón continuar -->
     	<div class="imagecontainer">
-	    	  <a  routerLink="/selecction-paso-dos" 
+	    	  <a 
+	    	   [(ngModel)]="boxes"
+	    	   (click)="newBoxes(id)"
 	    	  class="btn btn-sm animated-button thar-three">CONTINUE</a>
 	    </div> 
    

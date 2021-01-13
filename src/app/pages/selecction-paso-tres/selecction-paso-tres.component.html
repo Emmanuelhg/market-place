@@ -51,6 +51,19 @@
         background-color: #C4AE9D;
     }
 
+    /*Clase súper active */
+    .progressbar a.superActive{
+        display: block;
+        color: #b0714a;
+    }
+    .progressbar a.superActive:before{
+        background-color: #b0714a;
+        border-color:#b0714a;
+    }
+    .progressbar a.superActive + a:after{
+        background-color: #b0714a;
+    }
+
     /*Progressbar before*/
 
     .progressbar a.activetwo{
@@ -95,6 +108,7 @@
     }
 
      /* Global Button Styles */
+
     a.animated-button:link, a.animated-button:visited {
         position: relative;
         display: block;
@@ -411,9 +425,9 @@ a.animated-button.thar-three:before {
 	<!-- Barra de números -->
 	<div class="contrainer">
 		<div>
-			<ul class="progressbar">
+ 			<ul class="progressbar">
      			<a class="activetwo" routerLink="/selecction-caja">Step 1</a>
-     			<a class="activetwo">Step 2</a>
+     			<a class="activetwo" >Step 2</a>
          		<a class="active" >Step 3</a>
 	        	<a >Done!</a>
 			</ul>
@@ -463,7 +477,9 @@ a.animated-button.thar-three:before {
 		     	 
 	     	</div>
 	     	<div class="btn_cart">
-	     		<a routerLink="/done" class="botn_new">ADD TO CART</a> 
+	     		<a 
+                [routerLink]="['/done', id]" 
+                class="botn_new">ADD TO CART</a> 
 	     	</div>
  		       
      	</div>
@@ -472,7 +488,8 @@ a.animated-button.thar-three:before {
    	 </div> <!-- Finaliza el armado de caja  -->
 
    	 <div class="previu">
-	   	 	<a routerLink="../selecction-paso-dos" class="btn btn-sm animated-button thar-three">PREVIOUS STEP</a>
+	   	 	<a routerLink="../selecction-paso-dos" 
+            class="btn btn-sm animated-button thar-three">PREVIOUS STEP</a>
 
 	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
 	 </div>

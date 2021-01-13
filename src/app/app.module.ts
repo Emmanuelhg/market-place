@@ -72,6 +72,9 @@ import { SelecctionCajaComponent } from './pages/selecction-caja/selecction-caja
 import { SelecctionPasoDosComponent } from './pages/selecction-paso-dos/selecction-paso-dos.component';
 import { SelecctionPasoTresComponent } from './pages/selecction-paso-tres/selecction-paso-tres.component';
 import { DoneComponent } from './pages/done/done.component';
+import { FrequentlyAskedQuestionsComponent } from './pages/frequently-asked-questions/frequently-asked-questions.component';
+import { OurStoryComponent } from './pages/our-story/our-story.component';
+import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
 
 
 @NgModule({
@@ -129,7 +132,10 @@ import { DoneComponent } from './pages/done/done.component';
     SelecctionCajaComponent,
     SelecctionPasoDosComponent,
     SelecctionPasoTresComponent,
-    DoneComponent
+    DoneComponent,
+    FrequentlyAskedQuestionsComponent,
+    OurStoryComponent,
+    GetInTouchComponent
   ],
   imports: [
     BrowserModule,

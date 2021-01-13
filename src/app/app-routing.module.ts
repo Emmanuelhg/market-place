@@ -16,6 +16,9 @@ import { SelecctionCajaComponent } from './pages/selecction-caja/selecction-caja
 import { SelecctionPasoDosComponent } from './pages/selecction-paso-dos/selecction-paso-dos.component';
 import { SelecctionPasoTresComponent } from './pages/selecction-paso-tres/selecction-paso-tres.component';
 import { DoneComponent } from './pages/done/done.component';
+import { FrequentlyAskedQuestionsComponent } from './pages/frequently-asked-questions/frequently-asked-questions.component';
+import { OurStoryComponent } from './pages/our-story/our-story.component';
+import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -33,9 +36,12 @@ const routes: Routes = [
 	{path: 'checkout', component: CheckoutComponent,  canActivate: [ AuthGuard ]},
 	{path: 'become-a-vendor', component: BecomeAVendorComponent},
 	{path: 'selecction-caja', component: SelecctionCajaComponent},
-	{path: 'selecction-paso-dos', component: SelecctionPasoDosComponent},
-	{path: 'selecction-paso-tres', component: SelecctionPasoTresComponent},
-	{path: 'done', component: DoneComponent},
+	{path: 'selecction-paso-dos/:id', component: SelecctionPasoDosComponent},
+	{path: 'selecction-paso-tres/:id', component: SelecctionPasoTresComponent},
+	{path: 'done/:id', component: DoneComponent},
+	{path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent},
+	{path: 'our-story', component: OurStoryComponent},
+	{path: 'get-in-touch', component: GetInTouchComponent},
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 ];

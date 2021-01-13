@@ -7,7 +7,7 @@ declare var $:any;
 
 import { NegocioService } from '../../services/negocio.service';
 
-
+ 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',

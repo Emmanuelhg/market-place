@@ -116,6 +116,14 @@ export class ProductsService {
 
 	}
 
+   getFilterDatad(orderBy:string, equalTo:string){
+
+		return this.http.get(`${this.api}products.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`)
+		
+
+	}
+
+
 	getFilterDataMyStore(orderBy:string, equalTo:string){
 
 		return this.http.get(`${this.api}products.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`);
@@ -231,4 +239,18 @@ export class ProductsService {
 		return this.http.delete(`${this.api}products/${id}.json?auth=${idToken}`);
 
 	}
+
+	
+	getDatta(){
+
+		return this.http.get(`${this.api}products.json`);
+
+	}
+
+	getFilterDatta(orderBy:string, equalTo:string){
+
+		return this.http.get(`${this.api}products.json?&print=pretty`);
+
+	}
+
 }

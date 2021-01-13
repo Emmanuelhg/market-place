@@ -51,19 +51,45 @@
         background-color: #C4AE9D;
     }
 
+    /*Clase súper active */
+    .progressbar a.superActive{
+        display: block;
+        color: #b0714a;
+    }
+    .progressbar a.superActive:before{
+        background-color: #b0714a;
+        border-color:#b0714a;
+    }
+    .progressbar a.superActive + a:after{
+        background-color: #b0714a;
+    }
+
     /*Progressbar before*/
 
-    .progressbar a.activetwo{
+    .progressbar a.active{
     	display: block;
         color: #F0B27A;
     }
-    .progressbar a.activetwo:before{
+    .progressbar a.active:before{
     	background-color: #F0B27A;
         border-color:#F0B27A;
     }
-    .progressbar a.activetwo + a:after{
+    .progressbar a.active + a:after{
         background-color:#F0B27A;
     }
+     /*Clase súper active */
+    .progressbar a.superActive{
+        display: block;
+        color: #b0714a;
+    }
+    .progressbar a.superActive:before{
+        background-color: #b0714a;
+        border-color:#b0714a;
+    }
+    .progressbar a.superActive + a:after{
+        background-color: #b0714a;
+    }
+    
    
     /*Caja de productos*/
     
@@ -298,11 +324,12 @@ a.animated-button.thar-three:before {
    	display: flex;
     }
 
-   	
-		           	
+   	.pzp{
+     margin-top: 2%;
+    }
+
  
 </style>
-
 
 <div class="ps-breadcrumb">
     
@@ -310,10 +337,10 @@ a.animated-button.thar-three:before {
 	<div class="contrainer">
 		<div>
 			<ul class="progressbar">
-     			<a class="activetwo" routerLink="/selecction-caja">Step 1</a>
-     			<a class="active" >Step 2</a>
-         		<a >Step 3</a>
-	        	<a >Done!</a>
+     			<a id="step1" routerLink="/selecction-caja">Step 1</a>
+     			<a id="step2"  class="superActive">Step 2</a>
+             	<a id="step3">Step 3</a>
+    	        <a id="step4" >Done!</a>
 			</ul>
 			<br>
    	 	</div><br>
@@ -323,8 +350,10 @@ a.animated-button.thar-three:before {
      <div class="imagecontainer"> <p class="parrafo"> Steof 2 of 3 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
 
-   	 <!-- Pintamos caja de producto -->
-   	 <div class="div_bordes">
+   	 <!-- Pintamos caja de producto  -->
+   	 <div 
+     
+     class="div_bordes">
 
    	 	<div class="contrainer">
 
@@ -345,34 +374,66 @@ a.animated-button.thar-three:before {
 		                    <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
 		                </div>
 		              </div> 
-		                <!-- Imágenes -->
+                       <!-- Imágenes -->
+                      <div class="divert">
 		                <div>
 		                    <img class="divForNewImages" src="{{path}}img/products_etre/product.jpg" alt="">
-		                    <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt="">
-		                    <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt="">
+                            <img  class="divForNewImages" src="{{path}}img/products_etre/product2.jpg">
+		                    <!-- <img src="{{path}}img/products_etre/{{products.image}}" alt=""> -->
+		                   <!--  <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt=""> -->
+                         
 		                </div>
+                      </div>  
 		            </div>
+                    <style>
+                      .divert{
+                        display: flex;
+                      }
+                    </style>
 
 		            <div class="divForDescription">
 		                    <div class="div_et">
-			                	<p><b>BOX CONTENTS</b></p>
+			                	<p class="pzp"><b>BOX CONTENTS</b></p>
 			                </div>
+                            <style>
+                                
+                            </style>
 		                
 			                <div class="div_ed">
 			                	<p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p>
 			                </div>
 			                 <div class="div_er">
-			                	<p>CURRENT PACKAGINGI SMALL</p>
+                                <p class="tex_cont"> Nombre</p>
+			                	<!-- <p>CURRENT PACKAGINGI SMALL</p> -->
+                            
+			                </div>
+                            <style >
+                                .tex_cont{
+                                    margin-top: 1%;
+                                }
+                            </style>
+
+			                <div class="div_eu" >
+                                <p>
+                                    <b class="hfhg">BOX SUBTOTAL: $  
+                                    
+                                    </b>
+                                </p> 
+                                <style>
+                                    .hfhg{
+                                        display: flex;
+                                    }
+                                </style>  
+			                	<!-- <p><b>BOX SUBTOTAL: $ 700</b></p> -->
+                                
+                                    <a 
+                                    [routerLink]="['/selecction-paso-tres', id_to_box]"  
+                                    class="botn_netx">COMPLETE BOX</a>
+                                
+
 			                </div>
 
-			                <div class="div_eu">
-			                	<p><b>BOX SUBTOTAL: $ 700</b></p>
-			                </div>
-
-			                <div class="div_ep">
-			                	<a routerLink="/selecction-paso-tres" class="botn_netx">COMPLETE BOX</a>
-			                </div>
-
+			                
 		            </div>
 
 		        </div>
@@ -403,42 +464,105 @@ a.animated-button.thar-three:before {
 	        </section>
    	
    	    </div>
-   	 	
+   	   
    	</div>
+
+
 
    	<!-- Productos -->
 
    	<div class="divimageness">
 
+        <!--=====================================
+        Producte
+        ======================================--> 
 
-   		<div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
+        <div
+         *ngFor="let products of getProduct; let lastIndex = last"
+         class="ps-product">
 
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
+            <div class="ps-product__thumbnail">
 
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
+                <a href="product-default.html">
+                    <img 
+                     (click)="funcionPorducts(1)"
+                    src="{{path}}img/products_etre/{{products.image}}" alt="">
+                </a>
 
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
-  
+                <ul class="ps-product__actions">
+
+                    <li>
+                        <a>
+                            <i (click)="funcionPorducts(id)" class="icon-heart"></i>
+                        </a>
+
+                    </li>  
+
+                </ul>
+
+                <!-- <a class="ps-product__actions__nuevo">ADD TO BOX</a> -->
+                <p class="tex_product">{{products.name}}</p>
+                <p class="tex_product">{{products.price}}</p>
+             </div>
+         {{ lastIndex ? callback() : ""}}
+
+        </div><!-- End Product -->
+
+   
+
+
+        <style>
+            .ps-product .ps-product__actionst {
+              display: -webkit-box;
+              display: flex;
+              -webkit-box-orient: horizontal;
+              -webkit-box-direction: normal;
+                      flex-flow: row nowrap;
+              -webkit-box-pack: justify;
+                      justify-content: space-between;
+              max-width: 200px;
+              padding: 10px 0;
+              background-color: #fff;
+              -webkit-transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+              transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+            }
+
+            .ps-product .ps-product__actionst li {
+              margin-right: 10px;
+            }
+
+            .ps-product .ps-product__actionst li a {
+              display: -webkit-box;
+              display: flex;
+              -webkit-box-pack: center;
+                      justify-content: center;
+              -webkit-box-align: center;
+                      align-items: center;
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+            }
+
+            .ps-product .ps-product__actionst li a:hover {
+              background-color: #fcb800;
+              color: #ffffff;
+            }
+
+            .ps-product .ps-product__actionst:last-child {
+              margin-right: 0;
+            }
+            .ps-product {
+            position: relative;
+            padding: 0px 4px 0;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-left: 0%;
+            margin-top: 5%;
+            }
+        </style>
+
+
+   		
    	</div>
 
    	<!-- Productos -->
@@ -509,7 +633,7 @@ a.animated-button.thar-three:before {
 		       	 	font-size: 1.9rem;
 				    line-height: 1.6em;
 				    color: #666;
-				    margin-left: 12%;
+				    margin-left: 0%;
 				  }
 
 
@@ -615,11 +739,10 @@ a.animated-button.thar-three:before {
 
 		   	 	.botn_netx{
 		   	 		background-color: black;
-		   	 		margin: 3px;
+		   	 		margin: px;
 		   	 		color: white;
-		   	 		padding-left: 28%;
-		   	 		padding-right: 25%;
-		   	 		height: 46px;
+		   	 		width: 90%;
+		   	 		height: 100%;
 		   	 		justify-content: center;
 				    align-items: center;
 				    display: flex;
@@ -678,10 +801,11 @@ a.animated-button.thar-three:before {
 		        	border-left:1px solid #dee2e6!important;
 		        	border-bottom: 1px solid #dee2e6!important;
 		            width: 40%;
+                    margin: px;
 		        }
 
 		        .div_et{
-		            height: 20%;
+		            height: 11%;
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
@@ -689,8 +813,7 @@ a.animated-button.thar-three:before {
 
 		        .div_ed{
 		        	
-		            height: 20%;
-		            
+		            height: 11%;
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
@@ -698,7 +821,7 @@ a.animated-button.thar-three:before {
 		        .div_er{
 		        	border-bottom:1px solid #dee2e6!important; 
 		        	border-top: 1px solid #dee2e6!important;
-		            height: 20%;   
+		            height: 11%;   
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
@@ -706,14 +829,13 @@ a.animated-button.thar-three:before {
 		        .div_eu{
 		        	
 		            height: 20%;
-		         
 		            justify-content: center;
 				    align-items: center;
-				    display: flex;
+				   
 		        }
 		        .div_ep{
 		        	
-		            height: 8%;
+		            height: 13%;
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
@@ -735,7 +857,7 @@ a.animated-button.thar-three:before {
    	 	
    	 </style>
 
-
+     
 </div>	
 <br><br><br><br><br><br><br><br>
  

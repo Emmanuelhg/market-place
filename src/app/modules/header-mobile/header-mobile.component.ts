@@ -22,6 +22,8 @@ declare var $:any;
 export class HeaderMobileComponent implements OnInit {
 
 	path:string = Path.url;	
+	arrayTitleList:any[] = [];
+	wishlist:number = 0;
 	categories:any[] = [];
 	render:boolean = true;
 	categoriesList:any[] = [];
@@ -31,15 +33,16 @@ export class HeaderMobileComponent implements OnInit {
 	totalShoppingCart:number = 0;
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
-
-    textonavegacion:any[] = [];
-    color:any[] = [];
+ 
+    personalization:any[] = [];
+	color:any[] = [];
 	colorCambio:any[] = [];
     letra:any[] = [];
     colorLetra:any[] = [];
     letraMenu1:any[] = [];
     letraMenu2:any[] = [];
     letraMenu3:any[] = [];
+
 
 
 	constructor(private categoriesService: CategoriesService, 
@@ -51,10 +54,10 @@ export class HeaderMobileComponent implements OnInit {
 
 	ngOnInit(): void {
 
-		// Llamar los nuevos colores y texto
+		// Llamar los nuevos colores y texto 
 
 		this.negocioService.getData()
-       .subscribe(resp=>{
+      	.subscribe(resp=>{
           
            let i;
 
@@ -64,99 +67,99 @@ export class HeaderMobileComponent implements OnInit {
 
            	this.colorCambio.push(resp[i].colorbotonheaders);
             this.colorLetra.push(resp[i].textotopheader)
-
+            this.letraMenu1.push(resp[i].title_menu_1);
  		   // Colores   
-           let hola = document.getElementById('f10');
+           // let hola = document.getElementById('f55');
 
-           let estoyhastalaverga = hola.style;
+           // let estoyhastalaverga = hola.style;
 
-           estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
+           // estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
 
            // Texto
-             let tex = document.getElementById('f11');
+      //        let tex = document.getElementById('f11');
 
-    		let textonuevo = tex.style;
+    		// let textonuevo = tex.style;
 
-    		textonuevo.fontFamily=resp[i].textotopheader;
+    		// textonuevo.fontFamily=resp[i].textotopheader;
 
             }
 
 
        })
-           let hola = document.getElementById('f10');
+           // let hola = document.getElementById('f55');
 
-           let estoyhastalaverga = hola.style;
+           // let estoyhastalaverga = hola.style;
 
-           let tex = document.getElementById('f11');
+           // let tex = document.getElementById('f11');
 
-           let textonuevo = tex.style;
+           // let textonuevo = tex.style;
 
 
     // Menú navegación           
 
-   this.negocioService.getData()
-  .subscribe(resp=>{
+  //  this.negocioService.getData()
+  // .subscribe(resp=>{
 
-    let i;
+  //   let i;
 
-    for (i in resp){
+  //   for (i in resp){
 
-      this.textonavegacion.push(resp[i]);
+  //     this.textonavegacion.push(resp[i]);
      
-      this.letraMenu1.push(resp[i].title_menu_1)
-      this.letraMenu2.push(resp[i].title_menu_2)
-      this.letraMenu3.push(resp[i].title_menu_3)
+  //     this.letraMenu1.push(resp[i].title_menu_1)
+  //     this.letraMenu2.push(resp[i].title_menu_2)
+  //     this.letraMenu3.push(resp[i].title_menu_3)
 
-      // Texto Menú 1
-             let texmenu = document.getElementById('f10');
+  //     // Texto Menú 1
+  //            let texmenu = document.getElementById('f10');
 
-        let textomenu = texmenu.style;
+  //       let textomenu = texmenu.style;
 
-        textomenu.fontFamily=resp[i].title_menu_1;
+  //       textomenu.fontFamily=resp[i].title_menu_1;
 
 
-            // Texto Menú 2
-             let texmenu2 = document.getElementById('f11');
+  //           // Texto Menú 2
+  //            let texmenu2 = document.getElementById('f11');
 
-        let textomenu2 = texmenu2.style;
+  //       let textomenu2 = texmenu2.style;
 
-        textomenu2.fontFamily=resp[i].title_menu_2;
+  //       textomenu2.fontFamily=resp[i].title_menu_2;
            
 
-           // Texto Menú 3
-             let texmenu3 = document.getElementById('f12');
+  //          // Texto Menú 3
+  //            let texmenu3 = document.getElementById('f12');
 
-        let textomenu3 = texmenu3.style;
+  //       let textomenu3 = texmenu3.style;
 
-        textomenu3.fontFamily=resp[i].title_menu_3;
+  //       textomenu3.fontFamily=resp[i].title_menu_3;
 
-    }
+  //   }
     
-  })
+  // })
 
-    // Texto Menú 1
+  //   // Texto Menú 1
 
-      let texmenu = document.getElementById('f10');
+  //     let texmenu = document.getElementById('f10');
 
-      let textomenu = texmenu.style;
+  //     let textomenu = texmenu.style;
 
-      // Texto Menú 2
+  //     // Texto Menú 2
 
-      let texmenu2 = document.getElementById('f11');
+  //     let texmenu2 = document.getElementById('f11');
 
-      let textomenu2 = texmenu2.style;
+  //     let textomenu2 = texmenu2.style;
 
-      // Texto Menú 3
+  //     // Texto Menú 3
 
-      let texmenu3 = document.getElementById('f12');
+  //     let texmenu3 = document.getElementById('f12');
 
-      let textomenu3 = texmenu3.style;
+  //     let textomenu3 = texmenu3.style;
    
 
            
 
 		/*=============================================
-		Validar si existe usuario autenticado
+		Validar si existe usuario autenticado                 
 		=============================================*/
 		this.usersService.authActivate().then(resp =>{
 
@@ -168,6 +171,20 @@ export class HeaderMobileComponent implements OnInit {
 				.subscribe(resp=>{
 
 					for(const i in resp){
+
+						/*=============================================
+						Mostramos cantidad de productos en su lista de deseos
+						=============================================*/
+
+						if(resp[i].wishlist != undefined){
+
+							this.wishlist = Number(JSON.parse(resp[i].wishlist).length)
+
+						}
+
+						/*=============================================
+						Mostramos foto del usuario
+						=============================================*/
 
 						if(resp[i].picture != undefined){
 
@@ -197,12 +214,10 @@ export class HeaderMobileComponent implements OnInit {
 		=============================================*/
 
 		this.categoriesService.getData()
-		.subscribe(resp => {
-			
-			
+		.subscribe(resp => {	
 
 			/*=============================================
-			Recorrido por el objeto de la data de categorías
+			Recorremos la colección de categorías para tomar la lista de títulos
 			=============================================*/
 
 			let i;
@@ -212,22 +227,12 @@ export class HeaderMobileComponent implements OnInit {
 				this.categories.push(resp[i]);
 
 				/*=============================================
-				Separamos los nombres de categorías
+				Separamos la lista de títulos en índices de un array
 				=============================================*/
-
-				this.categoriesList.push(resp[i].name)
-
+				
+				this.arrayTitleList.push(JSON.parse(resp[i].title_list));
+				
 			}
-
-		})
-
-		/*=============================================
-		Activamos el efecto toggle en el listado de subcategorías
-		=============================================*/
-
-		$(document).on("click", ".sub-toggle", function(){
-
-			$(this).parent().children('ul').toggle();
 
 		})
 
@@ -253,6 +258,7 @@ export class HeaderMobileComponent implements OnInit {
 
 				this.productsService.getFilterData("url", list[i].product)
 				.subscribe(resp=>{
+					
 					
 					for(const f in resp){
 
@@ -319,7 +325,7 @@ export class HeaderMobileComponent implements OnInit {
 			}
 
 		}
-
+	
 	}
 
 	/*=============================================
@@ -338,78 +344,111 @@ export class HeaderMobileComponent implements OnInit {
 	}
 
 	/*=============================================
+	Cambio de colores
+
+	removerColor(){
+       this.scoloresService.getFilterData("colores1", colores[i])
+	   .subscribe(resp =>{
+					console.log("colores", colores);
+
+		}				
+	}
+	=============================================*/
+   
+
+	/*=============================================
 	Función que nos avisa cuando finaliza el renderizado de Angular
 	=============================================*/
-
+	
 	callback(){
 
 		if(this.render){
 
 			this.render = false;
 			let arraySubCategories = [];
-
+			
 			/*=============================================
-			Separar las categorías
+			Hacemos un recorrido por la lista de títulos
 			=============================================*/
 
-			this.categoriesList.forEach(category=>{
-				
+			this.arrayTitleList.forEach(titleList =>{
+
 				/*=============================================
-				Tomamos la colección de las sub-categorías filtrando con los nombres de categoría
+				Separar individualmente los títulos
 				=============================================*/
 
-				this.subCategoriesService.getFilterData("category", category)
-				.subscribe(resp=>{
+				for(let i = 0; i < titleList.length; i++){
+
+					/*=============================================
+					Tomamos la colección de las sub-categorías filtrando con la lista de títulos
+					=============================================*/
 					
-					/*=============================================
-					Hacemos un recorrido por la colección general de subcategorias y clasificamos las subcategorias y url
-					de acuerdo a la categoría que correspondan
-					=============================================*/
+					this.subCategoriesService.getFilterData("title_list", titleList[i])
+					.subscribe(resp =>{
+						
+						arraySubCategories.push(resp);
 
-					let i;
+						/*=============================================
+						Hacemos un recorrido por la colección general de subcategorias
+						=============================================*/
 
-					for(i in resp){
+						let f;
+						let g;
+						let arrayTitleName = [];
 
-						arraySubCategories.push({
-
-							"category": resp[i].category,
-							"subcategory": resp[i].name,
-							"url": resp[i].url
-
-						})
-
-					}
-
-					/*=============================================
-					Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
-					=============================================*/
-
-					for(i in arraySubCategories){
-
-						if(category == arraySubCategories[i].category){
+						for(f in arraySubCategories){
 							
+							/*=============================================
+							Hacemos un recorrido por la colección particular de subcategorias
+							=============================================*/
 
-							$(`[category='${category}']`).append(
+							for(g in arraySubCategories[f]){
 
-								`<li class="current-menu-item ">
-		                        	<a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a>
-		                        </li>`
+								/*=============================================
+								Creamos un nuevo array de objetos clasificando cada subcategoría con la respectiva lista de título a la que pertenece
+								=============================================*/
 
-		                    )
+								arrayTitleName.push({
 
+									"titleList": arraySubCategories[f][g].title_list,
+									"subcategory": arraySubCategories[f][g].name,
+									"url": arraySubCategories[f][g].url,
+
+								})
+
+							}
 
 						}
 
+						/*=============================================
+						Recorremos el array de objetos nuevo para buscar coincidencias con las listas de título
+						=============================================*/
 
-					}
+						for(f in arrayTitleName){
 
+							if(titleList[i] == arrayTitleName[f].titleList){
+								
+								/*=============================================
+								Imprimir el nombre de subcategoría debajo de el listado correspondiente
+								=============================================*/
 
-											
+								$(`[titleList='${titleList[i]}']`).append(
 
-				})
+									`<li>
+										<a href="products/${arrayTitleName[f].url}">${arrayTitleName[f].subcategory}</a>
+									</li>`
 
-			})			
-			
+								)
+						
+							}
+
+						}					
+
+					})
+
+				}			
+
+			})
 		}
 
 	}
@@ -432,14 +471,14 @@ export class HeaderMobileComponent implements OnInit {
 
 			setTimeout(function(){
 
-				let price = $(".pShoppingHeaderM .end-price")
-				let quantity = $(".qShoppingHeaderM");
-				let shipping = $(".sShoppingHeaderM");
+				let price = $(".pShoppingHeader .end-price")
+				let quantity = $(".qShoppingHeader");
+				let shipping = $(".sShoppingHeader");
 
 				let totalPrice = 0;
 
 				for(let i = 0; i < price.length; i++){
-
+									
 					/*=============================================
 					Sumar precio con envío
 					=============================================*/
@@ -464,6 +503,8 @@ export class HeaderMobileComponent implements OnInit {
 
 	removeProduct(product, details){
 		
+		console.log("product", product);
+
 		if(localStorage.getItem("list")){
 
 			let shoppingCart = JSON.parse(localStorage.getItem("list"));
@@ -489,5 +530,6 @@ export class HeaderMobileComponent implements OnInit {
 		}
 
 	}
+
 
 }

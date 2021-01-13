@@ -1,65 +1,268 @@
 <!--=====================================
-	Header Mobile
+	Header Mobile 
 	======================================-->
 <header class="header header--mobile" data-sticky="true">
 
     <div class="header__top">
 
         <!--Menu-->
-                    <div class="col-3">
-                        <div class="d-flex justify-content-around">
-                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    {{ lastIndex ? callback() : ""}}</a>
-                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}</a>
-                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_3}}    {{ lastIndex ? callback() : ""}}</a>
+       <nav class="d-flex justify-content-around">
+
+                <div class="col-3">
+
+                    <div class="d-flex justify-content-around">
+
+                        <div class="menu--product-categories">
+
+                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}   
+                             {{ lastIndex ? callback() : ""}}
+                            </a>
+
+                                <div class="menu__content">
+
+                                        <ul class="menu--dropdown">
+                                       
+                                            <li 
+                                            *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                            class="menu-item-has-children has-mega-menu">
+                                                
+                                                <a routerLink="products/{{category.url}}" target="_top">
+                                                    <i class="{{category.icon}}"></i> {{category.name}}
+                                                </a>
+
+                                                <div class="mega-menu">
+
+                                                    <div 
+                                                    *ngFor="let title of arrayTitleList[i]"
+                                                    class="mega-menu__column">
+
+                                                        <h4>{{title}}
+                                                            <span class="sub-toggle"></span>
+                                                        </h4>
+
+                                                        <ul class="mega-menu__list" [attr.titleList]="title">
+                                                          
+                                                        </ul>
+
+                                                    </div>
+                                                    
+                                                </div>  
+
+                                            {{ lastIndex ? callback() : "" }}
+                                                
+                                            </li>
+                                         
+                                        </ul>
+
+                                </div>
+
                         </div>
+
+                        <!-- Menú  SHOP  -->
+                          
+                         <div class="menu--product-categories">
+                            <a *ngFor="let negocio of color; let lastIndex = last">{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}
+                            </a>
+
+                                 <div class="menu__content">
+
+                                        <ul class="menu--dropdown">
+                                       
+                                          <!--   <li 
+                                            *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                            class="menu-item-has-children has-mega-menu">
+-->
+                                            <li class="menu-item-has-children has-mega-menu">
+                                                
+                                                <a routerLink="#" target="_top">
+                                                     Curated GIft Boxes
+                                                </a>
+
+                                                <a routerLink="selecction-caja" target="_top">
+                                                     Curate your box
+                                                </a>
+
+                                                <a routerLink="#" target="_top">
+                                                     Gift Cards
+                                                </a>
+
+                                               <!--  <div class="mega-menu">
+
+                                                    <div class="mega-menu__column">
+
+                                                        <h4>
+                                                            <span class="sub-toggle"></span>
+                                                        </h4>
+
+                                                        <ul class="mega-menu__list">
+                                                          
+                                                        </ul>
+
+                                                    </div>
+                                                    
+                                                </div>  
+                                                 -->
+                                            </li>
+                                         
+                                        </ul>
+
+                                  </div>
+                         </div>
+                         
+                         <!-- Menú ABOUT US -->
+
+                         <div class="menu--product-categories">
+                            <a 
+                             routerLink="get-in-touch"
+                            *ngFor="let negocio of color; let lastIndex = last">
+                              {{negocio.title_menu_3}} 
+                              {{ lastIndex ? callback() : ""}}
+                            </a>
+                               <div class="menu__content">
+
+                                        <ul class="menu--dropdown">
+                                       
+                                            <li class="menu-item-has-children has-mega-menu">
+                                                
+                                                <a  routerLink="frequently-asked-questions" target="_top">
+                                                    How it works
+                                                </a>
+
+                                                <a target="_top">
+                                                    FAQS
+                                                </a>
+
+                                                <a  routerLink="our-story" target="_top">
+                                                    Our story 
+                                                </a>
+<!-- 
+                                                <div class="mega-menu">
+
+                                                    <div 
+                                                    *ngFor="let title of arrayTitleList[i]"
+                                                    class="mega-menu__column">
+
+                                                        <h4>{{title}}
+                                                            <span class="sub-toggle"></span>
+                                                        </h4>
+
+                                                        <ul class="mega-menu__list" [attr.titleList]="title">
+                                                          
+                                                        </ul>
+
+                                                    </div>
+                                                    
+                                                </div>   -->
+
+                                            <!-- {{ lastIndex ? callback() : "" }} -->
+                                                
+                                            </li>
+                                         
+                                        </ul>
+                                  </div>
+                         </div>   
                     </div>
+                </div>
+               
+
+                 <!--Logo-->
+                <div class="col-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img2" src="{{path}}img/template/etre-Logo-03.png"  routerLink="/">
+                    </div>
+                </div>
+                
+                <!--Iconos busqueda, cart-->
+                <div class="col-3">
+
+                    <div class="d-flex justify-content-end">
+
+                        <!--=====================================
+                        Search   <i class="icon-magnifier"></i>
+                        ======================================-->
+
+                        <div class="ps-search">
+
+                            <a class="header__extra">
+                                <i class="icon-magnifier"></i>
+                            </a>
+
+                        </div> 
+
+                        <!--=====================================
+                        Cart    
+                        ======================================-->
+
+                        <div class="ps-cart--mini">
+
+                            <a class="header__extra" routerLink="shopping-cart">
+                                <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
+                            </a>
+
+                            <div 
+                            *ngIf="shoppingCart.length > 0"
+                            class="ps-cart__content">
+
+                                <div class="ps-cart__items">
+
+                                    <div 
+                                    *ngFor="let product of shoppingCart; let lastShopping = last"
+                                    class="ps-product--cart-mobile">
+
+                                        <div class="ps-product__thumbnail">
+                                            <a href="product/{{product.url}}">
+                                                <img id="img" src="{{path}}img/products/{{product.category}}/{{product.image}}" >
+                                            </a>
+                                        </div>
+
+                                        <div class="ps-product__content text-left">
+                                            <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
+                                                <i class="icon-cross"></i>
+                                            </a>
+                                            <a href="product/{{product.url}}">{{product.name}}</a>
+                                            
+                                            <div [innerHTML]="product.details"></div>                                        
+                                            <small class="ps-product text-left p-0 m-0">
+                                                
+                                                Quantity:
+                                                <span class="qShoppingHeaderM">{{product.quantity}}</span> 
+                                                x Shipping: $
+                                                <span class="sShoppingHeaderM">{{product.shipping}}</span> 
+                                                + 
+                                                <span class="pShoppingHeaderM" [innerHTML]="product.price"></span>
+
+                                            </small>
+                                        </div>
+
+                                    {{ lastShopping ? callbackShopping() : ""}}
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="ps-cart__footer">
+
+                                    <div [innerHTML]="subTotal"></div>
+                                    <figure>
+                                        <a class="ps-btn" href="shopping-cart">View Cart</a>
+                                        <a class="ps-btn" href="checkout">Checkout</a>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                 
+            </nav>
 
     </div>  
-                
-                <div class="navImage">
+    <style>
+      
+    </style>          
 
-
-                    
-                </div>
-
-                        <style>
-                            
-                            .navImage {
-                               background-color: #490D40;
-                               background: url(https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/ddndy4m-5568bbcd-eda8-46f1-890b-83b8d3de0e62.png?alt=media&token=4ad4a70d-2172-41b6-bfc0-b593b3a36e56) no-repeat center center;
-                               background-size: cover;
-                               height: 500px;
-                               margin-top: -85px;
-                               
-                               .heading {
-                                  color: white;
-                                  text-align: center;
-                                  padding-top: 200px;
-                               }
-
-                               img{
-                                 max-width: 35%;
-                               }
-
-                               a {
-                                  text-align: center;
-                                  padding: 20px 60px;
-                                  size: 20px;
-                                  
-                                   .btn {
-                                     background-color: transparent;
-                                     color: white;
-                                     border: 1px solid white;
-                                     padding: 10px;
-                                     font-size: 1.2em;
-                                         
-                                      &:hover {
-                                         color: #C57ED3;
-                                         border-color: #C57ED3;
-                                      }
-                                  }
-                               }
-                            }
-                        </style>
-
-    </header> <!-- End Header Mobile -->
+</header> <!-- End Header Mobile -->
