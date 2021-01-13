@@ -1,19 +1,8 @@
 <header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true"> 
- 
-         <!-- <div  *ngFor="let negocio of color; let lastIndex = last">
-                      
-                <a id="f10">{{negocio.title_menu_1}} fdgdfsgdgg</a>  
-
-
-                 {{ lastIndex ? callback() : ""}} 
-
-            </div>  -->
 
      <div class="header__content"> 
 
             <div class="container">
-
-
                 
               <!--  Menú HOME -->
 
@@ -25,10 +14,10 @@
 
                         <div class="menu--product-categories">
 
-                            <a *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}   
+                            <a  *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}   
                              {{ lastIndex ? callback() : ""}}
                             </a>
-
+                                
                                 <div class="menu__content">
 
                                         <ul class="menu--dropdown">
@@ -146,26 +135,6 @@
                                                 <a  routerLink="our-story" target="_top">
                                                     Our story 
                                                 </a>
-<!-- 
-                                                <div class="mega-menu">
-
-                                                    <div 
-                                                    *ngFor="let title of arrayTitleList[i]"
-                                                    class="mega-menu__column">
-
-                                                        <h4>{{title}}
-                                                            <span class="sub-toggle"></span>
-                                                        </h4>
-
-                                                        <ul class="mega-menu__list" [attr.titleList]="title">
-                                                          
-                                                        </ul>
-
-                                                    </div>
-                                                    
-                                                </div>   -->
-
-                                            <!-- {{ lastIndex ? callback() : "" }} -->
                                                 
                                             </li>
                                          
@@ -194,16 +163,16 @@
 
                         <div class="ps-search">
 
-                            <a class="header__extra">
-                                <i class="icon-magnifier"></i>
-                            </a>
+                            
 
                         </div> 
 
                         <!--=====================================
                         Cart    
                         ======================================-->
-
+                         <i class="icon-magnifier" onclick="mostrar('premio');"></i>
+                    
+                        
                         <div class="ps-cart--mini">
 
                             <a class="header__extra" routerLink="shopping-cart">
@@ -272,92 +241,34 @@
             </nav>
              
         </div>
+
+        <!--=====================================
+        Search
+        ======================================-->
+
+        <div id="premio" class="ps-search--mobile" style="background: #C57ED3;">
+
+            <form class="ps-form--search-mobile">
+                <div class="form-group--nest">
+
+                    <button type="button"
+                    (click)="goSearch(search.value)"
+                    ><i class="icon-magnifier"></i></button>
+                    
+                    <input 
+                    (keyup.enter)="goSearch(search.value)"
+                    #search
+                    class="form-control" 
+                    type="text" 
+                    placeholder="Search something...">
+
+                    <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" onclick="ocultar('premio');">
+                    
+                </div>
+            </form>
+
+        </div> <!--  end search -->
          
      </div >  
 
-   <!--   <hr color="#0e0e0f" size=1> -->
-
-
-            <!-- Menún de silder -->
-            
-           <!--  <div class="navImage">
-
-
-            </div>
-
-                    <style>
-                        
-                        .navImage {
-                           background-color: #490D40;
-                           background: url(https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/ddndy4m-5568bbcd-eda8-46f1-890b-83b8d3de0e62.png?alt=media&token=4ad4a70d-2172-41b6-bfc0-b593b3a36e56) no-repeat center center;
-                           width: 100%;
-                           background-size: cover;
-                           height: 500px;
-                           margin-top: -85px;
-                           
-                           .heading {
-                              color: white;
-                              text-align: center;
-                              padding-top: 200px;
-                           }
-
-                           .col-3 {
-                                -ms-flex: 0 0 25%;
-                                flex: -2 7 45%;
-                                max-width: 45%;
-                            }
-
-                           a {
-                              text-align: center;
-                              padding: 20px 60px;
-                              size: 20px;
-                              
-                               .btn {
-                                 background-color: transparent;
-                                 color: white;
-                                 border: 1px solid white;
-                                 padding: 10px;
-                                 font-size: 1.2em;
-                                     
-                                  &:hover {
-                                     color: #C57ED3;
-                                     border-color: #C57ED3;
-                                  }
-                              }
-                           }
-
-
-                        }
-                    </style> -->
-
 </header>
-
-
-<!--  <div  *ngFor="let negocio of color; let lastIndex = last">
-                      
-                <a id="f10">{{negocio.title_menu_1}}</a> 
-                <a id="f10">{{negocio.title_menu_2}}</a>
-                <a id="f10">{{negocio.title_menu_3}}</a> 
-
-
-                 {{ lastIndex ? callback() : ""}} 
-
-            </div>  -->
-
-
-<!-- <div class="img-contrainer_derecha"> -->
-
-
-        <!-- <img src="{{path}}img/products_etre/product.jpg"> -->
-            <!-- <img class="img-cambio-derecha" src="{{path}}img/products_etre/productcambio.jpg"> -->
-        <!-- <br> -->
-    <!-- </div> -->
-
-
-    <!-- <div class="img-contrainer_izquierda"> -->
-             
-        <!-- <img src="{{path}}img/products_etre/product2.jpg"> -->
-        <!-- <img class="img-cambioizquierda" src="{{path}}img/products_etre/productcambio.jpg"> -->
-        <!-- <br> -->
-
-    <!-- </div>  -->

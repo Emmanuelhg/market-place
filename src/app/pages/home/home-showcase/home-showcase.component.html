@@ -2,73 +2,17 @@
 Section Gray
 ======================================-->  
 
-<div class="ps-section--gray">
+<div class="ps-breadcrumb">
 
-
-
-    <div 
-	*ngIf="!cargando"
-    class="container">
-
-        <div>
-
-        <p class="div2" style="color:#e4ecf0">SHOP CURATED</p>
-
-            <style>
-
-                .div2 {
-
-                      background-color: #0e0e0f;         
-                      left: 28%;
-                      position: relative;
-                      top: -23px;
-                      width: 406px;
-                      text-align: center;
-                      border:0px 
-                      dotted #000; 
-                      padding:9px;
-
-                     }    
-            
-
-            </style>
-        
-       </div>
-       
-
-    <!--=====================================
-		Products of category
-		======================================-->  
-
-        <div 
-		*ngFor="let category of categories; let lastIndex = last; let i = index"
-        class="ps-block--products-of-category">
-
-        
-            <!--=====================================
-			Block Product Box
-			======================================-->  
-
-            <div class="ps-block__product-box" [attr.category-pb]="category.url">
-				
-
-             
-            </div><!-- End Block Product Box -->
-          
-        
-		{{ lastIndex ? callback(i) : "" }}
-        </div><!-- End Products of category -->
-
-    </div><!-- End Container-->
-
-    <!--=====================================
-    Preload
-    ======================================-->
-
-    <div 
-    *ngIf="cargando"
-    class="d-flex justify-content-center">
-        <div class="spinner-border text-muted my-5"></div>
-    </div>
+  <div class="divhome">
+    
+  </div>
 
 </div><!-- End Section Gray-->
+
+<style>
+    .divhome{
+      width: 100%;
+      height: px;
+    }
+  </style>
