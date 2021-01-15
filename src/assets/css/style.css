@@ -16180,6 +16180,7 @@ input[type=number]
 }
 
 .header--mobile.header--sticky .navigation--mobile {
+  display: none;
   position: fixed;
   top: 0;
   width: 100%;
@@ -17650,4 +17651,6 @@ ul.timeline > li.process:before {
 
 }
 
-
+.premio {
+  display: none;
+}

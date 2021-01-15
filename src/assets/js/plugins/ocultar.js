@@ -1,4 +1,5 @@
 function mostrar(divselect){
+
 	
 	document.getElementById(divselect).style.display = 'block';
 

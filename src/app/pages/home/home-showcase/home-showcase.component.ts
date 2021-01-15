@@ -8,7 +8,7 @@ declare var $:any;
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
 import { ProductsService } from '../../../services/products.service';
-
+ 
 @Component({
   selector: 'app-home-showcase',
   templateUrl: './home-showcase.component.html',
@@ -26,330 +26,331 @@ export class HomeShowcaseComponent implements OnInit {
    		        private productsService: ProductsService) { }
 
 	ngOnInit(): void {
-
-		this.cargando = true;
-
-		/*=============================================
-		Tomamos la data de las categorias
-		=============================================*/
-
-		let getCategories = [];
-
-		this.categoriesService.getData()		
-		.subscribe( resp => {
-			
-			let i;
-
-			for(i in resp){
-
-				getCategories.push(resp[i])
-
-			}
-
-			/*=============================================
-			Ordenamos de mayor vistas a menor vistas el arreglo de objetos
-			=============================================*/
-			
-			getCategories.sort(function(a,b){
-
-				return(b.view - a.view)
-
-			})
-
-			/*=============================================
-			Filtramos hasta 6 categorías
-			=============================================*/	
-
-			getCategories.forEach((category, index)=>{
-
-				if(index < 2){
-
-					this.categories[index] = getCategories[index];
-					this.cargando = false;
-				}
-
-			})
-
-		})
-			
 	}
+}	
+	// 	this.cargando = true;
 
-	/*=============================================
-	Función que nos avisa cuando finaliza el renderizado de Angular
-	=============================================*/
+	// 	/*=============================================
+	// 	Tomamos la data de las categorias
+	// 	=============================================*/
 
-	callback(indexes){
+	// 	let getCategories = [];
 
-		if(this.render){
+	// 	this.categoriesService.getData()		
+	// 	.subscribe( resp => {
+			
+	// 		let i;
 
-			this.render = false;
+	// 		for(i in resp){
 
-			let arraySubCategories = [];
-			let arrayProducts = [];
-			let preloadSV = 0;
+	// 			getCategories.push(resp[i])
 
-			/*=============================================
-			Separar las categorías
-			=============================================*/
+	// 		}
 
-			this.categories.forEach((category, index)=>{
+	// 		/*=============================================
+	// 		Ordenamos de mayor vistas a menor vistas el arreglo de objetos
+	// 		=============================================*/
+			
+	// 		getCategories.sort(function(a,b){
+
+	// 			return(b.view - a.view)
+
+	// 		})
+
+	// 		/*=============================================
+	// 		Filtramos hasta 6 categorías
+	// 		=============================================*/	
+
+	// 		getCategories.forEach((category, index)=>{
+
+	// 			if(index < 2){
+
+	// 				this.categories[index] = getCategories[index];
+	// 				this.cargando = false;
+	// 			}
+
+	// 		})
+
+	// 	})
+			
+	// }
+
+	// /*=============================================
+	// Función que nos avisa cuando finaliza el renderizado de Angular
+	// =============================================*/
+
+	// callback(indexes){
+
+	// 	if(this.render){
+
+	// 		this.render = false;
+
+	// 		let arraySubCategories = [];
+	// 		let arrayProducts = [];
+	// 		let preloadSV = 0;
+
+	// 		/*=============================================
+	// 		Separar las categorías
+	// 		=============================================*/
+
+	// 		this.categories.forEach((category, index)=>{
 				
-				/*=============================================
-				Tomamos la colección de las sub-categorías filtrando con los nombres de categoría
-				=============================================*/
-				this.subCategoriesService.getFilterData("category", category.name)
-				.subscribe(resp=>{
+	// 			/*=============================================
+	// 			Tomamos la colección de las sub-categorías filtrando con los nombres de categoría
+	// 			=============================================*/
+	// 			this.subCategoriesService.getFilterData("category", category.name)
+	// 			.subscribe(resp=>{
 					
-					let i;
+	// 				let i;
 
-					for(i in resp){
+	// 				for(i in resp){
 
-						arraySubCategories.push({
+	// 					arraySubCategories.push({
 
-							"category": resp[i].category,
-							"subcategory": resp[i].name,
-							"url": resp[i].url
+	// 						"category": resp[i].category,
+	// 						"subcategory": resp[i].name,
+	// 						"url": resp[i].url
 
-						})
+	// 					})
 						
-					}
+	// 				}
 
-					/*=============================================
-					Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
-					=============================================*/
+	// 				/*=============================================
+	// 				Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
+	// 				=============================================*/
 
-					for(i in arraySubCategories){
+	// 				for(i in arraySubCategories){
 
-						if(category.name == arraySubCategories[i].category){
+	// 					if(category.name == arraySubCategories[i].category){
 
-							$(`[category-showcase='${category.name}']`).append(`
+	// 						$(`[category-showcase='${category.name}']`).append(`
 
-								<li><a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a></li>
+	// 							<li><a href="products/${arraySubCategories[i].url}">${arraySubCategories[i].subcategory}</a></li>
 
-							`)
-						}
-					}
+	// 						`)
+	// 					}
+	// 				}
 
-				})
+	// 			})
 
-				/*=============================================
-				Tomamos la colección de los productos filtrando con las url's de categorías
-				=============================================*/
-				this.productsService.getFilterDataWithLimit("category", category.url, 3)
-				.subscribe(resp=>{ 
+	// 			/*=============================================
+	// 			Tomamos la colección de los productos filtrando con las url's de categorías
+	// 			=============================================*/
+	// 			this.productsService.getFilterDataWithLimit("category", category.url, 3)
+	// 			.subscribe(resp=>{ 
 					
-					let i;
+	// 				let i;
 
-					for(i in resp){
+	// 				for(i in resp){
 
-						arrayProducts.push({
+	// 					arrayProducts.push({
 
-							"category": resp[i].category,
-							"url": resp[i].url,
-							"name": resp[i].name,
-							"image": resp[i].image,
-							"price": resp[i].price,
-							"offer": resp[i].offer,
-							"reviews": resp[i].reviews,
-							"stock": resp[i].stock,
-							"vertical_slider": resp[i].vertical_slider
+	// 						"category": resp[i].category,
+	// 						"url": resp[i].url,
+	// 						"name": resp[i].name,
+	// 						"image": resp[i].image,
+	// 						"price": resp[i].price,
+	// 						"offer": resp[i].offer,
+	// 						"reviews": resp[i].reviews,
+	// 						"stock": resp[i].stock,
+	// 						"vertical_slider": resp[i].vertical_slider
 
-						})
+	// 					})
 
-					}
+	// 				}
 
-					/*=============================================
-					Recorremos el array de objetos nuevo para buscar coincidencias con las url de categorías
-					=============================================*/
-					for(i in arrayProducts){
+	// 				/*=============================================
+	// 				Recorremos el array de objetos nuevo para buscar coincidencias con las url de categorías
+	// 				=============================================*/
+	// 				for(i in arrayProducts){
 
-						if(category.url ==  arrayProducts[i].category){
+	// 					if(category.url ==  arrayProducts[i].category){
 
 
-							/*=============================================
-							Definimos si el precio del producto tiene oferta o no
-							=============================================*/	
+	// 						/*=============================================
+	// 						Definimos si el precio del producto tiene oferta o no
+	// 						=============================================*/	
 
-							let price;
-							let type;
-							let value;
-							let offer;
-							let disccount = "";
-							let offerDate;
-        				    let today = new Date();
+	// 						let price;
+	// 						let type;
+	// 						let value;
+	// 						let offer;
+	// 						let disccount = "";
+	// 						let offerDate;
+ //        				    let today = new Date();
 				
-							if(arrayProducts[i].offer != ""){
+	// 						if(arrayProducts[i].offer != ""){
 
-								offerDate = new Date(
+	// 							offerDate = new Date(
 
-					                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[0]),
-					                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[1])-1,
-					                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[2])
+	// 				                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[0]),
+	// 				                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[1])-1,
+	// 				                parseInt(JSON.parse(arrayProducts[i].offer)[2].split("-")[2])
 
-					            )
+	// 				            )
 
-					            if(today < offerDate){
+	// 				            if(today < offerDate){
 
-									type = JSON.parse(arrayProducts[i].offer)[0];
-									value = JSON.parse(arrayProducts[i].offer)[1];
+	// 								type = JSON.parse(arrayProducts[i].offer)[0];
+	// 								value = JSON.parse(arrayProducts[i].offer)[1];
 
-									if(type == "Disccount"){
+	// 								if(type == "Disccount"){
 										
-										offer = (arrayProducts[i].price - (arrayProducts[i].price * value/100)).toFixed(2)	
-									}
+	// 									offer = (arrayProducts[i].price - (arrayProducts[i].price * value/100)).toFixed(2)	
+	// 								}
 
-									if(type == "Fixed"){
+	// 								if(type == "Fixed"){
 
-										offer = value;
-										value = Math.round(offer*100/arrayProducts[i].price);
+	// 									offer = value;
+	// 									value = Math.round(offer*100/arrayProducts[i].price);
 
-									}
+	// 								}
 
-									disccount = `<div class="ps-product__badge">-${value}%</div>`;
+	// 								disccount = `<div class="ps-product__badge">-${value}%</div>`;
 
 									
-								}
+	// 							}
 							
-							}
+	// 						}
 
-							/*=============================================
-							Calculamos el total de las calificaciones de las reseñas
-							=============================================*/	
+	// 						/*=============================================
+	// 						Calculamos el total de las calificaciones de las reseñas
+	// 						=============================================*/	
 
-							let totalReview = 0;
+	// 						let totalReview = 0;
 
-							for(let f = 0; f < JSON.parse(arrayProducts[i].reviews).length; f++){
+	// 						for(let f = 0; f < JSON.parse(arrayProducts[i].reviews).length; f++){
 
-								totalReview += Number(JSON.parse(arrayProducts[i].reviews)[f]["review"])
+	// 							totalReview += Number(JSON.parse(arrayProducts[i].reviews)[f]["review"])
 								
-							}
+	// 						}
 
-							/*=============================================
-							Imprimimos el total de las calficiaciones para cada producto
-							=============================================*/	
+	// 						/*=============================================
+	// 						Imprimimos el total de las calficiaciones para cada producto
+	// 						=============================================*/	
 
-							let rating = Math.round(totalReview/JSON.parse(arrayProducts[i].reviews).length);
+	// 						let rating = Math.round(totalReview/JSON.parse(arrayProducts[i].reviews).length);
 
-							/*=============================================
-							Definimos si el producto tiene stock
-							=============================================*/	
+	// 						/*=============================================
+	// 						Definimos si el producto tiene stock
+	// 						=============================================*/	
 
 
-							if(arrayProducts[i].stock == 0){
+	// 						if(arrayProducts[i].stock == 0){
 
-								disccount = `<div class="ps-product__badge out-stock">Out Of Stock</div>`;
+	// 							disccount = `<div class="ps-product__badge out-stock">Out Of Stock</div>`;
 
-							}
+	// 						}
 
-							/*=============================================
-							Imprimimos los productos en el HTML 
-							=============================================*/	
+	// 						/*=============================================
+	// 						Imprimimos los productos en el HTML 
+	// 						=============================================*/	
 
-							$(`[category-pb='${arrayProducts[i].category}']`).append(`
+	// 						$(`[category-pb='${arrayProducts[i].category}']`).append(`
 
-								 <div class="ps-product ps-product--simple">
+	// 							 <div class="ps-product ps-product--simple">
 
-				                    <div class="ps-product__thumbnail">
+	// 			                    <div class="ps-product__thumbnail">
 
-				                    	<a href="product/${arrayProducts[i].url}">
+	// 			                    	<a href="product/${arrayProducts[i].url}">
 
-				                    		<img src="assets/img/products/${arrayProducts[i].category}/${arrayProducts[i].image}" alt="">
+	// 			                    		<img src="assets/img/products/${arrayProducts[i].category}/${arrayProducts[i].image}" alt="">
 
-				                    	</a>
+	// 			                    	</a>
 
-				                        ${disccount}
+	// 			                        ${disccount}
 
-				                    </div>
+	// 			                    </div>
 
-				                    <div class="ps-product__container">
+	// 			                    <div class="ps-product__container">
 
-				                        <div class="ps-product__content" data-mh="clothing">
+	// 			                        <div class="ps-product__content" data-mh="clothing">
 
-				                        	<a class="ps-product__title" href="product/${arrayProducts[i].url}">${arrayProducts[i].name}</a>
+	// 			                        	<a class="ps-product__title" href="product/${arrayProducts[i].url}">${arrayProducts[i].name}</a>
 
-				                            <div class="ps-product__rating">
+	// 			                            <div class="ps-product__rating">
 
-				                                <select class="ps-rating productRating" data-read-only="true">
+	// 			                                <select class="ps-rating productRating" data-read-only="true">
 
-				                                </select>
+	// 			                                </select>
 
-		                                        <div> 
-		                                         <button class="ps-btn" href="">Ejemplo</button>
+	// 	                                        <div> 
+	// 	                                         <button class="ps-btn" href="">Ejemplo</button>
 		                                         
 
-		                                         </div>
+	// 	                                         </div>
 
-				                            </div>
+	// 			                            </div>
 
 				                            
-				                        </div>
+	// 			                        </div>
 
-				                    </div>
+	// 			                    </div>
 
-				                </div> 
+	// 			                </div> 
 
-			                `)
+	// 		                `)
 
 			               
 
-							/*=============================================
-							Ejecutar funciones globales con respecto a las Reseñas
-							=============================================*/	
+	// 						/*=============================================
+	// 						Ejecutar funciones globales con respecto a las Reseñas
+	// 						=============================================*/	
 
-							Rating.fnc();
+	// 						Rating.fnc();
 
-							/*=============================================
-							Imprimimos los productos en el Vertical Slider
-							=============================================*/	
+	// 						/*=============================================
+	// 						Imprimimos los productos en el Vertical Slider
+	// 						=============================================*/	
 
-							$(`[category-sl='${arrayProducts[i].category}']`).append(`
+	// 						$(`[category-sl='${arrayProducts[i].category}']`).append(`
 
-								<a href="product/${arrayProducts[i].url}">
+	// 							<a href="product/${arrayProducts[i].url}">
 
-			                		<img src="assets/img/products/${arrayProducts[i].category}/vertical/${arrayProducts[i].vertical_slider}" alt="">
+	// 		                		<img src="assets/img/products/${arrayProducts[i].category}/vertical/${arrayProducts[i].vertical_slider}" alt="">
 
-			                	</a>
+	// 		                	</a>
 
-							`)
+	// 						`)
 
-							/*=============================================
-							Ejecutar funciones globales con respecto al carrusel
-							=============================================*/	
+	// 						/*=============================================
+	// 						Ejecutar funciones globales con respecto al carrusel
+	// 						=============================================*/	
 
-							preloadSV++;
+	// 						preloadSV++;
 
-							if(preloadSV == (indexes+1)*6){
+	// 						if(preloadSV == (indexes+1)*6){
 
-								$(`[category-sl]`).addClass('ps-carousel--product-box')
-								$(`[category-sl]`).addClass('owl-slider')
+	// 							$(`[category-sl]`).addClass('ps-carousel--product-box')
+	// 							$(`[category-sl]`).addClass('owl-slider')
 
-								$(`[category-sl]`).owlCarousel({
+	// 							$(`[category-sl]`).owlCarousel({
 
-									 items: 1,
-									 autoplay: true,
-									 autoplayTimeout: 7000,
-									 loop: true,
-                        		     nav: true,
-                        		     margin: 0,
-                        		     dots: true,
-                        		     navSpeed: 500,
-                        		     dotsSpeed: 500,
-                        		     dragEndSpeed: 500,
-                        		     navText: ["<i class='icon-chevron-left'></i>", "<i class='icon-chevron-right'></i>"],
+	// 								 items: 1,
+	// 								 autoplay: true,
+	// 								 autoplayTimeout: 7000,
+	// 								 loop: true,
+ //                        		     nav: true,
+ //                        		     margin: 0,
+ //                        		     dots: true,
+ //                        		     navSpeed: 500,
+ //                        		     dotsSpeed: 500,
+ //                        		     dragEndSpeed: 500,
+ //                        		     navText: ["<i class='icon-chevron-left'></i>", "<i class='icon-chevron-right'></i>"],
 
-								});
+	// 							});
 
-							}
+	// 						}
 
-						}
+	// 					}
 
-					}
+	// 				}
 
-				})
+	// 			})
 
-			})
+	// 		})
 
-		}
-	}
+	// 	}
+	// }
 
-}
+// }
