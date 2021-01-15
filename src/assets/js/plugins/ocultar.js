@@ -1,3 +1,5 @@
+// Ocultar los elementos
+
 function mostrar(divselect){
 
 	
@@ -8,4 +10,7 @@ function mostrar(divselect){
 function ocultar(divocultar) {
 	 document.getElementById(divocultar).style.display = 'none';
 }
+
+// Silder para Home
+
 
