@@ -39,6 +39,11 @@ export class SelecctionCajaComponent implements OnInit {
 
               this.boxes = new BoxesModel();
   }
+ 
+  onActivate(e,outlet){
+    outlet.scrollTop= 0;
+  }
+
 
   ngOnInit(): void {
 
