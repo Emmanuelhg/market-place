@@ -349,6 +349,7 @@ a.animated-button.thar-three:before {
      <!-- Descripción  -->
      <div class="imagecontainer"> <p class="parrafo"> Steof 2 of 3 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
+ 
 
    	 <!-- Pintamos caja de producto  -->
    	 <div 
@@ -361,33 +362,47 @@ a.animated-button.thar-three:before {
 		        <div class="divSubMenus">
 
 		        	
-		            <a id="btn-abrir-popup" class="btn-abrir-popup" >SMALL</a>
+		            <a id="btn-abrir-popup" class="btn-abrir-popup">SMALL</a>
 
 		            <a>REGULAR</a>
 		        </div>
 
 		        <div class="middleDiv">
-		            <div class="divForNewElements">
+		            <div class="divForNewElements row">
 		              <div class="div_title_product">
 		                <!-- Texto producto	 -->
-		                <div class="divTitleForNewElements">
-		                    <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
-		                </div>
+                       <!--  <div class="jdjfj">
+                            <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
+                        </div> -->
+		               <!--  <div class="divTitleForNewElements col-12">
+		                    
+		                </div> -->
 		              </div> 
                        <!-- Imágenes -->
-                      <div class="divert">
-		                <div>
-		                    <img class="divForNewImages" src="{{path}}img/products_etre/product.jpg" alt="">
-                            <img  class="divForNewImages" src="{{path}}img/products_etre/product2.jpg">
+                      <div  class="divert col-4" style="background: red;" *ngFor="let product of almacenar_productos; let lastIndex = last">
+		                <div class="img_hff ">
+		                    <img class="divForNewImages" src="{{path}}img/products_etre/{{product.image}}" alt="">
+                            <!-- <img  class="divForNewImages" src="{{path}}img/products_etre/product2.jpg"> -->
 		                    <!-- <img src="{{path}}img/products_etre/{{products.image}}" alt=""> -->
-		                   <!--  <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt=""> -->
+		                    <!--  <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt=""> -->
                          
 		                </div>
+                        {{ lastIndex ? callback() : ""}}
                       </div>  
 		            </div>
                     <style>
+                        .img_hff>img{
+                            display: flex;
+                        }
+                        .jdjfj{
+                               margin: 0px;
+                            display: block;
+                        }
                       .divert{
                         display: flex;
+                      }
+                      .col-4{
+                        margin: 0px;
                       }
                     </style>
 
@@ -400,14 +415,18 @@ a.animated-button.thar-three:before {
                             </style>
 		                
 			                <div class="div_ed">
-			                	<p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p>
+			                <!-- 	<p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p> -->
 			                </div>
-			                 <div class="div_er">
-                                <p class="tex_cont"> Nombre</p>
+			                 <div *ngFor="let product of almacenar_productos; let lastIndex = last" class="div_er">
+
+                                <p class="tex_cont">{{product.name}}</p>
 			                	<!-- <p>CURRENT PACKAGINGI SMALL</p> -->
-                            
+                             {{ lastIndex ? callback() : ""}}
 			                </div>
                             <style >
+                                .div_er {
+                                    height: 100px;
+                                }
                                 .tex_cont{
                                     margin-top: 1%;
                                 }
@@ -415,7 +434,7 @@ a.animated-button.thar-three:before {
 
 			                <div class="div_eu" >
                                 <p>
-                                    <b class="hfhg">BOX SUBTOTAL: $  
+                                    <b class="hfhg">BOX SUBTOTAL: $ 
                                     
                                     </b>
                                 </p> 
@@ -471,21 +490,20 @@ a.animated-button.thar-three:before {
 
    	<!-- Productos -->
 
-   	<div class="divimageness">
+   	<div class="divimageness row">
 
         <!--=====================================
         Producte col-md-12 col-sm-12
         ======================================--> 
-
+ 
         <div
          *ngFor="let products of getProduct; let lastIndex = last"
-         class="ps-product row">
+         class="ps-product col-lg-3 col-md-4 col-sm-6">
+            <div class="ps-product__thumbnail ">
 
-            <div class="ps-product__thumbnail col-lg-12 col-md-12 col-sm-12">
-
-                <a href="product-default.html">
+                <a>
                     <img 
-                     (click)="funcionPorducts(1)"
+                     (click)="almacenarProductos(products)"
                     src="{{path}}img/products_etre/{{products.image}}" alt="">
                 </a>
 
@@ -493,7 +511,7 @@ a.animated-button.thar-three:before {
 
                     <li>
                         <a>
-                            <i (click)="funcionPorducts(id)" class="icon-heart"></i>
+                            <i (click)="almacenarProductos(id)" class="icon-heart"></i>
                         </a>
 
                     </li>  
@@ -566,41 +584,6 @@ a.animated-button.thar-three:before {
 
 
    		
-   	</div>
-
-   	<!-- Productos -->
-
-   	<div class="divimagenesstu">
-
-
-   		<div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
-
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
-
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
-
-       <div class="img-contrainer">
-       		 <img src="{{path}}img/products_etre/productcambio.jpg" >
-        	 <img class="img-cambio" src="{{path}}img/products_etre/product.jpg">
-        	 <p class="tex_product">Nombre producto</p>
-        	 <p class="tex_product">Precio</p>
-       </div>
-  
    	</div>
       
     <!-- poup up -->
@@ -877,7 +860,7 @@ body {
 		            margin:3px;
 		            width: 80%;
 		            height: 72%;
-		            position: absolute;
+		            position: ;
 
 		        }
 
@@ -968,7 +951,7 @@ body {
 		            margin-right: 20px;
 		            justify-content: center;
 				    align-items: center;
-				    display: flex;		
+				    display: none;		
 		        }
 		        .divTitleForNewElements > p{
 		        	padding-top: 6px;

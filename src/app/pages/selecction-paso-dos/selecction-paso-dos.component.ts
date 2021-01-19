@@ -42,11 +42,12 @@ export class SelecctionPasoDosComponent implements OnInit {
   product_name:any[] = [];
   product_price:any[] = [];
   product_img:any[] = [];
+  tamaño_caja:any[] = [];
   render:boolean = true;
   products:any[] = [];
   productFound:number = 0;
-  totalPage:number = 0;
-
+  almacenar_productos:any[] = [];
+  cant_productos:any[] = [];
 
 
   constructor(private usersService:UsersService, 
@@ -118,20 +119,22 @@ export class SelecctionPasoDosComponent implements OnInit {
         let i;
 
           for(i in resp){
-         console.log("producto",resp);
-         console.log("i Es esto:",i);
+         console.log("producto es de tipo ",typeof(resp));
+         console.log("i Es esto:",typeof(i));
 
             this.getProduct.push(resp[i]);
             // this.products.push(resp[i].)
+            this.almacenar_productos = [];
             this.products.push(i);
             this.product_name.push(resp[i].name);
             this.product_price.push(resp[i].price);
             this.product_img.push(resp[i].image);
+            this.tamaño_caja.push(resp[i].size);
           }
             
       }) 
       
-          
+          console.log("tamaño de caja es:",this.tamaño_caja);    
       // console.log("nombre producto",this.product_name);
       // console.log("nombre precio",this.product_price);
       // console.log("nombre imagen",this.product_img); 
@@ -178,9 +181,34 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   }
 
-  funcionPorducts(id){
-    console.log("el id selecionada es :", id);
+  almacenarProductos(id){
+    // console.log(id);
+    if(this.almacenar_productos.length != 0){
+      var esta_en_el_arreglo = false;
+      for(var i = 0; i < this.almacenar_productos.length; i++){
+        if ( id === this.almacenar_productos[i]) {
+          console.log("Es igual");
+          this.cant_productos[i] = this.cant_productos[i] + 1;
+          esta_en_el_arreglo = true;
+        }
+        // if ( this.almacenarProductos.)
+       // this.almacenar_productos.push(id);
+      }
+      console.log("estan en el arreglo"+esta_en_el_arreglo);
+      if (esta_en_el_arreglo == false){
+        this.almacenar_productos.push(id);
+        this.cant_productos.push(1);
+      }
+    } else {
+      this.almacenar_productos.push(id);
+      this.cant_productos.push(1);
+    }
+    console.log("Hay "+this.almacenar_productos.length+" en la cesta");
+    console.log(this.almacenar_productos.length);
+    console.log("El producto selecionado es :" ,this.almacenar_productos);
+    // console.log("el id selecionada es :", id);
   }
+
 
   configureUi(){
     // checar pasos de la cronstrucion de selecction-caja
