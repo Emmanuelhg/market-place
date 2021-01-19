@@ -1,165 +1,60 @@
 <!--=====================================
 Footer    
-#fcd7f5  
+#fcd7f5 
+
+<ul 
+*ngFor="let negocio of color; let lastIndex = last"
+class="ps-list--link"
+
+
+<li><a href="#"><h4>{{negocio.colorbotonheaders}}</h4></a></li>
+<div class="ps-list--link " >
+            
+
+                  <a class="terms col-lg-3 col-md-6  col-sm-1" href="#"><h4 id="f3">Our Story</h4></a>
+                  <a class="terms col-lg-3 col-md-6  col-sm-1" href="#"><h4>Contact us</h4></a>
+                  <a class="footer-tex col-md-12 col-sm-1" routerLink="terms"><h4 id="f3">Terms & conditions</h4></a>
+                  <a class="footer-tex col-md-12 col-sm-1" href="#"><h4 id="f3">FAQ ́S</h4></a>
+
+              <a class="footer-tex" href="#">All rights reserved-etre 2021 </a>
+          </div>
+
+
+{{ lastIndex ? callback() : ""}} 
 ======================================-->  
  
 <footer class="ps-foot" id="footer-test" >
-
-        <div>
-
-            <div
-             class="ps-footer__widgets" id="f1" >
-
-
-                <style>
-  
-                  
-
-                  .ps-footer__widgetst {
-
-                    background: var(--hola);
-                    display: -webkit-box;
-                    display: flex;
-                    -webkit-box-orient: horizontal;
-                    -webkit-box-direction: normal;
-                            flex-flow: row nowrap;
-                    -webkit-box-pack: justify;
-                            justify-content: space-between;
-                    padding-bottom: 35px;
-                  }
-              
-                </style>
-            
-            	<!--=====================================
-      				Contactanos                  
-      				======================================-->  
-
-                <aside class="widget widget_footer widget_contact-us">
-
-                    <img src="{{path}}img/template/etre-Logo-03.png">
-                    <br>
-                    <br>
-
-                    <div class="widget_content">
-
-                       <h4 id="f4">Lorem ipsum dolor sit amet, consectetuer<br>
-                          adipiscing elit, sed diam nonummy nibh<br>
-                          euismod tincidunt ut laoreet dolore<br>
-                          magna aliquam erat volutpat. Ut wisi <br>
-                          enim ad minim veniam, quis nostrud.</h4><br>
-
-                            
-                    </div>
-
-                </aside>
-
-                <!--=====================================
-        				Quick Links
-               <ul 
-                    *ngFor="let negocio of color; let lastIndex = last"
-                    class="ps-list--link"
-
-
-                     <li><a href="#"><h4>{{negocio.colorbotonheaders}}</h4></a></li>
-
-
-
-                          {{ lastIndex ? callback() : ""}}
-        				======================================-->  
-
-                <aside class="widget widget_footer" >
-
-                    <ul class="ps-list--link">
-
-                        <li ><a href="#"><h4 id="f3">CONTAC</h4></a></li>
-
-                        <li ><a href="#"><h4>ABOUT US</h4></a></li>
-
-                    </ul>
- 
-                </aside>
-
-                <p></p>
-
-                
-
-                <!--=====================================
-				Bussiness
-
-                <ul 
-          *ngFor="let negocio of color; let lastIndex = last"
-          id="ps-list--linkt">
-
-            <li><a href="#"><h4>{{negocio.colorprincipal}}</h4></a></li>
-
-             {{ lastIndex ? callback() : ""}}
-
-         </ul> 
-
-         <style>
-
-          #ps-list--linkt{
-            display: none;
-           }
-
-         </style> 
-
-				======================================-->  
-
-                <aside class="widget widget_footer" id="f3">
-
-                    <h2 id="f3">LET'S CHAT</h2>
-
-
-                       <div class="widget_content">
-
-                           <a href ="#"><h4 id="f3">QUESTION?<br>
-                            
-                     
-
-                            _______________________________<br>
-
-                            shopetre@shopboxfox.com <br>
-
-                            _______________________________
-                             
-                             </h4>
-                          </a>
-                          
-
-                          <ul class="ps-list--social">
-                            <li><a class="facebook" href="#"><img  class="img2" src="{{path}}/img/icons/icons8correo.png"></a></li>
-                            <li><a class="twitter" href="#"><img  class="img2" src="{{path}}/img/icons/icons8instagram.png"></a></li>                    
-                        </ul>
-
-                        <style>
-                          .img2{
-                               width: 25px;
-                               height: 25px;
-                              }
-                        </style>
-
-                     </div>
+    <div class="footer-tex row" id="f1">
      
+        <a class="terms col-sm-1" routerLink="our-story" ><h4 id="f3">Our Story</h4></a>
+        <a class="terms col-sm-1" href="#"><h4>Contact us</h4></a>
+        <a class="terms col-sm-1" routerLink="terms"><h4 id="f3">Terms & conditions</h4></a>
+        <a class="terms col-sm-1" href="#"><h4 id="f3">FAQ ́S</h4></a>
+   
+   </div> 
+   <div class="thy">
+       <a class="terms col-sm-1" href="#">All rights reserved-etre 2021 </a>
+   </div>
+ 
+</footer>
+<style>
+    .footer-tex{
+      width: 100%;
+      display: flex;
 
-                </aside>
-              
-            </div>
-
-        </div>
-
-        <style> 
-
-            aside{
-                margin-top: 80px;
-                margin-left: 80px;
-                margin-right: 80px;
-                
-            }
-
-
-        </style>
-                           
-
-    </footer>
-
+    }
+    .terms{
+      margin: 3%;
+    }
+    .row{
+      width: 100%;
+      margin-left: 0px;
+   }
+   .footer-fin>a{
+      font-size: 100%;
+   }
+   .thy{
+    height: 30%;
+      background: #C4AE9D;
+   }
+</style>

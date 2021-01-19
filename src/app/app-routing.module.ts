@@ -19,6 +19,7 @@ import { DoneComponent } from './pages/done/done.component';
 import { FrequentlyAskedQuestionsComponent } from './pages/frequently-asked-questions/frequently-asked-questions.component';
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
+import { TermsComponent } from './pages/terms/terms.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -42,6 +43,7 @@ const routes: Routes = [
 	{path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent},
 	{path: 'our-story', component: OurStoryComponent},
 	{path: 'get-in-touch', component: GetInTouchComponent},
+	{path: 'terms', component: TermsComponent},
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 ];

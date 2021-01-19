@@ -239,35 +239,35 @@
                 </div>
 
                 <!--=====================================
-      Search
-      ======================================-->
-    <!--  <div class="search_ut" id="premio" 
-      style="background: #C57ED3;">
+                  Search
+                  ======================================-->
+                 <div class="search_ut" id="premio" 
+                  style="background: #C57ED3;">
 
-        <form >
-            <div class="form-group--nest">
+                    <form >
+                        <div class="form-group--nest">
 
-                <button type="button"
-                (click)="goSearch(search.value)"
-                ><i class="icon-magnifier"></i></button>
+                            <button type="button"
+                            (click)="goSearch(search.value)"
+                            ><i class="icon-magnifier"></i></button>
+                            
+                            <input 
+                            (keyup.enter)="goSearch(search.value)"
+                            #search
+                            class="form-control" 
+                            type="text" 
+                            placeholder="Search something...">
+
+                            <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" onclick="ocultar('premio');">         
+                        </div>   
+                    </form>
+                </div>
+                <style>
+                  .search_ut{
+                    display: none;
+                  }
+                </style>
                 
-                <input 
-                (keyup.enter)="goSearch(search.value)"
-                #search
-                class="form-control" 
-                type="text" 
-                placeholder="Search something...">
-
-                <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" onclick="ocultar('premio');">         
-            </div>   
-        </form>
-    </div>
-    <style>
-      .search_ut{
-        display: none;
-      }
-    </style> -->
-                 
             </nav>
              
         </div>
@@ -275,4 +275,3 @@
      </div >  
 
 </header>
-

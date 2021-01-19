@@ -49,11 +49,11 @@ export class FooterComponent implements OnInit {
            estoyhastalaverga.backgroundColor=resp[i].colorfooter;   
 
            // Texto
-             let tex = document.getElementById('f4');
+      //        let tex = document.getElementById('f4');
 
-    		let textonuevo = tex.style;
+    		// let textonuevo = tex.style;
 
-    		textonuevo.fontFamily=resp[i].textodescripcionfooter;
+    		// textonuevo.fontFamily=resp[i].textodescripcionfooter;
 
             }
        
@@ -63,9 +63,9 @@ export class FooterComponent implements OnInit {
 
            let estoyhastalaverga = hola.style;
 
-           let tex = document.getElementById('f4');
+           // let tex = document.getElementById('f4');
 
-           let textonuevo = tex.style;
+           // let textonuevo = tex.style;
 
 
         }
