@@ -25,7 +25,8 @@
         margin: 0 auto 100px auto;
         border-radius: 50px;
         background-color: white;
-    }    
+    }  
+     
     .progressbar a:after{
         content: '';
         position: absolute;
@@ -360,11 +361,22 @@ a.animated-button.thar-three:before {
                 <div class="div-title-new">
                     <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
                 </div>
-                <div class="produc-agregado-new" *ngFor="let product of almacenar_productos; let lastIndex = last">
-                    <div  style="background: red; display: flex; width: 100% height:px;">
-                        <img style="display: flex;" src="{{path}}img/products_etre/{{product.image}}" alt="">
+                <div class="contrainer ">
+                    <div class="row">
+                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
+                            <div  class="img-new-product ">
+                                <img style="display: flex;" src="{{box_json.box_img}}" alt="">
+                                <div class="circulo">{{1}}</div>
+                            </div>
+                        </div>
+                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
+                            <div  class="img-new-product ">
+                                <img style="display: flex;" src="{{path}}img/products_etre/{{product.image}}" alt="">
+                                <div class="circulo">{{cant_productos[i]}}</div>
+                            </div>
+                           {{ lastIndex ? callback() : ""}}
+                        </div>
                     </div>
-                   {{ lastIndex ? callback() : ""}}
                 </div>
             </div>
             <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
@@ -377,9 +389,11 @@ a.animated-button.thar-three:before {
                 </div>
                 <!-- contenido de productos agregados -->
                 <div class="nwe-ptg">
-                     <div *ngFor="let product of almacenar_productos; let lastIndex = last" class="div_er">
-                        <p class="tex_cont">{{product.name}} ${{product.price}}</p>
-                        <!-- <p>CURRENT PACKAGINGI SMALL</p> -->
+                     <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
+                        <p class="tex_cont">{{cant_productos[i]}}&nbsp;</p>
+                        <p>{{product.name}}&nbsp;  ${{product.price}}&nbsp;</p>
+                        <p (click)="eliminarProducto(i)">&nbsp;X</p>
+                    <!-- <p>CURRENT PACKAGINGI SMALL</p> -->
                      {{ lastIndex ? callback() : ""}}
                     </div>  
                 </div>
@@ -418,7 +432,6 @@ a.animated-button.thar-three:before {
             border: 1px solid #dee2e6!important;
          }
          .produc-agregado-new{
-            display: flex;
          }
          .div-price-new{
             text-align: center;
@@ -430,6 +443,39 @@ a.animated-button.thar-three:before {
             align-items: center;
             /*display: flex;*/
          }
+         .img-new-product {
+            display: flex; 
+            margin:11%;
+         }
+        .progressbartow a:before{
+            content: counter();
+            counter-increment:step;
+            width: 30px;
+            height: 30px;
+            line-height: 27px;
+            border: 1px solid #ddd;
+            display: block;
+            text-align: center;
+            margin: -14px auto 100px auto;
+            border-radius: 50px;
+            background-color: white;
+            margin-left: -21px;
+
+        }
+        .circulo {
+            width: 50px;
+            height: 30px;
+            line-height: 27px;
+            border: 1px solid #ddd;
+            display: block;
+            text-align: center;
+            margin: -6px auto 100px auto;
+            border-radius: 50%;
+            background-color: white;
+            margin-left: -30px;
+            margin-top: 3px;
+            font-size: 17px;
+        } 
      </style>
 
 

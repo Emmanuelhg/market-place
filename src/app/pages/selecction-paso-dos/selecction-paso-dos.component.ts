@@ -206,6 +206,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     console.log("Hay "+this.almacenar_productos.length+" en la cesta");
     console.log(this.almacenar_productos.length);
     console.log("El producto selecionado es :" ,this.almacenar_productos);
+    console.log("LA cantidad es : :" ,this.cant_productos);
     // console.log("el id selecionada es :", id);
   }
 
@@ -232,6 +233,25 @@ export class SelecctionPasoDosComponent implements OnInit {
     }else{
         document.getElementById("step4").classList.remove("superActive")
     }
-  } 
-
+  }
+  // eliminarProducto(index){
+  //   if (this.cant_productos[index] > 1) {
+  //     this.cant_productos[index] = this.cant_productos[index] - 1;
+  //      console.log("borrado 1:",this.cant_productos);
+  //   } 
+  //   else {
+  //     this.cant_productos.splice(index, index+1);
+  //   }
+  //   console.log("borrado 2:",this.cant_productos);
+  // } 
+  eliminarProducto(index){
+    // console.log( "borrado 1"+index);
+    // delete this.cant_productos[index];
+    // delete this.almacenar_productos[index];
+    // let deleteView = document.getElementById("alm_"+index);
+    // deleteView.parentNode.splice(deleteView);
+    // console.log( "borrado 2",this.cant_productos);
+    this.almacenar_productos.splice(index ,1);
+    this.cant_productos.splice(index, 1);
+  }
 }
