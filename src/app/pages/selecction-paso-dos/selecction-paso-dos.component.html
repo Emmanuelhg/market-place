@@ -316,7 +316,7 @@ a.animated-button.thar-three:before {
 
 	.parrafo{
 		 margin-top:155px;
-		 font-size: 3.4rem;
+		 font-size: 100%;
 
 	}
 
@@ -349,143 +349,88 @@ a.animated-button.thar-three:before {
      <!-- Descripción  -->
      <div class="imagecontainer"> <p class="parrafo"> Steof 2 of 3 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
- 
 
-   	 <!-- Pintamos caja de producto  -->
-   	 <div 
-     
-     class="div_bordes">
-
-   	 	<div class="contrainer">
-
-	   	 	<section class="border">
-		        <div class="divSubMenus">
-
-		        	
-		            <a id="btn-abrir-popup" class="btn-abrir-popup">SMALL</a>
-
-		            <a>REGULAR</a>
-		        </div>
-
-		        <div class="middleDiv">
-		            <div class="divForNewElements row">
-		              <div class="div_title_product">
-		                <!-- Texto producto	 -->
-                       <!--  <div class="jdjfj">
-                            <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
-                        </div> -->
-		               <!--  <div class="divTitleForNewElements col-12">
-		                    
-		                </div> -->
-		              </div> 
-                       <!-- Imágenes -->
-                      <div  class="divert col-4" style="background: red;" *ngFor="let product of almacenar_productos; let lastIndex = last">
-		                <div class="img_hff ">
-		                    <img class="divForNewImages" src="{{path}}img/products_etre/{{product.image}}" alt="">
-                            <!-- <img  class="divForNewImages" src="{{path}}img/products_etre/product2.jpg"> -->
-		                    <!-- <img src="{{path}}img/products_etre/{{products.image}}" alt=""> -->
-		                    <!--  <img class="divForNewImages" src="{{path}}img/products_etre/productcambio.jpg" alt=""> -->
-                         
-		                </div>
-                        {{ lastIndex ? callback() : ""}}
-                      </div>  
-		            </div>
-                    <style>
-                        .img_hff>img{
-                            display: flex;
-                        }
-                        .jdjfj{
-                               margin: 0px;
-                            display: block;
-                        }
-                      .divert{
-                        display: flex;
-                      }
-                      .col-4{
-                        margin: 0px;
-                      }
-                    </style>
-
-		            <div class="divForDescription">
-		                    <div class="div_et">
-			                	<p class="pzp"><b>BOX CONTENTS</b></p>
-			                </div>
-                            <style>
-                                
-                            </style>
-		                
-			                <div class="div_ed">
-			                <!-- 	<p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p> -->
-			                </div>
-			                 <div *ngFor="let product of almacenar_productos; let lastIndex = last" class="div_er">
-
-                                <p class="tex_cont">{{product.name}}</p>
-			                	<!-- <p>CURRENT PACKAGINGI SMALL</p> -->
-                             {{ lastIndex ? callback() : ""}}
-			                </div>
-                            <style >
-                                .div_er {
-                                    height: 100px;
-                                }
-                                .tex_cont{
-                                    margin-top: 1%;
-                                }
-                            </style>
-
-			                <div class="div_eu" >
-                                <p>
-                                    <b class="hfhg">BOX SUBTOTAL: $ 
-                                    
-                                    </b>
-                                </p> 
-                                <style>
-                                    .hfhg{
-                                        display: flex;
-                                    }
-                                </style>  
-			                	<!-- <p><b>BOX SUBTOTAL: $ 700</b></p> -->
-                                
-                                    <a 
-                                    [routerLink]="['/selecction-paso-tres', id_to_box]"  
-                                    class="botn_netx">COMPLETE BOX</a>
-                                
-
-			                </div>
-
-			                
-		            </div>
-
-		        </div>
-
-		        <div class="lastDiv" >
-	                
-		               <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
-		               		<option value="Reason">Reason</option>
-		               		<option value="25">25</option>
-		               		<option value="50">50</option>
-		               		<option value="100">100</option>
-		               </select>
-		               <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
-			               	<option value="Color">Color</option>
-			               	<option value="25">25</option>
-			               	<option value="50">50</option>
-			               	<option value="100">100</option>
-		               </select>
-		               <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
-			               	<option value="10">Sort by Options</option>
-			               	<option value="25">25</option>
-			               	<option value="50">50</option>
-			               	<option value="100">100</option>
-		               </select>
-		               <input class="search" type="section" name="Serch" placeholder="Search">
-		        </div>
-
-	        </section>
-   	
-   	    </div>
-   	   
-   	</div>
-
+     <div class="div-new">
+        <div class="divSubMenus">  
+            <a>SMALL</a>
+            <a>REGULAR</a>
+        </div>
+        <div class="row  col-sm-12" style="display: flex;">
+            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
+                <div class="div-title-new">
+                    <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
+                </div>
+                <div class="produc-agregado-new" *ngFor="let product of almacenar_productos; let lastIndex = last">
+                    <div  style="background: red; display: flex; width: 100% height:px;">
+                        <img style="display: flex;" src="{{path}}img/products_etre/{{product.image}}" alt="">
+                    </div>
+                   {{ lastIndex ? callback() : ""}}
+                </div>
+            </div>
+            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
+                <div class="div_et">
+                   <p class="pzp"><b>BOX CONTENTS</b></p>
+                </div>
+                <!-- Contenido de la caja -->
+                <div class="div_ed">
+                   <p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p>
+                </div>
+                <!-- contenido de productos agregados -->
+                <div class="nwe-ptg">
+                     <div *ngFor="let product of almacenar_productos; let lastIndex = last" class="div_er">
+                        <p class="tex_cont">{{product.name}} ${{product.price}}</p>
+                        <!-- <p>CURRENT PACKAGINGI SMALL</p> -->
+                     {{ lastIndex ? callback() : ""}}
+                    </div>  
+                </div>
+                 <div class="div_ed">
+                   <p>CURRENT PACKAGING I SMALL</p>
+                </div>
+                <div class="div-price-new">
+                    <p><b> BOX SUBTOTAL: $ </b></p>
+                    <a [routerLink]="['/selecction-paso-tres', id_to_box]" class="new-boton">
+                        COMPLETE BOX
+                    </a>
+                </div>
+            </div>
+        </div>  
+     </div>
+     <style>
+        .nwe-ptg{
+            height: px;
+        }
+         .div-new{
+            margin: 3%;
+         }
+         .div-img-new{
+            /*width: 65%;*/
+            height: px;
+            border: 1px solid #dee2e6!important;
+         }
+         .div-info-new{   
+            /*width: 35%;*/
+            height: px;
+            border: 1px solid #dee2e6!important;
+         }
+         .div-title-new{
+            text-align: center;
+            padding: 0px 4px 0;
+            border: 1px solid #dee2e6!important;
+         }
+         .produc-agregado-new{
+            display: flex;
+         }
+         .div-price-new{
+            text-align: center;
+         }
+         .new-boton{
+            background: black;
+            color:white;
+            justify-content: center;
+            align-items: center;
+            /*display: flex;*/
+         }
+     </style>
 
 
    	<!-- Productos -->
@@ -977,6 +922,7 @@ body {
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
+                    float: bottom;
 		        }
 
 		        .div_ed{
@@ -989,7 +935,7 @@ body {
 		        .div_er{
 		        	border-bottom:1px solid #dee2e6!important; 
 		        	border-top: 1px solid #dee2e6!important;
-		            height: 11%;   
+		            height: px;   
 		            justify-content: center;
 				    align-items: center;
 				    display: flex;
