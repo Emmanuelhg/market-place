@@ -1,4 +1,281 @@
  <style>
+
+    .tex_product{
+                    font-size: 1.9rem;
+                    line-height: 1.6em;
+                    color: #666;
+                    margin-left: 0%;
+                  }
+
+
+                 .img-contrainer{
+                    
+                    position: relative;
+                 }
+                
+                .img-contrainer img{
+                    width: 89%;
+                    height: 59%;
+                    margin-left: 12%;
+                    margin-top: 35%;
+                    
+                 }
+
+                 .img_contrainer p {
+                    justify-content: left;
+                    align-items: center
+                    margin-left: 12%;
+                  }
+
+                .img-cambio{
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                }
+                .img-cambio:hover{
+                    opacity: 1;
+                 }
+                
+
+                .divimagenesst{
+                    margin: 2%;
+                    margin-top: -8%;
+                    display: flex;
+                    justify-content: space-around;
+
+                 }
+
+                .img_rt{
+                    position: relative;
+                    margin: 2%;
+                    margin-top: 8%;
+                    justify-content: space-around;
+                }
+                .img_rt > img{
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .divForNewImagestr{
+                    border: 1px solid #dee2e6!important;
+                    margin:3px;
+                    width: 80%;
+                    height: 72%;
+                    position: ;
+
+                }
+
+                .divForNewImagestrp{
+                    position: absolute;
+                    border: 1px solid #dee2e6!important;
+                    margin:3px;
+                    width: 80%;
+                    height: 72%;
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                }
+                .divForNewImagestrp:hover{
+                    opacity: 1;
+                 }
+                 
+
+                .divimageness{
+                    border-top:solid #dee2e6!important;
+                    margin: 2%;
+                    margin-top: 5%;
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .divimagenesstu{
+                    margin: 2%;
+                    margin-top: -4%;
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .search{
+                  display: flex;
+                  justify-content: left;
+                   align-items: center;
+                }
+
+                .select{
+                  display: flex;
+                  justify-content: left;
+                   align-items: center;
+                }
+
+                .botn_netx{
+                    background-color: black;
+                    margin: px;
+                    color: white;
+                    width: 90%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                }
+
+                .div_title_product{
+                    
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    margin-left: -6px;
+                    margin-right: 37px;
+                }
+
+                .div_bordes{
+                    
+                    margin-left: 30px;
+                    margin-right: 30px;
+                }
+
+                .divSubMenus{
+                    border-top: 1px solid #dee2e6!important;
+                    border-right: 1px solid #dee2e6!important;  
+                    border-left: 1px solid #dee2e6!important;
+                    border: 1px solid #dee2e6!important;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .divForNewElements{
+                    border-bottom: 1px solid #dee2e6!important;
+                    width: 60%;
+                    padding:15px; 
+                }
+                .divTitleForNewElements{
+                    border:1px solid #dee2e6!important;
+                    width: 100%;
+                    height: 100%;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    justify-content: center;
+                    align-items: center;
+                    display: none;      
+                }
+                .divTitleForNewElements > p{
+                    padding-top: 6px;
+
+                } 
+
+                .divForNewImages{
+                    border: 1px solid #dee2e6!important;
+                    margin:10px;
+                    width: 160px;
+                    height: 142px;
+                }
+
+                .divForDescription{
+                    border-left:1px solid #dee2e6!important;
+                    border-bottom: 1px solid #dee2e6!important;
+                    width: 40%;
+                    margin: px;
+                }
+
+                .div_et{
+                    height: 11%;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    float: bottom;
+                }
+
+                .div_ed{
+                    
+                    height: 11%;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                }
+                .div_er{
+                    border-bottom:1px solid #dee2e6!important; 
+                    border-top: 1px solid #dee2e6!important;
+                    height: px;   
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                }
+                .div_eu{
+                    
+                    height: 20%;
+                    justify-content: center;
+                    align-items: center;
+                   
+                }
+                .div_ep{
+                    
+                    height: 13%;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                }
+
+
+                .middleDiv{
+                    border-left: 1px solid #dee2e6!important;
+                    border-right: 1px solid #dee2e6!important;
+                    display: flex;
+                }
+                .lastDiv{
+                    border:transparent;
+                    margin-top: 5%;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .ps-product .ps-product__actionst {
+              display: -webkit-box;
+              display: flex;
+              -webkit-box-orient: horizontal;
+              -webkit-box-direction: normal;
+                      flex-flow: row nowrap;
+              -webkit-box-pack: justify;
+                      justify-content: space-between;
+              max-width: 200px;
+              padding: 10px 0;
+              background-color: #fff;
+              -webkit-transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+              transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+            }
+
+            .ps-product .ps-product__actionst li {
+              margin-right: 10px;
+            }
+
+            .ps-product .ps-product__actionst li a {
+              display: -webkit-box;
+              display: flex;
+              -webkit-box-pack: center;
+                      justify-content: center;
+              -webkit-box-align: center;
+                      align-items: center;
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+            }
+
+            .ps-product .ps-product__actionst li a:hover {
+              background-color: #fcb800;
+              color: #ffffff;
+            }
+
+            .ps-product .ps-product__actionst:last-child {
+              margin-right: 0;
+            }
+            .ps-product {
+            position: relative;
+            padding: 0px 4px 0;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-left: 0%;
+            margin-top: 5%;
+            }
+            .ps-product>img{
+                margin: 100%;
+            }
+        
 	.contrainer{
         width: 100%;
         display:block;  
@@ -385,15 +662,14 @@ a.animated-button.thar-three:before {
                 </div>
                 <!-- Contenido de la caja -->
                 <div class="div_ed">
-                   <p>1 GIT PACKAGING & HAND WRAPPING   $7.00</p>
+                   <p>1 &nbsp;{{box_json.box_name}} &nbsp; $ &nbsp;{{box_json.box_price}}</p>
                 </div>
                 <!-- contenido de productos agregados -->
                 <div class="nwe-ptg">
                      <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
                         <p class="tex_cont">{{cant_productos[i]}}&nbsp;</p>
-                        <p>{{product.name}}&nbsp;  ${{product.price}}&nbsp;</p>
-                        <p (click)="eliminarProducto(i)">&nbsp;X</p>
-                    <!-- <p>CURRENT PACKAGINGI SMALL</p> -->
+                        <p >{{product.name}}&nbsp;  ${{product.price}}&nbsp;</p>
+                        <i (click)="eliminarProducto(i)" class="icon-cross"></i>
                      {{ lastIndex ? callback() : ""}}
                     </div>  
                 </div>
@@ -502,7 +778,7 @@ a.animated-button.thar-three:before {
 
                     <li>
                         <a>
-                            <i (click)="almacenarProductos(id)" class="icon-heart"></i>
+                            <i type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" class="icon-heart"></i>
                         </a>
 
                     </li>  
@@ -516,507 +792,39 @@ a.animated-button.thar-three:before {
          {{ lastIndex ? callback() : ""}}
 
         </div><!-- End Product -->
-
-   
-
-
-        <style>
-            .ps-product .ps-product__actionst {
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-orient: horizontal;
-              -webkit-box-direction: normal;
-                      flex-flow: row nowrap;
-              -webkit-box-pack: justify;
-                      justify-content: space-between;
-              max-width: 200px;
-              padding: 10px 0;
-              background-color: #fff;
-              -webkit-transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-              transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-            }
-
-            .ps-product .ps-product__actionst li {
-              margin-right: 10px;
-            }
-
-            .ps-product .ps-product__actionst li a {
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-pack: center;
-                      justify-content: center;
-              -webkit-box-align: center;
-                      align-items: center;
-              width: 34px;
-              height: 34px;
-              border-radius: 50%;
-            }
-
-            .ps-product .ps-product__actionst li a:hover {
-              background-color: #fcb800;
-              color: #ffffff;
-            }
-
-            .ps-product .ps-product__actionst:last-child {
-              margin-right: 0;
-            }
-            .ps-product {
-            position: relative;
-            padding: 0px 4px 0;
-            border: 1px solid transparent;
-            border-bottom: none;
-            margin-left: 0%;
-            margin-top: 5%;
-            }
-            .ps-product>img{
-                margin: 100%;
-            }
-        </style>
-
-
    		
    	</div>
-      
-    <!-- poup up -->
 
-      <div class="contenedor">
-		<article>
+    <!-- Extra large modal -->
+   <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button> -->
 
-			<a id="btn-abrir-popup" class="btn-abrir-popup">Abrir Ventana Emergente</a>
-			
-		</article>
-
-		<div class="overlay" id="overlay">
-			<div class="popup" id="popup">
-				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-				<h3>SUSCRIBETE</h3>
-				<h4>y recibe un cupon de descuento.</h4>
-				<form action="">
-					<div class="contenedor-inputs">
-						<input type="text" placeholder="Nombre">
-						<input type="email" placeholder="Correo">
-					</div>
-					<input type="submit" class="btn-submit" value="Suscribirse">
-				</form>
-			</div>
-		</div>
-	</div>
-
-     <style>
-         * {
-    padding: 0;
-    margin: 0;
-    box-sizing:border-box;
-}
-
-body {
-    background: #fff;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.contenedor {
-    width: 90%;
-    max-width: 1000px;
-    margin: 20px auto;
-}
-
-.contenedor article {
-    line-height: 28px;
-}
-
-.contenedor article h1 {
-    font-size: 30px;
-    text-align: left;
-    padding: 50px 0;
-}
-
-.contenedor article p {
-    margin-bottom: 20px;
-}
-
-.contenedor article .btn-abrir-popup {
-    padding: 0 20px;
-    margin-bottom: 20px;
-    height: 40px;
-    line-height: 40px;
-    border: none;
-    color: #fff;
-    background: #5E7DE3;
-    border-radius: 3px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    transition: .3s ease all;
-    cursor: pointer;
-}
-
-.contenedor article .btn-abrir-popup:hover {
-    background: rgba(94,125,227, .9);
-}
-
-/* ------------------------- */
-/* POPUP */
-/* ------------------------- */
-
-.overlay {
-    background: rgba(0,0,0,.3);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    visibility: hidden;
-}
-
-.overlay.active {
-    visibility: visible;
-}
-
-.popup {
-    background: #F8F8F8;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
-    border-radius: 3px;
-    font-family: 'Montserrat', sans-serif;
-    padding: 20px;
-    text-align: center;
-    width: 600px;
-    
-    transition: .3s ease all;
-    transform: scale(0.7);
-    opacity: 0;
-}
-
-.popup .btn-cerrar-popup {
-    font-size: 16px;
-    line-height: 16px;
-    display: block;
-    text-align: right;
-    transition: .3s ease all;
-    color: #BBBBBB;
-}
-
-.popup .btn-cerrar-popup:hover {
-    color: #000;
-}
-
-.popup h3 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    opacity: 0;
-}
-
-.popup h4 {
-    font-size: 26px;
-    font-weight: 300;
-    margin-bottom: 40px;
-    opacity: 0;
-}
-
-.popup form .contenedor-inputs {
-    opacity: 0;
-}
-
-.popup form .contenedor-inputs input {
-    width: 100%;
-    margin-bottom: 20px;
-    height: 52px;
-    font-size: 18px;
-    line-height: 52px;
-    text-align: center;
-    border: 1px solid #BBBBBB;
-}
-
-.popup form .btn-submit {
-    padding: 0 20px;
-    height: 40px;
-    line-height: 40px;
-    border: none;
-    color: #fff;
-    background: #5E7DE3;
-    border-radius: 3px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    transition: .3s ease all;
-}
-
-.popup form .btn-submit:hover {
-    background: rgba(94,125,227, .9);
-}
-
-/* ------------------------- */
-/* ANIMACIONES */
-/* ------------------------- */
-.popup.active { transform: scale(1); opacity: 1; }
-.popup.active h3 { animation: entradaTitulo .8s ease .5s forwards; }
-.popup.active h4 { animation: entradaSubtitulo .8s ease .5s forwards; }
-.popup.active .contenedor-inputs { animation: entradaInputs 1s linear 1s forwards; }
-
-@keyframes entradaTitulo {
-    from {
-        opacity: 0;
-        transform: translateY(-25px);
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes entradaSubtitulo {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes entradaInputs {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-     </style>
-   	
-
-   	 <style>
-		   	 	.tex_product{
-		       	 	font-size: 1.9rem;
-				    line-height: 1.6em;
-				    color: #666;
-				    margin-left: 0%;
-				  }
-
-
-		       	 .img-contrainer{
-			        
-			        position: relative;
-			     }
-			    
-			    .img-contrainer img{
-			        width: 89%;
-			        height: 59%;
-			        margin-left: 12%;
-			        margin-top: 35%;
-			        
-			     }
-
-			     .img_contrainer p {
-			     	justify-content: left;
-				    align-items: center
-				    margin-left: 12%;
-			      }
-
-			    .img-cambio{
-			        position: absolute;
-			        top: 0px;
-			        left: 0px;
-			        opacity: 0;
-			        transition: opacity 0.5s ease;
-			    }
-			    .img-cambio:hover{
-			        opacity: 1;
-			     }
-			    
-
-		   	 	.divimagenesst{
-		   	 	    margin: 2%;
-		            margin-top: -8%;
-		            display: flex;
-		            justify-content: space-around;
-
-		   	 	 }
-
-		   	 	.img_rt{
-					position: relative;
-					margin: 2%;
-			 		margin-top: 8%;
-		        	justify-content: space-around;
-		   	    }
-		   	    .img_rt > img{
-		            width: 100%;
-		            height: 100%;
-		   	    }
-		        
-		        .divForNewImagestr{
-		        	border: 1px solid #dee2e6!important;
-		            margin:3px;
-		            width: 80%;
-		            height: 72%;
-		            position: ;
-
-		        }
-
-		        .divForNewImagestrp{
-		            position: absolute;
-		        	border: 1px solid #dee2e6!important;
-		            margin:3px;
-		            width: 80%;
-		            height: 72%;
-		            opacity: 0;
-		            transition: opacity 0.5s ease;
-		        }
-		        .divForNewImagestrp:hover{
-		            opacity: 1;
-		         }
-		         
-
-		   	 	.divimageness{
-		   	 		border-top:solid #dee2e6!important;
-		   	 		margin: 2%;
-		   	 		margin-top: 5%;
-		            display: flex;
-		            justify-content: space-around;
-		   	 	}
-
-		   	 	.divimagenesstu{
-		   	 		margin: 2%;
-		   	 		margin-top: -4%;
-		            display: flex;
-		            justify-content: space-around;
-		   	 	}
-
-		        .search{
-		          display: flex;
-		   	 	  justify-content: left;
-				   align-items: center;
-		        }
-
-		   	 	.select{
-		   	 	  display: flex;
-		   	 	  justify-content: left;
-				   align-items: center;
-		   	 	}
-
-		   	 	.botn_netx{
-		   	 		background-color: black;
-		   	 		margin: px;
-		   	 		color: white;
-		   	 		width: 90%;
-		   	 		height: 100%;
-		   	 		justify-content: center;
-				    align-items: center;
-				    display: flex;
-		   	 	}
-
-		   	 	.div_title_product{
-		   	 		
-		   	 		margin-top: 20px;
-		   	 		margin-bottom: 20px;
-		   	 		margin-left: -6px;
-		            margin-right: 37px;
-		   	 	}
-
-		   	 	.div_bordes{
-		   	 		
-		   	 		margin-left: 30px;
-		            margin-right: 30px;
-		   	 	}
-
-		   	 	.divSubMenus{
-		   	 		border-top: 1px solid #dee2e6!important;
-		            border-right: 1px solid #dee2e6!important;  
-		            border-left: 1px solid #dee2e6!important;
-		   	 		border: 1px solid #dee2e6!important;
-		            display: flex;
-		            justify-content: space-around;
-		        }
-		        .divForNewElements{
-		        	border-bottom: 1px solid #dee2e6!important;
-		            width: 60%;
-		            padding:15px; 
-		        }
-		        .divTitleForNewElements{
-		            border:1px solid #dee2e6!important;
-		            width: 100%;
-		            height: 100%;
-		            margin-left: 20px;
-		            margin-right: 20px;
-		            justify-content: center;
-				    align-items: center;
-				    display: none;		
-		        }
-		        .divTitleForNewElements > p{
-		        	padding-top: 6px;
-
-		        } 
-
-		        .divForNewImages{
-		        	border: 1px solid #dee2e6!important;
-		            margin:10px;
-		            width: 160px;
-		            height: 142px;
-		        }
-
-		        .divForDescription{
-		        	border-left:1px solid #dee2e6!important;
-		        	border-bottom: 1px solid #dee2e6!important;
-		            width: 40%;
-                    margin: px;
-		        }
-
-		        .div_et{
-		            height: 11%;
-		            justify-content: center;
-				    align-items: center;
-				    display: flex;
-                    float: bottom;
-		        }
-
-		        .div_ed{
-		        	
-		            height: 11%;
-		            justify-content: center;
-				    align-items: center;
-				    display: flex;
-		        }
-		        .div_er{
-		        	border-bottom:1px solid #dee2e6!important; 
-		        	border-top: 1px solid #dee2e6!important;
-		            height: px;   
-		            justify-content: center;
-				    align-items: center;
-				    display: flex;
-		        }
-		        .div_eu{
-		        	
-		            height: 20%;
-		            justify-content: center;
-				    align-items: center;
-				   
-		        }
-		        .div_ep{
-		        	
-		            height: 13%;
-		            justify-content: center;
-				    align-items: center;
-				    display: flex;
-		        }
-
-
-		        .middleDiv{
-		        	border-left: 1px solid #dee2e6!important;
-		        	border-right: 1px solid #dee2e6!important;
-		            display: flex;
-		        }
-		        .lastDiv{
-		        	border:transparent;
-		        	margin-top: 5%;
-		            display: flex;
-		            justify-content: space-around;
-		        }
-        
-   	 	
-   	 </style>
-
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <!-- Ventana Modal imagen de producto -->
+            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
+                <div class="div-img-ventana-emergente">
+                    <img class="img-ventena" src="{{path}}img/products_etre/prod1.png">
+                </div> 
+                
+            </div> 
+            <!-- Ventana Modal detalles de producto -->
+            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
+            
+          </div>
+      </div>
+    </div>
+    <style>
+        .div-img-ventana-emergente{
+            width: 50%;
+            height: 600px;
+            /*background: red;*/
+        }
+        .img-ventena{
+            height: 80%;
+            margin: 7%;
+        }
+    </style>
      
 </div>	
 <br><br><br><br><br><br><br><br>

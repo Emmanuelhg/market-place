@@ -62,18 +62,11 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    // this.id=this._route.snapshot.paramMap.get('id');
-    // this.id_to_box = Cookies.get('box_id');
     this.id_to_box = Cookies.get('box_id');
-
-    // Cookies.set('box_id', this.prueba, { expires: 7 });
 
      /*=============================================
      Obtener el id de la caja
-     =============================================*/
-
-    
+     =============================================*/    
   
      if (this.id_to_box === null) {
 
@@ -107,7 +100,7 @@ export class SelecctionPasoDosComponent implements OnInit {
         this.configureUi();
 
       })
-        this.id=this.id_to_box
+        this.id=this.id_to_box;
       }
        
       // Filtrar productos para agregar a la caja
@@ -170,9 +163,6 @@ export class SelecctionPasoDosComponent implements OnInit {
                  
                 }
 
-                   // console.log("Nombre", arrayProducts);
-
-        
             })
 
         })
@@ -203,10 +193,20 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.almacenar_productos.push(id);
       this.cant_productos.push(1);
     }
-    console.log("Hay "+this.almacenar_productos.length+" en la cesta");
-    console.log(this.almacenar_productos.length);
-    console.log("El producto selecionado es :" ,this.almacenar_productos);
-    console.log("LA cantidad es : :" ,this.cant_productos);
+    // Suma de productos
+    var precioProduct =this.almacenar_productos[i].price;
+    var total =0;
+
+    for(let i = 0; i < precioProduct.length; i++)
+    {
+        total += precioProduct [i];
+    }
+      console.log("La suma de productos es:", total);
+
+    // console.log("Hay "+this.almacenar_productos.length+" en la cesta");
+    // console.log(this.almacenar_productos.length);
+    // console.log("El producto selecionado es :" ,this.almacenar_productos);
+    // console.log("LA cantidad es : :" ,this.cant_productos);
     // console.log("el id selecionada es :", id);
   }
 
@@ -234,24 +234,13 @@ export class SelecctionPasoDosComponent implements OnInit {
         document.getElementById("step4").classList.remove("superActive")
     }
   }
-  // eliminarProducto(index){
-  //   if (this.cant_productos[index] > 1) {
-  //     this.cant_productos[index] = this.cant_productos[index] - 1;
-  //      console.log("borrado 1:",this.cant_productos);
-  //   } 
-  //   else {
-  //     this.cant_productos.splice(index, index+1);
-  //   }
-  //   console.log("borrado 2:",this.cant_productos);
-  // } 
+
   eliminarProducto(index){
-    // console.log( "borrado 1"+index);
-    // delete this.cant_productos[index];
-    // delete this.almacenar_productos[index];
-    // let deleteView = document.getElementById("alm_"+index);
-    // deleteView.parentNode.splice(deleteView);
-    // console.log( "borrado 2",this.cant_productos);
+   
     this.almacenar_productos.splice(index ,1);
     this.cant_productos.splice(index, 1);
   }
+  // totalPrecio(){
+  //   this.almacenar_productos + this.cant_productos;
+  // }
 }

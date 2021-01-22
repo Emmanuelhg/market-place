@@ -14,4 +14,5 @@ export class BoxesModel{
     box_deliver_checkbox:boolean;
     box_id:string;
     box_img:string;
+    box_name:string;
 }
