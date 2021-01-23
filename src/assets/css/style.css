@@ -8332,9 +8332,6 @@ input[type=number]
   height: 34px;
   border-radius: 50%;
 }
-/*Código nuevo*/
-
-
 .ps-product .ps-product__actions li a:hover {
   background-color:ps-form--quick-search button;
   color: #ffffff;
@@ -8343,7 +8340,21 @@ input[type=number]
 .ps-product .ps-product__actions:last-child {
   margin-right: 0;
 }
+/*Código nuevo*/
+.ps-product .ps-product__actionst li a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 100%;
+  height: px;
+  border-radius: 50%;
+  margin-left: 114px;
+}
 
+/*termina*/
 .ps-product .ps-product__vendor {
   display: block;
   padding-bottom: 8px;
@@ -16701,7 +16712,7 @@ input[type=number]
 }
 
 .ps-footer {
- 
+
   padding-top: 90px;
 }
 

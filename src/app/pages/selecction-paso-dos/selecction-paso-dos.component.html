@@ -627,7 +627,8 @@ a.animated-button.thar-three:before {
      <!-- Descripción  -->
      <div class="imagecontainer"> <p class="parrafo"> Steof 2 of 3 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
-
+     
+     <!-- Pintamos formulario para caja y productos -->
      <div class="div-new">
         <div class="divSubMenus">  
             <a>SMALL</a>
@@ -692,6 +693,13 @@ a.animated-button.thar-three:before {
          .div-new{
             margin: 3%;
          }
+         .div-new>.col-sm-12{
+            padding-right: 0px;
+            /*padding-left: 0px;*/
+         }
+       /*  .div-new>.row{
+            padding-left: 0px;
+         } */
          .div-img-new{
             /*width: 65%;*/
             height: px;
@@ -717,6 +725,7 @@ a.animated-button.thar-three:before {
             color:white;
             justify-content: center;
             align-items: center;
+            display: flow-root;
             /*display: flex;*/
          }
          .img-new-product {
@@ -760,7 +769,7 @@ a.animated-button.thar-three:before {
    	<div class="divimageness row">
 
         <!--=====================================
-        Producte col-md-12 col-sm-12
+        Productos col-md-12 col-sm-12
         ======================================--> 
  
         <div
@@ -770,7 +779,7 @@ a.animated-button.thar-three:before {
 
                 <a>
                     <img 
-                     (click)="almacenarProductos(products)"
+                     type="button"  data-toggle="modal" data-target=".bd-example-modal-xl"
                     src="{{path}}img/products_etre/{{products.image}}" alt="">
                 </a>
 
@@ -778,13 +787,27 @@ a.animated-button.thar-three:before {
 
                     <li>
                         <a>
-                            <i type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" class="icon-heart"></i>
+                            <i (click)="almacenarProductos(products)" 
+                             class="icon-heart">
+                             </i>
                         </a>
-
-                    </li>  
-
+                    </li> 
+                    
                 </ul>
-
+                <ul class="ps-product__actions">
+                    <li class="cart-box">
+                        <a>
+                            In box
+                        </a>
+                    </li>
+                                    
+                </ul>
+                <style>
+                     
+                    .cart-box{
+                        width: 20px;
+                    }
+                </style>
                 <!-- <a class="ps-product__actions__nuevo">ADD TO BOX</a> -->
                 <p class="tex_product">{{products.name}}</p>
                 <p class="tex_product">{{products.price}}</p>
@@ -798,34 +821,57 @@ a.animated-button.thar-three:before {
     <!-- Extra large modal -->
    <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button> -->
 
-    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <!-- Ventana Modal imagen de producto -->
-            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
-                <div class="div-img-ventana-emergente">
-                    <img class="img-ventena" src="{{path}}img/products_etre/prod1.png">
-                </div> 
-                
-            </div> 
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="
+    myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl row" role="document">
+
+             <!-- Ventana Modal imagen de producto -->
+            <div class="modal-content col-lg-6 col-md-12 col-sm-12">
+                 <img class="img-ventena" src="{{path}}img/products_etre/prod1.png">
+            </div>
+           
             <!-- Ventana Modal detalles de producto -->
-            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
-            
-          </div>
-      </div>
+            <div 
+            class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+               <h2>LIGHT BLUE NOTE TO SELF JOURNAL WIT & DELIGHT</h2> 
+               <p>
+                  160, lay-flat, lined cream pages (double the amount from last go-round), are bound in dusty blue linen, including a ribbon bookmark, to track that Big Idea from three weeks ago, and an interior back pocket. Keeping it all in your head is canceled.
+               </p>
+               <a> Add to box $ 14.00</a>
+
+            </div>
+           
+        </div>
     </div>
-    <style>
+     <style>
         .div-img-ventana-emergente{
-            width: 50%;
+            width: 100%;
             height: 600px;
             /*background: red;*/
         }
-        .img-ventena{
-            height: 80%;
+        .div-img-ventana-emergente>h2{
+            text-align: center;
+            font-size: 100%;
             margin: 7%;
+
         }
-    </style>
-     
-</div>	
+        .div-img-ventana-emergente>p{
+            text-align: center;
+            font-size: 100%;
+            margin-bottom: 7%;
+        }
+        .div-img-ventana-emergente>a{
+            text-align:  center;
+             background: black;
+             color:white;
+             justify-content: center;
+             align-items: center;
+             display: flow-root;
+        }
+        .img-ventena{
+            height: 94%;
+            margin: 5%;
+        }
+    </style>	
 <br><br><br><br><br><br><br><br>
  

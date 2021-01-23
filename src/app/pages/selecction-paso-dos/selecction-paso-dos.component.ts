@@ -48,6 +48,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   productFound:number = 0;
   almacenar_productos:any[] = [];
   cant_productos:any[] = [];
+  producto_compra_directa:any[] = [];
 
 
   constructor(private usersService:UsersService, 
@@ -131,7 +132,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       // console.log("nombre producto",this.product_name);
       // console.log("nombre precio",this.product_price);
       // console.log("nombre imagen",this.product_img); 
-
+       this.id_to_box
       
   }
 
@@ -185,24 +186,45 @@ export class SelecctionPasoDosComponent implements OnInit {
        // this.almacenar_productos.push(id);
       }
       console.log("estan en el arreglo"+esta_en_el_arreglo);
-      if (esta_en_el_arreglo == false){
-        this.almacenar_productos.push(id);
-        this.cant_productos.push(1);
+      if (esta_en_el_arreglo == false) {
+          this.almacenar_productos.push(id);
+          this.cant_productos.push(1);
       }
-    } else {
-      this.almacenar_productos.push(id);
-      this.cant_productos.push(1);
-    }
-    // Suma de productos
-    var precioProduct =this.almacenar_productos[i].price;
-    var total =0;
+       }else {
+          this.almacenar_productos.push(id);
+          this.cant_productos.push(1);
+        }
+        // Suma de productos
+        var precioProduct =this.almacenar_productos[i].price;
+        var total =0;
 
-    for(let i = 0; i < precioProduct.length; i++)
-    {
-        total += precioProduct [i];
-    }
-      console.log("La suma de productos es:", total);
+        for(let i = 0; i < precioProduct.length; i++)
+        {
+            total += precioProduct [i];
+        }
+          console.log("Producto es:", this.almacenar_productos);
 
+          this.almacenar_productos.forEach((name,price,image)=>{
+
+          this.productsService.getFilterDatta("nombre", name)
+          .subscribe(resp=>{
+
+              let i;
+              let arrayProductsCompraDirecta =[];
+                  for(i in resp){
+                        
+                        arrayProductsCompraDirecta.push({
+
+                          "nombre":resp[i].name,
+                          "precio":resp[i].price,
+                          "imagen":resp[i].image
+                          
+                        })
+                   
+                  }
+
+              })
+          })
     // console.log("Hay "+this.almacenar_productos.length+" en la cesta");
     // console.log(this.almacenar_productos.length);
     // console.log("El producto selecionado es :" ,this.almacenar_productos);
@@ -240,7 +262,6 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.almacenar_productos.splice(index ,1);
     this.cant_productos.splice(index, 1);
   }
-  // totalPrecio(){
-  //   this.almacenar_productos + this.cant_productos;
-  // }
+
+
 }

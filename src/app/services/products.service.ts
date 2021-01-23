@@ -122,7 +122,7 @@ export class ProductsService {
 		
 
 	}
-
+ 
 
 	getFilterDataMyStore(orderBy:string, equalTo:string){
 
@@ -250,6 +250,12 @@ export class ProductsService {
 	getFilterDatta(orderBy:string, equalTo:string){
 
 		return this.http.get(`${this.api}products.json?&print=pretty`);
+
+	}
+
+	obtenerProduct(){
+
+		return this.http.get(`${this.api}products.json`);
 
 	}
 
