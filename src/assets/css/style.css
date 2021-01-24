@@ -8303,6 +8303,7 @@ input[type=number]
 }
 
 .ps-product .ps-product__actions {
+   overflow: hidden 
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -8318,10 +8319,12 @@ input[type=number]
 }
 
 .ps-product .ps-product__actions li {
+   overflow: hidden 
   margin-right: 10px;
 }
 
 .ps-product .ps-product__actions li a {
+   overflow: hidden 
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -8445,7 +8448,12 @@ input[type=number]
   margin:2.3%;
 }
 
-.ps-product .ps-product__thumbnail a {
+.ps-product .ps-product__thumbnail .texto div a {
+  position: relative;
+  overflow: hidden;
+  margin:2.3%;
+}
+.ps-product .ps-product__thumbnail div a {
   position: relative;
   overflow: hidden;
   margin:2.3%;

@@ -631,8 +631,8 @@ a.animated-button.thar-three:before {
      <!-- Pintamos formulario para caja y productos -->
      <div class="div-new">
         <div class="divSubMenus">  
-            <a>SMALL</a>
-            <a>REGULAR</a>
+            <a type="button"  data-toggle="modal" data-target="#exampleModalCenter">SMALL</a>
+            <a type="button"  data-toggle="modal" data-target="#exampleModalCenter">REGULAR</a>
         </div>
         <div class="row  col-sm-12" style="display: flex;">
             <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
@@ -761,6 +761,37 @@ a.animated-button.thar-three:before {
             margin-top: 3px;
             font-size: 17px;
         } 
+
+        .ps-product{
+           overflow: hidden 
+        }
+        .texto{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            /*bottom: - 100%;*/
+            padding: 10px 20px;
+        }
+        .texto a{
+            border: 1px solid black !important;
+            background: white;
+            display: flow-root;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            height: px;
+        }    
+        .ps-product:hover .texto{
+            bottom: -50%;
+        }
+        .ps-product__thumbnail:hover .texto {
+          bottom: -55%;
+
+          background-color:ps-form--quick-search button;
+          color: #ffffff;
+        }
+                 
      </style>
 
 
@@ -775,8 +806,7 @@ a.animated-button.thar-three:before {
         <div
          *ngFor="let products of getProduct; let lastIndex = last"
          class="ps-product col-lg-3 col-md-4 col-sm-6">
-            <div class="ps-product__thumbnail ">
-
+            <div class="ps-product__thumbnail">
                 <a>
                     <img 
                      type="button"  data-toggle="modal" data-target=".bd-example-modal-xl"
@@ -784,33 +814,19 @@ a.animated-button.thar-three:before {
                 </a>
 
                 <ul class="ps-product__actions">
-
                     <li>
                         <a>
-                            <i (click)="almacenarProductos(products)" 
-                             class="icon-heart">
-                             </i>
+                            <i class="icon-heart"></i>
                         </a>
                     </li> 
-                    
                 </ul>
-                <ul class="ps-product__actions">
-                    <li class="cart-box">
-                        <a>
-                            In box
-                        </a>
-                    </li>
-                                    
-                </ul>
-                <style>
-                     
-                    .cart-box{
-                        width: 20px;
-                    }
-                </style>
-                <!-- <a class="ps-product__actions__nuevo">ADD TO BOX</a> -->
+               <!-- Información de productos -->
                 <p class="tex_product">{{products.name}}</p>
                 <p class="tex_product">{{products.price}}</p>
+               <!-- Boton para agregar productos a la caja -->
+                 <div class="texto">
+                    <a (click)="almacenarProductos(products)"> Add to box</a>
+                </div>
             </div>
          {{ lastIndex ? callback() : ""}}
 
@@ -872,6 +888,40 @@ a.animated-button.thar-three:before {
             height: 94%;
             margin: 5%;
         }
+        .modal-tex{
+            font-size: 100%;
+            margin: 3%;
+        }
+        .modal-title-rd{
+            font-size: 100%;
+            margin: 3%;
+        }
     </style>	
 <br><br><br><br><br><br><br><br>
- 
+ <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title-rd" id="exampleModalCenterTitle">Box Sizes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-tex">
+          We want your gifts to look perfect!, that's why we have three different
+          box sizes. Never too much or too little space, and perfectly packed everytime!   
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" style="background: black; width: 107px; height: 45px;" class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
+      </div>
+    </div>
+  </div>
+</div>
