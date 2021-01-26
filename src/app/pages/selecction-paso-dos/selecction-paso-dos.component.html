@@ -711,6 +711,7 @@ a.animated-button.thar-three:before {
             border: 1px solid #dee2e6!important;
          }
          .div-title-new{
+             justify-content: space-around;
             text-align: center;
             padding: 0px 4px 0;
             border: 1px solid #dee2e6!important;
@@ -809,6 +810,7 @@ a.animated-button.thar-three:before {
             <div class="ps-product__thumbnail">
                 <a>
                     <img 
+                    (click)="detallesProducto(products)"
                      type="button"  data-toggle="modal" data-target=".bd-example-modal-xl"
                     src="{{path}}img/products_etre/{{products.image}}" alt="">
                 </a>
@@ -842,18 +844,21 @@ a.animated-button.thar-three:before {
         <div class="modal-dialog modal-xl row" role="document">
 
              <!-- Ventana Modal imagen de producto -->
-            <div class="modal-content col-lg-6 col-md-12 col-sm-12">
-                 <img class="img-ventena" src="{{path}}img/products_etre/prod1.png">
+            <div class="modal-content col-lg-6 col-md-12 col-sm-12"> 
+                 <!-- <img class="img-ventena" src="{{path}}img/products_etre/prod1.png"> -->
+                 <img class="img-ventena" src="{{path}}img/products_etre/{{porductos_detalles_img}}">
             </div>
            
             <!-- Ventana Modal detalles de producto -->
             <div 
             class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
-               <h2>LIGHT BLUE NOTE TO SELF JOURNAL WIT & DELIGHT</h2> 
-               <p>
-                  160, lay-flat, lined cream pages (double the amount from last go-round), are bound in dusty blue linen, including a ribbon bookmark, to track that Big Idea from three weeks ago, and an interior back pocket. Keeping it all in your head is canceled.
-               </p>
-               <a> Add to box $ 14.00</a>
+               <h2>LIGHT BLUE NOTE TO SELF JOURNAL WIT & DELIGHT</h2>
+
+              <!--  <p>
+                  {{porductos_detalles}}
+               </p> -->
+               <div [innerHTML] id="contenedor-descripciones">{{porductos_detalles}}</div>
+               <a> Add to box $ {{porductos_detalles_precio}}</a>
 
             </div>
            
@@ -863,18 +868,20 @@ a.animated-button.thar-three:before {
         .div-img-ventana-emergente{
             width: 100%;
             height: 600px;
+            object-fit: cover;
+            transition: .5s;
             /*background: red;*/
         }
         .div-img-ventana-emergente>h2{
             text-align: center;
             font-size: 100%;
             margin: 7%;
-
+            margin-bottom: 4%;
+            
         }
         .div-img-ventana-emergente>p{
             text-align: center;
             font-size: 100%;
-            margin-bottom: 7%;
         }
         .div-img-ventana-emergente>a{
             text-align:  center;
@@ -882,11 +889,15 @@ a.animated-button.thar-three:before {
              color:white;
              justify-content: center;
              align-items: center;
+             margin-top: 4%;
+             margin-bottom: 7%;
              display: flow-root;
         }
         .img-ventena{
             height: 94%;
             margin: 5%;
+            object-fit: cover;
+            transition: .5s;
         }
         .modal-tex{
             font-size: 100%;
@@ -925,3 +936,47 @@ a.animated-button.thar-three:before {
     </div>
   </div>
 </div>
+
+<div style="display: flex; position: sticky;">
+    <div class="div-productos-agregados-caja">
+      <img src="{{path}}img/products_etre/prod1.png">
+          <a class="box-btn-white">
+              CURRENT BOX / REGULAR
+          </a>
+          <a class="box-btn-black">
+             COMPLETE BOX $114.00
+          </a>
+    </div>
+</div>
+
+<style>
+    .div-productos-agregados-caja{
+        width: 100%;
+        height: 100px;
+        background: red;
+        display: flex;
+    }
+    .div-productos-agregados-caja>img{
+        height: 50%;
+        margin: 1%;
+    }
+    .btn-prod.aagregado{
+        float: left;
+        margin: 1%;
+        display: flex;
+    }
+    .box-btn-black{
+        text-align:  center;
+        background: black;
+        color:white;
+        justify-content: center;
+        align-items: center;
+    }
+    .box-btn-white{
+        text-align:  center;
+        background: white;
+        color:black;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

@@ -48,12 +48,14 @@ export class SelecctionPasoDosComponent implements OnInit {
   productFound:number = 0;
   almacenar_productos:any[] = [];
   cant_productos:any[] = [];
-  producto_compra_directa:any[] = [];
-
+  producto_url:any[] = [];
+  porductos_detalles;
+  porductos_detalles_img;
+  porductos_detalles_precio;
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
-               // private _route : ActivatedRoute,
+               private activateRoute: ActivatedRoute,
                private router:Router,
                private productsService: ProductsService,
                private _router: Router) { 
@@ -95,7 +97,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       .subscribe(resp=>{
 
         this.box_json = resp;
-        console.log("id es ",this.id);
+        // console.log("id es ",this.id);
         this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
         // Empieza configuracion de interfaz
         this.configureUi();
@@ -105,7 +107,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       }
        
       // Filtrar productos para agregar a la caja
-      let getCategories = [];
+      let getCategories = []; 
       this.productsService.getDatta()
       .subscribe(resp=>{
             
@@ -113,22 +115,23 @@ export class SelecctionPasoDosComponent implements OnInit {
         let i;
 
           for(i in resp){
-         console.log("producto es de tipo ",typeof(resp));
-         console.log("i Es esto:",typeof(i));
+         // console.log("producto es de tipo ",typeof(resp));
+         // console.log("i Es esto:",typeof(i));
 
             this.getProduct.push(resp[i]);
             // this.products.push(resp[i].)
             this.almacenar_productos = [];
             this.products.push(i);
-            this.product_name.push(resp[i].name);
-            this.product_price.push(resp[i].price);
-            this.product_img.push(resp[i].image);
-            this.tamaño_caja.push(resp[i].size);
+              this.product_name.push(resp[i].name);
+              this.product_price.push(resp[i].price);
+              this.product_img.push(resp[i].image);
+              this.tamaño_caja.push(resp[i].size);
+              this.producto_url.push(resp[i].url);
           }
             
       }) 
-      
-          console.log("tamaño de caja es:",this.tamaño_caja);    
+
+          
       // console.log("nombre producto",this.product_name);
       // console.log("nombre precio",this.product_price);
       // console.log("nombre imagen",this.product_img); 
@@ -158,8 +161,8 @@ export class SelecctionPasoDosComponent implements OnInit {
 
                         "nombre":resp[i].name,
                         "precio":resp[i].price,
-                        "imagen":resp[i].image
-                        
+                        "imagen":resp[i].image,
+                        "url":resp[i].url
                       })
                  
                 }
@@ -178,7 +181,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       var esta_en_el_arreglo = false;
       for(var i = 0; i < this.almacenar_productos.length; i++){
         if ( id === this.almacenar_productos[i]) {
-          console.log("Es igual");
+          // console.log("Es igual");
           this.cant_productos[i] = this.cant_productos[i] + 1;
           esta_en_el_arreglo = true;
         }
@@ -194,37 +197,26 @@ export class SelecctionPasoDosComponent implements OnInit {
           this.almacenar_productos.push(id);
           this.cant_productos.push(1);
         }
-        // Suma de productos
-        var precioProduct =this.almacenar_productos[i].price;
-        var total =0;
 
-        for(let i = 0; i < precioProduct.length; i++)
-        {
-            total += precioProduct [i];
-        }
-          console.log("Producto es:", this.almacenar_productos);
 
-          this.almacenar_productos.forEach((name,price,image)=>{
+        // if(this.almacenar_productos == true){
 
-          this.productsService.getFilterDatta("nombre", name)
-          .subscribe(resp=>{
+        //     let getProductoDirecto;
 
-              let i;
-              let arrayProductsCompraDirecta =[];
-                  for(i in resp){
-                        
-                        arrayProductsCompraDirecta.push({
+        //     this.productsService.getDatta()
+        //     .subscribe(resp=>{ 
+              
+        //        let i;
 
-                          "nombre":resp[i].name,
-                          "precio":resp[i].price,
-                          "imagen":resp[i].image
-                          
-                        })
-                   
-                  }
+        //         for(i in resp){
 
-              })
-          })
+        //           this.product_name.push(resp[i].name);
+        //           this.product_img.push(resp[i].image);
+        //         }
+
+        //     })          
+        // }
+        // console.log("La info de compra es:",resp );
     // console.log("Hay "+this.almacenar_productos.length+" en la cesta");
     // console.log(this.almacenar_productos.length);
     // console.log("El producto selecionado es :" ,this.almacenar_productos);
@@ -263,5 +255,30 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.cant_productos.splice(index, 1);
   }
 
+  detallesProducto(products){
+    console.log("detalles",products);
 
+    this.porductos_detalles=products.description;
+    this.porductos_detalles_img=products.image;
+    this.porductos_detalles_precio=products.price;
+
+    // let contenedor =  document.getElementById("contenedor-descripciones");
+    // let divCreado = document.createElement(this.porductos_detalles);
+   
+    // contenedor.innerHTML = '';  
+    // contenedor.appendChild(divCreado);
+
+  }
 }
+
+
+        // Suma de productos
+        // var precioProduct =this.almacenar_productos[i].price;
+        // var total =0;
+
+        // for(let i = 0; i < precioProduct.length; i++)
+        // {
+        //     total += precioProduct [i];
+        // }
+        //   console.log("Producto es:", precioProduct);
+

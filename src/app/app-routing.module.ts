@@ -37,7 +37,7 @@ const routes: Routes = [
 	{path: 'checkout', component: CheckoutComponent,  canActivate: [ AuthGuard ]},
 	{path: 'become-a-vendor', component: BecomeAVendorComponent},
 	{path: 'selecction-caja', component: SelecctionCajaComponent},
-	{path: 'selecction-paso-dos/:id', component: SelecctionPasoDosComponent},
+	{path: 'selecction-paso-dos/:id,:param', component: SelecctionPasoDosComponent},
 	{path: 'selecction-paso-tres/:id', component: SelecctionPasoTresComponent},
 	{path: 'done/:id', component: DoneComponent},
 	{path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent},
