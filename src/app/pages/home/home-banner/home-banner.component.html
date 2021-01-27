@@ -25,11 +25,10 @@ class="ps-home-banner">
 
     
 
-</div> End Home Banner--> 
+</div> End Home Banner style="background: url({{img_slider}}) no-repeat center center;"--> 
 
-<div class="navImage" style="background: url({{img_slider}}) no-repeat center center;">
-
-
+<div class="navImage">
+   <img src="{{img_slider}}">
 </div>
 
 
@@ -48,12 +47,14 @@ class="d-flex justify-content-center">
 
     <style>
         
-        .navImage {
-           background-color: #490D40;
+        .navImage img{
+           /*background-color: #490D40;*/
            /*background: url("https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/Images%2FGWD9nWQzdS23k3hr.png?alt=media&token=2daac6db-45f8-46a0-ac05-7a34680a14e1") no-repeat center center;*/
            width: 100%;
            background-size: cover;
            height: 685px;
+            object-fit: cover;
+            /*transition: .5s;*/
            margin-top: -85px;
            background-attachment: fixed;
            background-repeat: no-repeat;
@@ -64,7 +65,7 @@ class="d-flex justify-content-center">
               padding-top: 200px;
            }
 
-           .col-3 {
+           .col-3 img{
                 -ms-flex: 0 0 25%;
                 flex: -2 7 45%;
                 max-width: 45%;
