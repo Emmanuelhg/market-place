@@ -30,7 +30,23 @@ export class SelecctionPasoDosComponent implements OnInit {
   id_to_box=null; 
   type_box = 0;
   boxes:BoxesModel;
-  box_json=null;
+  box_json= JSON.parse(`{
+  "box_deliver_checkbox" : false,
+  "box_deliver_from" : "",
+  "box_deliver_message" : "",
+  "box_deliver_to" : "",
+  "box_id" : "undefined",
+  "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+  "box_name" : "caja 1 selecionada",
+  "box_price" : 10,
+  "box_size" : 0,
+  "box_status" : 1,
+  "box_step_01" : true,
+  "box_step_02" : false,
+  "box_step_03" : false,
+  "box_step_04" : false,
+  "box_type" : 1
+}`);
   
   box_paso_01=false;
   box_paso_03=false;
@@ -52,6 +68,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles;
   porductos_detalles_img;
   porductos_detalles_precio;
+  subTotal:number = 0;
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -197,31 +214,8 @@ export class SelecctionPasoDosComponent implements OnInit {
           this.almacenar_productos.push(id);
           this.cant_productos.push(1);
         }
+    this.sumaProductos();
 
-
-        // if(this.almacenar_productos == true){
-
-        //     let getProductoDirecto;
-
-        //     this.productsService.getDatta()
-        //     .subscribe(resp=>{ 
-              
-        //        let i;
-
-        //         for(i in resp){
-
-        //           this.product_name.push(resp[i].name);
-        //           this.product_img.push(resp[i].image);
-        //         }
-
-        //     })          
-        // }
-        // console.log("La info de compra es:",resp );
-    // console.log("Hay "+this.almacenar_productos.length+" en la cesta");
-    // console.log(this.almacenar_productos.length);
-    // console.log("El producto selecionado es :" ,this.almacenar_productos);
-    // console.log("LA cantidad es : :" ,this.cant_productos);
-    // console.log("el id selecionada es :", id);
   }
 
 
@@ -253,6 +247,7 @@ export class SelecctionPasoDosComponent implements OnInit {
    
     this.almacenar_productos.splice(index ,1);
     this.cant_productos.splice(index, 1);
+    this.sumaProductos();
   }
 
   detallesProducto(products){
@@ -262,23 +257,21 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.porductos_detalles_img=products.image;
     this.porductos_detalles_precio=products.price;
 
-    // let contenedor =  document.getElementById("contenedor-descripciones");
-    // let divCreado = document.createElement(this.porductos_detalles);
-   
-    // contenedor.innerHTML = '';  
-    // contenedor.appendChild(divCreado);
-
   }
+
+    // Suma de prodsumaProductosuctos
+    sumaProductos(){
+     console.log("funiona:");
+     var pivote = 0;
+     pivote += this.box_json.box_price;
+     for(var i = 0; i < this.almacenar_productos.length; i++){
+       let multi = this.cant_productos[i];
+       pivote += multi * this.almacenar_productos[i].price;
+      }
+      this.subTotal = pivote;
+    }    
+  
 }
 
 
-        // Suma de productos
-        // var precioProduct =this.almacenar_productos[i].price;
-        // var total =0;
-
-        // for(let i = 0; i < precioProduct.length; i++)
-        // {
-        //     total += precioProduct [i];
-        // }
-        //   console.log("Producto es:", precioProduct);
-
+      

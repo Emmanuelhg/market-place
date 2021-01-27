@@ -33,8 +33,13 @@ export class HeaderComponent implements OnInit {
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
     
+    img_logo = "";
+
+    color_text_menu = "#FFFFFF";
+
     personalization:any[] = [];
 	color:any[] = [];
+	negocio = null;
 	colorCambio:any[] = [];
     letra:any[] = [];
     colorLetra:any[] = [];
@@ -57,7 +62,10 @@ export class HeaderComponent implements OnInit {
         .subscribe(resp=>{
         
            let i;
-
+           this.negocio = resp['personalization'];
+           this.img_logo = this.negocio['img_logo'];
+           this.color_text_menu = this.negocio['color_text_menu'];
+           console.log("resp es "+this.img_logo);
            for(i in resp){
 
            	this.color.push(resp[i]);

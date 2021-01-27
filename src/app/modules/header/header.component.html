@@ -14,7 +14,7 @@
 
                         <div class="menu--product-categories">
 
-                            <a  *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}   
+                            <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    
                              {{ lastIndex ? callback() : ""}}
                             </a>
                                 
@@ -61,7 +61,7 @@
                         <!-- Menú  SHOP -->
                           
                          <div class="menu--product-categories">
-                            <a *ngFor="let negocio of color; let lastIndex = last">{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}
+                            <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last">{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}
                             </a>
 
                                  <div class="menu__content">
@@ -112,7 +112,7 @@
                          <!-- Menú ABOUT US -->
 
                          <div class="menu--product-categories">
-                            <a 
+                            <a style="color: {{color_text_menu}};"
                              routerLink="get-in-touch"
                             *ngFor="let negocio of color; let lastIndex = last">
                               {{negocio.title_menu_3}} 
@@ -148,8 +148,9 @@
                  <!--Logo-->
                 <div class="col-3">
                     <div class="d-flex align-items-center justify-content-center">
-                        <img class="img2" src="{{path}}img/template/etre-Logo-03.png"  routerLink="/">
+                        <img class="img2" style="width: 160px; height: 45px; border: " src="{{img_logo}}"  routerLink="/">
                     </div>
+                    
                 </div>
                 
                 <!--Iconos busqueda, cart-->
@@ -170,7 +171,7 @@
                         <!--=====================================
                         Cart    
                         ======================================-->
-                         <i class="icon-magnifier" onclick="mostrar('premio');"></i>
+                         <!-- <i class="icon-magnifier" onclick="mostrar('premio');"></i> -->
                     
                         
                         <div class="ps-cart--mini">
@@ -241,7 +242,7 @@
                 <!--=====================================
                   Search
                   ======================================-->
-                 <div class="search_ut" id="premio" 
+                <!--  <div class="search_ut" id="premio" 
                   style="background: #C57ED3;">
 
                     <form >
@@ -249,7 +250,7 @@
 
                             <button type="button"
                             (click)="goSearch(search.value)"
-                            ><i class="icon-magnifier"></i></button>
+                            ><i class="icon-magnifier" style="display: none;"></i></button>
                             
                             <input 
                             (keyup.enter)="goSearch(search.value)"
@@ -261,12 +262,12 @@
                             <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" onclick="ocultar('premio');">         
                         </div>   
                     </form>
-                </div>
-                <style>
+                </div> -->
+                <!-- <style>
                   .search_ut{
                     display: none;
                   }
-                </style>
+                </style> -->
                 
             </nav>
              

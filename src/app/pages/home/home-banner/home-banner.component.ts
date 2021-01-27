@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Path } from '../../../config';
 import { OwlCarouselConfig, BackgroundImage } from '../../../functions';
-
+import { NegocioService } from '../../../services/negocio.service';
 import { ProductsService } from '../../../services/products.service';
 
 @Component({
@@ -18,9 +18,20 @@ export class HomeBannerComponent implements OnInit {
 	render:boolean = true;
 	preload:boolean = false;
 
-	constructor(private productsService: ProductsService) { }
+	negocio = null;
+
+	img_slider='';
+
+	constructor(private productsService: ProductsService,
+		        private negocioService: NegocioService) { }
 
 	ngOnInit(): void {
+
+		this.negocioService.getData()
+        .subscribe(resp=>{
+        	this.negocio = resp['personalization'];
+        	this.img_slider = this.negocio['slider_url_1'];
+        })
 
 		this.preload = true;
 
