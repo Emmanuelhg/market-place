@@ -8,6 +8,7 @@ declare var $:any;
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
 import { ProductsService } from '../../../services/products.service';
+import { NegocioService } from '../../../services/negocio.service';
  
 @Component({
   selector: 'app-home-showcase',
@@ -16,17 +17,46 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class HomeShowcaseComponent implements OnInit {
 
+	/* Templates */
+
 	path:string = Path.url;	
 	categories:any[] = [];
 	cargando:boolean = false;
 	render:boolean = true;
 
+	divs = [];
+	divs_id=[];
+	divs_name=[];
+	divs_visible=[];
+	div_home='';
+
    	constructor(private categoriesService: CategoriesService,
    		        private subCategoriesService: SubCategoriesService,
+   		        private negocioService: NegocioService,
    		        private productsService: ProductsService) { }
 
 	ngOnInit(): void {
+
+		this.negocioService.getData()
+	    .subscribe(resp=>{
+	    	let array = resp['menu'].length;
+	    	console.log("el div fnc es:",this.divs);
+
+
+	    	console.log("array es:",array);
+
+            for(var i = 0; i < array; i++){
+            	this.divs.push(resp['menu'][""+i]["content"]);
+            	this.divs_id.push(i);
+            	this.divs_name.push(resp['menu'][""+i]["content"]["name"]);
+            	this.divs_visible.push(["block","none","none","none"]);
+
+          }
+       		console.log("el div obtenido:",this.divs);
+	    })
+	   
 	}
+
 }	
 	// 	this.cargando = true;
 

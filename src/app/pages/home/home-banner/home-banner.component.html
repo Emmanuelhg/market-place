@@ -1,35 +1,95 @@
 <!--=====================================
 Home Banner
 ======================================-->  
-
-<!-- <div 
+<!-- 
+ <div 
 *ngIf="!preload"
 class="ps-home-banner">
     <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1"  data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
 
         <div 
-		*ngFor="let slide of banner_home; let i = index; let lastIndex = last" 
-        class="ps-banner--market-4" 
-        [attr.data-background]="path+'img/products/'+category[i]+'/horizontal/'+slide['IMG tag']"
-        >
-        	<img src="{{path}}img/products/{{category[i]}}/horizontal/{{ slide['IMG tag']}}" alt="">
+		    *ngFor="let slide of img_slider_array; let i = index; let lastIndex = last" 
+        class="ps-banner--market-4"> 
+ >
+        	<img class="navImage" src="{{slide}}"/>
             <div class="ps-banner__content">
             
                 
             </div>
 
-        {{ lastIndex ? callback() : "" }}   
+        {{ lastIndex ? callback() : "" }}    
         </div>
 
     </div>
 
     
 
-</div> End Home Banner style="background: url({{img_slider}}) no-repeat center center;"--> 
+</div> End Home Banner style="background: url({{img_slider}}) no-repeat center center;"  -->
+
+<!-- div class="navImage">
+   <img src="{{img_slider}}">
+</div> -->
+
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div  class="carousel-inner">
+    <div class="carousel-item active" id="carrusel-item-1">
+       <img class="navImage" src="{{img_slider}}">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> -->
 
 <div class="navImage">
-   <img src="{{img_slider}}">
+    <ul>
+          <li>
+            <img  src="{{img_slider}}" alt="">
+          </li>
+          <li >
+            <img src="{{img_slider2}}" alt="">
+          </li>
+          <li >
+            <img src="{{img_slider3}}" alt="">
+          </li>
+          <li >
+            <img src="{{img_slider4}}" alt="">
+          </li>
+          <li >
+            <img src="{{img_slider5}}" alt="">
+          </li>
+
+    </ul>      
 </div>
+
+<!-- <div class="slider">
+      <ul>
+          <li>
+            <img class="navImage" src="{{img_slider}}" alt="">
+          </li>
+          <li>
+            <img class="navImage" src="http://welltechnically.com/wp-content/uploads/2013/09/android-widescreen-wallpaper-14165-hd-wallpapers-700x300.jpg" alt="">
+          </li>
+          <li>
+            <img src="http://welltechnically.com/wp-content/uploads/2013/08/android-wallpapers-700x300.jpg" alt="">
+          </li>
+          <li>
+            <img src="{{img_slider}}" alt="">
+          </li>
+      </ul>
+</div> -->
 
 
 <!--=====================================
@@ -47,14 +107,14 @@ class="d-flex justify-content-center">
 
     <style>
         
-        .navImage img{
+        .navImage  {
            /*background-color: #490D40;*/
            /*background: url("https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/Images%2FGWD9nWQzdS23k3hr.png?alt=media&token=2daac6db-45f8-46a0-ac05-7a34680a14e1") no-repeat center center;*/
            width: 100%;
            background-size: cover;
            height: 685px;
             object-fit: cover;
-            /*transition: .5s;*/
+            transition: .5s;
            margin-top: -85px;
            background-attachment: fixed;
            background-repeat: no-repeat;
@@ -62,36 +122,54 @@ class="d-flex justify-content-center">
            .heading {
               color: white;
               text-align: center;
-              padding-top: 200px;
+              padding-top: 300px;
            }
 
-           .col-3 img{
-                -ms-flex: 0 0 25%;
-                flex: -2 7 45%;
-                max-width: 45%;
-            }
+          }
+    
 
-           a {
-              text-align: center;
-              padding: 20px 60px;
-              size: 20px;
-              
-               .btn {
-                 background-color: transparent;
-                 color: white;
-                 border: 1px solid white;
-                 padding: 10px;
-                 font-size: 1.2em;
-                     
-                  &:hover {
-                     color: #C57ED3;
-                     border-color: #C57ED3;
-                  }
-              }
-           }
-
-           
+        .slider {
+          width: 100%;
+          margin: auto;
+          overflow: hidden;
         }
+
+        .navImage ul {
+          display: flex;
+          padding: 0;
+          width: 500%;
+          margin-bottom: auto;
+          animation: cambio 20s infinite alternate linear;
+          animation-direction: alternate;
+        }
+      
+        .navImage li {
+          width: 100%;
+          list-style: none;
+        }
+
+        .navImage img {
+             width: 100%;
+             height: 800px;
+             object-fit: cover;
+             transition: .5s;
+        
+        }
+
+        @keyframes cambio {
+          0% {margin-left: 0;}
+          20% {margin-left: 0;}
+          
+          25% {margin-left: -100%;}
+          45% {margin-left: -100%;}
+          
+          50% {margin-left: -200%;}
+          70% {margin-left: -200%;}
+          
+          75% {margin-left: -300%;}
+          100% {margin-left: -300%;}
+        }
+
     </style>
 
 

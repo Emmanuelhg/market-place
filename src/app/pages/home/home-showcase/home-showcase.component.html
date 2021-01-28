@@ -1,31 +1,215 @@
 <!--=====================================
 Section Gray 
 ======================================-->
-<div class="div3"> 
-    <div class="slider">
-         <ul>
-            <li id="slide1">
-              <img  src="{{path}}img/slider/horizontal/slider_home.png"/>
-            </li>
-            <li id="slide2"  >
-              <img  src="{{path}}img/slider/horizontal/slider_home2.png"/>
-            </li>
-            <li id="slide3">
-              <img  src="{{path}}img/slider/horizontal/slider_home3.png"/>
-            </li>
-            <li id="slide4">
-              <img  src="{{path}}img/slider/horizontal/slider_home.png"/>
-            </li>
-            <li id="slide5">
-              <img  src="{{path}}img/slider/horizontal/slider_home2.png"/>
-            </li>
-          </ul>
-          <!-- <a class="btn btn-sm animated-button thar-three">CONTINUE</a> -->
-    </div>
+<div style="height: 160px;"> 
+</div>
+<div id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;" style="margin-top: 40px; margin-bottom: 40px; ">
+    <div class="div-main" style="
+     height: px; width: 100%; display:{{divs_visible[i][0]}};" >
+
+     <div class="div-select1 row" style="height:px; display: flex;">
+
+        <div class="div-left" class="col-lg-6 col-sm-12" style="height: px;">
+            <div class="tex_home" style="width: 89%;
+            height:px;
+            margin-top: ;
+            margin-left: 5%;">
+
+                <h3 style="text-align: center;
+                font-size: 30px;">Título</h3>
+
+                <p style="margin-top: 11%;
+                font-size: 108%;"> <b>Need a gift?</b> Choose from a range of gifts
+                    for all tastes and occasions or personalize
+                    your own box.<br>
+
+                    <b>Keep it personal.</b> We curate the best prod-
+                    ucts so you can create the most personal<br>
+
+                    gifts.<br>
+
+                    <b>We  ́ll handle the rest.</b> We take your
+                    boxes, pack it to perfection, and send it
+                    straight to their doorstep. 
+                </p>
+                
+                  <a 
+                  routerLink="#"  
+                  class="btn_home" style="margin-bottom: 6%;
+                background-color: black;
+                color: white;
+                width: 90%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                display: flex;   ">
+                    COMPLETE BOX
+                 </a>               
+                
+            </div>
+        </div>  
+
+        <div class="div-rigth"  class="col-lg-6  col-sm-12"
+        style="height: px;">
+            <img style=" width: 100%; height: px; 
+            padding-top:{{div['section_right']['img_padd_sup']}};
+            padding-bottom: {{div['section_right']['img_padd_inf']}};
+            padding-left: {{div['section_right']['img_padd_izq']}};
+            padding-right: {{div['section_right']['img_padd_der']}};
+            " 
+            class="img_home" src="{{div['section_right']['img_src']}}" >
+            
+        </div>
+        
+        
+      </div>
+
+    </div><!-- End Section Gray-->
+    <div class="div3" style="display:{{divs_visible[i][1]}};"> 
+        <div class="slider">
+             <ul>
+                <li id="slide1">
+                  <img  src="{{path}}img/slider/horizontal/slider_home.png"/>
+                </li>
+                <li id="slide2"  >
+                  <img  src="{{path}}img/slider/horizontal/slider_home2.png"/>
+                </li>
+                <li id="slide3">
+                  <img  src="{{path}}img/slider/horizontal/slider_home3.png"/>
+                </li>
+                <li id="slide4">
+                  <img  src="{{path}}img/slider/horizontal/slider_home.png"/>
+                </li>
+                <li id="slide5">
+                  <img  src="{{path}}img/slider/horizontal/slider_home2.png"/>
+                </li>
+              </ul>
+              <!-- <a class="btn btn-sm animated-button thar-three">CONTINUE</a> -->
+        </div>
          
-</div><!-- End Section Gray-->
+    </div>
+
+    <div class="div-main2" style="height:px; width: 100%; display:{{divs_visible[i][2]}};">
+
+        <div class="div-title" style="margin-top:3%; width:100%; font-size:100%; height:px;margin-bottom: 3%;">
+            <h3 style="margin-top: 4%;text-align: center; font-size: 44px;">
+                CURATED & CRAFTED FOR YOU
+            </h3>
+            <p style="font-size: 100%;margin-top: 3%;text-align: center;">
+                Etre focuses on becoming your number one, go-to source for gifts. <br>
+                Whether you need something for a birthday, an anniversary, or any celebration,<br>
+                Etre will help you create the perfect gift through presentable, personal and<br>
+                easy-to-send boxes.
+            </p>
+        </div>
+        <div class="divs-imgs row" style="display: flex;width: 100%;height: px;">
+            <div class="div_izquiedat col-lg-4 col-md-12 col-sm-12" style="margin-bottom: 3%;padding: 0px;text-align: center;display: inline-grid;width: 100%;font-size: 100%;">
+                <img  target="_top"  src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;" routerLink="/selecction-caja">
+                <h5 style="font-size: 100%; ">
+                    Need a gift?
+                </h5>
+                <p style="font-size: 100%;">
+                    Choose from a range of gifts for<br>
+                    all tastes and occasions or<br>
+                    personalize your own box.<br>
+                </p>
+            </div>
+            <div class="div_centrot col-lg-4 col-md-12 col-sm-12" style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
+                <img  routerLink="/" class="img_centro" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
+                <h5 style="font-size: 100%;">
+                    Keep it personal
+                </h5>
+                <p style="font-size: 100%;">
+                    We curate the best products<br>
+                    so you can create the most<br>
+                    personal gifts.
+                </p>
+            </div>
+            <div class="div_derechot col-lg-4 col-md-12 col-sm-12" style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
+                <img routerLink="/" class="img_derecha" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
+                <h5 style="font-size: 100%;">
+                    We ́ll handle the rest
+                </h5>
+                <p style="font-size: 100%;">
+                    We take your boxes, pack it to<br>
+                    perfection, and send it straight<br>
+                    to their doorstep.<br>
+                </p>
+            </div>
+            
+        </div>  
+
+    </div><!-- End Section Gray-->
+    <div class="div3" style="display:{{divs_visible[i][3]}};">
+        <div class="title_div3">
+            <h3>FOLLOW US ALONG</h3>
+            <p>@SHOP_ETRE</p>
+        </div>
+        <div class="img_insta row">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
+        </div>
+        <div class="img_insta row">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
+            <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
+        </div>
+    </div>
+    <!-- {{ lastIndex ? callback() : ""}} -->
+</div>
+
 <style>
-    
+     .div-section-container{
+        background: red;
+        width: 100%;
+        height: 300px;
+    }
+    .div3{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 3%;
+    }
+    .title_div3>h3{
+        margin-top: 6%;
+        text-align: center;
+        font-size: 100%;
+    }
+    .title_div3>p{
+        font-size: 100%;
+        text-align: center;
+        margin-bottom: 3%;
+    }
+    .img_insta{
+        margin: 0px;
+        display: flex;
+        width: 100%;
+        width: 100%;
+    }
+    .img_insta>img{
+        width: 100%;
+        border:0px;
+    }
+    .col-lg-3 {
+        position: relative;
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .col-md-6{
+        position: relative;
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .col-sm-12{
+        position: relative;
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
     .div3{
         width: 100%;
         height: px;
@@ -50,6 +234,8 @@ Section Gray
     .slider img{
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        transition: .5s;
     }
     @keyframes cambio{
         0%{ margin-left: 0; }
@@ -263,70 +449,5 @@ a.animated-button.thar-three:before {
         background: #C4AE9D; 
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
     }
-
 </style>
-   
 
-<div class="div3">
-    <div class="title_div3">
-        <h3>FOLLOW US ALONG</h3>
-        <p>@SHOP_ETRE</p>
-    </div>
-    <div class="img_insta row">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-    </div>
-    <div class="img_insta row">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-        <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-    </div>
-</div>
-<style>
-    .div3{
-        width: 100%;
-        height: 100%;
-        margin-bottom: 3%;
-    }
-    .title_div3>h3{
-        margin-top: 6%;
-        text-align: center;
-        font-size: 100%;
-    }
-    .title_div3>p{
-        font-size: 100%;
-        text-align: center;
-        margin-bottom: 3%;
-    }
-    .img_insta{
-        margin: 0px;
-        display: flex;
-        width: 100%;
-        width: 100%;
-    }
-    .img_insta>img{
-        width: 100%;
-        border:0px;
-    }
-    .col-lg-3 {
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .col-md-6{
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .col-sm-12{
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-</style>

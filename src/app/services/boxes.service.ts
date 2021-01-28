@@ -50,5 +50,10 @@ export class BoxesService {
 
 		return this.http.patch(`${this.api}boxes/${id}.json?auth=${id}`,value);
 
+	}
+	aztualizarBoxes2(id:string, child, value:object){
+
+		return this.http.patch(`${this.api}boxes/${id}/${child}.json?auth=${id}`,value);
+
 	}	
 }

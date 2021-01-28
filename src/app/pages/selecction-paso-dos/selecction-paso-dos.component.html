@@ -649,7 +649,7 @@ a.animated-button.thar-three:before {
                         </div>
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
                             <div  class="img-new-product ">
-                                <img style="display: flex;" src="{{path}}img/products_etre/{{product.image}}" alt="">
+                                <img style="display: flex;" src="{{product.image}}" alt="">
                                 <div class="circulo">{{cant_productos[i]}}</div>
                             </div>
                            {{ lastIndex ? callback() : ""}}
@@ -679,7 +679,9 @@ a.animated-button.thar-three:before {
                 </div>
                 <div class="div-price-new">
                     <p><b> BOX SUBTOTAL: $ {{subTotal}}</b></p>
-                    <a [routerLink]="['/selecction-paso-tres', id_to_box]" class="new-boton">
+                    <a 
+                    [routerLink]="['/selecction-paso-tres', id_to_box]"
+                    class="new-boton">
                         COMPLETE BOX
                     </a>
                 </div>
@@ -810,9 +812,11 @@ a.animated-button.thar-three:before {
             <div class="ps-product__thumbnail">
                 <a>
                     <img 
+                    style="width: 100%; height: 260px;" 
                     (click)="detallesProducto(products)"
-                     type="button"  data-toggle="modal" data-target=".bd-example-modal-xl"
-                    src="{{path}}img/products_etre/{{products.image}}" alt="">
+                     type="button"  data-toggle="modal" 
+                     data-target=".bd-example-modal-xl"
+                     src="{{products.image}}" alt="">
                 </a>
 
                 <ul class="ps-product__actions">
@@ -832,7 +836,7 @@ a.animated-button.thar-three:before {
             </div>
          {{ lastIndex ? callback() : ""}}
 
-        </div><!-- End Product -->
+        </div><!-- End Product --> 
    		
    	</div>
 
@@ -846,7 +850,7 @@ a.animated-button.thar-three:before {
              <!-- Ventana Modal imagen de producto -->
             <div class="modal-content col-lg-6 col-md-12 col-sm-12"> 
                  <!-- <img class="img-ventena" src="{{path}}img/products_etre/prod1.png"> -->
-                 <img class="img-ventena" src="{{path}}img/products_etre/{{porductos_detalles_img}}">
+                 <img class="img-ventena" src="{{porductos_detalles_img}}">
             </div>
            
             <!-- Ventana Modal detalles de producto -->
@@ -935,34 +939,34 @@ a.animated-button.thar-three:before {
 
 
 <!-- Sticky bottom bar  -->
-<!-- <div style="display: flex;" class="row position-sticky">
+<div style="display: flex;" class="row position-sticky">
     <div class="div-productos-agregados-caja container">
 
         <div class="div-img-box "> 
         </div>
         <div class="div-btn-box">
 
-        </div> -->
+        </div>
 
-        <!-- <div class="class-pp" style="background: yellow">
+        <div class="class-pp" style="background: yellow">
             <img class="articulos-bottom-container" src="{{path}}img/products_etre/prod1.png">
         </div>
         <div class="" style="background: blue; display: flex;">
             <a class="box-btn-white">CURRENT BOX: REGULAR</a>
             <a class="box-btn-black">COMPLETE BOX $ 55.0</a>
-        </div> -->
-<!--             <a class="box-btn-white col-lg-2 col-sm-4">CURRENT BOX: REGULAR</a>
-            <a class="box-btn-black col-lg-2 col-sm-12">COMPLETE BOX $ 55.0</a> -->
-        <!--
+        </div>
+            <a class="box-btn-white col-lg-2 col-sm-4">CURRENT BOX: REGULAR</a>
+            <a class="box-btn-black col-lg-2 col-sm-12">COMPLETE BOX $ 55.0</a>
+        
       <div class="articulos-bottom-container col-lg-6" style="background: blue;">
         <img class="col-lg-12" src="{{path}}img/products_etre/prod1.png">
       </div>
       <div class=" col-lg-4" style="background: yellow;">
         <a class="box-btn-white col-lg-2" style="background: yellow; position: fixed;">CURRENT BOX SIZE / REGULAR</a>
         <a class="box-btn-black col-lg-2">COMPLETE BOX $ 55.0</a>
-      </div>-->
+      </div>
       
-<!--     </div>
+    </div>
 </div>
  
 <style>
@@ -1035,4 +1039,4 @@ a.animated-button.thar-three:before {
         margin-top: 2%;
         height: 30px;*/
     }
-</style> -->
+</style>

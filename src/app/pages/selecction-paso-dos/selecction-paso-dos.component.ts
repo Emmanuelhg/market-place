@@ -28,7 +28,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   path:string = Path.url;
   id_to_box=null; 
-  type_box = 0;
+  type_box = 0; 
   boxes:BoxesModel;
   box_json= JSON.parse(`{
   "box_deliver_checkbox" : false,
@@ -68,7 +68,8 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles;
   porductos_detalles_img;
   porductos_detalles_precio;
-  subTotal:number = 0;
+  subTotal:string = "0";
+  text_box:string;
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -259,7 +260,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   }
 
-    // Suma de prodsumaProductosuctos
+    // Suma de prodsumaProductosuctos 
     sumaProductos(){
      console.log("funiona:");
      var pivote = 0;
@@ -268,10 +269,19 @@ export class SelecctionPasoDosComponent implements OnInit {
        let multi = this.cant_productos[i];
        pivote += multi * this.almacenar_productos[i].price;
       }
-      this.subTotal = pivote;
-    }    
+      this.subTotal = ""+pivote.toFixed(2);
+    }  
+
+    // fncCompletBox2(){ 
+    //   let upload = Object.assign({},this.almacenar_productos);
+    //   this.boxesService.aztualizarBoxes2(this.id_to_box, "box_arts_ids",upload)
+    //   .subscribe(resp=>{
+
+    //   })
+
+    // }  
   
 }
+ 
 
-
-      
+       
