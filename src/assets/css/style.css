@@ -17721,9 +17721,9 @@ ul.timeline > li.process:before {
 
 .premio {
   display: none;
-}
+} 
 
-  .ps-footer__widgetst {
+ /* .ps-footer__widgetst {
 
     background: var(--hola);
     display: -webkit-box;
@@ -17734,4 +17734,4 @@ ul.timeline > li.process:before {
     -webkit-box-pack: justify;
             justify-content: space-between;
     padding-bottom: 35px;
-  }
+  }*/

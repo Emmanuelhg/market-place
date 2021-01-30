@@ -688,6 +688,50 @@ a.animated-button.thar-three:before {
             </div>
         </div>  
      </div>
+     <!-- Filtros -->
+     <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <select class="custom-select" id="inputGroupSelect01" style="height: 50px; font-size: 18px;">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+             </select>
+        </div>
+        
+         <div class="col-lg-3 col-md-3 col-sm-12">
+            <select class="custom-select" id="inputGroupSelect01" style="height: 50px; font-size: 18px;">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+             </select>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <select class="custom-select" id="inputGroupSelect01" style="height: 50px; font-size: 18px;">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+             </select>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div id="inputGroupSelect01" style="height: 50px;">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+        </div>
+    </div>
+<style>
+    .col-lg-3, .col-md-3, .col-sm-12{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .select-box{
+        padding-left: 0px;
+    }
+</style>
      <style>
         .nwe-ptg{
             height: px;
@@ -937,37 +981,31 @@ a.animated-button.thar-three:before {
   </div>
 </div>
 
-
 <!-- Sticky bottom bar  -->
-<div style="display: flex;" class="row position-sticky">
-    <div class="div-productos-agregados-caja container">
+<div class="fixed-bottom row" style="background: red; width: 100%; height: 120px; display: none;">
 
-        <div class="div-img-box "> 
-        </div>
-        <div class="div-btn-box">
+   <div class="col-lg-2 col-sm-6 col-6" style="width: 70%; background: blue; display: flex;"
+    *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
 
-        </div>
+          <div class="contrainer" style="display: flex;">
+            <div class="row col-lg-4 col-sm-6 col-6">
+                <img style="width:90px; margin: 1.5%; display: flex;" src="{{product.image}}">
+            </div>
+          </div>
+        {{ lastIndex ? callback() : ""}}  
 
-        <div class="class-pp" style="background: yellow">
-            <img class="articulos-bottom-container" src="{{path}}img/products_etre/prod1.png">
-        </div>
-        <div class="" style="background: blue; display: flex;">
-            <a class="box-btn-white">CURRENT BOX: REGULAR</a>
-            <a class="box-btn-black">COMPLETE BOX $ 55.0</a>
-        </div>
-            <a class="box-btn-white col-lg-2 col-sm-4">CURRENT BOX: REGULAR</a>
-            <a class="box-btn-black col-lg-2 col-sm-12">COMPLETE BOX $ 55.0</a>
-        
-      <div class="articulos-bottom-container col-lg-6" style="background: blue;">
-        <img class="col-lg-12" src="{{path}}img/products_etre/prod1.png">
-      </div>
-      <div class=" col-lg-4" style="background: yellow;">
-        <a class="box-btn-white col-lg-2" style="background: yellow; position: fixed;">CURRENT BOX SIZE / REGULAR</a>
-        <a class="box-btn-black col-lg-2">COMPLETE BOX $ 55.0</a>
-      </div>
-      
     </div>
+
+
+    <div class="" style="width: 15%; background: yellow;">
+        <a class="box-btn-white col-sm-12 col-md-12 col-lg-2">CURRENT BOX SIZE / REGULAR</a>
+    </div>
+    <div class="" style="width: 15%; background: orange;">
+        <a class="box-btn-black  col-sm-12 col-md-12 col-lg-2">COMPLETE BOX $ 55.0</a>
+    </div>
+  
 </div>
+
  
 <style>
     .position-sticky{
@@ -1025,18 +1063,21 @@ a.animated-button.thar-three:before {
         justify-content: center;
         align-items: center;
         margin: 1%;
-       /* height: 30px;
+        height: 30px;
         margin-left: 1%;
-        margin-top: 2%;*/
+        margin-top: 2%;
     }
     .box-btn-white{
         text-align:  center;
         background: white;
         color:black;
         margin: 1%;
-        /*justify-content: center;
+        justify-content: center;
         align-items: center;
         margin-top: 2%;
-        height: 30px;*/
+        height: 30px;
     }
 </style>
+
+
+    
