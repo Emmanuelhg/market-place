@@ -5,66 +5,252 @@ Section Gray
 </div>
 <div id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;" style="margin-top: 40px; margin-bottom: 40px; ">
     <div class="div-main" style="
-     height: px; width: 100%; display:{{divs_visible[i][0]}};" >
+     height: px; width: 100%;  display:{{divs_visible[i][0]}};" >
 
      <div class="div-select1 row" style="height:px; display: flex;">
 
+        <!--=====================================
+        Section Left 
+        ======================================-->
+
         <div class="div-left" class="col-lg-6 col-sm-12" style="height: px;">
-            <div class="tex_home" style="width: 89%;
-            height:px;
-            margin-top: ;
-            margin-left: 5%;">
 
-                <h3 style="text-align: center;
-                font-size: 30px;">Título</h3>
+           <div style="display: {{divs_section_left_type[i][0]}};">
+                <div class="tex_home" style="width: 89%;
+                    height:px;
+                    margin-top: ;
+                    margin-left: 5%;">
 
-                <p style="margin-top: 11%;
-                font-size: 108%;"> <b>Need a gift?</b> Choose from a range of gifts
-                    for all tastes and occasions or personalize
-                    your own box.<br>
+                <h3 style="text-align: {{div['section_left']['txt_title_alignment']}};
+                font-size: 30px;
+                color: {{div['section_left']['txt_title_color']}};">
+                    {{div['section_left']['txt_title']}}</h3>
 
-                    <b>Keep it personal.</b> We curate the best prod-
-                    ucts so you can create the most personal<br>
-
-                    gifts.<br>
-
-                    <b>We  ́ll handle the rest.</b> We take your
-                    boxes, pack it to perfection, and send it
-                    straight to their doorstep. 
+                <p style="
+                text-align: {{div['section_left']['txt_description_alignment']}};
+                margin-top: 11%;
+                font-size: 108%;
+                color:{{div['section_left']['txt_description_color']}}; 
+                padding-right:{{div['section_left']['txt_padd_der']}};
+                padding-left: {{div['section_left']['txt_padd_izq']}};
+                padding-top:{{div['section_left']['txt_padd_sup']}}">
+                  {{div['section_left']['txt_description']}}
                 </p>
+
+                <div style="display: {{div['section_left']['txt_button_display']}};">
+                    <a 
+                      routerLink="#"  
+                      class="btn_home" style="margin-bottom: 6%;
+                      background-color: {{div['section_left']['txt_button_color']}};
+                      color: {{div['section_left']['txt_button_color_text']}};
+                      width: 90%;
+                      height: 100%;
+                      border-color: {{div['section_left']['txt_button_border_color']}};
+                      border-radius: {{div['section_left']['txt_button_border_radius']}} ;
+                      border-width: {{div['section_left']['txt_button_border_width']}};
+                      display: {{div['section_left']['txt_button_display']}};
+                      justify-content: center;
+                      align-items: center;
+                      display: flex;">
+                        {{div['section_left']['txt_button_text']}}
+                    </a>    
+                    
+                </div>
+                             
                 
-                  <a 
-                  routerLink="#"  
-                  class="btn_home" style="margin-bottom: 6%;
-                background-color: black;
-                color: white;
-                width: 90%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-                display: flex;   ">
-                    COMPLETE BOX
-                 </a>               
-                
-            </div>
+                </div>
+           </div>
+
+           <div style="display: {{divs_section_left_type[i][1]}};">
+                <img style=" width: 100%; height: px; 
+                    padding-top:{{div['section_left']['img_padd_sup']}};
+                    padding-bottom: {{div['section_left']['img_padd_inf']}};
+                    padding-left: {{div['section_left']['img_padd_izq']}};
+                    padding-right: {{div['section_left']['img_padd_der']}};
+                    " 
+                    class="img_home" src="{{div['section_left']['img_src']}}" >
+                     <div style="display: {{div['section_left']['txt_button_display']}};">
+                        <a 
+                          routerLink="#"  
+                          class="btn_home" style="margin-bottom: 6%;
+                          background-color: {{div['section_left']['txt_button_color']}};
+                          color: {{div['section_left']['txt_button_color_text']}};
+                          width: 90%;
+                          height: 100%;
+                          border-color: {{div['section_left']['txt_button_border_color']}};
+                          border-radius: {{div['section_left']['txt_button_border_radius']}} ;
+                          border-width: {{div['section_left']['txt_button_border_width']}};
+                          display: {{div['section_left']['txt_button_display']}};
+                          justify-content: center;
+                          align-items: center;
+                          display: flex;">
+                            {{div['section_left']['txt_button_text']}}
+                        </a>    
+                        
+                    </div>
+           </div> 
+
+           <div style="display: {{divs_section_left_type[i][2]}};">
+
+                <div style="width: 100%; height:100%; display: flex; justify-content: center;">
+                    <a 
+                      routerLink="/"  
+                      class="btn_home" style="margin-bottom: 6%;
+                      background-color: {{div['section_left']['txt_button_color']}};
+                      color: {{div['section_left']['txt_button_color_text']}};
+                      width: 60%;
+                      height: 50px;
+                      top: 50%;
+                      border-color: {{div['section_left']['txt_button_border_color']}};
+                      border-radius: {{div['section_left']['txt_button_border_radius']}} ;
+                      border-width: {{div['section_left']['txt_button_border_width']}};
+                      display: {{div['section_left']['txt_button_display']}};
+                      justify-content: center;
+                      align-items: center;
+                      position: absolute;
+                      display: flex;">
+                        {{div['section_left']['txt_button_text']}}
+                    </a>  
+                    <img style=" width: 100%; height: px; 
+                        padding-top:{{div['section_left']['img_padd_sup']}};
+                        padding-bottom: {{div['section_left']['img_padd_inf']}};
+                        padding-left: {{div['section_left']['img_padd_izq']}};
+                        padding-right: {{div['section_left']['img_padd_der']}};" 
+                        class="img_home" src="{{div['section_left']['img_src']}}">
+                </div>
+
+           </div> 
         </div>  
 
-        <div class="div-rigth"  class="col-lg-6  col-sm-12"
+        <!--=====================================
+        Section Rigth 
+        ======================================-->
+
+        <div class="div-right" class="col-lg-6 col-sm-12" style="height: px;">
+
+           <div style="display: {{divs_section_rigth_type[i][0]}};">
+                <div class="tex_home" style="width: 89%;
+                    height:px;
+                    margin-top: ;
+                    margin-left: 5%;">
+
+                <h3 style="text-align: {{div['section_right']['txt_title_alignment']}};
+                font-size: 30px;
+                color: {{div['section_right']['txt_title_color']}};">
+                    {{div['section_right']['txt_title']}}</h3>
+
+                <p style="
+                text-align: {{div['section_right']['txt_description_alignment']}};
+                margin-top: 11%;
+                font-size: 108%;
+                color:{{div['section_right']['txt_description_color']}}; 
+                padding-right:{{div['section_right']['txt_padd_der']}};
+                padding-left: {{div['section_right']['txt_padd_izq']}};
+                padding-top:{{div['section_right']['txt_padd_sup']}}">
+                  {{div['section_right']['txt_description']}}
+                </p>
+
+                <div style="display: {{div['section_right']['txt_button_display']}};">
+                    <a 
+                      routerLink="#"  
+                      class="btn_home" style="margin-bottom: 6%;
+                      background-color: {{div['section_right']['txt_button_color']}};
+                      color: {{div['section_right']['txt_button_color_text']}};
+                      width: 90%;
+                      height: 100%;
+                      border-color: {{div['section_right']['txt_button_border_color']}};
+                      border-radius: {{div['section_right']['txt_button_border_radius']}} ;
+                      border-width: {{div['section_right']['txt_button_border_width']}};
+                      display: {{div['section_right']['txt_button_display']}};
+                      justify-content: center;
+                      align-items: center;
+                      display: flex;">
+                        {{div['section_right']['txt_button_text']}}
+                    </a>    
+                    
+                </div>
+                             
+                
+                </div>
+           </div>
+
+           <div style="display: {{divs_section_right_type[i][1]}};">
+                <img style=" width: 100%; height: px; 
+                    padding-top:{{div['section_right']['img_padd_sup']}};
+                    padding-bottom: {{div['section_right']['img_padd_inf']}};
+                    padding-left: {{div['section_right']['img_padd_izq']}};
+                    padding-right: {{div['section_right']['img_padd_der']}};
+                    " 
+                    class="img_home" src="{{div['section_right']['img_src']}}" >
+                     <div style="display: {{div['section_right']['txt_button_display']}};">
+                        <a 
+                          routerLink="#"  
+                          class="btn_home" style="margin-bottom: 6%;
+                          background-color: {{div['section_right']['txt_button_color']}};
+                          color: {{div['section_right']['txt_button_color_text']}};
+                          width: 90%;
+                          height: 100%;
+                          border-color: {{div['section_right']['txt_button_border_color']}};
+                          border-radius: {{div['section_right']['txt_button_border_radius']}} ;
+                          border-width: {{div['section_right']['txt_button_border_width']}};
+                          display: {{div['section_right']['txt_button_display']}};
+                          justify-content: center;
+                          align-items: center;
+                          display: flex;">
+                            {{div['section_right']['txt_button_text']}}
+                        </a>    
+                        
+                    </div>
+           </div> 
+
+           <div style="display: {{divs_section_rigth_type[i][2]}};">
+                <div style="width: 100%; height:100%; display: flex; justify-content: center;">
+                    <a 
+                      routerLink="/"  
+                      class="btn_home" style="margin-bottom: 6%;
+                      background-color: {{div['section_right']['txt_button_color']}};
+                      color: {{div['section_right']['txt_button_color_text']}};
+                      width: 60%;
+                      height: 50px;
+                      top: 50%;
+                      border-color: {{div['section_right']['txt_button_border_color']}};
+                      border-radius: {{div['section_right']['txt_button_border_radius']}} ;
+                      border-width: {{div['section_right']['txt_button_border_width']}};
+                      display: {{div['section_right']['txt_button_display']}};
+                      justify-content: center;
+                      align-items: center;
+                      position: absolute;
+                      display: flex;">
+                        {{div['section_right']['txt_button_text']}}
+                    </a>  
+                    <img style=" width: 100%; height: px; 
+                        padding-top:{{div['section_right']['img_padd_sup']}};
+                        padding-bottom: {{div['section_right']['img_padd_inf']}};
+                        padding-left: {{div['section_right']['img_padd_izq']}};
+                        padding-right: {{div['section_right']['img_padd_der']}};" 
+                        class="img_home" src="{{div['section_right']['img_src']}}">
+                </div>
+           </div> 
+
+        </div>  
+        <!-- section rigth -->
+       <!--  <div class="div-rigth"  class="col-lg-6  col-sm-12"
         style="height: px;">
             <img style=" width: 100%; height: px; 
             padding-top:{{div['section_right']['img_padd_sup']}};
             padding-bottom: {{div['section_right']['img_padd_inf']}};
             padding-left: {{div['section_right']['img_padd_izq']}};
-            padding-right: {{div['section_right']['img_padd_der']}};
-            " 
-            class="img_home" src="{{div['section_right']['img_src']}}" >
+            padding-right: {{div['section_right']['img_padd_der']}};" 
+            class="img_home" src="{{div['section_right']['img_src']}}">
             
         </div>
-        
+         -->
         
       </div>
 
     </div><!-- End Section Gray-->
+
+
     <div class="div3" style="display:{{divs_visible[i][1]}};"> 
         <div class="slider">
              <ul>

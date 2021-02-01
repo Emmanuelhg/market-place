@@ -17,6 +17,20 @@ import { NegocioService } from '../../../services/negocio.service';
 })
 export class HomeShowcaseComponent implements OnInit {
 
+	SECTION_1_ONLY_IMAGE = 0;
+	SECTION_1_IMAGE_BUTTON = 1 ;
+	SECTION_1_ONLY_TEXT = 2;
+
+	
+	SECTION_NO_EXIST=0;
+	SECTION_LEFT = 100;
+	SECTION_MIDDLE = 200;
+	SECTION_RIGHT = 300;
+
+	SECTION_1 = 110;
+	SECTION_2 = 120;
+	SECTION_3 = 130;
+
 	/* Templates */
 
 	path:string = Path.url;	
@@ -29,6 +43,8 @@ export class HomeShowcaseComponent implements OnInit {
 	divs_name=[];
 	divs_visible=[];
 	div_home='';
+	divs_section_left_type=[];
+	divs_section_rigth_type=[];
 
    	constructor(private categoriesService: CategoriesService,
    		        private subCategoriesService: SubCategoriesService,
@@ -39,6 +55,8 @@ export class HomeShowcaseComponent implements OnInit {
 
 		this.negocioService.getData()
 	    .subscribe(resp=>{
+        
+
 	    	let array = resp['menu'].length;
 	    	console.log("el div fnc es:",this.divs);
 
@@ -49,19 +67,42 @@ export class HomeShowcaseComponent implements OnInit {
             	this.divs.push(resp['menu'][""+i]["content"]);
             	this.divs_id.push(i);
             	this.divs_name.push(resp['menu'][""+i]["content"]["name"]);
-            	this.divs_visible.push(["block","none","none","none"]);
-
+        
+            	if(resp['menu'][""+i]["content"]["type"]===this.SECTION_1){
+            		this.divs_visible.push(["block","none","none","none"]);
+	            	if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_ONLY_TEXT){
+	            		this.divs_section_left_type.push(["block","none","none"]);
+	            		console.log("seccion izquierda es:",this.divs_section_left_type[i]);
+            		} else if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_ONLY_IMAGE){
+	            		this.divs_section_left_type.push(["none","block","none"]);
+	            		console.log("seccion izquierda es:",this.divs_section_left_type[i]);
+            		} else if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_IMAGE_BUTTON){
+	            		this.divs_section_left_type.push(["none","none","block"]);
+	            		console.log("seccion izquierda es:",this.divs_section_left_type[i]);
+            		}
+            		if(resp['menu'][""+i]["content"]["section_rigth"]["tipo"]===this.SECTION_1_ONLY_TEXT){
+	            		this.divs_section_rigth_type.push(["block","none","none"]);
+	            		console.log("seccion izquierda es:",this.divs_section_rigth_type[i]);
+            		} else if(resp['menu'][""+i]["content"]["section_rigth"]["tipo"]===this.SECTION_1_ONLY_IMAGE){
+	            		this.divs_section_rigth_type.push(["none","block","none"]);
+	            		console.log("seccion izquierda es:",this.divs_section_rigth_type[i]);
+            		} else if(resp['menu'][""+i]["content"]["section_rigth"]["tipo"]===this.SECTION_1_IMAGE_BUTTON){
+	            		this.divs_section_rigth_type.push(["none","none","block"]);
+	            		console.log("seccion izquierda es:",this.divs_section_rigth_type[i]);
+            		}
+            	}
+            
           }
        		console.log("el div obtenido:",this.divs);
 	    })
-	   
+	   	
 	}
 
 }	
 	// 	this.cargando = true;
 
 	// 	/*=============================================
-	// 	Tomamos la data de las categorias
+	// 	Tomamos la data de las categorias 
 	// 	=============================================*/
 
 	// 	let getCategories = [];
