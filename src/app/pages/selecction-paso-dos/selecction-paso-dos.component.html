@@ -876,6 +876,11 @@ a.animated-button.thar-three:before {
                <!-- Boton para agregar productos a la caja -->
                  <div class="texto">
                     <a (click)="almacenarProductos(products)"> Add to box</a>
+                    <div class="quantity" style="display: ;">
+                        <button class="menos" type="button">-</button>
+                        <input type="text" id="quantity" value="1 IN INBOX">
+                        <button class="mas" type="button">+</button>
+                    </div>
                 </div>
             </div>
          {{ lastIndex ? callback() : ""}}
@@ -900,7 +905,7 @@ a.animated-button.thar-three:before {
             <!-- Ventana Modal detalles de producto -->
             <div 
             class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
-               <h2>LIGHT BLUE NOTE TO SELF JOURNAL WIT & DELIGHT</h2>
+               <h2>{{porductos_detalles_name}}</h2>
 
               <!--  <p>
                   {{porductos_detalles}}
@@ -913,6 +918,37 @@ a.animated-button.thar-three:before {
         </div>
     </div>
      <style>
+
+        .quantity .mas {
+            float: right;
+            width: 15%;
+            height: px;
+            border: 1px solid #000;
+            color: #000;
+            border-radius: 0;
+            background: #fff
+        }
+        .quantity .menos {
+            float: left;
+            width: 15%;
+            height: px;
+            border: 1px solid #000;
+            color: #000;
+            border-radius: 0;
+            background: #fff
+        }
+
+        .quantity input {
+            height: 32px;
+            border: none;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            text-align: center;
+            width: 70%;
+            font-size: 20px;
+            color: #000;
+            font-weight: 300;
+        }
         .div-img-ventana-emergente{
             width: 100%;
             height: 600px;
@@ -942,7 +978,8 @@ a.animated-button.thar-three:before {
              display: flow-root;
         }
         .img-ventena{
-            height: 94%;
+            height: 550px;
+            width: 95%;
             margin: 5%;
             object-fit: cover;
             transition: .5s;
@@ -982,18 +1019,14 @@ a.animated-button.thar-three:before {
 </div>
 
 <!-- Sticky bottom bar  -->
-<div class="fixed-bottom row" style="background: red; width: 100%; height: 120px;">
+<div class="fixed-bottom row" style="background: red; width: 100%; height: 120px">
 
-   <div class="col-sm-6 col-6" style="width: 70%; background: blue; display: flex;"
-    *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
-
+   <div class="col-lg-2 col-sm-6 col-6" style="width: 70%; background: blue; display: flex;">
           <div class="contrainer" style="display: flex;">
             <div class="row col-lg-4 col-sm-6 col-6">
-                <img style="width:90px; margin: 1.5%; display: flex;" src="{{product.image}}">
+                <img style="width:90px; margin: 1.5%; display: flex;" src="{{porductos_detalles_img}}">
             </div>
           </div>
-        {{ lastIndex ? callback() : ""}}  
-
     </div>
 
 

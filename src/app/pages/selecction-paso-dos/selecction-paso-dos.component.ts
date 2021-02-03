@@ -68,6 +68,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles;
   porductos_detalles_img;
   porductos_detalles_precio;
+  porductos_detalles_name;
   subTotal:string = "0";
   text_box:string;
 
@@ -257,6 +258,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.porductos_detalles=products.description;
     this.porductos_detalles_img=products.image;
     this.porductos_detalles_precio=products.price;
+    this.porductos_detalles_name=products.name;
 
   }
 
@@ -272,14 +274,14 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.subTotal = ""+pivote.toFixed(2);
     }  
 
-    // fncCompletBox2(){ 
-    //   let upload = Object.assign({},this.almacenar_productos);
-    //   this.boxesService.aztualizarBoxes2(this.id_to_box, "box_arts_ids",upload)
-    //   .subscribe(resp=>{
+    fncCompletBox2(){ 
+      let upload = Object.assign({},this.almacenar_productos);
+      this.boxesService.aztualizarBoxes2(this.id_to_box, "box_arts_ids",upload)
+      .subscribe(resp=>{
 
-    //   })
+      })
 
-    // }  
+    }  
   
 }
  
