@@ -417,7 +417,20 @@ a.animated-button.thar-three:before {
     		height: 224px;
     		margin-left: 2%;
     	}
-
+        .add-to-direcction{
+            margin-top: 3%;
+        }
+        .add-to-direcction-black{
+            background: black;
+            color:white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 2%;
+        }
+        .div-img-ventana-emergente{ 
+            height: 600px;
+        }
 </style>
 
 <div class="ps-breadcrumb">
@@ -436,7 +449,7 @@ a.animated-button.thar-three:before {
    	 </div><br>
 
      <!-- Descripción  -->
-     <div class="imagecontainer"> <p class="parrafo"> Steof 3 of 4 </p><br></div>
+     <div class="imagecontainer"> <p class="parrafo"> Step 3 of 4 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>WRITE YOUR MESSAGE</b><br><br><br></h2></div>
    	 <br>
 
@@ -481,11 +494,20 @@ a.animated-button.thar-three:before {
                 [routerLink]="['/done', id]" 
                 class="botn_new">ADD TO CART</a> 
 	     	</div>
+
+            <div class="add-to-direcction">
+                <a class="add-to-direcction-black"
+                 data-toggle="modal" data-target=".bd-example-modal-xl">
+                    Add Address
+                </a>
+            </div> 
  		       
      	</div>
-	     	<!-- Boton previu -->
+	     	
 	   	 
    	 </div> <!-- Finaliza el armado de caja  -->
+
+     <!-- Boton previu -->
 
    	 <div class="previu">
 	   	 	<a routerLink="../selecction-paso-dos" 
@@ -493,5 +515,84 @@ a.animated-button.thar-three:before {
 
 	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
 	 </div>
+
+    <!-- Ventana Modal  -->
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" 
+    aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+
+        <!-- Contenido ventana modal -->
+        <div class="modal-content"  style="display: flex;">
+                <!-- Encabezado ventana modal  -->
+                <div class="modal-header">
+                    <h5 class="modal-title-rd" id="exampleModalCenterTitle">Box Addres</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="row">
+                <!-- DIV IZQUIERDA -->
+                <div class="modal-content col-lg-6 col-md-12 col-sm-12">
+                    <!-- Formulario para ingresar dirección  -->
+                   <div class="modal-body">
+                    <p class="modal-tex">
+                        Contact information
+                    </p>
+                    <input type="email" class="form-control" id="exampleInputEmail1" 
+                    aria-describedby="emailHelp" placeholder="Enter email">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">      
+                            <p class="modal-tex">
+                                Check me out                  
+                            </p>
+                        </label>
+                    </div>
+                    <p class="modal-tex">
+                        Shipping address
+                    </p>
+                    <div style="margin-bottom: 1%;">
+                        <form>
+                          <div class="row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Recipient first name">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Last name">
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    <div style="margin-bottom: 1%;">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Company (optional)">
+                        
+                    </div>
+                    <div style="margin-bottom: 1%;">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Address">
+                    </div>
+                    <div style="margin-bottom: 1%;">
+                        
+                        <input type="text" class="form-control" id="formGroupExampleInput" 
+                        placeholder="Apartament, suite, etc. (optional)"> 
+                    </div>
+                  </div>
+                </div>
+                <!-- DIV DERECHA -->
+                <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+                    <img style="width:90px; margin: 1.5%;" src="{{path}}img/products_etre/carta.jpg" maxlength="30">
+                    <p>Texto de caja</p>
+                    <p>precio</p>
+                </div>
+            </div>
+          
+          <div class="modal-footer">
+            <button type="button" style="background: black; width: 107px; height: 45px;" class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>    
     
 </div>	
+
+
