@@ -403,7 +403,7 @@ export class UsersService {
 
         /*=============================================
         Filtramos el producto en la data
-        =============================================*/
+        =============================================*/ 
         
         this.productsService.getFilterData("url", item["product"])
         .subscribe(resp=>{

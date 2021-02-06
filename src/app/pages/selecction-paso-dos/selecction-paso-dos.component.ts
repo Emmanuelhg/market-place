@@ -11,6 +11,7 @@ import { BoxesModel } from '../../models/boxes.model';
 import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
+import { NegocioService } from '../../services/negocio.service';
 
 
 declare var jQuery:any;
@@ -24,7 +25,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   // Variables del funcionamiento
  box_steps=[false,false,false,false]
- id:string = null;
+ id:string = null; 
 
   path:string = Path.url;
   id_to_box=null; 
@@ -35,7 +36,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   "box_deliver_from" : "",
   "box_deliver_message" : "",
   "box_deliver_to" : "",
-  "box_id" : "undefined",
+  "box_id" : "",
   "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
   "box_name" : "caja 1 selecionada",
   "box_price" : 10,
@@ -47,6 +48,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   "box_step_04" : false,
   "box_type" : 1
 }`);
+  box_to_update: BoxesModel;
   
   box_paso_01=false;
   box_paso_03=false;
@@ -71,6 +73,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles_name;
   subTotal:string = "0";
   text_box:string;
+  gol;
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -78,18 +81,20 @@ export class SelecctionPasoDosComponent implements OnInit {
                private router:Router,
                private productsService: ProductsService,
                private _router: Router) { 
-              
+              this.boxes = new BoxesModel();
      
    }
 
   ngOnInit(): void {
+
+
 
     this.id_to_box = Cookies.get('box_id');
 
      /*=============================================
      Obtener el id de la caja
      =============================================*/    
-  
+      console.log("id to box es:", this.id_to_box);
      if (this.id_to_box === null) {
 
         this.usersService.authActivate().then(resp=>{
@@ -116,7 +121,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       .subscribe(resp=>{
 
         this.box_json = resp;
-        // console.log("id es ",this.id);
+        console.log("id es ",this.box_json);
         this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
         // Empieza configuracion de interfaz
         this.configureUi();
@@ -134,8 +139,6 @@ export class SelecctionPasoDosComponent implements OnInit {
         let i;
 
           for(i in resp){
-         // console.log("producto es de tipo ",typeof(resp));
-         // console.log("i Es esto:",typeof(i));
 
             this.getProduct.push(resp[i]);
             // this.products.push(resp[i].)
@@ -150,14 +153,11 @@ export class SelecctionPasoDosComponent implements OnInit {
             
       }) 
 
-          
-      // console.log("nombre producto",this.product_name);
-      // console.log("nombre precio",this.product_price);
-      // console.log("nombre imagen",this.product_img); 
        this.id_to_box
       
   }
 
+ // Callback para filtrar los filtrar los productos
   callback(){
 
     if (this.render){
@@ -193,9 +193,9 @@ export class SelecctionPasoDosComponent implements OnInit {
     }     
 
   }
-
+  // Función para  guardar los productos en la caja
   almacenarProductos(id){
-    // console.log(id);
+    
     if(this.almacenar_productos.length != 0){
       var esta_en_el_arreglo = false;
       for(var i = 0; i < this.almacenar_productos.length; i++){
@@ -204,8 +204,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           this.cant_productos[i] = this.cant_productos[i] + 1;
           esta_en_el_arreglo = true;
         }
-        // if ( this.almacenarProductos.)
-       // this.almacenar_productos.push(id);
+
       }
       console.log("estan en el arreglo"+esta_en_el_arreglo);
       if (esta_en_el_arreglo == false) {
@@ -218,9 +217,10 @@ export class SelecctionPasoDosComponent implements OnInit {
         }
     this.sumaProductos();
 
+
   }
 
-
+  
   configureUi(){
     // checar pasos de la cronstrucion de selecction-caja
     if(this.box_steps[0]){
@@ -244,14 +244,14 @@ export class SelecctionPasoDosComponent implements OnInit {
         document.getElementById("step4").classList.remove("superActive")
     }
   }
-
+  
   eliminarProducto(index){
    
     this.almacenar_productos.splice(index ,1);
     this.cant_productos.splice(index, 1);
     this.sumaProductos();
   }
-
+  
   detallesProducto(products){
     console.log("detalles",products);
 
@@ -262,27 +262,57 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   }
 
-    // Suma de prodsumaProductosuctos 
-    sumaProductos(){
-     console.log("funiona:");
-     var pivote = 0;
-     pivote += this.box_json.box_price;
-     for(var i = 0; i < this.almacenar_productos.length; i++){
-       let multi = this.cant_productos[i];
-       pivote += multi * this.almacenar_productos[i].price;
-      }
-      this.subTotal = ""+pivote.toFixed(2);
-    }  
+  // Suma de prodsumaProductosuctos 
+  sumaProductos(){
+   console.log("funiona:");
+   var pivote = 0;
+   pivote += this.box_json.box_price;
+   for(var i = 0; i < this.almacenar_productos.length; i++){
+     let multi = this.cant_productos[i];
+     pivote += multi * this.almacenar_productos[i].price;
+    }
+    this.subTotal = ""+pivote.toFixed(2);
+  }  
 
-    fncCompletBox2(){ 
-      let upload = Object.assign({},this.almacenar_productos);
-      this.boxesService.aztualizarBoxes2(this.id_to_box, "box_arts_ids",upload)
-      .subscribe(resp=>{
+  fncCompletBox2(){ 
+    let upload = Object.assign({},this.almacenar_productos);
+    this.boxesService.aztualizarBoxes2(this.id_to_box, "box_arts_ids",upload)
+    .subscribe(resp=>{ 
 
-      })
+    })
+    console.log(this.id_to_box, "box_arts_ids",upload);
+  }
 
-    }  
-  
+  guardaProductos(){ 
+    console.log("id to box es:", this.id_to_box);
+    this.box_json.box_arts=this.almacenar_productos;
+    // Almacenar Info en base de datos  
+      this.boxes.box_id=this.id_to_box;
+      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+      this.boxes.box_price=this.box_json.box_price;
+      this.boxes.box_size=this.box_json.box_size;
+      this.boxes.box_status=this.box_json.box_status;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_step_01=this.box_json.box_step_01;
+      this.boxes.box_step_02=this.box_json.box_step_02;
+      this.boxes.box_step_03=this.box_json.box_step_03;
+      this.boxes.box_step_04=this.box_json.box_step_04;
+       console.log("El json es tal: :",this.boxes);
+    this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
+    .subscribe(resp=>{
+        console.log("El jason es tal: :",resp);
+        console.log("El jason es tal: :",this.id);
+       Cookies.set('box_id', this.id, { expires: 7 });
+       this._router.navigate(['/selecction-paso-dos', this.id]);
+    })
+  } 
+    
 }
  
 

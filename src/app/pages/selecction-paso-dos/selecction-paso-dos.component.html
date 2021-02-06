@@ -680,10 +680,12 @@ a.animated-button.thar-three:before {
                 <div class="div-price-new">
                     <p><b> BOX SUBTOTAL: $ {{subTotal}}</b></p>
                     <a 
-                    [routerLink]="['/selecction-paso-tres', id_to_box]"
+                    
+                    (click)="guardaProductos()"
                     class="new-boton">
                         COMPLETE BOX
                     </a>
+                    <!-- [routerLink]="['/selecction-paso-tres', id_to_box]" -->
                 </div>
             </div>
         </div>  

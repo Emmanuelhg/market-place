@@ -11,6 +11,7 @@ import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { BoxesModel } from '../../models/boxes.model';
+import { NegocioService } from '../../services/negocio.service';
 
 @Component({
   selector: 'app-selecction-caja',
@@ -20,7 +21,7 @@ import { BoxesModel } from '../../models/boxes.model';
 export class SelecctionCajaComponent implements OnInit {
   
   // Variables del funcionamiento
-   box_steps=[false,false,false,false]
+   box_steps=[true,false,false,false]
 
 
   path:string = Path.url;
@@ -35,6 +36,7 @@ export class SelecctionCajaComponent implements OnInit {
   constructor( private usersService:UsersService,
                private boxesService:BoxesService,
                private _route : ActivatedRoute,
+               private negocioService: NegocioService,
                private _router: Router) {
 
               this.boxes = new BoxesModel();
@@ -43,7 +45,7 @@ export class SelecctionCajaComponent implements OnInit {
   onActivate(e,outlet){
     outlet.scrollTop= 0;
   }
-
+  
 
   ngOnInit(): void {
 
@@ -55,13 +57,11 @@ export class SelecctionCajaComponent implements OnInit {
       let img_izquierda=document.getElementById('img_izquierda');
       console.log("img izquierda es:", resp);
       this.urlsImgs = resp;
-      img_izquierda.setAttribute('src',resp[0]);
-      img_izquierda.setAttribute('class',"selectBox(1)");
-      img_izquierda.setAttribute('(click))',"desvanecer");
+     
     })
 
-
-     if (this.id_to_box === null) {
+ console.log("Esto es el id to box:",this.id_to_box);
+     if (this.id_to_box === undefined) {
 
      	  this.usersService.authActivate().then(resp=>{
 
@@ -85,10 +85,12 @@ export class SelecctionCajaComponent implements OnInit {
       // Obtener caja
       this.boxesService.obtenerBox(this.id_to_box)
       .subscribe(resp=>{
-            
-          this.box_json = resp;
-          console.log("id es ",this.id);
-          this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
+          console.log("aqui hay problema", resp);
+          if(resp !=null){
+            this.box_json = resp;
+            console.log("id es ",this.id);
+            this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
+          }
           // Empieza configuracion de interfaz
           this.configureUi();
 
@@ -100,11 +102,11 @@ export class SelecctionCajaComponent implements OnInit {
       
    }
 
-   newBoxes(id){
+   newBoxes(){
       console.log("es la orden Buena:", this.id);
 
       // Almacenar Info en base de datos  
-      this.boxes.box_id=id;
+      this.boxes.box_id=this.id;
       this.boxes.box_type=this.type_box;
       this.boxes.box_deliver_checkbox=false;
       this.boxes.box_deliver_from="";
@@ -115,6 +117,7 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_status=1;
       this.boxes.box_name="caja 1 selecionada";
       this.boxes.box_img="";
+      this.boxes.box_arts="";
       this.boxes.box_step_01=true;
       this.boxes.box_step_02=false;
       this.boxes.box_step_03=false;
@@ -134,8 +137,9 @@ export class SelecctionCajaComponent implements OnInit {
       /*=============================================
       Crear un nuevo box ad
       =============================================*/
-      this.boxesService.crearBoxes(id, this.boxes)
+      this.boxesService.crearBoxes(this.id, this.boxes)
       .subscribe(resp=>{
+        console.log("El id es:",this.id);
           console.log("El jason es tal: :",resp);
          Cookies.set('box_id', this.id, { expires: 7 });
          this._router.navigate(['/selecction-paso-dos', this.id]);
@@ -145,7 +149,6 @@ export class SelecctionCajaComponent implements OnInit {
 
    selectBox(num){
     this.type_box=num;
-    // this.type_img="holadd"
 
     console.log("La caje selecionada es :", this.type_box);
     // console.log("La imagen selecionada es :", this.type_img);
@@ -174,6 +177,5 @@ export class SelecctionCajaComponent implements OnInit {
         document.getElementById("step4").classList.remove("superActive")
     }
   }
-
-       
+    
 }

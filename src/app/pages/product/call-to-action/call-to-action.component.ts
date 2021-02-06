@@ -84,7 +84,7 @@ export class CallToActionComponent implements OnInit {
 	=============================================*/
 
 	addShoppingCart(product, unit, details){
-
+ 
 		let url = this.router.url;
 
 		let item = {

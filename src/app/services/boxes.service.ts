@@ -16,7 +16,7 @@ export class BoxesService {
   constructor(private http:HttpClient) { }
 
    /*=============================================
-   Registro en Firebase Database
+   Registro en Firebase Database 
    =============================================*/
 
    registerDatabase(body:BoxesModel, idToken:string){
@@ -24,7 +24,7 @@ export class BoxesService {
 	}
 
    /*=============================================
-	 Actualizar en Firebase Database   s
+	 Actualizar en Firebase Database
 	=============================================*/
 
 	crearBoxes(id:string, body:BoxesModel){

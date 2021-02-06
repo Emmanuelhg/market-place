@@ -15,6 +15,7 @@ export class BoxesModel{
     box_id:string;
     box_img:string;
     box_name:string;
+    box_arts:string;
     box_arts_ids:any[];
     box_arts_cant:any[];
 }

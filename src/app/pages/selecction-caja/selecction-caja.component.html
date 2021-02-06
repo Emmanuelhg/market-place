@@ -432,7 +432,7 @@ a.animated-button.thar-three:before {
 	 		    <img  
                  id="img_izquierda"
 	    	     (click)="selectBox(0)"
-	 		     class="desvanecer" src="{{path}}img/products_etre/product.jpg">
+	 		     class="desvanecer" src="{{urlsImgs[0]}}">
 	        </div>
 
 		   <div class="div-imagen">
@@ -442,7 +442,8 @@ a.animated-button.thar-three:before {
 				    <img
                      id="img_derecha"
                      (click)="selectBox(1)"
-				     class="desvanecer" src="{{path}}img/products_etre/product2.jpg">
+				     class="desvanecer" src="{{urlsImgs[1]}}">
+                     <!-- src="{{path}}img/products_etre/product2.jpg" -->
 		   </div>
 
        </div>
@@ -450,7 +451,7 @@ a.animated-button.thar-three:before {
     	<div class="imagecontainer">
 	    	  <a 
 	    	   [(ngModel)]="boxes"
-	    	   (click)="newBoxes(id)"
+	    	   (click)="newBoxes()"
 	    	  class="btn btn-sm animated-button thar-three">CONTINUE</a>
 	    </div> 
    
