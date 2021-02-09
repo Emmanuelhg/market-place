@@ -23,7 +23,7 @@ declare var $:any;
 })
 export class SelecctionPasoDosComponent implements OnInit {
 
-  // Variables del funcionamiento
+  // Variables del funcionamiento 
  box_steps=[false,false,false,false]
  id:string = null; 
 
@@ -32,22 +32,23 @@ export class SelecctionPasoDosComponent implements OnInit {
   type_box = 0; 
   boxes:BoxesModel;
   box_json= JSON.parse(`{
-  "box_deliver_checkbox" : false,
-  "box_deliver_from" : "",
-  "box_deliver_message" : "",
-  "box_deliver_to" : "",
-  "box_id" : "",
-  "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
-  "box_name" : "caja 1 selecionada",
-  "box_price" : 10,
-  "box_size" : 0,
-  "box_status" : 1,
-  "box_step_01" : true,
-  "box_step_02" : false,
-  "box_step_03" : false,
-  "box_step_04" : false,
-  "box_type" : 1
-}`);
+      "box_deliver_checkbox" : false,
+      "box_deliver_from" : "",
+      "box_deliver_message" : "",
+      "box_deliver_to" : "",
+      "box_id" : "",
+      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_name" : "caja 1 selecionada",
+      "box_price" : 10,
+      "box_size" : 0,
+      "box_status" : 1,
+      "box_step_01" : true,
+      "box_step_02" : false,
+      "box_step_03" : false,
+      "box_step_04" : false,
+      "box_type" : 1
+    }`
+  );
   box_to_update: BoxesModel;
   
   box_paso_01=false;
@@ -282,7 +283,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     })
     console.log(this.id_to_box, "box_arts_ids",upload);
   }
-
+  // Guardar productos en la caja
   guardaProductos(){ 
     console.log("id to box es:", this.id_to_box);
     this.box_json.box_arts=this.almacenar_productos;
@@ -309,7 +310,7 @@ export class SelecctionPasoDosComponent implements OnInit {
         console.log("El jason es tal: :",resp);
         console.log("El jason es tal: :",this.id);
        Cookies.set('box_id', this.id, { expires: 7 });
-       this._router.navigate(['/selecction-paso-dos', this.id]);
+       this._router.navigate(['/selecction-paso-tres', this.id]);
     })
   } 
     

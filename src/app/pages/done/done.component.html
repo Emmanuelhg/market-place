@@ -18,97 +18,252 @@
      <div class="imagecontainer"> <p class="parrafo">DONE!</p><br></div>
    	 <div class="imagecontainer"> <h2><b>CURATING YOUR BOX</b><br><br><br></h2></div>
    	 <br>
-   	 <style>
-   	 	.contrainer{
-        width: 100%;
-        display:block;  
-	    }
 
-	    .progressbar{
-	        counter-reset: step;
-	    }
-	    .progressbar a{
-	        list-style-type: none;
-	        float: left;
-	        width: 24.33%;
-	        position: relative;
-	        text-align: center;
-	    }
-	    .progressbar a:before{
-	        content: counter(step);
-	        counter-increment:step;
-	        width: 30px;
-	        height: 30px;
-	        line-height: 27px;
-	        border: 1px solid #ddd;
-	        display: block;
-	        text-align: center;
-	        margin: 0 auto 100px auto;
-	        border-radius: 50px;
-	        background-color: white;
-	    }    
-	    .progressbar a:after{
-	        content: '';
-	        position: absolute;
-	        width: 100%;
-	        height: 1px;
-	        background-color: #ddd;
-	        top: 15px;
-	        left: -50%;
-	        z-index: -1;
-	    }
-	    .progressbar a:first-child:after{
-	        content: none;
-	    }
-	    .progressbar a.active{
-	    	display: block;
-	        color: #C4AE9D;
-	    }
-	    .progressbar a.active:before{
-	    	background-color: #C4AE9D;
-	        border-color:#C4AE9D;
-	    }
-	    .progressbar a.active + a:after{
-	        background-color: #C4AE9D;
-	    }
+   	 <!--=====================================
+	  Preload
+	 ======================================-->
+	 <div
+	  *ngIf="!preload"> 
+		<div>
+		   <h2 style="width: 176px; margin-left: 4%;
+		    border-top: 1px solid black !important;">
+				Your Cart
+			</h2>
+			<div class="row" style="padding: 0px;">
+				<!--=====================================
+				 Div para imagen
+				======================================-->
+				<div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
+				display: flex;">
+					<div style="height: 100%; display: flex; align-items: center;">
+						<img style="width:200px; height:200px;
+						"src="{{path}}img/products_etre/prod1.png">
+					</div>
+				</div>
+				<!--=====================================
+				  Div para info de caja
+				 ======================================-->
+				<div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+					<h3>BUILD A BOXFOX</h3>
+					<p>matle black / Regular </p>
+					<div style="display: flex;">
+						<p>
+							<b>To:</b>
+						</p>&nbsp;
+						<p>{{inputTo}}</p>
+					</div>
+					<div style="display: flex;">
+						<p>
+							<b>From:</b>	
+						</p>&nbsp;
+						<p> hol</p>
+					</div>
+					<div style="display: flex;">
+						<p>
+							<b>Message:</b>
+						</p>&nbsp;
+						<p> hol</p>
+					</div>
+					<div style="display: flex;">
+						<p>
+							<b>Card:</b>
+						</p>&nbsp;
+						<p> hol</p>
+					</div>
+					<div style="display: flex;">
+						<p>
+							<b>Gift Box Contentens:</b>
+						</p>&nbsp;
+						<p> hol</p>
+					</div>
+					
+				</div>
+				<!--=====================================
+				  Div precio. cantidad y total
+				 ======================================-->
+				<div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+					<!-- Precio -->
+					<div class="col-4">
+						<ul style="font-family: sans-serif; list-style: none;">
+							<li>
+								<p><b>Price</b></p>
+							</li>
+							<li style="margin-top: 50%;">
+								$345
+							</li>
+						</ul>
+					</div>
+					<!-- Quantity -->
+					<div class="col-4">
+						<ul style="font-family: sans-serif; list-style: none;">
+							<li>
+								<p><b>Price</b></p>
+							</li>
+							<li style="margin-top: 50%;">
+								<div class="quantity">
+					                <button class="menos" type="button">-</button>
+					                <input type="text" id="quantity" value="1">
+					                <button class="mas" type="button">+</button>
+					            </div>
+							</li>
+						</ul>
+					</div>
+					<!-- Total -->
+					<div class="col-4">
+						<ul style="font-family: sans-serif; list-style: none;">
+							<li>
+								<p><b>Total</b></p>
+							</li>
+							<li style="margin-top: 50%;">
+								$345
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	 </div> 
 
-	    /*Progressbar before*/
-
-	    .progressbar a.activetwo{
-	    	display: block;
-	        color: #F0B27A;
-	    }
-	    .progressbar a.activetwo:before{
-	    	background-color: #F0B27A;
-	        border-color:#F0B27A;
-	    }
-	    .progressbar a.activetwo + a:after{
-	        background-color:#F0B27A;
-	    }
-	    /*Caja de productos*/
+	<!--=====================================
+	Preload
+	======================================-->
+	<div
+	*ngIf="preload"
+	class="d-flex justify-content-center">
 	    
-	    .imagecontainer{
-	    	display: flex;
-	    	justify-content:center;
-	    	width: 100%
-	    }
-	    .parrafo{
-			 margin-top:155px;
-			 font-size: 3.4rem;
-		}
+	    <div class="spinner-border text-muted my-5"></div>
 
-		 /*Clase súper active */
-	    .progressbar a.superActive{
-	        display: block;
-	        color: #b0714a;
-	    }
-	    .progressbar a.superActive:before{
-	        background-color: #b0714a;
-	        border-color:#b0714a;
-	    }
-	    .progressbar a.superActive + a:after{
-	        background-color: #b0714a;
-	    }
-    
-   	 </style>
+	</div>
+
 </div>
+
+<style>
+	.col-lg-3, .col-md-3, .col-sm-12{
+		padding-right: 0px !important;
+	}
+	.contrainer{
+	width: 100%;
+	display:block;  
+	}
+
+	.progressbar{
+	counter-reset: step;
+	}
+	.progressbar a{
+	list-style-type: none;
+	float: left;
+	width: 24.33%;
+	position: relative;
+	text-align: center;
+	}
+	.progressbar a:before{
+	content: counter(step);
+	counter-increment:step;
+	width: 30px;
+	height: 30px;
+	line-height: 27px;
+	border: 1px solid #ddd;
+	display: block;
+	text-align: center;
+	margin: 0 auto 100px auto;
+	border-radius: 50px;
+	background-color: white;
+	}    
+	.progressbar a:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background-color: #ddd;
+	top: 15px;
+	left: -50%;
+	z-index: -1;
+	}
+	.progressbar a:first-child:after{
+	content: none;
+	}
+	.progressbar a.active{
+	display: block;
+	color: #C4AE9D;
+	}
+	.progressbar a.active:before{
+	background-color: #C4AE9D;
+	border-color:#C4AE9D;
+	}
+	.progressbar a.active + a:after{
+	background-color: #C4AE9D;
+	}
+
+	/*Progressbar before*/
+
+	.progressbar a.activetwo{
+	display: block;
+	color: #F0B27A;
+	}
+	.progressbar a.activetwo:before{
+	background-color: #F0B27A;
+	border-color:#F0B27A;
+	}
+	.progressbar a.activetwo + a:after{
+	background-color:#F0B27A;
+	}
+	/*Caja de productos*/
+
+	.imagecontainer{
+	display: flex;
+	justify-content:center;
+	width: 100%
+	}
+	.parrafo{
+	 margin-top:155px;
+	 font-size: 3.4rem;
+	}
+
+	/*Clase súper active */
+	.progressbar a.superActive{
+	display: block;
+	color: #b0714a;
+	}
+	.progressbar a.superActive:before{
+	background-color: #b0714a;
+	border-color:#b0714a;
+	}
+	.progressbar a.superActive + a:after{
+	background-color: #b0714a;
+	}
+	.quantity {
+	    display: flex;
+	}
+
+	.quantity .mas {
+	    float: right;
+	    width: 15%;
+	    height: 30px;
+	    border: 1px solid #000;
+	    color: #000;
+	    border-radius: 0;
+	    background: #fff
+	}
+	.quantity .menos {
+	    float: left;
+	    width: 15%;
+	    height: 30px;
+	    border: 1px solid #000;
+	    color: #000;
+	    border-radius: 0;
+	    background: #fff
+	}
+
+	.quantity input {
+	    
+	    border: none;
+	    border-top: 1px solid #000;
+	    border-bottom: 1px solid #000;
+	    text-align: center;
+	    width: 30%;
+	    font-size: 20px;
+	    color: #000;
+	    font-weight: 300;
+	}
+</style>

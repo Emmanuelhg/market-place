@@ -1,5 +1,5 @@
  <style>
-
+ 
     .tex_product{
                     font-size: 1.9rem;
                     line-height: 1.6em;
@@ -680,12 +680,11 @@ a.animated-button.thar-three:before {
                 <div class="div-price-new">
                     <p><b> BOX SUBTOTAL: $ {{subTotal}}</b></p>
                     <a 
-                    
                     (click)="guardaProductos()"
                     class="new-boton">
+                    <!-- [routerLink]="['/selecction-paso-tres', id_to_box]" -->
                         COMPLETE BOX
                     </a>
-                    <!-- [routerLink]="['/selecction-paso-tres', id_to_box]" -->
                 </div>
             </div>
         </div>  
@@ -877,7 +876,9 @@ a.animated-button.thar-three:before {
                 <p class="tex_product">{{products.price}}</p>
                <!-- Boton para agregar productos a la caja -->
                  <div class="texto">
-                    <a (click)="almacenarProductos(products)" > Add to box</a>
+                    <a (click)="almacenarProductos(products)" 
+                       
+                    > Add to box</a>
                     <!-- BTN para agregar cantidad de productos -->
                     <div class="quantity" style="display:none ;">
                         <!-- BTN menos -->

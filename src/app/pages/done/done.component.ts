@@ -26,12 +26,30 @@ export class DoneComponent implements OnInit {
   // Variables del funcionamiento
  box_steps=[false,false,false,false]
  id:string = null;
+ preload:boolean = false;
 
   path:string = Path.url;
   id_to_box=null; 
   type_box = 0;
   boxes:BoxesModel;
-  box_json=null;
+  box_json= JSON.parse(`{
+      "box_deliver_checkbox" : false,
+      "box_deliver_from" : "",
+      "box_deliver_message" : "",
+      "box_deliver_to" : "",
+      "box_id" : "",
+      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_name" : "caja 1 selecionada",
+      "box_price" : 10,
+      "box_size" : 0,
+      "box_status" : 1,
+      "box_step_01" : true,
+      "box_step_02" : false,
+      "box_step_03" : false,
+      "box_step_04" : false,
+      "box_type" : 1
+    }`
+  );
   
   box_paso_01=false;
   box_paso_03=false;
@@ -39,14 +57,15 @@ export class DoneComponent implements OnInit {
   box_content:any[] = [];
 
   // Variables de productos
-  getProduct:any[] = [];
-  product_name:any[] = [];
-  product_price:any[] = [];
-  product_img:any[] = [];
+
   render:boolean = true;
-  products:any[] = [];
+  products;
   productFound:number = 0;
   totalPage:number = 0;
+  new_varibles=true;
+  inputTo;
+  inputFrom;
+  inputMessage;
 
   constructor( private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -54,13 +73,14 @@ export class DoneComponent implements OnInit {
                private router:Router,
                private productsService: ProductsService,
                private _router: Router){
-    
+              this.boxes = new BoxesModel();
   }
      
 
   ngOnInit(): void {
- // this.id=this._route.snapshot.paramMap.get('id');
-    // this.id_to_box = Cookies.get('box_id');
+    this.preload = true;
+
+        
     this.id_to_box = Cookies.get('box_id');
 
     // Cookies.set('box_id', this.prueba, { expires: 7 });
@@ -97,7 +117,6 @@ export class DoneComponent implements OnInit {
       .subscribe(resp=>{
 
         this.box_json = resp;
-        console.log("id es ",this.id);
         this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
         // Empieza configuracion de interfaz
         this.configureUi();
@@ -106,82 +125,14 @@ export class DoneComponent implements OnInit {
         this.id=this.id_to_box
       }
        
-      // Filtrar productos para agregar a la caja
-      let getCategories = [];
-      this.productsService.getDatta()
-      .subscribe(resp=>{
-            
-
-        let i;
-
-          for(i in resp){
-         console.log("producto",resp);
-         console.log("i Es esto:",i);
-
-            this.getProduct.push(resp[i]);
-            // this.products.push(resp[i].)
-            this.products.push(i);
-            this.product_name.push(resp[i].name);
-            this.product_price.push(resp[i].price);
-            this.product_img.push(resp[i].image);
-          }
-            
-      }) 
-      
-          
-      // console.log("nombre producto",this.product_name);
-      // console.log("nombre precio",this.product_price);
-      // console.log("nombre imagen",this.product_img); 
-
       
   }
 
-  callback(){
 
-    if (this.render){
-
-        this.render = false;
-
-        let arrayProducts =[];
-
-
-        this.product_name.forEach((name,price,image)=>{
-
-        this.productsService.getFilterDatta("nombre", name)
-        .subscribe(resp=>{
-
-            let i;
-
-                for(i in resp){
-                      
-                      arrayProducts.push({
-
-                        "nombre":resp[i].name,
-                        "precio":resp[i].price,
-                        "imagen":resp[i].image
-                        
-                      })
-                 
-                }
-
-                   // console.log("Nombre", arrayProducts);
-
-        
-            })
-
-        })
-
-    }     
-
-  }
-
-  funcionPorducts(id){
-    console.log("el id selecionada es :", id);
-  }
 
   configureUi(){
     // checar pasos de la cronstrucion de selecction-caja
-    if(this.box_steps[0]){
+    /*if(this.box_steps[0]){
         document.getElementById("step1").classList.add("superActive");
     }else{
         document.getElementById("step1").classList.remove("superActive");
@@ -200,7 +151,77 @@ export class DoneComponent implements OnInit {
         document.getElementById("step4").classList.add("active")
     }else{
         document.getElementById("step4").classList.remove("superActive")
-    }
+    }*/
+    this.recuperarCajas();
+    console.log("hola hola",this.boxes);
+
+  }
+
+  guardaProductos(){ 
+    console.log("id to box es:", this.id_to_box);
+    this.box_json.box_deliver_to=this.inputTo;
+    this.box_json.box_deliver_from=this.inputFrom;
+    this.box_json.box_deliver_message=this.inputMessage;
+    // Almacenar Info en base de datos  
+      this.boxes.box_id=this.id_to_box;
+      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+      this.boxes.box_price=this.box_json.box_price;
+      this.boxes.box_size=this.box_json.box_size;
+      this.boxes.box_status=this.box_json.box_status;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_step_01=this.box_json.box_step_01;
+      this.boxes.box_step_02=this.box_json.box_step_02;
+      this.boxes.box_step_03=this.box_json.box_step_03;
+      this.boxes.box_step_04=this.box_json.box_step_04;
+      console.log("El json es tal: :",this.boxes);
+    this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
+    .subscribe(resp=>{
+       
+    })
+  } 
+  recuperarCajas(){ 
+    console.log("id to box es:", this.id_to_box);
+  
+    this.boxes.box_type=this.box_json.type_box;
+    this.boxes.box_deliver_to=this.box_json.box_deliver_to
+    this.boxes.box_deliver_from=this.box_json.box_deliver_from
+    this.boxes.box_deliver_message=this.box_json.box_deliver_message
+    this.boxes.box_price=this.box_json.box_price;
+    this.boxes.box_size=this.box_json.box_size;
+    this.boxes.box_status=this.box_json.box_status;
+    this.boxes.box_name=this.box_json.box_name;
+    this.boxes.box_img=this.box_json.box_img;
+    this.boxes.box_arts=this.box_json.box_arts;
+    this.boxes.box_step_01=this.box_json.box_step_01;
+    this.boxes.box_step_02=this.box_json.box_step_02;
+    this.boxes.box_step_03=this.box_json.box_step_03;
+    this.boxes.box_step_04=this.box_json.box_step_04;
+    // Almacenar Info en base de datos  
+      this.boxes.box_id=this.id_to_box;
+      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+      this.boxes.box_price=this.box_json.box_price;
+      this.boxes.box_size=this.box_json.box_size;
+      this.boxes.box_status=this.box_json.box_status;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_step_01=this.box_json.box_step_01;
+      this.boxes.box_step_02=this.box_json.box_step_02;
+      this.boxes.box_step_03=this.box_json.box_step_03;
+      this.boxes.box_step_04=this.box_json.box_step_04;
+      this.products=this.boxes.box_arts;
+      this.preload = false;
+
   } 
 
 

@@ -38,7 +38,7 @@
     }
     .progressbar a:first-child:after{
         content: none;
-    } 
+    }
     .progressbar a.active{
     	display: block;
         color: #C4AE9D;
@@ -107,7 +107,7 @@
     	opacity: 1;
     }
 
-     /* Global Button Styles */
+    /* Global Button Styles */
 
     a.animated-button:link, a.animated-button:visited {
         position: relative;
@@ -435,6 +435,9 @@ a.animated-button.thar-three:before {
 
 <div class="ps-breadcrumb">
 
+    <div 
+    *ngIf="!preload">
+
 	<!-- Barra de números -->
 	<div class="contrainer">
 		<div>
@@ -459,6 +462,7 @@ a.animated-button.thar-three:before {
      		<img src="{{path}}img/products_etre/carta.jpg" maxlength="30">
      	</div>
      	<div class="info">
+          <form id="formulario">
      		<div class="divdestinos">
      			<div class="if">
 	     			<p class="desti"><b>To</b></p>		
@@ -468,17 +472,15 @@ a.animated-button.thar-three:before {
      			</div>
 
      			<div class="if">
-     				<input class="desti" type="" name="">
-	     			<input class="desti2" type="" name="">
-
+     				<input  class="desti" type="tex" id="to-send">
+	     			<input class="desti2" type="tex" id="to-from">
      			</div>
      		</div>
 
 	     	<div class="divmessage">
 	     		<p><b>Message</b></p>
 
-	            <textarea name="Enter your card message here. 120 characters" rows="5" placeholder="Enter your card message here. 120 characters">         	
-	            </textarea>
+	             <textarea name="Enter your card message here. 120 characters" id="to-message" rows="5" cols="30" id="to-message"></textarea>
 
 	     	</div>
 	     	<div class="divañaditr">
@@ -490,9 +492,12 @@ a.animated-button.thar-three:before {
 		     	 
 	     	</div>
 	     	<div class="btn_cart">
-	     		<a 
-                [routerLink]="['/done', id]" 
-                class="botn_new">ADD TO CART</a> 
+	     		<a id="guardar" 
+                (click)="fncCarta()"
+                class="botn_new"
+                [routerLink]="['/done', id]">
+                    ADD TO CART
+               </a> 
 	     	</div>
 
             <div class="add-to-direcction">
@@ -501,7 +506,7 @@ a.animated-button.thar-three:before {
                     Add Address
                 </a>
             </div> 
- 		       
+ 		  </form>    
      	</div>
 	     	
 	   	 
@@ -511,7 +516,8 @@ a.animated-button.thar-three:before {
 
    	 <div class="previu">
 	   	 	<a routerLink="../selecction-paso-dos" 
-            class="btn btn-sm animated-button thar-three">PREVIOUS STEP</a>
+            class="btn btn-sm animated-button thar-three"
+            (click)="fncPrevious()">PREVIOUS STEP</a>
 
 	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
 	 </div>
@@ -591,8 +597,20 @@ a.animated-button.thar-three:before {
         </div>
         
       </div>
-    </div>    
+    </div>  
+
+ </div>
+
+ <!--=====================================
+Preload
+======================================-->
+<div
+*ngIf="preload"
+class="d-flex justify-content-center">
     
+    <div class="spinner-border text-muted my-5"></div>
+
+</div>   
 </div>	
 
 

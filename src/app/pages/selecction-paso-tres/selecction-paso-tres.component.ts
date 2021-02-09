@@ -38,14 +38,31 @@ export class SelecctionPasoTresComponent implements OnInit {
  path:string = Path.url;
 	
 
- // Variables del funcionamiento
+ // Variables del funcionamiento 
  box_steps=[false,false,false,false]
  id:string = null;
  
   id_to_box=null; 
   type_box = 0;
   boxes:BoxesModel;
-  box_json=null;
+  box_json= JSON.parse(`{
+      "box_deliver_checkbox" : false,
+      "box_deliver_from" : "",
+      "box_deliver_message" : "",
+      "box_deliver_to" : "",
+      "box_id" : "",
+      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_name" : "caja 1 selecionada",
+      "box_price" : 10,
+      "box_size" : 0,
+      "box_status" : 1,
+      "box_step_01" : true,
+      "box_step_02" : false,
+      "box_step_03" : false,
+      "box_step_04" : false,
+      "box_type" : 1
+    }`
+  );
   
   box_paso_01=false;
   box_paso_03=false;
@@ -62,6 +79,11 @@ export class SelecctionPasoTresComponent implements OnInit {
   products:any[] = [];
   productFound:number = 0;
   totalPage:number = 0;
+  almacenar_productos:any[] = [];
+  preload:boolean = false;
+  inputTo;
+  inputFrom;
+  inputMessage;
 
   constructor( private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -69,23 +91,19 @@ export class SelecctionPasoTresComponent implements OnInit {
                private router:Router,
                private productsService: ProductsService,
                private _router: Router){
-     
+               this.boxes = new BoxesModel(); 
    }
 
 
   ngOnInit(): void {
-    
-    // this.id=this._route.snapshot.paramMap.get('id');
-    // this.id_to_box = Cookies.get('box_id');
+
+    this.preload = true;
+
     this.id_to_box = Cookies.get('box_id');
 
-    // Cookies.set('box_id', this.prueba, { expires: 7 });
-
      /*=============================================
-     Obtener el id de la caja
+     Obtener el id de la caja 
      =============================================*/
-
-    
   
      if (this.id_to_box === null) {
 
@@ -141,17 +159,12 @@ export class SelecctionPasoTresComponent implements OnInit {
             this.product_price.push(resp[i].price);
             this.product_img.push(resp[i].image);
           }
-            
+          this.preload = false;  
       }) 
-      
-          
-      // console.log("nombre producto",this.product_name);
-      // console.log("nombre precio",this.product_price);
-      // console.log("nombre imagen",this.product_img); 
 
   }
 
-   callback(){
+  callback(){
 
     if (this.render){
 
@@ -178,9 +191,6 @@ export class SelecctionPasoTresComponent implements OnInit {
                       })
                  
                 }
-
-                   // console.log("Nombre", arrayProducts);
-
         
             })
 
@@ -216,7 +226,54 @@ export class SelecctionPasoTresComponent implements OnInit {
     }else{
         document.getElementById("step4").classList.remove("superActive")
     }
-  }  
+  }
+  
+ fncCarta(){
+    this.inputTo = (document.getElementById("to-send") as HTMLInputElement).value;
+    this.inputFrom = (document.getElementById("to-from") as HTMLInputElement).value;
+    this.inputMessage = (document.getElementById("to-message") as HTMLInputElement).value;
+
+    console.log(this.inputTo);
+    console.log(this.inputFrom);
+    console.log(this.inputMessage);
+    this.guardaProductos();
+ }
+
+  // Función  para regresar a la página anteriror  
+  fncPrevious(){
+    this._router.navigate(['/selecction-paso-dos', this.id]);
+  }
+
+  // Guardar productos en la caja
+  guardaProductos(){ 
+    console.log("id to box es:", this.id_to_box);
+    // Variables para guardar 
+    this.box_json.box_deliver_to=this.inputTo;
+    this.box_json.box_deliver_from=this.inputFrom;
+    this.box_json.box_deliver_message=this.inputMessage;
+    // Almacenar Info en base de datos  
+      this.boxes.box_id=this.id_to_box;
+      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+      this.boxes.box_price=this.box_json.box_price;
+      this.boxes.box_size=this.box_json.box_size;
+      this.boxes.box_status=this.box_json.box_status;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_step_01=this.box_json.box_step_01;
+      this.boxes.box_step_02=this.box_json.box_step_02;
+      this.boxes.box_step_03=this.box_json.box_step_03;
+      this.boxes.box_step_04=this.box_json.box_step_04;
+      console.log("El json es tal: :",this.boxes);
+    this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
+    .subscribe(resp=>{
+       
+    })
+  }
 
 }
 
