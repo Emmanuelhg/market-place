@@ -23,7 +23,7 @@
 	  Preload
 	 ======================================-->
 	 <div
-	  *ngIf="!preload"> 
+	  *ngIf="!preload" style="display: none;"> 
 		<div>
 		   <h2 style="width: 176px; margin-left: 4%;
 		    border-top: 1px solid black !important;">
@@ -37,7 +37,7 @@
 				display: flex;">
 					<div style="height: 100%; display: flex; align-items: center;">
 						<img style="width:200px; height:200px;
-						"src="{{path}}img/products_etre/prod1.png">
+						"src="{{boxes.box_img}}">
 					</div>
 				</div>
 				<!--=====================================
@@ -50,19 +50,25 @@
 						<p>
 							<b>To:</b>
 						</p>&nbsp;
-						<p>{{inputTo}}</p>
+						<p> 
+							{{boxes.box_deliver_to}}
+					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
 							<b>From:</b>	
 						</p>&nbsp;
-						<p> hol</p>
+						<p > 
+							{{boxes.box_deliver_from}}
+					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
 							<b>Message:</b>
 						</p>&nbsp;
-						<p> hol</p>
+						<p > 
+							{{boxes.box_deliver_message}}
+					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
@@ -70,11 +76,14 @@
 						</p>&nbsp;
 						<p> hol</p>
 					</div>
-					<div style="display: flex;">
+					<div>
 						<p>
 							<b>Gift Box Contentens:</b>
-						</p>&nbsp;
-						<p> hol</p>
+						</p>
+
+						<p *ngFor="let box_arts of products; let lastIndex = last">
+							{{box_arts.name}}
+						</p>
 					</div>
 					
 				</div>

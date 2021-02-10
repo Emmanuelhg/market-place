@@ -720,7 +720,13 @@ a.animated-button.thar-three:before {
 
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div id="inputGroupSelect01" style="height: 50px;">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input
+              (keyup.enter)="goSearch(search.value)"
+              #search
+              class="form-control mr-sm-2" 
+              type="search" 
+              placeholder="Search" 
+              aria-label="Search">
             </div>
         </div>
     </div>

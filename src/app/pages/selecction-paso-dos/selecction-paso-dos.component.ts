@@ -3,7 +3,7 @@ import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
-import { Id_box } from '../../functions';
+import { Id_box, Search } from '../../functions';
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
+
 
 
 declare var jQuery:any;
@@ -304,7 +305,10 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_step_02=this.box_json.box_step_02;
       this.boxes.box_step_03=this.box_json.box_step_03;
       this.boxes.box_step_04=this.box_json.box_step_04;
+      this.boxes.box_arts_cant=this.cant_productos;
        console.log("El json es tal: :",this.boxes);
+
+
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
         console.log("El jason es tal: :",resp);
@@ -312,6 +316,21 @@ export class SelecctionPasoDosComponent implements OnInit {
        Cookies.set('box_id', this.id, { expires: 7 });
        this._router.navigate(['/selecction-paso-tres', this.id]);
     })
+  }
+
+  /*=============================================
+  Declaramos función del buscador 
+  =============================================*/
+
+  goSearch(search:string){
+
+    if(search.length == 0 || Search.fnc(search) == undefined){
+
+      return;
+    }
+
+    window.open(`search/${Search.fnc(search)}`, '_top')
+
   } 
     
 }

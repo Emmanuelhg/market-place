@@ -459,6 +459,7 @@ export class CheckoutComponent implements OnInit {
 							address:localUser.address,
 							info:localAddInfo,
 							process:JSON.stringify(proccess),
+							register_date:new Date(),
 							status:"pending"
 
 						}

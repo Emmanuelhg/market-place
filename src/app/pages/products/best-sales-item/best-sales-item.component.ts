@@ -13,7 +13,7 @@ import { UsersService } from '../../../services/users.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any;
 
 @Component({
@@ -177,7 +177,7 @@ export class BestSalesItemComponent implements OnInit {
 	=============================================*/
 
 	addShoppingCart(product, unit, details){
-
+		// Esta variable te mantiene en el mismo componente
 		let url = this.router.url;
 
 		let item = {
@@ -187,7 +187,7 @@ export class BestSalesItemComponent implements OnInit {
 			details: details,
 			url:url
 		}
-
+		// Se mandan los parámetros al a la funcion del servicio
 		this.usersService.addSoppingCart(item);
 
 	}

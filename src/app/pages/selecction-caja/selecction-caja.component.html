@@ -403,27 +403,33 @@ a.animated-button.thar-three:before {
 </style>
 <div class="ps-breadcrumb">
 
-	<!-- Barra de números  -->
-	<div class="contrainer">
-		<div>
-			<ul class="progressbar">
-     			<a id="step1"  class="superActive" >Step 1</a>
-     			<a id="step2"  class="" dir="true">Step 2</a>
-         		<a id="step3" >Step 3</a>
-	        	<a id="step4" >Done!</a>
-			</ul>
-			<br>
-   	 	</div><br>
-   	 </div><br>
+    <!--=====================================
+    Preload
+    ======================================-->
+    <div
+      *ngIf="!preload"> 
+
+    	<!-- Barra de números  -->
+    	<div class="contrainer">
+    		<div>
+    			<ul class="progressbar">
+         			<a id="step1"  class="superActive" >Step 1</a>
+         			<a id="step2"  class="" dir="true">Step 2</a>
+             		<a id="step3" >Step 3</a>
+    	        	<a id="step4" >Done!</a>
+    			</ul>
+    			<br>
+       	 	</div><br>
+       	 </div><br>
 
 
-   	 <!-- Texto selección -->
+   	    <!-- Texto selección -->
         
    		<div class="imagecontainer"> <p class="parrafo"> Step 1 of 3 </p><br></div>
    		<div class="imagecontainer"> <h2><b>CHOOSE YOUR BOX </b><br><br><br></h2></div>
        
-       <!-- Imáges de cajas -->
-      <div class="images"> 
+        <!-- Imáges de cajas -->
+        <div class="images"> 
 	        <div class="div-imagen">
 	        	<div class="divtexcontainer">
 	   			   <p>Texto prueba 1</p>
@@ -446,7 +452,7 @@ a.animated-button.thar-three:before {
                      <!-- src="{{path}}img/products_etre/product2.jpg" -->
 		   </div>
 
-       </div>
+        </div>
         <!-- Botón continuar -->
     	<div class="imagecontainer">
 	    	  <a 
@@ -454,7 +460,17 @@ a.animated-button.thar-three:before {
 	    	   (click)="newBoxes()"
 	    	  class="btn btn-sm animated-button thar-three">CONTINUE</a>
 	    </div> 
-   
+    </div>
+    <!--=====================================
+    Preload
+    ======================================-->
+    <div
+    *ngIf="preload"
+    class="d-flex justify-content-center">
+        
+        <div class="spinner-border text-muted my-5"></div>
+
+    </div>
 </div>
 
 <br><br><br><br><br><br><br><br>

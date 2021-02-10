@@ -153,12 +153,12 @@ export class DoneComponent implements OnInit {
         document.getElementById("step4").classList.remove("superActive")
     }*/
     this.recuperarCajas();
-    console.log("hola hola",this.boxes);
+    // console.log("hola hola",this.boxes);
 
   }
 
   guardaProductos(){ 
-    console.log("id to box es:", this.id_to_box);
+    // console.log("id to box es:", this.id_to_box);
     this.box_json.box_deliver_to=this.inputTo;
     this.box_json.box_deliver_from=this.inputFrom;
     this.box_json.box_deliver_message=this.inputMessage;
@@ -219,10 +219,48 @@ export class DoneComponent implements OnInit {
       this.boxes.box_step_02=this.box_json.box_step_02;
       this.boxes.box_step_03=this.box_json.box_step_03;
       this.boxes.box_step_04=this.box_json.box_step_04;
+      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+
       this.products=this.boxes.box_arts;
-      this.preload = false;
+
+      this.fncDetallesFinales(this.boxes);
+      console.log("box_arts",this.fncDetallesFinales(this.boxes));
+
+      this.fncaddShoppingCart();
 
   } 
 
+  fncaddShoppingCart(){
+    this.preload = false;
+    var count =0;
+    let array = this.boxes.box_arts;
+    console.log("hola hola hola", array);
+    for(var product in array){
+      console.log("hola hola hola re", array[product]);
+
+      let item = {
+        product: array[product].url,
+        unit: 1,
+        details: [],
+        url:"#"
+      }
+     this.usersService.addSoppingCart(item);
+    }
+    // for(let item_p in array) {
+    //   let item = {
+    //   product: item_p.url,
+    //   unit: 0,
+    //   details: [],
+    //   url:"#"
+    // }
+    //   this.usersService.addSoppingCart(item);
+    // }
+  }
+
+  fncDetallesFinales(boxes){
+    console.log("detalles finales",boxes);
+    this.products=boxes.box_arts;
+
+  }
 
 }

@@ -396,7 +396,7 @@ export class UsersService {
 	}
 
     /*=============================================
-    Función para agregar productos al carrito de compras
+    Función para agregar productos al carrito de compras 
     =============================================*/
 
     addSoppingCart(item:object){

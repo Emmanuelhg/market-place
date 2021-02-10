@@ -32,6 +32,7 @@ export class SelecctionCajaComponent implements OnInit {
   type_img:string;
   box_json=null;
   urlsImgs=null;
+  preload:boolean = false;
   
   constructor( private usersService:UsersService,
                private boxesService:BoxesService,
@@ -48,6 +49,7 @@ export class SelecctionCajaComponent implements OnInit {
   
 
   ngOnInit(): void {
+     this.preload = true;
 
   	this.id_to_box = Cookies.get('box_id');
 
@@ -97,6 +99,7 @@ export class SelecctionCajaComponent implements OnInit {
       })
 
  		   this.id=this.id_to_box
+       
       }
 
       
@@ -117,7 +120,7 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_status=1;
       this.boxes.box_name="caja 1 selecionada";
       this.boxes.box_img="";
-      this.boxes.box_arts="";
+      this.boxes.box_arts=[];
       this.boxes.box_step_01=true;
       this.boxes.box_step_02=false;
       this.boxes.box_step_03=false;
@@ -131,6 +134,7 @@ export class SelecctionCajaComponent implements OnInit {
         case 1: {
           this.boxes.box_img = this.urlsImgs[1];
         }
+
       }
 
       
@@ -143,39 +147,42 @@ export class SelecctionCajaComponent implements OnInit {
           console.log("El jason es tal: :",resp);
          Cookies.set('box_id', this.id, { expires: 7 });
          this._router.navigate(['/selecction-paso-dos', this.id]);
+
+
       })
    }
 
 
    selectBox(num){
     this.type_box=num;
-
+    
     console.log("La caje selecionada es :", this.type_box);
     // console.log("La imagen selecionada es :", this.type_img);
   }
 
   configureUi(){
     // checar pasos de la cronstrucion de selecction-caja
-    if(this.box_steps[0]){
-        document.getElementById("step1").classList.add("superActive");
-    }else{
-        document.getElementById("step1").classList.remove("superActive");
-    }
-    if(this.box_steps[1]){    
-        document.getElementById("step2").classList.add("active");
-    }else{
-        document.getElementById("step2").classList.remove("active");
-    }
-     if(this.box_steps[2]){
-        document.getElementById("step3").classList.add("active");
-    }else{
-        document.getElementById("step3").classList.remove("active")
-    }
-    if(this.box_steps[3]){
-        document.getElementById("step4").classList.add("active")
-    }else{
-        document.getElementById("step4").classList.remove("superActive")
-    }
+    // if(this.box_steps[0]){
+    //     document.getElementById("step1").classList.add("superActive");
+    // }else{
+    //     document.getElementById("step1").classList.remove("superActive");
+    // }
+    // if(this.box_steps[1]){    
+    //     document.getElementById("step2").classList.add("active");
+    // }else{
+    //     document.getElementById("step2").classList.remove("active");
+    // }
+    //  if(this.box_steps[2]){
+    //     document.getElementById("step3").classList.add("active");
+    // }else{
+    //     document.getElementById("step3").classList.remove("active")
+    // }
+    // if(this.box_steps[3]){
+    //     document.getElementById("step4").classList.add("active")
+    // }else{
+    //     document.getElementById("step4").classList.remove("superActive")
+    // }
+    this.preload = false;
   }
     
 }
