@@ -438,14 +438,14 @@ a.animated-button.thar-three:before {
     <div 
     *ngIf="!preload">
 
-	<!-- Barra de números -->
+	<!-- Barra de números --> 
 	<div class="contrainer">
 		<div>
  			<ul class="progressbar">
-     			<a class="activetwo" routerLink="/selecction-caja">Step 1</a>
-     			<a class="activetwo" >Step 2</a>
-         		<a class="active" >Step 3</a>
-	        	<a >Done!</a>
+     			<a id="step1" >Step 1</a>
+     			<a id="step2" (click)="HyperLink()">Step 2</a>
+         		<a id="step3"  class="superActive">Step 3</a>
+	        	<a id="step4">Done!</a>
 			</ul>
 			<br>
    	 	</div><br>

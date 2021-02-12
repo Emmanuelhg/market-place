@@ -7,7 +7,6 @@ import { Id_box } from '../../functions';
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 import { Rating,
         Sweetalert,
        Quantity,
@@ -26,7 +25,7 @@ import { confirm } from 'notie';
 declare var jQuery:any;
 declare var $:any;
 
-
+ 
 
 @Component({
   selector: 'app-selecction-paso-tres',
@@ -39,11 +38,10 @@ export class SelecctionPasoTresComponent implements OnInit {
 	
 
  // Variables del funcionamiento 
- box_steps=[false,false,false,false]
+ box_steps=[true, true, true,false]
  id:string = null;
  
   id_to_box=null; 
-  type_box = 0;
   boxes:BoxesModel;
   box_json= JSON.parse(`{
       "box_deliver_checkbox" : false,
@@ -56,17 +54,10 @@ export class SelecctionPasoTresComponent implements OnInit {
       "box_price" : 10,
       "box_size" : 0,
       "box_status" : 1,
-      "box_step_01" : true,
-      "box_step_02" : false,
-      "box_step_03" : false,
-      "box_step_04" : false,
+      "box_steps": [true, true, true, false],
       "box_type" : 1
     }`
   );
-  
-  box_paso_01=false;
-  box_paso_03=false;
-  box_paso_04=false;
   box_content:any[] = [];
 
 
@@ -130,12 +121,14 @@ export class SelecctionPasoTresComponent implements OnInit {
       this.boxesService.obtenerBox(this.id_to_box)
       .subscribe(resp=>{
 
-        this.box_json = resp;
-        console.log("id es ",this.id);
-        this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
-        // Empieza configuracion de interfaz
-        this.configureUi();
-
+       if(resp !=null){
+            this.box_json = resp;
+            console.log("id es ",this.id);
+            if (resp["box_steps"] != undefined) {
+               this.box_steps = resp["box_steps"];
+            }
+          }
+          this.configureUi();
       })
         this.id=this.id_to_box
       }
@@ -205,27 +198,34 @@ export class SelecctionPasoTresComponent implements OnInit {
   }
 
   configureUi(){
-    // checar pasos de la cronstrucion de selecction-caja
-    if(this.box_steps[0]){
-        document.getElementById("step1").classList.add("superActive");
-    }else{
-        document.getElementById("step1").classList.remove("superActive");
-    }
-    if(this.box_steps[1]){    
+    this.activateODeactivate();
+  }
+
+  activateODeactivate(){
+    let steps = this.box_steps;
+    window.onload = function(){
+      if(steps[0]) {
+        document.getElementById("step1").classList.add("active");
+      } else {
+        document.getElementById("step1").classList.remove("active");
+      }
+      if(steps[1]) {
         document.getElementById("step2").classList.add("active");
-    }else{
+      } else {
         document.getElementById("step2").classList.remove("active");
+      }
+      if(steps[2]) {
+        document.getElementById("step3").classList.add("superActive");
+      } else {
+        document.getElementById("step3").classList.remove("superActive");
+      }
+      if(steps[3]) {
+        document.getElementById("step4").classList.add("active");
+      } else {
+        document.getElementById("step4").classList.remove("active");
+      }
     }
-     if(this.box_steps[2]){
-        document.getElementById("step3").classList.add("active");
-    }else{
-        document.getElementById("step3").classList.remove("active")
-    }
-    if(this.box_steps[3]){
-        document.getElementById("step4").classList.add("active")
-    }else{
-        document.getElementById("step4").classList.remove("superActive")
-    }
+
   }
   
  fncCarta(){
@@ -253,7 +253,7 @@ export class SelecctionPasoTresComponent implements OnInit {
     this.box_json.box_deliver_message=this.inputMessage;
     // Almacenar Info en base de datos  
       this.boxes.box_id=this.id_to_box;
-      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_type=this.box_json.box_type;
       this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
       this.boxes.box_deliver_from= this.box_json.box_deliver_from;
       this.boxes.box_deliver_to=this.box_json.box_deliver_to;
@@ -264,15 +264,16 @@ export class SelecctionPasoTresComponent implements OnInit {
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
       this.boxes.box_arts=this.box_json.box_arts;
-      this.boxes.box_step_01=this.box_json.box_step_01;
-      this.boxes.box_step_02=this.box_json.box_step_02;
-      this.boxes.box_step_03=this.box_json.box_step_03;
-      this.boxes.box_step_04=this.box_json.box_step_04;
+      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+      this.boxes.box_steps =this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], true, this.box_steps[3]];
       console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
        
     })
+  }
+  HyperLink(){
+    window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
   }
 
 }

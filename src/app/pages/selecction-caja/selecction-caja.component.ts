@@ -31,7 +31,11 @@ export class SelecctionCajaComponent implements OnInit {
   boxes:BoxesModel;
   type_img:string;
   box_json=null;
-  urlsImgs=null;
+  urlsImgs: any = ['https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0',
+  'https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2',
+  'caja izquierda',
+  'caja derecha'
+  ];
   preload:boolean = false;
   
   constructor( private usersService:UsersService,
@@ -39,12 +43,15 @@ export class SelecctionCajaComponent implements OnInit {
                private _route : ActivatedRoute,
                private negocioService: NegocioService,
                private _router: Router) {
-
               this.boxes = new BoxesModel();
   }
  
   onActivate(e,outlet){
     outlet.scrollTop= 0;
+  }
+
+  ngAfterViewInit(): void{
+
   }
   
 
@@ -91,7 +98,9 @@ export class SelecctionCajaComponent implements OnInit {
           if(resp !=null){
             this.box_json = resp;
             console.log("id es ",this.id);
-            this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
+            if (resp["box_steps"] != undefined) {
+               this.box_steps = resp["box_steps"];
+            }
           }
           // Empieza configuracion de interfaz
           this.configureUi();
@@ -121,10 +130,7 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_name="caja 1 selecionada";
       this.boxes.box_img="";
       this.boxes.box_arts=[];
-      this.boxes.box_step_01=true;
-      this.boxes.box_step_02=false;
-      this.boxes.box_step_03=false;
-      this.boxes.box_step_04=false;
+      this.boxes.box_steps = this.boxes.box_steps = [true, this.box_steps[1], this.box_steps[2], this.box_steps[3]];
       console.log("prueba",this.box_json);
       switch(this.type_box){
         case 0: {
@@ -161,28 +167,35 @@ export class SelecctionCajaComponent implements OnInit {
   }
 
   configureUi(){
-    // checar pasos de la cronstrucion de selecction-caja
-    // if(this.box_steps[0]){
-    //     document.getElementById("step1").classList.add("superActive");
-    // }else{
-    //     document.getElementById("step1").classList.remove("superActive");
-    // }
-    // if(this.box_steps[1]){    
-    //     document.getElementById("step2").classList.add("active");
-    // }else{
-    //     document.getElementById("step2").classList.remove("active");
-    // }
-    //  if(this.box_steps[2]){
-    //     document.getElementById("step3").classList.add("active");
-    // }else{
-    //     document.getElementById("step3").classList.remove("active")
-    // }
-    // if(this.box_steps[3]){
-    //     document.getElementById("step4").classList.add("active")
-    // }else{
-    //     document.getElementById("step4").classList.remove("superActive")
-    // }
+    this.activateODeactivate();
+  }
+
+   activateODeactivate(){
+    let steps = this.box_steps;
+    window.onload = function(){
+      if(steps[0]) {
+        document.getElementById("step1").classList.add("superActive");
+      } else {
+        document.getElementById("step1").classList.remove("superActive");
+      }
+      if(steps[1]) {
+        document.getElementById("step2").classList.add("active");
+      } else {
+        document.getElementById("step2").classList.remove("active");
+      }
+      if(steps[2]) {
+        document.getElementById("step3").classList.add("active");
+      } else {
+        document.getElementById("step3").classList.remove("active");
+      }
+      if(steps[3]) {
+        document.getElementById("step4").classList.add("active");
+      } else {
+        document.getElementById("step4").classList.remove("active");
+      }
+    }
     this.preload = false;
   }
+
     
 }

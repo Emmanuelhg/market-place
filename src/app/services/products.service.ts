@@ -31,11 +31,7 @@ export class ProductsService {
 
 					count ++;
 
-					if(JSON.parse(resp[i].feedback).type == "approved"){
-
-						newResp.push(resp[i]);
-
-					}
+					newResp.push(resp[i]);
 
 				}
 
@@ -64,11 +60,7 @@ export class ProductsService {
 
 					count ++;
 
-					if(JSON.parse(resp[i].feedback).type == "approved"){
-
-						newResp.push(resp[i]);
-
-					}
+					newResp.push(resp[i]);
 
 				}
 
@@ -97,11 +89,7 @@ export class ProductsService {
 
 					count ++;
 
-					if(JSON.parse(resp[i].feedback).type == "approved"){
-
-						newResp.push(resp[i]);
-
-					}
+					newResp.push(resp[i]);
 
 				}
 
@@ -144,11 +132,7 @@ export class ProductsService {
 
 					count ++;
 
-					if(JSON.parse(resp[i].feedback).type == "approved"){
-
-						newResp.push(resp[i]);
-
-					}
+					newResp.push(resp[i]);
 
 				}
 
@@ -177,11 +161,7 @@ export class ProductsService {
 
 					count ++;
 
-					if(JSON.parse(resp[i].feedback).type == "approved"){
-
-						newResp.push(resp[i]);
-
-					}
+					newResp.push(resp[i]);
 
 				}
 
@@ -260,3 +240,9 @@ export class ProductsService {
 	}
 
 }
+
+
+// "{\"type\":\"approved\",\"comment\":\"}"
+
+
+// "{\"type\":\"approved\", \"comment\":\"\"}"

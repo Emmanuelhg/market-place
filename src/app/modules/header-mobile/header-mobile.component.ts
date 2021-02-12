@@ -33,7 +33,8 @@ export class HeaderMobileComponent implements OnInit {
 	totalShoppingCart:number = 0;
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
- 
+ 	img_logo = "";
+
     personalization:any[] = [];
 	color:any[] = [];
 	colorCambio:any[] = [];
@@ -42,6 +43,7 @@ export class HeaderMobileComponent implements OnInit {
     letraMenu1:any[] = [];
     letraMenu2:any[] = [];
     letraMenu3:any[] = [];
+    negocio = null;
 
 
 
@@ -64,7 +66,8 @@ export class HeaderMobileComponent implements OnInit {
            for(i in resp){
 
            	this.color.push(resp[i]);
-
+           	this.negocio = resp['personalization'];
+           	this.img_logo = this.negocio['img_logo'];
            	this.colorCambio.push(resp[i].colorbotonheaders);
             this.colorLetra.push(resp[i].textotopheader)
             this.letraMenu1.push(resp[i].title_menu_1);

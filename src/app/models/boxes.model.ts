@@ -1,10 +1,7 @@
 export class BoxesModel{
 
 	box_type:number;
-	box_step_01:boolean;
-	box_step_02:boolean;
-    box_step_03:boolean;
-    box_step_04:boolean;
+	box_steps:any[];
     box_status:number;
     box_size:number;
     box_price:number;

@@ -43,10 +43,7 @@ export class DoneComponent implements OnInit {
       "box_price" : 10,
       "box_size" : 0,
       "box_status" : 1,
-      "box_step_01" : true,
-      "box_step_02" : false,
-      "box_step_03" : false,
-      "box_step_04" : false,
+      "box_steps": [true, true, true, true],
       "box_type" : 1
     }`
   );
@@ -116,9 +113,13 @@ export class DoneComponent implements OnInit {
       this.boxesService.obtenerBox(this.id_to_box)
       .subscribe(resp=>{
 
-        this.box_json = resp;
-        this.box_steps = [resp["box_step_01"],resp["box_step_02"],resp["box_step_03"],resp["box_step_04"]];
-        // Empieza configuracion de interfaz
+        if(resp !=null){
+            this.box_json = resp;
+            console.log("id es ",this.id);
+            if (resp["box_steps"] != undefined) {
+               this.box_steps = resp["box_steps"];
+            }
+          }
         this.configureUi();
 
       })
@@ -128,34 +129,37 @@ export class DoneComponent implements OnInit {
       
   }
 
-
-
   configureUi(){
-    // checar pasos de la cronstrucion de selecction-caja
-    /*if(this.box_steps[0]){
-        document.getElementById("step1").classList.add("superActive");
-    }else{
-        document.getElementById("step1").classList.remove("superActive");
-    }
-    if(this.box_steps[1]){    
+    this.activateODeactivate();
+  }
+
+  activateODeactivate(){
+    let steps = this.box_steps;
+    window.onload = function(){
+      if(steps[0]) {
+        document.getElementById("step1").classList.add("active");
+      } else {
+        document.getElementById("step1").classList.remove("active");
+      }
+      if(steps[1]) {
         document.getElementById("step2").classList.add("active");
-    }else{
+      } else {
         document.getElementById("step2").classList.remove("active");
-    }
-     if(this.box_steps[2]){
+      }
+      if(steps[2]) {
         document.getElementById("step3").classList.add("active");
-    }else{
-        document.getElementById("step3").classList.remove("active")
+      } else {
+        document.getElementById("step3").classList.remove("active");
+      }
+      if(steps[3]) {
+        document.getElementById("step4").classList.add("superActive");
+      } else {
+        document.getElementById("step4").classList.remove("superActive");
+      }
     }
-    if(this.box_steps[3]){
-        document.getElementById("step4").classList.add("active")
-    }else{
-        document.getElementById("step4").classList.remove("superActive")
-    }*/
-    this.recuperarCajas();
-    // console.log("hola hola",this.boxes);
 
   }
+
 
   guardaProductos(){ 
     // console.log("id to box es:", this.id_to_box);
@@ -175,10 +179,7 @@ export class DoneComponent implements OnInit {
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
       this.boxes.box_arts=this.box_json.box_arts;
-      this.boxes.box_step_01=this.box_json.box_step_01;
-      this.boxes.box_step_02=this.box_json.box_step_02;
-      this.boxes.box_step_03=this.box_json.box_step_03;
-      this.boxes.box_step_04=this.box_json.box_step_04;
+      this.boxes.box_steps = this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], this.box_steps[2], true];
       console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
@@ -198,10 +199,7 @@ export class DoneComponent implements OnInit {
     this.boxes.box_name=this.box_json.box_name;
     this.boxes.box_img=this.box_json.box_img;
     this.boxes.box_arts=this.box_json.box_arts;
-    this.boxes.box_step_01=this.box_json.box_step_01;
-    this.boxes.box_step_02=this.box_json.box_step_02;
-    this.boxes.box_step_03=this.box_json.box_step_03;
-    this.boxes.box_step_04=this.box_json.box_step_04;
+    this.boxes.box_steps = this.box_steps;
     // Almacenar Info en base de datos  
       this.boxes.box_id=this.id_to_box;
       this.boxes.box_type=this.box_json.type_box;
@@ -215,10 +213,7 @@ export class DoneComponent implements OnInit {
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
       this.boxes.box_arts=this.box_json.box_arts;
-      this.boxes.box_step_01=this.box_json.box_step_01;
-      this.boxes.box_step_02=this.box_json.box_step_02;
-      this.boxes.box_step_03=this.box_json.box_step_03;
-      this.boxes.box_step_04=this.box_json.box_step_04;
+      this.boxes.box_steps = this.box_steps;
       this.boxes.box_arts_cant=this.box_json.box_arts_cant;
 
       this.products=this.boxes.box_arts;
@@ -234,15 +229,16 @@ export class DoneComponent implements OnInit {
     this.preload = false;
     var count =0;
     let array = this.boxes.box_arts;
+    let cant = this.boxes.box_arts_cant;
     console.log("hola hola hola", array);
     for(var product in array){
       console.log("hola hola hola re", array[product]);
 
       let item = {
         product: array[product].url,
-        unit: 1,
+        unit: cant[product],
         details: [],
-        url:"#"
+        url:[]
       }
      this.usersService.addSoppingCart(item);
     }
@@ -250,7 +246,7 @@ export class DoneComponent implements OnInit {
     //   let item = {
     //   product: item_p.url,
     //   unit: 0,
-    //   details: [],
+    //   details: [], 
     //   url:"#"
     // }
     //   this.usersService.addSoppingCart(item);

@@ -273,6 +273,7 @@ export class HeaderComponent implements OnInit {
 		if(localStorage.getItem("list")){
 
 			let list = JSON.parse(localStorage.getItem("list"));
+			console.log("carrito:",list);
 
 			this.totalShoppingCart = list.length;
 
