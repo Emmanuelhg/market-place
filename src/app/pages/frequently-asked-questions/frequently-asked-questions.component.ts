@@ -10,7 +10,7 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
 
   path:string = Path.url;
   visibility_1 =[];
-  fncNone;
+  fncNone; 
 
   constructor() { }
   	

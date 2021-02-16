@@ -2,424 +2,224 @@
 *ngIf="!preload"
 class="ps-product--detail ps-product--fullwidth">
 
-    <!--=====================================
-    Product Header
-    ======================================--> 
+    <div style="display: flex;" class="row">
 
-    <div class="ps-product__header">
-
-        <!--=====================================
-        Gallery
-        ======================================--> 
-
-        <div class="ps-product__thumbnail" data-vertical="true">
-
-            <figure>
-
-                <div class="ps-wrapper">
-
-                    <div class="ps-product__gallery" data-arrow="true">
-
-                        <div 
-                        *ngFor="let image of gallery[0]"
-                        class="item">
-                            <a href="{{path}}img/products/{{product[0].category}}/gallery/{{image}}">
-                                <img src="{{path}}img/products/{{product[0].category}}/gallery/{{image}}" alt="{{product[0].name}}">
-                            </a>
-
-                         
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </figure>
-
-            <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
-                <div 
-                *ngFor="let image of gallery[0]; let lastIndex = last; let i = index"
-                class="item">
-                    <img src="{{path}}img/products/{{product[0].category}}/gallery/{{image}}" alt="{{product[0].name}}">
-
-                {{ lastIndex ? callbackGallery(i) : ""}}
-                </div>          
-
-            </div>
-
-        </div><!-- End Gallery -->
-
-        <!--=====================================
-        Product Info
-        ======================================--> 
-
-        <div 
-        *ngFor="let p of product; let i = index"
-        class="ps-product__info">
-
-            <h1>{{p.name}}</h1>
-
-            <div class="ps-product__meta">
-
-                <div class="ps-product__rating">
-
-                    <select class="ps-rating" data-read-only="true">
-
-                        <option 
-                        *ngFor="let review of reviews[i]; let f = index"
-                        [value]="review">{{f+1}}</option>
-                      
-
-                    </select>
-
-                    <span>{{rating[i]}}</span>
-
-                </div>
-
-            </div>
-
-            <div [innerHTML]="price[i][0]"></div>
-
-            <div class="ps-product__desc">
-
-                <p> 
-
-                    Sold By:<a class="mr-20" href="shop-default.html"><strong>{{p.store}}</strong></a> 
-
-                    Status:
-                    <strong 
-                    *ngIf="p.stock > 0"
-                    class="ps-tag--in-stock"> In stock</strong>
-
-                    <strong 
-                    *ngIf="p.stock == 0"
-                    class="ps-tag--out-stock"> Out stock</strong>
-
-                </p>
-
-                <!--=====================================
-                SUMMARY
-                ======================================-->
-
-                <div class="ps-list--dot">
-                    
-                    <ul class="ps-product__desc">
-                        
-                        <li *ngFor="let sum of summary[i]">
-                            {{sum}}
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <!--=====================================
-                VIDEO
-                ======================================-->
-
-                 <iframe 
-                    *ngIf="video != null"
-                    class="mb-3"
-                    [attr.src]="video | urlsecure"
-                    height="360"
-                    frameborder="0" 
-                    allowfullscreen></iframe> 
-
-            </div>
-
-            <div class="ps-product__variations" [attr.specification]="p.specification"></div>
+        <div class="col-lg-7 col-md-7 col-sm-12">
 
             <div 
-            *ngIf="p.offer != '' && offer"
-            class="ps-product__countdown">
+            *ngIf="!preload"
+            class="ps-product--detail ps-product--fullwidth">
 
-                <figure>
+                <!--=====================================
+                Gallery 
+                ======================================--> 
 
-                    <figcaption> Don't Miss Out! This promotion will expires in</figcaption>
+                    <figure>
 
-                    <ul class="ps-countdown" [attr.data-time]="countd[i]">
+                        <div class="ps-wrapper">
 
-                        <li><span class="days"></span>
-                            <p>Days</p>
-                        </li>
+                            <div class="ps-product__gallery" data-arrow="true">
+                                 <!-- 
+                                    *ngFor="let p of product[0]"
+                                     *ngFor="let image of gallery[0]" 
+                                 -->
+                                <div 
+                                *ngFor="let p of product; let i = index"
+                                class="item">
+                                    <a href="{{path}}img/products/{{product[0].category}}/gallery/{{image}}">
+                                        <img style="width: 100%; height: 500px;" src="{{p.image}}" alt="{{product[0].name}}">
+                                    </a>
 
-                        <li><span class="hours"></span>
-                            <p>Hours</p>
-                        </li>
+                                 
+                                </div>
 
-                        <li><span class="minutes"></span>
-                            <p>Minutes</p>
-                        </li>
+                            </div>
 
-                        <li><span class="seconds"></span>
-                            <p>Seconds</p>
-                        </li>
-
-                    </ul>
-
-                </figure>
-
-                <figure>
-
-                    <figcaption>Sold Items</figcaption>
-
-                    <div class="ps-product__progress-bar ps-progress" [attr.data-value]="p.stock">
-
-                        <div class="ps-progress__value"><span></span></div>
-
-                        <p><b>{{100-p.stock}}/100</b> Sold</p>
-
-                    </div>
-
-                </figure>
-
-            </div>
-
-            <div class="ps-product__shopping">
-
-                <figure>
-
-                    <figcaption>Quantity</figcaption>
-
-                    <div class="form-group--number quantity">
-
-                        <button class="up" (click)="changeQuantity(quantity.value, 1, 'up')">
-                            <i class="fa fa-plus"></i>
-                        </button>
-
-                        <button class="down" (click)="changeQuantity(quantity.value, 1, 'down')">
-                            <i class="fa fa-minus"></i>
-                        </button>
-
-                        <input class="form-control px-5" type="number" value="1" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
-
-                    </div>
-
-                </figure>
-
-                <a class="ps-btn ps-btn--black" style="cursor:pointer" (click)="addShoppingCart(p.url, 1, [])">Add to cart</a>
-
-                <a class="ps-btn" style="cursor:pointer" (click)="buyNow(p.url, 1, [])">Buy Now</a>
-
-                <div class="ps-product__actions">
-
-                    <a style="cursor:pointer" (click)="addWishlist(p.url)">
-                        <i class="icon-heart"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="ps-product__specification">
-
-                <a class="report" href="#">Report Abuse</a> 
-
-                <p class="categories">
-
-                    <strong> Categories:</strong>
-
-                    <a href="products/{{p.category}}">{{p.category}}</a>,
-                    <a href="products/{{p.sub_category}}">{{p.sub_category}}</a>,
-                    <a href="search/{{p.title_list}}">{{p.title_list}}</a>
-
-                </p>
-
-                <p class="tags"><strong> Tags</strong>
-
-                    <a 
-                    *ngFor="let tag of tags"
-                    href="search/{{tag}}"> {{tag}}</a>
-
-                </p>
-
-            </div>
-
-            <div class="ps-product__sharing">
-
-                <a class="facebook" href="#">
-                    <i class="fab fa-facebook"></i>
-                </a>
-
-                <a class="twitter" href="#">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-
-                <a class="linkedin" href="#">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-
-                <a class="instagram" href="#">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-            </div>
-
-        </div> <!-- End Product Info -->
-
-    </div> <!-- End Product header -->
-
-    <!--=====================================
-    Product Content
-    ======================================--> 
-
-    <div 
-    *ngFor="let p of product; let i = index; let lastIndex = last"
-    class="ps-product__content ps-tab-root">
-
-        <!--=====================================
-        Bought Together
-        ======================================--> 
-
-        <app-bought-together [childItem]="p"></app-bought-together>
-
-        <ul class="ps-tab-list">
-
-            <li class="active"><a href="#tab-1">Description</a></li>
-            <li><a href="#tab-2">Details</a></li>
-            <li><a href="#tab-3">Vendor</a></li>
-            <li><a href="#tab-4">Reviews ({{totalReviews}})</a></li>
-            <li><a href="#tab-5">Questions and Answers</a></li>
-
-        </ul>
-
-        <div class="ps-tabs">
-
-            <!--=====================================
-            Description
-            ======================================--> 
-
-            <div class="ps-tab active" id="tab-1">
-
-                <div [innerHTML]="p.description"></div>
-
-            </div>
-
-            <!--=====================================
-            Details
-            ======================================--> 
-
-            <div class="ps-tab" id="tab-2">
-
-                <table class="table table-bordered ps-table ps-table--specification">
-                    
-                    <tbody>
-                      
-                        <tr *ngFor="let detail of details[i]">
-                          <td>{{detail.title}}</td>
-                          <td>{{detail.value}}</td>
-                        </tr> 
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <!--=====================================
-            Store
-            ======================================--> 
-
-            <div class="ps-tab" id="tab-3">
-
-                <app-vendor-store [childItem]="p.store"></app-vendor-store>
-
-            </div>
-
-            <!--=====================================
-            Reviews
-            ======================================--> 
-
-            <div class="ps-tab" id="tab-4">
-
-                <app-reviews [childItem]="p"></app-reviews>
-
-            </div>
-
-            <!--=====================================
-            Messages
-            ======================================--> 
-
-            <div class="ps-tab" id="tab-5">
-
-                <div class="ps-block--questions-answers">
-
-                    <h3>Questions and Answers</h3>
-
-                    <div class="input-group mb-3 input-group-lg">
-
-                        <input class="form-control" type="text" placeholder="Have a question?" name="question" #question>
-
-                        <div class="input-group-prepend">
-                            <span class="btn btn-warning input-group-text" (click)="newQuestion(question, p.url, p.store)">Send</span>
                         </div>
-                    
-                    </div>
 
-                    <!--=====================================
-                    Visualizar las preguntas y respuestas
-                    ======================================-->
+                    </figure>
 
-                    <div
-                    *ngIf="questions.length > 0">
+                    <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false" 
+                    style="display: none;">
+                        <div 
+                        *ngFor="let image of gallery[0]; let lastIndex = last; let i = index"
+                        class="item">
+                            <img src="{{path}}img/products/{{product[0].category}}/gallery/{{image}}" alt="{{product[0].name}}">
 
-                        <div
-                        class="my-3"
-                        *ngFor="let qa of questions">
-
-                            <div class="media border p-3">
-                                 
-                                <div class="media-body">
-                                    
-                                    <h4><small><i>Question on {{qa.date_message | date }}</i></small></h4>
-                                    <p>{{qa.message}}</p>
-
-                                </div>
-
-                                <img 
-                                *ngIf="qa.user.method != 'direct'"
-                                src="{{qa.user.picture}}"  class="ml-3 mt-3 rounded-circle" style="width:60px;">
-
-                                <img 
-                                *ngIf="qa.user.method == 'direct'"
-                                src="{{path}}img/users/{{qa.user.username}}/{{qa.user.picture}}" class="ml-3 mt-3 rounded-circle" style="width:60px;">
-
-                            </div>
-
-                            <div
-                            *ngIf="qa.answer != null" 
-                            class="media border p-3">
-
-                               <img src="{{path}}img/stores/{{qa.store.url}}/{{qa.store.logo}}" class="ml-3 mt-3 rounded-circle" style="width:60px;">
-                                 
-                                <div class="media-body text-right">
-                                    
-                                    <h4><small><i>Answer on {{qa.date_answer | date }}</i></small></h4>
-                                    <p>{{qa.answer}}</p>
-
-                                </div>
-
-                            </div>
-
-                        </div>                        
+                        {{ lastIndex ? callbackGallery(i) : ""}}
+                        </div>          
 
                     </div>
 
                 </div>
 
-            </div>
+            <div
+            *ngIf="preload"
+            class="d-flex justify-content-center">
+                
+                <div class="spinner-border text-muted my-5"></div>
 
+            </div>
+            
         </div>
 
+        <div class="col-lg-5 col-md-7 col-sm-12">
+
+                <!--=====================================
+                Product Info
+                ======================================--> 
+
+                <div 
+                *ngFor="let p of product; let i = index"
+                class="ps-product__info">
+
+                    <h1 style="text-align: center;">{{p.name}}</h1>
+
+                    <div class="ps-product__meta">
+
+
+                    </div>
+
+                    <div style="text-align: center;" [innerHTML]="price[i][0]"></div>
+
+                    <div class="ps-product__desc">
+
+                       <p (click)="fncVisibility(0)" style="text-align: center; font-size: 100%;">
+                            DESCRIPTION
+                        </p>
+                        <!--=====================================
+                        SUMMARY
+                        ======================================-->
+
+                        <div 
+                         *ngIf="visibility_1[0]"
+                        class="ps-list--dot">
+                            
+                            <ul class="ps-product__desc">
+                                
+                                <li *ngFor="let sum of summary[i]">
+                                    {{sum}}
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ps-product__shopping" style="justify-content: center;">
+
+                        <figure style="text-align: center;">
+
+                            <figcaption>
+                                <h3 style="text-align: center;">
+                                    Quantity
+                                </h3>
+                            </figcaption>
+
+                            <div class="form-group--number quantity" style="text-align: center;">
+
+                                <button class="up" (click)="changeQuantity(quantity.value, 1, 'up')">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+
+                                <button class="down" (click)="changeQuantity(quantity.value, 1, 'down')">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+
+                                <input class="form-control px-5" type="number" value="1" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
+
+                            </div>
+
+                        </figure>
+
+                    </div>
+                    <!--=====================================
+                    Box
+                    ======================================-->
+
+                   <!--  <div>
+                        <h3 style="text-align: center;">
+                            BOX COLOR
+                        </h3>
+                        <div class="row" style="display: flex;">
+                            <img class="col-6" 
+                            style="background: red; width: 50px; height: 50px;" 
+                            src="" >
+                            <img class="col-6" 
+                            style="background: red; width: 50px; height: 50px;"
+                            src="">
+                        </div>
+                    </div> -->
+
+                    <!--=====================================
+                    Letter
+                    ======================================-->
+                    <div class="row" style="display: flex; margin-top: 3%;">
+
+                        <div class="col-6">
+                            <p>To</p>
+                            <div class="input-group input-group-lg">
+                                <input  
+                                  placeholder="To" 
+                                  type="text" class="form-control" 
+                                  aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-lg">
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                            <p>From</p>
+                            <div class="input-group input-group-lg">
+                                <input  
+                                placeholder="From" 
+                                type="text" class="form-control" 
+                                aria-label="Sizing example input" 
+                                aria-describedby="inputGroup-sizing-lg">
+                            </div>  
+                        </div>    
+                        
+                    </div>
+
+                    <div style="margin-top: 3%; ">
+                        <p>Message</p>
+
+                        <textarea placeholder="Enter your card message here. 120 characters" 
+                        id="to-message" rows="5" 
+                        id="to-message"
+                        style="width: 100%"></textarea>
+
+                    </div>
+
+                    <div style="margin-bottom: 3%; margin-top: 3%;">
+
+                        <a class="new-boton" 
+                        style="cursor:pointer" 
+                        (click)="addShoppingCart(p.url, 1, [])">
+                            ADD TO CART $40.00
+                        </a>
+                        <!-- <a class="btn btn-sm animated-button thar-three "> -->
+                            <!-- ADD TO CART $40.00 -->
+                        <!-- </a> -->
+                    </div>
+
+
+                </div> <!-- End Product Info -->
+
+        
+            
+        </div>        
+    </div>
+
     
-    {{ lastIndex ? callback() : ""}}
-    </div><!--  End product content -->
 
 </div>
 
 <!--=====================================
-Preload
+Preload 
+
+    <a class="ps-btn ps-btn--black" style="cursor:pointer"
+     (click)="addShoppingCart(p.url, 1, [])">Add to cart</a>
 ======================================-->
 <div
 *ngIf="preload"
@@ -429,5 +229,218 @@ class="d-flex justify-content-center">
 
 </div>
 
+<style>
+     .new-boton{
+        text-align: center;
+        background: black;
+        color:white;
+        justify-content: center;
+        align-items: center;
+        display: flow-root;
+        /*display: flex;*/
+     }
+    
+    /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
 
+a.animated-button.thar-three {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border: 2px solid #F7CA18;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+0s;
+}
+a.animated-button.thar-three:hover {
+    color: #000 !important;
+    background-color: transparent;
+    text-shadow: nthree;
+}
+a.animated-button.thar-three:hover:before {
+    left: 0%;
+    right: auto;
+    width: 100%;
+}
+a.animated-button.thar-three:before {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 0px;
+    z-index: -1;
+    content: '';
+    color: #000 !important;
+    background: #F7CA18;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+0s;
+}
+
+  
+    /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+    a.animated-button.thar-three {
+        /*align-items: center;*/
+        font-size: inherit;
+        width:100%;
+        height: px;
+        margin-top: px;
+        /*background-color: white;*/
+        /*color: black;*/
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        border: 2px solid black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1); 0s;
+
+        background: black;
+        color:white;
+        justify-content: center;
+        align-items: center;
+        display: flow-root;
+    }
+    a.animated-button.thar-three:hover {
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #C4AE9D; 
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+    }
+</style>
 

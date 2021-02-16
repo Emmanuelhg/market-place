@@ -17,7 +17,7 @@ declare var jQuery:any;
 declare var $:any;
 
 @Component({
-  selector: 'app-best-sales-item',
+  selector: 'app-best-sales-item', 
   templateUrl: './best-sales-item.component.html',
   styleUrls: ['./best-sales-item.component.css']
 })
@@ -32,6 +32,7 @@ export class BestSalesItemComponent implements OnInit {
 	preload:boolean = false;
 	placeholder:any[] = [0,1,2,3];
 	notFound:boolean = false;
+	products:any[] = [];
 
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,

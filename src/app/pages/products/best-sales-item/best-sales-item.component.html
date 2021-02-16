@@ -1,193 +1,84 @@
 <!--=====================================
-Best Sale Items 
+Best Sale Items  
 ======================================--> 
 
 <div 
 *ngIf="!preload && !notFound"
 class="ps-block--shop-features">
 
-    <div class="ps-block__header">
-
         <h3>Best Sale Items</h3>
 
-        <div class="ps-block__navigation">
 
-          <a class="ps-carousel__prev" href="#recommended1">
-            <i class="icon-chevron-left"></i>
-          </a>
+    <!-- Productos -->
 
-          <a class="ps-carousel__next" href="#recommended1">
-            <i class="icon-chevron-right"></i>
-          </a>
+    <div style="display: flex;">
 
-        </div>
+        <div class="divimageness row">
 
-    </div>
-
-    <center>
-
-    <div class="ps-block__content">
-
-        <div class="owl-slider" id="recommended1" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-
-          <!--=====================================
-      Product
-      ======================================--> 
-
-            <div 
-      *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-            class="ps-product">
-
+            <!--=====================================
+            Productos col-md-12 col-sm-12
+            ======================================--> 
+     
+            <div
+              *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
+             class="ps-product col-lg-3 col-md-4 col-sm-6">
                 <div class="ps-product__thumbnail">
-
-                  <a routerLink="/product/{{product.url}}">
-                    <img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
-                  </a>
-
-                  <div [innerHTML]="price[i][1]"></div>
+                    <a routerLink="/product/{{product.url}}">
+                        <img 
+                        style="width: 100%; height: 260px;" 
+                        (click)="detallesProducto(product)"
+                         type="button"  data-toggle="modal" 
+                         data-target=".bd-example-modal-xl"
+                         src="{{product.image}}" alt="">
+                    </a>
 
                     <ul class="ps-product__actions">
-
                         <li>
-                          <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                            <i class="icon-bag2"></i>
-                          </a>
-                        </li>
-
-                        <li>
-                          <a routerLink="/product/{{product.url}}" data-toggle="tooltip" data-placement="top" title="Quick View">
-                            <i class="icon-eye"></i>
-                          </a>
-                        </li>
-
-                        <li>
-                          <a style="cursor:pointer" (click)="addWishlist(product.url)" data-toggle="tooltip" data-placement="top" title="Add to Whishlist">
-                            <i class="icon-heart"></i>
-                          </a>
-                        </li>                                           
-
+                            <a style="cursor:pointer">
+                                <i class="icon-heart"></i>
+                            </a>
+                        </li> 
                     </ul>
 
-                </div>
+                    <div class="ps-product__container">
 
-                <div class="ps-product__container">
+                        <div class="ps-product__content">
 
-                  
+                          <a class="ps-product__title" routerLink="/product/{{product.url}}">
+                          {{product.name}}</a>
 
-                    <div class="ps-product__content">
+                          
+                            <div [innerHTML]="price[i][0]"></div>
 
-                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                      {{product.name}}</a>
+                        </div>
 
-                      
-                        <div [innerHTML]="price[i][0]"></div>
+                        <div class="ps-product__content hover">
 
-                    </div>
+                          <a class="ps-product__title" routerLink="/product/{{product.url}}">
+                          {{product.name}}</a>
 
-                    <div class="ps-product__content hover">
+                            <div [innerHTML]="price[i][0]"></div>
 
-                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                      {{product.name}}</a>
-
-                        <div [innerHTML]="price[i][0]"></div>
+                        </div>
 
                     </div>
+                   
+                    <!-- Boton para agregar productos a la caja -->
+                     <div class="texto">
+                        <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                            
+                            Add to box
+                        </a>
+                      </div>
 
                 </div>
+             {{ lastIndex ? callback() : ""}}
 
-            
-      {{ lastIndex ? callback() : ""}}
-            </div><!-- End Product -->
-
+            </div><!-- End Product --> 
+          
         </div>
-
+      
     </div>
-
-    </center>
-<br><br>
-
-
-
-
-<center>
-
-    <div class="ps-block__content">
-
-        <div class="owl-slider" id="recommended1" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-
-      <!--=====================================
-      Product
-      ======================================--> 
-
-            <div 
-      *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-            class="ps-product">
-
-                <div class="ps-product__thumbnail">
-
-                  <a routerLink="/product/{{product.url}}">
-                    <img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
-                  </a>
-
-                  <div [innerHTML]="price[i][1]"></div>
-
-                    <ul class="ps-product__actions">
-
-                        <li>
-                          <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                            <i class="icon-bag2"></i>
-                          </a>
-                        </li>
-
-                        <li>
-                          <a routerLink="/product/{{product.url}}" data-toggle="tooltip" data-placement="top" title="Quick View">
-                            <i class="icon-eye"></i>
-                          </a>
-                        </li>
-
-                        <li>
-                          <a style="cursor:pointer" (click)="addWishlist(product.url)" data-toggle="tooltip" data-placement="top" title="Add to Whishlist">
-                            <i class="icon-heart"></i>
-                          </a>
-                        </li>                                           
-
-                    </ul>
-
-                </div>
-
-                <div class="ps-product__container">
-
-                  
-
-                    <div class="ps-product__content">
-
-                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                      {{product.name}}</a>
-
-                      
-                        <div [innerHTML]="price[i][0]"></div>
-
-                    </div>
-
-                    <div class="ps-product__content hover">
-
-                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                      {{product.name}}</a>
-
-                        <div [innerHTML]="price[i][0]"></div>
-
-                    </div>
-
-                </div>
-
-            
-      {{ lastIndex ? callback() : ""}}
-            </div><!-- End Product -->
-
-        </div>
-
-    </div>
-</center>
 
 </div><!-- End Best Sales Items -->
 
@@ -238,3 +129,38 @@ class="d-flex justify-content-center d-lg-none">
 
 </div>
 
+<style>
+  .divimageness{
+      border-top:solid #dee2e6!important;
+      margin: 2%;
+      margin-top: 5%;
+      display: flex;
+      justify-content: space-around;
+  }
+  .texto{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            /*bottom: - 100%;*/
+            padding: 10px 20px;
+        }
+        .texto a{
+            border: 1px solid black !important;
+            background: white;
+            display: flow-root;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            height: px;
+        }    
+        .ps-product:hover .texto{
+            bottom: -50%;
+        }
+        .ps-product__thumbnail:hover .texto {
+          bottom: -70%;
+
+          background-color:ps-form--quick-search button;
+          color: #ffffff;
+        }
+</style>

@@ -22,7 +22,7 @@ export class SelecctionCajaComponent implements OnInit {
   
   // Variables del funcionamiento
    box_steps=[true,false,false,false]
-
+ 
 
   path:string = Path.url;
   id:string = null;
@@ -197,5 +197,19 @@ export class SelecctionCajaComponent implements OnInit {
     this.preload = false;
   }
 
+  fncBorder(){
+    
+    if(this.type_box==0){
+      document.getElementById("img_izquierda").style.border ="thick solid #0000FF";
+    }else{
+      document.getElementById("img_izquierda").style.border ="";
+    }
+
+    if(this.type_box==1){
+      document.getElementById("img_derecha").style.border ="thick solid #0000FF";
+    }else{
+      document.getElementById("img_derecha").style.border ="";
+    }
+  }
     
 }

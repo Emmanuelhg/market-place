@@ -14,7 +14,7 @@ import { Rating,
          Tooltip,
          Sweetalert } from '../../../functions';
        
-
+ 
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { MessagesModel } from '../../../models/messages.model';
@@ -58,6 +58,8 @@ export class ProductLeftComponent implements OnInit {
 
     questions:any[] = [];
 
+    visibility_1 =[];
+    fncNone;
 
     constructor(private activateRoute: ActivatedRoute,
                 private productsService: ProductsService,
@@ -74,6 +76,10 @@ export class ProductLeftComponent implements OnInit {
     ngOnInit(): void {
 
       this.preload = true;
+
+      for (let i = 0; i < 16; i++) {
+        this.visibility_1.push(false);
+      }
     
       this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"])  
       .subscribe( resp => {
@@ -653,5 +659,10 @@ export class ProductLeftComponent implements OnInit {
         
     }
 
+    fncVisibility(index){
+ 
+    this.visibility_1[index]=!this.visibility_1[index];
+
+  }
 
 }

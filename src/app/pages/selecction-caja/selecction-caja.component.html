@@ -8,7 +8,7 @@
     }
     .progressbar a{
         list-style-type: none;
-        float: left;
+        float: left; 
         width: 24.33%;
         position: relative;
         text-align: center;
@@ -340,13 +340,14 @@ a.animated-button.thar-three:before {
 	/*Esto es lo bueno*/
 
 	.div-imagen {
-	  padding: 0px 20px;
+	  /*padding: 0px 20px;*/
 	  display:inline-block;
 	  position:relative;
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
 	  border: black;
+      margin: 4%;
 	}
 
 	/*.div-imagen:before{
@@ -430,18 +431,18 @@ a.animated-button.thar-three:before {
        
         <!-- Imáges de cajas -->
         <div class="images"> 
-	        <div class="div-imagen">
+	        <div class="div-imagen" (click)="fncBorder(0)">
 	        	<div class="divtexcontainer">
 	   			   <p>Texto prueba 1</p>
 	  			</div>
-                     <!--  id="img_izquierda"  -->
-	 		    <img  
+	 		    <img
+                 style="width: 100%;"
                  id="img_izquierda"
 	    	     (click)="selectBox(0)"
 	 		     class="desvanecer" src="{{urlsImgs[0]}}">
 	        </div>
 
-		   <div class="div-imagen">
+		   <div class="div-imagen" (click)="fncBorder(1)">
 		    	<div class="divtexcontainer">
 					   <p>Texto prueba 2</p>
 				</div>

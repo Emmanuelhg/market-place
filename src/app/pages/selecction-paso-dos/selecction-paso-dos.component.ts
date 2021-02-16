@@ -15,7 +15,7 @@ import { NegocioService } from '../../services/negocio.service';
 
  
 
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any;
 @Component({
   selector: 'app-selecction-paso-dos',
@@ -60,6 +60,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   productFound:number = 0;
   almacenar_productos:any[] = [];
   cant_productos:any[] = [];
+  ids_prodcts:any[]=[];
   producto_url:any[] = [];
   porductos_detalles;
   porductos_detalles_img;
@@ -117,6 +118,17 @@ export class SelecctionPasoDosComponent implements OnInit {
             if (resp["box_steps"] != undefined) {
                this.box_steps = resp["box_steps"];
             }
+            if(resp["box_arts"]!= undefined){
+              for(let art in resp["box_arts"]){
+
+                for(let i =0; i<resp["box_arts_cant"][art]; i++){
+                  this.almacenarProductos(resp["box_arts"][art]);
+                }
+                
+              }
+              console.log("es esto:",this.almacenar_productos);
+              console.log("es esto 2:",this.cant_productos);
+            }
           }
         this.configureUi();
 
@@ -136,7 +148,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
             this.getProduct.push(resp[i]);
             // this.products.push(resp[i].)
-            this.almacenar_productos = [];
+            // this.almacenar_productos = [];
             this.products.push(i);
               this.product_name.push(resp[i].name);
               this.product_price.push(resp[i].price);
@@ -192,7 +204,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     if(this.almacenar_productos.length != 0){
       var esta_en_el_arreglo = false;
       for(var i = 0; i < this.almacenar_productos.length; i++){
-        if ( id === this.almacenar_productos[i]) {
+        if ( id.url == this.almacenar_productos[i].url) {
           // console.log("Es igual");
           this.cant_productos[i] = this.cant_productos[i] + 1;
           esta_en_el_arreglo = true;
@@ -201,8 +213,10 @@ export class SelecctionPasoDosComponent implements OnInit {
       }
       console.log("estan en el arreglo"+esta_en_el_arreglo);
       if (esta_en_el_arreglo == false) {
+          console.log("id es:"+id);
           this.almacenar_productos.push(id);
           this.cant_productos.push(1);
+          this.ids_prodcts.push("id.")
       }
        }else {
           this.almacenar_productos.push(id);
@@ -249,6 +263,7 @@ export class SelecctionPasoDosComponent implements OnInit {
    
     this.almacenar_productos.splice(index ,1);
     this.cant_productos.splice(index, 1);
+    this.ids_prodcts.splice(index,1);
     this.sumaProductos();
   }
   
