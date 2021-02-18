@@ -4,7 +4,4 @@ function mostrar(){
 	}
  
 
-
-
-
  

@@ -125,7 +125,7 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_deliver_to="";
       this.boxes.box_deliver_message="";
       this.boxes.box_price=10;
-      this.boxes.box_size=0;
+      this.boxes.box_size=30;
       this.boxes.box_status=1;
       this.boxes.box_name="caja 1 selecionada";
       this.boxes.box_img="";

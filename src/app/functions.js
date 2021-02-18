@@ -708,8 +708,8 @@ export let Sweetalert = {
             if(url == null){
 
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
+                    // icon: 'success',
+                    title: 'Box Size',
                     text: text
                 }) 
 

@@ -3,7 +3,7 @@ import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
-import { Id_box, Search } from '../../functions';
+import { Id_box, Search,Sweetalert } from '../../functions';
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -40,7 +40,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
       "box_name" : "caja 1 selecionada",
       "box_price" : 10,
-      "box_size" : 0,
+      "box_size" : 30,
       "box_status" : 1,
       "box_steps": [false, true, false, false],
       "box_type" : 1
@@ -69,6 +69,13 @@ export class SelecctionPasoDosComponent implements OnInit {
   subTotal:string = "0";
   text_box:string;
   gol;
+  box_size=30;
+  box_selection=1;
+  full_percentage_bar=0;
+  small_box_size = 30;
+  regular_box_size = 60;
+  original_size = 30;
+
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -223,6 +230,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           this.cant_productos.push(1);
         }
     this.sumaProductos();
+    this.calculatePercentage()
 
   }
 
@@ -265,6 +273,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.cant_productos.splice(index, 1);
     this.ids_prodcts.splice(index,1);
     this.sumaProductos();
+    this.calculatePercentage();
   }
   
   detallesProducto(products){
@@ -350,6 +359,35 @@ export class SelecctionPasoDosComponent implements OnInit {
     if(this.box_steps[2]) {
        window.open('/selecction-paso-tres'+this.id_to_box,'_self');
     }
+  }
+  // Calcular porcentaje de los productos agregados
+  calculatePercentage(){
+    var used_space = 0;
+      for(let i = 0; i< this.almacenar_productos.length; i++){
+        used_space += (30/this.almacenar_productos[i].size) * this.cant_productos[i];
+      }
+    var pivote = this.box_size - used_space;
+    console.log("used space es "+used_space+" y box size es "+this.box_size);
+    //var percentage = (pivote * 100)/ this.original_size;
+    if(used_space<=this.regular_box_size){
+      if(this.box_size == this.regular_box_size && used_space<= this.small_box_size) {
+        this.box_size = this.small_box_size;
+        this.full_percentage_bar = 50;
+      } else if(this.box_size == this.small_box_size && used_space> this.small_box_size) {
+        console.log("Hace cambio a big");
+        this.box_size = this.regular_box_size;
+        this.full_percentage_bar = 100;
+        Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
+      }
+    }  else {
+      Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
+      // ENVIO ERROR 
+    }
+    
+  }
+
+  filtradoProductos1(index,value:string){
+    console.log("el valor es:"+value);
   }
     
 }
