@@ -1,281 +1,351 @@
- <style>
- 
+<style>
+    
+    .row-yt{
+      margin:1%; 
+      width: 60px;
+      height: 60px;
+      display: inline-flex; 
+    }
+    .col-5{
+       margin: 0px; 
+    }
+    .byn-tyt{
+        background: black;
+        color: white;
+        align-content: center;
+        display: flow-root;
+        cursor: pointer; text-align: center; 
+        align-content: center;
+        padding: 14px;
+    }
+    .byn-tyt-white{
+        background: white;
+        color: black;
+        align-content: center;
+        display: flow-root;
+        cursor: pointer; text-align: center; 
+        align-content: center;
+        padding: 16px;
+        font-size: 71%;
+        border:1px solid #000;
+    }
+    .position-sticky{
+        width: 100%;
+    }
+    .div-img-box{
+        background: yellow;
+        width: 70%;
+
+    }
+    .div-btn-box{
+        background: blue;
+        display: flex;
+        width: 30%;
+    }
+
+   
+    .div-productos-agregados-caja{
+        display: flex;
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+    }
+    .articulos-bottom-container{
+        height: 64px;
+        width: 67px;
+        margin: 1%;
+        margin-left: 3%;
+    }
+    .btn-prod.aagregado{
+        float: left;
+        margin: 1%;
+        display: flex;
+    }
+    .select-caja {
+        text-align: center;
+        display: block;
+        width: 50%
+    }
+    .select-active-caja {
+        background-color:  rgb(196, 174, 157);
+    }
+
     .tex_product{
-                    font-size: 1.9rem;
-                    line-height: 1.6em;
-                    color: #666;
-                    margin-left: 0%;
-                  } 
+        font-size: 1.9rem;
+        line-height: 1.6em;
+        color: #666;
+        margin-left: 0%;
+      } 
 
 
-                 .img-contrainer{
-                    
-                    position: relative;
-                 }
-                
-                .img-contrainer img{
-                    width: 89%;
-                    height: 59%;
-                    margin-left: 12%;
-                    margin-top: 35%;
-                    
-                 }
+     .img-contrainer{
+        
+        position: relative;
+     }
+    
+    .img-contrainer img{
+        width: 89%;
+        height: 59%;
+        margin-left: 12%;
+        margin-top: 35%;
+        
+     }
 
-                 .img_contrainer p {
-                    justify-content: left;
-                    align-items: center
-                    margin-left: 12%;
-                  }
+     .img_contrainer p {
+        justify-content: left;
+        align-items: center
+        margin-left: 12%;
+      }
 
-                .img-cambio{
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    opacity: 0;
-                    transition: opacity 0.5s ease;
-                }
-                .img-cambio:hover{
-                    opacity: 1;
-                 }
-                
+    .img-cambio{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    .img-cambio:hover{
+        opacity: 1;
+     }
+    
 
-                .divimagenesst{
-                    margin: 2%;
-                    margin-top: -8%;
-                    display: flex;
-                    justify-content: space-around;
+    .divimagenesst{
+        margin: 2%;
+        margin-top: -8%;
+        display: flex;
+        justify-content: space-around;
 
-                 }
+     }
 
-                .img_rt{
-                    position: relative;
-                    margin: 2%;
-                    margin-top: 8%;
-                    justify-content: space-around;
-                }
-                .img_rt > img{
-                    width: 100%;
-                    height: 100%;
-                }
-                
-                .divForNewImagestr{
-                    border: 1px solid #dee2e6!important;
-                    margin:3px;
-                    width: 80%;
-                    height: 72%;
-                    position: ;
+    .img_rt{
+        position: relative;
+        margin: 2%;
+        margin-top: 8%;
+        justify-content: space-around;
+    }
+    .img_rt > img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .divForNewImagestr{
+        border: 1px solid #dee2e6!important;
+        margin:3px;
+        width: 80%;
+        height: 72%;
+        position: ;
 
-                }
+    }
 
-                .divForNewImagestrp{
-                    position: absolute;
-                    border: 1px solid #dee2e6!important;
-                    margin:3px;
-                    width: 80%;
-                    height: 72%;
-                    opacity: 0;
-                    transition: opacity 0.5s ease;
-                }
-                .divForNewImagestrp:hover{
-                    opacity: 1;
-                 }
-                 
+    .divForNewImagestrp{
+        position: absolute;
+        border: 1px solid #dee2e6!important;
+        margin:3px;
+        width: 80%;
+        height: 72%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    .divForNewImagestrp:hover{
+        opacity: 1;
+     }
+     
 
-                .divimageness{
-                    border-top:solid #dee2e6!important;
-                    margin: 2%;
-                    margin-top: 5%;
-                    display: flex;
-                    justify-content: space-around;
-                }
+    .divimageness{
+        border-top:solid #dee2e6!important;
+        margin: 2%;
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-around;
+    }
 
-                .divimagenesstu{
-                    margin: 2%;
-                    margin-top: -4%;
-                    display: flex;
-                    justify-content: space-around;
-                }
+    .divimagenesstu{
+        margin: 2%;
+        margin-top: -4%;
+        display: flex;
+        justify-content: space-around;
+    }
 
-                .search{
-                  display: flex;
-                  justify-content: left;
-                   align-items: center;
-                }
+    .search{
+      display: flex;
+      justify-content: left;
+       align-items: center;
+    }
 
-                .select{
-                  display: flex;
-                  justify-content: left;
-                   align-items: center;
-                }
+    .select{
+      display: flex;
+      justify-content: left;
+       align-items: center;
+    }
 
-                .botn_netx{
-                    background-color: black;
-                    margin: px;
-                    color: white;
-                    width: 90%;
-                    height: 100%;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                }
+    .botn_netx{
+        background-color: black;
+        margin: px;
+        color: white;
+        width: 90%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 
-                .div_title_product{
-                    
-                    margin-top: 20px;
-                    margin-bottom: 20px;
-                    margin-left: -6px;
-                    margin-right: 37px;
-                }
+    .div_title_product{
+        
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: -6px;
+        margin-right: 37px;
+    }
 
-                .div_bordes{
-                    
-                    margin-left: 30px;
-                    margin-right: 30px;
-                }
+    .div_bordes{
+        
+        margin-left: 30px;
+        margin-right: 30px;
+    }
 
-                .divSubMenus{
-                    border-top: 1px solid #dee2e6!important;
-                    border-right: 1px solid #dee2e6!important;  
-                    border-left: 1px solid #dee2e6!important;
-                    border: 1px solid #dee2e6!important;
-                    display: flex;
-                    justify-content: space-around;
-                    position: relative;
-                }
-                .divForNewElements{
-                    border-bottom: 1px solid #dee2e6!important;
-                    width: 60%;
-                    padding:15px; 
-                }
-                .divTitleForNewElements{
-                    border:1px solid #dee2e6!important;
-                    width: 100%;
-                    height: 100%;
-                    margin-left: 20px;
-                    margin-right: 20px;
-                    justify-content: center;
-                    align-items: center;
-                    display: none;      
-                }
-                .divTitleForNewElements > p{
-                    padding-top: 6px;
+    .divSubMenus{
+        border-top: 1px solid #dee2e6!important;
+        border-right: 1px solid #dee2e6!important;  
+        border-left: 1px solid #dee2e6!important;
+        border: 1px solid #dee2e6!important;
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+    }
+    .divForNewElements{
+        border-bottom: 1px solid #dee2e6!important;
+        width: 60%;
+        padding:15px; 
+    }
+    .divTitleForNewElements{
+        border:1px solid #dee2e6!important;
+        width: 100%;
+        height: 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        justify-content: center;
+        align-items: center;
+        display: none;      
+    }
+    .divTitleForNewElements > p{
+        padding-top: 6px;
 
-                } 
+    } 
 
-                .divForNewImages{
-                    border: 1px solid #dee2e6!important;
-                    margin:10px;
-                    width: 160px;
-                    height: 142px;
-                }
+    .divForNewImages{
+        border: 1px solid #dee2e6!important;
+        margin:10px;
+        width: 160px;
+        height: 142px;
+    }
 
-                .divForDescription{
-                    border-left:1px solid #dee2e6!important;
-                    border-bottom: 1px solid #dee2e6!important;
-                    width: 40%;
-                    margin: px;
-                }
+    .divForDescription{
+        border-left:1px solid #dee2e6!important;
+        border-bottom: 1px solid #dee2e6!important;
+        width: 40%;
+        margin: px;
+    }
 
-                .div_et{
-                    height: 11%;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                    float: bottom;
-                }
+    .div_et{
+        height: 11%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        float: bottom;
+    }
 
-                .div_ed{
-                    
-                    height: 11%;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                }
-                .div_er{
-                    border-bottom:1px solid #dee2e6!important; 
-                    border-top: 1px solid #dee2e6!important;
-                    height: px;   
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                }
-                .div_eu{
-                    
-                    height: 20%;
-                    justify-content: center;
-                    align-items: center;
-                   
-                }
-                .div_ep{
-                    
-                    height: 13%;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                }
+    .div_ed{
+        
+        height: 11%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .div_er{
+        border-bottom:1px solid #dee2e6!important; 
+        border-top: 1px solid #dee2e6!important;
+        height: px;   
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .div_eu{
+        
+        height: 20%;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .div_ep{
+        
+        height: 13%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 
 
-                .middleDiv{
-                    border-left: 1px solid #dee2e6!important;
-                    border-right: 1px solid #dee2e6!important;
-                    display: flex;
-                }
-                .lastDiv{
-                    border:transparent;
-                    margin-top: 5%;
-                    display: flex;
-                    justify-content: space-around;
-                }
-                .ps-product .ps-product__actionst {
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-orient: horizontal;
-              -webkit-box-direction: normal;
-                      flex-flow: row nowrap;
-              -webkit-box-pack: justify;
-                      justify-content: space-between;
-              max-width: 200px;
-              padding: 10px 0;
-              background-color: #fff;
-              -webkit-transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-              transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-            }
+    .middleDiv{
+        border-left: 1px solid #dee2e6!important;
+        border-right: 1px solid #dee2e6!important;
+        display: flex;
+    }
+    .lastDiv{
+        border:transparent;
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-around;
+    }
+        .ps-product .ps-product__actionst {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+              flex-flow: row nowrap;
+      -webkit-box-pack: justify;
+              justify-content: space-between;
+      max-width: 200px;
+      padding: 10px 0;
+      background-color: #fff;
+      -webkit-transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+      transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+    }
 
-            .ps-product .ps-product__actionst li {
-              margin-right: 10px;
-            }
+    .ps-product .ps-product__actionst li {
+      margin-right: 10px;
+    }
 
-            .ps-product .ps-product__actionst li a {
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-pack: center;
-                      justify-content: center;
-              -webkit-box-align: center;
-                      align-items: center;
-              width: 34px;
-              height: 34px;
-              border-radius: 50%;
-            }
+    .ps-product .ps-product__actionst li a {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+              align-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+    }
 
-            .ps-product .ps-product__actionst li a:hover {
-              background-color: #fcb800;
-              color: #ffffff;
-            }
+    .ps-product .ps-product__actionst li a:hover {
+      background-color: #fcb800;
+      color: #ffffff;
+    }
 
-            .ps-product .ps-product__actionst:last-child {
-              margin-right: 0;
-            }
-            .ps-product {
-            position: relative;
-            padding: 0px 4px 0;
-            border: 1px solid transparent;
-            border-bottom: none;
-            margin-left: 0%;
-            margin-top: 5%;
-            }
-            .ps-product>img{
-                margin: 100%;
-            }
+    .ps-product .ps-product__actionst:last-child {
+      margin-right: 0;
+    }
+    .ps-product {
+    position: relative;
+    padding: 0px 4px 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-left: 0%;
+    margin-top: 5%;
+    }
+    .ps-product>img{
+        margin: 100%;
+    }
         
 	.contrainer{
         width: 100%;
@@ -461,39 +531,39 @@
         transition: all 1s ease;
     }
 
-a.animated-button.thar-three {
-	color: #fff;
-	cursor: pointer;
-	display: block;
-	position: relative;
-	border: 2px solid #F7CA18;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-a.animated-button.thar-three:hover {
-	color: #000 !important;
-	background-color: transparent;
-	text-shadow: nthree;
-}
-a.animated-button.thar-three:hover:before {
-	left: 0%;
-	right: auto;
-	width: 100%;
-}
-a.animated-button.thar-three:before {
-	display: block;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 100%;
-	width: 0px;
-	z-index: -1;
-	content: '';
-	color: #000 !important;
-	background: #F7CA18;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
+    a.animated-button.thar-three {
+    	color: #fff;
+    	cursor: pointer;
+    	display: block;
+    	position: relative;
+    	border: 2px solid #F7CA18;
+    	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+    	color: #000 !important;
+    	background-color: transparent;
+    	text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+    	left: 0%;
+    	right: auto;
+    	width: 100%;
+    }
+    a.animated-button.thar-three:before {
+    	display: block;
+    	position: absolute;
+    	top: 0px;
+    	right: 0px;
+    	height: 100%;
+    	width: 0px;
+    	z-index: -1;
+    	content: '';
+    	color: #000 !important;
+    	background: #F7CA18;
+    	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
 
   
     /* Global Button Styles */
@@ -607,7 +677,191 @@ a.animated-button.thar-three:before {
    	.pzp{
      margin-top: 2%;
     }
+    .col-lg-3, .col-md-3, .col-sm-12{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .select-box{
+        padding-left: 0px;
+    }
+    .nwe-ptg{
+        height: px;
+    }
+     .div-new{
+        margin: 3%;
+     }
+     .div-new>.col-sm-12{
+        padding-right: 0px;
+        /*padding-left: 0px;*/
+     }
+   /*  .div-new>.row{
+        padding-left: 0px;
+     } */
+     .div-img-new{
+        /*width: 65%;*/
+        height: px;
+        border: 1px solid #dee2e6!important;
+     }
+     .div-info-new{   
+        /*width: 35%;*/
+        height: px;
+        border: 1px solid #dee2e6!important;
+     }
+     .div-title-new{
+         justify-content: space-around;
+        text-align: center;
+        padding: 0px 4px 0;
+        border: 1px solid #dee2e6!important;
+     }
+     .produc-agregado-new{
+     }
+     .div-price-new{
+        text-align: center;
+     }
+     .new-boton{
+        background: black;
+        color:white;
+        justify-content: center;
+        align-items: center;
+        display: flow-root;
+        /*display: flex;*/
+     }
+     .img-new-product {
+        display: flex; 
+        margin:11%;
+     }
+    .progressbartow a:before{
+        content: counter();
+        counter-increment:step;
+        width: 30px;
+        height: 30px;
+        line-height: 27px;
+        border: 1px solid #ddd;
+        display: block;
+        text-align: center;
+        margin: -14px auto 100px auto;
+        border-radius: 50px;
+        background-color: white;
+        margin-left: -21px;
 
+    }
+    .circulo {
+        width: 50px;
+        height: 30px;
+        line-height: 27px;
+        border: 1px solid #ddd;
+        display: block;
+        text-align: center;
+        margin: -6px auto 100px auto;
+        border-radius: 50%;
+        background-color: white;
+        margin-left: -30px;
+        margin-top: 3px;
+        font-size: 17px;
+    } 
+
+    .ps-product{
+       overflow: hidden 
+    }
+    .texto{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        /*bottom: - 100%;*/
+        padding: 10px 20px;
+    }
+    .texto a{
+        border: 1px solid black !important;
+        background: white;
+        display: flow-root;
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        height: px;
+    }    
+    .ps-product:hover .texto{
+        bottom: -50%;
+    }
+    .ps-product__thumbnail:hover .texto {
+      bottom: -55%;
+
+      background-color:ps-form--quick-search button;
+      color: #ffffff;
+    }
+    .quantity .mas {
+        float: right;
+        width: 15%;
+        height: px;
+        border: 1px solid #000;
+        color: #000;
+        border-radius: 0;
+        background: #fff
+    }
+    .quantity .menos {
+        float: left;
+        width: 15%;
+        height: px;
+        border: 1px solid #000;
+        color: #000;
+        border-radius: 0;
+        background: #fff
+    }
+
+    .quantity input {
+        height: 32px;
+        border: none;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        text-align: center;
+        width: 70%;
+        font-size: 20px;
+        color: #000;
+        font-weight: 300;
+    }
+    .div-img-ventana-emergente{
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        transition: .5s;
+        /*background: red;*/
+    }
+    .div-img-ventana-emergente>h2{
+        text-align: center;
+        font-size: 100%;
+        margin: 7%;
+        margin-bottom: 4%;
+        
+    }
+    .div-img-ventana-emergente>p{
+        text-align: center;
+        font-size: 100%;
+    }
+    .div-img-ventana-emergente>a{
+        text-align:  center;
+         background: black;
+         color:white;
+         justify-content: center;
+         align-items: center;
+         margin-top: 4%;
+         margin-bottom: 7%;
+         display: flow-root;
+    }
+    .img-ventena{
+        height: 550px;
+        width: 95%;
+        margin: 5%;
+        object-fit: cover;
+        transition: .5s;
+    }
+    .modal-tex{
+        font-size: 100%;
+        margin: 3%;
+    }
+    .modal-title-rd{
+        font-size: 100%;
+        margin: 3%;
+    }
  
 </style>
 
@@ -630,87 +884,149 @@ a.animated-button.thar-three:before {
      <div class="imagecontainer"> <p class="parrafo"> Step of 2 of 3 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
      
-     <!-- Pintamos formulario para caja y productos 
-       
+     <!-- Pintamos formulario para caja y productos -->
 
-     -->
      <div class="div-new">
 
-        <div class="progress" style="height: 40px">
-          <div class="progress-bar" role="progressbar" 
-          [style.width.%]="full_percentage_bar" 
-          style="height: 40px" 
-          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        <!-- Progres bar para el tamaño de la caja -->
         <div class="divSubMenus">   
-           <a type="button"  data-toggle="modal" data-target="#exampleModalCenter">SMALL</a>  
-           <a type="button"  data-toggle="modal" data-target="#exampleModalCenter">REGULAR</a>
+
+           <a  class="select-caja select-active-caja"
+           id="small-box-a" 
+           type="button"  data-toggle="modal" 
+           data-target="#exampleModalCenter">
+                SMALL
+           </a> 
+
+           <a  class="select-caja" 
+           id="regular-box-a" 
+           type="button"  data-toggle="modal" 
+           data-target="#exampleModalCenter">
+                REGULAR
+            </a>
+
         </div>
 
+        <!-- Guardado de productos en caja  -->
+
         <div class="row  col-sm-12" style="display: flex;">
+
             <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
+                <!-- Titulo de la caja -->
                 <div class="div-title-new">
+
                     <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
+
                 </div>
+
+                <!-- Imágenes de los productos -->
+
                 <div class="contrainer ">
                     <div class="row">
+
                         <!-- Caja -->
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
+
                             <div  class="img-new-product ">
                                 <img style="display: flex;" src="{{box_json.box_img}}" alt="">
+
                                 <div class="circulo">{{1}}</div>
                             </div>
+
                         </div>
+
                         <!-- Productos -->
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
+
                             <div  class="img-new-product">
+
                                 <img style="display: flex;" src="{{product.image}}" alt="">
+
                                 <div class="circulo">{{cant_productos[i]}}</div>
+
                             </div>
+
                            {{ lastIndex ? callback() : ""}}
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+            <!-- Infomración de todos los productos incluyendo la caja -->
+
             <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
+
                 <div class="div_et">
                    <p class="pzp"><b>BOX CONTENTS</b></p>
                 </div>
-                <!-- Contenido de la caja -->
+             
                 <div class="div_ed">
                    <p>1 &nbsp;{{box_json.box_name}} &nbsp; $ &nbsp;{{box_json.box_price}}</p>
                 </div>
+
                 <!-- contenido de productos agregados -->
+
                 <div class="nwe-ptg">
+
                      <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
-                        <p class="tex_cont">{{cant_productos[i]}}&nbsp;</p>
-                        <p >{{product.name}}&nbsp;  ${{product.price}}&nbsp;</p>
+
+                        <p class="tex_cont">
+                            {{cant_productos[i]}}&nbsp;
+                        </p>
+
+                        <p>
+                            {{product.name}}&nbsp;  ${{product.price}}&nbsp;
+                        </p>
+
                         <i (click)="eliminarProducto(i)" class="icon-cross"></i>
+
                      {{ lastIndex ? callback() : ""}}
+
                     </div>  
+
                 </div>
-                 <div class="div_ed">
+
+                <div class="div_ed">
                    <p>CURRENT PACKAGING I SMALL</p>
                 </div>
+
                 <div class="div-price-new">
-                    <p><b> BOX SUBTOTAL: $ {{subTotal}}</b></p>
+
+                    <p>
+                        <b> BOX SUBTOTAL: $ {{subTotal}}</b>
+                    </p>
+
                     <a 
                     (click)="guardaProductos()"
                     class="new-boton">
-                    <!-- [routerLink]="['/selecction-paso-tres', id_to_box]" -->
                         COMPLETE BOX
                     </a>
+
                 </div>
+
             </div>
-        </div>  
+
+        </div> 
+
      </div>
-     <!-- Filtros -->
-     <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
+
+    <!-- Filtros -->
+    <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
+
+        <!-- Filtro por Categoría -->
         <div class="col-lg-3 col-md-3 col-sm-12">
+
             <select class="custom-select" id="inputGroupSelect01" 
             (change)="filtradoProductos1(0,$event.target.value)"
             style="height: 50px; font-size: 18px;">
+
+
                 <option selected>Reason or Season</option>
+                <!-- <option selected>Reason or Season</option> -->
                 <option value="Birthday">Birthday</option>
                 <option value="Be my Bridesmaid">Be my Bridesmaid</option>
                 <option value="Celebration">Celebration</option>
@@ -720,462 +1036,299 @@ a.animated-button.thar-three:before {
                 <option value="At home essentials">At home essentials</option>
                 <option value="Food & Treats">Food & Treats</option>
                 <option value="Wellness">Wellness</option>
-            </select>       
+            
+
+            </select>  
+
         </div>
-        
+
+        <!-- Filtro por colores -->
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <select class="custom-select" id="inputGroupSelect01" style="height: 50px; font-size: 18px;">
+
+            <select class="custom-select" id="inputGroupSelect01" 
+            (change)="filtradoProductos1(1,$event.target.value)"
+            style="height: 50px; font-size: 18px;">
+
                 <option selected>Color</option>
-                <option value="1">White</option>
-                <option value="2">Beige</option>
-                <option value="3">Pinck</option>
-                <option value="4">Blue</option>
-                <option value="5">Green</option>
-                <option value="6">Orange</option>
-                <option value="7">Black</option>
-                <option value="8">Gold</option>
-                <option value="9">Silver</option>
-                <option value="10">Purple</option>
-                <option value="12">Yellow</option>
-                <option value="13">Khaki</option>
-                <option value="14">Brow</option>
+                <!-- <option selected>Color</option> -->
+                <option value="White">White</option>
+                <option value="Beige">Beige</option>
+                <option value="Pinck">Pinck</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Orange">Orange</option>
+                <option value="Black">Black</option>
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Purple">Purple</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Khaki">Khaki</option>
+                <option value="Brow">Brow</option>4
+
             </select>
+
         </div>
 
+        <!-- Filtro por precios  -->
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <select class="custom-select" id="inputGroupSelect01" style="height: 50px; font-size: 18px;">
+
+            <select class="custom-select" id="inputGroupSelect01" 
+            (change)="sortElementsByRange($event.target.value)"
+            style="height: 50px; font-size: 18px;">
+
                 <option selected>Sort by Options</option>
-                <option value="1">Price(Low to high)</option>
-                <option value="2">Price(High to low)</option>
-                <option value="3">Size(Small to large)</option>
-                <option value="4">Size(Large to small)</option>
+                <!-- <option selected>Sort by Options</option> -->
+                <option value="lower">Price(Low to high)</option>
+                <option value="higher">Price(High to low)</option>
+                <option value="box-small">Size(Small to large)</option>
+                <option value="box-big">Size(Large to small)</option>
+
             </select>
+
         </div>
 
+        <!-- Filtro por serch -->
         <div class="col-lg-3 col-md-3 col-sm-12">
+
             <div id="inputGroupSelect01" style="height: 50px;">
+
               <input
-              (keyup.enter)="goSearch(search.value)"
-              #search
+              [(ngModel)] = "searh_filter_text"
+              (keyup.enter)="goSearch()"
               class="form-control mr-sm-2" 
               type="search" 
               placeholder="Search" 
               aria-label="Search">
+
             </div>
+
         </div>
+
     </div>
-<style>
-    .col-lg-3, .col-md-3, .col-sm-12{
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .select-box{
-        padding-left: 0px;
-    }
-</style>
-     <style>
-        .nwe-ptg{
-            height: px;
-        }
-         .div-new{
-            margin: 3%;
-         }
-         .div-new>.col-sm-12{
-            padding-right: 0px;
-            /*padding-left: 0px;*/
-         }
-       /*  .div-new>.row{
-            padding-left: 0px;
-         } */
-         .div-img-new{
-            /*width: 65%;*/
-            height: px;
-            border: 1px solid #dee2e6!important;
-         }
-         .div-info-new{   
-            /*width: 35%;*/
-            height: px;
-            border: 1px solid #dee2e6!important;
-         }
-         .div-title-new{
-             justify-content: space-around;
-            text-align: center;
-            padding: 0px 4px 0;
-            border: 1px solid #dee2e6!important;
-         }
-         .produc-agregado-new{
-         }
-         .div-price-new{
-            text-align: center;
-         }
-         .new-boton{
-            background: black;
-            color:white;
-            justify-content: center;
-            align-items: center;
-            display: flow-root;
-            /*display: flex;*/
-         }
-         .img-new-product {
-            display: flex; 
-            margin:11%;
-         }
-        .progressbartow a:before{
-            content: counter();
-            counter-increment:step;
-            width: 30px;
-            height: 30px;
-            line-height: 27px;
-            border: 1px solid #ddd;
-            display: block;
-            text-align: center;
-            margin: -14px auto 100px auto;
-            border-radius: 50px;
-            background-color: white;
-            margin-left: -21px;
 
-        }
-        .circulo {
-            width: 50px;
-            height: 30px;
-            line-height: 27px;
-            border: 1px solid #ddd;
-            display: block;
-            text-align: center;
-            margin: -6px auto 100px auto;
-            border-radius: 50%;
-            background-color: white;
-            margin-left: -30px;
-            margin-top: 3px;
-            font-size: 17px;
-        } 
+   	<!--=====================================
+    Productos para agregar a la caja
+    ======================================-->
 
-        .ps-product{
-           overflow: hidden 
-        }
-        .texto{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            /*bottom: - 100%;*/
-            padding: 10px 20px;
-        }
-        .texto a{
-            border: 1px solid black !important;
-            background: white;
-            display: flow-root;
-            text-align: center;
-            color: black;
-            font-size: 20px;
-            height: px;
-        }    
-        .ps-product:hover .texto{
-            bottom: -50%;
-        }
-        .ps-product__thumbnail:hover .texto {
-          bottom: -55%;
+    <div class="container">
 
-          background-color:ps-form--quick-search button;
-          color: #ffffff;
-        }
-                 
-     </style>
-
-
-   	<!-- Productos -->
-
-   	<div class="divimageness row">
-
-        <!--=====================================
-        Productos col-md-12 col-sm-12
-        ======================================--> 
+        <div class="divimageness row">
  
-        <div
-         *ngFor="let products of getProduct; let lastIndex = last"
-         class="ps-product col-lg-3 col-md-4 col-sm-6">
-            <div class="ps-product__thumbnail">
-                <a>
-                    <img 
-                    style="width: 100%; height: 260px;" 
-                    (click)="detallesProducto(products)"
-                     type="button"  data-toggle="modal" 
-                     data-target=".bd-example-modal-xl"
-                     src="{{products.image}}" alt="">
-                </a>
+            <div
+            *ngFor="let products of getProduct; let lastIndex = last"
+            class="ps-product col-lg-3 col-md-4 col-sm-6">
 
-                <ul class="ps-product__actions">
-                    <li>
-                        <a>
-                            <i class="icon-heart"></i>
-                        </a>
-                    </li> 
-                </ul>
-               <!-- Información de productos -->
-                <p class="tex_product">{{products.name}}</p>
-                <p class="tex_product">{{products.price}}</p>
-               <!-- Boton para agregar productos a la caja -->
-                 <div class="texto">
-                    <a (click)="almacenarProductos(products)" 
-                     style="cursor:pointer">
-                         Add to box
+                <!-- *ngIf="getVisibilityByFilter(products)" -->
+                <div 
+
+                class="ps-product__thumbnail">
+
+                    <a>
+
+                        <img 
+                        style="width: 100%; height: 260px;" 
+                        (click)="detallesProducto(products)"
+                         type="button"  data-toggle="modal" 
+                         data-target=".bd-example-modal-xl"
+                         src="{{products.image}}" alt="">
+
                     </a>
-                    <!-- BTN para agregar cantidad de productos -->
-                    <div class="quantity" style="display:none;">
-                        <!-- BTN menos -->
-                        <button class="menos" type="button">-</button>
 
-                        <input type="text" id="quantity" value="1 IN INBOX">
-                        <!-- BTN más -->
-                        <button class="mas" type="button">+</button>
+                    <ul class="ps-product__actions">
+
+                        <li>
+
+                            <a>
+
+                                <i class="icon-heart"></i>
+
+                            </a>
+
+                        </li> 
+
+                    </ul>
+
+                   <!-- Información de productos -->
+
+                    <p class="tex_product">
+                        {{products.name}}
+                    </p>
+
+                    <p class="tex_product">
+                        {{products.price}}
+                    </p>
+
+                   <!-- Boton para agregar productos a la caja -->
+
+                     <div class="texto">
+
+                        <a (click)="almacenarProductos(products)" 
+                         style="cursor:pointer">
+                             Add to box
+                        </a>
+
+                        <!-- BTN para agregar cantidad de productos -->
+                        <div class="quantity" style="display:none;">
+                            <!-- BTN menos -->
+                            <button class="menos" type="button">-</button>
+
+                            <input type="text" id="quantity" value="1 IN INBOX">
+                            <!-- BTN más -->
+                            <button class="mas" type="button">+</button>
+                        </div>
+
                     </div>
+
                 </div>
-            </div>
-         {{ lastIndex ? callback() : ""}}
 
-        </div><!-- End Product --> 
-   		
-   	</div>
+             {{ lastIndex ? callback() : ""}}
+
+            </div><!-- End Product --> 
+            
+        </div>
+        
+    </div> 
 
 
+    <!--=====================================
+    Ventana Modal para ver el producto detallado
+    ======================================--> 
     <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="
     myExtraLargeModalLabel" aria-hidden="true">
+
         <div class="modal-dialog modal-xl row" role="document">
 
              <!-- Ventana Modal imagen de producto -->
-            <div class="modal-content col-lg-6 col-md-12 col-sm-12"> 
-                 <!-- <img class="img-ventena" src="{{path}}img/products_etre/prod1.png"> -->
+            <div class="modal-content col-lg-6 col-md-12 col-sm-12">
+
                  <img class="img-ventena" src="{{porductos_detalles_img}}">
+
             </div>
            
             <!-- Ventana Modal detalles de producto -->
-            <div 
-            class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+            <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+
                <h2>{{porductos_detalles_name}}</h2>
 
-              <!--  <p>
-                  {{porductos_detalles}}
-               </p> -->
                <div [innerHTML] id="contenedor-descripciones">{{porductos_detalles}}</div>
-               <a> Add to box $ {{porductos_detalles_precio}}</a>
+
+               <a>
+                   Add to box $ {{porductos_detalles_precio}}
+               </a>
 
             </div>
            
         </div>
+
     </div>
-     <style>
 
-        .quantity .mas {
-            float: right;
-            width: 15%;
-            height: px;
-            border: 1px solid #000;
-            color: #000;
-            border-radius: 0;
-            background: #fff
-        }
-        .quantity .menos {
-            float: left;
-            width: 15%;
-            height: px;
-            border: 1px solid #000;
-            color: #000;
-            border-radius: 0;
-            background: #fff
-        }
-
-        .quantity input {
-            height: 32px;
-            border: none;
-            border-top: 1px solid #000;
-            border-bottom: 1px solid #000;
-            text-align: center;
-            width: 70%;
-            font-size: 20px;
-            color: #000;
-            font-weight: 300;
-        }
-        .div-img-ventana-emergente{
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            transition: .5s;
-            /*background: red;*/
-        }
-        .div-img-ventana-emergente>h2{
-            text-align: center;
-            font-size: 100%;
-            margin: 7%;
-            margin-bottom: 4%;
-            
-        }
-        .div-img-ventana-emergente>p{
-            text-align: center;
-            font-size: 100%;
-        }
-        .div-img-ventana-emergente>a{
-            text-align:  center;
-             background: black;
-             color:white;
-             justify-content: center;
-             align-items: center;
-             margin-top: 4%;
-             margin-bottom: 7%;
-             display: flow-root;
-        }
-        .img-ventena{
-            height: 550px;
-            width: 95%;
-            margin: 5%;
-            object-fit: cover;
-            transition: .5s;
-        }
-        .modal-tex{
-            font-size: 100%;
-            margin: 3%;
-        }
-        .modal-title-rd{
-            font-size: 100%;
-            margin: 3%;
-        }
-    </style>	
 <br><br><br><br><br><br><br><br>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title-rd" id="exampleModalCenterTitle">Box Sizes</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <!--=====================================
+    Ventana Modal para alerta de cajas
+    ======================================--> 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+      <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <h5 class="modal-title-rd" id="exampleModalCenterTitle">
+                Box Sizes
+            </h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+              <span aria-hidden="true">&times;</span>
+
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+
+            <p class="modal-tex">
+
+              We want your gifts to look perfect!, that's why we have three different
+              box sizes. Never too much or too little space, and perfectly packed everytime!   
+
+            </p>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <button type="button" 
+            style="background: black; width: 107px; height: 45px;" 
+            class="btn btn-secondary" data-dismiss="modal">
+                GOT IT!
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="modal-body">
-        <p class="modal-tex">
-          We want your gifts to look perfect!, that's why we have three different
-          box sizes. Never too much or too little space, and perfectly packed everytime!   
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" style="background: black; width: 107px; height: 45px;" class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
-      </div>
+
     </div>
-  </div>
-</div>
 
-<!-- Sticky bottom bar  -->
-<div class="" style=" ">
-    <div class="fixed-bottom row" style="background: white;
-    border-top:1px solid #000; width: 100%; height: px; margin:0px;">
+    <!--=====================================
+    Sticky bottom bar productos
+    ======================================-->
+    <div class="" style=" ">
 
-        <!-- Imagenes -->
+        <div class="fixed-bottom row" style="background: white;
+        border-top:1px solid #000; width: 100%; height: px; margin:0px;">
 
-        <div class="col-lg-8 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
-        margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
+            <!-- Imagenes -->
+            <div class="col-lg-8 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
+            margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
 
-            <div class="row-yt" 
-            *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
-            id="alm_{{index}}">
+                <div class="row-yt" 
+                *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
+                id="alm_{{index}}">
 
-                <div class="" style="display: flex;">
+                    <div class="" style="display: flex;">
 
-                    <img style="width: 100%; height:px; display: flex;" 
-                    src="{{product.image}}">
-                    <div class="circulo">{{cant_productos[i]}}</div>
-                    
+                        <img style="width: 100%; height:px; display: flex;" 
+                        src="{{product.image}}">
+
+                        <div class="circulo">{{cant_productos[i]}}</div>
+                        
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
+            <!-- Botón 1 -->
+            <div class="col-lg-2 col-md-12 sol-sm-12" style="; width: 100%; height: 74px;
+            margin:0px; padding: 0px; display: flex;
+            justify-content: center; align-items: center;">
 
-        <!-- Botón 1 -->
-        <div class="col-lg-2 col-md-12 sol-sm-12" style="; width: 100%; height: 74px;
-        margin:0px; padding: 0px; display: flex;
-        justify-content: center; align-items: center;">
-            <a class="byn-tyt-white">
-                CURRENT BOX REGULAR
-            </a>
-        </div>
-        <!-- Botón 2 -->
-        <div class="col-lg-2 col-md-12 sol-sm-12" style="width: 100%; height: 74px; 
-        margin:0px; padding: 0px; display: flex;
-        justify-content: center; align-items: center;">
-            <a (click)="guardaProductos()" class="byn-tyt">
-                COMPLETE BOX 
-            </a>
-        </div>
+                <a class="byn-tyt-white">
+                    CURRENT BOX REGULAR
+                </a>
 
-  
-    </div>  
+            </div>
+
+            <!-- Botón 2 -->
+            <div class="col-lg-2 col-md-12 sol-sm-12" style="width: 100%; height: 74px; 
+            margin:0px; padding: 0px; display: flex;
+            justify-content: center; align-items: center;">
+
+                <a (click)="guardaProductos()" class="byn-tyt">
+                    COMPLETE BOX 
+                </a>
+
+            </div>
+      
+        </div> 
+
+    </div>
+
 </div>
-
- 
-<style>
-    .row-yt{
-      margin:1%; 
-      width: 60px;
-      height: 60px;
-      display: inline-flex; 
-    }
-    .col-5{
-       margin: 0px; 
-    }
-    .byn-tyt{
-        background: black;
-        color: white;
-        align-content: center;
-        display: flow-root;
-        cursor: pointer; text-align: center; 
-        align-content: center;
-        padding: 14px;
-    }
-    .byn-tyt-white{
-        background: white;
-        color: black;
-        align-content: center;
-        display: flow-root;
-        cursor: pointer; text-align: center; 
-        align-content: center;
-        padding: 16px;
-        font-size: 71%;
-        border:1px solid #000;
-    }
-    .position-sticky{
-        width: 100%;
-    }
-    .div-img-box{
-        background: yellow;
-        width: 70%;
-
-    }
-    .div-btn-box{
-        background: blue;
-        display: flex;
-        width: 30%;
-    }
-
-   
-    .div-productos-agregados-caja{
-        display: flex;
-        width: 100%;
-        position: fixed;
-        bottom: 0px;
-    }
-    .articulos-bottom-container{
-        height: 64px;
-        width: 67px;
-        margin: 1%;
-        margin-left: 3%;
-    }
-    .btn-prod.aagregado{
-        float: left;
-        margin: 1%;
-        display: flex;
-    }
-
-</style>
-
 
     

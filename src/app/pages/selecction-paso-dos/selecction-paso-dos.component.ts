@@ -75,6 +75,10 @@ export class SelecctionPasoDosComponent implements OnInit {
   small_box_size = 30;
   regular_box_size = 60;
   original_size = 30;
+  visibility_1 =[];
+  used_space = 0;
+  filters_array =[];
+  searh_filter_text = "";
 
 
   constructor(private usersService:UsersService, 
@@ -88,6 +92,11 @@ export class SelecctionPasoDosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+      for (let i = 0; i < 16; i++) {
+        this.visibility_1.push(false);
+      }
+
       this.id_to_box = Cookies.get('box_id');
 
      /*=============================================
@@ -142,7 +151,9 @@ export class SelecctionPasoDosComponent implements OnInit {
       })
         this.id=this.id_to_box;
       }
-       
+       this.filters_array.push("Reason or Season");
+       this.filters_array.push("Color");
+       this.filters_array.push("Sort by Options");
       // Filtrar productos para agregar a la caja
       let getCategories = []; 
       this.productsService.getDatta()
@@ -341,15 +352,9 @@ export class SelecctionPasoDosComponent implements OnInit {
   Declaramos función del buscador 
   =============================================*/
 
-  goSearch(search:string){
-
-    if(search.length == 0 || Search.fnc(search) == undefined){
-
-      return;
-    }
-
-    window.open(`search/${Search.fnc(search)}`, '_top')
-
+  goSearch(){
+    console.log("el valor es "+this.searh_filter_text);
+    this.getData();
   } 
   
   HyperLink(){
@@ -362,35 +367,156 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
   // Calcular porcentaje de los productos agregados
   calculatePercentage(){
-    var used_space = 0;
+    this.used_space = 0;
       for(let i = 0; i< this.almacenar_productos.length; i++){
-        used_space += (30/this.almacenar_productos[i].size) * this.cant_productos[i];
+        this.used_space += (30/this.almacenar_productos[i].size) * this.cant_productos[i];
       }
-    var pivote = this.box_size - used_space;
-    console.log("used space es "+used_space+" y box size es "+this.box_size);
+    var pivote = this.box_size - this.used_space;
+    console.log("used space es "+this.used_space+" y box size es "+this.box_size);
     //var percentage = (pivote * 100)/ this.original_size;
-    if(used_space<=this.regular_box_size){
-      if(this.box_size == this.regular_box_size && used_space<= this.small_box_size) {
+    if(this.used_space<=this.regular_box_size){
+      if(this.box_size == this.regular_box_size && this.used_space<= this.small_box_size) {
         this.box_size = this.small_box_size;
         this.full_percentage_bar = 50;
-      } else if(this.box_size == this.small_box_size && used_space> this.small_box_size) {
+        document.getElementById("regular-box-a").classList.remove("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
+      } else if(this.box_size == this.small_box_size && this.used_space> this.small_box_size) {
         console.log("Hace cambio a big");
         this.box_size = this.regular_box_size;
         this.full_percentage_bar = 100;
+        document.getElementById("regular-box-a").classList.add("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
         Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
       }
     }  else {
       Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
       // ENVIO ERROR 
     }
-    
+
+  }
+
+  selectActivesBoxes(){
+     document.getElementById("regular-box-a").classList.remove("select-active-caja");
+    document.getElementById("small-box-a").classList.remove("select-active-caja");
   }
 
   filtradoProductos1(index,value:string){
-    console.log("el valor es:"+value);
+    this.filters_array[index] = value;
+    if(index < 2) {
+      this.getData();
+    } else {
+      console.log("Value es "+value);
+    }
   }
+   
+  fncVisibility(index){
     
+    this.visibility_1[index]=!this.visibility_1[index];
+
+  }  
+
+  getData(){
+    this.getProduct.splice(0);
+    this.products.splice(0);
+    this.product_name.splice(0);
+    this.product_price.splice(0);
+    this.product_img.splice(0);
+    this.tamaño_caja.splice(0);
+    this.producto_url.splice(0);
+    this.productsService.getDatta()
+      .subscribe(resp=>{
+        let i;
+          for(i in resp){
+            if(this.getVisibilityByFilter(resp[i])) {
+              this.getProduct.push(resp[i]);
+              this.products.push(i);
+              this.product_name.push(resp[i].name);
+              this.product_price.push(resp[i].price);
+              this.product_img.push(resp[i].image);
+              this.tamaño_caja.push(resp[i].size);
+              this.producto_url.push(resp[i].url);
+            }
+          }
+          
+      }) 
+  }
+  getVisibilityByFilter(art){
+    console.log("Articulo es "+art);
+    console.log("Filtros es "+this.filters_array);
+    var visible_check = false;
+    var first_filter = false;
+    var second_filter = false;
+    var third_filter = false;
+    // Primer filtro
+    if(this.filters_array[0] != "Reason or Season"){
+      if(art.sub_category.includes(this.filters_array[0])) {
+        first_filter = art.sub_category.includes(this.filters_array[0]);
+        // console.log("Art "+art+" incluye filtro: "+art.sub_category.includes(this.filters_array[0]))
+      }
+    } else {
+      first_filter = true;
+    }
+    // Segundo filtro
+    if(this.filters_array[1] != "Color"){
+      if(art.color.includes(this.filters_array[1])) {
+        second_filter = art.color.includes(this.filters_array[1]);
+        //console.log("Art "+art.color+" incluye filtro"+this.filters_array[1] ":"+art.color.includes(this.filters_array[1]))
+      }
+    } else {
+      second_filter = true;
+    }
+    // Filtro texto
+    if(this.searh_filter_text.length > 1){
+      console.log("dsadsa: "+art.name.includes(this.searh_filter_text));
+      if(art.name.includes(this.searh_filter_text)) {
+        third_filter = true;
+        //console.log("Art "+art.color+" incluye filtro"+this.filters_array[1] ":"+art.color.includes(this.filters_array[1]))
+      }
+    } else {
+      third_filter = true;
+    }
+
+    visible_check = (first_filter && second_filter && third_filter);
+    return visible_check;
+  }
+
+  sortElementsByRange(type){
+    if (type ==  "lower" || type ==  "higher") {
+      this.getProduct.sort(function (a, b) {
+      console.log("type es "+type);
+      if(type == "lower") {
+        return (a.price - b.price);
+      }
+      if(type == "higher") {
+        return (b.price - a.price);
+      }
+    })
+    }
+    if (type ==  "box-big" || type ==  "box-small") {
+      this.getProduct.sort(function (a, b) {
+      console.log("type es "+type);
+      if(type == "box-big") {
+        return (a.size - b.size);
+      }
+      if(type == "box-small") {
+        return (b.size - a.size);
+      }
+    })
+    }
+    
+    for(let i = 0; i<this.getProduct.length; i++){
+      this.products.splice(i,1,i);
+      this.product_name.splice(i,1,this.getProduct[i].name);
+      this.product_price.splice(i,1,this.getProduct[i].price);
+      this.product_img.splice(i,1,this.getProduct[i].image);
+      this.tamaño_caja.splice(i,1,this.getProduct[i].size);
+      this.producto_url.splice(i,1,this.getProduct[i].url);
+
+    }
+    console.log("Size es "+this.getProduct.length);
+  }
 }
- 
+  
+
 
        
