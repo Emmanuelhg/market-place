@@ -1,125 +1,92 @@
 <!--=====================================
-Best Sale Items  
+Best Sale Items    
 ======================================--> 
 
 <div 
-*ngIf="!preload && !notFound"
-class="ps-block--shop-features">
+*ngIf="!preload && !notFound">
 
-        <h3>Best Sale Items</h3>
+    <div style="border-bottom:solid #dee2e6!important; margin: 3%;">
 
+      <h3 style="margin-left: 3%; margin-bottom: 4%;">
+        Best Sale Items
+      </h3>
+
+    </div> 
 
     <!-- Productos -->
+    <div class="divimageness row">
 
-    <div style="display: flex;">
+        <!--=====================================
+        Productos col-md-12 col-sm-12
+        ======================================--> 
+ 
+        <div
+        *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
+        class="ps-product col-lg-3 col-md-4 col-sm-6">
+            <div class="ps-product__thumbnail">
+                <a routerLink="/product/{{product.url}}">
+                    <img 
+                    style="width: 100%; height: 260px;" 
+                    (click)="detallesProducto(product)"
+                     type="button"  data-toggle="modal" 
+                     data-target=".bd-example-modal-xl"
+                     src="{{product.image}}" alt="">
+                </a>
+                <div [innerHTML]="price[i][1]"></div>
+                
+                <ul class="ps-product__actions">
+                    <li>
+                        <a style="cursor:pointer">
+                            <i class="icon-heart"></i>
+                        </a>
+                    </li> 
+                </ul>
 
-        <div class="divimageness row">
+                <div class="ps-product__container">
 
-            <!--=====================================
-            Productos col-md-12 col-sm-12
-            ======================================--> 
-     
-            <div
-              *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-             class="ps-product col-lg-3 col-md-4 col-sm-6">
-                <div class="ps-product__thumbnail">
-                    <a routerLink="/product/{{product.url}}">
-                        <img 
-                        style="width: 100%; height: 260px;" 
-                        (click)="detallesProducto(product)"
-                         type="button"  data-toggle="modal" 
-                         data-target=".bd-example-modal-xl"
-                         src="{{product.image}}" alt="">
-                    </a>
+                    <div class="ps-product__content">
 
-                    <ul class="ps-product__actions">
-                        <li>
-                            <a style="cursor:pointer">
-                                <i class="icon-heart"></i>
-                            </a>
-                        </li> 
-                    </ul>
+                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
+                      {{product.name}}</a>
 
-                    <div class="ps-product__container">
-
-                        <div class="ps-product__content">
-
-                          <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                          {{product.name}}</a>
-
-                          
-                            <div [innerHTML]="price[i][0]"></div>
-
-                        </div>
-
-                        <div class="ps-product__content hover">
-
-                          <a class="ps-product__title" routerLink="/product/{{product.url}}">
-                          {{product.name}}</a>
-
-                            <div [innerHTML]="price[i][0]"></div>
-
-                        </div>
+                      
+                        <div [innerHTML]="price[i][0]"></div>
 
                     </div>
-                   
-                    <!-- Boton para agregar productos a la caja -->
-                     <div class="texto">
-                        <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                            
-                            Add to box
-                        </a>
-                      </div>
+
+                    <div class="ps-product__content hover">
+
+                      <a class="ps-product__title" routerLink="/product/{{product.url}}">
+                      {{product.name}}</a>
+
+                        <div [innerHTML]="price[i][0]"></div>
+
+                    </div>
 
                 </div>
-             {{ lastIndex ? callback() : ""}}
+               
+                <!-- Boton para agregar productos a la caja -->
+                 <div class="texto">
+                    <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                        
+                        Add to box
+                    </a>
+                  </div>
 
-            </div><!-- End Product --> 
-          
-        </div>
+            </div>
+         {{ lastIndex ? callback() : ""}}
+
+        </div><!-- End Product --> 
       
     </div>
+
+  
 
 </div><!-- End Best Sales Items -->
 
 <!--=====================================
 Preload
 ======================================-->
-
-<div 
-*ngIf="preload"
-class="d-lg-flex justify-content-center d-none">
-    <!-- <div class="spinner-border text-muted my-5"></div> -->
-
-    <div class="container">
-
-        <div class="ph-item border-0">
-
-            <div 
-            *ngFor="let place of placeholder"
-            class="ph-col-2">
-
-                <div class="ph-picture"></div>
-
-                <div class="ph-row">
-
-                    <div class="ph-col-12 big"></div>
-
-                    <div class="ph-col-10"></div>
-
-                    <div class="ph-col-2 empty"></div>
-
-                    <div class="ph-col-12"></div>
-
-                </div>
-
-            </div>
-  
-
-        </div>
-
-    </div>
-</div>
 
 <div 
 *ngIf="preload"
@@ -131,11 +98,10 @@ class="d-flex justify-content-center d-lg-none">
 
 <style>
   .divimageness{
-      border-top:solid #dee2e6!important;
+     /* border-top:solid #dee2e6!important;*/
       margin: 2%;
       margin-top: 5%;
       display: flex;
-      justify-content: space-around;
   }
   .texto{
             position: absolute;

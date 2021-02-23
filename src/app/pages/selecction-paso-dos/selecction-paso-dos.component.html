@@ -1,3 +1,768 @@
+<div class="ps-breadcrumb">
+    
+    <!-- Barra de números -->
+	<div class="contrainer" style="margin-bottom: 32%;">
+		<div style="margin-bottom: 4%;">
+			<ul class="progressbar">
+     			<a id="step1"  (click)="HyperLink()" >Step 1</a>
+     			<a id="step2"  class="superActive">Step 2</a>
+             	<a id="step3" (click)="HyperLink3()">Step 3</a>
+    	        <a id="step4" >Done!</a>
+			</ul>
+   	 	</div>
+   	</div>
+
+    <!-- Descripción  -->
+
+    <div style="text-align: center; 
+     justify-content: center; margin-bottom: 160px;">
+
+        <p class="parrafo"> Step of 2 of 3</p>
+
+        <h2><b>CHOOSE YOUR ITEMS</b></h2>
+
+    </div>
+    
+    <!-- Pintamos formulario para caja y productos -->
+
+    <div class="div-new">
+
+        <!-- Progres bar para el tamaño de la caja -->
+        <div class="divSubMenus">   
+
+           <a  class="select-caja select-active-caja"
+           id="small-box-a" 
+           type="button"  data-toggle="modal" 
+           data-target="#exampleModalCenter">
+                SMALL
+           </a> 
+
+           <a  class="select-caja" 
+           id="regular-box-a" 
+           type="button"  data-toggle="modal" 
+           data-target="#exampleModalCenter">
+                REGULAR
+            </a>
+
+        </div>
+
+        <!-- Guardado de productos en caja  -->
+
+        <div class="row  col-sm-12" style="display: flex;">
+
+            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
+                <!-- Titulo de la caja -->
+                <div class="div-title-new">
+
+                    <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
+
+                </div>
+
+                <!-- Imágenes de los productos -->
+
+                <div class="contrainer ">
+                    <div class="row">
+
+                        <!-- Caja -->
+                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
+
+                            <div  class="img-new-product ">
+                                <img style="display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
+
+                                <div class="circulo">{{1}}</div>
+                            </div>
+
+                        </div>
+
+                        <!-- Productos -->
+                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
+
+                            <div  class="img-new-product">
+
+                                <img style="display: flex; object-fit: cover;" src="{{product.image}}" alt="">
+
+                                <div class="circulo">{{cant_productos[i]}}</div>
+
+                            </div>
+
+                           {{ lastIndex ? callback() : ""}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Infomración de todos los productos incluyendo la caja -->
+
+            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
+
+                <div class="div_et">
+                   <p class="pzp"><b>BOX CONTENTS</b></p>
+                </div>
+             
+                <div class="div_ed">
+                   <p>1 &nbsp;{{box_json.box_name}} &nbsp; $ &nbsp;{{box_json.box_price}}</p>
+                </div>
+
+                <!-- contenido de productos agregados -->
+
+                <div class="nwe-ptg">
+
+                     <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
+
+                        <p class="tex_cont">
+                            {{cant_productos[i]}}&nbsp;
+                        </p>
+
+                        <p>
+                            {{product.name}}&nbsp;  ${{product.price}}&nbsp;
+                        </p>
+
+                        <!-- Eliminar productos de la caja -->
+                        <i
+                         (click)="fncNewR(i, product.name)"
+                         class="icon-cross"></i>
+
+                     {{ lastIndex ? callback() : ""}}
+
+                    </div>  
+
+                </div>
+
+                <div class="div_ed">
+                   <p>CURRENT PACKAGING I SMALL</p>
+                </div>
+
+                <div class="div-price-new">
+
+                    <p>
+                        <b> BOX SUBTOTAL: $ {{subTotal}}</b>
+                    </p>
+
+                    <a 
+                    (click)="guardaProductos()"
+                    class="new-boton">
+                        COMPLETE BOX
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div> 
+
+    </div>
+
+
+
+    <div style="width: 100%; 
+    height: px; margin-right: 3%; display: flex;">
+
+        <!-- Filtros -->
+        <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
+
+            <!-- Filtro por Categoría -->
+            <div class="col-lg-3 col-md-3 col-sm-12">
+
+                <select class="custom-select" id="inputGroupSelect01" 
+                (change)="filtradoProductos1(0,$event.target.value)"
+                style="height: 50px; font-size: 18px;">
+
+
+                    <option selected>Reason or Season</option>
+                    <!-- <option selected>Reason or Season</option> -->
+                    <option value="Birthday">Birthday</option>
+                    <option value="Be my Bridesmaid">Be my Bridesmaid</option>
+                    <option value="Celebration">Celebration</option>
+                    <option value="Books we love">Books we love</option>
+                    <option value="Bridal">Bridal</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="At home essentials">At home essentials</option>
+                    <option value="Food & Treats">Food & Treats</option>
+                    <option value="Wellness">Wellness</option>
+                
+
+                </select>  
+
+            </div>
+
+            <!-- Filtro por colores -->
+            <div class="col-lg-3 col-md-3 col-sm-12">
+
+                <select class="custom-select" id="inputGroupSelect01" 
+                (change)="filtradoProductos1(1,$event.target.value)"
+                style="height: 50px; font-size: 18px;">
+
+                    <option selected>Color</option>
+                    <!-- <option selected>Color</option> -->
+                    <option value="White">White</option>
+                    <option value="Beige">Beige</option>
+                    <option value="Pinck">Pinck</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Black">Black</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Khaki">Khaki</option>
+                    <option value="Brow">Brow</option>4
+
+                </select>
+
+            </div>
+
+            <!-- Filtro por precios  -->
+            <div class="col-lg-3 col-md-3 col-sm-12">
+
+                <select class="custom-select" id="inputGroupSelect01" 
+                (change)="sortElementsByRange($event.target.value)"
+                style="height: 50px; font-size: 18px;">
+
+                    <option selected>Sort by Options</option>
+                    <!-- <option selected>Sort by Options</option> -->
+                    <option value="lower">Price(Low to high)</option>
+                    <option value="higher">Price(High to low)</option>
+                    <option value="box-small">Size(Small to large)</option>
+                    <option value="box-big">Size(Large to small)</option>
+
+                </select>
+
+            </div>
+
+            <!-- Filtro por serch -->
+            <div class="col-lg-3 col-md-3 col-sm-12">
+
+                <div id="inputGroupSelect01" style="height: 50px;">
+
+                  <input
+                  [(ngModel)] = "searh_filter_text"
+                  (keyup.enter)="goSearch()"
+                  class="form-control mr-sm-2" 
+                  type="search" 
+                  placeholder="Search" 
+                  aria-label="Search">
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+    
+    
+   	<!--=====================================
+    Productos para agregar a la caja
+    ======================================-->
+
+    <div class="divimageness row">
+
+        <div
+        *ngFor="let products of getProduct; let lastIndex = last,let i = index"
+        class="ps-product col-lg-3 col-md-4 col-sm-6">
+
+            <!-- *ngIf="getVisibilityByFilter(products)" -->
+            <div  
+
+            class="ps-product__thumbnail">
+
+                <a>
+                    <div style="position: absolute;
+                    width: 100%;
+                    align-items: center;
+                    text-align: center;
+                    opacity: 0.7;
+                    background: white;
+                    top: 0%;" 
+                    id="to-large-to-fid" 
+                    *ngIf="productsFull() == true"
+                    >
+                        <p style="color: black;">
+                            Oops!<br>
+                            (too large to fit)
+                        </p>
+                    </div>
+
+                    <img 
+                    style="width: 100%; height: 260px; 
+                    object-fit: cover;" 
+                    (click)="detallesProducto(products)"
+                     type="button"  data-toggle="modal" 
+                     data-target=".bd-example-modal-xl"
+                     src="{{products.image}}" alt="">
+
+                </a>
+
+                <ul class="ps-product__actions">
+
+                    <li>
+
+                        <a>
+
+                            <i class="icon-heart"></i>
+
+                        </a>
+
+                    </li> 
+
+                </ul>
+
+               <!-- Información de productos -->
+
+               <div class="ps-product__container">
+
+                    <div class="ps-product__content">
+
+                        <a class="ps-product__title">
+                           {{products.name}}
+                        </a>
+
+
+                        <p class="tex_product">
+                            {{products.price}}
+                        </p>
+
+                      
+                        <!-- <div [innerHTML]="price[i][0]"></div> -->
+
+                    </div>
+
+                    <div class="ps-product__content hover">
+
+                        <a class="ps-product__title">
+                            {{products.name}}
+                        </a>
+
+                        <!-- <div [innerHTML]="price[i][0]"></div> -->
+
+                    </div>
+
+                </div>
+
+                <!-- Boton para agregar productos a la caja -->
+                <div 
+                 class="texto"
+                 *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
+
+                    <a (click)="almacenarProductos(products)"
+                     (click)="myFunction(products.name)" 
+                     style="cursor:pointer">
+                         Add to box
+                    </a>
+                </div>
+
+                <!-- BTN para agregar cantidad de productos -->
+                <div class="textoTow"
+                *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
+
+                    <div  style="width: 100%; display: flex;">
+                        <!-- BTN menos -->
+                        <button style="width: 15%;" 
+                        (click)="modificadorCantidadProductos(-1, i,products)"
+                        class="menos" type="button">-</button>
+
+                        <div 
+                        style="background: white;width: 70%; text-align: center;
+                         color:black; border: 1px solid black !important;"
+                         id="quantity"> 
+
+                            {{getNumArts(products)}} IN INBOX
+
+                        </div>
+                        <!-- BTN más -->
+                        <button style="width: 15%;" 
+                        (click)="modificadorCantidadProductos(1, i,products)"
+                        class="mas" type="button">+</button>
+                    </div>
+                    
+                </div>
+                                    
+                <!-- Botón long -->
+                <div 
+                 *ngIf="productsFull() == true"
+                  class="texto">
+
+                    <a 
+                     style="cursor:pointer">
+                        Too large
+                    </a>
+
+                </div>
+
+            </div>
+
+         {{ lastIndex ? callback() : ""}}
+
+        </div><!-- End Product --> 
+        
+    </div>
+
+    <!--=====================================
+    Ventana Modal para ver el producto detallado
+    ======================================--> 
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="
+    myExtraLargeModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-xl row" role="document">
+
+             <!-- Ventana Modal imagen de producto -->
+            <div class="modal-content col-lg-6 col-md-12 col-sm-12">
+
+                 <img class="img-ventena" src="{{porductos_detalles_img}}">
+
+            </div>
+           
+            <!-- Ventana Modal detalles de producto -->
+            <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+
+               <h2>{{porductos_detalles_name}}</h2>
+
+               <div [innerHTML] id="contenedor-descripciones">{{porductos_detalles}}</div>
+
+               <a>
+                   Add to box $ {{porductos_detalles_precio}}
+               </a>
+
+            </div>
+           
+        </div>
+
+    </div>
+
+
+
+    <!--=====================================
+    Ventana Modal para alerta de cajas
+    ======================================--> 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+      <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <h5 class="modal-title-rd" id="exampleModalCenterTitle">
+                Box Sizes
+            </h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+              <span aria-hidden="true">&times;</span>
+
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+
+            <p class="modal-tex">
+
+              We want your gifts to look perfect!, that's why we have three different
+              box sizes. Never too much or too little space, and perfectly packed everytime!   
+
+            </p>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <button type="button" 
+            style="background: black; width: 107px; height: 45px;" 
+            class="btn btn-secondary" data-dismiss="modal">
+                GOT IT!
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!--=====================================
+    Sticky bottom bar productos
+    ======================================-->
+    <div class="" style="">
+
+        <div class="fixed-bottom row" style="background: white; 
+        border-top:1px solid #000; width: 100%; height: px; margin:0px;">
+
+            <!-- Imagenes -->
+            <div class="col-lg-8 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
+            margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
+
+                <div class="row-yt" 
+                *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
+                id="alm_{{index}}">
+
+                    <div class="" style="display: flex;">
+
+                        <img style="width: 100%; height:px; display: flex;" 
+                        src="{{product.image}}">
+
+                        <div class="circulo">{{cant_productos[i]}}</div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Botón 1 -->
+            <div class="btn-none col-lg-2 col-md-12 sol-sm-12" style="; width: 100%; height: 74px;
+            margin:0px; padding: 0px; display: flex;
+            justify-content: center; align-items: center;">
+
+                <a class="byn-tyt-white">
+                    CURRENT BOX REGULAR
+                </a>
+
+            </div>
+
+            <!-- Botón 2 -->
+            <div class="col-lg-2 col-md-12 sol-sm-12" style="width: 100%; height: 74px; 
+            margin:0px; padding: 0px; display: flex;
+            justify-content: center; align-items: center;">
+
+                <a (click)="guardaProductos()" class="byn-tyt">
+                    COMPLETE BOX 
+                </a>
+
+            </div>
+      
+        </div> 
+
+    </div>
+    <div style="justify-content: center; display: flex;">
+
+        <!-- The actual snackbar --> 
+        <div  
+        id="snackbar">
+            {{txt_product_snackbar}} added to box
+        </div>
+
+        <!-- The actual snackbar -->
+        <div  
+        id="snackbarTow">
+            {{txt_product_snackbar}} removed to your box
+        </div>
+        
+    </div>
+    
+    
+</div>
+
+<style>
+    ./*activate-to-large{
+        display: none;
+    }*/
+    .icon-cross{
+        cursor: pointer;
+    }
+    /* The snackbar - position it at the bottom and in the middle of the screen */
+    #snackbar {
+      display: flex; 
+      justify-content: center;
+      visibility: hidden; /* Hidden by default. Visible on click */
+      min-width: 250px; /* Set a default minimum width */
+      margin-left: 125px; /* Divide value of min-width by 2 */
+      background-color: #333; /* Black background color */
+      color: #fff; /* White text color */
+      text-align: center; /* Centered text */
+      border-radius: 2px; /* Rounded borders */
+      padding: 16px; /* Padding */
+      position: fixed; /* Sit on top of the screen */
+      z-index: 1; /* Add a z-index if needed */
+      left: %; /* Center the snackbar */
+      bottom: 15%; /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+      visibility: visible; /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+      However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 15%; opacity: 1;}
+    }
+
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 15%; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+      from {bottom: 15%; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+      from {bottom: 15%; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+    
+    @media screen and  (max-width: 360px) {
+      #snackbar{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+     
+        display: none !important; 
+      }
+    }
+    @media screen and  (max-width: 411px) {
+      #snackbar{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+         
+        display: none !important; 
+       }
+    }
+
+    @media screen and  (max-width: 414px) {
+      #snackbar{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+         
+        display: none !important; 
+       }
+    }
+    @media screen and  (max-width: 540px) {
+      #snackbar{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+    }
+    @media screen and  (max-width: 768px) {
+      #snackbar{
+        margin-bottom: 25%;
+        align-items: center;
+        margin-right: 4%;
+      }
+    }
+    /* The snackbar - position it at the bottom and in the middle of the screen */
+    #snackbarTow {
+      display: flex; 
+      justify-content: center;
+      visibility: hidden; /* Hidden by default. Visible on click */
+      min-width: 250px; /* Set a default minimum width */
+      margin-left: 125px; /* Divide value of min-width by 2 */
+      background-color: #333; /* Black background color */
+      color: #fff; /* White text color */
+      text-align: center; /* Centered text */
+      border-radius: 2px; /* Rounded borders */
+      padding: 16px; /* Padding */
+      position: fixed; /* Sit on top of the screen */
+      z-index: 1; /* Add a z-index if needed */
+      left: %; /* Center the snackbar */
+      bottom: 15%; /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbarTow.show {
+      visibility: visible; /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+      However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 15%; opacity: 1;}
+    }
+
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 15%; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+      from {bottom: 15%; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+      from {bottom: 15%; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+    
+    @media screen and  (max-width: 360px) {
+      #snackbarTow{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+     
+        display: none !important; 
+      }
+    }
+    @media screen and  (max-width: 411px) {
+      #snackbarTow{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+         
+        display: none !important; 
+       }
+    }
+
+    @media screen and  (max-width: 414px) {
+      #snackbarTow{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+      .btn-none{
+         
+        display: none !important; 
+       }
+    }
+    @media screen and  (max-width: 540px) {
+      #snackbarTow{
+        margin-bottom: 20%;
+        align-items: center;
+        margin-right: 4%;
+      }
+    }
+    @media screen and  (max-width: 768px) {
+      #snackbarTow{
+        margin-bottom: 25%;
+        align-items: center;
+        margin-right: 4%;
+      }
+    }
+</style>
+
+
+
+
 <style>
     
     .row-yt{
@@ -156,7 +921,7 @@
         margin: 2%;
         margin-top: 5%;
         display: flex;
-        justify-content: space-around;
+       
     }
 
     .divimagenesstu{
@@ -347,7 +1112,7 @@
         margin: 100%;
     }
         
-	.contrainer{
+    .contrainer{
         width: 100%;
         display:block;  
     }
@@ -389,11 +1154,11 @@
         content: none;
     }
     .progressbar a.active{
-    	display: block;
+        display: block;
         color: #C4AE9D;
     }
     .progressbar a.active:before{
-    	background-color: #C4AE9D;
+        background-color: #C4AE9D;
         border-color:#C4AE9D;
     }
     .progressbar a.active + a:after{
@@ -416,11 +1181,11 @@
     /*Progressbar before*/
 
     .progressbar a.active{
-    	display: block;
+        display: block;
         color: #F0B27A;
     }
     .progressbar a.active:before{
-    	background-color: #F0B27A;
+        background-color: #F0B27A;
         border-color:#F0B27A;
     }
     .progressbar a.active + a:after{
@@ -443,14 +1208,14 @@
     /*Caja de productos*/
     
     .imagecontainer{
-    	display: flex;
-    	justify-content:center;
-    	width: 100%
+        display: flex;
+        justify-content:center;
+        width: 100%
     }
 
     .image-style{
-    	width: 49%;
-    	padding: 2px;
+        width: 49%;
+        padding: 2px;
     } 
 
     .image-style img{
@@ -458,15 +1223,15 @@
     }
 
     #transition-image{
-    	position: absolute;
-    	top: 0px:
-    	left:0px;
-    	opacity: 0;
-    	transition: opacity 0.5s ease;
+        position: absolute;
+        top: 0px:
+        left:0px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
 
     }
     #transition-image:hover{
-    	opacity: 1;
+        opacity: 1;
     }
 
      /* Global Button Styles */
@@ -532,36 +1297,36 @@
     }
 
     a.animated-button.thar-three {
-    	color: #fff;
-    	cursor: pointer;
-    	display: block;
-    	position: relative;
-    	border: 2px solid #F7CA18;
-    	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        position: relative;
+        border: 2px solid #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
     0s;
     }
     a.animated-button.thar-three:hover {
-    	color: #000 !important;
-    	background-color: transparent;
-    	text-shadow: nthree;
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nthree;
     }
     a.animated-button.thar-three:hover:before {
-    	left: 0%;
-    	right: auto;
-    	width: 100%;
+        left: 0%;
+        right: auto;
+        width: 100%;
     }
     a.animated-button.thar-three:before {
-    	display: block;
-    	position: absolute;
-    	top: 0px;
-    	right: 0px;
-    	height: 100%;
-    	width: 0px;
-    	z-index: -1;
-    	content: '';
-    	color: #000 !important;
-    	background: #F7CA18;
-    	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
     0s;
     }
 
@@ -628,53 +1393,53 @@
         transition: all 1s ease;
     }
 
-	a.animated-button.thar-three {
-		/* margin-top: 24%;*/
+    a.animated-button.thar-three {
+        /* margin-top: 24%;*/
         margin: 18%;
-	    background-color: white;
-		color: black;
-		cursor: pointer;
-		display: block;
-		position: absolute;
-		border: 2px solid black;
-		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-	0s;
-	}
-	a.animated-button.thar-three:hover {
-		color: #000 !important;
-		background-color: transparent;
-		text-shadow: nthree;
-	}
-	a.animated-button.thar-three:hover:before {
-		left: 0%;
-		right: auto;
-		width: 100%;
-	}
-	a.animated-button.thar-three:before {
-		display: block;
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		height: 100%;
-		width: 0px;
-		z-index: -1;
-		content: '';
-		color: #000 !important;
-		background: #C4AE9D; 
-		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
-	}
-
-	.parrafo{
-		 margin-top:155px;
-		 font-size: 100%;
-
-	}
-
-	.images{
-   	display: flex;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        border: 2px solid black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #C4AE9D; 
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
     }
 
-   	.pzp{
+    .parrafo{
+         margin-top:155px;
+         font-size: 100%;
+
+    }
+
+    .images{
+    display: flex;
+    }
+
+    .pzp{
      margin-top: 2%;
     }
     .col-lg-3, .col-md-3, .col-sm-12{
@@ -763,7 +1528,7 @@
     .ps-product{
        overflow: hidden 
     }
-    .texto{
+    .texto {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -779,12 +1544,41 @@
         color: black;
         font-size: 20px;
         height: px;
+        transition: 4s;
     }    
-    .ps-product:hover .texto{
+    .ps-product:hover .texto {
         bottom: -50%;
     }
     .ps-product__thumbnail:hover .texto {
-      bottom: -55%;
+      bottom: -75%;
+
+      background-color:ps-form--quick-search button;
+      color: #ffffff;
+    }
+    .textoTow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        /*bottom: - 100%;*/
+        padding: 10px 20px;
+        bottom: -75%;
+    }
+    .textoTow a{
+        border: 1px solid black !important;
+        background: white;
+        display: flow-root;
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        height: px;
+        transition: 4s;
+    }    
+    .ps-product:hover .textoTow{
+        bottom: -50%;
+    }
+    .ps-product__thumbnail:hover .textoTow{
+      bottom: -75%;
 
       background-color:ps-form--quick-search button;
       color: #ffffff;
@@ -864,471 +1658,3 @@
     }
  
 </style>
-
-<div class="ps-breadcrumb">
-    
-    <!-- Barra de números -->
-	<div class="contrainer">
-		<div>
-			<ul class="progressbar">
-     			<a id="step1"  (click)="HyperLink()" >Step 1</a>
-     			<a id="step2"  class="superActive">Step 2</a>
-             	<a id="step3" (click)="HyperLink3()">Step 3</a>
-    	        <a id="step4" >Done!</a>
-			</ul>
-			<br>
-   	 	</div><br>
-   	 </div><br>
-
-     <!-- Descripción  -->
-     <div class="imagecontainer"> <p class="parrafo"> Step of 2 of 3 </p><br></div>
-   	 <div class="imagecontainer"> <h2><b>CHOOSE YOUR ITEMS</b><br><br><br></h2></div>
-     
-     <!-- Pintamos formulario para caja y productos -->
-
-     <div class="div-new">
-
-        <!-- Progres bar para el tamaño de la caja -->
-        <div class="divSubMenus">   
-
-           <a  class="select-caja select-active-caja"
-           id="small-box-a" 
-           type="button"  data-toggle="modal" 
-           data-target="#exampleModalCenter">
-                SMALL
-           </a> 
-
-           <a  class="select-caja" 
-           id="regular-box-a" 
-           type="button"  data-toggle="modal" 
-           data-target="#exampleModalCenter">
-                REGULAR
-            </a>
-
-        </div>
-
-        <!-- Guardado de productos en caja  -->
-
-        <div class="row  col-sm-12" style="display: flex;">
-
-            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
-                <!-- Titulo de la caja -->
-                <div class="div-title-new">
-
-                    <p>START SELECTING ITEMS TO FILL YOUR BOX</p>
-
-                </div>
-
-                <!-- Imágenes de los productos -->
-
-                <div class="contrainer ">
-                    <div class="row">
-
-                        <!-- Caja -->
-                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
-
-                            <div  class="img-new-product ">
-                                <img style="display: flex;" src="{{box_json.box_img}}" alt="">
-
-                                <div class="circulo">{{1}}</div>
-                            </div>
-
-                        </div>
-
-                        <!-- Productos -->
-                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
-
-                            <div  class="img-new-product">
-
-                                <img style="display: flex;" src="{{product.image}}" alt="">
-
-                                <div class="circulo">{{cant_productos[i]}}</div>
-
-                            </div>
-
-                           {{ lastIndex ? callback() : ""}}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Infomración de todos los productos incluyendo la caja -->
-
-            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
-
-                <div class="div_et">
-                   <p class="pzp"><b>BOX CONTENTS</b></p>
-                </div>
-             
-                <div class="div_ed">
-                   <p>1 &nbsp;{{box_json.box_name}} &nbsp; $ &nbsp;{{box_json.box_price}}</p>
-                </div>
-
-                <!-- contenido de productos agregados -->
-
-                <div class="nwe-ptg">
-
-                     <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
-
-                        <p class="tex_cont">
-                            {{cant_productos[i]}}&nbsp;
-                        </p>
-
-                        <p>
-                            {{product.name}}&nbsp;  ${{product.price}}&nbsp;
-                        </p>
-
-                        <i (click)="eliminarProducto(i)" class="icon-cross"></i>
-
-                     {{ lastIndex ? callback() : ""}}
-
-                    </div>  
-
-                </div>
-
-                <div class="div_ed">
-                   <p>CURRENT PACKAGING I SMALL</p>
-                </div>
-
-                <div class="div-price-new">
-
-                    <p>
-                        <b> BOX SUBTOTAL: $ {{subTotal}}</b>
-                    </p>
-
-                    <a 
-                    (click)="guardaProductos()"
-                    class="new-boton">
-                        COMPLETE BOX
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div> 
-
-     </div>
-
-    <!-- Filtros -->
-    <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
-
-        <!-- Filtro por Categoría -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
-
-            <select class="custom-select" id="inputGroupSelect01" 
-            (change)="filtradoProductos1(0,$event.target.value)"
-            style="height: 50px; font-size: 18px;">
-
-
-                <option selected>Reason or Season</option>
-                <!-- <option selected>Reason or Season</option> -->
-                <option value="Birthday">Birthday</option>
-                <option value="Be my Bridesmaid">Be my Bridesmaid</option>
-                <option value="Celebration">Celebration</option>
-                <option value="Books we love">Books we love</option>
-                <option value="Bridal">Bridal</option>
-                <option value="Kitchen">Kitchen</option>
-                <option value="At home essentials">At home essentials</option>
-                <option value="Food & Treats">Food & Treats</option>
-                <option value="Wellness">Wellness</option>
-            
-
-            </select>  
-
-        </div>
-
-        <!-- Filtro por colores -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
-
-            <select class="custom-select" id="inputGroupSelect01" 
-            (change)="filtradoProductos1(1,$event.target.value)"
-            style="height: 50px; font-size: 18px;">
-
-                <option selected>Color</option>
-                <!-- <option selected>Color</option> -->
-                <option value="White">White</option>
-                <option value="Beige">Beige</option>
-                <option value="Pinck">Pinck</option>
-                <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
-                <option value="Orange">Orange</option>
-                <option value="Black">Black</option>
-                <option value="Gold">Gold</option>
-                <option value="Silver">Silver</option>
-                <option value="Purple">Purple</option>
-                <option value="Yellow">Yellow</option>
-                <option value="Khaki">Khaki</option>
-                <option value="Brow">Brow</option>4
-
-            </select>
-
-        </div>
-
-        <!-- Filtro por precios  -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
-
-            <select class="custom-select" id="inputGroupSelect01" 
-            (change)="sortElementsByRange($event.target.value)"
-            style="height: 50px; font-size: 18px;">
-
-                <option selected>Sort by Options</option>
-                <!-- <option selected>Sort by Options</option> -->
-                <option value="lower">Price(Low to high)</option>
-                <option value="higher">Price(High to low)</option>
-                <option value="box-small">Size(Small to large)</option>
-                <option value="box-big">Size(Large to small)</option>
-
-            </select>
-
-        </div>
-
-        <!-- Filtro por serch -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
-
-            <div id="inputGroupSelect01" style="height: 50px;">
-
-              <input
-              [(ngModel)] = "searh_filter_text"
-              (keyup.enter)="goSearch()"
-              class="form-control mr-sm-2" 
-              type="search" 
-              placeholder="Search" 
-              aria-label="Search">
-
-            </div>
-
-        </div>
-
-    </div>
-
-   	<!--=====================================
-    Productos para agregar a la caja
-    ======================================-->
-
-    <div class="container">
-
-        <div class="divimageness row">
- 
-            <div
-            *ngFor="let products of getProduct; let lastIndex = last"
-            class="ps-product col-lg-3 col-md-4 col-sm-6">
-
-                <!-- *ngIf="getVisibilityByFilter(products)" -->
-                <div 
-
-                class="ps-product__thumbnail">
-
-                    <a>
-
-                        <img 
-                        style="width: 100%; height: 260px;" 
-                        (click)="detallesProducto(products)"
-                         type="button"  data-toggle="modal" 
-                         data-target=".bd-example-modal-xl"
-                         src="{{products.image}}" alt="">
-
-                    </a>
-
-                    <ul class="ps-product__actions">
-
-                        <li>
-
-                            <a>
-
-                                <i class="icon-heart"></i>
-
-                            </a>
-
-                        </li> 
-
-                    </ul>
-
-                   <!-- Información de productos -->
-
-                    <p class="tex_product">
-                        {{products.name}}
-                    </p>
-
-                    <p class="tex_product">
-                        {{products.price}}
-                    </p>
-
-                   <!-- Boton para agregar productos a la caja -->
-
-                     <div class="texto">
-
-                        <a (click)="almacenarProductos(products)" 
-                         style="cursor:pointer">
-                             Add to box
-                        </a>
-
-                        <!-- BTN para agregar cantidad de productos -->
-                        <div class="quantity" style="display:none;">
-                            <!-- BTN menos -->
-                            <button class="menos" type="button">-</button>
-
-                            <input type="text" id="quantity" value="1 IN INBOX">
-                            <!-- BTN más -->
-                            <button class="mas" type="button">+</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-             {{ lastIndex ? callback() : ""}}
-
-            </div><!-- End Product --> 
-            
-        </div>
-        
-    </div> 
-
-
-    <!--=====================================
-    Ventana Modal para ver el producto detallado
-    ======================================--> 
-    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="
-    myExtraLargeModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog modal-xl row" role="document">
-
-             <!-- Ventana Modal imagen de producto -->
-            <div class="modal-content col-lg-6 col-md-12 col-sm-12">
-
-                 <img class="img-ventena" src="{{porductos_detalles_img}}">
-
-            </div>
-           
-            <!-- Ventana Modal detalles de producto -->
-            <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
-
-               <h2>{{porductos_detalles_name}}</h2>
-
-               <div [innerHTML] id="contenedor-descripciones">{{porductos_detalles}}</div>
-
-               <a>
-                   Add to box $ {{porductos_detalles_precio}}
-               </a>
-
-            </div>
-           
-        </div>
-
-    </div>
-
-<br><br><br><br><br><br><br><br>
-
-    <!--=====================================
-    Ventana Modal para alerta de cajas
-    ======================================--> 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-
-      <div class="modal-dialog modal-dialog-centered" role="document">
-
-        <div class="modal-content">
-
-          <div class="modal-header">
-
-            <h5 class="modal-title-rd" id="exampleModalCenterTitle">
-                Box Sizes
-            </h5>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-              <span aria-hidden="true">&times;</span>
-
-            </button>
-
-          </div>
-
-          <div class="modal-body">
-
-            <p class="modal-tex">
-
-              We want your gifts to look perfect!, that's why we have three different
-              box sizes. Never too much or too little space, and perfectly packed everytime!   
-
-            </p>
-
-          </div>
-
-          <div class="modal-footer">
-
-            <button type="button" 
-            style="background: black; width: 107px; height: 45px;" 
-            class="btn btn-secondary" data-dismiss="modal">
-                GOT IT!
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!--=====================================
-    Sticky bottom bar productos
-    ======================================-->
-    <div class="" style=" ">
-
-        <div class="fixed-bottom row" style="background: white;
-        border-top:1px solid #000; width: 100%; height: px; margin:0px;">
-
-            <!-- Imagenes -->
-            <div class="col-lg-8 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
-            margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
-
-                <div class="row-yt" 
-                *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
-                id="alm_{{index}}">
-
-                    <div class="" style="display: flex;">
-
-                        <img style="width: 100%; height:px; display: flex;" 
-                        src="{{product.image}}">
-
-                        <div class="circulo">{{cant_productos[i]}}</div>
-                        
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Botón 1 -->
-            <div class="col-lg-2 col-md-12 sol-sm-12" style="; width: 100%; height: 74px;
-            margin:0px; padding: 0px; display: flex;
-            justify-content: center; align-items: center;">
-
-                <a class="byn-tyt-white">
-                    CURRENT BOX REGULAR
-                </a>
-
-            </div>
-
-            <!-- Botón 2 -->
-            <div class="col-lg-2 col-md-12 sol-sm-12" style="width: 100%; height: 74px; 
-            margin:0px; padding: 0px; display: flex;
-            justify-content: center; align-items: center;">
-
-                <a (click)="guardaProductos()" class="byn-tyt">
-                    COMPLETE BOX 
-                </a>
-
-            </div>
-      
-        </div> 
-
-    </div>
-
-</div>
-
-    

@@ -3,7 +3,7 @@ import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
-import { Id_box, Search,Sweetalert } from '../../functions';
+import { Id_box, Search, Sweetalert, DinamicPrice ,Rating } from '../../functions';
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -48,6 +48,8 @@ export class SelecctionPasoDosComponent implements OnInit {
   ); 
   box_to_update: BoxesModel;
   box_content:any[] = [];
+  bestSalesItem:any[] = [];
+  price:any[] = [];
 
   // Variables de productos
   getProduct:any[] = [];
@@ -79,7 +81,9 @@ export class SelecctionPasoDosComponent implements OnInit {
   used_space = 0;
   filters_array =[];
   searh_filter_text = "";
-
+  txt_product_snackbar="";
+  message_oops_box = false;
+  message_oops_box_f;
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -154,8 +158,10 @@ export class SelecctionPasoDosComponent implements OnInit {
        this.filters_array.push("Reason or Season");
        this.filters_array.push("Color");
        this.filters_array.push("Sort by Options");
+
       // Filtrar productos para agregar a la caja
       let getCategories = []; 
+
       this.productsService.getDatta()
       .subscribe(resp=>{
             
@@ -173,6 +179,7 @@ export class SelecctionPasoDosComponent implements OnInit {
               this.product_img.push(resp[i].image);
               this.tamaño_caja.push(resp[i].size);
               this.producto_url.push(resp[i].url);
+             
           }
             
       }) 
@@ -241,7 +248,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           this.cant_productos.push(1);
         }
     this.sumaProductos();
-    this.calculatePercentage()
+    this.calculatePercentage();
 
   }
 
@@ -360,11 +367,13 @@ export class SelecctionPasoDosComponent implements OnInit {
   HyperLink(){
     window.open('/selecction-caja','_self');
   }
+
   HyperLink3(){
     if(this.box_steps[2]) {
        window.open('/selecction-paso-tres'+this.id_to_box,'_self');
     }
   }
+
   // Calcular porcentaje de los productos agregados
   calculatePercentage(){
     this.used_space = 0;
@@ -375,24 +384,36 @@ export class SelecctionPasoDosComponent implements OnInit {
     console.log("used space es "+this.used_space+" y box size es "+this.box_size);
     //var percentage = (pivote * 100)/ this.original_size;
     if(this.used_space<=this.regular_box_size){
+
       if(this.box_size == this.regular_box_size && this.used_space<= this.small_box_size) {
-        this.box_size = this.small_box_size;
-        this.full_percentage_bar = 50;
-        document.getElementById("regular-box-a").classList.remove("select-active-caja");
-        document.getElementById("small-box-a").classList.add("select-active-caja");
+
+          this.box_size = this.small_box_size;
+          this.full_percentage_bar = 50;
+          document.getElementById("regular-box-a").classList.remove("select-active-caja");
+          document.getElementById("small-box-a").classList.add("select-active-caja");
+
       } else if(this.box_size == this.small_box_size && this.used_space> this.small_box_size) {
-        console.log("Hace cambio a big");
-        this.box_size = this.regular_box_size;
-        this.full_percentage_bar = 100;
-        document.getElementById("regular-box-a").classList.add("select-active-caja");
-        document.getElementById("small-box-a").classList.add("select-active-caja");
-        Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
+
+          console.log("Hace cambio a big");
+          this.box_size = this.regular_box_size;
+          this.full_percentage_bar = 100;
+          document.getElementById("regular-box-a").classList.add("select-active-caja");
+          document.getElementById("small-box-a").classList.add("select-active-caja");
+          Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
       }
     }  else {
-      Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
-      // ENVIO ERROR 
+        // ENVIO ERROR 
+        Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
     }
+    this.asignFullMessage();
+  }
 
+  asignFullMessage(){
+    if (this.used_space >= this.regular_box_size) {
+      this.message_oops_box = true;
+    } else {
+      this.message_oops_box = false;
+    }
   }
 
   selectActivesBoxes(){
@@ -440,6 +461,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           
       }) 
   }
+  // Función para los filtros de productos
   getVisibilityByFilter(art){
     console.log("Articulo es "+art);
     console.log("Filtros es "+this.filters_array);
@@ -515,6 +537,74 @@ export class SelecctionPasoDosComponent implements OnInit {
     }
     console.log("Size es "+this.getProduct.length);
   }
+
+  // Mostrar alerta para agregar productos
+  myFunction(name) {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    this.txt_product_snackbar=name;
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
+  // Mostrar alerta para quitar productos
+  myFunctionTow(name) {
+    var x = document.getElementById("snackbarTow");
+    x.className = "show";
+    this.txt_product_snackbar=name;
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
+  fncNewR(i, name){
+    this.eliminarProducto(i);
+    this.myFunctionTow(name);
+  }
+
+  getvisibilityForAdd(name){
+    var resort = false;
+    for(let i = 0; i< this.almacenar_productos.length; i++){
+        if (this.almacenar_productos[i].name == name) {
+          resort = true
+        }
+        // this.used_space += (30/this.almacenar_productos[i].size) * this.cant_productos[i];
+      }
+      return resort
+  }
+
+  productsFull(){
+  
+    if(this.message_oops_box){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  getNumArts(products){
+    var pivote = 0;
+     for(let i = 0; i< this.almacenar_productos.length; i++){
+        if (this.almacenar_productos[i].name == products.name) {
+           pivote = this.cant_productos[i];
+        }
+      }
+      return pivote;
+  }
+
+  modificadorCantidadProductos(add_num, indx_num, products){
+    for(let i = 0; i< this.almacenar_productos.length; i++){
+        if (this.almacenar_productos[i].name == products.name) {
+           let pivote = this.cant_productos[i] + add_num;
+           if(pivote > 0 && pivote <= products.stock){
+            this.cant_productos.splice(i, 1, pivote);
+
+            this.sumaProductos();
+            this.calculatePercentage();
+          }
+        }
+      }
+    
+
+  }
+
 }
   
 
