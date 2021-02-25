@@ -348,16 +348,16 @@
                 <div 
                  class="texto"
                  *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
-
-                    <a (click)="almacenarProductos(products)"
-                     (click)="myFunction(products.name)" 
+                        <!-- (click)="myFunction(products.name)"   -->
+                    <a 
+                    (click)="fncNewAdd(products, products.name)"
                      style="cursor:pointer">
                          Add to box
                     </a>
                 </div>
 
                 <!-- BTN para agregar cantidad de productos -->
-                <div class="textoTow"
+                <div class="texto"
                 *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
 
                     <div  style="width: 100%; display: flex;">
@@ -542,7 +542,7 @@
     </div>
     <div style="justify-content: center; display: flex;">
 
-        <!-- The actual snackbar --> 
+        <!-- The actual   --> 
         <div  
         id="snackbar">
             {{txt_product_snackbar}} added to box

@@ -233,6 +233,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           // console.log("Es igual");
           this.cant_productos[i] = this.cant_productos[i] + 1;
           esta_en_el_arreglo = true;
+          // this.myFunction(this.almacenar_productos[i].name);
         }
 
       }
@@ -557,6 +558,11 @@ export class SelecctionPasoDosComponent implements OnInit {
   fncNewR(i, name){
     this.eliminarProducto(i);
     this.myFunctionTow(name);
+  }
+
+  fncNewAdd(id, name){
+    this.almacenarProductos(id);
+    this.myFunction(name);
   }
 
   getvisibilityForAdd(name){

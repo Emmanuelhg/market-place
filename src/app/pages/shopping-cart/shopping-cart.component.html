@@ -73,7 +73,7 @@ Shopping Car
                                     <div class="ps-product__thumbnail">
 
                                         <a href="product/{{product.url}}">
-                                        	<img src="{{path}}img/products/{{product.category}}/{{product.image}}">
+                                        	<img src="{{product.image}}">
                                         </a>
 
                                     </div>
@@ -83,6 +83,13 @@ Shopping Car
                                         <a href="product/{{product.url}}">{{product.name}}</a>
 
                                         <div [innerHTML]="product.details"></div>
+
+                                        <a 
+                                         data-toggle="modal" 
+                                         data-target=".bd-example-modal-xl"
+                                         style="cursor: pointer;">
+                                            Add Address
+                                        </a>
 
                                     </div>
 
@@ -165,5 +172,112 @@ Shopping Car
         </div> 
         
     </div>
+
+    <!--=====================================
+    Ventana Modal 
+    ======================================--> 
+   
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" 
+    aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+
+        <!-- Contenido ventana modal -->
+        <div class="modal-content"  style="display: flex;">
+                <!-- Encabezado ventana modal  -->
+                <div class="modal-header">
+                    <h5 class="modal-title-rd" id="exampleModalCenterTitle">Box Addres</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="row" style="margin-right: 0px; margin-left: 0px;">
+                    <!-- DIV IZQUIERDA -->
+                    <div class="modal-content col-lg-6 col-md-12 col-sm-12"
+                    style="height:500px;">
+                        <!-- Formulario para ingresar dirección  -->
+                       <div class="modal-body">
+                        <p class="modal-tex">
+                            Contact information
+                        </p>
+                        <input type="email" class="form-control" id="exampleInputEmail1" 
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">      
+                                <p class="modal-tex">
+                                    Check me out                  
+                                </p>
+                            </label>
+                        </div>
+                        <p class="modal-tex">
+                            Shipping address
+                        </p>
+                        <div style="margin-bottom: 1%;">
+                            <form>
+                              <div class="row">
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="Recipient first name">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="Last name">
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                        <div style="margin-bottom: 1%;">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Company (optional)">
+                            
+                        </div>
+                        <div style="margin-bottom: 1%;">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Address">
+                        </div>
+                        <div style="margin-bottom: 1%;">
+                            
+                            <input type="text" class="form-control" id="formGroupExampleInput" 
+                            placeholder="Apartament, suite, etc. (optional)"> 
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- DIV DERECHA -->
+                    <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" 
+                    style="background: white;overflow-y: scroll; height: 500px;">
+
+                        <div *ngFor="let product of shoppingCart; let lastIndex = last"
+                        style="display: flex;" class="ps-cart--mini">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12" style="width: 20%;">
+
+                                <img  style="width:70px; height: 70px; margin: 5.5%;" 
+                                src="{{product.image}}" maxlength="30">
+        
+                            </div>
+
+                            <div style="width: 70%;" class="shopping-product col-lg-6 col-md-4 col-sm-12">
+                                <a href="product/{{product.url}}">{{product.name}}</a>
+                            </div>
+
+                            <div style="width: 10%;" class="col-lg-2 col-md-4 col-sm-12">
+                               
+                              <a>{{product.price2}}</a>
+
+                            </div>
+
+                            {{ lastIndex ? callback() : ""}}
+
+                        </div>
+            
+                    </div>
+                </div>
+          
+          <div class="modal-footer">
+            <button type="button" style="background: black; width: 107px; height: 45px;" class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
+          </div>
+        </div>
+        
+      </div>
+
+    </div> 
 
 </div>

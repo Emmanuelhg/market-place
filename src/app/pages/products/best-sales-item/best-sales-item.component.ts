@@ -178,6 +178,9 @@ export class BestSalesItemComponent implements OnInit {
 	=============================================*/
 
 	addShoppingCart(product, unit, details){
+		console.log("Producto:",product);
+		console.log("unidad:",unit);
+		console.log("detalles:",details);
 		// Esta variable te mantiene en el mismo componente
 		let url = this.router.url;
 

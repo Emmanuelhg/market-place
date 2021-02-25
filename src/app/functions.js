@@ -473,6 +473,82 @@ export let DinamicPrice = {
 }
 
 /*=============================================
+DinamicPrice 2
+=============================================*/
+
+export let DinamicPrice2 = {
+
+    fnc: function(response){
+    
+        let type;
+        let value;
+        let offer;
+        let price2;
+        let disccount;
+        let arrayPrice = [];
+        let offerDate;
+        let today = new Date();
+
+
+        if(response.offer != ""){
+
+            offerDate = new Date(
+
+                parseInt(JSON.parse(response.offer)[2].split("-")[0]),
+                parseInt(JSON.parse(response.offer)[2].split("-")[1])-1,
+                parseInt(JSON.parse(response.offer)[2].split("-")[2])
+
+            )
+
+            if(today < offerDate){
+
+                type = JSON.parse(response.offer)[0];
+                value = JSON.parse(response.offer)[1];
+
+                if(type == "Disccount"){
+
+                    offer = (response.price-(response.price * value/100)).toFixed(2)    
+                }    
+
+                if(type == "Fixed"){
+
+                    offer = value;
+                    value = Math.round(offer*100/response.price);
+
+                }
+
+                disccount = `<div class="ps-product__badge">-${value}%</div>`;
+
+                price2 = `${offer} ${response.price}`;
+
+            }else{
+
+                price2 = `${response.price}`; 
+            }
+
+        }else{
+
+            price2 = `${response.price}`;
+        }
+
+        /*=============================================
+        Definimos si el producto tiene stock
+        =============================================*/    
+
+        if(response.stock == 0){
+
+            disccount = `<div class="ps-product__badge out-stock">Out Of Stock</div>`;
+
+        }
+
+        arrayPrice[0] = price2;
+        arrayPrice[1] = disccount;
+
+        return arrayPrice;
+    }
+
+}
+/*=============================================
 Pagination
 =============================================*/
 export let Pagination = {

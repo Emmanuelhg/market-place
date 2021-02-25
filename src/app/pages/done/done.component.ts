@@ -115,6 +115,7 @@ export class DoneComponent implements OnInit {
 
         if(resp !=null){
             this.box_json = resp;
+            this.recuperarCajas();
             console.log("id es ",this.id);
             if (resp["box_steps"] != undefined) {
                this.box_steps = resp["box_steps"];
@@ -257,6 +258,10 @@ export class DoneComponent implements OnInit {
     console.log("detalles finales",boxes);
     this.products=boxes.box_arts;
 
+  }
+
+  HyperLink(){
+    window.open('/shopping-cart','_self');
   }
 
 }

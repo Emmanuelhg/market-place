@@ -275,6 +275,9 @@ export class SelecctionPasoTresComponent implements OnInit {
   HyperLink(){
     window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
   }
+  HyperLinkTow(){
+    window.open('/done/'+this.id_to_box,'_self');
+  }
 
 }
 

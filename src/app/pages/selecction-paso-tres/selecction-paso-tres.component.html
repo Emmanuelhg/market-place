@@ -492,12 +492,16 @@ a.animated-button.thar-three:before {
 		     	 
 	     	</div>
 	     	<div class="btn_cart">
-	     		<a id="guardar" 
+	     		<a 
+                style="cursor: pointer;" 
+                id="guardar" 
+                (click)="HyperLinkTow()"
                 (click)="fncCarta()"
                 class="botn_new"
-                [routerLink]="['/done', id]">
+                >
                     ADD TO CART
                </a> 
+               <!-- [routerLink]="['/done', id]" -->
 	     	</div>
 
             <div class="add-to-direcction">
@@ -586,7 +590,7 @@ a.animated-button.thar-three:before {
                 <!-- DIV DERECHA -->
                 <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white; display: flex;">
                     <img style="width:50px; height: 50px; margin: 1.5%;" src="{{path}}img/products_etre/carta.jpg" maxlength="30">
-                    <p>Texto de caja</p>&nbsp;
+                    <p>Texto   caja</p>&nbsp;
                     <p>precio</p>
                 </div>
             </div>

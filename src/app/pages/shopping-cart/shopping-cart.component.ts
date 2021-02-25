@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 
 import { Path } from '../../config';
-import { DinamicPrice, Quantity, Sweetalert } from '../../functions';
+import { DinamicPrice, DinamicPrice2 ,Quantity, Sweetalert } from '../../functions';
 
 import { ProductsService } from '../../services/products.service';
 
@@ -121,12 +121,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 							delivery_time:resp[f].delivery_time,
 							quantity:list[i].unit,
 							price: DinamicPrice.fnc(resp[f])[0],
+							price2: DinamicPrice2.fnc(resp[f])[0],
 							shipping:Number(resp[f].shipping)*Number(list[i].unit),
 							details:details,
 							listDetails:list[i].details
 
 						})
-
+						console.log(this.shoppingCart);
 						if(load == list.length){
 
 							this.dtTrigger.next();
