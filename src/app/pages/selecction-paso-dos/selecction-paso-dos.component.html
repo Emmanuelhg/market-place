@@ -67,7 +67,7 @@
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
 
                             <div  class="img-new-product ">
-                                <img style="display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
+                                <img style="height: 149px; display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
 
                                 <div class="circulo">{{1}}</div>
                             </div>
@@ -103,8 +103,36 @@
                    <p class="pzp"><b>BOX CONTENTS</b></p>
                 </div>
              
-                <div class="div_ed">
-                   <p>1 &nbsp;{{box_json.box_name}} &nbsp; $ &nbsp;{{box_json.box_price}}</p>
+                <div class="div_edh">
+
+                   <div style="width: 5%; text-align: center;">
+
+                        <p>
+                            <b>1</b>
+                        </p>
+
+                   </div> 
+
+                   <div style="width: 68%;">
+
+                       <p> 
+                            <b>
+                               {{box_json.box_name}}
+                           </b>
+                       </p>
+
+                   </div>
+
+                   <div style="width: 20%; text-align: center;">
+
+                       <p>
+                            <b>
+                                ${{box_json.box_price}} 
+                            </b>
+                      </p>
+
+                   </div>
+            
                 </div>
 
                 <!-- contenido de productos agregados -->
@@ -112,19 +140,46 @@
                 <div class="nwe-ptg">
 
                      <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
+                        <div style="width: 5%; text-align: center;">
 
-                        <p class="tex_cont">
-                            {{cant_productos[i]}}&nbsp;
-                        </p>
+                            <p class="tex_cont">
+                                <b> 
+                                    {{cant_productos[i]}}
+                                </b>
+                            </p> 
+                        </div>
+                        
+                        <div style="width: 70%;">
 
-                        <p>
-                            {{product.name}}&nbsp;  ${{product.price}}&nbsp;
-                        </p>
+                            <p>
+                                <b>
+                                    {{product.name}} 
+                                </b> 
+                                
+                            </p>
+                            
+                        </div>
 
-                        <!-- Eliminar productos de la caja -->
-                        <i
-                         (click)="fncNewR(i, product.name)"
-                         class="icon-cross"></i>
+                        <div style="width: 20%; text-align: center;">
+                            
+                           <p> 
+                                <b>
+                                    ${{product.price}}
+                                </b>
+                                
+                           </p>  
+
+                        </div>
+                        
+                         <!-- Eliminar productos de la caja -->
+                        <div style="width: 5%; align-items: center;">
+
+                            <i
+                            (click)="fncNewR(i, product.name)"
+                            class="icon-cross"></i>
+                            
+                        </div>
+                       
 
                      {{ lastIndex ? callback() : ""}}
 
@@ -267,11 +322,11 @@
         class="ps-product col-lg-3 col-md-4 col-sm-6">
 
             <!-- *ngIf="getVisibilityByFilter(products)" -->
-            <div  
-
+            <div   
             class="ps-product__thumbnail">
 
                 <a>
+
                     <div style="position: absolute;
                     width: 100%;
                     align-items: center;
@@ -280,31 +335,46 @@
                     background: white;
                     top: 0%;" 
                     id="to-large-to-fid" 
-                    *ngIf="productsFull() == true"
-                    >
+                    *ngIf="productsFull() == true">
+
                         <p style="color: black;">
                             Oops!<br>
                             (too large to fit)
                         </p>
+
                     </div>
 
                     <img 
-                    style="width: 100%; height: 260px; 
+                    style="width: 100%; height: 278px; 
                     object-fit: cover;" 
                     (click)="detallesProducto(products)"
                      type="button"  data-toggle="modal" 
                      data-target=".bd-example-modal-xl"
                      src="{{products.image}}" alt="">
 
+                     <!-- <img 
+                    style="width: 100%; height: 278px; 
+                    object-fit: cover;  " 
+                    (click)="detallesProducto(products)"
+                     type="button"  data-toggle="modal" 
+                     data-target=".bd-example-modal-xl"
+                     src="{{path}}img/products_etre/prod5.png" alt=""> -->
+
                 </a>
+
 
                 <ul class="ps-product__actions">
 
                     <li>
 
-                        <a>
-
-                            <i class="icon-heart"></i>
+                        <a title="Add to Whishlist"
+                        (click)="addWishlist(products.url)">
+                            <!-- (click)="fncMostrarListaDeseos()"
+                             data-toggle="modal" 
+                             data-target=".lista-deseos " -->
+                            <i class="icon-heart"
+                             style="cursor: pointer;" 
+                             ></i>
 
                         </a>
 
@@ -324,7 +394,7 @@
 
 
                         <p class="tex_product">
-                            {{products.price}}
+                           $ {{products.price}}
                         </p>
 
                       
@@ -362,7 +432,8 @@
 
                     <div  style="width: 100%; display: flex;">
                         <!-- BTN menos -->
-                        <button style="width: 15%;" 
+                        <button style="width: 15%;"
+
                         (click)="modificadorCantidadProductos(-1, i,products)"
                         class="menos" type="button">-</button>
 
@@ -376,6 +447,7 @@
                         </div>
                         <!-- BTN más -->
                         <button style="width: 15%;" 
+
                         (click)="modificadorCantidadProductos(1, i,products)"
                         class="mas" type="button">+</button>
                     </div>
@@ -491,6 +563,15 @@
     ======================================-->
     <div class="" style="">
 
+        <div class="fixed-bottom row" style="background: red; 
+         width: 100%; height: px; margin:0px;">
+
+             <div style="float: right;">
+                 <img src="{{path}}img/products_etre/icons8-me-gusta-64.png">
+             </div>
+
+        </div>
+
         <div class="fixed-bottom row" style="background: white; 
         border-top:1px solid #000; width: 100%; height: px; margin:0px;">
 
@@ -540,20 +621,214 @@
         </div> 
 
     </div>
+
+    <!--=====================================
+    Mensajes para avisar al usuario que se 
+    agregó o removió un  producto de la caja
+    ======================================-->
+
     <div style="justify-content: center; display: flex;">
 
-        <!-- The actual   --> 
+        <!-- Mensaje producto agregado --> 
         <div  
         id="snackbar">
             {{txt_product_snackbar}} added to box
         </div>
 
-        <!-- The actual snackbar -->
+        <!-- Mensaje producto removido -->
         <div  
         id="snackbarTow">
             {{txt_product_snackbar}} removed to your box
         </div>
+
+        <div  
+        id="snackbarAgregarListaDeseos">
+            Added to your favorites
+        </div>
+
+        <div  
+        id="snackbarQuitarListaDeseos">
+            Removed from your favorites
+        </div>
         
+    </div>
+
+    <!--=====================================
+    Ventana modal de la lista de deséos
+    ======================================-->
+    <div class="modal fade bd-example-modal-xl lista-deseos" tabindex="-1" role="dialog" aria-labelledby="
+    myExtraLargeModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-xl row" role="document">
+
+            <!-- Productos de la lista de deseos -->
+            <div class="modal-content">
+
+                <!-- Título lista de deseos -->
+                <h3 style="text-align: center; margin-top: 4%;
+                margin-bottom: -1%;">
+                    Your Favorites
+                </h3>
+
+                <div class="divimageness row">
+
+                    <div
+                    *ngFor="let products of getProduct; let lastIndex = last,let i = index"
+                    class="ps-product col-lg-3 col-md-4 col-sm-6">
+
+                        <!-- *ngIf="getVisibilityByFilter(products)" -->
+                        <div   
+                        class="ps-product__thumbnail">
+
+                            <a>
+                                <div style="position: absolute;
+                                width: 100%;
+                                align-items: center;
+                                text-align: center;
+                                opacity: 0.7;
+                                background: white;
+                                top: 0%;" 
+                                id="to-large-to-fid" 
+                                *ngIf="productsFull() == true">
+
+                                    <p style="color: black;">
+                                        Oops!<br>
+                                        (too large to fit)
+                                    </p>
+
+                                </div>  
+
+                                <ul class="ps-product__actionsjy" style="position: absolute;">
+
+                                    <li>
+
+                                        <a style="position: relative;">
+
+                                            <i class="icon-heart"
+                                             style=" background:pink;" 
+                                             data-toggle="modal" 
+                                             data-target=".lista-deseos"></i>
+
+                                        </a>
+
+                                    </li> 
+
+                                </ul>
+
+                                <img 
+                                style="width: 100%; height: 278px; 
+                                object-fit: cover;" 
+                                (click)="detallesProducto(products)"
+                                 type="button"  data-toggle="modal" 
+                                 data-target=".bd-example-modal-xl"
+                                 src="{{products.image}}" alt="">
+
+                                 <!-- <img 
+                                style="width: 100%; height: 278px; 
+                                object-fit: cover;  " 
+                                (click)="detallesProducto(products)"
+                                 type="button"  data-toggle="modal" 
+                                 data-target=".bd-example-modal-xl"
+                                 src="{{path}}img/products_etre/prod5.png" alt=""> -->
+
+                            </a>
+
+                        </div>
+
+                        <!-- Boton para agregar productos a la caja -->
+                        <div 
+                         class="texto"
+                         *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
+                                <!-- (click)="myFunction(products.name)"   -->
+                            <a 
+                            (click)="fncNewAdd(products, products.name)"
+                             style="cursor:pointer">
+                                 Add to box
+                            </a>
+                        </div>
+
+                        <!-- BTN para agregar cantidad de productos -->
+                        <div class="texto"
+                        *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
+
+                            <div  style="width: 100%; display: flex;">
+                                <!-- BTN menos -->
+                                <button style="width: 15%;"
+                                (click)="modificadorCantidadProductos(-1, i,products)"
+                                class="menos" type="button">-</button>
+
+                                <div 
+                                style="background: white;width: 70%; text-align: center;
+                                 color:black; border: 1px solid black !important;"
+                                 id="quantity"> 
+
+                                    {{getNumArts(products)}} IN INBOX
+
+                                </div>
+                                <!-- BTN más -->
+                                <button style="width: 15%;" 
+
+                                (click)="modificadorCantidadProductos(1, i,products)"
+                                class="mas" type="button">+</button>
+                            </div>
+                                
+                        </div>
+                                                
+                        <!-- Botón long -->
+                        <div 
+                         *ngIf="productsFull() == true"
+                          class="texto">
+
+                            <a 
+                             style="cursor:pointer">
+                                Too large
+                            </a>
+
+                        </div>
+
+                       <!-- Información de productos -->
+
+                       <div class="ps-product__containerT">
+
+                            <div class="ps-product__content">
+
+                                <a class="ps-product__title">
+                                   {{products.name}}
+                                </a>
+
+
+                                <p class="tex_product">
+                                   $ {{products.price}}
+                                </p>
+
+                              
+                                <!-- <div [innerHTML]="price[i][0]"></div> -->
+
+                            </div>
+
+                            <div class="ps-product__content hover">
+
+                                <a class="ps-product__title">
+                                    {{products.name}}
+                                </a>
+
+                                <!-- <div [innerHTML]="price[i][0]"></div> -->
+
+                            </div>
+
+                        </div>
+
+                     {{ lastIndex ? callback() : ""}}
+
+                    </div><!-- End Product --> 
+
+                </div>    
+
+            </div>
+           
+           
+        </div>
+
     </div>
     
     
@@ -561,6 +836,26 @@
 
 <style>
     ./*activate-to-large{
+          
+                <!-- <div class="row" style="display: flex;">
+
+                <div class="col-3" style="margin: 3%;">
+
+                    <div>
+                        <img style="width: 100%; height: 250px;" src="{{path}}img/products_etre/prod6.png">
+                    </div>
+
+                    <div style="margin-top: 2%;">
+                        <p>Texto</p>
+                    </div>
+
+                    <div style="margin-top: 2%;">
+                        <p>Precio</p>
+                    </div>
+                    
+                </div>
+                
+            </div> -->
         display: none;
     }*/
     .icon-cross{
@@ -586,6 +881,58 @@
 
     /* Show the snackbar when clicking on a button (class added with JavaScript) */
     #snackbar.show {
+      visibility: visible; /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+      However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    #snackbarAgregarListaDeseos {
+      display: flex; 
+      justify-content: center;
+      visibility: hidden; /* Hidden by default. Visible on click */
+      min-width: 250px; /* Set a default minimum width */
+      margin-left: 125px; /* Divide value of min-width by 2 */
+      background-color: #333; /* Black background color */
+      color: #fff; /* White text color */
+      text-align: center; /* Centered text */
+      border-radius: 2px; /* Rounded borders */
+      padding: 16px; /* Padding */
+      position: fixed; /* Sit on top of the screen */
+      z-index: 1; /* Add a z-index if needed */
+      left: %; /* Center the snackbar */
+      bottom: 15%; /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbarAgregarListaDeseos.show {
+      visibility: visible; /* Show the snackbar */
+      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+      However, delay the fade out process for 2.5 seconds */
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    #snackbarQuitarListaDeseos {
+      display: flex; 
+      justify-content: center;
+      visibility: hidden; /* Hidden by default. Visible on click */
+      min-width: 250px; /* Set a default minimum width */
+      margin-left: 125px; /* Divide value of min-width by 2 */
+      background-color: #333; /* Black background color */
+      color: #fff; /* White text color */
+      text-align: center; /* Centered text */
+      border-radius: 2px; /* Rounded borders */
+      padding: 16px; /* Padding */
+      position: fixed; /* Sit on top of the screen */
+      z-index: 1; /* Add a z-index if needed */
+      left: %; /* Center the snackbar */
+      bottom: 15%; /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbarQuitarListaDeseos.show {
       visibility: visible; /* Show the snackbar */
       /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
       However, delay the fade out process for 2.5 seconds */
@@ -1026,12 +1373,16 @@
         align-items: center;
         display: flex;
     }
+    .div_edh{
+        height: 11%;
+        display: flex;
+    }
     .div_er{
         border-bottom:1px solid #dee2e6!important; 
         border-top: 1px solid #dee2e6!important;
         height: px;   
-        justify-content: center;
-        align-items: center;
+        /*justify-content: center;
+        align-items: center;*/
         display: flex;
     }
     .div_eu{

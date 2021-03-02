@@ -8357,6 +8357,20 @@ input[type=number]
   margin-left: 114px;
 }
 
+.ps-product .ps-product__actionsjy li a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  /*width: 100%;*/
+  height: 44px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+
 /*termina*/
 .ps-product .ps-product__vendor {
   display: block;

@@ -247,7 +247,7 @@ Shopping Car
                         <div *ngFor="let product of shoppingCart; let lastIndex = last"
                         style="display: flex;" class="ps-cart--mini">
 
-                            <div class="col-lg-4 col-md-4 col-sm-12" style="width: 20%;">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
 
                                 <img  style="width:70px; height: 70px; margin: 5.5%;" 
                                 src="{{product.image}}" maxlength="30">
@@ -255,12 +255,18 @@ Shopping Car
                             </div>
 
                             <div style="width: 70%;" class="shopping-product col-lg-6 col-md-4 col-sm-12">
-                                <a href="product/{{product.url}}">{{product.name}}</a>
+
+                                <a href="product/{{product.url}}">
+                                    {{product.name}}
+                                </a>
+
                             </div>
 
                             <div style="width: 10%;" class="col-lg-2 col-md-4 col-sm-12">
                                
-                              <a>{{product.price2}}</a>
+                                <a>
+                                    {{product.price2}}
+                                </a>
 
                             </div>
 
@@ -269,6 +275,7 @@ Shopping Car
                         </div>
             
                     </div>
+                    
                 </div>
           
           <div class="modal-footer">

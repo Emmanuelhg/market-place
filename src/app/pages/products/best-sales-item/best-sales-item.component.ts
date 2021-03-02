@@ -123,11 +123,11 @@ export class BestSalesItemComponent implements OnInit {
 
 		getSales.forEach((product, index)=>{
 
-			if(index < 4){
+			if(index < 100000){
 
 				this.bestSalesItem.push(product);
 				
-				this.rating.push(DinamicRating.fnc(this.bestSalesItem[index]));
+				// this.rating.push(DinamicRating.fnc(this.bestSalesItem[index]));
 				
 				this.reviews.push(DinamicReviews.fnc(this.rating[index]));
 

@@ -61,6 +61,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   products:any[] = [];
   productFound:number = 0;
   almacenar_productos:any[] = [];
+  almacenar_productos_listDeseos:any[] = [];
   cant_productos:any[] = [];
   ids_prodcts:any[]=[];
   producto_url:any[] = [];
@@ -223,6 +224,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     }     
 
   }
+
   // Función para  guardar los productos en la caja
   almacenarProductos(id){
     
@@ -251,6 +253,21 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.sumaProductos();
     this.calculatePercentage();
 
+  }
+
+  /*=============================================
+  Función para agregar productos a la lista de deseos
+  =============================================*/
+
+  addWishlist(products){
+
+    this.usersService.addWishlist(products);
+  }
+
+
+  mostrarAddToList(products){
+    this.addWishlist(products);
+    console.log("esto es la lista de deseos:", this.addWishlist(products));
   }
 
   configureUi(){
@@ -555,12 +572,29 @@ export class SelecctionPasoDosComponent implements OnInit {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
+  // Mostrar alerta para quitar productos
+  fncMostrarListaDeseos() {
+    var x = document.getElementById("snackbarAgregarListaDeseos");
+    x.className = "show";
+    
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
+  // Mostrar alerta para quitar productos
+  fncEliminarListaDeseos() {
+    var x = document.getElementById("snackbarQuitarListaDeseos");
+    x.className = "show";
+    
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
   fncNewR(i, name){
     this.eliminarProducto(i);
     this.myFunctionTow(name);
   }
 
   fncNewAdd(id, name){
+    console.log("se invoco ne add");
     this.almacenarProductos(id);
     this.myFunction(name);
   }
@@ -598,7 +632,16 @@ export class SelecctionPasoDosComponent implements OnInit {
   modificadorCantidadProductos(add_num, indx_num, products){
     for(let i = 0; i< this.almacenar_productos.length; i++){
         if (this.almacenar_productos[i].name == products.name) {
+          console.log(this.cant_productos[i]);
+          if (add_num> 0) {
+            this.myFunction(this.almacenar_productos[i].name);
+          }
+          else{
+            this.myFunctionTow(this.almacenar_productos[i].name);
+          }
+          
            let pivote = this.cant_productos[i] + add_num;
+           console.log(pivote);
            if(pivote > 0 && pivote <= products.stock){
             this.cant_productos.splice(i, 1, pivote);
 
@@ -607,9 +650,9 @@ export class SelecctionPasoDosComponent implements OnInit {
           }
         }
       }
-    
 
   }
+
 
 }
   

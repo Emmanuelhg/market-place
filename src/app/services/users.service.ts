@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+ 
 import {Api, 
 		Register, 
 		Login, 
@@ -300,7 +300,7 @@ export class UsersService {
       						})
 
       						/*=============================================
-    						Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
+    						  Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
         					=============================================*/ 
 
       						if(length != wishlist.length){
@@ -394,6 +394,169 @@ export class UsersService {
 		})
 
 	}
+
+  addWishlistTow(product:string){
+
+    /*=============================================
+      Validamos que el usuario esté autenticado
+      =============================================*/
+
+      this.authActivate().then(resp =>{
+
+      if(!resp){
+
+        Sweetalert.fnc("error", "The user must be logged in", null)
+
+        return;
+
+      }else{
+
+        /*=============================================
+        Traemos la lista de deseos que ya tenga el usuario
+        =============================================*/
+        this.getFilterData("idToken", localStorage.getItem("idToken"))
+        .subscribe(resp=>{
+
+          /*=============================================
+          Capturamos el id del usuario
+          =============================================*/
+
+          let id = Object.keys(resp).toString();
+
+          for(const i in resp){
+          
+            /*=============================================
+              Pregutnamos si existe una lista de deseos
+              =============================================*/
+
+              if(resp[i].wishlist != undefined){
+
+                let wishlist = JSON.parse(resp[i].wishlist);
+
+                let length = 0;
+
+                /*=============================================
+                Pregutnamos si existe un producto en la lista de deseos
+                =============================================*/
+
+                if(wishlist.length > 0){
+
+                  wishlist.forEach((list, index)=>{
+
+                      if(list == product){
+
+                        length --
+                      
+                      }else{
+
+                        length ++
+
+                      }
+
+                  })
+
+                  /*=============================================
+                  Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
+                  =============================================*/ 
+
+                  if(length != wishlist.length){
+
+                    Sweetalert.fnc("error", "It already exists on your wishlist", null);
+
+                  }else{
+
+                    wishlist.push(product);
+
+                    let body = {
+
+                      wishlist: JSON.stringify(wishlist)
+                    }
+
+                    this.patchData(id, body)
+                    .subscribe(resp=>{
+
+                      if(resp["wishlist"] != ""){
+
+                        let totalWishlist = Number($(".totalWishlist").html());
+                        
+                        $(".totalWishlist").html(totalWishlist+1); 
+
+                        Sweetalert.fnc("success","Product added to wishlist", null);
+                      }
+
+                    })
+
+                  }
+
+                }else{
+
+                  wishlist.push(product);
+
+                let body = {
+
+                    wishlist: JSON.stringify(wishlist)
+                  }
+
+                  this.patchData(id, body)
+                  .subscribe(resp=>{
+
+                    if(resp["wishlist"] != ""){
+
+                      let totalWishlist = Number($(".totalWishlist").html());
+                        
+                      $(".totalWishlist").html(totalWishlist+1); 
+
+                      Sweetalert.fnc("success","Product added to wishlist", null);
+                    }
+
+
+                  })
+
+                }
+
+              /*=============================================
+            Cuando no exista lista de deseos inicialmente
+              =============================================*/
+
+              }else{
+
+                let body = {
+
+                  wishlist: `["${product}"]`
+                }
+
+                this.patchData(id, body)
+                .subscribe(resp=>{
+
+                  if(resp["wishlist"] != ""){
+
+                    let totalWishlist = Number($(".totalWishlist").html());
+                        
+                    $(".totalWishlist").html(totalWishlist+1); 
+
+                    Sweetalert.fnc("success","Product added to wishlist", null);
+                  }
+
+                })
+
+              }
+
+            }
+
+        })
+
+      }
+
+    })
+
+  }
+
+
+
+
+
+
+
 
     /*=============================================
     Función para agregar productos al carrito de compras 
