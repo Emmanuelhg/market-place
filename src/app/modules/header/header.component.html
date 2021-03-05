@@ -1,124 +1,133 @@
 <header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true"> 
 
-     <div class="header__content"> 
+    <div class="header__content" > 
 
-            <div class="container">
-                
-              <!--  Menú HOME -->
+        <div style=" display: flex;">
 
-              <nav class="d-flex justify-content-around">
- 
-                <div class="col-3">
+            <!--=====================================
+            Menús de Banner 
+            ======================================-->
 
-                    <div class="d-flex justify-content-around">
+            <div style="display: flex; width: 40%;">
+
+                <div style="margin-left: 10%; display: flex;">
+
+                    <!-- Menú  HOME -->
+                    <div class="menu--product-categories">
+
+                        <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    
+                         {{ lastIndex ? callback() : ""}}
+                        </a>
+                            
+                            <div class="menu__content">
+
+                                    <ul class="menu--dropdown">
+                                   
+                                        <li 
+                                        *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                        class="menu-item-has-children has-mega-menu">
+                                            
+                                            <a routerLink="products/{{category.url}}" target="_top">
+                                                <i class="{{category.icon}}"></i> {{category.name}}
+                                            </a>
+
+                                            <!-- <div class="mega-menu">
+
+                                                <div 
+                                                *ngFor="let title of arrayTitleList[i]"
+                                                class="mega-menu__column">
+
+                                                    <h4>{{title}}
+                                                        <span class="sub-toggle"></span>
+                                                    </h4>
+
+                                                    <ul class="mega-menu__list" [attr.titleList]="title">
+                                                      
+                                                    </ul>
+
+                                                </div>
+                                                
+                                            </div>   -->
+
+                                        {{ lastIndex ? callback() : "" }}
+                                            
+                                        </li>
+                                     
+                                    </ul>
+
+                            </div>
+
+                    </div>
+
+
+                    <!-- Menú  SHOP -->
+                    <div style="margin-left:50%;">
 
                         <div class="menu--product-categories">
 
-                            <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    
-                             {{ lastIndex ? callback() : ""}}
+                            <a style="color: {{color_text_menu}};" 
+                            *ngFor="let negocio of color; let lastIndex = last">
+                                    {{negocio.title_menu_2}}    
+                                {{ lastIndex ? callback() : ""}}
                             </a>
-                                
-                                <div class="menu__content">
 
-                                        <ul class="menu--dropdown">
-                                       
-                                            <li 
-                                            *ngFor="let category of categories; let i = index; let lastIndex = last"
-                                            class="menu-item-has-children has-mega-menu">
-                                                
-                                                <a routerLink="products/{{category.url}}" target="_top">
-                                                    <i class="{{category.icon}}"></i> {{category.name}}
-                                                </a>
+                            <div class="menu__content">
 
-                                                <div class="mega-menu">
+                                <ul class="menu--dropdown">
+                                   
+                                    <li class="menu-item-has-children has-mega-menu">
+                                            
+                                        <a routerLink="#" target="_top">
+                                             Curated GIft Boxes
+                                        </a>
 
-                                                    <div 
-                                                    *ngFor="let title of arrayTitleList[i]"
-                                                    class="mega-menu__column">
+                                        <a routerLink="selecction-caja" target="_top">
+                                             Curate your box
+                                        </a>
 
-                                                        <h4>{{title}}
-                                                            <span class="sub-toggle"></span>
-                                                        </h4>
+                                       <!--  <a routerLink="#" target="_top">
+                                             Gift Cards
+                                        </a> -->
 
-                                                        <ul class="mega-menu__list" [attr.titleList]="title">
-                                                          
-                                                        </ul>
+                                       <!--  <div class="mega-menu">
 
-                                                    </div>
-                                                    
-                                                </div>  
+                                            <div class="mega-menu__column">
 
-                                            {{ lastIndex ? callback() : "" }}
-                                                
-                                            </li>
-                                         
-                                        </ul>
+                                                <h4>
+                                                    <span class="sub-toggle"></span>
+                                                </h4>
 
-                                </div>
+                                                <ul class="mega-menu__list">
+                                                  
+                                                </ul>
+
+                                            </div>
+                                            
+                                        </div>  
+                                         -->
+                                    </li>
+                                     
+                                </ul>
+
+                            </div>
 
                         </div>
 
-                        <!-- Menú  SHOP -->
-                          
-                         <div class="menu--product-categories">
-                            <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last">{{negocio.title_menu_2}}    {{ lastIndex ? callback() : ""}}
-                            </a>
+                    </div>
 
-                                 <div class="menu__content">
 
-                                        <ul class="menu--dropdown">
-                                       
-                                          <!--   <li 
-                                            *ngFor="let category of categories; let i = index; let lastIndex = last"
-                                            class="menu-item-has-children has-mega-menu">
--->
-                                            <li class="menu-item-has-children has-mega-menu">
-                                                
-                                                <a routerLink="#" target="_top">
-                                                     Curated GIft Boxes
-                                                </a>
+                    <!-- Menú ABOUT US -->
+                    <div style="margin-left:50%;">
 
-                                                <a routerLink="selecction-caja" target="_top">
-                                                     Curate your box
-                                                </a>
+                        <div class="menu--product-categories">
 
-                                                <a routerLink="#" target="_top">
-                                                     Gift Cards
-                                                </a>
-
-                                               <!--  <div class="mega-menu">
-
-                                                    <div class="mega-menu__column">
-
-                                                        <h4>
-                                                            <span class="sub-toggle"></span>
-                                                        </h4>
-
-                                                        <ul class="mega-menu__list">
-                                                          
-                                                        </ul>
-
-                                                    </div>
-                                                    
-                                                </div>  
-                                                 -->
-                                            </li>
-                                         
-                                        </ul>
-
-                                  </div>
-                         </div>
-                         
-                         <!-- Menú ABOUT US -->
-
-                         <div class="menu--product-categories">
                             <a style="color: {{color_text_menu}};"
-                             routerLink="get-in-touch"
                             *ngFor="let negocio of color; let lastIndex = last">
-                              {{negocio.title_menu_3}} 
-                              {{ lastIndex ? callback() : ""}}
+                                    {{negocio.title_menu_3}} 
+                                {{ lastIndex ? callback() : ""}}
                             </a>
-                               <div class="menu__content">
+
+                                <div class="menu__content">
 
                                         <ul class="menu--dropdown">
                                        
@@ -128,9 +137,9 @@
                                                     How it works
                                                 </a>
 
-                                                <a target="_top">
+                                                <!-- <a target="_top">
                                                     FAQS
-                                                </a>
+                                                </a> -->
 
                                                 <a  routerLink="our-story" target="_top">
                                                     Our story 
@@ -139,142 +148,112 @@
                                             </li>
                                          
                                         </ul>
-                                  </div>
-                         </div>   
-                    </div>
-                </div>
-               
-
-                 <!--Logo-->
-                <div class="col-3">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img2" style="width: 160px; height: 45px; border: " src="{{img_logo}}"  routerLink="/">
-                    </div>
-                    
-                </div>
-                
-                <!--Iconos busqueda, cart-->
-                <div class="col-3">
-
-                    <div class="d-flex justify-content-end">
-
-                        <!--=====================================
-                        Search   <i class="icon-magnifier"></i>
-                        ======================================-->
-
-                        <div class="ps-search">
-
-                            
-
+                                </div>
                         </div> 
 
-                        <!--=====================================
-                        Cart    
-                        ======================================-->
-                         
-                    
-                        
-                        <div class="ps-cart--mini">
+                    </div>
 
-                            <a class="header__extra" routerLink="shopping-cart">
-                                <i class="icon-bag2"></i><span><i>{{totalShoppingCart}}</i></span>
-                            </a>
+                </div>
+                  
+            </div> 
+
+            <!--=====================================
+            Logo 
+            ======================================-->
+            <div style="width: 20%;">
+
+                <div class="col-12">
+
+                    <div class="d-flex align-items-center justify-content-center">
+
+                        <img class="img2" style="width: 160px; height: 45px; border: " src="{{img_logo}}"  routerLink="/">
+
+                    </div>
+                    
+                </div>
+            
+            </div>
+
+            <!--=====================================
+            Íconos de carrito y buscador
+            ======================================-->
+
+            <div style="width: 40%;">
+
+
+                <!--=====================================
+                Cart    
+                ======================================-->
+                 
+                <div class="ps-cart--mini" style=" float: right; margin-right: 10%;">
+
+                    <a class="header__extra" style="cursor: pointer;" 
+                    (click)="fncWindowCart()">
+                        <img src="{{path}}img/icons/cart.png"><span><i>{{totalShoppingCart}}</i></span>
+                    </a>
+
+                    <div 
+                    *ngIf="shoppingCart.length > 0"
+                    class="ps-cart__content">
+
+                        <div class="ps-cart__items">
 
                             <div 
-                            *ngIf="shoppingCart.length > 0"
-                            class="ps-cart__content">
+                            *ngFor="let product of shoppingCart; let lastShopping = last"
+                            class="ps-product--cart-mobile">
 
-                                <div class="ps-cart__items">
-
-                                    <div 
-                                    *ngFor="let product of shoppingCart; let lastShopping = last"
-                                    class="ps-product--cart-mobile">
-
-                                        <div class="ps-product__thumbnail">
-                                            <a href="product/{{product.url}}">
-                                                <img id="img" src="{{product.image}}" >
-                                            </a>
-                                        </div>
-
-                                        <div class="ps-product__content text-left">
-                                            <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
-                                                <i class="icon-cross"></i>
-                                            </a>
-                                            <a href="product/{{product.url}}">{{product.name}}</a>
-                                            
-                                            <div [innerHTML]="product.details"></div>                                        
-                                            <small class="ps-product text-left p-0 m-0">
-                                                
-                                                Quantity:
-                                                <span class="qShoppingHeaderM">{{product.quantity}}</span> 
-                                                x Shipping: $
-                                                <span class="sShoppingHeaderM">{{product.shipping}}</span> 
-                                                + 
-                                                <span class="pShoppingHeaderM" [innerHTML]="product.price"></span>
-
-                                            </small>
-                                        </div>
-
-                                    {{ lastShopping ? callbackShopping() : ""}}
-
-                                    </div>
-
-
+                                <div class="ps-product__thumbnail">
+                                    <a href="product/{{product.url}}">
+                                        <img id="img" src="{{product.image}}" >
+                                    </a>
                                 </div>
 
-                                <div class="ps-cart__footer">
+                                <div class="ps-product__content text-left">
+                                    <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
+                                        <i class="icon-cross"></i>
+                                    </a>
+                                    <a href="product/{{product.url}}">{{product.name}}</a>
+                                    
+                                    <div [innerHTML]="product.details"></div>                                        
+                                    <small class="ps-product text-left p-0 m-0">
+                                        
+                                        Quantity:
+                                        <span class="qShoppingHeaderM">{{product.quantity}}</span> 
+                                        x Shipping: $
+                                        <span class="sShoppingHeaderM">{{product.shipping}}</span> 
+                                        + 
+                                        <span class="pShoppingHeaderM" [innerHTML]="product.price"></span>
 
-                                    <div [innerHTML]="subTotal"></div>
-                                    <figure>
-                                        <a class="ps-btn" href="shopping-cart">View Cart</a>
-                                        <a class="ps-btn" href="checkout">Checkout</a>
-                                    </figure>
-
+                                    </small>
                                 </div>
+
+                            {{ lastShopping ? callbackShopping() : ""}}
 
                             </div>
+
+
+                        </div>
+
+                        <div class="ps-cart__footer">
+
+                            <figure>
+                                <a class="ps-btn" href="shopping-cart">View Cart</a>
+                                <a class="ps-btn" href="checkout">Checkout</a>
+                            </figure>
 
                         </div>
 
                     </div>
+
                 </div>
-
-                <!--=====================================
-                  Search
-                  ======================================-->
-               <!--  <i class="icon-magnifier" onclick="mostrar('premio');"></i>
-                
-                 <div class="search_ut" id="premio" 
-                  style="background: #C57ED3;">
-
-                    <form >
-                        <div class="form-group--nest">
-
-                            <button type="button"
-                            (click)="goSearch(search.value)"
-                            ><i class="icon-magnifier" style="display: none;"></i></button>
+                    
+                <!-- <p style=" float: right;">Hola</p> -->
                             
-                            <input 
-                            (keyup.enter)="goSearch(search.value)"
-                            #search
-                            class="form-control" 
-                            type="text" 
-                            placeholder="Search something...">
-
-                            <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" onclick="ocultar('premio');">         
-                        </div>   
-                    </form>
-                </div>
-                <style>
-                  .search_ut{
-                    display: none;
-                  }
-                </style> -->
                 
-            </nav>
-             
-        </div>
-         
-     </div >  
+            </div>
+
+        </div>  
+
+    </div>            
 
 </header>

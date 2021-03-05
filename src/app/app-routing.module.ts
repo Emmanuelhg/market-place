@@ -20,6 +20,8 @@ import { FrequentlyAskedQuestionsComponent } from './pages/frequently-asked-ques
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { EmptyComponent } from './pages/empty/empty.component';
+
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -44,6 +46,7 @@ const routes: Routes = [
 	{path: 'our-story', component: OurStoryComponent},
 	{path: 'get-in-touch', component: GetInTouchComponent},
 	{path: 'terms', component: TermsComponent},
+	{path: 'empty', component: EmptyComponent},
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 ];

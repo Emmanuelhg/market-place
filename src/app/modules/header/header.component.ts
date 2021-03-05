@@ -47,6 +47,10 @@ export class HeaderComponent implements OnInit {
     letraMenu2:any[] = [];
     letraMenu3:any[] = [];
 
+    List_favorite=[];
+
+   
+
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
 		        private productsService: ProductsService,
@@ -55,6 +59,7 @@ export class HeaderComponent implements OnInit {
 		        private router:Router) { }
 
 	ngOnInit(): void {
+
 
 		// Llamar los nuevos colores y texto
 
@@ -66,6 +71,7 @@ export class HeaderComponent implements OnInit {
            this.img_logo = this.negocio['img_logo'];
            this.color_text_menu = this.negocio['color_text_menu'];
            console.log("resp es "+this.img_logo);
+
            for(i in resp){
 
            	this.color.push(resp[i]);
@@ -73,120 +79,13 @@ export class HeaderComponent implements OnInit {
            	this.colorCambio.push(resp[i].colorbotonheaders);
             this.colorLetra.push(resp[i].textotopheader);
             this.letraMenu1.push(resp[i].title_menu_1);
-            
-
-
- 		   // // Colores        
-      //      let hola = document.getElementById('f2');
-
-      //      let estoyhastalaverga = hola.style;
-
-      //      estoyhastalaverga.backgroundColor=resp[i].colorbotonheaders;   
-
-      //      // Texto
-      //        let tex = document.getElementById('f3');
-
-    		// let textonuevo = tex.style;
-
-    		// textonuevo.fontFamily=resp[i].textotopheader;
-
-    		// // Texto Menú 1
-      //        let texmenu = document.getElementById('f10');
-
-      //        let textomenu = texmenu.style;
-
-      //       textomenu.fontFamily=resp[i].title_menu_1;
-            
+                    
 
            }
 
             console.log(resp);
        })
  
-        
-           // // Colores
-           // let hola = document.getElementById('f2');
-
-           // let estoyhastalaverga = hola.style;
-           // // Texto
-
-           // let tex = document.getElementById('f3');
-
-           // let textonuevo = tex.style;
-
-           //  // Texto Menú 1
-
-           // let texmenu = document.getElementById('f10');
-
-           //  let textomenu = texmenu.style;
-
-
-
-
-  //  // Menú navegación           
-
-  //  this.negocioService.getData()
-  // .subscribe(resp=>{
-
-  //   let i;
-
-  //   for (i in resp){
-
-  //     this.personalization.push(resp[i]);
-     
-  //     this.letraMenu1.push(resp[i].title_menu_1)
-  //     this.letraMenu2.push(resp[i].title_menu_2)
-  //     this.letraMenu3.push(resp[i].title_menu_3)
-
-  //     // Texto Menú 1
-  //            let texmenu = document.getElementById('f10');
-
-  //       let textomenu = texmenu.style;
-
-  //       textomenu.fontFamily=resp[i].title_menu_1;
-
-
-  //           // Texto Menú 2
-  //            let texmenu2 = document.getElementById('f11');
-
-  //       let textomenu2 = texmenu2.style;
-
-  //       textomenu2.fontFamily=resp[i].title_menu_2;
-           
-
-  //          // Texto Menú 3
-  //            let texmenu3 = document.getElementById('f12');
-
-  //       let textomenu3 = texmenu3.style;
-
-  //       textomenu3.fontFamily=resp[i].title_menu_3;
-
-  //   }
-    
-  // })
-
-  //   // Texto Menú 1
-
-  //     let texmenu = document.getElementById('f10');
-
-  //     let textomenu = texmenu.style;
-
-  //     // Texto Menú 2
-
-  //     let texmenu2 = document.getElementById('f11');
-
-  //     let textomenu2 = texmenu2.style;
-
-  //     // Texto Menú 3
-
-  //     let texmenu3 = document.getElementById('f12');
-
-  //     let textomenu3 = texmenu3.style;
-   
-
-           
-
-
 
 		/*=============================================
 		Validar si existe usuario autenticado                 
@@ -559,6 +458,19 @@ export class HeaderComponent implements OnInit {
     		Sweetalert.fnc("success", "product removed", this.router.url)
 
 		}
+
+	}
+
+	fncWindowCart(){
+
+		if(this.totalShoppingCart<=0){
+
+			window.open('/empty','_self');
+
+ 		} else {
+
+ 			window.open('/shopping-cart','_self');
+ 		}
 
 	}
 

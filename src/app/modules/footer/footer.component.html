@@ -1,44 +1,27 @@
-<!--=====================================
-Footer    
-#fcd7f5 
+ <footer class="ps-footer" id="footer-test">
 
-<ul 
-*ngFor="let negocio of color; let lastIndex = last"
-class="ps-list--link"
-
-
-<li><a href="#"><h4>{{negocio.colorbotonheaders}}</h4></a></li>
-<div class="ps-list--link " >
-            
-
-                  <a class="terms col-lg-3 col-md-6  col-sm-1" href="#"><h4 id="f3">Our Story</h4></a>
-                  <a class="terms col-lg-3 col-md-6  col-sm-1" href="#"><h4>Contact us</h4></a>
-                  <a class="footer-tex col-md-12 col-sm-1" routerLink="terms"><h4 id="f3">Terms & conditions</h4></a>
-                  <a class="footer-tex col-md-12 col-sm-1" href="#"><h4 id="f3">FAQ ́S</h4></a>
-
-              <a class="footer-tex" href="#">All rights reserved-etre 2021 </a>
-          </div>
-
-
-{{ lastIndex ? callback() : ""}} 
-======================================-->  
- 
-<footer class="ps-foot" id="footer-test" >
     <div class="footer-tex row" id="f1">
      
-        <a class="terms col-sm-1" routerLink="our-story" ><h4 id="f3">Our Story</h4></a>
-        <a class="terms col-sm-1" href="#"><h4>Contact us</h4></a>
-        <a class="terms col-sm-1" routerLink="terms"><h4 id="f3">Terms & conditions</h4></a>
+        <a class="terms col-sm-1" routerLink="our-story"><h4 id="f3">Our Story</h4></a>
+        <a class="terms col-sm-1" routerLink="get-in-touch"><h4>Contact us</h4></a>
+        <a class="terms col-sm-2" routerLink="terms"><h4 id="f3">Terms & conditions</h4></a>
         <a class="terms col-sm-1" href="#"><h4 id="f3">FAQ ́S</h4></a>
    
    </div> 
-   <div class="thy">
-       <a class="terms col-sm-1" href="#">All rights reserved-etre 2021 </a>
+
+   <div class="footer-tex" id="f1">
+
+       <a style="margin: 4%;" href="#">
+         All rights reserved-etre 2021 
+       </a>
+
    </div>
  
 </footer>
+
 <style>
     .footer-tex{
+      background: rgb(196, 174, 157);
       width: 100%;
       display: flex;
 

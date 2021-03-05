@@ -76,6 +76,7 @@ import { FrequentlyAskedQuestionsComponent } from './pages/frequently-asked-ques
 import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { EmptyComponent } from './pages/empty/empty.component';
 
 
 @NgModule({
@@ -137,7 +138,8 @@ import { TermsComponent } from './pages/terms/terms.component';
     FrequentlyAskedQuestionsComponent,
     OurStoryComponent,
     GetInTouchComponent,
-    TermsComponent
+    TermsComponent,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,

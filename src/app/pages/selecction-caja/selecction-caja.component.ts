@@ -13,6 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BoxesModel } from '../../models/boxes.model';
 import { NegocioService } from '../../services/negocio.service';
 
+import { Sweetalert } from '../../functions';
+
 @Component({
   selector: 'app-selecction-caja',
   templateUrl: './selecction-caja.component.html',
@@ -21,7 +23,7 @@ import { NegocioService } from '../../services/negocio.service';
 export class SelecctionCajaComponent implements OnInit {
   
   // Variables del funcionamiento
-   box_steps=[true,false,false,false]
+   box_steps=[true,false,false,false] 
  
 
   path:string = Path.url;
@@ -149,21 +151,26 @@ export class SelecctionCajaComponent implements OnInit {
       =============================================*/
       this.boxesService.crearBoxes(this.id, this.boxes)
       .subscribe(resp=>{
+
         console.log("El id es:",this.id);
-          console.log("El jason es tal: :",resp);
-         Cookies.set('box_id', this.id, { expires: 7 });
-         this._router.navigate(['/selecction-paso-dos', this.id]);
+        console.log("El jason es tal: :",resp);
+
+        Cookies.set('box_id', this.id, { expires: 7 });
+
+        this._router.navigate(['/selecction-paso-dos', this.id]);
 
 
       })
+
    }
 
 
    selectBox(num){
     this.type_box=num;
     
-    console.log("La caje selecionada es :", this.type_box);
-    // console.log("La imagen selecionada es :", this.type_img);
+    console.log("La caja selecionada es :", this.type_box);
+     
+
   }
 
   configureUi(){
@@ -210,6 +217,17 @@ export class SelecctionCajaComponent implements OnInit {
     }else{
       document.getElementById("img_derecha").style.border ="";
     }
+
   }
-    
+
+  fncNoCaja(){ 
+    console.log("La caja es null");
+    if(this.type_box==null){
+
+       Sweetalert.fnc("error", "There is no box selected. Please select one");
+
+    }
+
+  }
+
 }

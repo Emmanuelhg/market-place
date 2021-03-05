@@ -534,5 +534,17 @@ export class HeaderMobileComponent implements OnInit {
 
 	}
 
+	fncWindowCart(){
+
+		if(this.totalShoppingCart<=0){
+
+			window.open('/empty','_self');
+
+ 		} else {
+
+ 			window.open('/shopping-cart','_self');
+ 		}
+
+	}
 
 }
