@@ -361,6 +361,21 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_arts=this.box_json.box_arts;
       this.boxes.box_steps = [this.box_steps[0], true, this.box_steps[2], this.box_steps[3]];
       this.boxes.box_arts_cant=this.cant_productos;
+
+      // Variables de la caja Small
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_price_small=this.box_json.box_price_small;
+      this.boxes.box_size_small=this.box_json.box_size_small;
+      this.boxes.box_color_small=this.box_json.box_color_small;
+
+      //Variables de la caja Regular
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_name=this.box_json.box_name
+      this.boxes.box_size_regular=this.box_json.box_size_regular;
+      this.boxes.box_price_regular=this.box_json.box_price_regular;
+      this.boxes.box_color_regular=this.box_json.box_color_regular;
+
        console.log("El json es tal: :",this.boxes);
 
 
@@ -435,7 +450,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
 
   selectActivesBoxes(){
-     document.getElementById("regular-box-a").classList.remove("select-active-caja");
+    document.getElementById("regular-box-a").classList.remove("select-active-caja");
     document.getElementById("small-box-a").classList.remove("select-active-caja");
   }
 

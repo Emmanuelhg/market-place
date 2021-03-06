@@ -5,6 +5,14 @@ export class BoxesModel{
     box_status:number;
     box_size:number;
     box_price:number;
+    box_price_small:number;
+    box_price_regular:number;
+    box_color_small:string;
+    box_color_regular:string;
+    box_size_small:number;
+    box_size_regular:number;
+    box_dimensions_small:number;
+    box_dimensions_regular:number;
     box_deliver_to:string;
     box_deliver_from:string;
     box_deliver_message:string;

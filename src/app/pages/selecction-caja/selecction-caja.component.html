@@ -245,9 +245,10 @@ a.animated-button.thar-three:before {
 
 	a.animated-button.thar-three {
         font-size: inherit;
-        width: 15%;
-        height: 3%;
-		 margin-top: 93px;
+        /*width: 15%;*/
+        /*height: 3%;*/
+        padding: 1%;
+		margin-top: 93px;
 	    background-color: white;
 		color: black;
 		cursor: pointer;
@@ -291,7 +292,7 @@ a.animated-button.thar-three:before {
 		/*background-color: blue;*/
 		width: 100%;
    		display: flex;
-   		justify-content: center;
+   		/*justify-content: center;*/
     }
 
    	.img-contrainer{
@@ -347,7 +348,8 @@ a.animated-button.thar-three:before {
 	  justify-content: center;
 	  align-items: center;
 	  border: black;
-      margin: 4%;
+      margin-bottom: 6%
+      /*margin: 1%;*/
 	}
 
 	/*.div-imagen:before{
@@ -374,7 +376,7 @@ a.animated-button.thar-three:before {
 	  left:0;
 	  z-index:-1;
 	  padding:10px;
-	  margin:0;
+	  margin:1%;
 
 	}
 
@@ -400,68 +402,93 @@ a.animated-button.thar-three:before {
 		font-size: 40px;
 		margin: auto;
 	}
- 
+    .row{
+        padding: 0px;
+        margin: 0px;
+    }
+
 </style>
+
 <div class="ps-breadcrumb">
+
+
+    <!-- Barra de números  -->
+    <div class="contrainer"  class="contrainer" style="margin-bottom: 32%;">
+        <div style="margin-bottom: 4%;">
+            <ul class="progressbar">
+                <a id="step1"  class="superActive" >Step 1</a>
+                <a id="step2" >Step 2</a>
+                <a id="step3" >Step 3</a>
+                <a id="step4" >Done!</a>
+            </ul>
+        </div>
+    </div>
 
     <!--=====================================
     Preload
     ======================================-->
     <div
-      *ngIf="!preload"> 
+    *ngIf="!preload"> 
 
-    	<!-- Barra de números  -->
-    	<div class="contrainer">
-    		<div>
-    			<ul class="progressbar">
-         			<a id="step1"  class="superActive" >Step 1</a>
-         			<a id="step2" >Step 2</a>
-             		<a id="step3" >Step 3</a>
-    	        	<a id="step4" >Done!</a>
-    			</ul>
-    			<br>
-       	 	</div><br>
-       	 </div><br>
+	    <!-- Texto selección -->
+        <div style="text-align: center; 
+         justify-content: center; margin-bottom: 160px;">
 
+            <p class="parrafo">Step 1 of 3</p>
 
-   	    <!-- Texto selección -->
-        
-   		<div class="imagecontainer"> <p class="parrafo"> Step 1 of 3 </p><br></div>
-   		<div class="imagecontainer"> <h2><b>CHOOSE YOUR BOX </b><br><br><br></h2></div>
-       
-        <!-- Imáges de cajas -->
-        <div class="images"> 
-	        <div class="div-imagen" (click)="fncBorder(0)">
-	        	<div class="divtexcontainer">
-	   			   <p>Texto prueba 1</p>
-	  			</div>
-	 		    <img
-                 style="width: 100%;"
-                 id="img_izquierda"
-	    	     (click)="selectBox(0)"
-	 		     class="desvanecer" src="{{urlsImgs[0]}}">
-	        </div>
-
-		   <div class="div-imagen" (click)="fncBorder(1)">
-		    	<div class="divtexcontainer">
-					   <p>Texto prueba 2</p>
-				</div>
-				    <img
-                     id="img_derecha"
-                     (click)="selectBox(1)"
-				     class="desvanecer" src="{{urlsImgs[1]}}">
-                     <!-- src="{{path}}img/products_etre/product2.jpg" -->
-		   </div>
+            <h2><b>CHOOSE YOUR BOX</b></h2>
 
         </div>
+    	
+       
+        <!-- Imáges de cajas -->
+        <div class="images row"> 
+
+            <div class="div-imagen col-lg-6 col-md-6 col-sm-12" (click)="fncBorder(0)">
+
+            	<div class="divtexcontainer">
+       			   <!-- <p style="font-size: 100%;">Texto prueba 1</p> -->
+      			</div>
+
+     		    <img
+                 style="width: 90%;"
+                 id="img_izquierda"
+        	     (click)="selectBox(0)"
+     		     class="desvanecer" src="{{urlsImgs[0]}}">
+
+            </div>
+
+    	    <div class="div-imagen col-lg-6 col-md-6 col-sm-12" (click)="fncBorder(1)">
+
+    	    	<div class="divtexcontainer">
+				   <!-- <p style="font-size: 100%;">Texto prueba 2</p> -->
+    			</div>
+
+			    <img
+                style="width: 90%;"
+                 id="img_derecha"
+                 (click)="selectBox(1)"
+			     class="desvanecer" src="{{urlsImgs[1]}}">
+                 <!-- src="{{path}}img/products_etre/product2.jpg" -->
+    	   </div>
+
+        </div>
+
         <!-- Botón continuar -->
-    	<div class="imagecontainer">
-	    	  <a 
-	    	   [(ngModel)]="boxes"
-	    	   (click)="newBoxes()"
-	    	  class="btn btn-sm animated-button thar-three">CONTINUE</a>
-	    </div> 
+    	<div class="imagecontainer" style="margin-bottom: 15%;">
+
+    	    <a 
+        	[ngModel]="boxes"
+        	(click)="fncNoCaja()"
+        	class="btn btn-sm animated-button thar-three">
+                CONTINUE
+            </a>
+
+        </div> 
+
     </div>
+
+
     <!--=====================================
     Preload
     ======================================-->
@@ -472,7 +499,6 @@ a.animated-button.thar-three:before {
         <div class="spinner-border text-muted my-5"></div>
 
     </div>
-</div>
 
-<br><br><br><br><br><br><br><br>
+</div>
 
