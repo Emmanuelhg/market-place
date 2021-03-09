@@ -52,6 +52,8 @@ export class ProductLeftComponent implements OnInit {
     summary:any[]=[];
     details:any[]=[];
 
+    img_showed_gallery=0;
+
     messages: MessagesModel;
 
     email:string = Email.url;
@@ -181,6 +183,10 @@ export class ProductLeftComponent implements OnInit {
 
       this.details.push(JSON.parse(this.product[index].details));
 
+      console.log("produccto:", this.product);
+
+      console.log("produccto:", this.product[i].gallery);
+
       /*=============================================
       Agregamos la fecha al descontador
       =============================================*/ 
@@ -221,8 +227,19 @@ export class ProductLeftComponent implements OnInit {
       /*=============================================
       Gallery
       =============================================*/
+      this.img_showed_gallery = this.product[index].image
+      for( let str in this.product[index].gallery){
+       console.log("str es:", typeof this.product[index].gallery[str]);
+       this.gallery.push(str);
+      }
+      // this.gallery=this.product[index].gallery;
+      console.log("product es:", this.gallery); 
+      console.log("galery typo es:", typeof this.gallery);
+      console.log("galery es:", this.product[index].gallery); 
+      console.log("galery typo es:", typeof this.product[index].gallery);
+      // this.gallery.push(JSON.parse(this.product[index].gallery)) 
 
-      this.gallery.push(JSON.parse(this.product[index].gallery)) 
+
 
       /*=============================================
       Video
@@ -663,6 +680,19 @@ export class ProductLeftComponent implements OnInit {
  
     this.visibility_1[index]=!this.visibility_1[index];
 
-  }
+   }
+
+  fncGallery(index){
+    // document.getElementById('mainImg').setAttribute('src',this.product[index].gallery[index]);
+    console.log("Si esta entrando la funcion je je je je je XD");
+    this.img_showed_gallery= index
+      
+  } 
+  getImgGallery(){
+    return this.product[0].gallery[this.img_showed_gallery];
+
+      
+  } 
+
 
 }

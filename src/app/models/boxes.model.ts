@@ -23,4 +23,7 @@ export class BoxesModel{
     box_arts:any[];
     box_arts_ids:any[];
     box_arts_cant:any[];
+    box_subtotal:string;
+    box_type_small:string;
+    box_type_regular:string;
 }

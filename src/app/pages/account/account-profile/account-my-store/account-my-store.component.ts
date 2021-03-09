@@ -2081,7 +2081,7 @@ export class AccountMyStoreComponent implements OnInit, OnDestroy {
                                     Consolidar los nombres de archivo de la galería
                                     =============================================*/
 
-                                    this.productModel.gallery = JSON.stringify(newGallery);
+                                    // this.productModel.gallery = JSON.stringify(newGallery);
 
                                     if(!this.editProductAction){
 
@@ -2139,7 +2139,7 @@ export class AccountMyStoreComponent implements OnInit, OnDestroy {
                         Consolidar los nombres de archivo de la galería
                         =============================================*/
 
-                        this.productModel.gallery = JSON.stringify(this.editGallery); 
+                        // this.productModel.gallery = JSON.stringify(this.editGallery); 
 
                         /*=============================================
                         Editar el producto en la BD

@@ -13,7 +13,7 @@ import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
 
- 
+  
 
 declare var jQuery:any; 
 declare var $:any;
@@ -105,7 +105,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.id_to_box = Cookies.get('box_id');
 
      /*=============================================
-     Obtener el id de la caja
+     Obtener el id de la caja 
      =============================================*/    
       console.log("id to box es:", this.id_to_box);
      if (this.id_to_box === null) {
@@ -361,6 +361,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_arts=this.box_json.box_arts;
       this.boxes.box_steps = [this.box_steps[0], true, this.box_steps[2], this.box_steps[3]];
       this.boxes.box_arts_cant=this.cant_productos;
+      // this.boxes.box_subtotal = this.box_json.subTotal;
 
       // Variables de la caja Small
       this.boxes.box_img=this.box_json.box_img;
@@ -368,6 +369,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_price_small=this.box_json.box_price_small;
       this.boxes.box_size_small=this.box_json.box_size_small;
       this.boxes.box_color_small=this.box_json.box_color_small;
+      this.boxes.box_type_small=this.box_json.box_type_small;
 
       //Variables de la caja Regular
       this.boxes.box_img=this.box_json.box_img;
@@ -375,6 +377,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_size_regular=this.box_json.box_size_regular;
       this.boxes.box_price_regular=this.box_json.box_price_regular;
       this.boxes.box_color_regular=this.box_json.box_color_regular;
+      this.boxes.box_type_regular=this.box_json.box_type_regular;
 
        console.log("El json es tal: :",this.boxes);
 

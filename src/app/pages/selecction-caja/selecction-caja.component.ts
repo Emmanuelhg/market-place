@@ -36,7 +36,7 @@ export class SelecctionCajaComponent implements OnInit {
   urlsImgs: any = ['https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0',
   'https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2',
   'caja izquierda',
-  'caja derecha', 0, 0, 'null','null', 'null','null'
+  'caja derecha', 0, 0, 'null','null', 'null','null','null','null'
   ];
   preload:boolean = false;
   
@@ -131,6 +131,7 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_status=1;
       this.boxes.box_img="";
       this.boxes.box_arts=[];
+      // this.boxes.box_subtotal="";
       this.boxes.box_steps = this.boxes.box_steps = [true, this.box_steps[1], this.box_steps[2], this.box_steps[3]];
       console.log("prueba",this.box_json);
       switch(this.type_box){
@@ -140,6 +141,7 @@ export class SelecctionCajaComponent implements OnInit {
           this.boxes.box_name=this.urlsImgs[8];
           this.boxes.box_size_small=this.urlsImgs[6];
           this.boxes.box_color_small=this.urlsImgs[8];
+          this.boxes.box_type_small=this.urlsImgs[10];
           break;
         }
         case 1: {
@@ -148,6 +150,7 @@ export class SelecctionCajaComponent implements OnInit {
           this.boxes.box_size_regular=this.urlsImgs[7];
           this.boxes.box_price_regular=this.urlsImgs[5];
           this.boxes.box_color_regular=this.urlsImgs[9];
+          this.boxes.box_type_regular=this.urlsImgs[11];
         }
 
       }

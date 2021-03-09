@@ -1196,7 +1196,7 @@ export class AccountNewStoreComponent implements OnInit {
 
                                         newGallery.push(resp["result"]);
 
-                                        this.product.gallery = JSON.stringify(newGallery);
+                                        // this.product.gallery = JSON.stringify(newGallery);
 
                                         countGallery++;
 

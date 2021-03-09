@@ -1,17 +1,17 @@
 <div 
 *ngIf="!preload"
-class="ps-product--detail ps-product--fullwidth">
+class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
-    <div style="display: flex;" class="row">
+    <div style="display: flex; padding: 0px;" class="row">
 
-        <div class="col-lg-7 col-md-7 col-sm-12">
+        <div class="col-lg-7 col-md-7 col-sm-12" style="">
 
             <div 
             *ngIf="!preload"
             class="ps-product--detail ps-product--fullwidth">
 
                 <!--=====================================
-                Gallery 
+                Gallery  
                 ======================================--> 
 
                     <figure>
@@ -26,8 +26,9 @@ class="ps-product--detail ps-product--fullwidth">
                                 <div 
                                 *ngFor="let p of product; let i = index"
                                 class="item">
-                                    <a href="{{path}}img/products/{{product[0].category}}/gallery/{{image}}">
-                                        <img style="width: 100%; height: 500px;" src="{{p.image}}" alt="{{product[0].name}}">
+                                    <a (click)="fncGallery(i)">
+                                        <img style="width: 100%; height: 500px;" src="{{p.gallery[img_showed_gallery]}}"
+                                        id="mainImg">
                                     </a>
 
                                  
@@ -39,17 +40,60 @@ class="ps-product--detail ps-product--fullwidth">
 
                     </figure>
 
+                   <div class="thumb_img_list" style="text-align: center; ">
+
+                        <ul style="list-style: none; display: inline-block;
+                         width: 100px; cursor: pointer; display: flex;
+                         margin: 0.5px;"> 
+
+                            <li 
+                            *ngFor="let p of product[0].gallery; let i = index"
+                            style="display: inline-block; 
+                            width: 100px; 
+                            margin: 0.5px;">
+
+                                <img  src="{{p}}"
+                                id="thumb1">
+
+                            </li>
+
+                            <!-- <li style="display: inline-block; 
+                            width: 100px; 
+                            margin: 0.5px;">
+                                <img  src="{{path}}img/products_etre/prod2.png"
+                                id="thumb2">
+                            </li>
+
+                            <li style="display: inline-block; 
+                            width: 100px; 
+                            margin: 0.5px;">
+                                <img  src="{{path}}img/products_etre/prod3.png"
+                                id="thumb3">
+                            </li>
+
+                            <li style="display: inline-block; 
+                            width: 100px; 
+                            margin: 0.5px;">
+                                <img  src="{{path}}img/products_etre/prod4.png"
+                                id="thumb4">
+                            </li> -->
+
+                            
+                        </ul>
+                       
+                   </div> 
+<!-- 
                     <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false" 
                     style="display: none;">
                         <div 
                         *ngFor="let image of gallery[0]; let lastIndex = last; let i = index"
                         class="item">
-                            <img src="{{path}}img/products/{{product[0].category}}/gallery/{{image}}" alt="{{product[0].name}}">
+                            <img src="{{product.gallery}}" alt="{{product[0].name}}">
 
                         {{ lastIndex ? callbackGallery(i) : ""}}
                         </div>          
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -63,7 +107,7 @@ class="ps-product--detail ps-product--fullwidth">
             
         </div>
 
-        <div class="col-lg-5 col-md-7 col-sm-12">
+        <div class="col-lg-5 col-md-7 col-sm-12" style="">
 
                 <!--=====================================
                 Product Info
@@ -84,15 +128,40 @@ class="ps-product--detail ps-product--fullwidth">
 
                     <div class="ps-product__desc">
 
-                       <p (click)="fncVisibility(0)" style="text-align: center; font-size: 100%;">
+                       <p (click)="fncVisibility(0)" style="cursor: pointer; text-align: center; font-size: 100%;">
                             DESCRIPTION
                         </p>
                         <!--=====================================
-                        SUMMARY
+                        DESCRIPTION
                         ======================================-->
 
                         <div 
                          *ngIf="visibility_1[0]"
+                        class="ps-list--dot">
+                            
+                            <ul class="ps-product__desc">
+                                
+                                <li>
+                                    {{p.description}}
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ps-product__desc">
+
+                       <p (click)="fncVisibility(1)" style="cursor: pointer; text-align: center; font-size: 100%;">
+                            ICLUDES
+                        </p>
+                        <!--=====================================
+                        SUMMARY = ICLUDES
+                        ======================================-->
+
+                        <div 
+                         *ngIf="visibility_1[1]"
                         class="ps-list--dot">
                             
                             <ul class="ps-product__desc">
@@ -107,7 +176,33 @@ class="ps-product--detail ps-product--fullwidth">
 
                     </div>
 
-                    <div class="ps-product__shopping" style="justify-content: center;">
+                    <div class="ps-product__desc">
+
+                       <p (click)="fncVisibility(2)" style="cursor: pointer; text-align: center; font-size: 100%;">
+                            THE DETAILS
+                        </p>
+                        <!--=====================================
+                        DETAILS
+                        ======================================-->
+
+                        <div 
+                         *ngIf="visibility_1[2]"
+                        class="ps-list--dot">
+                            
+                            <ul class="ps-product__desc">
+                                
+                                <li >
+                                    {{p.details}}
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ps-product__shopping" style="justify-content: center;
+                      margin: 2%;">
 
                         <figure style="text-align: center;">
 
@@ -155,7 +250,7 @@ class="ps-product--detail ps-product--fullwidth">
                     <!--=====================================
                     Letter
                     ======================================-->
-                    <div class="row" style="display: flex; margin-top: 3%;">
+                    <!-- <div class="row" style="display: flex; margin-top: 3%;">
 
                         <div class="col-6">
                             <p>To</p>
@@ -189,7 +284,7 @@ class="ps-product--detail ps-product--fullwidth">
                         id="to-message"
                         style="width: 100%"></textarea>
 
-                    </div>
+                    </div> -->
 
                     <div style="margin-bottom: 3%; margin-top: 3%;">
 
@@ -206,9 +301,8 @@ class="ps-product--detail ps-product--fullwidth">
 
                 </div> <!-- End Product Info -->
 
-        
-            
-        </div>        
+        </div> 
+
     </div>
 
     
@@ -442,5 +536,6 @@ a.animated-button.thar-three:before {
         background: #C4AE9D; 
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
     }
+
 </style>
 

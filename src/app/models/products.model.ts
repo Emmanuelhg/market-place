@@ -7,7 +7,7 @@ export class ProductsModel{
 	description:string;
 	details:string;
 	feedback:any;
-	gallery:string;
+	gallery:[string];
 	// gallery:any[];
 	horizontal_slider:string;
 	image:string;
