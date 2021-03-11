@@ -63,23 +63,25 @@
                 <div class="contrainer ">
                     <div class="row">
 
-                        <!-- Caja -->
+                        <!-- Imágen de Caja -->
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
 
                             <div  class="img-new-product ">
+
                                 <img style="height: 149px; display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
 
                                 <div class="circulo">{{1}}</div>
+
                             </div>
 
                         </div>
 
-                        <!-- Productos -->
+                        <!-- Imágen de Productos -->
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
 
                             <div  class="img-new-product">
 
-                                <img style="display: flex; object-fit: cover;" src="{{product.image}}" alt="">
+                                <img style="display: flex; object-fit: cover; height: 149px;" src="{{product.image}}" alt="">
 
                                 <div class="circulo">{{cant_productos[i]}}</div>
 
@@ -97,7 +99,7 @@
 
             <!-- Infomración de todos los productos incluyendo la caja -->
 
-            <div class="div-info-new col-lg-5 col-md-12 col-sm-12">
+            <div class="div-info-new col-lg-5 col-md-12 col-sm-12" >
 
                 <div class="div_et">
                    <p class="pzp"><b>BOX CONTENTS</b></p>
@@ -181,28 +183,34 @@
                         </div>
                        
 
-                     {{ lastIndex ? callback() : ""}}
+                        {{ lastIndex ? callback() : ""}}
 
-                    </div>  
+                      </div>  
 
                 </div>
 
-                <div class="div_ed">
+                <div class="div_ed" style="border-top: 1px solid #dee2e6!important;
+                border-bottom: 1px solid #dee2e6!important;">
                    <p>CURRENT PACKAGING | SMALL</p>
                 </div>
 
                 <div class="div-price-new">
 
-                    <p>
-                        <b> BOX SUBTOTAL: $ {{subTotal}}</b>
-                    </p>
+                  <p style="
+                   height: 70px; 
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;">
+                    <b style="width: 120px;"> BOX SUBTOTAL: ${{subTotal}}</b>
+                  </p>
 
-                    <a 
-                    style="cursor: pointer;" 
-                    (click)="guardaProductos()"
-                    class="new-boton">
-                        COMPLETE BOX
-                    </a>
+                  <a 
+                  style="cursor: pointer;" 
+                  (click)="guardaProductos()"
+                  class="new-boton">
+                    COMPLETE BOX
+                  </a>
+      
 
                 </div>
 
@@ -214,14 +222,14 @@
 
 
 
-    <div style="width: 100%; 
+    <div style="width: 100%;
     height: px; margin-right: 3%; display: flex;">
 
         <!-- Filtros -->
         <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
 
             <!-- Filtro por Categoría -->
-            <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-12" style=" padding: 0px;">
 
                 <select class="custom-select" id="inputGroupSelect01" 
                 (change)="filtradoProductos1(0,$event.target.value)"
@@ -581,7 +589,7 @@
 
 
             <!-- Imagenes -->
-            <div class="col-lg-8 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
+            <div class="col-lg-7 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
             margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
 
                 <div class="row-yt" 
@@ -602,24 +610,28 @@
             </div>
 
             <!-- Botón 1 -->
-            <div class="btn-none col-lg-2 col-md-12 sol-sm-12" style="; width: 100%; height: 74px;
-            margin:0px; padding: 0px; 
+            <div class="btn-none col-lg-3 col-md-12 sol-sm-12" style="display: flex;
             justify-content: center; align-items: center;">
 
-                <a class="byn-tyt-white">
-                    CURRENT BOX REGULAR
-                </a>
+                <div class="col text-center">
+
+                  <a class=" byn-tyt-white">CURRENT BOX REGULAR</a>
+                  
+                </div>
 
             </div>
 
             <!-- Botón 2 -->
-            <div class="col-lg-2 col-md-12 sol-sm-12" style="width: 100%; height: 74px; 
-            margin:0px; padding: 0px; 
+            <div class="col-lg-2 col-md-12 sol-sm-12" style="display: flex;
             justify-content: center; align-items: center;">
 
+              <div class="col text-center">
+
                 <a (click)="guardaProductos()" class="byn-tyt">
-                    COMPLETE BOX 
+                  COMPLETE BOX 
                 </a>
+
+              </div>
 
             </div>
       
@@ -1133,18 +1145,22 @@
         color: white;
         align-content: center;
         display: flow-root;
-        cursor: pointer; text-align: center; 
+        cursor: pointer; 
+        text-align: center; 
         align-content: center;
-        padding: 14px;
+        padding: 4px;
+        font-size: 71%;
+        border:1px solid #000;
     }
     .byn-tyt-white{
+        /*width: 120px;*/
         background: white;
         color: black;
         align-content: center;
         display: flow-root;
         cursor: pointer; text-align: center; 
         align-content: center;
-        padding: 16px;
+        padding: 4px;
         font-size: 71%;
         border:1px solid #000;
     }
@@ -1375,7 +1391,7 @@
 
     .div_ed{
         
-        height: 11%;
+        /*height: 11%;*/
         justify-content: center;
         align-items: center;
         display: flex;
@@ -1385,7 +1401,7 @@
         display: flex;
     }
     .div_er{
-        border-bottom:1px solid #dee2e6!important; 
+        /*border-bottom:1px solid #dee2e6!important; */
         border-top: 1px solid #dee2e6!important;
         height: px;   
         /*justify-content: center;
@@ -1419,7 +1435,7 @@
         display: flex;
         justify-content: space-around;
     }
-        .ps-product .ps-product__actionst {
+    .ps-product .ps-product__actionst {
       display: -webkit-box;
       display: flex;
       -webkit-box-orient: horizontal;

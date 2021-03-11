@@ -71,7 +71,6 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles_name;
   subTotal:string = "0";
   text_box:string;
-  gol;
   box_size=30;
   box_selection=1;
   full_percentage_bar=0;
@@ -139,6 +138,17 @@ export class SelecctionPasoDosComponent implements OnInit {
             if (resp["box_steps"] != undefined) {
                this.box_steps = resp["box_steps"];
             }
+             this.original_size = this.box_json.box_size;
+              this.small_box_size = this.box_json.box_size_blocks_small;
+              this.regular_box_size = this.box_json.box_size_blocks_reular;
+
+              this.box_size = this.box_json.box_size;
+              // console.log("es esto:",this.almacenar_productos);
+              // console.log("es esto 2:",this.cant_productos);
+              console.log("Este tamaño es original_size:",this.original_size);
+              console.log("Este tamaño es small_box_size:",this.small_box_size);
+              console.log("Este tamaño es caregular_box_sizent_productos:",this.regular_box_size);
+
             if(resp["box_arts"]!= undefined){
               for(let art in resp["box_arts"]){
 
@@ -147,8 +157,7 @@ export class SelecctionPasoDosComponent implements OnInit {
                 }
                 
               }
-              console.log("es esto:",this.almacenar_productos);
-              console.log("es esto 2:",this.cant_productos);
+             
             }
           }
         this.configureUi();
@@ -359,9 +368,12 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
       this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
+      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
+      this.boxes.box_subtotal=Number(this.subTotal);
       this.boxes.box_steps = [this.box_steps[0], true, this.box_steps[2], this.box_steps[3]];
       this.boxes.box_arts_cant=this.cant_productos;
-      // this.boxes.box_subtotal = this.box_json.subTotal;
+    
 
       // Variables de la caja Small
       this.boxes.box_img=this.box_json.box_img;
@@ -414,11 +426,11 @@ export class SelecctionPasoDosComponent implements OnInit {
   calculatePercentage(){
     this.used_space = 0;
       for(let i = 0; i< this.almacenar_productos.length; i++){
-        this.used_space += (30/this.almacenar_productos[i].size) * this.cant_productos[i];
+        this.used_space += (this.original_size/this.almacenar_productos[i].size) * this.cant_productos[i];
       }
     var pivote = this.box_size - this.used_space;
     console.log("used space es "+this.used_space+" y box size es "+this.box_size);
-    //var percentage = (pivote * 100)/ this.original_size;
+
     if(this.used_space<=this.regular_box_size){
 
       if(this.box_size == this.regular_box_size && this.used_space<= this.small_box_size) {

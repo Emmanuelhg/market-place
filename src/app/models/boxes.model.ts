@@ -4,6 +4,8 @@ export class BoxesModel{
 	box_steps:any[];
     box_status:number;
     box_size:number;
+    box_size_blocks_small:number;
+    box_size_blocks_reular:number;
     box_price:number;
     box_price_small:number;
     box_price_regular:number;
@@ -23,7 +25,8 @@ export class BoxesModel{
     box_arts:any[];
     box_arts_ids:any[];
     box_arts_cant:any[];
-    box_subtotal:string;
+    box_subtotal:number;
     box_type_small:string;
     box_type_regular:string;
+    box_cant:number;
 }
