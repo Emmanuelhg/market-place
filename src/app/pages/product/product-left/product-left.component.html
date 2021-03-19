@@ -4,25 +4,25 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
     <div style="display: flex; padding: 0px;" class="row">
 
-        <div class="col-lg-7 col-md-7 col-sm-12" style="">
+        <div class="col-lg-6 col-md-7 col-sm-12" style="">
 
             <div 
             *ngIf="!preload"
             class="ps-product--detail ps-product--fullwidth">
 
                 <!--=====================================
-                Gallery  
+                Gallery   
                 ======================================--> 
 
-                    <figure>
+                    <!-- <figure>
 
                         <div class="ps-wrapper">
 
                             <div class="ps-product__gallery" data-arrow="true">
-                                 <!-- 
+                                 
                                     *ngFor="let p of product[0]"
                                      *ngFor="let image of gallery[0]" 
-                                 -->
+                                
                                 <div 
                                 *ngFor="let p of product; let i = index"
                                 class="item">
@@ -38,7 +38,37 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                         </div>
 
-                    </figure>
+                    </figure> -->
+
+                    <div 
+                    id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        
+                        <div 
+                        *ngFor="let p of product; let i = index"
+                        class="carousel-item active">
+                          <img 
+                          class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p.image}}" alt="First slide" id="mainImg">
+                        </div>
+
+                        <div 
+                        *ngFor="let p of product[0].gallery; let i = index"
+                        class="carousel-item active">
+                          <img 
+                          class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p}}" alt="First slide" id="mainImg">
+                        </div>
+                            
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+
 
                    <div class="thumb_img_list" style="text-align: center; ">
 
@@ -80,8 +110,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                             
                         </ul>
-                       
-                   </div> 
+                        
+                   </div>  
 <!-- 
                     <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false" 
                     style="display: none;">
@@ -93,9 +123,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         {{ lastIndex ? callbackGallery(i) : ""}}
                         </div>          
 
-                    </div> -->
+                    </div> --> 
 
-                </div>
+            </div>
 
             <div
             *ngIf="preload"
@@ -107,7 +137,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
             
         </div>
 
-        <div class="col-lg-5 col-md-7 col-sm-12" style="">
+        <div class="col-lg-5 col-md-7 col-sm-12" style="margin-left:2%;">
 
                 <!--=====================================
                 Product Info
@@ -139,7 +169,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                          *ngIf="visibility_1[0]"
                         class="ps-list--dot">
                             
-                            <ul class="ps-product__desc">
+                            <ul>
                                 
                                 <li>
                                     {{p.description}}
@@ -164,7 +194,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                          *ngIf="visibility_1[1]"
                         class="ps-list--dot">
                             
-                            <ul class="ps-product__desc">
+                            <ul>
                                 
                                 <li *ngFor="let sum of summary[i]">
                                     {{sum}}
@@ -189,7 +219,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                          *ngIf="visibility_1[2]"
                         class="ps-list--dot">
                             
-                            <ul class="ps-product__desc">
+                            <ul>
                                 
                                 <li >
                                     {{p.details}}
@@ -229,63 +259,69 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         </figure>
 
                     </div>
+
                     <!--=====================================
                     Box
                     ======================================-->
+                    <div 
+                    *ngIf="p.category == compare ">
 
-                   <!--  <div>
-                        <h3 style="text-align: center;">
-                            BOX COLOR
-                        </h3>
-                        <div class="row" style="display: flex;">
-                            <img class="col-6" 
-                            style="background: red; width: 50px; height: 50px;" 
-                            src="" >
-                            <img class="col-6" 
-                            style="background: red; width: 50px; height: 50px;"
-                            src="">
-                        </div>
-                    </div> -->
-
-                    <!--=====================================
-                    Letter
-                    ======================================-->
-                    <!-- <div class="row" style="display: flex; margin-top: 3%;">
-
-                        <div class="col-6">
-                            <p>To</p>
-                            <div class="input-group input-group-lg">
-                                <input  
-                                  placeholder="To" 
-                                  type="text" class="form-control" 
-                                  aria-label="Sizing example input" 
-                                  aria-describedby="inputGroup-sizing-lg">
+                        <div>
+                            <h3 style="text-align: center;">
+                                BOX COLOR
+                            </h3>
+                            <div class="row" style="display: flex;">
+                                <img class="col-6" 
+                                style="width: 50px; height: 200px;" 
+                                src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2" >
+                                <img class="col-6" 
+                                style="width: 50px; height: 200px;"
+                                src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
                             </div>
                         </div>
-                        
-                        <div class="col-6">
-                            <p>From</p>
-                            <div class="input-group input-group-lg">
-                                <input  
-                                placeholder="From" 
-                                type="text" class="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-lg">
-                            </div>  
-                        </div>    
+
+                        <!--=====================================
+                        Letter
+                        ======================================-->
+                        <div class="row" style="display: flex; margin-top: 3%;">
+
+                            <div class="col-6">
+                                <p>To</p>
+                                <div class="input-group input-group-lg">
+                                    <input  
+                                      placeholder="To" 
+                                      type="text" class="form-control" 
+                                      aria-label="Sizing example input" 
+                                      aria-describedby="inputGroup-sizing-lg">
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <p>From</p>
+                                <div class="input-group input-group-lg">
+                                    <input  
+                                    placeholder="From" 
+                                    type="text" class="form-control" 
+                                    aria-label="Sizing example input" 
+                                    aria-describedby="inputGroup-sizing-lg">
+                                </div>  
+                            </div>    
+                            
+                        </div>
+
+                        <div style="margin-top: 3%;">
+                            <p>Message</p>
+
+                            <textarea placeholder="Enter your card message here. 120 characters" 
+                            id="to-message" rows="5" 
+                            id="to-message"
+                            style="width: 100%"></textarea>
+
+                        </div>
                         
                     </div>
 
-                    <div style="margin-top: 3%; ">
-                        <p>Message</p>
-
-                        <textarea placeholder="Enter your card message here. 120 characters" 
-                        id="to-message" rows="5" 
-                        id="to-message"
-                        style="width: 100%"></textarea>
-
-                    </div> -->
-
+                
                     <div style="margin-bottom: 3%; margin-top: 3%;">
 
                         <a class="new-boton" 

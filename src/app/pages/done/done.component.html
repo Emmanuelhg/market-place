@@ -1,6 +1,6 @@
 <div style="width: 100%; height: px;">
     
-    <!-- Barra de números --> 
+    <!-- Barra de números -->  
 	<div class="contrainer">
 		<div> 
 			<ul class="progressbar">
@@ -82,7 +82,7 @@
 						</p>
 
 						<p *ngFor="let box_arts of products; let lastIndex = last">
-							{{box_arts.name}}
+							{{boxes.box_arts_cant}} {{box_arts.name}}
 						</p>
 					</div>
 					
@@ -92,7 +92,7 @@
 				 ======================================-->
 				<div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
 					<!-- Precio -->
-					<div class="col-4">
+					<div class="col-4" style="margin: 1%;">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
 								<p><b>Price</b></p>
@@ -125,7 +125,7 @@
 								<p><b>Total</b></p>
 							</li>
 							<li style="margin-top: 50%;">
-								$345
+								${{boxes.box_subtotal}}
 							</li>
 						</ul>
 						

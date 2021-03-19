@@ -27,6 +27,7 @@ export class HomeBannerComponent implements OnInit {
 	img_slider5='';
 
 	img_slider_array:string[] = [];
+	
 	constructor(private productsService: ProductsService,
 		        private negocioService: NegocioService) { }
 
@@ -42,7 +43,7 @@ export class HomeBannerComponent implements OnInit {
         	this.img_slider5 = this.negocio['slider_url_5']
         	// if(this.negocio['slider_url_2'] != "null"){ 
         	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
-        	// }
+        	// } 
         	// if(this.negocio['slider_url_3'] != "null"){
         	// 	this.img_slider_array.push(this.negocio['slider_url_3']);
         	// }

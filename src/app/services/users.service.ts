@@ -677,7 +677,7 @@ export class UsersService {
             console.log("No hay lista se crea un nuevo carrito");
             let arrayList = [];
             arrayList.push(item);
-            console.log("array list es:"+arrayList); 
+            console.log("array list es:"+JSON.stringify(arrayList)); 
             localStorage.setItem("list", JSON.stringify(arrayList));
             Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 

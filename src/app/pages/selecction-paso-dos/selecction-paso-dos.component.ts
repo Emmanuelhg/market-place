@@ -85,6 +85,8 @@ export class SelecctionPasoDosComponent implements OnInit {
   message_oops_box = false;
   message_oops_box_f;
 
+  img_gallery= [];
+
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
                private activateRoute: ActivatedRoute,
@@ -326,6 +328,14 @@ export class SelecctionPasoDosComponent implements OnInit {
 
     this.porductos_detalles=products.description;
     this.porductos_detalles_img=products.image;
+
+    console.log("Es esto je je je :",products);
+
+    if(products.gallery != undefined){
+      console.log("Es esto je je je :",products.gallery);
+      this.img_gallery=products.gallery;
+
+    }
     this.porductos_detalles_precio=products.price;
     this.porductos_detalles_name=products.name;
 

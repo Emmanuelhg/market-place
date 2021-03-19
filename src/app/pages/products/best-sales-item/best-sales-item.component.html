@@ -67,7 +67,9 @@ Best Sale Items
                
                 <!-- Boton para agregar productos a la caja -->
                  <div class="texto">
-                    <a style="cursor:pointer" (click)="addShoppingCart(product.url, 1, [])"  data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                    <a style="cursor:pointer" 
+                    (click)="addShoppingCart(product,product.url, 1, [])" 
+                     data-toggle="tooltip" data-placement="top" title="Add to Cart">
                         
                         Add to cart
                     </a>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
@@ -55,7 +55,8 @@ export class SelecctionPasoTresComponent implements OnInit {
       "box_size" : 0,
       "box_status" : 1,
       "box_steps": [true, true, true, false],
-      "box_type" : 1
+      "box_type" : 1,
+      "box_subtotal" : 0
     }`
   );
   box_content:any[] = [];
@@ -75,6 +76,7 @@ export class SelecctionPasoTresComponent implements OnInit {
   inputTo;
   inputFrom;
   inputMessage;
+  box_subtotal;
 
   constructor( private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -252,21 +254,22 @@ export class SelecctionPasoTresComponent implements OnInit {
     this.box_json.box_deliver_from=this.inputFrom;
     this.box_json.box_deliver_message=this.inputMessage;
     // Almacenar Info en base de datos  
-      this.boxes.box_id=this.id_to_box;
-      this.boxes.box_type=this.box_json.box_type;
-      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
-      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
-      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
-      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
-      this.boxes.box_price=this.box_json.box_price;
-      this.boxes.box_size=this.box_json.box_size;
-      this.boxes.box_status=this.box_json.box_status;
-      this.boxes.box_name=this.box_json.box_name;
-      this.boxes.box_img=this.box_json.box_img;
-      this.boxes.box_arts=this.box_json.box_arts;
-      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
-      this.boxes.box_steps =this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], true, this.box_steps[3]];
-      console.log("El json es tal: :",this.boxes);
+    this.boxes.box_id=this.id_to_box;
+    this.boxes.box_type=this.box_json.box_type;
+    this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+    this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+    this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+    this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+    this.boxes.box_price=this.box_json.box_price;
+    this.boxes.box_size=this.box_json.box_size;
+    this.boxes.box_status=this.box_json.box_status;
+    this.boxes.box_name=this.box_json.box_name;
+    this.boxes.box_img=this.box_json.box_img;
+    this.boxes.box_arts=this.box_json.box_arts;
+    this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+    this.boxes.box_subtotal= this.box_json.box_subtotal;
+    this.boxes.box_steps =this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], true, this.box_steps[3]];
+    console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
        

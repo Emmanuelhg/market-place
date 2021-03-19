@@ -24,7 +24,7 @@ import { UsersService } from '../../../services/users.service';
 import { MessagesService } from '../../../services/messages.service';
 import { StoresService } from '../../../services/stores.service';
 
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any;
 
 
@@ -51,6 +51,8 @@ export class ProductLeftComponent implements OnInit {
     quantity:number = 1;
     summary:any[]=[];
     details:any[]=[];
+    category:string = "";
+    compare:string = "box";
 
     img_showed_gallery=0;
 
@@ -82,7 +84,7 @@ export class ProductLeftComponent implements OnInit {
       for (let i = 0; i < 16; i++) {
         this.visibility_1.push(false);
       }
-    
+
       this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"])  
       .subscribe( resp => {
         
@@ -676,7 +678,7 @@ export class ProductLeftComponent implements OnInit {
         
     }
 
-    fncVisibility(index){
+  fncVisibility(index){
  
     this.visibility_1[index]=!this.visibility_1[index];
 
@@ -687,12 +689,15 @@ export class ProductLeftComponent implements OnInit {
     console.log("Si esta entrando la funcion je je je je je XD");
     this.img_showed_gallery= index
       
-  } 
+  }
+
   getImgGallery(){
-    return this.product[0].gallery[this.img_showed_gallery];
+    return this.product[0].gallery[this.img_showed_gallery];    
+  }
 
-      
-  } 
+  boxNone(){
 
+
+  }
 
 }

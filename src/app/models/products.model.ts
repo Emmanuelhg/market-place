@@ -32,4 +32,5 @@ export class ProductsModel{
 	//peso unidades 
 	weight:number;
 	size:number;
+	
 }

@@ -4,174 +4,413 @@ Breadcrumb
 
 <div class="ps-breadcrumb">
 
-<div class="container">
+    <div class="container">
 
-    <ul class="breadcrumb">
+        <ul class="breadcrumb">
 
-        <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/">Home</a></li>
 
-        <li>Shopping cart</li>
+            <li>Shopping cart</li>
 
-    </ul>
+        </ul>
 
-</div>
+    </div>
 
 </div>
 
 
 <!--=====================================
-Shopping Car
+Shopping Car 
 ======================================--> 
 
-<div class="ps-section--shopping ps-shopping-cart">
+<div> 
 
-    <div class="container">
+    <div *ngIf="shoppingCart.length == 0">
+       
+        <div colspan="6" class="text-center">
 
-        <div class="ps-section__header">
-
-            <h1>Shopping Cart</h1>
+            <p>
+                You haven't products in the shopping cart yet!
+            </p>
 
         </div>
 
-        <div class="ps-section__content">
+    </div>
 
-            <div class="table-responsive">
+    <!--=====================================
+    Contenido productos indivuduales 
+    ======================================-->
 
-                <table class="table ps-table--shopping-cart" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <div>
 
-                    <thead>
+        <h2 style="width: 176px; margin-left: 4%;
+        border-top: 1px solid black !important;">
+            Your Cart
+        </h2>
 
-                        <tr>
+        <div *ngFor="let product of shoppingCart; let lastIndex = last"
+        class="row" style="padding: 0px;">
 
-                            <th>Product name</th>
-                            <th>PRICE</th>
-                            <th>SHIPPING</th>
-                            <th>QUANTITY</th>
-                            <th>TOTAL</th>
-                            <th></th>
+            <!--=====================================
+             Div para imagen
+            ======================================-->
+            <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
+            height: px; justify-content:center;display: flex;">
 
-                        </tr>
+                <a  href="product/{{product.url}}"
+                style="height: 100%; display: flex; align-items: center;">
 
-                    </thead>
+                    <img style="width:200px; height:200px;cursor: pointer;
+                    "src="{{product.image}}">
 
-                    <tbody>
-
-                    	<tr 
-                    	*ngIf="shoppingCart.length == 0">
-                    		
-                    		<td colspan="6" class="text-center">You haven't products in the shopping cart yet!</td>	
-
-                    	</tr>
-
-                        <tr
-						*ngFor="let product of shoppingCart; let lastIndex = last"
-                        >
-                            <td>
-
-                                <div class="ps-product--cart">
-
-                                    <div class="ps-product__thumbnail">
-
-                                        <a href="product/{{product.url}}">
-                                        	<img src="{{product.image}}">
-                                        </a>
-
-                                    </div>
-
-                                    <div class="ps-product__content">
-
-                                        <a href="product/{{product.url}}">{{product.name}}</a>
-
-                                        <div [innerHTML]="product.details"></div>
-
-                                        <a 
-                                         data-toggle="modal" 
-                                         data-target=".bd-example-modal-xl"
-                                         style="cursor: pointer;">
-                                            Add Address
-                                        </a>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-                            <td class="ps-product pShoppingCart" [innerHTML]="product.price"></td>
-
-                            <td class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>
-
-
-                            <td>
-
-                                <div class="form-group--number quantity">
-
-                                    <button class="up" (click)="changeQuantity(quantity.value, 1, 'up', product.url, product.listDetails)">
-                                    +</button>
-
-                                    <button class="down" (click)="changeQuantity(quantity.value, 1, 'down', product.url, product.listDetails)">
-                                    -</button>
-
-                                    <input class="form-control qShoppingCart" type="number" value="{{product.quantity}}" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null, product.url, product.listDetails)">
-
-                                </div>
-
-                            </td>
-
-                            <td class="subTotalPrice"><div class="spinner-border subTotalPriceM"></div></td>                             
-
-                            <td>
-
-                                <a 
-                                 mwlConfirmationPopover
-                                 [popoverMessage]="popoverMessage"
-                                 placement="left"
-                                 style="cursor:pointer" 
-                                 (confirm)="removeProduct(product.url, product.listDetails)">
-                                    <i class="icon-cross"></i>
-                                </a>
-
-                            </td>
-
-                        {{ lastIndex ? callback() : ""}}
-
-                        </tr>                  
-
-                    </tbody>
-
-                </table>
-
-                <h4 class="d-block d-lg-none text-right text-muted py-3">
-                    Move to <i class="fas fa-long-arrow-alt-right"></i>
-                </h4>
-
-            </div>
-
-            <hr>
-
-            <div 
-             *ngIf="shoppingCart.length > 0"
-            class="d-flex flex-row-reverse">
-              <div [innerHTML]="totalP"></div>             
-            </div>
-
-            <div class="ps-section__cart-actions">
-
-                <a class="ps-btn" routerLink="/">
-                    <i class="icon-arrow-left"></i> Back to Shop
                 </a>
+
+            </div>
+
+            <!--=====================================
+            Div para info de caja
+            ======================================-->
+
+            <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+
+                <h3 style="font-size: 19px"> 
+
+                    <a  href="product/{{product.url}}">
+                        <b>{{product.name}}</b> 
+                    </a>
+
+                </h3>
 
                 <a 
-                *ngIf="shoppingCart.length > 0"
-                class="ps-btn" href="checkout">
-                    Proceed to checkout <i class="icon-arrow-right"></i> 
+                 class="ps-product__content" 
+                 mwlConfirmationPopover
+                 [popoverMessage]="popoverMessage"
+                 placement="left"
+                 style="cursor:pointer" 
+                 (confirm)="removeProduct(product.url, product.listDetails)">
+                    REMOVE
                 </a>
+
+                <div>
+            
+                    <a
+                     class="ps-product__content" 
+                     data-toggle="modal" 
+                     data-target=".bd-example-modal-xl"
+                     style="cursor: pointer;">
+                        Add Address
+                    </a>
+
+                </div>
+
+                
+            </div>
+
+            <!--=====================================
+            Div precio. cantidad y total
+            ======================================-->
+            <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                <!-- Precio -->
+                <div class="col-4" style="margin: 1%;">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Price</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+                            <!-- $345 -->
+
+                            <div class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
+ 
+                            <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>               
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quantity -->
+                <div class="col-4">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Quantity</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+
+                            <div  class="form-group--number quantity">
+
+                                <button class="up" 
+                                (click)="changeQuantity(quantity.value, 1, 'up', product.url, product.listDetails)">
+                                +</button>
+
+                                <button class="down" 
+                                (click)="changeQuantity(quantity.value, 1, 'down', product.url, product.listDetails)">
+                                -</button>
+
+                                <input class="form-control qShoppingCart" 
+                                type="number" value="{{product.quantity}}" min="1" max="9" 
+                                step="1" #quantity (change)="changeQuantity(quantity.value, 0, null, product.url, product.listDetails)">
+                                    
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Total -->
+                <div class="col-4">
+
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Total</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+
+                            <div class="subTotalPrice">
+                                <div class="spinner-border subTotalPriceM"></div>
+                            </div>
+
+                        </li>
+                    </ul>
+                    
+                </div>
 
             </div>
 
-        </div> 
+          {{ lastIndex ? callback() : ""}}
+
+        </div>
+
+    </div>
+    
+    <!--=====================================
+    Contenido de cajas y productos
+    ======================================-->
+
+    <div>
+
+        <div class="row" style="padding: 0px;">
+
+            <!--=====================================
+             Div para imagen
+            ======================================-->
+            <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
+            display: flex;">
+
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <img style="width:200px; height:200px;"
+                     src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
+                </div>
+
+             <!--    <div style="height: 100%; display: flex; align-items: center;">
+                    <img style="width:170px;"
+                     src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/products%2F01358fe0-882f-11eb-9e8b-1506e632e620.png?alt=media&token=36fa7998-ce01-4f41-8544-aa6ffd288764">
+                </div> -->
+
+            </div>
+            <!--=====================================
+              Div para info de caja
+             ======================================-->
+            <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                <h3>BUILD A BOXFOX</h3>
+                <p>matle black / Regular </p>
+                <div style="display: flex;">
+                    <p>
+                        <b>To:</b>
+                    </p>&nbsp;
+                    <p> 
+                     <!--    {{boxes.box_deliver_to}} -->
+                    </p>
+                </div>
+                <div style="display: flex;">
+                    <p>
+                        <b>From:</b>    
+                    </p>&nbsp;
+                    <p > 
+                       <!--  {{boxes.box_deliver_from}} -->
+                    </p>
+                </div>
+                <div style="display: flex;">
+                    <p>
+                        <b>Message:</b>
+                    </p>&nbsp;
+                    <p > 
+                        <!-- {{boxes.box_deliver_message}} -->
+                    </p>
+                </div>
+                <div style="display: flex;">
+                    <p>
+                        <b>Card:</b>
+                    </p>&nbsp;
+                    <p> hol</p>
+                </div>
+                <div>
+                    <p>
+                        <b>Gift Box Contentens:</b>
+                    </p>
+
+                    <!-- <p *ngFor="let box_arts of products; let lastIndex = last">
+                        {{boxes.box_arts_cant}} {{box_arts.name}}
+                    </p> -->
+                </div>
+                
+            </div>
+            <!--=====================================
+              Div precio. cantidad y total
+             ======================================-->
+            <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                <!-- Precio -->
+                <div class="col-4" style="margin: 1%;">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Price</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+                            <!-- $345 -->
+                            <!-- $ {{boxes.box_price}} -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- Quantity -->
+                <div class="col-4">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Quantity</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+
+                            <div  class="form-group--number quantity">
+
+                                <button class="up">
+                                +</button>
+
+                                <button class="down">
+                                -</button>
+
+                                <input class="form-control qShoppingCart" 
+                                type="number"  min="1" max="9" 
+                                step="1">
+                                    
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- Total -->
+                <div class="col-4">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li>
+                            <p><b>Total</b></p>
+                        </li>
+                        <li style="margin-top: 50%;">
+                            <!-- ${{boxes.box_subtotal}} -->
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+
+        <div class="row" style="padding: 0px;">
+
+            <!--=====================================
+             Div para imagen
+            ======================================-->
+            <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
+            display: flex;">
+
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <img style="width:154px;"
+                     src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/products%2F01358fe0-882f-11eb-9e8b-1506e632e620.png?alt=media&token=36fa7998-ce01-4f41-8544-aa6ffd288764">
+                </div>
+
+            </div>
+
+            <!--=====================================
+            Div para info de caja
+            ======================================-->
+            <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                <h3>info producto</h3>
+                
+            </div>
+
+            <!--=====================================
+            Div precio. cantidad y total
+            ======================================-->
+            <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                <!-- Precio -->
+                <div class="col-4" style="margin: 1%;">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                    
+                        <li style="margin-top: 50%;">
+                            <!-- $345 -->
+                            <!-- $ {{boxes.box_price}} -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- Quantity -->
+                <div class="col-4">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                    
+                        <li style="margin-top: 50%;">
+
+                            <div  class="form-group--number quantity">
+
+                                <button class="up">
+                                +</button>
+
+                                <button class="down">
+                                -</button>
+
+                                <input class="form-control qShoppingCart" 
+                                type="number"  min="1" max="9" 
+                                step="1">
+                                    
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Total -->
+                <div class="col-4">
+                    <ul style="font-family: sans-serif; list-style: none;">
+                        <li style="margin-top: 50%;">
+                            <!-- ${{boxes.box_subtotal}} -->
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
         
     </div>
+
+
+
+    <!-- Botónes para el proceso de compra  -->
+
+    <div 
+     *ngIf="shoppingCart.length > 0"
+    class="d-flex flex-row-reverse">
+      <div [innerHTML]="totalP"></div>             
+    </div>
+
+    <div class="ps-section__cart-actions">
+
+        <a class="ps-btn" routerLink="/">
+            <i class="icon-arrow-left"></i> Back to Shop
+        </a>
+
+        <a 
+        *ngIf="shoppingCart.length > 0"
+        class="ps-btn" href="checkout">
+            Proceed to checkout <i class="icon-arrow-right"></i> 
+        </a>
+
+    </div>
+
 
     <!--=====================================
     Ventana Modal 
@@ -286,5 +525,5 @@ Shopping Car
       </div>
 
     </div> 
-
+    
 </div>

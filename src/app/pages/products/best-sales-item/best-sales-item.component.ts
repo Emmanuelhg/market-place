@@ -33,6 +33,7 @@ export class BestSalesItemComponent implements OnInit {
 	placeholder:any[] = [0,1,2,3];
 	notFound:boolean = false;
 	products:any[] = [];
+	time:any[] = [];
 
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,
@@ -44,7 +45,7 @@ export class BestSalesItemComponent implements OnInit {
   		this.preload = true;
 
   		/*=============================================
-		Capturamos el parámetro URL
+		Capturamos el parámetro URL 
 		=============================================*/	
 
 		let params = this.activateRoute.snapshot.params["param"].split("&")[0];
@@ -174,22 +175,30 @@ export class BestSalesItemComponent implements OnInit {
 	}
 
 	/*=============================================
-	Función para agregar productos al carrito de compras
+	Función para agregar productos al carrito de compras 
 	=============================================*/
 
-	addShoppingCart(product, unit, details){
+	addShoppingCart(object,product,unit,details){
 		console.log("Producto:",product);
 		console.log("unidad:",unit);
 		console.log("detalles:",details);
 		// Esta variable te mantiene en el mismo componente
 		let url = this.router.url;
 
-		let item = {
+		let numtime = new Date();
+		let newtime =numtime.getTime();
 		
+		console.log(":",newtime);
+
+		let item = {
+			object:object,
 			product: product,
 			unit: unit,
 			details: details,
-			url:url
+			url:url,
+			date:newtime
+			// lastmodified: lastmodified
+			// 
 		}
 		// Se mandan los parámetros al a la funcion del servicio
 		this.usersService.addSoppingCart(item);

@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
 
- 
+  
 declare var jQuery:any;
 declare var $:any;
 
@@ -44,7 +44,8 @@ export class DoneComponent implements OnInit {
       "box_size" : 0,
       "box_status" : 1,
       "box_steps": [true, true, true, true],
-      "box_type" : 1
+      "box_type" : 1,
+      "box_subtotal" : 0
     }`
   );
   
@@ -63,6 +64,7 @@ export class DoneComponent implements OnInit {
   inputTo;
   inputFrom;
   inputMessage;
+  box_subtotal;
 
   constructor( private usersService:UsersService, 
                private boxesService:BoxesService,
@@ -180,8 +182,7 @@ export class DoneComponent implements OnInit {
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
       this.boxes.box_arts=this.box_json.box_arts;
-
-      // this.boxes.box_subtotal= this.box_json.box_subtotal;
+      this.boxes.box_subtotal= this.box_json.box_subtotal;
 
       this.boxes.box_steps = this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], this.box_steps[2], true];
       console.log("El json es tal: :",this.boxes);
@@ -220,7 +221,7 @@ export class DoneComponent implements OnInit {
       this.boxes.box_steps = this.box_steps;
       this.boxes.box_arts_cant=this.box_json.box_arts_cant;
 
-      // this.boxes.box_subtotal= this.box_json.box_subtotal;
+      this.boxes.box_subtotal= this.box_json.box_subtotal;
 
       this.products=this.boxes.box_arts;
 

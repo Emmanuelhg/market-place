@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Path } from '../../config';
+import { NegocioService } from '../../services/negocio.service';
 
 @Component({
   selector: 'app-frequently-asked-questions',
@@ -12,12 +13,34 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
   visibility_1 =[];
   fncNone; 
 
-  constructor() { }
+
+  negocio = null;
+
+  img_slider='';
+  img_slider2='';
+  img_slider3='';
+  img_slider4='';
+  img_slider5='';
+
+  img_slider_array:string[] = [];
+
+  constructor(  private negocioService: NegocioService) { } 
   	
   ngOnInit(): void {
   	for (let i = 0; i < 16; i++) {
-  		this.visibility_1.push(false);
+  		this.visibility_1.push(false); 
   	}
+
+    this.negocioService.getData()
+    .subscribe(resp=>{
+      this.negocio = resp['personalization'];
+      this.img_slider = this.negocio['slider_url_1'];
+      this.img_slider2 = this.negocio['slider_url_2'];
+      this.img_slider3= this.negocio['slider_url_3'];
+      this.img_slider4 = this.negocio['slider_url_4'];
+      this.img_slider5 = this.negocio['slider_url_5'];
+  
+    })
 
   }
   fncVisibility(index){
