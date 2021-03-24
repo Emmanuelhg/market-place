@@ -22,4 +22,9 @@ export class SubCategoriesService {
 		return this.http.patch(`${this.api}sub-categories/${id}.json`,value);
 
 	}
+	getData(){
+
+		return this.http.get(`${this.api}sub-categories.json`);
+
+	}
 }

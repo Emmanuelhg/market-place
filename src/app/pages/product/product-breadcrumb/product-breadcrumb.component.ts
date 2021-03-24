@@ -28,7 +28,7 @@ export class ProductBreadcrumbComponent implements OnInit {
         this.breadcrumb = this.activateRoute.snapshot.params["param"].replace(/[-]/g, " ");
 
         /*=============================================
-        Actualizar vistas de producto
+        Actualizar vistas de producto 
         =============================================*/  
 
         this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"])
@@ -36,11 +36,18 @@ export class ProductBreadcrumbComponent implements OnInit {
 
             for(const i in resp){
 
-              let id = Object.keys(resp).toString();
-              
+              console.log("este es el i en resp xdxdxd XD:",resp[i]);
+
+
+              let id = resp[i].id;
+
+              console.log("este es el i es el id XD:",id);
+            
               let value = {
                 "views": Number(resp[i].views+1)
               }
+
+              console.log("este es el i en resp xdxdxd XD:",value);
 
               this.productsService.patchData(id, value)
               .subscribe(resp=>{})

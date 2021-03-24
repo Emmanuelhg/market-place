@@ -77,6 +77,7 @@ import { OurStoryComponent } from './pages/our-story/our-story.component';
 import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { EmptyComponent } from './pages/empty/empty.component';
+import { KitsComponent } from './pages/kits/kits.component';
 
 
 @NgModule({
@@ -139,7 +140,8 @@ import { EmptyComponent } from './pages/empty/empty.component';
     OurStoryComponent,
     GetInTouchComponent,
     TermsComponent,
-    EmptyComponent
+    EmptyComponent,
+    KitsComponent
   ],
   imports: [
     BrowserModule,

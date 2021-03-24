@@ -83,6 +83,7 @@ export class CheckoutComponent implements OnInit {
 				this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
 				.subscribe(resp=>{
 
+
 					this.id = Object.keys(resp).toString();
 
 					for(const i in resp){
@@ -151,6 +152,8 @@ export class CheckoutComponent implements OnInit {
 
 				this.productsService.getFilterData("url", list[i].product)
 				.subscribe(resp=>{
+
+					console.log("ya no quiero nada", resp);
 
 					for(const f in resp){
 
@@ -383,9 +386,11 @@ export class CheckoutComponent implements OnInit {
 						localProductsService.getFilterData("url", product.url)
 						.subscribe(resp=>{
 
+							console.log("checkout id :", resp);
 							for(const i in resp){
 
-								let id = Object.keys(resp).toString();
+								let id = resp[i].id;
+								console.log("checkout id :", id);
 
 								let value = {
 
@@ -523,14 +528,14 @@ export class CheckoutComponent implements OnInit {
 					Preguntamos cuando haya finalizado el proceso de guardar todo en la base de datos
 					=============================================*/	
 
-					if(totalRender == localShoppingCart.length){
+					// if(totalRender == localShoppingCart.length){
 
-						localStorage.removeItem("list");
-						Cookies.remove('coupon');
+					// 	localStorage.removeItem("list");
+					// 	Cookies.remove('coupon');
 
-						Sweetalert.fnc("success", "The purchase was successful", "account/my-shopping");
+					// 	Sweetalert.fnc("success", "The purchase was successful", "checkout");
 					
-					}						
+					// }						
 
 
 				}
@@ -604,7 +609,7 @@ export class CheckoutComponent implements OnInit {
 
 							for(const i in resp){
 
-								let id = Object.keys(resp).toString();
+								let id = resp[i].id;
 
 								let value = {
 
@@ -748,7 +753,7 @@ export class CheckoutComponent implements OnInit {
 						localStorage.removeItem("list");
 						Cookies.remove('coupon');
 
-						Sweetalert.fnc("success", "The purchase was successful", "account/my-shopping");
+						Sweetalert.fnc("success", "The purchase was successful", "checkout");
 					
 					}						
 
@@ -948,7 +953,7 @@ export class CheckoutComponent implements OnInit {
 
 							for(const i in resp){
 
-								let id = Object.keys(resp).toString();
+								let id = resp[i].id;
 
 								let value = {
 
@@ -1096,7 +1101,7 @@ export class CheckoutComponent implements OnInit {
 						localStorage.removeItem("list");
 						Cookies.remove('coupon');
 
-						Sweetalert.fnc("success", "The purchase was successful", "account/my-shopping");
+						Sweetalert.fnc("success", "The purchase was successful", "checkout");
 					
 					}			
 

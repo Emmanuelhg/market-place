@@ -325,5 +325,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		this.dtTrigger.unsubscribe();
 
 	}
-
+ 
+	
 }

@@ -1,40 +1,31 @@
-<!--=====================================
-Breadcrumb
-======================================-->  
-
-<div class="ps-breadcrumb">
-
-    <div class="container">
-
-        <ul class="breadcrumb">
-
-            <li><a routerLink="/">Home</a></li>
-
-            <li>Shopping cart</li>
-
-        </ul>
-
-    </div>
-
-</div>
-
 
 <!--=====================================
 Shopping Car 
 ======================================--> 
 
 <div> 
+    <div style="margin-left: 4%;">
+        <!--=====================================
+        Breadcrumb
+        ======================================-->  
 
-    <div *ngIf="shoppingCart.length == 0">
-       
-        <div colspan="6" class="text-center">
+        <div class="ps-breadcrumb">
 
-            <p>
-                You haven't products in the shopping cart yet!
-            </p>
+            <div class="container">
+
+                <ul class="breadcrumb">
+
+                    <li><a routerLink="/">Home</a></li>
+
+                    <li>Shopping cart</li>
+
+                </ul>
+
+            </div>
 
         </div>
 
+        
     </div>
 
     <!--=====================================
@@ -43,13 +34,25 @@ Shopping Car
 
     <div>
 
+        <div *ngIf="shoppingCart.length == 0">
+       
+            <div colspan="6" class="text-center">
+
+                <p>
+                    You haven't products in the shopping cart yet!
+                </p>
+
+            </div>
+
+        </div>
+
         <h2 style="width: 176px; margin-left: 4%;
         border-top: 1px solid black !important;">
             Your Cart
         </h2>
 
         <div *ngFor="let product of shoppingCart; let lastIndex = last"
-        class="row" style="padding: 0px;">
+        class="row" style="padding: 0px; margin-bottom: 3%;">
 
             <!--=====================================
              Div para imagen
@@ -197,12 +200,9 @@ Shopping Car
                 <div style="height: 100%; display: flex; align-items: center;">
                     <img style="width:200px; height:200px;"
                      src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
-                </div>
 
-             <!--    <div style="height: 100%; display: flex; align-items: center;">
-                    <img style="width:170px;"
-                     src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/products%2F01358fe0-882f-11eb-9e8b-1506e632e620.png?alt=media&token=36fa7998-ce01-4f41-8544-aa6ffd288764">
-                </div> -->
+
+                </div>
 
             </div>
             <!--=====================================
@@ -249,12 +249,34 @@ Shopping Car
                     <!-- <p *ngFor="let box_arts of products; let lastIndex = last">
                         {{boxes.box_arts_cant}} {{box_arts.name}}
                     </p> -->
+
+                </div>
+
+                <div style="display: flex;">
+
+                    <h5 style="display: flex; cursor: pointer; ustify-content: center;
+                    align-items: center;">Box Information</h5>
+
+                    <!--=====================================
+                    Ícono abajo
+                    ======================================--> 
+
+                    <div style="margin-top:-3%;cursor: pointer; ustify-content: center;
+                    align-items: center;">
+
+                        <img src="{{path}}img/icons/down.png"  type="button" 
+                        data-toggle="collapse" data-target="#collapseExample" 
+                        aria-expanded="false" aria-controls="collapseExample">  
+
+                    </div>
+                    
                 </div>
                 
             </div>
+
             <!--=====================================
-              Div precio. cantidad y total
-             ======================================-->
+            Div precio, cantidad y total
+            ======================================-->
             <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
                 <!-- Precio -->
                 <div class="col-4" style="margin: 1%;">
@@ -310,9 +332,13 @@ Shopping Car
 
     </div>
 
-    <div>
+    <!--=====================================
+    Div para los productos dentro de la caja 
+    ======================================-->
 
-        <div class="row" style="padding: 0px;">
+    <div class="collapse" id="collapseExample">
+
+        <div style="padding: 0px;" class=" row">
 
             <!--=====================================
              Div para imagen
@@ -320,7 +346,12 @@ Shopping Car
             <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
             display: flex;">
 
-                <div style="height: 100%; display: flex; align-items: center;">
+                <div class="col-3" style="padding: 0px; display: flex;justify-content: center;
+                align-items: center; margin-left: 32%;">
+                    <img src="{{path}}img/icons/abajo-derecha.png">
+                </div>
+
+                <div class="col-6" style="height: 100%; display: flex; align-items: center;">
                     <img style="width:154px;"
                      src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/products%2F01358fe0-882f-11eb-9e8b-1506e632e620.png?alt=media&token=36fa7998-ce01-4f41-8544-aa6ffd288764">
                 </div>
@@ -331,7 +362,12 @@ Shopping Car
             Div para info de caja
             ======================================-->
             <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
-                <h3>info producto</h3>
+
+                <div style="height: 200px; width: 200px;  display: flex;align-items: center;">
+                    
+                    <p><b>info producto</b></p>
+
+                </div>
                 
             </div>
 
@@ -344,8 +380,11 @@ Shopping Car
                     <ul style="font-family: sans-serif; list-style: none;">
                     
                         <li style="margin-top: 50%;">
-                            <!-- $345 -->
+                         
                             <!-- $ {{boxes.box_price}} -->
+                        
+                                $45
+                           
                         </li>
                     </ul>
                 </div>
@@ -378,39 +417,57 @@ Shopping Car
                     <ul style="font-family: sans-serif; list-style: none;">
                         <li style="margin-top: 50%;">
                             <!-- ${{boxes.box_subtotal}} -->
+
+
+                                $45
+                           
                         </li>
                     </ul>
                     
                 </div>
             </div>
         </div>
+
+        <!--=====================================
+        Ícono arriba
+        ======================================-->        
+<!-- 
+        <div style="display: flex; justify-content: center;
+        align-items: center; cursor: pointer;"  id ="up">
+
+            <img src="{{path}}img/icons/up.png">
+            
+        </div> -->
         
     </div>
 
 
 
     <!-- Botónes para el proceso de compra  -->
+    <div style="margin-right: 4%;">
 
-    <div 
-     *ngIf="shoppingCart.length > 0"
-    class="d-flex flex-row-reverse">
-      <div [innerHTML]="totalP"></div>             
+        <div 
+         *ngIf="shoppingCart.length > 0"
+        class="d-flex flex-row-reverse">
+          <div [innerHTML]="totalP"></div>             
+        </div>
+
+        <div class="ps-section__cart-actions">
+
+            <a class="ps-btn" routerLink="/">
+                <i class="icon-arrow-left"></i> Back to Shop
+            </a>
+
+            <a 
+            *ngIf="shoppingCart.length > 0"
+            class="ps-btn" href="checkout">
+                Proceed to checkout <i class="icon-arrow-right"></i> 
+            </a>
+
+        </div>
+
     </div>
-
-    <div class="ps-section__cart-actions">
-
-        <a class="ps-btn" routerLink="/">
-            <i class="icon-arrow-left"></i> Back to Shop
-        </a>
-
-        <a 
-        *ngIf="shoppingCart.length > 0"
-        class="ps-btn" href="checkout">
-            Proceed to checkout <i class="icon-arrow-right"></i> 
-        </a>
-
-    </div>
-
+    
 
     <!--=====================================
     Ventana Modal 

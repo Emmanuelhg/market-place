@@ -87,7 +87,7 @@ export class ProductLeftComponent implements OnInit {
 
       this.productsService.getFilterData("url", this.activateRoute.snapshot.params["param"])  
       .subscribe( resp => {
-        
+        console.log(".i.",resp);
         this.productsFnc(resp);   
 
       })
@@ -187,7 +187,7 @@ export class ProductLeftComponent implements OnInit {
 
       console.log("produccto:", this.product);
 
-      console.log("produccto:", this.product[i].gallery);
+      console.log("produccto:", this.product[index].gallery);
 
       /*=============================================
       Agregamos la fecha al descontador

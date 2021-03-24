@@ -13,7 +13,7 @@ import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
 
-  
+   
 
 declare var jQuery:any; 
 declare var $:any;

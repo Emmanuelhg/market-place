@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { Path } from '../../config';
 import { NegocioService } from '../../services/negocio.service';
 

@@ -76,7 +76,7 @@ export class ProductsService {
 	}
 
 	getFilterData(orderBy:string, equalTo:string){
-
+		console.log("equalTo",equalTo);
 		return this.http.get(`${this.api}products.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`)
 		.pipe(
 			
@@ -87,9 +87,11 @@ export class ProductsService {
 
 				for(const i in resp){
 
+					console.log("i es igual:",i);
 					count ++;
-
-					newResp.push(resp[i]);
+					var product = resp[i];
+					product.id= i;
+					newResp.push(product);
 
 				}
 
@@ -187,7 +189,7 @@ export class ProductsService {
 		return this.http.patch(`${this.api}products/${id}.json`,value);
 
 	}
-
+ 
 	getUniqueData(value:string){
 
 		return this.http.get(`${this.api}products/${value}.json`);
