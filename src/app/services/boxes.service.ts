@@ -32,7 +32,15 @@ export class BoxesService {
 		console.log("id:", id);
 		return this.http.put(`${this.api}/boxes/${id}.json`, body);
 
-	}	
+	}
+	////////////
+	// crearLista(body:object, idToken:string){
+	// 	console.log("ruta:", this.api);
+	// 	console.log("id:", idToken);
+	// 	console.log("producto:", body);
+	// 	return this.http.post(`${this.api}/boxes.json?auth=${idToken}`, body);
+
+	// }	
 
 	obtenerBox(id:string){
 

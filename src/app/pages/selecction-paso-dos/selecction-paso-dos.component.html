@@ -18,7 +18,7 @@
      justify-content: center; margin-bottom: 160px;">
 
         <p class="parrafo"> Step of 2 of 3</p>
-
+ 
         <h2><b>CHOOSE YOUR ITEMS</b></h2>
 
     </div>
@@ -75,6 +75,17 @@
                             </div>
 
                         </div>
+
+                        <!-- <style>
+                          @media screen and  (max-width: 280px) {
+                           
+                            .produc-agregado-new, .col-6{
+                                
+                              max-width: 100%;
+                              flex:0 0 100%;
+                            }
+                          }
+                        </style> -->
 
                         <!-- Imágen de Productos -->
                         <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
@@ -380,7 +391,9 @@
                             <!-- (click)="fncMostrarListaDeseos()"
                              data-toggle="modal" 
                              data-target=".lista-deseos " -->
-                            <i class="icon-heart"
+                            <i
+                             (click)="crearLista(products)" 
+                             class="icon-heart"
                              style="cursor: pointer;" 
                              ></i>
 
@@ -432,6 +445,7 @@
                      style="cursor:pointer">
                          Add to box
                     </a>
+
                 </div>
 
                 <!-- BTN para agregar cantidad de productos -->
@@ -683,7 +697,7 @@
     <!--=====================================
     Sticky bottom bar productos
     ======================================-->
-    <div class="" style="">
+    <div class="sticky_btn" id="sticky_btn">
         <div class="fixed-bottom row" id ="fixed-bottom-heart"
         style="width: 100%; height: 120px; margin:0px; ">
 

@@ -52,27 +52,27 @@ export class KitsComponent implements OnInit {
     })
 
     this.categoriesService.getData()
-		.subscribe(resp => {	
+	.subscribe(resp => {	
+
+		/*=============================================
+		Recorremos la colección de categorías para tomar la lista de títulos
+		=============================================*/
+
+		let i;
+
+		for(i in resp){
+
+			this.categories.push(resp[i]);
 
 			/*=============================================
-			Recorremos la colección de categorías para tomar la lista de títulos
+			Separamos la lista de títulos en índices de un array
 			=============================================*/
+			
+			this.arrayTitleList.push(JSON.parse(resp[i].title_list));
+			
+		}
 
-			let i;
-
-			for(i in resp){
-
-				this.categories.push(resp[i]);
-
-				/*=============================================
-				Separamos la lista de títulos en índices de un array
-				=============================================*/
-				
-				this.arrayTitleList.push(JSON.parse(resp[i].title_list));
-				
-			}
-
-		})
+	})
 
     this.subCategoriesService.getData()
     .subscribe(resp=>{
@@ -83,7 +83,7 @@ export class KitsComponent implements OnInit {
     	console.log("ahora es esto",this.category_get);
     })
   	
-  }
+   }
 
   	/*=============================================
 	Función que nos avisa cuando finaliza el renderizado de Angular

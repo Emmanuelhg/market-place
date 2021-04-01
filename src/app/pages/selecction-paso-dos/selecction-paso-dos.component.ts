@@ -3,20 +3,21 @@ import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
+import { ListaDeseosService} from '../../services/lista-deseos.service';
 import { Id_box, Search, Sweetalert, DinamicPrice ,Rating } from '../../functions';
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { BoxesModel } from '../../models/boxes.model';
+import { DeseosModel } from '../../models/deseos.models';
 import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
 
-   
 
 declare var jQuery:any; 
-declare var $:any;
+declare var $:any; 
 @Component({
   selector: 'app-selecction-paso-dos',
   templateUrl: './selecction-paso-dos.component.html',
@@ -27,7 +28,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   // Variables del funcionamiento 
  box_steps=[true,true,false,false]
  id:string = null; 
-
+  
   path:string = Path.url;
   id_to_box=null; 
   boxes:BoxesModel;
@@ -84,6 +85,9 @@ export class SelecctionPasoDosComponent implements OnInit {
   txt_product_snackbar="";
   message_oops_box = false;
   message_oops_box_f;
+  idToken="";
+  id_to_favs="";
+  deseos:DeseosModel;
 
   img_gallery= [];
 
@@ -92,8 +96,10 @@ export class SelecctionPasoDosComponent implements OnInit {
                private activateRoute: ActivatedRoute,
                private router:Router,
                private productsService: ProductsService,
+               private listaDeseosService: ListaDeseosService,
                private _router: Router) { 
               this.boxes = new BoxesModel();
+              
      
    }
 
@@ -116,7 +122,10 @@ export class SelecctionPasoDosComponent implements OnInit {
           if(resp){
             this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
             .subscribe(resp=>{
+
               this.id_to_box = Object.keys(resp).toString();
+              this.idToken = Object.keys(resp).toString();
+
                 
                 Cookies.set('box_id', this.id_to_box, { expires: 7 });
             })
@@ -182,7 +191,9 @@ export class SelecctionPasoDosComponent implements OnInit {
 
           for(i in resp){
 
-            this.getProduct.push(resp[i]);
+            let product= resp[i];
+            product.id = i;
+            this.getProduct.push(product);
             // this.products.push(resp[i].)
             // this.almacenar_productos = [];
             this.products.push(i);
@@ -280,6 +291,9 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.addWishlist(products);
     console.log("esto es la lista de deseos:", this.addWishlist(products));
   }
+
+
+
 
   configureUi(){
     this.activateODeactivate();
@@ -392,6 +406,9 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_size_small=this.box_json.box_size_small;
       this.boxes.box_color_small=this.box_json.box_color_small;
       this.boxes.box_type_small=this.box_json.box_type_small;
+      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
+      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
+      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
 
       //Variables de la caja Regular
       this.boxes.box_img=this.box_json.box_img;
@@ -400,6 +417,9 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_price_regular=this.box_json.box_price_regular;
       this.boxes.box_color_regular=this.box_json.box_color_regular;
       this.boxes.box_type_regular=this.box_json.box_type_regular;
+      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
+      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
+      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
        console.log("El json es tal: :",this.boxes);
 
@@ -634,7 +654,6 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
 
   fncNewAdd(id, name){
-    console.log("se invoco ne add");
     this.almacenarProductos(id);
     this.myFunction(name);
   }
@@ -693,6 +712,69 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   }
 
+  listaDeDeseos(products){
+    this.id_to_favs = Cookies.get('fav_id');
+
+    if( this.id_to_favs == undefined){
+
+        this.usersService.authActivate().then(resp=>{
+
+          if(resp){
+            this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+            .subscribe(resp=>{
+              console.log("respuesta:", Object.keys(resp).toString());
+              this.id_to_favs = Object.keys(resp).toString();
+                // console.log('el id es', this.id );  
+                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+            })
+
+          }else {
+            this.id_to_favs = Id_box.fnc()
+                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+            
+          }
+            
+        }) 
+
+     }
+     console.log("id fav", this.id_to_favs);
+     this.listaDeseosService.listaDeseos(products,this.id_to_favs)
+  }
+  
+  crearLista(products,idToken){
+     this.id_to_favs = Cookies.get('fav_id');
+
+     if( this.id_to_favs == undefined){
+
+        this.usersService.authActivate().then(resp=>{
+
+          if(resp){
+            this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+            .subscribe(resp=>{
+              console.log("respuesta:", Object.keys(resp).toString());
+              this.id_to_favs = Object.keys(resp).toString();
+                // console.log('el id es', this.id );  
+                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+            })
+
+          }else {
+            this.id_to_favs = Id_box.fnc()
+                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+            
+          }
+            
+        }) 
+
+     }
+
+    // console.log(this.id_to_favs);
+    let body ={
+      "products":products
+    
+    } 
+    console.log("un body:",body);
+    this.listaDeseosService.crearLista(this.id_to_favs, products)
+  }
 
 }
   

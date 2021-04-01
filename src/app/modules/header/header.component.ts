@@ -11,7 +11,7 @@ import { NegocioService } from '../../services/negocio.service';
 import { Router } from '@angular/router';
 
 declare var jQuery:any;
-declare var $:any;
+declare var $:any; 
 
 @Component({
   selector: 'app-header',

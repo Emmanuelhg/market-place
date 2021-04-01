@@ -14,7 +14,7 @@ import { Rating,
          Tooltip,
          Sweetalert } from '../../../functions';
        
- 
+  
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { MessagesModel } from '../../../models/messages.model';
@@ -52,7 +52,7 @@ export class ProductLeftComponent implements OnInit {
     summary:any[]=[];
     details:any[]=[];
     category:string = "";
-    compare:string = "box";
+    compare:string = "kits";
 
     img_showed_gallery=0;
 

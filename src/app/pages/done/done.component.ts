@@ -45,7 +45,9 @@ export class DoneComponent implements OnInit {
       "box_status" : 1,
       "box_steps": [true, true, true, true],
       "box_type" : 1,
-      "box_subtotal" : 0
+      "box_subtotal" : 0,
+      "box_size_blocks_small" : 0,
+      "box_size_blocks_reular": 0
     }`
   );
   
@@ -184,6 +186,15 @@ export class DoneComponent implements OnInit {
       this.boxes.box_arts=this.box_json.box_arts;
       this.boxes.box_subtotal= this.box_json.box_subtotal;
 
+      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
+      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
+      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
+      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
+
+      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
+      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
+
+
       this.boxes.box_steps = this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], this.box_steps[2], true];
       console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
@@ -220,10 +231,21 @@ export class DoneComponent implements OnInit {
       this.boxes.box_arts=this.box_json.box_arts;
       this.boxes.box_steps = this.box_steps;
       this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+      this.boxes.box_size_small=this.box_json.box_size_small;
+      this.boxes.box_size_regular= this.box_json.box_size_regular;
+
 
       this.boxes.box_subtotal= this.box_json.box_subtotal;
 
       this.products=this.boxes.box_arts;
+
+      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
+      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
+      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
+      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
+
+      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
+      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
       this.fncDetallesFinales(this.boxes);
       console.log("box_arts",this.fncDetallesFinales(this.boxes));
@@ -240,6 +262,16 @@ export class DoneComponent implements OnInit {
     let array = this.boxes.box_arts;
     let cant = this.boxes.box_arts_cant;
     console.log("hola hola hola", array);
+    var id="";
+
+    if(this.boxes.box_type == 0){
+      // if(){
+
+      // }
+    }else{
+
+    }
+
     for(var product in array){
       console.log("hola hola hola re", array[product]);
 

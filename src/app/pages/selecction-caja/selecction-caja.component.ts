@@ -27,7 +27,7 @@ export class SelecctionCajaComponent implements OnInit {
  
 
   path:string = Path.url;
-  id:string = null;
+  id:string = null; 
   id_to_box=null;
   type_box = 10;
   boxes:BoxesModel;
@@ -132,6 +132,10 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_img="";
       this.boxes.box_arts=[];
       this.boxes.box_subtotal=0;
+
+      this.boxes.box_size_blocks_small=this.urlsImgs[14];
+      this.boxes.box_size_blocks_reular=this.urlsImgs[15];  
+
       this.boxes.box_size_small=this.urlsImgs[6];
       this.boxes.box_color_small=this.urlsImgs[8];
       this.boxes.box_type_small=this.urlsImgs[10];
@@ -140,8 +144,13 @@ export class SelecctionCajaComponent implements OnInit {
       this.boxes.box_price_regular=this.urlsImgs[5];
       this.boxes.box_color_regular=this.urlsImgs[9];
       this.boxes.box_type_regular=this.urlsImgs[11];
-      this.boxes.box_size_blocks_small=this.urlsImgs[14];
+      this.boxes.box_id_small_kraft=this.urlsImgs[14];
       this.boxes.box_size_blocks_reular=this.urlsImgs[15];
+      this.boxes.box_id_small_negro=this.urlsImgs[16];
+      this.boxes.box_id_small_kraft=this.urlsImgs[17];
+      this.boxes.box_id_regular_negro=this.urlsImgs[18];
+      this.boxes.box_id_regular_kraft=this.urlsImgs[19];
+
       this.boxes.box_steps = this.boxes.box_steps = [true, this.box_steps[1], this.box_steps[2], this.box_steps[3]];
       console.log("prueba",this.box_json);
       switch(this.type_box){

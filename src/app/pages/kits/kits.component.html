@@ -1,7 +1,7 @@
 <div style="width: 100%; height: px;">
 
 	<!-- Imágen de banner  --> 
-	<div class="navImage">
+	<div class="navImage"> 
 	    <ul>
           <li>
             <img  src="{{img_slider}}" alt="">
@@ -52,8 +52,9 @@
 				<a style="position: absolute; top: 75%; left: 14%; background: white;
 				border: 1px solid #dee2e6!important; padding-left: 9%; 
 				padding-right: 9%; padding-bottom: 2%;padding-top: 2%;"
-				routerLink="products/{{category.url}}">
-					EXPLORE
+				href ="products/{{category.url}}">
+					{{category.name}}
+
 				</a>
 				 {{ lastIndex ? callback() : "" }}
 			</div>

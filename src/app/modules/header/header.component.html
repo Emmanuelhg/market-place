@@ -1,6 +1,7 @@
-<header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true"> 
+<header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true" 
+style="position: relative; z-index: 100%;"> 
 
-    <div class="header__content" > 
+    <div class="header__content" >  
 
         <div style=" display: flex;">
 
@@ -15,7 +16,8 @@
                     <!-- Menú  HOME -->
                     <div class="menu--product-categories">
 
-                        <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last" >{{negocio.title_menu_1}}    
+                        <a style="color: {{color_text_menu}};" *ngFor="let negocio of color; let lastIndex = last" >    
+                            {{negocio.title_menu_1}}    
                          {{ lastIndex ? callback() : ""}}
                         </a>
                             
@@ -27,7 +29,7 @@
                                         *ngFor="let category of categories; let i = index; let lastIndex = last"
                                         class="menu-item-has-children has-mega-menu">
                                             
-                                             <a routerLink="products/{{category.url}}" target="_top">
+                                            <a routerLink="products/{{category.url}}" target="_top">
                                                 <i class="{{category.icon}}"></i> {{category.name}}
                                             </a>
 

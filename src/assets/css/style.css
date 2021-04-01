@@ -1589,12 +1589,13 @@ body {
 }
 
 .ps-list--categories li .sub-toggle {
-  display: inline-block;
+  /*display: inline-block;*/
   position: absolute;
   top: 0;
   right: 0;
   width: 32px;
   height: 32px;
+  display: none;
 }
 
 .ps-list--categories li .sub-toggle i {

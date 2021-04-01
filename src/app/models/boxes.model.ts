@@ -29,4 +29,8 @@ export class BoxesModel{
     box_type_small:string;
     box_type_regular:string;
     box_cant:number;
+    box_id_small_kraft:string;
+    box_id_regular_kraft:string;
+    box_id_small_negro:string;
+    box_id_regular_negro:string;
 }
