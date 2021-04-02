@@ -63,6 +63,7 @@ export class DoneComponent implements OnInit {
   productFound:number = 0;
   totalPage:number = 0;
   new_varibles=true;
+  productcart: "";
   inputTo;
   inputFrom;
   inputMessage;
@@ -116,11 +117,11 @@ export class DoneComponent implements OnInit {
       // Obtener caja
       this.boxesService.obtenerBox(this.id_to_box)
       .subscribe(resp=>{
-
+        // console.log("id es ",resp["box_type"]);
         if(resp !=null){
             this.box_json = resp;
             this.recuperarCajas();
-            console.log("id es ",this.id);
+            // console.log("id es ",this.id);
             if (resp["box_steps"] != undefined) {
                this.box_steps = resp["box_steps"];
             }
@@ -196,14 +197,14 @@ export class DoneComponent implements OnInit {
 
 
       this.boxes.box_steps = this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], this.box_steps[2], true];
-      console.log("El json es tal: :",this.boxes);
+      // console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
        
     })
   } 
   recuperarCajas(){ 
-    console.log("id to box es:", this.id_to_box);
+    // console.log("id to box es:", this.id_to_box);
   
     this.boxes.box_type=this.box_json.type_box;
     this.boxes.box_deliver_to=this.box_json.box_deliver_to
@@ -247,55 +248,109 @@ export class DoneComponent implements OnInit {
       this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
       this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
+      console.log("tipo",this.box_json["box_type"]);
+      console.log("tamaño",this.box_json.box_size_blocks_small);
+
       this.fncDetallesFinales(this.boxes);
-      console.log("box_arts",this.fncDetallesFinales(this.boxes));
+      // console.log("box_arts",this.fncDetallesFinales(this.boxes));
+      // console.log("contenido",this.boxes.box_type);
 
       this.fncaddShoppingCart();
 
-      // console.log("contenido", this.boxes);
+      
 
   } 
 
-  fncaddShoppingCart(){
-    this.preload = false;
-    var count =0;
-    let array = this.boxes.box_arts;
-    let cant = this.boxes.box_arts_cant;
-    console.log("hola hola hola", array);
-    var id="";
+  getBoFromArticles(url,array,cant){
+    // console.log("Un id ja ja ",id);
+    this.productsService.getFilterData("url",url)
+    .subscribe(resp=>{
 
-    if(this.boxes.box_type == 0){
-      // if(){
+      console.log("respuesta de la caja:",resp);
+      let itembox = {
+            product: url,
+            unit: 1,
+            details: [],
+            url:[]
+          }
+         this.usersService.addSoppingCart(itembox);
 
-      // }
-    }else{
+          for(var product in array){
+          // console.log("hola hola hola re", array[product]);
 
-    }
+          let item = {
+            product: array[product].url,
+            unit: cant[product],
+            details: [],
+            url:[]
+          }
+         this.usersService.addSoppingCart(item);
+        }
 
-    for(var product in array){
-      console.log("hola hola hola re", array[product]);
+      // this.productcart= resp["box_arts"];
+      // console.log("Tipo de articulos:",this.productcart);
+    })
 
-      let item = {
-        product: array[product].url,
-        unit: cant[product],
-        details: [],
-        url:[]
-      }
-     this.usersService.addSoppingCart(item);
-    }
-    // for(let item_p in array) {
-    //   let item = {
-    //   product: item_p.url,
-    //   unit: 0,
-    //   details: [], 
-    //   url:"#"
-    // }
-    //   this.usersService.addSoppingCart(item);
-    // }
+     // for(var product in array){
+     //      // console.log("hola hola hola re", array[product]);
+
+     //      let item = {
+     //        product: array[product].url,
+     //        unit: cant[product],
+     //        details: [],
+     //        url:[]
+     //      }
+     //     this.usersService.addSoppingCart(item);
+     //    }
+  }
+
+  fncaddShoppingCart(){ 
+
+    this.boxesService.obtenerBox(this.id_to_box)
+    .subscribe(resp=>{
+
+        var box = resp;
+        this.preload = false;
+        var count =0;
+        let array = this.boxes.box_arts;
+        let cant = this.boxes.box_arts_cant;
+        // console.log("hola hola hola", array);
+        var id="";
+
+        // console.log("si es igual JAJAJA es grande:",this.box_json.type_box);
+        console.log("type_box:",this.box_json["box_type"]);
+        var idbox = "";
+        if(this.box_json["box_type"] == 0){
+          if(this.boxes.box_size == this.box_json["box_size_small"]){
+            
+            var idbox = resp["box_id_small_negro"];
+            console.log("es box_id_small_negro",idbox);
+
+          } else {
+            var idbox = resp["box_id_regular_negro"];
+            console.log("es box_id_regular_negro",idbox);
+          }
+        }else{
+            if(this.boxes.box_size == this.box_json["box_size_small"]){
+
+            var idbox = resp["box_id_small_kraft"];
+            console.log("es box_id_small_kraft",idbox);
+
+          } else {
+            var idbox = resp["box_id_regular_kraft"];
+            console.log("es box_id_regular_kraft:",idbox);
+          }
+        }
+          console.log("ahora entra esta consola:",idbox);
+        this.getBoFromArticles(idbox,array,cant)
+
+    })
+
+    
   }
 
   fncDetallesFinales(boxes){
-    console.log("detalles finales",boxes);
+    // console.log("detalles finales",boxes);
     this.products=boxes.box_arts;
 
   }

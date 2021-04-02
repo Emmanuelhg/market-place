@@ -87,7 +87,7 @@ export class ProductsService {
 
 				for(const i in resp){
 
-					console.log("i es igual:",i);
+					// console.log("i es igual:",i);
 					count ++;
 					var product = resp[i];
 					product.id= i;

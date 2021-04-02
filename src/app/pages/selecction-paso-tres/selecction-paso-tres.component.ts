@@ -125,7 +125,7 @@ export class SelecctionPasoTresComponent implements OnInit {
 
        if(resp !=null){
             this.box_json = resp;
-            console.log("id es ",this.id);
+            // console.log("id es ",this.id);
             if (resp["box_steps"] != undefined) {
                this.box_steps = resp["box_steps"];
             }
@@ -248,7 +248,7 @@ export class SelecctionPasoTresComponent implements OnInit {
 
   // Guardar productos en la caja
   guardaProductos(){ 
-    console.log("id to box es:", this.id_to_box);
+    console.log("id to box es:", this.box_json.box_type);
     // Variables para guardar 
     this.box_json.box_deliver_to=this.inputTo;
     this.box_json.box_deliver_from=this.inputFrom;
@@ -281,7 +281,7 @@ export class SelecctionPasoTresComponent implements OnInit {
     this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
     this.boxes.box_steps =this.boxes.box_steps = [this.box_steps[0], this.box_steps[1], true, this.box_steps[3]];
-    console.log("El json es tal: :",this.boxes);
+    // console.log("El json es tal: :",this.boxes);
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
        

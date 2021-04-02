@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
            this.negocio = resp['personalization'];
            this.img_logo = this.negocio['img_logo'];
            this.color_text_menu = this.negocio['color_text_menu'];
-           console.log("resp es "+this.img_logo);
+           // console.log("resp es "+this.img_logo);
 
            for(i in resp){
 
@@ -83,7 +83,7 @@ export class HeaderComponent implements OnInit {
 
            }
 
-            console.log(resp);
+            // console.log(resp);
        })
  
 
@@ -172,7 +172,7 @@ export class HeaderComponent implements OnInit {
 		if(localStorage.getItem("list")){
 
 			let list = JSON.parse(localStorage.getItem("list"));
-			console.log("carrito:",list);
+			// console.log("carrito:",list);
 
 			this.totalShoppingCart = list.length;
 
@@ -433,7 +433,7 @@ export class HeaderComponent implements OnInit {
 
 	removeProduct(product, details){
 		
-		console.log("product", product);
+		// console.log("product", product);
 
 		if(localStorage.getItem("list")){
 

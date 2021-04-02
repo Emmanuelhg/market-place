@@ -567,22 +567,22 @@ export class UsersService {
         /*=============================================
         Filtramos el producto en la data
         =============================================*/ 
-        console.log("El item es:" +item);
+        // console.log("El item es:" +item);
         this.productsService.getFilterData("url", item["product"])
         .subscribe(resp=>{
-            console.log("El producto es "+ item["product"]);
+            // console.log("El producto es "+ item["product"]);
             /*=============================================
             Recorremos el producto para encontrar su información
             =============================================*/
 
             for(const i in resp){
-                console.log("item i se checará el stock:" +i);
+                // console.log("item i se checará el stock:" +i);
                 /*=============================================
                 Preguntamos primero que el producto tenga stock
                 =============================================*/
 
                 if(resp[i]["stock"] == 0){
-                     console.log("El stock está vacío");
+                     // console.log("El stock está vacío");
                     Sweetalert.fnc("error", "Out of Stock", null);
 
                     return;
@@ -614,11 +614,11 @@ export class UsersService {
                     item["details"] += `}]`;
 
                   } else {
-                    console.log("Hay problema con las especificaciones");
+                    // console.log("Hay problema con las especificaciones");
                   }
 
                 } else {
-                  console.log("Hay problema en el tamaño de la lista");
+                  // console.log("Hay problema en el tamaño de la lista");
                 }
 
             }
@@ -632,7 +632,7 @@ export class UsersService {
         if(localStorage.getItem("list")){
 
             let arrayList = JSON.parse(localStorage.getItem("list"));
-            console.log("Hay lista, es:"+arrayList);
+            // console.log("Hay lista, es:"+arrayList);
             /*=============================================
             Preguntar si el producto se repite
             =============================================*/
@@ -674,10 +674,10 @@ export class UsersService {
             Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
         }else{
-            console.log("No hay lista se crea un nuevo carrito");
+            // console.log("No hay lista se crea un nuevo carrito");
             let arrayList = [];
             arrayList.push(item);
-            console.log("array list es:"+JSON.stringify(arrayList)); 
+            // console.log("array list es:"+JSON.stringify(arrayList)); 
             localStorage.setItem("list", JSON.stringify(arrayList));
             Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
