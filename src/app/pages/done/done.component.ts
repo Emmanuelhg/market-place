@@ -91,7 +91,6 @@ export class DoneComponent implements OnInit {
      Obtener el id de la caja
      =============================================*/
 
-    
   
      if (this.id_to_box === null) {
 
@@ -129,7 +128,7 @@ export class DoneComponent implements OnInit {
         this.configureUi();
 
       })
-        this.id=this.id_to_box
+        this.id=this.id_to_box;
       }
        
       
@@ -205,21 +204,9 @@ export class DoneComponent implements OnInit {
   } 
   recuperarCajas(){ 
     // console.log("id to box es:", this.id_to_box);
-  
-    this.boxes.box_type=this.box_json.type_box;
-    this.boxes.box_deliver_to=this.box_json.box_deliver_to
-    this.boxes.box_deliver_from=this.box_json.box_deliver_from
-    this.boxes.box_deliver_message=this.box_json.box_deliver_message
-    this.boxes.box_price=this.box_json.box_price;
-    this.boxes.box_size=this.box_json.box_size;
-    this.boxes.box_status=this.box_json.box_status;
-    this.boxes.box_name=this.box_json.box_name;
-    this.boxes.box_img=this.box_json.box_img;
-    this.boxes.box_arts=this.box_json.box_arts;
-    this.boxes.box_steps = this.box_steps;
     // Almacenar Info en base de datos  
       this.boxes.box_id=this.id_to_box;
-      this.boxes.box_type=this.box_json.type_box;
+      this.boxes.box_type=this.box_json.box_type;
       this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
       this.boxes.box_deliver_from= this.box_json.box_deliver_from;
       this.boxes.box_deliver_to=this.box_json.box_deliver_to;
@@ -248,8 +235,9 @@ export class DoneComponent implements OnInit {
       this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
       this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
-      console.log("tipo",this.box_json["box_type"]);
-      console.log("tamaño",this.box_json.box_size_blocks_small);
+      // console.log("tipo",this.box_json["box_type"]);
+      // console.log("tamaño",this.box_json.box_size_blocks_small);
+      console.log("tipo",this.boxes);
 
       this.fncDetallesFinales(this.boxes);
       // console.log("box_arts",this.fncDetallesFinales(this.boxes));

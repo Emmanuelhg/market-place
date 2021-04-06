@@ -27,4 +27,9 @@ export class SubCategoriesService {
 		return this.http.get(`${this.api}sub-categories.json`);
 
 	}
+	getDataColor(){
+
+		return this.http.get(`${this.api}colors.json`);
+
+	}
 }

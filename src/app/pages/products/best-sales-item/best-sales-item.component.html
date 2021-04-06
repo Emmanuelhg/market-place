@@ -5,13 +5,35 @@ Best Sale Items
 <div 
 *ngIf="!preload && !notFound">
 
-    <div style="border-bottom:solid #dee2e6!important; margin: 3%;">
+  <div class="navImage">
+      <ul>
+            <li>
+              <img  src="{{img_slider}}" alt="">
+            </li>
+            <li >
+              <img src="{{img_slider2}}" alt="">
+            </li>
+            <li >
+              <img src="{{img_slider3}}" alt="">
+            </li>
+            <li >
+              <img src="{{img_slider4}}" alt="">
+            </li>
+            <li >
+              <img src="{{img_slider5}}" alt="">
+            </li>
+
+      </ul>      
+  </div>
+
+
+   <!--  <div style="border-bottom:solid #dee2e6!important; margin: 3%;">
 
       <h3 style="margin-left: 3%; margin-bottom: 4%;">
         Best Sale Items
       </h3>
 
-    </div> 
+    </div>  -->
 
     <!-- Productos -->
     <div class="divimageness row">
@@ -106,29 +128,86 @@ class="d-flex justify-content-center d-lg-none">
       display: flex;
   }
   .texto{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            /*bottom: - 100%;*/
-            padding: 10px 20px;
-        }
-        .texto a{
-            border: 1px solid black !important;
-            background: white;
-            display: flow-root;
-            text-align: center;
-            color: black;
-            font-size: 20px;
-            height: px;
-        }    
-        .ps-product:hover .texto{
-            bottom: -50%;
-        }
-        .ps-product__thumbnail:hover .texto {
-          bottom: -70%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      /*bottom: - 100%;*/
+      padding: 10px 20px;
+  }
+  .texto a{
+      border: 1px solid black !important;
+      background: white;
+      display: flow-root;
+      text-align: center;
+      color: black;
+      font-size: 20px;
+      height: px;
+  }    
+  .ps-product:hover .texto{
+      bottom: -50%;
+  }
+  .ps-product__thumbnail:hover .texto {
+    bottom: -70%;
 
-          background-color:ps-form--quick-search button;
-          color: #ffffff;
-        }
+    background-color:ps-form--quick-search button;
+    color: #ffffff;
+  }
+
+  .navImage  {
+   /*background-color: #490D40;*/
+   /*background: url("https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/Images%2FGWD9nWQzdS23k3hr.png?alt=media&token=2daac6db-45f8-46a0-ac05-7a34680a14e1") no-repeat center center;*/
+   width: 100%;
+   background-size: cover;
+   height: 685px;
+    object-fit: cover;
+    transition: .5s;
+   margin-top: -85px;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   margin-bottom: 16%;
+  }
+
+  .slider {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .navImage ul {
+    display: flex;
+    padding: 0;
+    width: 500%;
+    margin-bottom: auto;
+    animation: cambio 20s infinite alternate linear;
+    animation-direction: alternate;
+  }
+
+  .navImage li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .navImage img {
+   width: 100%;
+   height: 800px;
+   object-fit: cover;
+   transition: .5s;
+  
+  }
+
+  @keyframes cambio {
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+    
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+    
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+    
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+  }
+
 </style>

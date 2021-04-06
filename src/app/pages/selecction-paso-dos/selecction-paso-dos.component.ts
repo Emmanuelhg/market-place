@@ -3,6 +3,7 @@ import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
+import { SubCategoriesService } from '../../services/sub-categories.service';
 import { ListaDeseosService} from '../../services/lista-deseos.service';
 import { Id_box, Search, Sweetalert, DinamicPrice ,Rating } from '../../functions';
 import * as Cookies from 'js-cookie';
@@ -26,9 +27,9 @@ declare var $:any;
 export class SelecctionPasoDosComponent implements OnInit {
 
   // Variables del funcionamiento 
- box_steps=[true,true,false,false]
+ box_steps=[true,true,false,false] 
  id:string = null; 
-  
+   
   path:string = Path.url;
   id_to_box=null; 
   boxes:BoxesModel;
@@ -90,10 +91,14 @@ export class SelecctionPasoDosComponent implements OnInit {
   deseos:DeseosModel;
 
   img_gallery= [];
+  lista_categories=[];
+  lista_colores=[];
+  gallery_producto=[];
 
   constructor(private usersService:UsersService, 
                private boxesService:BoxesService,
                private activateRoute: ActivatedRoute,
+               private subCategoriesService: SubCategoriesService,
                private router:Router,
                private productsService: ProductsService,
                private listaDeseosService: ListaDeseosService,
@@ -105,110 +110,142 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   ngOnInit(): void {
 
-      for (let i = 0; i < 16; i++) {
-        this.visibility_1.push(false);
+    for (let i = 0; i < 16; i++) {
+      this.visibility_1.push(false);
+    }
+
+    this.id_to_box = Cookies.get('box_id');
+
+    this.subCategoriesService.getData()
+    .subscribe(resp=>{
+ 
+      for(let cont in resp){
+    
+        this.lista_categories.push(resp[cont].name)
       }
 
-      this.id_to_box = Cookies.get('box_id');
+    })
 
-     /*=============================================
-     Obtener el id de la caja 
-     =============================================*/    
-      console.log("id to box es:", this.id_to_box);
-     if (this.id_to_box === null) {
+    this.subCategoriesService.getDataColor()
+    .subscribe(resp=>{
+      // console.log("respuesta:",resp);
+      for(let cont in resp){
+  
+        this.lista_colores.push(resp[cont])
+      }
+      // console.log("respuesta color:",this.lista_colores);
+    })
 
-        this.usersService.authActivate().then(resp=>{
+   /*=============================================
+   Obtener el id de la caja 
+   =============================================*/    
+    // console.log("id to box es:", this.id_to_box);
+   if (this.id_to_box === null) {
 
-          if(resp){
-            this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
-            .subscribe(resp=>{
+      this.usersService.authActivate().then(resp=>{
 
-              this.id_to_box = Object.keys(resp).toString();
-              this.idToken = Object.keys(resp).toString();
+        if(resp){
+          this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+          .subscribe(resp=>{
 
-                
-                Cookies.set('box_id', this.id_to_box, { expires: 7 });
-            })
+            this.id_to_box = Object.keys(resp).toString();
+            this.idToken = Object.keys(resp).toString();
 
-          }else {
-            this.id_to_box = Id_box.fnc()
-                Cookies.set('box_id', this.id_to_box, { expires: 7 });
-            
-          }
-            
-        })
-      
-     }else{
-      // Obtener caja
-      this.boxesService.obtenerBox(this.id_to_box)
-      .subscribe(resp=>{
+              
+              Cookies.set('box_id', this.id_to_box, { expires: 7 });
+          })
 
-        if(resp !=null){
-            this.box_json = resp;
-            console.log("id es ",this.id);
-            if (resp["box_steps"] != undefined) {
-               this.box_steps = resp["box_steps"];
-            }
-             this.original_size = this.box_json.box_size;
-              this.small_box_size = this.box_json.box_size_blocks_small;
-              this.regular_box_size = this.box_json.box_size_blocks_reular;
-
-              this.box_size = this.box_json.box_size;
-              // console.log("es esto:",this.almacenar_productos);
-              // console.log("es esto 2:",this.cant_productos);
-              console.log("Este tamaño es original_size:",this.original_size);
-              console.log("Este tamaño es small_box_size:",this.small_box_size);
-              console.log("Este tamaño es caregular_box_sizent_productos:",this.regular_box_size);
-
-            if(resp["box_arts"]!= undefined){
-              for(let art in resp["box_arts"]){
-
-                for(let i =0; i<resp["box_arts_cant"][art]; i++){
-                  this.almacenarProductos(resp["box_arts"][art]);
-                }
-                
-              }
-             
-            }
-          }
-        this.configureUi();
-
+        }else {
+          this.id_to_box = Id_box.fnc()
+              Cookies.set('box_id', this.id_to_box, { expires: 7 });
+          
+        }
+          
       })
-        this.id=this.id_to_box;
-      }
-       this.filters_array.push("Reason or Season");
-       this.filters_array.push("Color");
-       this.filters_array.push("Sort by Options");
+    
+   }else{
+    // Obtener caja
+    this.boxesService.obtenerBox(this.id_to_box)
+    .subscribe(resp=>{
 
-      // Filtrar productos para agregar a la caja
-      let getCategories = []; 
+      if(resp !=null){
+          this.box_json = resp;
+          // console.log("id es ",this.id);
+          if (resp["box_steps"] != undefined) {
+             this.box_steps = resp["box_steps"];
+          }
+           this.original_size = this.box_json.box_size;
+            this.small_box_size = this.box_json.box_size_blocks_small;
+            this.regular_box_size = this.box_json.box_size_blocks_reular;
 
-      this.productsService.getDatta()
-      .subscribe(resp=>{
-            
+            this.box_size = this.box_json.box_size;
+            // console.log("es esto:",this.almacenar_productos);
+            // console.log("es esto 2:",this.cant_productos);
+            // console.log("Este tamaño es original_size:",this.original_size);
+            // console.log("Este tamaño es small_box_size:",this.small_box_size);
+            // console.log("Este tamaño es caregular_box_sizent_productos:",this.regular_box_size);
 
-        let i;
+          if(resp["box_arts"]!= undefined){
+            for(let art in resp["box_arts"]){
 
-          for(i in resp){
+              for(let i =0; i<resp["box_arts_cant"][art]; i++){
+                this.almacenarProductos(resp["box_arts"][art]);
+              }
+              
+            }
+           
+          }
+        }
+      this.configureUi();
 
-            let product= resp[i];
-            product.id = i;
+    })
+      this.id=this.id_to_box;
+    }
+     this.filters_array.push("Reason or Season");
+     this.filters_array.push("Color");
+     this.filters_array.push("Sort by Options");
+
+    // Filtrar productos para agregar a la caja
+    let getCategories = []; 
+
+    this.productsService.getDatta()
+    .subscribe(resp=>{
+          
+
+      let i;
+
+        for(i in resp){
+
+          let product= resp[i];
+          product.id = i;
+          if (product.category != "kits") {
+            if(product.gallery[1]==undefined){
+              product.image2=product.image;
+            }else{
+              product.image2=product.gallery[1];
+            }
+            console.log("En consola esta:",product.gallery[1]);
             this.getProduct.push(product);
             // this.products.push(resp[i].)
             // this.almacenar_productos = [];
             this.products.push(i);
-              this.product_name.push(resp[i].name);
-              this.product_price.push(resp[i].price);
-              this.product_img.push(resp[i].image);
-              this.tamaño_caja.push(resp[i].size);
-              this.producto_url.push(resp[i].url);
-             
-          }
-            
-      }) 
+            this.product_name.push(product.name);
+            this.product_price.push(product.price);
+            this.product_img.push(product.image);
+            this.tamaño_caja.push(product.size);
+            this.producto_url.push(product.url);
+            this.gallery_producto.push(product.gallery);
 
-       this.id_to_box
-  }
+            
+           
+          }
+           
+        }
+          
+    }) 
+
+      this.id_to_box
+    }
 
  // Callback para filtrar los filtrar los productos
   callback(){
@@ -261,9 +298,9 @@ export class SelecctionPasoDosComponent implements OnInit {
         }
 
       }
-      console.log("estan en el arreglo"+esta_en_el_arreglo);
+      // console.log("estan en el arreglo"+esta_en_el_arreglo);
       if (esta_en_el_arreglo == false) {
-          console.log("id es:"+id);
+          // console.log("id es:"+id);
           this.almacenar_productos.push(id);
           this.cant_productos.push(1);
           this.ids_prodcts.push("id.")
@@ -289,7 +326,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   mostrarAddToList(products){
     this.addWishlist(products);
-    console.log("esto es la lista de deseos:", this.addWishlist(products));
+    // console.log("esto es la lista de deseos:", this.addWishlist(products));
   }
 
 
@@ -301,7 +338,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   activateODeactivate(){
     let steps = this.box_steps;
-    console.log("estos son los steps:",this.box_steps);
+    // console.log("estos son los steps:",this.box_steps);
     window.onload = function(){
       if(steps[0]) {
         document.getElementById("step1").classList.add("active");
@@ -338,15 +375,15 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
   
   detallesProducto(products){
-    console.log("detalles",products);
+    // console.log("detalles",products);
 
     this.porductos_detalles=products.description;
     this.porductos_detalles_img=products.image;
 
-    console.log("Es esto je je je :",products);
+    // console.log("Es esto je je je :",products);
 
     if(products.gallery != undefined){
-      console.log("Es esto je je je :",products.gallery);
+      // console.log("Es esto je je je :",products.gallery);
       this.img_gallery=products.gallery;
 
     }
@@ -357,7 +394,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   // Suma de prodsumaProductosuctos 
   sumaProductos(){
-   console.log("funiona:");
+   // console.log("funiona:");
    var pivote = 0;
    pivote += this.box_json.box_price;
    for(var i = 0; i < this.almacenar_productos.length; i++){
@@ -373,11 +410,11 @@ export class SelecctionPasoDosComponent implements OnInit {
     .subscribe(resp=>{ 
 
     })
-    console.log(this.id_to_box, "box_arts_ids",upload);
+    // console.log(this.id_to_box, "box_arts_ids",upload);
   }
   // Guardar productos en la caja
   guardaProductos(){ 
-    console.log("id to box es:", this.id_to_box);
+    // console.log("id to box es:", this.id_to_box);
     this.box_json.box_arts=this.almacenar_productos;
     // Almacenar Info en base de datos  
       this.boxes.box_id=this.id_to_box;
@@ -421,13 +458,13 @@ export class SelecctionPasoDosComponent implements OnInit {
       this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
       this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
 
-       console.log("El json es tal: :",this.boxes);
+       // console.log("El json es tal: :",this.boxes);
 
 
     this.boxesService.crearBoxes(this.boxes.box_id, this.boxes)
     .subscribe(resp=>{
-        console.log("El jason es tal: :",resp);
-        console.log("El jason es tal: :",this.id);
+        // console.log("El jason es tal: :",resp);
+        // console.log("El jason es tal: :",this.id);
        Cookies.set('box_id', this.id, { expires: 7 });
        this._router.navigate(['/selecction-paso-tres', this.id]);
     })
@@ -459,7 +496,7 @@ export class SelecctionPasoDosComponent implements OnInit {
         this.used_space += (this.original_size/this.almacenar_productos[i].size) * this.cant_productos[i];
       }
     var pivote = this.box_size - this.used_space;
-    console.log("used space es "+this.used_space+" y box size es "+this.box_size);
+    // console.log("used space es "+this.used_space+" y box size es "+this.box_size);
 
     if(this.used_space<=this.regular_box_size){
 
@@ -472,7 +509,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
       } else if(this.box_size == this.small_box_size && this.used_space> this.small_box_size) {
 
-          console.log("Hace cambio a big");
+          // console.log("Hace cambio a big");
           this.box_size = this.regular_box_size;
           this.full_percentage_bar = 100;
           document.getElementById("regular-box-a").classList.add("select-active-caja");
@@ -504,7 +541,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     if(index < 2) {
       this.getData();
     } else {
-      console.log("Value es "+value);
+      // console.log("Value es "+value);
     }
   }
    
@@ -523,26 +560,32 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.tamaño_caja.splice(0);
     this.producto_url.splice(0);
     this.productsService.getDatta()
-      .subscribe(resp=>{
-        let i;
-          for(i in resp){
-            if(this.getVisibilityByFilter(resp[i])) {
-              this.getProduct.push(resp[i]);
-              this.products.push(i);
-              this.product_name.push(resp[i].name);
-              this.product_price.push(resp[i].price);
-              this.product_img.push(resp[i].image);
-              this.tamaño_caja.push(resp[i].size);
-              this.producto_url.push(resp[i].url);
-            }
+    .subscribe(resp=>{
+      let i;
+      
+      for(i in resp){
+        let product= resp[i];
+        product.id = i;
+        if (product.category != "kits") {
+         if(this.getVisibilityByFilter(resp[i])) {
+          this.getProduct.push(resp[i]);
+          this.products.push(i);
+          this.product_name.push(resp[i].name);
+          this.product_price.push(resp[i].price);
+          this.product_img.push(resp[i].image);
+          this.tamaño_caja.push(resp[i].size);
+          this.producto_url.push(resp[i].url);
           }
+        }
+       
+      }
           
-      }) 
+    }) 
   }
   // Función para los filtros de productos
   getVisibilityByFilter(art){
-    console.log("Articulo es "+art);
-    console.log("Filtros es "+this.filters_array);
+    // console.log("Articulo es "+art);
+    // console.log("Filtros es "+this.filters_array);
     var visible_check = false;
     var first_filter = false;
     var second_filter = false;
@@ -567,7 +610,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     }
     // Filtro texto
     if(this.searh_filter_text.length > 1){
-      console.log("dsadsa: "+art.name.includes(this.searh_filter_text));
+      // console.log("dsadsa: "+art.name.includes(this.searh_filter_text));
       if(art.name.includes(this.searh_filter_text)) {
         third_filter = true;
         //console.log("Art "+art.color+" incluye filtro"+this.filters_array[1] ":"+art.color.includes(this.filters_array[1]))
@@ -594,7 +637,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     }
     if (type ==  "box-big" || type ==  "box-small") {
       this.getProduct.sort(function (a, b) {
-      console.log("type es "+type);
+      // console.log("type es "+type);
       if(type == "box-big") {
         return (a.size - b.size);
       }
@@ -691,7 +734,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   modificadorCantidadProductos(add_num, indx_num, products){
     for(let i = 0; i< this.almacenar_productos.length; i++){
         if (this.almacenar_productos[i].name == products.name) {
-          console.log(this.cant_productos[i]);
+          // console.log(this.cant_productos[i]);
           if (add_num> 0) {
             this.myFunction(this.almacenar_productos[i].name);
           }
@@ -700,7 +743,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           }
           
            let pivote = this.cant_productos[i] + add_num;
-           console.log(pivote);
+           // console.log(pivote);
            if(pivote > 0 && pivote <= products.stock){
             this.cant_productos.splice(i, 1, pivote);
 
@@ -722,7 +765,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           if(resp){
             this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
             .subscribe(resp=>{
-              console.log("respuesta:", Object.keys(resp).toString());
+              // console.log("respuesta:", Object.keys(resp).toString());
               this.id_to_favs = Object.keys(resp).toString();
                 // console.log('el id es', this.id );  
                 Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
@@ -737,7 +780,7 @@ export class SelecctionPasoDosComponent implements OnInit {
         }) 
 
      }
-     console.log("id fav", this.id_to_favs);
+     // console.log("id fav", this.id_to_favs);
      this.listaDeseosService.listaDeseos(products,this.id_to_favs)
   }
   
@@ -751,7 +794,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           if(resp){
             this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
             .subscribe(resp=>{
-              console.log("respuesta:", Object.keys(resp).toString());
+              // console.log("respuesta:", Object.keys(resp).toString());
               this.id_to_favs = Object.keys(resp).toString();
                 // console.log('el id es', this.id );  
                 Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
@@ -772,7 +815,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       "products":products
     
     } 
-    console.log("un body:",body);
+    // console.log("un body:",body);
     this.listaDeseosService.crearLista(this.id_to_favs, products)
   }
 

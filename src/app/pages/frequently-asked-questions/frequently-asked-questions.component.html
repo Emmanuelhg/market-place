@@ -29,7 +29,7 @@
        
        <h3>How it woeks?</h3>
  
-       <p class="mostrar">
+        <p class="mostrar">
 	       	Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
 			Keep it personal. We curate the best products so you can create the most personal gifts.
 			We ́ll handle the rest. We take your masterpiece, pack it to perfection, and send it straight to
@@ -41,247 +41,20 @@
 
        
        <!-- Pregunta y resúesta  -->
-       <div>
+       <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
 	    	<p class="mostrar">
-	    		Where do you ship?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(0)" >
+	    		{{pregunta.question}} 
+	    		<!-- Where do you ship? -->
+	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(i)" >
 	    	</p>
-		    	<div *ngIf="visibility_1[0]">
+		    	<div *ngIf="visibility_1[i]">
 					<p class="respuesta">
-						At this time, we only ship within Mexico.
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(0)">
+						{{pregunta.answer}}
+						<!-- At this time, we only ship within Mexico. -->
+			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(i)">
 			        </p>
 				</div>
         </div>
-
-        <!-- Pregunta y resúesta  2-->
-        <div>
-			<p class="mostrar">
-				Is shipping included?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(1)">
-	    	</p>
-		    	<div *ngIf="visibility_1[1]">
-					<p class="respuesta">
-						While we're always striving to keep shipping costs low, box shipping is an additional cost.
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void();" (click)="fncVisibility(1)">
-			        </p>
-				</div>
-	    </div>
-
-        <!-- Pregunta y resúesta  3-->
-        <div>
-			<p class="mostrar">
-				How long will my order take to arrive?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(3)">
-	    	</p>
-		    	<div *ngIf="visibility_1[3]">
-					<p class="respuesta">
-						Special shipping order taken by (7am to 2 pm) en san pedro y monterrey you will recieve it the same
-						day!
-						Express shipping next day.
-						Standard shipping take 2 to 5 business days.
-
-						Also note that once all orders leave our warehouse, we are not responsible for carrier delays.
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(3)">
-			        </p>
-				</div>
-	    </div>
-
-	    <!-- Pregunta y resúesta  4-->
-        <div>
-			<p class="mostrar">
-				What is your shipping process?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(4)">
-	    	</p>
-		    	<div *ngIf="visibility_1[4]">
-					<p class="respuesta">
-						Once your order has been received, assembled and packaged, it will be shipped. Our goal is to ship
-						your package within 1-2 business days. Orders placed on a weekend or bank holiday will ship the next
-						business day. Local orders in Monterrey, San Pedro and their metropolitan areas will be delivered within
-						1-2 business days, or on the date chosen by the client on the platform. National orders will be sent to
-						arrive as close as possible to the delivery date chosen by the client. We are not responsible for delivery
-						times since the package is delivered to the parcel.
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(4)">
-			        </p>
-				</div>
-	    </div>
-
-	    <!-- Pregunta y resúesta  5-->
-        <div>
-			<p class="mostrar">
-				WHEN WILL MY ORDER SHIP?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(5)">
-	    	</p>
-		    	<div *ngIf="visibility_1[5]">
-					<p class="respuesta">
-						All orders will ship within 1-2 business days unless otherwise noted on the site (ie holidays). Custom
-
-						orders will ship within the agreed upon turnaround time. If you are in a rush, email us (hello@shopbo-
-						cu.com) and we will do our best to speed up the process for you!
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(5)">
-			        </p>
-				</div>
-	    </div>
-       
-
-        <!-- Pregunta y resúesta  6-->
-        <div>
-			<p class="mostrar">
-				HOW LONG WILL MY BOCU TAKE TO ARRIVE?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(6)">
-	    	</p>
-		    	<div *ngIf="visibility_1[6]">
-					<p class="respuesta">
-						All orders are shipped via UPS or USPS from Boston, MA and should arrive within 2-8 business days de-
-						pending on your selected ship method and delivery location.
-
-						All Bocus $100+ Ship FREE USPS Ground 2-8 day.
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(6)">
-			        </p>
-				</div>
-	    </div>
-
-	    <!-- Pregunta y resúesta  7-->
-        <div>
-			<p class="mostrar">
-				WHAT IF I NEED MY BOCU TO DELIVER ON A SPECIFIC DAY?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(7)">
-	    	</p>
-		    	<div  *ngIf="visibility_1[7]">
-					<p class="respuesta">
-						We can't guarantee delivery on a specific day; however, we want to make their day special just as much
-						as you do! Simply select your desired delivery date on the calendar at the Review Your Bocu Page. We'll
-						wrap & hold your bocu for you and ship closer to your preferred date. While we cannot 100% guarantee
-						on time arrival, we will do our best to get it there on time.
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(7)">
-			        </p>
-				</div>
-	    </div>
-
-	    <h3>RETURNS</h3>
-
-	    <!-- Pregunta y resúesta  8-->
-        <div>
-			<p class="mostrar">
-				What ́s your return/exchange policy?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(8)">
-	    	</p>
-		    	<div *ngIf="visibility_1[8]">
-					<p class="respuesta">
-					All sales are final (but trust us, they'll love it). We don't accept returns, exchanges or cancellations.
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(8)">
-			        </p>
-				</div>
-	    </div>
-       
-        <h3>PAYMENTS</h3>
-
-        <!-- Pregunta y resúesta  9-->
-        <div>
-			<p class="mostrar">
-				What type of payment do you accept?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(9)">
-	    	</p>
-		    	<div *ngIf="visibility_1[9]">
-					<p class="respuesta">
-					   We accept Visa, MasterCard, American Express, and Paypal .
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(9)">
-			        </p>
-				</div>
-	    </div>
-        
-        <!-- Pregunta y resúesta  10-->
-        <div>
-			<p class="mostrar">
-				What currency are the prices in?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(10)">
-	    	</p>
-		    	<div *ngIf="visibility_1[10]">
-					<p class="respuesta">
-					   All our prices are in Mexican Pesos (MXN)
-
-						Is TAX included in the prices?11
-						Yes, all product prices include 16% tax.
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(10)">
-			        </p>
-				</div>
-	    </div>
-
-	    <h3>EVERYTHING ELSE</h3>
-        
-        <!-- Pregunta y resúesta  12-->
-        <div>
-			<p class="mostrar">
-				WHAT ́S INSIDE EACH BOX?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(11)">
-	    	</p>
-		    	<div *ngIf="visibility_1[11]">
-					<p class="respuesta">
-					  No surprises here. Because we take great care in curating eachbox, and you build your boxes to
-						perfection, we ship exactly what you see on each product page.
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(11)">
-			        </p>
-				</div>
-	    </div>
-       
-        <!-- Pregunta y resúesta  13-->
-        <div>
-			<p class="mostrar">
-				DO THE BOXES COME WITH A NOTE?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(12)">
-	    	</p>
-		    	<div *ngIf="visibility_1[12]">
-					<p class="respuesta">
-					 Each box includes a hand-written note. You simply provide us with your message and we'll handle the
-					 rest.
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);"(click)="fncVisibility(12)">
-			        </p>
-				</div>
-	    </div>
-
-
-	    <!-- Pregunta y resúesta  14-->
-        <div>
-			<p class="mostrar">
-				WHAT IS THE COST OF EACH BOX?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(13)">
-	    	</p>
-		    	<div *ngIf="visibility_1[13]">
-					<p class="respuesta">
-					    We have 2 box sizes:
-
-						Matte Black $100 (small and regular)
-						Kraft $100 (small)
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(13)">
-			        </p>
-				</div>
-	    </div>
-
-	    <!-- Pregunta y resúesta  15-->
-        <div>
-			<p class="mostrar">
-				  WHERE CAN I SEND MY COMPLIMENTS OR COMPLAINTS?
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(14)">
-	    	</p>
-		    	<div *ngIf="visibility_1[14]">
-					<p class="respuesta">
-					     We would love to hear your feedback about your gifting experience, how much your recipient loved their
-
-						giftx, or if you have an issue that needs to be addressed. We are here for you and always striving to im-
-						prove! Email us anytime at hello@shopbocu.com!
-
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(14)">
-			        </p>
-				</div>
-	    </div>
-
 
     </div>
   
@@ -367,6 +140,7 @@
     }
 
     .contenido{
+    	margin-top: 36%: 
     	margin-left: 6%;
     	margin-right: 3%;
         height: px;

@@ -231,13 +231,13 @@ export class SelecctionCajaComponent implements OnInit {
   fncBorder(){
     
     if(this.type_box==0){
-      document.getElementById("img_izquierda").style.border ="thick solid #0000FF";
+      document.getElementById("img_izquierda").style.border ="thick solid  #000000";
     }else{
       document.getElementById("img_izquierda").style.border ="";
     }
 
     if(this.type_box==1){
-      document.getElementById("img_derecha").style.border ="thick solid #0000FF";
+      document.getElementById("img_derecha").style.border ="thick solid  #000000";
     }else{
       document.getElementById("img_derecha").style.border ="";
     }

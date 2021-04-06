@@ -199,7 +199,7 @@ a.animated-button.thar-three:before {
 	z-index: -1;
 	content: '';
 	color: #000 !important;
-	background: #F7CA18;
+	background: black;
 	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 0s;
 }
@@ -279,7 +279,7 @@ a.animated-button.thar-three:before {
 	0s;
 	}
 	a.animated-button.thar-three:hover {
-		color: #000 !important;
+		color: white !important;
 		background-color: transparent;
 		text-shadow: nthree;
 	}
@@ -297,8 +297,8 @@ a.animated-button.thar-three:before {
 		width: 0px;
 		z-index: -1;
 		content: '';
-		color: #000 !important;
-		background: #C4AE9D; 
+		color: white !important;
+		background: black; 
 		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
 	}
 
@@ -436,13 +436,13 @@ a.animated-button.thar-three:before {
 <div class="ps-breadcrumb">
 
     <div 
-    *ngIf="!preload">
+    *ngIf="!preload"> 
 
 	<!-- Barra de números --> 
 	<div class="contrainer">
 		<div>
  			<ul class="progressbar">
-     			<a id="step1" >Step 1</a>
+     			<a id="step1" (click)="HyperLinkStep1()">Step 1</a>
      			<a id="step2" (click)="HyperLink()">Step 2</a>
          		<a id="step3"  class="superActive">Step 3</a>
 	        	<a id="step4">Done!</a>
@@ -504,12 +504,12 @@ a.animated-button.thar-three:before {
                <!-- [routerLink]="['/done', id]" -->
 	     	</div>
 
-            <div class="add-to-direcction">
+            <!-- <div class="add-to-direcction">
                 <a class="add-to-direcction-black"
                  data-toggle="modal" data-target=".bd-example-modal-xl">
                     Add Address
                 </a>
-            </div> 
+            </div>  -->
  		  </form>    
      	</div>
 	     	

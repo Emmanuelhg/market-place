@@ -10,7 +10,7 @@ import { OwlCarouselConfig,
 
 import { ProductsService} from '../../../services/products.service';
 import { UsersService } from '../../../services/users.service';
-
+import { NegocioService } from '../../../services/negocio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 declare var jQuery:any; 
@@ -35,14 +35,47 @@ export class BestSalesItemComponent implements OnInit {
 	products:any[] = [];
 	time:any[] = [];
 
+	img_slider='';
+	img_slider2='';
+	img_slider3='';
+	img_slider4='';
+	img_slider5='';
+	negocio = null;
+
+	img_slider_array:string[] = [];
+
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,
   		        private usersService: UsersService,
+  		        private negocioService: NegocioService,
   		        private router: Router) { }
 
   	ngOnInit(): void {
 
   		this.preload = true;
+
+  		this.negocioService.getData()
+        .subscribe(resp=>{
+        	this.negocio = resp['personalization'];
+        	this.img_slider = this.negocio['slider_url_1'];
+        	this.img_slider2 = this.negocio['slider_url_2']
+        	this.img_slider3= this.negocio['slider_url_3']
+        	this.img_slider4 = this.negocio['slider_url_4']
+        	this.img_slider5 = this.negocio['slider_url_5']
+        	// if(this.negocio['slider_url_2'] != "null"){ 
+        	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
+        	// } 
+        	// if(this.negocio['slider_url_3'] != "null"){
+        	// 	this.img_slider_array.push(this.negocio['slider_url_3']);
+        	// }
+        	// if(this.negocio['slider_url_4'] != "null"){
+        	// 	this.img_slider_array.push(this.negocio['slider_url_4']);
+        	// }
+        	// if(this.negocio['slider_url_5'] != "null"){
+        	// 	this.img_slider_array.push(this.negocio['slider_url_5']);
+        	// }
+      
+        })
 
   		/*=============================================
 		Capturamos el parámetro URL 

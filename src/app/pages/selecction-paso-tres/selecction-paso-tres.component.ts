@@ -5,7 +5,7 @@ import { BoxesService } from '../../services/boxes.service';
 import { ProductsService} from '../../services/products.service';
 import { Id_box } from '../../functions';
 import * as Cookies from 'js-cookie';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; 
 
 import { Rating,
         Sweetalert,
@@ -289,6 +289,9 @@ export class SelecctionPasoTresComponent implements OnInit {
   }
   HyperLink(){
     window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
+  }
+  HyperLinkStep1(){
+    window.open('/selecction-caja/','_self');
   }
   HyperLinkTow(){
     window.open('/done/'+this.id_to_box,'_self');

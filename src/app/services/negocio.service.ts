@@ -28,5 +28,11 @@ export class NegocioService {
 
 		return this.http.get(`${this.api}negocio.json?orderBy="$key"&startAt="${startAt}"&limitToFirst=${limitToFirst}&print=pretty`);
     }
+
+    getDataQuestions(){
+
+		return this.http.get(`${this.api}negocio/faqs.json`);
+
+	}
     
 }

@@ -76,7 +76,7 @@ export class ProductsService {
 	}
 
 	getFilterData(orderBy:string, equalTo:string){
-		console.log("equalTo",equalTo);
+		// console.log("equalTo",equalTo);
 		return this.http.get(`${this.api}products.json?orderBy="${orderBy}"&equalTo="${equalTo}"&print=pretty`)
 		.pipe(
 			

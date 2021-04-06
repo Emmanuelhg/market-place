@@ -5,8 +5,9 @@ import { NegocioService } from '../../services/negocio.service';
 @Component({
   selector: 'app-frequently-asked-questions',
   templateUrl: './frequently-asked-questions.component.html',
-  styleUrls: ['./frequently-asked-questions.component.css']
+  styleUrls: ['./frequently-asked-questions.component.css'] 
 })
+
 export class FrequentlyAskedQuestionsComponent implements OnInit {
 
   path:string = Path.url;
@@ -24,12 +25,14 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
 
   img_slider_array:string[] = [];
 
+  questions=[];
+
   constructor(  private negocioService: NegocioService) { } 
   	
   ngOnInit(): void {
-  	for (let i = 0; i < 16; i++) {
-  		this.visibility_1.push(false); 
-  	}
+  	// for (let i = 0; i < 16; i++) {
+  	// 	this.visibility_1.push(false); 
+  	// }
 
     this.negocioService.getData()
     .subscribe(resp=>{
@@ -40,6 +43,16 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
       this.img_slider4 = this.negocio['slider_url_4'];
       this.img_slider5 = this.negocio['slider_url_5'];
   
+    })
+
+    this.negocioService.getDataQuestions()
+    .subscribe(resp=>{
+      for(let contador in resp){
+        this.visibility_1.push(false); 
+        this.questions.push(resp[contador]);
+        console.log("preguntas:",this.questions[contador])
+      }
+
     })
 
   }

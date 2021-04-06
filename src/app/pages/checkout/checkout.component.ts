@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Path, Payu, MercadoPago  } from '../../config';
-import { Sweetalert, DinamicPrice, Paypal } from '../../functions';
+import { Sweetalert, DinamicPrice, Paypal, Id_box } from '../../functions';
 
 import { Router, ActivatedRoute  } from '@angular/router';
 
@@ -13,6 +13,8 @@ import { ProductsService } from '../../services/products.service';
 import { OrdersService } from '../../services/orders.service';
 import { SalesService } from '../../services/sales.service';
 import { StoresService } from '../../services/stores.service';
+import { BoxesService } from '../../services/boxes.service';
+import { BoxesModel } from '../../models/boxes.model';
 
 import * as Cookies from 'js-cookie';
 
@@ -44,19 +46,93 @@ export class CheckoutComponent implements OnInit {
 	addInfo:string = "";
 	validateCoupon:boolean = false;
 
+	id_to_box=null;
+	box_json= JSON.parse(`{
+      "box_deliver_checkbox" : false,
+      "box_deliver_from" : "",
+      "box_deliver_message" : "",
+      "box_deliver_to" : "",
+      "box_id" : "",
+      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_name" : "caja 1 selecionada",
+      "box_price" : 10,
+      "box_size" : 0,
+      "box_status" : 1,
+      "box_steps": [true, true, true, true],
+      "box_type" : 1,
+      "box_subtotal" : 0,
+      "box_size_blocks_small" : 0,
+      "box_size_blocks_reular": 0
+       }`
+  	); 
+	box_steps=[false,false,false,false]
+ 	// id:string = null;
+ 	boxes:BoxesModel;
+ 	products;
+
 	constructor(private router:Router,
 				private usersService:UsersService,
 				private productsService: ProductsService,
 				private ordersService:OrdersService,
 				private salesService: SalesService,
 				private storesService: StoresService,
-				private activatedRoute:ActivatedRoute ) {
+				private activatedRoute:ActivatedRoute,
+				private boxesService:BoxesService ) {
 
+		this.boxes = new BoxesModel();
 		this.user = new UsersModel();
 
 	}
 
 	ngOnInit(): void {
+
+
+		this.id_to_box = Cookies.get('box_id');
+
+	    // Cookies.set('box_id', this.prueba, { expires: 7 });
+
+		/*=============================================
+		Obtener el id de la caja
+		=============================================*/
+
+
+		if (this.id_to_box === null) {
+
+		    this.usersService.authActivate().then(resp=>{
+
+		      if(resp){
+		        this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+		        .subscribe(resp=>{
+		          this.id_to_box = Object.keys(resp).toString();
+		            
+		            Cookies.set('box_id', this.id_to_box, { expires: 7 });
+		        })
+
+		      }else {
+		        this.id_to_box = Id_box.fnc()
+		            Cookies.set('box_id', this.id_to_box, { expires: 7 });
+		        
+		      }
+		        
+		    })
+		  
+		}else{
+		  // Obtener caja
+		  this.boxesService.obtenerBox(this.id_to_box)
+		  .subscribe(resp=>{
+		    // console.log("id es ",resp["box_type"]);
+		    if(resp !=null){
+		        this.box_json = resp;
+		        this.recuperarCajas();
+		        // console.log("id es ",this.id);
+		        if (resp["box_steps"] != undefined) {
+		           this.box_steps = resp["box_steps"];
+		        }
+		      }
+
+		  })
+		    this.id=this.id_to_box;
+		}
 
 		/*=============================================
   		Validar la existencia de un cupón de la tienda
@@ -153,7 +229,7 @@ export class CheckoutComponent implements OnInit {
 				this.productsService.getFilterData("url", list[i].product)
 				.subscribe(resp=>{
 
-					console.log("ya no quiero nada", resp);
+					// console.log("ya no quiero nada", resp);
 
 					for(const f in resp){
 
@@ -386,11 +462,11 @@ export class CheckoutComponent implements OnInit {
 						localProductsService.getFilterData("url", product.url)
 						.subscribe(resp=>{
 
-							console.log("checkout id :", resp);
+							// console.log("checkout id :", resp);
 							for(const i in resp){
 
 								let id = resp[i].id;
-								console.log("checkout id :", id);
+								// console.log("checkout id :", id);
 
 								let value = {
 
@@ -921,7 +997,7 @@ export class CheckoutComponent implements OnInit {
 			let interval = setInterval(function(){
 
 				count++
-				console.log("count", count);
+				// console.log("count", count);
 
 				/*=============================================
 				Validar la compra de Mercado Pago
@@ -1131,4 +1207,46 @@ export class CheckoutComponent implements OnInit {
 
 	}
 
+	recuperarCajas(){ 
+    // console.log("id to box es:", this.id_to_box);
+    // Almacenar Info en base de datos  
+      this.boxes.box_id=this.id_to_box;
+      this.boxes.box_type=this.box_json.box_type;
+      this.boxes.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+      this.boxes.box_deliver_from= this.box_json.box_deliver_from;
+      this.boxes.box_deliver_to=this.box_json.box_deliver_to;
+      this.boxes.box_deliver_message= this.box_json.box_deliver_message;
+      this.boxes.box_price=this.box_json.box_price;
+      this.boxes.box_size=this.box_json.box_size;
+      this.boxes.box_status=this.box_json.box_status;
+      this.boxes.box_name=this.box_json.box_name;
+      this.boxes.box_img=this.box_json.box_img;
+      this.boxes.box_arts=this.box_json.box_arts;
+      this.boxes.box_steps = this.box_steps;
+      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+      this.boxes.box_size_small=this.box_json.box_size_small;
+      this.boxes.box_size_regular= this.box_json.box_size_regular;
+
+
+      this.boxes.box_subtotal= this.box_json.box_subtotal;
+
+      this.products=this.boxes.box_arts;
+
+      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
+      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
+      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
+      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
+
+      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
+      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
+
+      // console.log("tipo",this.box_json["box_type"]);
+      // console.log("tamaño",this.box_json.box_size_blocks_small);
+      // console.log("tipo",this.boxes);
+
+      // this.fncDetallesFinales(this.boxes);
+      // console.log("box_arts",this.fncDetallesFinales(this.boxes));
+      // console.log("contenido",this.boxes.box_type);
+
+  	} 
 }
