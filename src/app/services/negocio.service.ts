@@ -34,5 +34,18 @@ export class NegocioService {
 		return this.http.get(`${this.api}negocio/faqs.json`);
 
 	}
+
+	
+	getDataShipping(){
+
+		return this.http.get(`${this.api}configuration/shipping.json`);
+
+	}
+
+	getFilterColeccions(){
+
+		return this.http.get(`${this.api}colecciones.json`);
+
+	}
     
 }

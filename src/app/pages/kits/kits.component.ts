@@ -33,6 +33,7 @@ export class KitsComponent implements OnInit {
 
   category_get;
   category;
+  colecciones_get =[];
 
   constructor(private categoriesService: CategoriesService,
   			  private negocioService: NegocioService,
@@ -50,6 +51,8 @@ export class KitsComponent implements OnInit {
       this.img_slider5 = this.negocio['slider_url_5'];
   
     })
+
+    
 
     this.categoriesService.getData()
 	.subscribe(resp => {	
@@ -76,11 +79,26 @@ export class KitsComponent implements OnInit {
 
     this.subCategoriesService.getData()
     .subscribe(resp=>{
-    	console.log("sub-categorías",resp);
+    	// console.log("sub-categorías",resp);
 
     	this.category_get = resp;
 
-    	console.log("ahora es esto",this.category_get);
+    	// console.log("ahora es esto",this.category_get);
+    })
+
+    this.negocioService.getFilterColeccions()
+    .subscribe(resp=>{
+      	
+  	  let i;
+
+	  for(i in resp){
+
+		let colecciones = resp[i];
+		this.colecciones_get.push(colecciones);
+		console.log("colecciones:",this.colecciones_get);
+
+	  }
+
     })
   	
    }

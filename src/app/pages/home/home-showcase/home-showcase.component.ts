@@ -3,7 +3,7 @@ import { Path } from '../../../config';
 import { OwlCarouselConfig, Rating } from '../../../functions';
 
 declare var jQuery:any;
-declare var $:any;
+declare var $:any; 
 
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
@@ -13,7 +13,7 @@ import { NegocioService } from '../../../services/negocio.service';
 @Component({
   selector: 'app-home-showcase',
   templateUrl: './home-showcase.component.html',
-  styleUrls: ['./home-showcase.component.css']
+  styleUrls: ['./home-showcase.component.css'] 
 })
 export class HomeShowcaseComponent implements OnInit {
 
@@ -59,54 +59,85 @@ export class HomeShowcaseComponent implements OnInit {
 		this.negocioService.getData()
 	    .subscribe(resp=>{
         
+	    	// console.log("el div fnc es:",resp);
+	    	let array = resp['menu'];
+	    	// console.log("el div fnc es:", array);
 
-	    	let array = resp['menu'].length;
-	    	console.log("el div fnc es:",this.divs);
+	    	// console.log("array es:",array);
+
+	    	for(let count in array){
+
+	    		let section = array[count];
+	    		// console.log("el array en for:",section);
+	    		this.divs.push(section);
+	    		
+	    		this.divs_id.push(count);
+	    		
+	    		this.divs_name.push(section.name);
+	    		
+
+	    		if(section.type==this.SECTION_1){
+
+	    			// console.log("el tipo es de tipo 1");
+	    			this.divs_visible.push(["block","none","none","none"]);
 
 
-	    	console.log("array es:",array);
 
-            for(var i = 0; i < array; i++){
-            	this.divs.push(resp['menu'][""+i]["content"]);
-            	this.divs_id.push(i);
-            	this.divs_name.push(resp['menu'][""+i]["content"]["name"]);
-        
-            	if(resp['menu'][""+i]["content"]["type"]===this.SECTION_1){
-            		this.divs_visible.push(["block","block","block","block"]);
-	            	if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_ONLY_TEXT){
-	            		this.divs_section_left_type.push(["block","none","none"]);
-	            		
-            		} else if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_ONLY_IMAGE){
-	            		this.divs_section_left_type.push(["none","block","none"]);
-	            		
-            		} else if(resp['menu'][""+i]["content"]["section_left"]["tipo"]===this.SECTION_1_IMAGE_BUTTON){
-	            		this.divs_section_left_type.push(["none","none","block"]);
-	            		
-            		}
-            		if(resp['menu'][""+i]["content"]["section_right"]["tipo"]===this.SECTION_1_ONLY_TEXT){
-	            		this.divs_section_rigth_type.push(["block","none","none"]);
-	            		
-            		} else if(resp['menu'][""+i]["content"]["section_right"]["tipo"]===this.SECTION_1_ONLY_IMAGE){
-	            		this.divs_section_rigth_type.push(["none","block","none"]);
-	            		
-            		} else if(resp['menu'][""+i]["content"]["section_right"]["tipo"]===this.SECTION_1_IMAGE_BUTTON){
-	            		this.divs_section_rigth_type.push(["none","none","block"]);
-	            		
-            		}
-            	}
+	    			if(section.section_left.tipo == this.SECTION_1_ONLY_TEXT){
 
-            	if(resp['menu'][""+i]["content"]["type"]===this.SECTION_2){
-            		this.divs_visible.push(["block","block","none","none"]);
+	    				this.divs_section_left_type.push(["block","none","none"]);
+	    				//this.divs_section_rigth_type.push(["none","none","none"]);
 
-            		if(resp['menu'][""+i]["content"]["section_middle"]["tipo"]===this.SECTION_2_CARRUSEL){
-	            		this.divs_section_middle.push(["block","none","none"]);
-	            		
-            		} 
+	    			}else if(section.section_left.tipo == this.SECTION_1_ONLY_IMAGE){
 
-            	}
-            
-          }
-       		console.log("el div obtenido:",this.divs);
+	    				this.divs_section_left_type.push(["none","block","none"]);
+	    				//this.divs_section_rigth_type.push(["none","none","none"]);
+
+	    			}else if(section.section_left.tipo == this.SECTION_1_IMAGE_BUTTON){
+
+	    				this.divs_section_left_type.push(["none","none","block"]);
+	    				//this.divs_section_rigth_type.push(["none","none","none"]);
+	    			}
+
+	    			if(section.section_right.tipo == this.SECTION_1_ONLY_TEXT ){
+
+	    				this.divs_section_rigth_type.push(["block","none","none"]);
+	    				//this.divs_section_left_type.push(["none","none","none"]);
+
+	    			}else if (section.section_right.tipo == this.SECTION_1_ONLY_IMAGE){
+
+	    				this.divs_section_rigth_type.push(["none","block","none"]);
+	    				//this.divs_section_left_type.push(["none","none","none"]);
+
+	    			}else if (section.section_right.tipo == this.SECTION_1_IMAGE_BUTTON){
+
+	    				this.divs_section_rigth_type.push(["none","none","block"]);
+	    				//this.divs_section_left_type.push(["none","none","none"]);
+
+	    			}
+
+	    		}
+	    		// console.log("el tipo es:",section.type);
+
+	    		if(section.type==this.SECTION_2){
+	    			this.divs_visible.push(["none","block","none","none"]);
+	    			this.divs_section_left_type.push(["none","none","none"]);
+
+	    			console.log("divs:",this.divs_section_left_type);
+	    		}
+
+	    	}
+
+	    	console.log("divs:",this.divs);
+	    	// console.log("el tipo es:",section.type);
+    		// console.log("divs:",this.divs);
+    		// console.log("divs_id:",this.divs_id);
+    		// console.log("divs_name:",this.divs_name);
+    		// console.log("divs_visible:",this.divs_visible);
+    		// console.log("divs_section_left_type:",this.divs_section_left_type);
+    		// console.log("divs_section_rigth_type:",this.divs_section_rigth_type);
+
+       		// console.log("el div obtenido:",this.divs);
 	    })
 	   	
 	}

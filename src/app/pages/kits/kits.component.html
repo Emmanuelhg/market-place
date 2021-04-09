@@ -1,27 +1,29 @@
 <div style="width: 100%; height: px;">
 
-	<!-- Imágen de banner  --> 
+  <!--=====================================
+  Slider
+  ======================================-->
 	<div class="navImage"> 
-	    <ul>
-          <li>
-            <img  src="{{img_slider}}" alt="">
-          </li>
-          <li >
-            <img src="{{img_slider2}}" alt="">
-          </li>
-          <li >
-            <img src="{{img_slider3}}" alt="">
-          </li>
-          <li >
-            <img src="{{img_slider4}}" alt="">
-          </li>
-          <li >
-            <img src="{{img_slider5}}" alt="">
-          </li>
-
-	    </ul>      
+    <ul>
+      <li>
+        <img  src="{{img_slider}}" alt="">
+      </li>
+      <li >
+        <img src="{{img_slider2}}" alt="">
+      </li>
+      <li >
+        <img src="{{img_slider3}}" alt="">
+      </li>
+      <li >
+        <img src="{{img_slider4}}" alt="">
+      </li>
+      <li >
+        <img src="{{img_slider5}}" alt="">
+      </li>
+    </ul>      
 	</div>
 
+ 
 	<h1 class="psd">CURATED GIFT COLLECTION</h1>
 
 	<p class="psd">
@@ -31,20 +33,22 @@
 		that each gift tells a story and lets you gift with intention.
 	</p>
 
-	<!-- Contenido de kits  -->
 
+	<!--=====================================
+  Colecciones
+  ======================================-->
 	<div 
 	class="row" style="padding: 0px; display: flex;">
 
 		<div 
-		*ngFor="let category of category_get; let i = index"
+		*ngFor="let colection of colecciones_get; let i = index"
 		class="col-lg-6" style="padding: 0px;  position: relative; display: inline-block;
-        text-align: center;">
+    text-align: center;">
 
-			<img style="width: 100%;height: px; padding: 7%;" src="{{category.image}}">
+			<img style="width: 100%;height: 100%; padding: 10%;" src="{{colection.image}}">
 
 			<h3 style=" position: absolute; top: 58%;left: 14%;">
-				{{category.name}}
+				{{colection.name}}
 			</h3>
 
 			<div *ngFor="let category of categories; let i = index; let lastIndex = last">
@@ -62,6 +66,25 @@
 		</div>
 
 	</div>
+
+  <!--=====================================
+  Categorías
+  ======================================-->
+
+  <div style="width: 100%;">
+   
+    <div class="row" style="display: flex; margin: 5%;">
+      <div *ngFor="let category of category_get; let i = index"
+      class="col-lg-3" style=";position: relative; display: inline-block;padding: 0px">
+
+        <img class="col-12" style="padding: 0px; border: 1px solid #dee2e6!important;" 
+        src="{{category.image}}">
+
+        {{ lastIndex ? callback() : "" }}
+      </div>
+    </div>
+
+  </div>
 	
 </div>
 
@@ -74,8 +97,7 @@
    width: 100%;
    background-size: cover;
    height: 685px;
-    object-fit: cover;
-    transition: .5s;
+   transition: .5s;
    margin-top: -85px;
    background-attachment: fixed;
    background-repeat: no-repeat;
@@ -112,7 +134,6 @@
   .navImage img {
    width: 100%;
    height: 800px;
-   object-fit: cover;
    transition: .5s;
   
   }

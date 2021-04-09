@@ -182,8 +182,13 @@ export class ProductLeftComponent implements OnInit {
       this.price.push(DinamicPrice.fnc(this.product[index]));
 
       this.summary.push(JSON.parse(this.product[index].summary));
+      if(this.product[index].category== "kits"){
 
-      this.details.push(JSON.parse(this.product[index].details));
+      }else{
+        this.details.push(JSON.parse(this.product[index].details));
+
+      }
+      // this.details.push(JSON.parse(this.product[index].details));
 
       console.log("produccto:", this.product);
 

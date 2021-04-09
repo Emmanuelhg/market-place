@@ -15,6 +15,7 @@ import { confirm } from 'notie';
 import { BoxesModel } from '../../models/boxes.model';
 import { BoxesService } from '../../services/boxes.service';
 import { UsersService } from '../../services/users.service';
+import { NegocioService } from '../../services/negocio.service';
 
 
 import * as Cookies from 'js-cookie';
@@ -28,6 +29,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 	path:string = Path.url;
 	shoppingCart:any[] = [];
+	listSends=[];
 	totalShoppingCart:number = 0;
 	render:boolean = true;
 	totalP:string = `<div class="p-2"><h3>Total <span class="totalP"><div class="spinner-border"></div></span></h3></div>   `;
@@ -55,17 +57,41 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       "box_size_blocks_reular": 0
        }`
   	); 
+  	shimpment_default = JSON.parse(
+		`{
+			"product_id":"",
+	      "email" : "",
+	      "shipping":"",
+	      "first_name":"",
+	      "last_name":"",
+      	  "company":"",
+      	  "address":"",
+      	  "optional":""	
+        }`
+	);
+
+	email : "";
+  	shipping:"";
+  	first_name:"";
+  	last_name:"";
+  	company:"";
+  	address:"";
+  	optional:"";	
+
   	tpCheck = 'kits'
 	box_steps=[false,false,false,false]
  	id:string = null;
  	boxArray=[];
  	boxArts=[];
  	boxes:BoxesModel;
+ 	anviosArray=[];
  	products;
+ 	costo_envio=0;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
 				private usersService:UsersService,
+				private negocioService:NegocioService,
 				private boxesService:BoxesService) {
 				this.boxes = new BoxesModel(); 
 			}
@@ -116,6 +142,24 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		  })
 		    this.id=this.id_to_box;
 		}
+
+		this.negocioService.getDataShipping()
+		.subscribe(resp=>{
+			
+			let envio = resp;
+			// console.log("envio:",envio);
+
+			for(let cont in envio){
+
+				let arry = envio[cont]
+
+				this.anviosArray.push(arry);
+
+				// console.log("envio:",arry);
+
+			}
+		})
+
 
 
 		/*=============================================
@@ -198,23 +242,23 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 					    var inbox= false;
 					    var num =0;
-						console.log("Array:",this.boxArray);
+						// console.log("Array:",this.boxArray);
 
 						for(let count in this.boxArray){
-							console.log("Count es tal:",this.boxArray[count].url);
-							console.log("La lista es:",list[i].product);
+							// console.log("Count es tal:",this.boxArray[count].url);
+							// console.log("La lista es:",list[i].product);
 							if(this.boxArray[count].url == list[i].product){
-								console.log("Es el mismo url:");
+								// console.log("Es el mismo url:");
 								this.boxArray.splice(num,1);
 								inbox = true;
 							}else{
-								console.log("No es el mismo url:");
+								// console.log("No es el mismo url:");
 							}
 							num += 1;
 
 						}
 
-						console.log("Ahora es esto  ja ja ja:",resp[f].category);
+						// console.log("Ahora es esto  ja ja ja:",resp[f].category);
 
 						this.shoppingCart.push({
 
@@ -477,5 +521,69 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
   	}
  
-	
+	fnfEnvio(envio){
+		let enviop = parseFloat(envio);
+
+		console.log("envio:",envio);
+		this.costo_envio = enviop
+		
+	}
+
+	obtenerInput(envio, whosend){
+
+		let enviop = envio;
+
+		console.log("envio:",envio);
+
+		if(enviop == 'email') {
+			this.email = enviop;
+		}
+
+		if(enviop == 'first_name') {
+			this.first_name = enviop;
+		}
+
+		if(enviop == 'last_name') {
+			this.last_name = enviop;
+		}
+
+		if(enviop == 'company') {
+			this.company = enviop;
+		}
+
+		if(enviop == 'address') {
+			this.address = enviop;
+		}
+
+		if(enviop == 'appartament') {
+			this.optional = enviop;
+		}
+		
+	}
+
+	goIt(){
+		console.log("envio:");
+
+		var envio_box=this.shimpment_default;
+		envio_box.optional = this.optional;
+
+		
+		envio_box.email = this.email;
+
+		envio_box.first_name= this.first_name;
+
+
+		envio_box.last_name = this.last_name;
+
+		
+		envio_box.company = this.company;
+
+		
+		envio_box.address = this.address;
+
+		console.log("Esta es la lista del envio:",envio_box);
+
+	}
+
+
 }

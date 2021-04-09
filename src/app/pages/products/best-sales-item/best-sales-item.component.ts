@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { Path } from '../../../config';
 import { OwlCarouselConfig, 
 	     CarouselNavigation, 
@@ -91,8 +91,15 @@ export class BestSalesItemComponent implements OnInit {
 		.subscribe(resp1=>{
 
 			if(Object.keys(resp1).length > 0){
-
-				this.productsFnc(resp1);
+				let array = [];
+				for(let cont in resp1){
+					console.log(resp1[cont]);
+					let item = resp1[cont];
+					if(item.name != 'Small Kraft' && item.name != 'Regular Kraft' && item.name != 'Small Black' && item.name != 'Regular black'){
+						array.push(item);
+					}
+				}
+				this.productsFnc(array);
 
 			}else{
 
