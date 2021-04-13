@@ -30,11 +30,12 @@ style="position: relative; z-index: 100%;">
                                     *ngFor="let category of categories; let i = index; let lastIndex = last"
                                     class="menu-item-has-children has-mega-menu">
                                         
-                                        <a routerLink="kits" target="_top">
-                                            <!-- routerLink="products/{{category.url}}" -->
+                                        <a routerLink="products/{{category.url}}" target="_top">
+                                            
+                                            <!-- routerLink="kits" -->
                                             <i class="{{category.icon}}"></i> {{category.name}}
                                         </a>
-                                        
+
                                         <!-- <div class="mega-menu">
 
                                             <div 

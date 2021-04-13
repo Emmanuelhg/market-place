@@ -123,7 +123,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    			this.divs_visible.push(["none","block","none","none"]);
 	    			this.divs_section_left_type.push(["none","none","none"]);
 
-	    			console.log("divs:",this.divs_section_left_type);
+	    			console.log("divs:",this.SECTION_2);
 	    		}
 
 	    	}

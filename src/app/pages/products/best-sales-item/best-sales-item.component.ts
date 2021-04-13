@@ -43,6 +43,9 @@ export class BestSalesItemComponent implements OnInit {
 	negocio = null;
 
 	img_slider_array:string[] = [];
+	getProduct:any[] = [];
+	gallery_producto=[];
+
 
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,
@@ -83,6 +86,7 @@ export class BestSalesItemComponent implements OnInit {
 
 		let params = this.activateRoute.snapshot.params["param"].split("&")[0];
 
+
 		/*=============================================
 		Filtramos data de productos con categorías
 		=============================================*/	
@@ -91,14 +95,19 @@ export class BestSalesItemComponent implements OnInit {
 		.subscribe(resp1=>{
 
 			if(Object.keys(resp1).length > 0){
+
 				let array = [];
+
 				for(let cont in resp1){
-					console.log(resp1[cont]);
+					// console.log(resp1[cont]);
 					let item = resp1[cont];
+
+
 					if(item.name != 'Small Kraft' && item.name != 'Regular Kraft' && item.name != 'Small Black' && item.name != 'Regular black'){
 						array.push(item);
 					}
 				}
+
 				this.productsFnc(array);
 
 			}else{
@@ -136,6 +145,31 @@ export class BestSalesItemComponent implements OnInit {
   	productsFnc(response){
 
   		this.bestSalesItem = [];
+
+  		this.productsService.getDatta()
+	    .subscribe(resp=>{	          
+
+	      let i;
+
+	        for(i in resp){
+
+	          let product= resp[i];
+	          product.id = i;
+	          if (product.category != "kits") {
+	            if(product.gallery[1]==undefined){
+	              product.image2=product.image;
+	            }else{
+	              product.image2=product.gallery[1];
+	            }
+	            
+	            this.getProduct.push(product);
+	            this.gallery_producto.push(product.gallery[1]);
+  				console.log("En consola esta:",this.gallery_producto);
+	          }
+	           
+	        }
+	          
+	    }) 
 
 		/*=============================================
 		Hacemos un recorrido por la respuesta que nos traiga el filtrado
@@ -219,16 +253,16 @@ export class BestSalesItemComponent implements OnInit {
 	=============================================*/
 
 	addShoppingCart(object,product,unit,details){
-		console.log("Producto:",product);
-		console.log("unidad:",unit);
-		console.log("detalles:",details);
+		// console.log("Producto:",product);
+		// console.log("unidad:",unit);
+		// console.log("detalles:",details);
 		// Esta variable te mantiene en el mismo componente
 		let url = this.router.url;
 
 		let numtime = new Date();
 		let newtime =numtime.getTime();
 		
-		console.log(":",newtime);
+		// console.log(":",newtime);
 
 		let item = {
 			object:object,

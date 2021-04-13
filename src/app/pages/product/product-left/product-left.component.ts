@@ -148,7 +148,7 @@ export class ProductLeftComponent implements OnInit {
 
   /*=============================================
   Declaramos función para mostrar los productos recomendados
-  =============================================*/ 
+  =============================================*/  
 
     productsFnc(response){
 

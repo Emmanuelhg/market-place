@@ -9,7 +9,7 @@ Dominio
 $domain = "localhost";
 
 /*=============================================
-Credenciales
+Credenciales 
 =============================================*/
 
 $sandbox = true;
@@ -53,7 +53,7 @@ curl_close($curl);
 $jsonResponse = json_decode($response, true);
 
 /*=============================================
-Formulario de MercadoPago 
+Formulario de MercadoPago  mai, polycy bc  
 =============================================*/
 
 if(isset($_GET["_x"]) && $_GET["_x"] == md5(base64_decode($_COOKIE["_x"]))){
@@ -63,14 +63,14 @@ if(isset($_GET["_x"]) && $_GET["_x"] == md5(base64_decode($_COOKIE["_x"]))){
 
 	<div style="text-align:center; position:absolute; top:45vh; right:120px">
 
-	<form action="http://localhost/marketplace-sales/src/mercadopago/index.php" method="POST">
+	<form action="https://localhost/marketplace-sales/src/mercadopago/index.php" method="POST">
 	  <script
-	    src="https://www.mercadopago.com.co/integrations/v1/web-tokenize-checkout.js"
+	    src="http://www.mercadopago.com.co/integrations/v1/web-tokenize-checkout.js"
 	    data-public-key="'.$public_key.'"
 	    data-button-label="Next"
 	    data-summary-product-label="'.$_COOKIE["_p"].'"
 	    data-transaction-amount="'.$jsonResponse["USD_MXN"]*base64_decode($_COOKIE["_x"]).'">
-	  </script>
+	  </script >
 	</form>
 
 	</div>

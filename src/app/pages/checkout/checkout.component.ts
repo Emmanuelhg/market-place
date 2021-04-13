@@ -5,7 +5,7 @@ import { Path, Payu, MercadoPago  } from '../../config';
 import { Sweetalert, DinamicPrice, Paypal, Id_box } from '../../functions';
 
 import { Router, ActivatedRoute  } from '@angular/router';
-
+ 
 import { UsersModel } from '../../models/users.model';
 
 import { UsersService } from '../../services/users.service';

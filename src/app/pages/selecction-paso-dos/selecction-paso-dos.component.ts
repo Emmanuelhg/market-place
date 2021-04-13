@@ -163,7 +163,7 @@ export class SelecctionPasoDosComponent implements OnInit {
           
       })
     
-   }else{
+    }else{
     // Obtener caja
     this.boxesService.obtenerBox(this.id_to_box)
     .subscribe(resp=>{

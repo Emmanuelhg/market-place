@@ -35,61 +35,76 @@ Best Sale Items
 
       <div
       *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-      class="ps-product col-lg-4 col-md-4 col-sm-6">
+      class="col-lg-4 col-md-4 col-sm-6">
 
-        <div class="ps-product__thumbnail">
+        <div class="ps-product__thumbnail" id="contenedorTow">
           
-          <a routerLink="/product/{{product.url}}">
+          <a style=" position: relative;
+          display: inline-block;
+          text-align: center;"
+          routerLink="/product/{{product.url}}">
             <img 
-            style="width: 247px; height: 247px;" 
-             type="button"  data-toggle="modal" 
-             data-target=".bd-example-modal-xl"
-             src="{{product.image}}" alt="">
+            style="width: 247px; height: 247px;"
+            type="button"  data-toggle="modal" 
+            data-target=".bd-example-modal-xl"
+            src="{{product.image}}" alt="">
+
+            <img id="imgGalleryTow" 
+            style="width: 247px; height: 247px;position: 
+            absolute;margin-top: -100%;" 
+            type="button"  data-toggle="modal" 
+            data-target=".bd-example-modal-xl"
+            src="{{product.image2}}" alt="">
+
               <!-- (click)="detallesProducto(product)" -->
+
+              <style>
+                #imgGalleryTow{
+                  display: none;
+                }
+                #contenedorTow:hover #imgGalleryTow{
+                  display: block;
+                }
+              </style>
           </a>
-          <div [innerHTML]="price[i][1]"></div>
           
-          <ul class="ps-product__actions">
-            <li>
-              <a style="cursor:pointer">
-                <i class="icon-heart"></i>
-              </a>
-            </li> 
-          </ul>
+          <!--  Lista de deseos  -->
+          <div id="heartTow">
 
-          <div class="ps-product__container">
+            <a title="Add to Whishlist">
+    
+              <i  
+              class="icon-heart"
+              style="cursor: pointer;"></i>
 
-            <div class="ps-product__content">
-
-              <a class="ps-product__title" routerLink="/product/{{product.url}}">
-              {{product.name}}</a>
-
-              
-              <div [innerHTML]="price[i][0]"></div>
-
-            </div>
-
-            <div class="ps-product__content hover">
-
-              <a class="ps-product__title" routerLink="/product/{{product.url}}">
-              {{product.name}}</a>
-
-              <div [innerHTML]="price[i][0]"></div>
-
-            </div>
+            </a>    
 
           </div>
-         
-          <!-- Boton para agregar productos a la caja -->
-          <div class="texto">
+
+          <!-- Boton para agregar productos al carrito -->
+          <div class="texto" id="botonTow">
+
             <a style="cursor:pointer" 
             (click)="addShoppingCart(product,product.url, 1, [])" 
              data-toggle="tooltip" data-placement="top" title="Add to Cart">
                 
                 Add to cart
             </a>
+
           </div>
 
+          <!-- Información del producto -->
+          <div>
+
+            <a title="Add to Whishlist"
+            routerLink="/product/{{product.url}}">
+              {{product.name}}
+            </a>
+            
+            <div [innerHTML]="price[i][0]"></div>
+            
+          </div>
+         
         </div>
         {{ lastIndex ? callback() : ""}}
 
@@ -127,22 +142,26 @@ class="d-flex justify-content-center d-lg-none">
       height: 100%;
       background: transparent;
       /*bottom: - 100%;*/
-      padding: 10px 20px;
+      /*padding: 10px 20px;*/
   }
   .texto a{
       border: 1px solid black !important;
       background: white;
+      width: 247px;
+      height: 40px;
       display: flow-root;
       text-align: center;
       color: black;
       font-size: 20px;
       height: px;
+      transition: 4s;
+      padding:2%;
   }    
   .ps-product:hover .texto{
-      bottom: -50%;
+    bottom: -50%;
   }
   .ps-product__thumbnail:hover .texto {
-    bottom: -70%;
+    bottom: -65%;
 
     background-color:ps-form--quick-search button;
     color: #ffffff;
@@ -154,8 +173,7 @@ class="d-flex justify-content-center d-lg-none">
    width: 100%;
    background-size: cover;
    height: 685px;
-    object-fit: cover;
-    transition: .5s;
+   transition: .5s;
    margin-top: -85px;
    background-attachment: fixed;
    background-repeat: no-repeat;
@@ -185,9 +203,7 @@ class="d-flex justify-content-center d-lg-none">
   .navImage img {
    width: 100%;
    height: 800px;
-   object-fit: cover;
    transition: .5s;
-  
   }
 
   @keyframes cambio {
@@ -203,5 +219,20 @@ class="d-flex justify-content-center d-lg-none">
     75% {margin-left: -300%;}
     100% {margin-left: -300%;}
   }
+  #heartTow{
+    display: none;
+    margin-top:-243px;
+    position:absolute;
+    margin-left: 3%;
+  }
+  #contenedorTow:hover #heartTow{
+    display: block;
+  }
 
+  #botonTow{
+    display: none;
+  }
+  #contenedorTow:hover #botonTow{
+    display: block;
+  }
 </style>
