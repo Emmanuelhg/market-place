@@ -4,6 +4,9 @@ Shopping Car
 ======================================--> 
 
 <div> 
+    <!--=====================================
+    Título del carrito 
+    ======================================--> 
     <div style="margin-left: 4%;">
         <!--=====================================
         Breadcrumb
@@ -25,10 +28,11 @@ Shopping Car
 
         </div>
 
-        
     </div>
 
-   
+    <!--=====================================
+    Vista de los productos agregados
+    ======================================-->
 
     <div>
 
@@ -49,239 +53,64 @@ Shopping Car
             Your Cart
         </h2>
 
-        <!--=====================================
-        Contenido productos indivuduales 
-        ======================================-->
+        <div *ngFor="let product of shoppingCart; let lastIndex = last">
 
-        <div *ngFor="let product of shoppingCart; let lastIndex = last"
-        class="row" style="padding: 0px; margin-bottom: 3%;">
-
-            <!--=====================================
-             Div para imagen
-            ======================================-->
-            <div *ngIf="product.inbox == false" 
-            class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
-            height: px; justify-content:center;display: flex;">
-
-                <a  href="product/{{product.url}}"
-                style="height: 100%; display: flex; align-items: center;">
-
-                    <img style="width:200px; height:200px;cursor: pointer;
-                    "src="{{product.image}}">
-
-                </a>
-
-            </div>
-
-            <!--=====================================
-            Div para info de caja
+            <!--===================================== 
+            Contenido productos indivuduales 
             ======================================-->
 
-            <div *ngIf="product.inbox == false"
-            class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
-
-                <h3 style="font-size: 19px"> 
-
-                    <a  href="product/{{product.url}}">
-                        <b>{{product.name}}</b> 
-                    </a>
-
-                </h3>
-
-                <a 
-                 class="ps-product__content" 
-                 mwlConfirmationPopover
-                 [popoverMessage]="popoverMessage"
-                 placement="left"
-                 style="cursor:pointer" 
-                 (confirm)="removeProduct(product.url, product.listDetails)">
-                    REMOVE
-                </a>
-
-                <div>
-
-                    <a
-                    class="ps-product__content" 
-                    data-toggle="modal" 
-                    data-target=".bd-example-modal-xl"
-                    style="cursor: pointer;">
-                        <b>Add Address</b>   
-                    </a>
-
-                </div>
-
-                
-            </div>
-
-            <!--=====================================
-            Div precio cantidad y total
-            ======================================-->
-            <div *ngIf="product.inbox == false"
-            class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
-                <!-- Precio -->
-                <div class="col-4" style="margin: 1%;">
-                    <ul style="font-family: sans-serif; list-style: none;">
-                        <li>
-                            <p><b>Price</b></p>
-                        </li>
-                        <li style="margin-top: 50%;">
-                            <!-- $345 -->
-
-                            <div class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
- 
-                            <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>               
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Quantity -->
-                <div class="col-4">
-                    <ul style="font-family: sans-serif; list-style: none;">
-                        <li>
-                            <p><b>Quantity</b></p>
-                        </li>
-                        <li style="margin-top: 50%;">
-
-                            <div  class="form-group--number quantity">
-
-                                <button class="up" 
-                                (click)="changeQuantity(quantity.value, 1, 'up', product.url, product.listDetails)">
-                                +</button>
-
-                                <button class="down" 
-                                (click)="changeQuantity(quantity.value, 1, 'down', product.url, product.listDetails)">
-                                -</button>
-
-                                <input class="form-control qShoppingCart" 
-                                type="number" value="{{product.quantity}}" min="1" max="9" 
-                                step="1" #quantity (change)="changeQuantity(quantity.value, 0, null, product.url, product.listDetails)">
-                                    
-                            </div>
-
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Total -->
-                <div class="col-4">
-
-                    <ul style="font-family: sans-serif; list-style: none;">
-                        <li>
-                            <p><b>Total</b></p>
-                        </li>
-                        <li style="margin-top: 50%;">
-
-                            <div class="subTotalPrice">
-                                <div class="spinner-border subTotalPriceM"></div>
-                            </div>
-
-                        </li>
-                    </ul>
-                    
-                </div>
-
-            </div>
-
-          {{ lastIndex ? callback() : ""}}
-
-        </div>
-
-
-        <!--=====================================
-        Contenido de cajas y productos *ngIf="products.category == tpCheck"
-        ======================================-->
-        <div>
-
-            <div 
-            class="row" style="padding: 0px;">
+            <div *ngIf="product.category != tpCheck"
+            class="row" style="padding: 0px; margin-bottom: 3%;">
 
                 <!--=====================================
                  Div para imagen
                 ======================================-->
-                <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
-                display: flex;">
+                <div *ngIf="product.inbox == false" 
+                class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
+                height: px; justify-content:center;display: flex;">
 
-                    <div style="height: 100%; display: flex; align-items: center;">
-                        <img style="width:200px; height:200px;"
-                         src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
+                    <a  href="product/{{product.url}}"
+                    style="height: 100%; display: flex; align-items: center;">
 
+                        <img style="width:200px; height:200px;cursor: pointer;
+                        "src="{{product.image}}">
 
-                    </div>
+                    </a>
 
                 </div>
+
                 <!--=====================================
-                  Div para info de caja
-                 ======================================-->
-                <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
-                    <h3>BUILD A BOXFOX</h3>
-                    <p>matle black / Regular </p>
-                    <div style="display: flex;">
-                        <p>
-                            <b>To:</b>
-                        </p>&nbsp;
-                        <p> 
-                         <!--    {{boxes.box_deliver_to}} -->
-                        </p>
-                    </div>
-                    <div style="display: flex;">
-                        <p>
-                            <b>From:</b>    
-                        </p>&nbsp;
-                        <p > 
-                           <!--  {{boxes.box_deliver_from}} -->
-                        </p>
-                    </div>
-                    <div style="display: flex;">
-                        <p>
-                            <b>Message:</b>
-                        </p>&nbsp;
-                        <p > 
-                            <!-- {{boxes.box_deliver_message}} -->
-                        </p>
-                    </div>
-                    <div style="display: flex;">
-                        <p>
-                            <b>Card:</b>
-                        </p>&nbsp;
-                        <p> hol</p>
-                    </div>
-                    <div>
-                        <p>
-                            <b>Gift Box Contentens:</b>
-                        </p>
+                Div para info de caja
+                ======================================-->
 
-                        <!-- <p *ngFor="let box_arts of products; let lastIndex = last">
-                            {{boxes.box_arts_cant}} {{box_arts.name}}
-                        </p> -->
+                <div *ngIf="product.inbox == false"
+                class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
-                    </div>
+                    <h3 style="font-size: 19px"> 
 
-                    <div style="display: flex;">
+                        <a  href="product/{{product.url}}">
+                            <b>{{product.name}}</b> 
+                        </a>
 
-                        <h5 style="display: flex; cursor: pointer; ustify-content: center;
-                        align-items: center;">Box Information</h5>
+                    </h3>
 
-                        <!--=====================================
-                        Ícono abajo
-                        ======================================--> 
-
-                        <div style="margin-top:-3%;cursor: pointer; ustify-content: center;
-                        align-items: center;">
-
-                            <img src="{{path}}img/icons/down.png"  type="button" 
-                            data-toggle="collapse" data-target="#collapseExample" 
-                            aria-expanded="false" aria-controls="collapseExample">  
-
-                        </div>
-                        
-                    </div>
+                    <a 
+                     class="ps-product__content" 
+                     mwlConfirmationPopover
+                     [popoverMessage]="popoverMessage"
+                     placement="left"
+                     style="cursor:pointer" 
+                     (confirm)="removeProduct(product.url, product.listDetails)">
+                        REMOVE
+                    </a>
                     
                 </div>
 
                 <!--=====================================
-                Div precio, cantidad y total
+                Div precio cantidad y total
                 ======================================-->
-                <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                <div *ngIf="product.inbox == false"
+                class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
                     <!-- Precio -->
                     <div class="col-4" style="margin: 1%;">
                         <ul style="font-family: sans-serif; list-style: none;">
@@ -289,11 +118,15 @@ Shopping Car
                                 <p><b>Price</b></p>
                             </li>
                             <li style="margin-top: 50%;">
-                                <!-- $345 -->
-                                <!-- $ {{boxes.box_price}} -->
+                                
+                                $ {{product.price2}}
+                                <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
+     
+                                <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>  -->              
                             </li>
                         </ul>
                     </div>
+
                     <!-- Quantity -->
                     <div class="col-4">
                         <ul style="font-family: sans-serif; list-style: none;">
@@ -304,44 +137,63 @@ Shopping Car
 
                                 <div  class="form-group--number quantity">
 
-                                    <button class="up">
+                                    <button class="up" 
+                                    (click)="changeQuantity(quantity.value, 1, 'up', product.url, product.listDetails)">
                                     +</button>
 
-                                    <button class="down">
+                                    <button class="down" 
+                                    (click)="changeQuantity(quantity.value, 1, 'down', product.url, product.listDetails)">
                                     -</button>
 
                                     <input class="form-control qShoppingCart" 
-                                    type="number"  min="1" max="9" 
-                                    step="1">
+                                    type="number" value="{{product.quantity}}" min="1" max="9" 
+                                    step="1" #quantity (change)="changeQuantity(quantity.value, 0, null, product.url, product.listDetails)">
                                         
                                 </div>
 
                             </li>
                         </ul>
                     </div>
+
                     <!-- Total -->
                     <div class="col-4">
+
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
                                 <p><b>Total</b></p>
                             </li>
+                            <!-- <li style="margin-top: 50%;">
+
+                                <div class="subTotalPrice">
+                                    <div class="spinner-border subTotalPriceM"></div>
+                                </div>
+
+                            </li> -->
                             <li style="margin-top: 50%;">
-                                <!-- ${{boxes.box_subtotal}} -->
+                                
+                                $ {{product.price2}}
+                                <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
+     
+                                <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>  -->              
                             </li>
                         </ul>
                         
                     </div>
+
                 </div>
+
+              {{ lastIndex ? callback() : ""}}
+
             </div>
 
+
             <!--=====================================
-            Div para los productos dentro de la caja 
+            Contenido de cajas y productos *ngIf="products.category == tpCheck"
             ======================================-->
+            <div *ngIf="product.category == tpCheck" >
 
-            <div class="collapse" id="collapseExample">
-
-                <div *ngFor="let item of boxArts; let lastInd = last"
-                style="padding: 0px;" class=" row">
+                <div 
+                class="row" style="padding: 0px;">
 
                     <!--=====================================
                      Div para imagen
@@ -349,52 +201,118 @@ Shopping Car
                     <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
                     display: flex;">
 
-                        <div class="col-3" style="padding: 0px; display: flex;justify-content: center;
-                        align-items: center; margin-left: 32%;">
-                            <img src="{{path}}img/icons/abajo-derecha.png">
-                        </div>
-
-                        <div class="col-6" style="height: 100%; display: flex; align-items: center;">
-                            <img style="width:154px;"
-                             src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/products%2F01358fe0-882f-11eb-9e8b-1506e632e620.png?alt=media&token=36fa7998-ce01-4f41-8544-aa6ffd288764">
+                        <div style="height: 100%; display: flex; align-items: center;">
+                            <img style="width:200px; height:200px;"
+                             src="{{box_json.box_img}}">
                         </div>
 
                     </div>
-
                     <!--=====================================
-                    Div para info de caja
+                      Div para info de caja
                     ======================================-->
                     <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                        <h3>{{box_json.box_name}}</h3>
+                        <p>matle black / Regular </p>
+                        <div style="display: flex;">
+                            <p>
+                                <b>To:</b>
+                            </p>&nbsp;
+                            <p> 
+                                {{box_json.box_deliver_to}}
+                            </p>
+                        </div>
+                        <div style="display: flex;">
+                            <p>
+                                <b>From:</b>    
+                            </p>&nbsp;
+                            <p > 
+                                {{box_json.box_deliver_from}}
+                            </p>
+                        </div>
+                        <div style="display: flex;">
+                            <p>
+                                <b>Message:</b>
+                            </p>&nbsp;
+                            <p > 
+                                {{box_json.box_deliver_message}}
+                            </p>
+                        </div>
+                        <div style="display: flex;">
+                            <p>
+                                <b>Card:</b>
+                            </p>&nbsp;
+                            <p>Nombre de carta</p>
+                        </div>
+                        <div>
+                            <a
+                            class="ps-product__content" 
+                            data-toggle="modal" 
+                            data-target=".bd-example-modal-xl"
+                            style="cursor: pointer;">
+                                <b>Add Address</b>   
+                            </a>
 
-                        <div style="height: 200px; width: 200px;  display: flex;align-items: center;">
+                        </div>
+                        <div>
+                            <p>
+                                <b>Gift Box Contentens:</b>
+                            </p>
+
+                            <p *ngFor="let boxItem of boxArts; let ind = index; ">
+                                {{boxItem.name}} X {{cantArray[ind]}}
+                            </p>
+
                             
-                            <p><b>info producto</b></p>
 
+                        </div>
+
+                        <div style="display: flex;">
+
+                            <!-- <h5 style="display: flex; cursor: pointer; ustify-content: center;
+                            align-items: center;">Box Information</h5> -->
+
+                            <!--=====================================
+                            Ícono abajo
+                            ======================================--> 
+
+                            <div style="margin-top:-3%;cursor: pointer; ustify-content: center;
+                            align-items: center;">
+
+                                <img *ngFor="let boxItem of boxArray; let lastIndex = last;let indexb = index;"
+                                src="{{path}}img/icons/abajo-derecha.png">  
+
+                            </div>
+                            
                         </div>
                         
                     </div>
 
                     <!--=====================================
-                    Div precio. cantidad y total
+                    Div precio, cantidad y total
                     ======================================-->
                     <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
                         <!-- Precio -->
-                        <div class="col-4" style="margin: 1%;">
+                        <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div> -->
+                        
+                        <div class="col-4 ps-product pShoppingCart" style="margin: 1%;">
+                            <p class="ps-product__price">$<span class="end-price">{{box_json.box_price}}</span></p>
                             <ul style="font-family: sans-serif; list-style: none;">
-                            
-                                <li style="margin-top: 50%;">
-                                 
-                                    <!-- $ {{boxes.box_price}} -->
-                                
-                                        $45
-                                   
+                                <li>
+                                    <p><b>Price</b></p>
                                 </li>
+                                <li style="margin-top: 50%;">
+                                    $ {{box_json.box_price}}
+                                </li>
+
+
                             </ul>
                         </div>
                         <!-- Quantity -->
                         <div class="col-4">
                             <ul style="font-family: sans-serif; list-style: none;">
-                            
+                                <li>
+                                    <p><b>Quantity</b></p>
+                                </li>
                                 <li style="margin-top: 50%;">
 
                                     <div  class="form-group--number quantity">
@@ -414,26 +332,34 @@ Shopping Car
                                 </li>
                             </ul>
                         </div>
-
                         <!-- Total -->
                         <div class="col-4">
                             <ul style="font-family: sans-serif; list-style: none;">
+                                <li>
+                                    <p><b>Total</b></p>
+                                </li>
                                 <li style="margin-top: 50%;">
-                                    <!-- ${{boxes.box_subtotal}} -->
-
-
-                                        $45
-                                   
+                                    ${{box_json.box_subtotal}}
                                 </li>
                             </ul>
                             
                         </div>
                     </div>
+
+
                 </div>
-                
+
+
+                <!--=====================================
+                Div para los productos dentro de la caja 
+                <div class="collapse" id="collapseExample">
+                ======================================-->
+
+               
+
             </div>
 
-        </div>
+        </div>    
 
     </div>
 
@@ -442,9 +368,10 @@ Shopping Car
     <div style="margin-right: 4%;">
 
         <div 
-         *ngIf="shoppingCart.length > 0"
+        *ngIf="shoppingCart.length > 0"
         class="d-flex flex-row-reverse">
-          <div [innerHTML]="totalP"></div>             
+          <!-- <div [innerHTML]="totalP"></div>  -->
+          $ {{total}}            
         </div>
 
         <div class="ps-section__cart-actions">

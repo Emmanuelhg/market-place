@@ -82,11 +82,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 	box_steps=[false,false,false,false]
  	id:string = null;
  	boxArray=[];
+ 	cantArray=[];
  	boxArts=[];
  	boxes:BoxesModel;
  	anviosArray=[];
  	products;
  	costo_envio=0;
+ 	total=0;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
@@ -101,7 +103,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		this.id_to_box = Cookies.get('box_id');
 
 		/*=============================================
-		Obtener el id de la caja
+		Obtener el id de la caja 
 		=============================================*/
 
 
@@ -115,6 +117,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		          this.id_to_box = Object.keys(resp).toString();
 		            
 		            Cookies.set('box_id', this.id_to_box, { expires: 7 });
+
 		        })
 
 		      }else {
@@ -132,6 +135,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		    // console.log("id es ",resp["box_type"]);
 		    if(resp !=null){
 		        this.box_json = resp;
+		        // console.log("aqui esta la caja:",this.box_json);
 		        this.recuperarCajas();
 		        // console.log("id es ",this.id);
 		        if (resp["box_steps"] != undefined) {
@@ -259,7 +263,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 						}
 
 						// console.log("Ahora es esto  ja ja ja:",resp[f].category);
-
+						console.log("La respuesta de resp en F:",DinamicPrice.fnc(resp[f])[0]);
 						this.shoppingCart.push({
 
 							url:resp[f].url,
@@ -271,7 +275,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 							price: DinamicPrice.fnc(resp[f])[0],
 							price2: DinamicPrice2.fnc(resp[f])[0],
 							inbox:inbox,
-							shipping:Number(resp[f].shipping)*Number(list[i].unit),
+							shipping:1,
 							details:details,
 							listDetails:list[i].details
 
@@ -279,7 +283,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 						// console.log("url producto:",resp[f].url);
 						// console.log(this.shoppingCart);
 						if(load == list.length){
-
+							var subT = 0;
+							console.log("Esta es la lista del envio:",this.shoppingCart.length);
+							for(let i in this.shoppingCart){
+								subT = subT+(this.shoppingCart[i].price2 * this.shoppingCart[i].quantity);
+						
+							}
+							this.total=subT;
 							this.dtTrigger.next();
 
 						}
@@ -289,6 +299,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 				})
 			
 			}
+
+
 
 		}
 	}
@@ -390,30 +402,36 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
     	setTimeout(function(){
 
     		let price = $(".pShoppingCart .end-price");
+
     		let quantity = $(".qShoppingCart");
     		let shipping = $(".sShoppingCart");
     		let subTotalPrice = $(".subTotalPrice");
 
     		let total = 0;
 
+    		console.log("price:",price.length);
+
     		for(let i = 0; i < price.length; i++){			
     			
     			/*=============================================
 				Sumar precio con envío
 				=============================================*/
-				let shipping_price = Number($(price[i]).html()) + Number($(shipping[i]).html());
-				
+				// let shipping_price = Number($(price[i]).html()) + Number($(shipping[i]).html());
+				let shipping_price = Number($(price[i]).html());
+				console.log("shipping_price:"+i,shipping_price);
 				/*=============================================
 				Multiplicar cantidad por precio con envío
 				=============================================*/
 
-				let subTotal = Number($(quantity[i]).val())*shipping_price;
-
+				// let subTotal = Number($(quantity[i]).val())*shipping_price;
+				let subTotal =  Number($(quantity[i]).val())*shipping_price;
+				console.log("subTotal:"+i,subTotal);
 				/*=============================================
 				Mostramos subtotales de cada producto
 				=============================================*/
 
 				$(subTotalPrice[i]).html(`$${subTotal.toFixed(2)}`)
+				console.log("subTotalPrice"+i,subTotalPrice[i]);
 
 				/*=============================================
 				Definimos el total de los precios
@@ -490,8 +508,26 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       this.boxes.box_status=this.box_json.box_status;
       this.boxes.box_name=this.box_json.box_name;
       this.boxes.box_img=this.box_json.box_img;
-      this.boxArray = this.box_json.box_arts; 
-      this.boxArts =  this.box_json.box_arts; 
+      this.boxArray = this.box_json.box_arts;
+
+      
+      for(const [i,item] of Object.entries(this.box_json.box_arts)){
+      	// console.log(" i Es esto:", i);
+      	// console.log(" item Es esto:", item);
+      	this.boxArts.push(item);
+      }
+
+
+      for(const [i,item] of Object.entries(this.box_json.box_arts_cant)){
+      	// console.log(" i Es esto:", i);
+      	// console.log(" item Es esto:", item);
+      	this.cantArray.push(item);
+      }
+      console.log("Box array es:", this.boxArts.length);
+      console.log("Box cant es:", this.cantArray.length);
+
+
+      // this.boxArts =  this.box_json.box_arts; 
       this.boxes.box_arts=this.box_json.box_arts;
       this.boxes.box_steps = this.box_steps;
       this.boxes.box_arts_cant=this.box_json.box_arts_cant;
@@ -510,7 +546,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
       this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
       this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
-
+      this.calculateTotal();
       // console.log("tipo",this.box_json["box_type"]);
       // console.log("tamaño",this.box_json.box_size_blocks_small);
       // console.log("tipo",this.boxes);
@@ -518,7 +554,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       // this.fncDetallesFinales(this.boxes);
       // console.log("box_arts",this.fncDetallesFinales(this.boxes));
       // console.log("contenido",this.boxes.box_type);
-
+      
   	}
  
 	fnfEnvio(envio){
@@ -583,6 +619,16 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 		console.log("Esta es la lista del envio:",envio_box);
 
+	}
+
+	calculateTotal(){
+		var subT = 0;
+		console.log("Esta es la lista del envio:",this.shoppingCart.length);
+		for(let i in this.shoppingCart){
+			subT = subT+(this.shoppingCart[i].price2 * this.box_json.box_arts_cant[i]);
+	
+		}
+		this.total=subT;
 	}
 
 

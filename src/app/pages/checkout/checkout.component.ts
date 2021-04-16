@@ -18,7 +18,7 @@ import { BoxesModel } from '../../models/boxes.model';
 
 import * as Cookies from 'js-cookie';
 
-import { Md5 } from 'md5-typescript';
+import { Md5 } from 'md5-typescript'; 
 
 declare var jQuery:any;
 declare var $:any;
@@ -767,9 +767,9 @@ export class CheckoutComponent implements OnInit {
 						.subscribe(resp=>{
 							
 							if(resp["name"] != ""){
-
+ 
 								/*=============================================
-								Separamos la comisión del Marketplace y el pago a la tienda del precio total de cada producto
+						 		Separamos la comisión del Marketplace y el pago a la tienda del precio total de cada producto 
 								=============================================*/	
 
 								let commission = 0;
@@ -818,10 +818,10 @@ export class CheckoutComponent implements OnInit {
 						})
 
 
-					})
+					}) 
 
 					/*=============================================
-					Preguntamos cuando haya finalizado el proceso de guardar todo en la base de datos
+					Preguntamos cuando haya finalizado el proceso de guardar todo en la base de datos 
 					=============================================*/	
 
 					if(totalRender == this.shoppingCart.length){
@@ -911,7 +911,7 @@ export class CheckoutComponent implements OnInit {
 			Listado de tarjetas de crédito
 			=============================================*/	
 
-			//https://www.mercadopago.com.co/developers/es/guides/payments/web-tokenize-checkout/testing/
+			//https://www.mercadopago.com.mx/developers/es/guides/payments/web-tokenize-checkout/testing/
 
 			/*=============================================
 			Sacar el botón de Payu en una alerta suave
@@ -967,14 +967,14 @@ export class CheckoutComponent implements OnInit {
 				Cookies.set("_p", description, {expires: 1});
 				Cookies.set("_e", email, {expires: 1});
 
-				window.open(`http://localhost/marketplace-sales/src/mercadopago/index.php?_x=${Md5.init(localTotalPrice)}`,
+				window.open(`https://localhost/marketplace-sales/src/mercadopago/index.php?_x=${Md5.init(localTotalPrice)}`,
 							"_blank",
-							"width=950,height=650,scrollbars=NO")
+							"width=950,height=650,scrollbars=NO") 
 
 			})
 
 			/*=============================================
-			Validar la compra de Mercado Pago
+			Validar la compra de Mercado Pago  
 			=============================================*/	
 
 			let count = 0;
@@ -1000,7 +1000,7 @@ export class CheckoutComponent implements OnInit {
 				// console.log("count", count);
 
 				/*=============================================
-				Validar la compra de Mercado Pago
+				Validar la compra de Mercado Pago 
 				=============================================*/	
 
 				if( Cookies.get('_i') != undefined && 

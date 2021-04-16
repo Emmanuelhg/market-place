@@ -28,12 +28,12 @@ if($sandbox){
 
 
 /*=============================================
-Petición a la API de Cambio de Moneda
+Petición a la API de Cambio de Moneda 
 =============================================*/
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://free.currconv.com/api/v7/convert?q=USD_MXN&compact=ultra&apiKey=7a9895a5bd6ab8e8d6c9",
+  CURLOPT_URL => "http://free.currconv.com/api/v7/convert?q=USD_MXN&compact=ultra&apiKey=dcb6748b6632cd353ac4",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -53,8 +53,8 @@ curl_close($curl);
 $jsonResponse = json_decode($response, true);
 
 /*=============================================
-Formulario de MercadoPago  mai, polycy bc  
-=============================================*/
+Formulario de MercadoPago  mai, polycy bc    
+=============================================*/ 
 
 if(isset($_GET["_x"]) && $_GET["_x"] == md5(base64_decode($_COOKIE["_x"]))){
 	
@@ -63,9 +63,9 @@ if(isset($_GET["_x"]) && $_GET["_x"] == md5(base64_decode($_COOKIE["_x"]))){
 
 	<div style="text-align:center; position:absolute; top:45vh; right:120px">
 
-	<form action="https://localhost/marketplace-sales/src/mercadopago/index.php" method="POST">
+	<form action="http://localhost/marketplace-sales/src/mercadopago/index.php" method="POST">
 	  <script
-	    src="http://www.mercadopago.com.co/integrations/v1/web-tokenize-checkout.js"
+	    src="https://www.mercadopago.com.mx/integrations/v1/web-tokenize-checkout.js"
 	    data-public-key="'.$public_key.'"
 	    data-button-label="Next"
 	    data-summary-product-label="'.$_COOKIE["_p"].'"
@@ -78,7 +78,7 @@ if(isset($_GET["_x"]) && $_GET["_x"] == md5(base64_decode($_COOKIE["_x"]))){
 </div>';
 
 }
-
+// data-transaction-amount="'.$jsonResponse["USD_MXN"]*base64_decode($_COOKIE["_x"]).'">
 /*=============================================
 Recibir la respuesta de Mercado Pago
 =============================================*/

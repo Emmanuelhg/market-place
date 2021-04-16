@@ -21,7 +21,7 @@ export class HomeShowcaseComponent implements OnInit {
 	SECTION_1_IMAGE_BUTTON = 1 ;
 	SECTION_1_ONLY_TEXT = 2;
 
-	SECTION_2_CARRUSEL = 3;
+	SECTION_2_CARRUSEL = 3; 
 
 	
 	SECTION_NO_EXIST=0;
@@ -29,9 +29,10 @@ export class HomeShowcaseComponent implements OnInit {
 	SECTION_MIDDLE = 200;
 	SECTION_RIGHT = 300;
 
-	SECTION_1 = 110;
-	SECTION_2 = 120;
-	SECTION_3 = 130;
+	SECTION_DOUBLE = 110;
+	SECTION_GRID = 120;
+	SECTION_SLIDER = 130;
+	SECTION_UNICO = 140;
 
 	/* Templates */
 
@@ -48,6 +49,8 @@ export class HomeShowcaseComponent implements OnInit {
 	divs_section_left_type=[];
 	divs_section_rigth_type=[];
 	divs_section_middle=[];
+	divs_sliders_urls=[];
+	divs_grids_urls=[];
 
    	constructor(private categoriesService: CategoriesService,
    		        private subCategoriesService: SubCategoriesService,
@@ -76,7 +79,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    		this.divs_name.push(section.name);
 	    		
 
-	    		if(section.type==this.SECTION_1){
+	    		if(section.type==this.SECTION_DOUBLE){
 
 	    			// console.log("el tipo es de tipo 1");
 	    			this.divs_visible.push(["block","none","none","none"]);
@@ -116,14 +119,42 @@ export class HomeShowcaseComponent implements OnInit {
 
 	    			}
 
+	    			this.divs_sliders_urls.push([]);
+	    			this.divs_grids_urls.push([]);
 	    		}
 	    		// console.log("el tipo es:",section.type);
 
-	    		if(section.type==this.SECTION_2){
+	    		if(section.type==this.SECTION_SLIDER){
+
 	    			this.divs_visible.push(["none","block","none","none"]);
 	    			this.divs_section_left_type.push(["none","none","none"]);
+	    			this.divs_section_rigth_type.push(["none","none","none"]);
+	    			var newArray=[];
+	    			let urls = section.section_middle.slider_urls;
+	    			console.log("Las urls:",urls);
+	    			for(let num in urls){
+	    				newArray.push(urls[num]);
+	    			}
+	    			this.divs_sliders_urls.push(newArray);
+	    			this.divs_grids_urls.push([]);
+	    			console.log("slider urls:",this.divs_sliders_urls);
+	    		}
 
-	    			console.log("divs:",this.SECTION_2);
+	    		if(section.type==this.SECTION_GRID){
+
+	    			this.divs_visible.push(["none","none","block","none"]);
+	    			this.divs_section_left_type.push(["none","none","none"]);
+	    			this.divs_section_rigth_type.push(["none","none","none"]);
+	    			this.divs_sliders_urls.push([]);
+
+	    			var newArray=[];
+	    			let urls = section.section_middle.grid_urls;
+	    			console.log("Las urls:",urls);
+	    			for(let num in urls){
+	    				newArray.push(urls[num]);
+	    			}
+	    			this.divs_grids_urls.push(newArray);
+	    			console.log("slider urls:",this.divs_grids_urls);
 	    		}
 
 	    	}
