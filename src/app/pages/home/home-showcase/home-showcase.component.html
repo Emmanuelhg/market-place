@@ -356,115 +356,41 @@ Section Gray
   Grid 
   ======================================-->
   <div style="display:{{divs_visible[i][2]}};">
-    <div class="div3" >
-      <div class="title_div3">
+      <div class="div3" >
+        <div class="title_div3">
 
-        <h3>{{div.section_middle.grid_title}}</h3>
+          <h3>{{div.section_middle.grid_title}}</h3>
 
-        <a href="{{div.section_middle.grid_title_link}}"
-        style="text-align: center;">
-          <p>{{div.section_middle.grid_description}}</p>
-        </a>
-
-      </div>
-
-      <div class="container">
-
-        <div class="row" style="display: flex; padding: 0px;">
-
-          <a  *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
-          class="img_insta col-lg-3 col-md-6 col-sm-12" href="{{div.section_middle.grid_links[ind]}}">
-
-            <img
-            src="{{divs_grids_urls[i][ind]}}"
-            style="width: 300px; height: 300px; object-fit: cover;" />
-            
+          <a href="{{div.section_middle.grid_title_link}}"
+          style="text-align: center;">
+            <p>{{div.section_middle.grid_description}}</p>
           </a>
 
         </div>
+
+        <div class="container" style="min-width:0px;">
+
+          <div class="row" style="display: flex; padding: 0px;">
+
+            <a  *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
+            class="img_insta col-lg-3 col-md-6 col-sm-12" href="{{div.section_middle.grid_links[ind]}}">
+
+              <img
+              src="{{divs_grids_urls[i][ind]}}"
+              style="width: 300px; height: 300px; object-fit: cover;" />
+              
+            </a>
+
+          </div>
+          
+        </div>
+          
         
-      </div>
-        
-      
+    </div>
+
   </div>
 
-</div>
-
-<div class="div-main2" >
-  <!-- style="height:px; width: 100%; display:{{divs_visible[i][2]}};" -->
-
-  <div class="div-title" style="margin-top:3%; width:100%; font-size:100%; height:px;margin-bottom: 3%;">
-      <h3 style="margin-top: 4%;text-align: center; font-size: 44px;">
-          CURATED & CRAFTED FOR YOU
-      </h3>
-      <p style="font-size: 100%;margin-top: 3%;text-align: center;">
-          Etre focuses on becoming your number one, go-to source for gifts. <br>
-          Whether you need something for a birthday, an anniversary, or any celebration,<br>
-          Etre will help you create the perfect gift through presentable, personal and<br>
-          easy-to-send boxes.
-      </p>
-  </div>
-  <div class="divs-imgs row" style="display: flex;width: 100%;height: px;padding: 0px;">
-      <div class="div_izquiedat col-lg-4 col-md-12 col-sm-12" 
-      style="margin-bottom: 3%;padding: 0px;text-align: center;display: 
-      inline-grid;width: 100%;font-size: 100%;">
-          <img  target="_top"  src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;" routerLink="/selecction-caja">
-          <h5 style="font-size: 100%; ">
-              Need a gift?
-          </h5>
-          <p style="font-size: 100%;">
-              Choose from a range of gifts for<br>
-              all tastes and occasions or<br>
-              personalize your own box.<br>
-          </p>
-      </div>
-      <div class="div_centrot col-lg-4 col-md-12 col-sm-12" 
-      style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
-          <img  routerLink="/" class="img_centro" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
-          <h5 style="font-size: 100%;">
-              Keep it personal
-          </h5>
-          <p style="font-size: 100%;">
-              We curate the best products<br>
-              so you can create the most<br>
-              personal gifts.
-          </p>
-      </div>
-      <div class="div_derechot col-lg-4 col-md-12 col-sm-12" 
-      style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
-          <img routerLink="/" class="img_derecha" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
-          <h5 style="font-size: 100%;">
-              We ́ll handle the rest
-          </h5>
-          <p style="font-size: 100%;">
-              We take your boxes, pack it to<br>
-              perfection, and send it straight<br>
-              to their doorstep.<br>
-          </p>
-      </div>
-      
-  </div> 
-</div>         
-<!-- 
-<div class="div3" >
-  <div class="title_div3">
-    <h3>FOLLOW US ALONG</h3>
-    <p>@SHOP_ETRE</p>
-  </div>
-  <div class="img_insta row">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-  </div>
-  <div class="img_insta row">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta1.png">
-    <img class="col-lg-3 col-md-6 col-sm-12" src="{{path}}img/products_etre/product_insta2.png">
-  </div>
-</div>
- -->
+</div> 
 <style>
      .div-section-container{
         background: red;

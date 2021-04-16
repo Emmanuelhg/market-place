@@ -6,7 +6,7 @@ import { OwlCarouselConfig,
 	     DinamicRating, 
 	     DinamicReviews, 
 	     DinamicPrice,
-	     Sweetalert } from '../../../functions';
+	     Sweetalert } from '../../../functions'; 
 
 import { ProductsService} from '../../../services/products.service';
 import { UsersService } from '../../../services/users.service';

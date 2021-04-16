@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb">
 
 	<!-- Imágen de banner  --> 
-	<div class="navImage">
+	<div class="navImage"> 
 	    <ul>
           <li>
             <img  src="{{img_slider}}" alt="">
@@ -22,7 +22,7 @@
 	    </ul>      
 	</div>
 
-    <h1 class="psd">Frequently asked questions</h1>
+    <h1 class="psd" style="color: {{color_slider_texto}};">Frequently asked questions</h1>
 
     <!-- Contenido -->
     <div class="contenido">
@@ -45,13 +45,13 @@
 	    	<p class="mostrar">
 	    		{{pregunta.question}} 
 	    		<!-- Where do you ship? -->
-	          <img class="iconp" src="{{path}}img/template/icon-abajo.png" (click)="fncVisibility(i)" >
+	          <img class="iconp" src="{{path}}img/icons/down.png" (click)="fncVisibility(i)" >
 	    	</p>
 		    	<div *ngIf="visibility_1[i]">
 					<p class="respuesta">
 						{{pregunta.answer}}
 						<!-- At this time, we only ship within Mexico. -->
-			          <img src="{{path}}img/template/icon-arriba.png"  href="javascript:void(0);" (click)="fncVisibility(i)">
+			          <img src="{{path}}img/icons/up.png"  href="javascript:void(0);" (click)="fncVisibility(i)">
 			        </p>
 				</div>
         </div>

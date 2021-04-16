@@ -287,11 +287,17 @@ export class SelecctionPasoTresComponent implements OnInit {
        
     })
   }
-  HyperLink(){
-    window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
+
+  HyperLink1(){
+    if(this.box_steps[0]){
+        window.open('/selecction-caja/'+this.id_to_box,'_self');
+    }
   }
-  HyperLinkStep1(){
-    window.open('/selecction-caja/','_self');
+
+  HyperLink2(){
+    if(this.box_steps[2]) {
+       window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
+    }
   }
   HyperLinkTow(){
     window.open('/done/'+this.id_to_box,'_self');

@@ -125,7 +125,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       }
 
     })
-
+ 
     this.subCategoriesService.getDataColor()
     .subscribe(resp=>{
       // console.log("respuesta:",resp);
@@ -479,13 +479,21 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.getData();
   } 
   
-  HyperLink(){
-    window.open('/selecction-caja','_self');
+  HyperLink1(){
+    if(this.box_steps[0]){
+        window.open('/selecction-caja','_self');
+    }
+  }
+
+  HyperLink2(){
+    if(this.box_steps[1]) {
+       window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
+    }
   }
 
   HyperLink3(){
     if(this.box_steps[2]) {
-       window.open('/selecction-paso-tres'+this.id_to_box,'_self');
+       window.open('/selecction-paso-tres/'+this.id_to_box,'_self');
     }
   }
 

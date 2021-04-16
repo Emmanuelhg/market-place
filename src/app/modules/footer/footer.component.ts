@@ -14,19 +14,39 @@ import { NegocioService } from '../../services/negocio.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
+ 
 	path:string = Path.url;
 	color:any[] = [];
 	colorCambio:any[] = [];
     render:boolean = true;
     letra:any[] = [];
     colorLetra:any[] = [];
+    negocio = null;
+    texto_1='';
+    texto_2='';
+    texto_3='';
+    texto_4='';
+    texto_5='';
+    color_footer='';
     // colo1= document.getElemntById("f2");
     //document.div.style.backgroundColor="#a4fc00";
 
 	constructor(private negocioService: NegocioService) { }
 
 	ngOnInit(): void {
+
+    this.negocioService.getData()
+    .subscribe(resp=>{
+      this.negocio = resp['personalization'];
+      this.texto_1 = this.negocio['title_footer_1'];
+      this.texto_2 = this.negocio['title_footer_2'];
+      this.texto_3= this.negocio['title_footer_3'];
+      this.texto_4 = this.negocio['title_footer_4'];
+      this.texto_5 = this.negocio['title_footer_5'];
+      this.color_footer= this.negocio[''];
+  
+    })
+
 
        
 		this.negocioService.getData()

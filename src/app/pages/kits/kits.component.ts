@@ -23,6 +23,7 @@ export class KitsComponent implements OnInit {
   img_slider3='';
   img_slider4='';
   img_slider5='';
+  color_texto_slider='';
 
   categories:any[] = [];
 
@@ -44,15 +45,16 @@ export class KitsComponent implements OnInit {
   	this.negocioService.getData()
     .subscribe(resp=>{
       this.negocio = resp['personalization'];
-      this.img_slider = this.negocio['slider_url_1'];
-      this.img_slider2 = this.negocio['slider_url_2'];
-      this.img_slider3= this.negocio['slider_url_3'];
-      this.img_slider4 = this.negocio['slider_url_4'];
-      this.img_slider5 = this.negocio['slider_url_5'];
+      this.img_slider = this.negocio['Collections_slider_url_1'];
+      this.img_slider2 = this.negocio['Collections_slider_url_2'];
+      this.img_slider3= this.negocio['Collections_slider_url_3'];
+      this.img_slider4 = this.negocio['Collections_slider_url_4'];
+      this.img_slider5 = this.negocio['Collections_slider_url_5'];
+      this.color_texto_slider= this.negocio['Collections_slider_text_color_1'];
   
     })
 
-    
+     
 
     this.categoriesService.getData()
 	.subscribe(resp => {	

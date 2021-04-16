@@ -23,8 +23,9 @@ export class HomeBannerComponent implements OnInit {
 	img_slider='';
 	img_slider2='';
 	img_slider3='';
-	img_slider4='';
+	img_slider4=''; 
 	img_slider5='';
+	icon="";
 
 	img_slider_array:string[] = [];
 	
@@ -41,6 +42,7 @@ export class HomeBannerComponent implements OnInit {
         	this.img_slider3= this.negocio['slider_url_3']
         	this.img_slider4 = this.negocio['slider_url_4']
         	this.img_slider5 = this.negocio['slider_url_5']
+        	this.icon = this.negocio['icon_cart']
         	// if(this.negocio['slider_url_2'] != "null"){ 
         	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
         	// } 

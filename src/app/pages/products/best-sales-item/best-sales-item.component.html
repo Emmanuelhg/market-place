@@ -1,5 +1,5 @@
 <!--=====================================
-Best Sale Items    
+Best Sale Items     
 ======================================--> 
 
 <div  
@@ -29,7 +29,7 @@ Best Sale Items
   <!--=====================================
   Productos col-md-12 col-sm-12
   ======================================--> 
-  <div class="container">
+  <div class="container" style="margin-left: 12%;">
 
     <div class="divimageness row">  
 
@@ -49,12 +49,13 @@ Best Sale Items
             data-target=".bd-example-modal-xl"
             src="{{product.image}}" alt="">
 
-            <img id="imgGalleryTow" 
+            <img *ngIf="product.gallery[1] != undefined"
+            id="imgGalleryTow" 
             style="width: 247px; height: 247px;position: 
             absolute;margin-top: -100%;" 
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
-            src="{{product.image2}}" alt="">
+            src="{{product.gallery[1]}}" alt="">
 
               <!-- (click)="detallesProducto(product)" -->
 
@@ -98,10 +99,16 @@ Best Sale Items
 
             <a title="Add to Whishlist"
             routerLink="/product/{{product.url}}">
-              {{product.name}}
+              <b>{{product.name}}</b>
             </a>
             
-            <div [innerHTML]="price[i][0]"></div>
+            <div style="display: none;" [innerHTML]="price[i][0]"></div>
+
+            <p class="">
+              <b>
+                $ {{product.price}}
+              </b>
+            </p>
             
           </div>
          

@@ -254,4 +254,22 @@ export class SelecctionCajaComponent implements OnInit {
 
   }
 
+  // HyperLink1(){
+  //   if(this.box_steps[0]){
+  //       window.open('/selecction-caja','_self');
+  //   }
+  // }
+
+  HyperLink2(){
+    if(this.box_steps[1]) {
+       window.open('/selecction-paso-dos/'+this.id_to_box,'_self');
+    }
+  }
+
+  HyperLink3(){
+    if(this.box_steps[2]) {
+       window.open('/selecction-paso-tres'+this.id_to_box,'_self');
+    }
+  }
+
 }
