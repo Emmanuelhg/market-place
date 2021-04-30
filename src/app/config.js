@@ -1,12 +1,54 @@
+let domain;
+let domain2;
+
+
+import { environment } from '../environments/environment';
+
+export let Path;
+export let Server;
+export let Email;
+
+if(environment.production){
+
+	domain = "https://shop-etre.com/"; // YOUR DOMAIN
+	domain2 = domain;
+
+
+}else{
+	domain = 'http://localhost:4200/';
+	domain2 = 'http://localhost:4200/src/';
+}
+
 /*=============================================
 Exportamos la ruta para tomar imágenes
 =============================================*/
-export let Path = {
+Path = {
 
-	url: 'http://localhost:4200/assets/'
+	url: domain+'assets/'
 
 	//Cuando necestiemos trabajar con certificado SSL (registro o ingreso con facebook)
 	// url: 'https://localhost:4200/assets/'
+
+}
+
+/*=============================================
+Exportamos el endPoint del servidor para administrar archivos
+=============================================*/
+
+Server = {
+
+	url: domain2+'assets/img/index.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c',
+	delete: domain2+'assets/img/delete.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c'
+}
+
+
+/*=============================================
+Exportamos el endPoint del servidor para enviar correos electrónicos
+=============================================*/
+
+Email = {
+
+	url: domain2+'assets/email/index.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c'
 
 }
 
@@ -109,25 +151,6 @@ export let ChangePassword = {
 }
 
 
-/*=============================================
-Exportamos el endPoint del servidor para administrar archivos
-=============================================*/
-
-export let Server = {
-
-	url:'http://localhost/marketplace-stores/src/assets/img/index.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c',
-	delete: 'http://localhost/marketplace-stores/src/assets/img/delete.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c'
-}
-
-/*=============================================
-Exportamos el endPoint del servidor para enviar correos electrónicos
-=============================================*/
-
-export let Email = {
-
-	url:'http://localhost/marketplace-sales/src/assets/email/index.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c'
-
-}
 
 /*=============================================
 Exportamos las credenciales de PAYU

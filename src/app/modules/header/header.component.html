@@ -1,28 +1,32 @@
 <header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true" 
 style="position: relative; z-index: 100%;"> 
 
-    <div class="header__content" >   
+    <div class="header__content fixed-top" style="padding: 0px;">   
 
-        <div style=" display: flex;">
+        <div style=" display: flex; margin-top:4%; margin-bottom: 2%;">
 
             <!--=====================================
-            Menús de Banner v
+            Menús de Banner 
             ======================================-->
 
-            <div style="display: flex; width: 40%;">
+            <div  style="display: flex; width: 40%; margin-top: 3%;">
 
-                <div style="margin-left: 10%; display: flex;">
+                <!--=====================================
+                Menús de Banner normal 
+                ======================================-->
+                <div class="ahorita_si_joven" >
+                    <div style="margin-left: 19%; display: flex;">
 
-                    <!-- Menú  HOME -->
-                    <div class="menu--product-categories">
+                        <!-- Menú  HOME -->
+                        <div class="menu--product-categories">
 
-                        <a  style="color: {{color_text_menu}};"  
-                        *ngFor="let negocio of color; let lastIndex = last" >    
-                            {{negocio.title_menu_1}}    
-                         {{ lastIndex ? callback() : ""}}
-                        </a>
-                            
-                            <div class="menu__content">
+                            <a  style="color: {{color_text_menu}};"  
+                            *ngFor="let negocio of color; let lastIndex = last" >    
+                                {{negocio.title_menu_1}}    
+                             {{ lastIndex ? callback() : ""}}
+                            </a>
+                                
+                            <div class="menu__content" style="display: none;">
 
                                 <ul class="menu--dropdown">
                                
@@ -36,23 +40,6 @@ style="position: relative; z-index: 100%;">
                                             <i class="{{category.icon}}"></i> {{category.name}}
                                         </a>
 
-                                        <!-- <div class="mega-menu">
-
-                                            <div 
-                                            *ngFor="let title of arrayTitleList[i]"
-                                            class="mega-menu__column">
-
-                                                <h4>{{title}}
-                                                    <span class="sub-toggle"></span>
-                                                </h4>
-
-                                                <ul class="mega-menu__list" [attr.titleList]="title">
-                                                  
-                                                </ul>
-
-                                            </div>
-                                            
-                                        </div>   -->
 
                                     {{ lastIndex ? callback() : "" }}
                                         
@@ -62,75 +49,62 @@ style="position: relative; z-index: 100%;">
 
                             </div>
 
-                    </div>
+                        </div>
 
 
-                    <!-- Menú  SHOP -->
-                    <div style="margin-left:50%;">
+                        <!-- Menú  SHOP -->
+                        <div style="margin-left:50%;">
 
-                        <div class="menu--product-categories">
+                            <div class="menu--product-categories">
 
-                            <a style="color: {{color_text_menu}};" 
-                            *ngFor="let negocio of color; let lastIndex = last">
-                                    {{negocio.title_menu_2}}    
-                                {{ lastIndex ? callback() : ""}}
-                            </a>
+                                <a style="color: {{color_text_menu}};" 
+                                *ngFor="let negocio of color; let lastIndex = last">
+                                        {{negocio.title_menu_2}}    
+                                    {{ lastIndex ? callback() : ""}}
+                                </a>
 
-                            <div class="menu__content">
+                                <div *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                class="menu__content">
 
-                                <ul class="menu--dropdown">
-                                   
-                                    <li class="menu-item-has-children has-mega-menu">
-                                            
-                                        <a routerLink="kits"target="_top">
-                                             Curated GIft Boxes
-                                        </a>
+                                    <ul class="menu--dropdown">
+                                       
+                                        <li class="menu-item-has-children has-mega-menu">
+                                                
+                                            <a routerLink="kits" target="_top">
+                                                Curated GIft Boxes
+                                            </a>
 
-                                        <a routerLink="selecction-caja" target="_top">
-                                             Curate your box
-                                        </a>
+                                            <a routerLink="selecction-caja" target="_top">
+                                                Curate your box
+                                            </a>
 
-                                       <!--  <a routerLink="#" target="_top">
-                                             Gift Cards
-                                        </a> -->
+                                            <a 
+                                            routerLink="products/{{category.url}}" target="_top">
+                                                For you
+                                            </a>
 
-                                       <!--  <div class="mega-menu">
-
-                                            <div class="mega-menu__column">
-
-                                                <h4>
-                                                    <span class="sub-toggle"></span>
-                                                </h4>
-
-                                                <ul class="mega-menu__list">
-                                                  
-                                                </ul>
-
-                                            </div>
-                                            
-                                        </div>  
-                                         -->
-                                    </li>
-                                     
-                                </ul>
+                                         
+                                        </li>
+                                         
+                                    </ul>
+                                     {{ lastIndex ? callback() : "" }}
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
 
+                        <!-- Menú ABOUT US -->
+                        <div style="margin-left:50%;">
 
-                    <!-- Menú ABOUT US -->
-                    <div style="margin-left:50%;">
+                            <div class="menu--product-categories">
 
-                        <div class="menu--product-categories">
-
-                            <a style="color: {{color_text_menu}};"
-                            *ngFor="let negocio of color; let lastIndex = last">
-                                    {{negocio.title_menu_3}} 
-                                {{ lastIndex ? callback() : ""}}
-                            </a>
+                                <a style="color: {{color_text_menu}};"
+                                *ngFor="let negocio of color; let lastIndex = last">
+                                        {{negocio.title_menu_3}} 
+                                    {{ lastIndex ? callback() : ""}}
+                                </a>
 
                                 <div class="menu__content">
 
@@ -154,18 +128,158 @@ style="position: relative; z-index: 100%;">
                                          
                                         </ul>
                                 </div>
-                        </div> 
+                            </div> 
+
+                        </div>
 
                     </div>
-
                 </div>
-                  
+
+                <!--=====================================
+                Menu Mobile Menú hamburguesa 
+                ======================================-->
+                <div class="ntn_xd" style="display: none; ">
+
+                    <div class="menu--product-categories" >
+                        
+                        <div style="margin-left: 5%;" class="ps-shop__filter-mb mt-4" id="filter-sidebar">
+                            <i class="icon-menu "></i>
+                        </div>
+
+                        <!--=====================================
+                        Lista de menús pantallas pequeñas
+                        ======================================-->
+                        <div class="ps-filter--sidebar">
+
+                            <!--=====================================
+                            Home
+                            ======================================-->
+
+                            <div class="ps-filter__header">
+                                <a style="color: {{color_text_menu}};"
+                                *ngFor="let negocio of color; let lastIndex = last">
+                                        {{negocio.title_menu_1}} 
+                                    {{ lastIndex ? callback() : ""}}
+                                </a>
+                                <a class="ps-btn--close ps-btn--no-boder" href="#"></a>
+                            </div>
+
+                            <div class="ps-filter__content">
+
+                                <aside class="widget widget_shop">
+
+                                    <ul class="ps-list--categories">
+                                       
+                                        <li 
+                                        *ngFor="let category of categories; let lastIndex = last"
+                                        class="current-menu-item menu-item-has-children">
+
+                                            <a routerLink="products/{{category.url}}"><strong>{{category.name}}</strong></a>
+
+                                            <span class="sub-toggle">
+                                                <i class="fa fa-angle-down"></i>
+                                            </span>
+
+                                            <ul class="sub-menu" [attr.category]="category.name">
+
+                                            </ul>
+
+                                        {{ lastIndex ? callback() : "" }}
+
+                                        </li>
+
+                                    </ul>
+
+                                </aside>   
+
+                            </div>
+
+                            <!--=====================================
+                            Shop
+                            ======================================-->
+                            <div class="ps-filter__header">
+                                <a style="color: {{color_text_menu}};"
+                                *ngFor="let negocio of color; let lastIndex = last">
+                                        {{negocio.title_menu_2}} 
+                                    {{ lastIndex ? callback() : ""}}
+                                </a>
+                            </div>
+
+                            <div class="ps-filter__content">
+
+                                <aside class="widget widget_shop">
+
+                                    <ul class="ps-list--categories">
+                                       
+                                        <li class="current-menu-item menu-item-has-children">
+
+                                            <a routerLink="kits"target="_top" style="margin-bottom: 3%;">
+                                                <strong>Curated GIft Boxes</strong> 
+                                            </a>
+
+                                            <a routerLink="selecction-caja" target="_top">
+                                                <strong>Curate your box</strong> 
+                                            </a>
+                                        
+                                        </li>
+
+                                    </ul>
+
+                                </aside>   
+
+                            </div>
+
+
+                            <!--=====================================
+                            About
+                            ======================================-->
+                            <div class="ps-filter__header">
+                                <a style="color: {{color_text_menu}};"
+                                *ngFor="let negocio of color; let lastIndex = last">
+                                        {{negocio.title_menu_3}} 
+                                    {{ lastIndex ? callback() : ""}}
+                                </a>
+                                
+                            </div>
+
+                            <div class="ps-filter__content">
+
+                                <aside class="widget widget_shop">
+
+                                    <ul class="ps-list--categories">
+                                       
+                                        <li class="current-menu-item menu-item-has-children">
+
+                                            <a routerLink="frequently-asked-questions" target="_top" style="margin-bottom: 3%;">
+                                                <strong>How it works</strong> 
+                                            </a>
+
+                                            <a routerLink="our-story" target="_top">
+                                                <strong>Our story</strong> 
+                                            </a>
+                                        
+                                        </li>
+
+                                    </ul>
+
+                                </aside>   
+
+                            </div>
+
+                        </div> 
+
+                               
+
+                    </div><!-- End menu-->
+                
+                </div>
+
             </div> 
 
             <!--=====================================
             Logo 
             ======================================-->
-            <div style="width: 20%;">
+            <div style="width: 20%;  margin-top: 2%;">
 
                 <div class="col-12">
 
@@ -183,7 +297,7 @@ style="position: relative; z-index: 100%;">
             Íconos de carrito y buscador
             ======================================-->
 
-            <div style="width: 40%;">
+            <div style="width: 40%;  margin-top: 3%;">
 
 
                 <!--=====================================
@@ -463,5 +577,35 @@ a.animated-button.thar-three:before {
         color: #000 !important;
         background: #000000; 
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+    }
+
+    .row{
+        margin: 0px;
+        padding: 0px;
+    }
+    .col-sm-12 {
+        margin: 0px;
+        padding: 0px;
+    }
+    .col-sm-6 {
+        padding: 0px;
+    }
+
+    @media screen and  (max-width: 768px) {
+        .ntn_xd{
+            display: block !important;
+        }
+        .ahorita_si_joven{
+            display: none !important;
+        }
+    }
+
+    @media screen and  (min-width: 768px) {
+        .ahorita_si_joven{
+            display: block !important;
+        }
+        .ntn_xd{
+            display: none !important;
+        }
     }
 </style>

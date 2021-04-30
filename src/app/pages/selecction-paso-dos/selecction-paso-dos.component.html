@@ -1,4 +1,4 @@
-<div class="ps-breadcrumb">
+<div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
   Barra de números
@@ -580,7 +580,6 @@
           <div style="text-align: center;align-items: center;">
 
             <div 
-            *ngIf="productsFull() == false && getvisibilityForAdd(porductos_detalles_name) == false"
             class="col text-center" style="display: flow-root;
             justify-content: center;
             align-items: center;">
@@ -595,47 +594,7 @@
 
             </div>  
 
-            <!-- BTN para agregar cantidad de productos -->
-            <div class="texto"
-            *ngIf="getvisibilityForAdd(porductos_detalles_name) == true && productsFull() == false">
-
-              <div  style="width: 100%; display: flex;">
-                <!-- BTN menos -->
-                <button style="width: 15%;"
-
-                (click)="modificadorCantidadProductos(-1, i,products)"
-                class="menos" type="button">-</button>
-
-                <div 
-                style="background: white;width: 70%; text-align: center;
-                 color:black; border: 1px solid black !important;"
-                 id="quantity"> 
-
-                    {{getNumArts(products)}} IN INBOX
-
-                </div>
-                <!-- BTN más -->
-                <button style="width: 15%;" 
-                (click)="modificadorCantidadProductos(1, i,products)"
-                class="mas" type="button">+</button>
-
-              </div>
-                
-            </div>
-
-            <!-- Botón long -->
-            <div 
-             *ngIf="productsFull() == true"
-              class="texto">
-
-                <a 
-                 style="cursor:pointer">
-                    Too large
-                </a>
-
-            </div>
-
-          </div>
+        </div>
 
         </div>
        

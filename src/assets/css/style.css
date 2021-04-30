@@ -15901,14 +15901,14 @@ input[type=number]
   background-color: transparent;
 }
 
-@media (max-width: 1199px) {
+/*@media (max-width: 1199px) {
   .header {
     display: none;
   }
   .header.header--mobile {
-    display: block;
+    display: none;
   }
-}
+}*/
 
 .header--standard .ps-block--user-header a:hover {
   color:ps-form--quick-search button;
@@ -16114,7 +16114,7 @@ input[type=number]
 
 @media (max-width: 1199px) {
   .header--standard {
-    display: none;
+    display: block;
   }
 }
 

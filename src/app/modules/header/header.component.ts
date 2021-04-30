@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
     List_favorite=[];
 
-   
+    icon="";
 
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit {
            this.negocio = resp['personalization'];
            this.img_logo = this.negocio['img_logo'];
            this.color_text_menu = this.negocio['color_text_menu'];
+           this.icon = this.negocio['icon_cart'];
            // console.log("resp es "+this.img_logo);
 
            for(i in resp){
