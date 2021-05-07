@@ -15,12 +15,12 @@ style="position: relative; z-index: 100%;">
                 Menús de Banner normal 
                 ======================================-->
                 <div class="ahorita_si_joven" >
-                    <div style="margin-left: 19%; display: flex;">
+                    <div style="margin-left: 20%; display: flex;">
 
                         <!-- Menú  HOME -->
                         <div class="menu--product-categories">
 
-                            <a  style="color: {{color_text_menu}};"  
+                            <a style="color: {{color_text_menu}};" href="#" 
                             *ngFor="let negocio of color; let lastIndex = last" >    
                                 {{negocio.title_menu_1}}    
                              {{ lastIndex ? callback() : ""}}
@@ -142,7 +142,7 @@ style="position: relative; z-index: 100%;">
 
                     <div class="menu--product-categories" >
                         
-                        <div style="margin-left: 5%;" class="ps-shop__filter-mb mt-4" id="filter-sidebar">
+                        <div style="margin-left: 100%;" class="ps-shop__filter-mb mt-4" id="filter-sidebar">
                             <i class="icon-menu "></i>
                         </div>
 
@@ -297,7 +297,7 @@ style="position: relative; z-index: 100%;">
             Íconos de carrito y buscador
             ======================================-->
 
-            <div style="width: 40%;  margin-top: 3%;">
+            <div class="mg-beta" style="width: 40%;  margin-top: 3%;">
 
 
                 <!--=====================================
@@ -608,4 +608,17 @@ a.animated-button.thar-three:before {
             display: none !important;
         }
     }
+
+
+    @media screen and  (max-width: 414px) {
+        .mg-beta  {
+            margin-left: -4% !important;
+        }
+
+
+    }
+
+
+    
+
 </style>

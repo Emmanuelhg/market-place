@@ -3,30 +3,27 @@
 Shopping Car 
 ======================================--> 
 
-<div> 
+<div  style="margin-top: 12%;"> 
     <!--=====================================
     Título del carrito 
     ======================================--> 
-    <div style="margin-left: -7%;">
+    <div style="margin-left: 3%;">
         <!--=====================================
         Breadcrumb
         ======================================-->  
 
-        <div class="ps-breadcrumb">
+        <div class="shop-heder">
 
-            <div class="container">
+            <ul class="breadcrumb" style="background-color: transparent;">
 
-                <ul class="breadcrumb">
+                <li><a routerLink="/">Home &nbsp; / &nbsp;</a></li>
 
-                    <li><a routerLink="/">Home</a></li>
+                <li>Shopping cart</li>
 
-                    <li>Shopping cart</li>
-
-                </ul>
-
-            </div>
+            </ul>
 
         </div>
+
 
     </div>
 
@@ -210,7 +207,7 @@ Shopping Car
                     <!--=====================================
                       Div para info de caja
                     ======================================-->
-                    <div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                    <div class="contenido col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
                         <h3>{{box_json.box_name}}</h3>
                         <p>matle black / Regular </p>
                         <div style="display: flex;">
@@ -537,3 +534,17 @@ Shopping Car
     </div> 
     
 </div>
+
+<style>
+    @media screen and  (max-width: 414px) {
+        .shop-heder  {
+            margin-top: 27% !important;
+        }
+    }
+    @media screen and  (max-width: 414px) {
+        .contenido  {
+            margin-left: 4% !important;
+        }
+    }
+    
+</style>

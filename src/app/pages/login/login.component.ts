@@ -161,21 +161,27 @@ export class LoginComponent implements OnInit {
    
     validate(input){
 
-      let pattern;
+	      let pattern;
 
-      if($(input).attr("name") == "password"){
+	      if($(input).attr("name") == "email"){
 
-        pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
-        
-      }
+	        pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	        
+	      }
 
-      if(!pattern.test(input.value)){
+	      if($(input).attr("name") == "password"){
 
-        $(input).parent().addClass('was-validated')
+	        pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
+	        
+	      }
 
-        input.value = "";
-      
-      }
+	      if(!pattern.test(input.value)){
+
+	        $(input).parent().addClass('was-validated')
+
+	        input.value = "";
+	      
+	      }
 
     }
 
@@ -275,7 +281,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("shopping-cart", "_top");
+								window.open("account", "_top");
 
 		      				}
 
@@ -305,25 +311,38 @@ export class LoginComponent implements OnInit {
 
     resetPassword(value){
 
-    	Sweetalert.fnc("loading", "Loading...", null)
+    	Sweetalert.fnc("loading", "Loading...", null);
 
-    	let body = {
+    	this.usersService.getFilterData("email", value)
+		.subscribe(resp=>{
 
-    		requestType: "PASSWORD_RESET",
-    		email: value
+			if(Object.keys(resp).length > 0){	
 
-    	}
+		    	let body = {
 
-    	this.usersService.sendPasswordResetEmailFnc(body)
-    	.subscribe(resp=>{
+		    		requestType: "PASSWORD_RESET",
+		    		email: value
 
-    		if(resp["email"] == value){
+		    	}
 
-    			Sweetalert.fnc("success", "Check your email to change the password", "login")
+		    	this.usersService.sendPasswordResetEmailFnc(body)
+		    	.subscribe(resp=>{
 
-    		}
+		    		if(resp["email"] == value){
 
-    	})
+		    			Sweetalert.fnc("success", "Check your email to change the password", "login")
+
+		    		}
+
+		    	})
+
+		    }else{
+
+				Sweetalert.fnc("error", "The email does not exist in our database", null)
+
+			}
+
+		})
 
     }
 
@@ -380,13 +399,13 @@ export class LoginComponent implements OnInit {
 
 		// Your web app's Firebase configuration
 		const firebaseConfig = {
-			apiKey: "api-key",
-			authDomain: "project-id.firebaseapp.com",
-			databaseURL: "https://project-id.firebaseio.com",
-			projectId: "project-id",
-			storageBucket: "project-id.appspot.com",
-			messagingSenderId: "sender-id",
-			appID: "app-id"
+	      	apiKey: "AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c",
+		    authDomain: "market-place-31cf1.firebaseapp.com",
+		    databaseURL: "https://market-place-31cf1.firebaseio.com",
+		    projectId: "market-place-31cf1",
+		    storageBucket: "market-place-31cf1.appspot.com",
+		    messagingSenderId: "734272715098",
+		    appId: "1:734272715098:web:ac4657457ac67f51e1db63"
 		}
 
 		// Initialize Firebase
@@ -474,7 +493,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("shopping-cart", "_top");
+								window.open("account", "_top");
 
 
 							})
@@ -520,13 +539,13 @@ export class LoginComponent implements OnInit {
 
 		// Your web app's Firebase configuration
 		const firebaseConfig = {
-			apiKey: "AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c",
-			authDomain: "project-id.firebaseapp.com",
-			databaseURL: "https://project-id.firebaseio.com",
-			projectId: "project-id",
-			storageBucket: "project-id.appspot.com",
-			messagingSenderId: "sender-id",
-			appID: "app-id"
+		    apiKey: "AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c",
+		    authDomain: "market-place-31cf1.firebaseapp.com",
+		    databaseURL: "https://market-place-31cf1.firebaseio.com",
+		    projectId: "market-place-31cf1",
+		    storageBucket: "market-place-31cf1.appspot.com",
+		    messagingSenderId: "734272715098",
+		    appId: "1:734272715098:web:ac4657457ac67f51e1db63"
 		}
 
 		// Initialize Firebase
@@ -613,7 +632,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("shopping-cart", "_top");
+								window.open("account", "_top");
 
 
 							})

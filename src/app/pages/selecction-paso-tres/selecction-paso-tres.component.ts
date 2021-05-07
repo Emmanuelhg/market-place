@@ -20,7 +20,7 @@ import { BoxesModel } from '../../models/boxes.model';
 import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
-
+ 
 
 declare var jQuery:any;
 declare var $:any;

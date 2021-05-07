@@ -17,7 +17,7 @@ export class HomeBannerComponent implements OnInit {
 	url:any[] = [];
 	render:boolean = true;
 	preload:boolean = false;
-
+ 
 	negocio = null;
 
 	img_slider='';

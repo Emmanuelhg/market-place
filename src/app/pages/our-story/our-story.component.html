@@ -1,46 +1,67 @@
 <div class="ps-breadcrumb">
 
-	<div class="navImage">
-	    <ul>
-	          <li>
-	            <img  src="{{img_slider}}" alt="">
-	          </li>
-	          <li >
-	            <img src="{{img_slider2}}" alt="">
-	          </li>
-	          <li >
-	            <img src="{{img_slider3}}" alt="">
-	          </li>
-	          <li >
-	            <img src="{{img_slider4}}" alt="">
-	          </li>
-	          <li >
-	            <img src="{{img_slider5}}" alt="">
-	          </li>
+	<!--=====================================
+  Slider 
+  ======================================-->
+  <div style="margin-top: -2%;" lass="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
 
-	    </ul>      
-	</div>
+    <ol class="carousel-indicators">
+      <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+      <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+      <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+      <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
+      <li data-slide-to="4" data-target="#carouselExampleIndicators"></li>
+    </ol>
 
-    <h1 class="psd" style="color: {{color_texto_slider}};">Behind Etre</h1>
+    <div class="carousel-inner">
 
-    <!-- Comtenido -->
+      <div *ngFor="let slidertCant of img_slider; let i = index;let isFirst = first"
+      class="carousel-item active"
+       [class]="{'active': isFirst}" >
 
-    <div class="contenido">
+        <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
 
-    	
-		    <p class="mostrar">Etre is a curated, gift business based in Monterrey, Mexico.
-			We specialize in creating custom, personalized gifts boxes for any occasion.</p>
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="animated bounceInRight" style="animation-delay: 1s;color: {{coloTextoSlider[i]}};">
+            {{textoSlider[i]}}
+          </h5>
+          <p class="animated bounceInRight" 
+          style="animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
+            <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
+          </p>
+        </div>
 
-			<p class="mostrar">Etre focuses on becoming your number one, go-to source for gifts.
-			Whether you need something for a birthday, an anniversary, or any celebration, Etre will
-			help you create the perfect gift through presentable, personal and easy-to-send boxes.</p>
-
-			<p class="mostrar">Etre’s mission is to help people create stronger relationships through personal gifts.
-			People can create their own personalized, custom, curated box or choose from a set of
-			pre-made themed boxes.  </p>  		
-  
+      </div>
 
     </div>
+
+    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+      <span aria-hidden="true" class="carousel-control-prev-icon"></span> 
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+      <span aria-hidden="true" class="carousel-control-next-icon"></span> 
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+
+  <!-- Comtenido --> 
+  <div class="contenido">
+
+    <p class="mostrar">Etre is a curated, gift business based in Monterrey, Mexico.
+		We specialize in creating custom, personalized gifts boxes for any occasion.</p>
+
+		<p class="mostrar">Etre focuses on becoming your number one, go-to source for gifts.
+		Whether you need something for a birthday, an anniversary, or any celebration, Etre will
+		help you create the perfect gift through presentable, personal and easy-to-send boxes.</p>
+
+		<p class="mostrar">Etre’s mission is to help people create stronger relationships through personal gifts.
+		People can create their own personalized, custom, curated box or choose from a set of
+		pre-made themed boxes.  </p>  		
+
+  </div>
 
 
 </div>
@@ -109,26 +130,104 @@
     100% {margin-left: -300%;}
   }
 
-   .psd{
-	   	color: white;
-	    text-align: center;
-	   	margin-top: -27%;
-	   	margin-bottom: 29%
-    }
-  	/*Contenido*/ 
+ .psd{
+   	color: white;
+    text-align: center;
+   	margin-top: -27%;
+   	margin-bottom: 29%
+  }
+	/*Contenido*/ 
 
-  	.contenido{
-      margin-top: 42%;
-    	margin-left: 6%;
-    	margin-right: 3%;
-      height: px;
-      margin-bottom: 4%;
-    }
+	.contenido{
+    margin-top: 42%;
+  	margin-left: 6%;
+  	margin-right: 3%;
+    height: px;
+    margin-bottom: 4%;
+  }
 
-     .mostrar{
-      font-size: 24px;
-      margin-bottom: 4%;
-      margin-top: 4%;
+   .mostrar{
+    font-size: 24px;
+    margin-bottom: 4%;
+    margin-top: 4%;
+  }
+  /*Carrusel*/
+  .carousel-item {
+    height: 100vh;
+    min-height: 300px;
+  }
+  .carousel-caption {
+    bottom: 220px;
+  }
+  .carousel-caption h5 {
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    font-family: merienda;
+  }
+  .carousel-caption p {
+    width: 30%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+    font-family: poppins;
+  }
+  .carousel-caption a {
+    text-transform: uppercase;
+    /*background: #262626;*/
+    padding: 10px 30px;
+    display: inline-block;
+    /*color: #fff;*/
+    margin-top: 3px;
+  }
+  .navbar-nav a {
+    font-family: poppins;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .navbar-light .navbar-brand {
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #fff;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    color: #fff;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+  .nav-link {
+    padding: .2rem 1rem;
+  }
+  .nav-link.active, .nav-link:focus {
+    color: #fff;
+  }
+  .navbar-toggler {
+    padding: 1px 5px;
+    font-size: 18px;
+    line-height: 0.3;
+    background: #fff;
+  }
+  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff;
+  }
+  .w-100 {
+    height: 100vh;
+  }
+  @media only screen and (max-width: 767px) {
+    .navbar-nav.ml-auto {
+      background: rgba(0, 0, 0, 0.5);
     }
-
+    .navbar-nav a {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  } 
  </style>

@@ -4,7 +4,7 @@ import { OwlCarouselConfig, Rating } from '../../../functions';
 
 declare var jQuery:any;
 declare var $:any; 
-
+ 
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
 import { ProductsService } from '../../../services/products.service';
@@ -16,7 +16,7 @@ import { NegocioService } from '../../../services/negocio.service';
   styleUrls: ['./home-showcase.component.css'] 
 })
 export class HomeShowcaseComponent implements OnInit {
-
+ 
 	SECTION_1_ONLY_IMAGE = 0;
 	SECTION_1_IMAGE_BUTTON = 1 ;
 	SECTION_1_ONLY_TEXT = 2;
