@@ -12,6 +12,8 @@
         width: 24.33%;
         position: relative;
         text-align: center;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800; 
     }
     .progressbar a:before{
         content: counter(step);
@@ -42,26 +44,26 @@
 
     .progressbar a.active{
     	display: block;
-        color: #C4AE9D;
+        color:  #6a6a6a;
     }
     .progressbar a.active:before{
-    	background-color: #C4AE9D;
-        border-color:#C4AE9D;
+    	background-color:  #6a6a6a;
+        border-color: #6a6a6a;
     }
     .progressbar a.active + a:after{
-        background-color: #C4AE9D;
+        background-color:  #6a6a6a;
     }
     /*Clase súper active */
     .progressbar a.superActive{
         display: block;
-        color:#C4AE9D;
+        color: #6a6a6a;
     }
     .progressbar a.superActive:before{
-        background-color:#C4AE9D;
-        border-color:#C4AE9D;
+        background-color: #6a6a6a;
+        border-color: #6a6a6a;
     }
     .progressbar a.superActive + a:after{
-        background-color: #C4AE9D;
+        background-color:  #6a6a6a;
     }
     
     /*Imáges*/ 
@@ -435,9 +437,11 @@ a.animated-button.thar-three:before {
         <div style="text-align: center; 
          justify-content: center; margin-bottom: 160px;">
 
-            <p class="parrafo">Step 1 of 3</p>
+            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; color: #6a6a6a;" class="parrafo">Step 1 of 3</p>
 
-            <h2><b>CHOOSE YOUR BOX</b></h2>
+            <h2 style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;"><b>CHOOSE YOUR BOX</b></h2>
 
         </div>
     	
@@ -479,6 +483,8 @@ a.animated-button.thar-three:before {
     	<div class="imagecontainer" style="margin-bottom: 15%;">
 
     	    <a 
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;"
         	[ngModel]="boxes"
         	(click)="fncNoCaja()"
         	class="btn btn-sm animated-button thar-three">

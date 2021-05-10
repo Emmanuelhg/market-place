@@ -34,7 +34,9 @@ Section Gray
           transform: translate(0%, 40%);">
 
             <h3 style="text-align: {{div.section_left.txt_title_alignment}};
-            font-size: 30px;
+            font-size: 30px; 
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;
             color: {{div.section_left.txt_title_color}};">
               {{div.section_left.txt_title}}
             </h3>
@@ -42,7 +44,9 @@ Section Gray
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
-            font-size: 108%;          
+            font-size: 108%;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600;          
             color: {{div.section_left.txt_description_color}}; 
             padding-right:{{div.section_left.txt_padd_der}};
             padding-left: {{div.section_left.txt_padd_izq}};
@@ -60,6 +64,8 @@ Section Gray
               width: 40%;
               margin-left: 30%;
               height: 100%;
+              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 600; 
               border-color: {{div.section_left.txt_button_border_color}};
               border-radius: {{div.section_left.txt_button_border_radius}};
               border-width: {{div.section_left.txt_button_border_width}};
@@ -97,6 +103,8 @@ Section Gray
             color: {{div.section_left.txt_button_color_text}};
             width: 40%;
             height: 100%;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; 
             border-color: {{div.section_left.txt_button_border_color}};
             border-radius: {{div.section_left.txt_button_border_radius}} ;
             border-width: {{div.section_left.txt_button_border_width}};
@@ -127,6 +135,8 @@ Section Gray
             width: 40%;
             height: 50px;
             top: 50%;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; 
             border-color: {{div.section_left.img_button_border_color}};
             border-radius: {{div.section_left.img_button_border_radius}};
             border-width: {{div.section_left.img_button_border_width}};
@@ -166,6 +176,8 @@ Section Gray
           <div class="tex_home" style="width: 100%;
           height:px;
           margin-top: ;
+          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-weight: 600; 
           padding-left: 40px;
           padding-right:20px;
           position: absolute;
@@ -173,6 +185,8 @@ Section Gray
 
             <h3 style="text-align: {{div.section_right.txt_title_alignment}};
             font-size: 30px;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800; 
             color: {{div.section_right.txt_title_color}};">
               {{div.section_right.txt_title}}
             </h3>
@@ -181,6 +195,8 @@ Section Gray
             text-align: {{div.section_right.txt_description_alignment}};
             margin-top: 11%;
             font-size: 108%;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; 
             color:black; 
             padding-right:{{div.section_right.txt_padd_der}};
             padding-left: {{div.section_right.txt_padd_izq}};
@@ -198,6 +214,8 @@ Section Gray
               width: 40%;
               margin-left: 30%;
               height: 100%;
+              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 600; 
               border-color: {{div.section_right.txt_button_border_color}};
               border-radius: {{div.section_right.txt_button_border_radius}} ;
               border-width: {{div.section_right.txt_button_border_width}};
@@ -236,6 +254,8 @@ Section Gray
             color:  {{div.section_right.img_button_text_color}};
             width: 40%;
             height: 100%;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; 
             border-color: {{div.section_right.img_button_border_color}};
             border-radius: {{div.section_right.img_button_border_radius}} ;
             border-width: {{div.section_right.img_button_border_width}};
@@ -264,7 +284,8 @@ Section Gray
             background-color: {{div.section_right.img_button_color}};
             color: {{div.section_right.img_button_text_color}};
             width: 40%;
-     
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600; 
             height: 50px;
             top: 50%;
             border-color: {{div.section_right.img_button_border_color}};
@@ -322,12 +343,17 @@ Section Gray
      
               <h4  
               style="font-size: 30px; margin-top: 10px; color: white;
-              margin-right: 20px; margin-left: 20px; margin-bottom: 30px;">
+              margin-right: 20px; margin-left: 20px; margin-bottom: 30px;
+              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 800; ">
                 {{div.section_middle.slider_textos[ind]}}
                 <!-- 20 percent discount -->
               </h4> 
               
-              <a class="btn btn-sm animated-button thar-three" href="{{div.section_middle.slider_links[ind]}}">
+              <a style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 600;" 
+              class="btn btn-sm animated-button thar-three" 
+              href="{{div.section_middle.slider_links[ind]}}">
                 {{div.section_middle.slider_textos_botones[ind]}}
               </a>
 
@@ -357,10 +383,13 @@ Section Gray
     <div class="div3" >
       <div class="title_div3">
 
-        <h3>{{div.section_middle.grid_title}}</h3>
+        <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;" >{{div.section_middle.grid_title}}</h3>
 
         <a href="{{div.section_middle.grid_title_link}}"
-        style="text-align: center;">
+        style="text-align: center;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 600;">
           <p>{{div.section_middle.grid_description}}</p>
         </a>
 
@@ -395,10 +424,14 @@ Section Gray
     <!-- style="height:px; width: 100%; display:{{divs_visible[i][2]}};" -->
 
     <div class="div-title" style="margin-top:3%; width:100%; font-size:100%; height:px;margin-bottom: 3%;">
-        <h3 style="margin-top: 4%;text-align: center; font-size: 44px;">
+        <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800; margin-top: 4%;text-align: center; 
+        font-size: 44px;">
             CURATED & CRAFTED FOR YOU
         </h3>
-        <p style="font-size: 100%;margin-top: 3%;text-align: center;">
+        <p style=" font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 600;
+        font-size: 100%;margin-top: 3%;text-align: center;">
             Etre focuses on becoming your number one, go-to source for gifts. <br>
             Whether you need something for a birthday, an anniversary, or any celebration,<br>
             Etre will help you create the perfect gift through presentable, personal and<br>
@@ -410,10 +443,13 @@ Section Gray
         style="margin-bottom: 3%;padding: 0px;text-align: center;display: 
         inline-grid;width: 100%;font-size: 100%;">
             <img  target="_top"  src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;" routerLink="/selecction-caja">
-            <h5 style="font-size: 100%; ">
+            <h5 style="font-size: 100%; 
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
                 Need a gift?
             </h5>
-            <p style="font-size: 100%;">
+            <p style="font-size: 100%; font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600;">
                 Choose from a range of gifts for<br>
                 all tastes and occasions or<br>
                 personalize your own box.<br>
@@ -422,10 +458,12 @@ Section Gray
         <div class="div_centrot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
             <img  routerLink="/" class="img_centro" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
-            <h5 style="font-size: 100%;">
+            <h5 style="font-size: 100%;font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
                 Keep it personal
             </h5>
-            <p style="font-size: 100%;">
+            <p style="font-size: 100%;font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600;">
                 We curate the best products<br>
                 so you can create the most<br>
                 personal gifts.
@@ -434,10 +472,12 @@ Section Gray
         <div class="div_derechot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
             <img routerLink="/" class="img_derecha" src="{{path}}img/products_etre/home.png" style="margin-bottom: 4%;width: 100%;">
-            <h5 style="font-size: 100%;">
+            <h5 style="font-size: 100%;font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
                 We ́ll handle the rest
             </h5>
-            <p style="font-size: 100%;">
+            <p style="font-size: 100%;font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 600;">
                 We take your boxes, pack it to<br>
                 perfection, and send it straight<br>
                 to their doorstep.<br>

@@ -215,11 +215,11 @@
                 <div class="div-price-new">
 
                   <p style="
-                   height: 70px; 
+                   height: 60px; 
                    display: flex;
                    justify-content: center;
                    align-items: center;">
-                    <b style="width: 120px;"> BOX SUBTOTAL: ${{subTotal}}</b>
+                    <b style="width: px;"> BOX SUBTOTAL: ${{subTotal}}</b>
                   </p>
 
                   <a 
@@ -1269,7 +1269,8 @@
     width: 50%
 }
 .select-active-caja {
-    background-color:  rgb(196, 174, 157);
+    background-color:#dddddd;
+    /*background:  #fcfcfc;*/
 }
 
 .tex_product{
@@ -1446,11 +1447,12 @@
 }
 
 .div_et{
-    height: 11%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    float: bottom;
+  margin-top: 5%;
+  height: 11%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  float: bottom;
 }
 
 .div_ed{
@@ -1461,8 +1463,10 @@
     display: flex;
 }
 .div_edh{
-    height: 11%;
-    display: flex;
+  margin-top: 2%;
+  height: 11%;
+  display: flex;
+  margin-bottom: 1%;
 }
 .div_er{
     /*border-bottom:1px solid #dee2e6!important; */
@@ -1593,14 +1597,14 @@ margin-top: 5%;
 }
 .progressbar a.active{
     display: block;
-    color: #C4AE9D;
+    color: #6a6a6a;
 }
 .progressbar a.active:before{
-    background-color: #C4AE9D;
-    border-color:#C4AE9D;
+    background-color: #6a6a6a;
+    border-color:#6a6a6a;
 }
 .progressbar a.active + a:after{
-    background-color: #C4AE9D;
+    background-color: #6a6a6a;
 }
 
 /*Clase súper active */
@@ -1620,14 +1624,14 @@ margin-top: 5%;
 
 .progressbar a.active{
     display: block;
-    color: #F0B27A;
+    color:  #6a6a6a;
 }
 .progressbar a.active:before{
-    background-color: #F0B27A;
-    border-color:#F0B27A;
+    background-color:  #6a6a6a;
+    border-color: #6a6a6a;
 }
 .progressbar a.active + a:after{
-    background-color:#F0B27A;
+    background-color: #6a6a6a;
 }
  /*Clase súper active */
 .progressbar a.superActive{
@@ -1863,7 +1867,7 @@ a.animated-button.thar-three:before {
     z-index: -1;
     content: '';
     color: #000 !important;
-    background: #C4AE9D; 
+    background: #6a6a6a; 
     transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
 }
 
@@ -1903,12 +1907,15 @@ display: flex;
  .div-img-new{
     /*width: 65%;*/
     height: px;
-    border: 1px solid #dee2e6!important;
+    border-left: 1px solid #dddddd !important;
+    border-right: 1px solid #dddddd !important;
+    border-bottom: 1px solid #dddddd !important;
  }
  .div-info-new{   
     /*width: 35%;*/
     height: px;
-    border: 1px solid #dee2e6!important;
+    border-right: 1px solid #dddddd !important;
+    border-bottom: 1px solid #dddddd !important;
  }
  .div-title-new{
     text-align: center;
@@ -1929,6 +1936,8 @@ display: flex;
     justify-content: center;
     align-items: center;
     display: flow-root;
+    padding-top: 3%;
+    padding-bottom: 4%;
     /*display: flex;*/
  }
  .img-new-product {
