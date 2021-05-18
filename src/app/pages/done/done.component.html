@@ -1,4 +1,4 @@
-<div style="width: 100%; height: px;">
+<div style="width: 100%;margin-top: 15%; height: px;">
     
     <!-- Barra de números -->  
 	<div class="contrainer">
@@ -15,7 +15,8 @@
 
 
    	 <!-- Descripción  -->
-     <div class="imagecontainer"> <p class="parrafo">DONE!</p><br></div>
+     <div class="" style="justify-content:center;width: 100%;
+     font-family:'Neue Haas Grotesk Text Pro';"> <p class="parrafo">DONE!</p><br></div>
    	 <div class="imagecontainer"> <h2><b>CURATING YOUR BOX</b><br><br><br></h2></div>
    	 <br>
 
@@ -26,6 +27,8 @@
 	  *ngIf="!preload"> 
 		<div style="margin-bottom: 20%;">
 		   <h2 style="width: 176px; margin-left: 4%;
+		    font-family:'Neue Haas Grotesk Text Pro'; 
+        	font-weight: 800;
 		    border-top: 1px solid black !important;">
 				Your Cart
 			</h2>
@@ -44,45 +47,58 @@
 				  Div para info de caja
 				 ======================================-->
 				<div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
-					<h3>BUILD A BOXFOX</h3>
-					<p>matle black / Regular </p>
+					<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			font-weight: 800;">BUILD A BOXFOX</h3>
+					<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			font-weight: 800;">matle black / Regular </p>
 					<div style="display: flex;">
 						<p>
-							<b>To:</b>
+							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			        font-weight: 800;">To:</b>
 						</p>&nbsp;
-						<p> 
+						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           				font-weight: 800;"> 
 							{{boxes.box_deliver_to}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
-							<b>From:</b>	
+							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			        font-weight: 800;">From:</b>	
 						</p>&nbsp;
-						<p > 
+						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			    font-weight: 800;"> 
 							{{boxes.box_deliver_from}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
-							<b>Message:</b>
+							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           					font-weight: 800;">Message:</b>
 						</p>&nbsp;
-						<p > 
+						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           				font-weight: 800;"> 
 							{{boxes.box_deliver_message}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
-							<b>Card:</b>
+							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           					font-weight: 800;">Card:</b>
 						</p>&nbsp;
-						<p> hol</p>
+						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           				font-weight: 800;"> hol</p>
 					</div>
 					<div>
 						<p>
-							<b>Gift Box Contentens:</b>
+							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           					font-weight: 800;">Gift Box Contentens:</b>
 						</p>
 
-						<p *ngFor="let box_arts of products; let lastIndex = last">
-							{{boxes.box_arts_cant}} {{box_arts.name}}
+						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+           				font-weight: 800;"
+						*ngFor="let box_arts of products; let lastIndex = last">
+							{{box_arts.name}}
 						</p>
 					</div>
 					
@@ -95,7 +111,8 @@
 					<div class="col-4" style="margin: 1%;">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b>Price</b></p>
+								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           			 			font-weight: 800;">Price</b></p>
 							</li>
 							<li style="margin-top: 50%;">
 								<!-- $345 -->
@@ -107,7 +124,8 @@
 					<div class="col-4">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b>Quantity</b></p>
+								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           							font-weight: 800;">Quantity</b></p>
 							</li>
 							<li style="margin-top: 50%;">
 								<div class="quantity">
@@ -122,7 +140,8 @@
 					<div class="col-4">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b>Total</b></p>
+								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+           							font-weight: 800;">Total</b></p>
 							</li>
 							<li style="margin-top: 50%;">
 								${{boxes.box_subtotal}}
@@ -155,7 +174,9 @@
 		<div class="Checkout">
     	  <a 
     	  (click)="HyperLink()"	
-    	  class="btn btn-sm animated-button thar-three">Checkout</a>
+    	  class="btn btn-sm animated-button thar-three" 
+    	  style="font-family:'Neue Haas Grotesk Text Pro'; 
+   		  font-weight: 800;">Checkout</a>
 		</div>
 	</div> 
 
@@ -366,81 +387,86 @@ a.animated-button.thar-three:before {
 		padding-right: 0px !important;
 	}
 	.contrainer{
-	width: 100%;
-	display:block;  
+		width: 100%;
+		display:block;  
 	}
 
 	.progressbar{
 	counter-reset: step;
 	}
 	.progressbar a{
-	list-style-type: none;
-	float: left;
-	width: 24.33%;
-	position: relative;
-	text-align: center;
+		list-style-type: none;
+		float: left;
+		width: 24.33%;
+		position: relative;
+		text-align: center;
+		font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
 	}
 	.progressbar a:before{
-	content: counter(step);
-	counter-increment:step;
-	width: 30px;
-	height: 30px;
-	line-height: 27px;
-	border: 1px solid #ddd;
-	display: block;
-	text-align: center;
-	margin: 0 auto 100px auto;
-	border-radius: 50px;
-	background-color: white;
+		content: counter(step);
+		counter-increment:step;
+		width: 30px;
+		height: 30px;
+		line-height: 27px;
+		border: 1px solid #ddd;
+		display: block;
+		text-align: center;
+		margin: 0 auto 100px auto;
+		border-radius: 50px;
+		background-color: white;
 	}    
 	.progressbar a:after{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 1px;
-	background-color: #ddd;
-	top: 15px;
-	left: -50%;
-	z-index: -1;
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background-color: #ddd;
+		top: 15px;
+		left: -50%;
+		z-index: -1;
 	}
 	.progressbar a:first-child:after{
-	content: none;
+		content: none;
 	}
 	.progressbar a.active{
-	display: block;
-	color: #C4AE9D;
+		display: block;
+		color:#6a6a6a;
 	}
 	.progressbar a.active:before{
-	background-color: #C4AE9D;
-	border-color:#C4AE9D;
+		background-color:#6a6a6a;
+		border-color: #6a6a6a;
 	}
 	.progressbar a.active + a:after{
-	background-color: #C4AE9D;
+		background-color:#6a6a6a;
 	}
 
 	/*Progressbar before*/
 
 	.progressbar a.activetwo{
 	display: block;
-	color: #F0B27A;
+	color: #6a6a6a;
 	}
 	.progressbar a.activetwo:before{
-	background-color: #F0B27A;
-	border-color:#F0B27A;
+	background-color: #6a6a6a;
+	border-color:#6a6a6a;
 	}
 	.progressbar a.activetwo + a:after{
-	background-color:#F0B27A;
+	background-color:#6a6a6a;
 	}
 	/*Caja de productos*/
 
 	.imagecontainer{
-	display: flex;
-	justify-content:center;
-	width: 100%
+		display: flex;
+		justify-content:center;
+		width: 100%
+		font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
 	}
 	.parrafo{
-	 margin-top:155px;
-	 font-size: 3.4rem;
+		text-align: center;
+		margin-top:155px;
+		font-size: 3.4rem;
 	}
 
 	/*Clase súper active */

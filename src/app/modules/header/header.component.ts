@@ -7,6 +7,7 @@ import { SubCategoriesService } from '../../services/sub-categories.service';
 import { ProductsService } from '../../services/products.service';
 import { UsersService } from '../../services/users.service';
 import { NegocioService } from '../../services/negocio.service';
+import { EmailService } from '../../services/email.service';
 
 import { Router } from '@angular/router';
 
@@ -50,16 +51,22 @@ export class HeaderComponent implements OnInit {
     List_favorite=[];
 
     icon="";
+    postId;
 
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
 		        private productsService: ProductsService,
 		        private usersService: UsersService,
 		        private negocioService: NegocioService,
+		        private emailService: EmailService,
 		        private router:Router) { }
 
 	ngOnInit(): void {
-
+		// this.emailService.getInfo()
+		// .subscribe(data => {
+	 //       console.log("la data es:", data); 
+	 //    })
+	    
 
 		// Llamar los nuevos colores y texto
 

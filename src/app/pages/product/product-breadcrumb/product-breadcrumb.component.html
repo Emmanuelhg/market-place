@@ -1,20 +1,38 @@
  <!--=====================================
-Breadcrumb
+Breadcrumb 
 ======================================-->  
 
-<div style="padding: 0px; margin-top:10%;">
+<div id="breadcrumb-t" style="padding: 0px; margin-top:10%;">
 
     <div style="margin-left: -1%;">
 
         <ul class="breadcrumb" style="background-color: transparent;">
 
-            <li><a routerLink="/">Home &nbsp; / &nbsp; </a></li>
+            <li>
+            	<a routerLink="/" 
+            	style="font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 800;">
+                	Home &nbsp; / &nbsp; 
+            	</a>
+            </li>
 	
 			<!-- https://angular.io/api/core/PipeTransform -->
-            <li>{{breadcrumb | titlecase}}</li>
+            <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
+                {{breadcrumb | titlecase}}
+            </li>
 
         </ul>
 
     </div>
 
 </div>
+
+<style>
+    @media screen and  (max-width: 540px) {
+      #breadcrumb-t{
+        margin-top: 26% !important;
+      }
+    }
+  
+</style>

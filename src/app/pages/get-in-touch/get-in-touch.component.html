@@ -1,13 +1,19 @@
-<div class="ps-breadcrumb">
+<div class="ps-breadcrumb" style="margin-top: 10%;">
     
     <div class="contenedor">
         <!-- Título de la página -->
     	<div class="titulo"> 
-   			<p class="titulo_p"><b>GET IN TOUCH</b></p>
+   			<p class="titulo_p">
+                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 800;"> 
+                    GET IN TOUCH
+                </b>
+            </p>
     	</div>
        <!-- Texto complementario -->
     	<div class="contenido">
-    		<p>
+    		<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
     			For questions, please reach out to shop-etre@gmail.com or<br>
 	    		our phone number +528119177715. We're committed to excel-<br>
 	    		lent customer service, so you'll hear back from us within 24<br>
@@ -17,15 +23,18 @@
     	</div>
         <!-- Formulario ABOUT -->
         <div class="about">
-        	<input class="input_er" type="" name="nombre" placeholder="Name">  
-        	<input class="input_er" type="" name="email" placeholder="Email"> 
-        	<input class="input_er" type="" name="phone_number" placeholder="Phone Number">   
+        	<input class="input_er" type="" name="nombre" placeholder="Name" id="nombre">  
+        	<input class="input_er" type="" name="email" placeholder="Email" id="email"> 
+        	<input class="input_er" type="" name="phone_number" placeholder="Phone Number" id="phone">   
 
-        	<textarea class="divmessaget" name="Enter your card message here. 120 characters" rows="12" placeholder="Enter your card message here. 120 characters">         	
+        	<textarea style="border:3px solid #dddddd !important; font-family:'Neue Haas Grotesk Text Pro';"
+            class="divmessaget" id="message" id="message" 
+            name="Enter your card message here. 120 characters" rows="12"  cols="30">   	
             </textarea>
 
             <div class="boon">
-            	 <a class="botn_netx">SEND</a>
+            	<a class="btn btn-sm animated-button thar-three"
+                (click)="enviar()">SEND</a>
             </div>
 	
         </div>	
@@ -34,6 +43,10 @@
 
 </div>
 <style>
+    .boon {
+        margin-bottom: 17%;
+        margin-left: 75%;
+    }
     .contenedor{
         height: px;
         margin-bottom: 2%;
@@ -43,7 +56,9 @@
     }
 
     .titulo_p {
-	   font-size: 29px;	
+	   font-size: 29px;
+       font-family:'Neue Haas Grotesk Text Pro'; 
+       font-weight: 800;	
     }
     .contenido{
       text-align: center;
@@ -56,23 +71,24 @@
     	width: 100%;
     }
     .input_er{
+        border:3px solid #dddddd !important;
     	margin-right: 4%;
 		margin-left: 4%;
         margin-top: 4%;
         color: #666;
-		box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+		/*box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;*/
 		width: 92%;
 		padding: 2%;
 	    box-sizing: border-box;
     }
 
 	.divmessaget{
-		box-shadow: 0 0px 0px rgba(229, 103, 23, 0.075)inset, 0 0 0px;
+		/*box-shadow: 0 0px 0px rgba(229, 103, 23, 0.075)inset, 0 0 0px;*/
 		margin-top: 4%;
 		width: 92%;
 		margin-left: 4%;
 	}
-	.botn_netx{
+	/*.botn_netx{
  		background-color: black;
  		margin: px;
  		color: white;
@@ -83,7 +99,116 @@
 	    display: flex;
 	    margin-left: 68%;
 	    margin-top: 3%;
- 	}   
+ 	}*/ 
+    textarea {
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+        color: #666;
+    }
+
+    /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+    a.animated-button.thar-three {
+        font-size: inherit;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-top: 93px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        border: 2px solid black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        /*color: #000 !important;*/
+        color: white !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #000000; 
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+    }  
 
 </style>
 

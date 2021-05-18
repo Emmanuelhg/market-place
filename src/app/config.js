@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 
 export let Path;
 export let Server;
-export let Email;
+export let Email; 
 
 if(environment.production){
 
@@ -46,7 +46,7 @@ Server = {
 Exportamos el endPoint del servidor para enviar correos electrónicos
 =============================================*/
 
-Email = {
+Email = { 
 
 	url: domain2+'assets/email/index.php?key=AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c'
 
@@ -59,6 +59,12 @@ export let Api = {
 
 	url: 'https://market-place-31cf1.firebaseio.com/' // YOUR FIREBASE ENDPOINT
 
+}
+
+export let Api_Tow = {
+
+	url: 'https://api.ijesusbarragan.com/mail/welcomeEmail/' // YOUR FIREBASE ENDPOINT 
+	// url: 'https://api.shop-etre.com/mail/prueba/'
 }
 
 /*=============================================

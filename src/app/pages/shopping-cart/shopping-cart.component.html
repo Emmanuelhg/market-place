@@ -16,9 +16,11 @@ Shopping Car
 
             <ul class="breadcrumb" style="background-color: transparent;">
 
-                <li><a routerLink="/">Home &nbsp; / &nbsp;</a></li>
+                <li><a routerLink="/" style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 800;">Home &nbsp; / &nbsp;</a></li>
 
-                <li>Shopping cart</li>
+                <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 800;">Shopping cart</li>
 
             </ul>
 
@@ -37,7 +39,8 @@ Shopping Car
        
             <div colspan="6" class="text-center">
 
-                <p>
+                <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 800;">
                     You haven't products in the shopping cart yet!
                 </p>
 
@@ -46,7 +49,9 @@ Shopping Car
         </div>
 
         <h2 style="width: 176px; margin-left: 4%;
-        border-top: 1px solid black !important;">
+        border-top: 1px solid black !important;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;">
             Your Cart
         </h2>
 
@@ -81,12 +86,13 @@ Shopping Car
                 ======================================-->
 
                 <div *ngIf="product.inbox == false"
-                class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                class="product-cart-p col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
                     <h3 style="font-size: 19px"> 
 
-                        <a  href="product/{{product.url}}">
-                            <b>{{product.name}}</b> 
+                        <a href="product/{{product.url}}">
+                            <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;">{{product.name}}</b> 
                         </a>
 
                     </h3>
@@ -96,7 +102,7 @@ Shopping Car
                      mwlConfirmationPopover
                      [popoverMessage]="popoverMessage"
                      placement="left"
-                     style="cursor:pointer" 
+                     style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
                      (confirm)="removeProduct(product.url, product.listDetails)">
                         REMOVE
                     </a>
@@ -107,13 +113,16 @@ Shopping Car
                 Div precio cantidad y total
                 ======================================-->
                 <div *ngIf="product.inbox == false"
-                class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                class="product-price-h col-lg-6 col-md-6 col-sm-12" 
+                style="padding: 0px; height: px; display: flex;">
                     <!-- Precio -->
                     <div class="col-4" style="margin: 1%;">
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
-                                <p><b>Price</b></p>
-                            </li>
+                                <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Price</b>
+                                </p>
+                            </li> 
                             <li style="margin-top: 50%;">
                                 
                                 $ {{product.price2}}
@@ -128,7 +137,9 @@ Shopping Car
                     <div class="col-4">
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
-                                <p><b>Quantity</b></p>
+                                <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Quantity</b>
+                                </p>
                             </li>
                             <li style="margin-top: 50%;">
 
@@ -157,7 +168,9 @@ Shopping Car
 
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
-                                <p><b>Total</b></p>
+                                <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Total</b>
+                                </p>
                             </li>
                             <!-- <li style="margin-top: 50%;">
 
@@ -208,53 +221,67 @@ Shopping Car
                       Div para info de caja
                     ======================================-->
                     <div class="contenido col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
-                        <h3>{{box_json.box_name}}</h3>
-                        <p>matle black / Regular </p>
+                        <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;">{{box_json.box_name}}</h3>
+                        <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;">matle black / Regular </p>
                         <div style="display: flex;">
                             <p>
-                                <b>To:</b>
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">To:</b>
                             </p>&nbsp;
-                            <p> 
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;"> 
                                 {{box_json.box_deliver_to}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
-                                <b>From:</b>    
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">From:</b>    
                             </p>&nbsp;
-                            <p > 
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;"> 
                                 {{box_json.box_deliver_from}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
-                                <b>Message:</b>
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">Message:</b>
                             </p>&nbsp;
-                            <p > 
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;"> 
                                 {{box_json.box_deliver_message}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
-                                <b>Card:</b>
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">Card:</b>
                             </p>&nbsp;
-                            <p>Nombre de carta</p>
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;">Nombre de carta</p>
                         </div>
                         <div>
                             <a
                             data-toggle="modal" 
                             data-target=".bd-example-modal-xl"
                             style="cursor: pointer;">
-                                <p><b>Add Address</b></p>   
+                                <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Add Address</b></p>   
                             </a>
 
                         </div>
                         <div>
                             <p>
-                                <b>Gift Box Contentens:</b>
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Gift Box Contentens:</b>
                             </p>
 
-                            <p *ngFor="let boxItem of boxArts; let ind = index; " style="display: flex;">
+                            <p *ngFor="let boxItem of boxArts; let ind = index; " 
+                            style="display: flex; font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">
                                 <img src="{{boxItem.image}}" style="width: 40px; height: 40px; margin-right: 4%;"> 
                                 {{boxItem.name}} X {{cantArray[ind]}}
                             </p>
@@ -287,7 +314,8 @@ Shopping Car
                     <!--=====================================
                     Div precio, cantidad y total
                     ======================================-->
-                    <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0px; height: px; display: flex;">
+                    <div class="product-price-h col-lg-6 col-md-6 col-sm-12" 
+                    style="padding: 0px; height: px; display: flex;">
                         <!-- Precio -->
                         <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div> -->
                         
@@ -295,9 +323,11 @@ Shopping Car
                             <!-- <p class="ps-product__price">$<span class="end-price">{{box_json.box_price}}</span></p> -->
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
-                                    <p><b>Price</b></p>
+                                    <p><b style="display: flex; font-family:'Neue Haas Grotesk Text Pro';
+                                    font-weight: 800;">Price</b></p>
                                 </li>
-                                <li style="margin-top: 50%;">
+                                <li style="margin-top: 50%;font-family:'Neue Haas Grotesk Text Pro';
+                                    font-weight: 800;">
                                     $ {{box_json.box_price}}
                                 </li>
 
@@ -308,7 +338,8 @@ Shopping Car
                         <div class="col-4">
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
-                                    <p><b>Quantity</b></p>
+                                    <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Quantity</b></p>
                                 </li>
                                 <li style="margin-top: 50%;">
 
@@ -335,9 +366,12 @@ Shopping Car
                         <div class="col-4">
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
-                                    <p><b>Total</b></p>
+                                    <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 800;">Total</b></p>
                                 </li>
-                                <li style="margin-top: 50%;">
+                                <li style="margin-top: 50%;
+                                font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     ${{box_json.box_subtotal}}
                                 </li>
                             </ul>
@@ -370,19 +404,25 @@ Shopping Car
         *ngIf="shoppingCart.length > 0"
         class="d-flex flex-row-reverse">
           <!-- <div [innerHTML]="totalP"></div>  -->
-          <h3 style="margin-right: 5%;">Sub Total $ {{total}}</h3>
+          <h3 style="margin-right: 5%;
+          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-weight: 800;">Sub Total $ {{total}}</h3>
                       
         </div>
 
-        <div class="ps-section__cart-actions">
+        <div class="" style="margin-bottom: 18%; margin-left: 4%; display: flex;">
 
-            <a class="ps-btn" routerLink="/">
+            <a class="btn btn-sm animated-button thar-three" routerLink="/" 
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
                 <i class="icon-arrow-left"></i> Back to Shop
             </a>
 
             <a 
             *ngIf="shoppingCart.length > 0"
-            class="ps-btn" href="checkout">
+            class="btn btn-sm animated-button thar-three" href="checkout"
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">
                 Proceed to checkout <i class="icon-arrow-right"></i> 
             </a>
 
@@ -415,7 +455,9 @@ Shopping Car
                     style="height:500px;">
                         <!-- Formulario para ingresar dirección  -->
                        <div class="modal-body">
-                        <p class="modal-tex">
+                        <p class="modal-tex" style="
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;">
                             Contact information
                         </p>
                         <input (change)="obtenerInput($event.target.value, 'email')" 
@@ -425,12 +467,18 @@ Shopping Car
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input">
                             <label class="form-check-label" for="exampleCheck1">      
-                                <p class="modal-tex">
+                                <p class="modal-tex"
+                                style="
+                                font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     Check me out                  
                                 </p>
                             </label>
                         </div>
-                        <p class="modal-tex">
+                        <p class="modal-tex"
+                        style="
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;">
                             Shipping address
                         </p>
                         <div style="margin-bottom: 1%;">
@@ -468,7 +516,9 @@ Shopping Car
                             (change)="fnfEnvio($event.target.value)"
                             style="height: 50px; font-size: 18px;">
 
-                                <option value="300" selected>Defaul shipment</option>
+                                <option value="300" selected style="
+                                font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">Defaul shipment</option>
                                
                                 <option *ngFor="let envio of anviosArray;let i = index; let lastIndex = last;"
                                 
@@ -501,7 +551,10 @@ Shopping Car
 
                             <div style="width: 70%;" class="shopping-product col-lg-6 col-md-4 col-sm-12">
 
-                                <a href="product/{{product.url}}">
+                                <a href="product/{{product.url}}" 
+                                style="
+                                font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     {{product.name}}
                                 </a>
 
@@ -509,7 +562,9 @@ Shopping Car
 
                             <div style="width: 10%;" class="col-lg-2 col-md-4 col-sm-12">
                                
-                                <a>
+                                <a style="
+                                font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     {{product.price2}}
                                 </a>
 
@@ -525,7 +580,10 @@ Shopping Car
           
           <div class="modal-footer">
             <button type="button" (click)="goIt()"
-            style="background: black; width: 107px; height: 45px;" class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
+            style="background: black; width: 107px; height: 45px;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;" 
+            class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
           </div>
         </div>
         
@@ -546,5 +604,121 @@ Shopping Car
             margin-left: 4% !important;
         }
     }
-    
+    /* Global Button Styles */
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 50%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:14px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+    a.animated-button.thar-three {
+        font-size: inherit;
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-top: 93px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        display: block;
+        /*position: absolute;*/
+        border: 2px solid black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        /*color: #000 !important;*/
+        color: white !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #000000; 
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+    }
+    @media screen and  (max-width: 414px) {
+      .product-cart-p{
+
+        text-align: center !important;
+
+      }
+    }
+    @media screen and  (max-width: 414px) {
+      .product-price-h{
+
+        margin-left: 7%;
+
+      }
+    }
+
 </style>

@@ -8,6 +8,8 @@ import { Capitalize, Sweetalert } from '../../functions';
 import { UsersModel } from '../../models/users.model';
 
 import { UsersService  } from '../../services/users.service';
+import { EmailService } from '../../services/email.service';
+
 
 declare var jQuery:any;
 declare var $:any;
@@ -21,7 +23,8 @@ export class RegisterComponent implements OnInit {
 
 	user: UsersModel;
 
-	constructor(private usersService: UsersService){ 
+	constructor(private usersService: UsersService,
+              private emailService: EmailService){ 
 
 		this.user = new UsersModel();
 	}
@@ -168,6 +171,13 @@ export class RegisterComponent implements OnInit {
      
             this.usersService.registerDatabase(this.user)
             .subscribe(resp=>{
+
+           
+              this.emailService.newUser( ""+this.user.username, ""+this.user.email)
+              .subscribe(data => {
+
+                
+              })
               
                Sweetalert.fnc("success", "Confirm your account in your email (check spam)", "login")
 
@@ -208,13 +218,13 @@ export class RegisterComponent implements OnInit {
 
      // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "api-key",
-      authDomain: "project-id.firebaseapp.com",
-      databaseURL: "https://project-id.firebaseio.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "sender-id",
-      appID: "app-id"
+      apiKey: "AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c",
+      authDomain: "market-place-31cf1.firebaseapp.com",
+      databaseURL: "https://market-place-31cf1.firebaseio.com",
+      projectId: "market-place-31cf1",
+      storageBucket: "market-place-31cf1.appspot.com",
+      messagingSenderId: "734272715098",
+      appId: "1:734272715098:web:ac4657457ac67f51e1db63"
     }
 
     // Initialize Firebase
@@ -316,13 +326,13 @@ export class RegisterComponent implements OnInit {
 
      // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "api-key",
-      authDomain: "project-id.firebaseapp.com",
-      databaseURL: "https://project-id.firebaseio.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "sender-id",
-      appID: "app-id"
+      apiKey: "AIzaSyCT1TFYrbUXA_h3ZovrSLP3hgN3MNP746c",
+      authDomain: "market-place-31cf1.firebaseapp.com",
+      databaseURL: "https://market-place-31cf1.firebaseio.com",
+      projectId: "market-place-31cf1",
+      storageBucket: "market-place-31cf1.appspot.com",
+      messagingSenderId: "734272715098",
+      appId: "1:734272715098:web:ac4657457ac67f51e1db63"
     }
 
     // Initialize Firebase

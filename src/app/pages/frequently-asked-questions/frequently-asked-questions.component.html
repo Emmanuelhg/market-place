@@ -51,28 +51,35 @@
   <!-- Contenido -->
   <div class="contenido">
        
-    <h3>How it woeks?</h3>
+    <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+    font-weight: 800; color: black;">How it woeks?</h3>
  
-        <p class="mostrar">
+      <p class="mostrar" style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800; color: black;">
 	       	Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
   			Keep it personal. We curate the best products so you can create the most personal gifts.
   			We ́ll handle the rest. We take your masterpiece, pack it to perfection, and send it straight to
   			their doorstep.
   		</p>
 
-  		<h3>SHIPPING</h3>
+  		<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 800; color:black;">SHIPPING</h3>
 
 
        
        <!-- Pregunta y resúesta  -->
        <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
-	    	<p class="mostrar">
+	    	<p class="mostrar" 
+        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;color:black;">
 	    		{{pregunta.question}} 
 	    		<!-- Where do you ship? -->
 	          <img class="iconp" src="{{path}}img/icons/down.png" (click)="fncVisibility(i)" >
 	    	</p>
 		    	<div *ngIf="visibility_1[i]">
-					<p class="respuesta">
+					<p class="respuesta" 
+          style="font-family:'Neue Haas Grotesk Text Pro'; 
+          font-weight: 800;color:black;">
 						{{pregunta.answer}}
 						<!-- At this time, we only ship within Mexico. -->
 			          <img src="{{path}}img/icons/up.png"  href="javascript:void(0);" (click)="fncVisibility(i)">

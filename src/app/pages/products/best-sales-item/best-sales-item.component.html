@@ -63,7 +63,7 @@ Best Sale Items
       *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
       class="col-lg-4 col-md-4 col-sm-6">
 
-        <div class="ps-product__thumbnail" id="contenedorTow">
+        <div class="ps-product__thumbnail" id="contenedorTow" style="margin-bottom: 12%;">
           
           <a style=" position: relative;
           display: inline-block;
@@ -85,14 +85,14 @@ Best Sale Items
 
               <!-- (click)="detallesProducto(product)" -->
 
-              <style>
-                #imgGalleryTow{
-                  display: none;
-                }
-                #contenedorTow:hover #imgGalleryTow{
-                  display: block;
-                }
-              </style>
+            <style>
+              #imgGalleryTow{
+                display: none;
+              }
+              #contenedorTow:hover #imgGalleryTow{
+                display: block;
+              }
+            </style>
           </a>
           
           <!--  Lista de deseos  -->
@@ -111,11 +111,15 @@ Best Sale Items
           <!-- Boton para agregar productos al carrito -->
           <div class="texto" id="botonTow">
 
-            <a style="cursor:pointer" 
+            <a style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
             (click)="addShoppingCart(product,product.url, 1, [])" 
              data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                
+
+              <p style="font-size: 20px; font-family: Neue Haas Grotesk Text Pro;
+              font-weight: 800;margin-top: -2%; color: #353535;">
                 Add to cart
+              </p>   
+                
             </a>
 
           </div>
@@ -125,13 +129,19 @@ Best Sale Items
 
             <a title="Add to Whishlist"
             routerLink="/product/{{product.url}}">
-              <b>{{product.name}}</b>
+
+              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 800; color: #353535;">
+                {{product.name}}
+              </b>
+
             </a>
             
             <div style="display: none;" [innerHTML]="price[i][0]"></div>
 
             <p class="">
-              <b>
+              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                |font-weight: 800;">
                 $ {{product.price}}
               </b>
             </p>
@@ -200,7 +210,7 @@ class="d-flex justify-content-center d-lg-none">
     bottom: -50%;
   }
   .ps-product__thumbnail:hover .texto {
-    bottom: -60%;
+    bottom: -54%;
 
     background-color:ps-form--quick-search button;
     color: #ffffff;

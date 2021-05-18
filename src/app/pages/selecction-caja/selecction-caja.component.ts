@@ -14,7 +14,7 @@ import { BoxesModel } from '../../models/boxes.model';
 import { NegocioService } from '../../services/negocio.service';
 
 import { Sweetalert } from '../../functions';
-
+ 
 @Component({
   selector: 'app-selecction-caja',
   templateUrl: './selecction-caja.component.html',

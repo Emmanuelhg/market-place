@@ -1,5 +1,5 @@
 <div 
-*ngIf="!preload"
+*ngIf="!preload" 
 class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
     
     <div style="display: flex; padding: 0px;" class="row">
@@ -14,118 +14,58 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 Gallery   
                 ======================================--> 
 
-                    <!-- <figure>
-
-                        <div class="ps-wrapper">
-
-                            <div class="ps-product__gallery" data-arrow="true">
-                                 
-                                    *ngFor="let p of product[0]"
-                                     *ngFor="let image of gallery[0]" 
-                                
-                                <div 
-                                *ngFor="let p of product; let i = index"
-                                class="item">
-                                    <a (click)="fncGallery(i)">
-                                        <img style="width: 100%; height: 500px;" src="{{p.gallery[img_showed_gallery]}}"
-                                        id="mainImg">
-                                    </a>
-
-                                 
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </figure> -->
-
+                <div 
+                id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    
                     <div 
-                    id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                        
-                        <div 
-                        *ngFor="let p of product; let i = index"
-                        class="carousel-item active">
-                          <img 
-                           class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p.image}}" alt="First slide" id="mainImg">
-                        </div>
-
-                        <div 
-                        *ngFor="let p of product[0].gallery; let i = index"
-                        class="carousel-item">
-                          <img 
-                          class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p}}" alt="First slide" id="mainImg">
-                        </div>
-                            
-                      </div>
-
-                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-
+                    *ngFor="let p of product; let i = index"
+                    class="carousel-item active">
+                      <img 
+                       class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p.image}}" alt="First slide" id="mainImg">
                     </div>
 
-
-                   <div class="thumb_img_list" style="text-align: center; ">
-
-                        <ul style="list-style: none; display: inline-block;
-                         width: 100px; cursor: pointer; display: flex;
-                         margin: 0.5px;"> 
-
-                            <li 
-                            *ngFor="let p of product[0].gallery; let i = index"
-                            style="display: inline-block; 
-                            width: 100px; 
-                            margin: 0.5px;">
-
-                                <img  src="{{p}}"
-                                id="thumb1">
-
-                            </li>
-
-                            <!-- <li style="display: inline-block; 
-                            width: 100px; 
-                            margin: 0.5px;">
-                                <img  src="{{path}}img/products_etre/prod2.png"
-                                id="thumb2">
-                            </li>
-
-                            <li style="display: inline-block; 
-                            width: 100px; 
-                            margin: 0.5px;">
-                                <img  src="{{path}}img/products_etre/prod3.png"
-                                id="thumb3">
-                            </li>
-
-                            <li style="display: inline-block; 
-                            width: 100px; 
-                            margin: 0.5px;">
-                                <img  src="{{path}}img/products_etre/prod4.png"
-                                id="thumb4">
-                            </li> -->
-
-                            
-                        </ul>
+                    <div 
+                    *ngFor="let p of product[0].gallery; let i = index"
+                    class="carousel-item">
+                      <img 
+                      class="d-block w-100" style="width: 100%; height: 600px; object-fit: cover;" src="{{p}}" alt="First slide" id="mainImg">
+                    </div>
                         
-                   </div>  
-<!-- 
-                    <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false" 
-                    style="display: none;">
-                        <div 
-                        *ngFor="let image of gallery[0]; let lastIndex = last; let i = index"
-                        class="item">
-                            <img src="{{product.gallery}}" alt="{{product[0].name}}">
+                  </div>
 
-                        {{ lastIndex ? callbackGallery(i) : ""}}
-                        </div>          
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
 
-                    </div> --> 
+                </div>
+
+
+                <div class="thumb_img_list" style="text-align: center; ">
+
+                    <ul style="list-style: none; display: inline-block;
+                     width: 100px; cursor: pointer; display: flex;
+                     margin: 0.5px;"> 
+
+                        <li 
+                        *ngFor="let p of product[0].gallery; let i = index"
+                        style="display: inline-block; 
+                        width: 100px; 
+                        margin: 0.5px;">
+
+                            <img  src="{{p}}"
+                            id="thumb1">
+
+                        </li>
+                        
+                    </ul>
+                    
+               </div>  
 
             </div>
 
@@ -149,7 +89,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 *ngFor="let p of product; let i = index"
                 class="ps-product__info">
 
-                    <h1 style="text-align: center;">{{p.name}}</h1>
+                    <h1 style="text-align: center;
+                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 800;">{{p.name}}</h1>
 
                     <div class="ps-product__meta">
 
@@ -160,7 +102,11 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                     <div class="ps-product__desc">
 
-                       <p (click)="fncVisibility(0)" style="cursor: pointer; text-align: center; font-size: 100%;">
+                       <p (click)="fncVisibility(0)" 
+                        style="cursor: pointer;
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;
+                        text-align: center; font-size: 100%;">
                             DESCRIPTION
                         </p>
                         <!--=====================================
@@ -173,7 +119,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                             
                             <ul>
                                 
-                                <li>
+                                <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     {{p.description}}
                                 </li>
 
@@ -185,7 +132,11 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                     <div class="ps-product__desc">
 
-                       <p (click)="fncVisibility(1)" style="cursor: pointer; text-align: center; font-size: 100%;">
+                       <p (click)="fncVisibility(1)"
+                        style="cursor: pointer; text-align: center; 
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;
+                        font-size: 100%;">
                             ICLUDES
                         </p>
                         <!--=====================================
@@ -198,7 +149,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                             
                             <ul>
                                 
-                                <li *ngFor="let sum of summary[i]">
+                                <li *ngFor="let sum of summary[i]"
+                                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     {{sum}}
                                 </li>
 
@@ -210,7 +163,11 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                     <div class="ps-product__desc">
 
-                       <p (click)="fncVisibility(2)" style="cursor: pointer; text-align: center; font-size: 100%;">
+                       <p (click)="fncVisibility(2)" 
+                        style="cursor: pointer; text-align: center;
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;
+                        font-size: 100%;">
                             THE DETAILS
                         </p>
                         <!--=====================================
@@ -223,7 +180,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                             
                             <ul>
                                 
-                                <li >
+                                <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     {{p.details}}
                                 </li>
 
@@ -239,7 +197,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         <figure style="text-align: center;">
 
                             <figcaption>
-                                <h3 style="text-align: center;">
+                                <h3 style="text-align: center;font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">
                                     Quantity
                                 </h3>
                             </figcaption>
@@ -269,7 +228,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                     *ngIf="p.category == compare ">
 
                         <div>
-                            <h3 style="text-align: center;">
+                            <h3 style="text-align: center;
+                            font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;">
                                 BOX COLOR
                             </h3>
                             <div class="row" style="display: flex;">
@@ -288,7 +249,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         <div class="row" style="display: flex; margin-top: 3%;">
 
                             <div class="col-6">
-                                <p>To</p>
+                                <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">To</p>
                                 <div class="input-group input-group-lg">
                                     <input  
                                       placeholder="To" 
@@ -299,7 +261,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                             </div>
                             
                             <div class="col-6">
-                                <p>From</p>
+                                <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 800;">From</p>
                                 <div class="input-group input-group-lg">
                                     <input  
                                     placeholder="From" 
@@ -312,7 +275,8 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         </div>
 
                         <div style="margin-top: 3%;">
-                            <p>Message</p>
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;">Message</p>
 
                             <textarea placeholder="Enter your card message here. 120 characters" 
                             id="to-message" rows="5" 
@@ -326,10 +290,11 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 
                     <div style="margin-bottom: 3%; margin-top: 3%;">
 
-                        <a class="new-boton" 
-                        style="cursor:pointer" 
+                        <a class="btn btn-sm animated-button thar-three"
+                        style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;" 
                         (click)="addShoppingCart(p.url, 1, [])">
-                            ADD TO CART $40.00
+                            ADD TO CART $ {{p.price}}
                         </a>
                         <!-- <a class="btn btn-sm animated-button thar-three "> -->
                             <!-- ADD TO CART $40.00 -->
@@ -362,7 +327,7 @@ class="d-flex justify-content-center">
 </div>
 
 <style>
-     .new-boton{
+    .new-boton{
         text-align: center;
         background: black;
         color:white;
@@ -370,106 +335,9 @@ class="d-flex justify-content-center">
         align-items: center;
         display: flow-root;
         /*display: flex;*/
-     }
+    }
     
-    /* Global Button Styles */
-    a.animated-button:link, a.animated-button:visited {
-        position: relative;
-        display: block;
-        margin: 30px auto 0;
-        padding: 14px 15px;
-        color: #fff;
-        font-size:14px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        overflow: hidden;
-        letter-spacing: .08em;
-        border-radius: 0;
-        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-        -webkit-transition: all 1s ease;
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        transition: all 1s ease;
-    }
-    a.animated-button:link:after, a.animated-button:visited:after {
-        content: "";
-        position: absolute;
-        height: 0%;
-        left: 50%;
-        top: 50%;
-        width: 50%;
-        z-index: -1;
-        -webkit-transition: all 0.75s ease 0s;
-        -moz-transition: all 0.75s ease 0s;
-        -o-transition: all 0.75s ease 0s;
-        transition: all 0.75s ease 0s;
-    }
-    a.animated-button:link:hover, a.animated-button:visited:hover {
-        color: #FFF;
-        text-shadow: none;
-    }
-    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
-        height: 50%;
-    }
-    a.animated-button:link, a.animated-button:visited {
-        position: relative;
-        display: block;
-        margin: 30px auto 0;
-        padding: 14px 15px;
-        color: #fff;
-        font-size:14px;
-        border-radius: 0;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        overflow: hidden;
-        letter-spacing: .08em;
-        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-        -webkit-transition: all 1s ease;
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        transition: all 1s ease;
-    }
-
-a.animated-button.thar-three {
-    color: #fff;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    border: 2px solid #F7CA18;
-    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-a.animated-button.thar-three:hover {
-    color: #000 !important;
-    background-color: transparent;
-    text-shadow: nthree;
-}
-a.animated-button.thar-three:hover:before {
-    left: 0%;
-    right: auto;
-    width: 100%;
-}
-a.animated-button.thar-three:before {
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    height: 100%;
-    width: 0px;
-    z-index: -1;
-    content: '';
-    color: #000 !important;
-    background: #F7CA18;
-    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-
-  
-    /* Global Button Styles */
+     /* Global Button Styles */
     a.animated-button:link, a.animated-button:visited {
         position: relative;
         display: block;
@@ -532,27 +400,25 @@ a.animated-button.thar-three:before {
     }
 
     a.animated-button.thar-three {
-        /*align-items: center;*/
         font-size: inherit;
-        width:100%;
-        height: px;
-        margin-top: px;
-        /*background-color: white;*/
-        /*color: black;*/
+        /*padding-left: 7%;*/
+        /*padding-right: 7%;*/
+        padding-top: 3%;
+        padding-bottom: 3%;
+        margin-top: 93px;
+        background-color: white;
+        color: black;
         cursor: pointer;
-        display: block;
-        position: absolute;
+        /*display: block;*/
+        display:flow-root;
+        /*position: absolute;*/
         border: 2px solid black;
-        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1); 0s;
-
-        background: black;
-        color:white;
-        justify-content: center;
-        align-items: center;
-        display: flow-root;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
     }
     a.animated-button.thar-three:hover {
-        color: #000 !important;
+        /*color: #000 !important;*/
+        color: white !important;
         background-color: transparent;
         text-shadow: nthree;
     }
@@ -571,9 +437,10 @@ a.animated-button.thar-three:before {
         z-index: -1;
         content: '';
         color: #000 !important;
-        background: #C4AE9D; 
+        background: #000000; 
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
     }
+   
 
 </style>
 

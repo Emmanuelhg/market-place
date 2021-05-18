@@ -12,6 +12,8 @@
         width: 24.33%;
         position: relative;
         text-align: center;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
     }
     .progressbar a:before{
         content: counter(step);
@@ -41,14 +43,14 @@
     }
     .progressbar a.active{
     	display: block;
-        color: #C4AE9D;
+        color: #6a6a6a;
     }
     .progressbar a.active:before{
-    	background-color: #C4AE9D;
-        border-color:#C4AE9D;
+    	background-color: #6a6a6a;
+        border-color:#6a6a6a;
     }
     .progressbar a.active + a:after{
-        background-color: #C4AE9D;
+        background-color: #6a6a6a;
     }
 
     /*Clase súper active */
@@ -84,6 +86,8 @@
     	display: flex;
     	justify-content:center;
     	width: 100%
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        /*font-weight: 800;*/
     }
 
     .image-style{
@@ -303,6 +307,7 @@ a.animated-button.thar-three:before {
 	}
 
 	.parrafo{
+        text-align: center;
 		 margin-top:155px;
 		 font-size: 3.4rem;
 
@@ -313,127 +318,140 @@ a.animated-button.thar-three:before {
     }
 
     .previu{ 
-          margin-top: 5%;
-          margin-left: 10%;
-          margin-bottom: 26%;
-    	}
+      margin-top: 5%;
+      margin-left: 10%;
+      margin-bottom: 26%;
+	}
     
-    	textarea {
-    		width: 100%;
-    		padding: 2%;
-    		box-sizing: border-box;
-    		color: #666;
-			box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
-    	}
-    	/*input{
-            width: 100%;
-    		padding: 2%;
-    	    box-sizing: border-box;
-    	}*/
-    	.btn_cart{
-   	 		width: 93%;
-   	 		height: 12%;
-   	 		margin-left: 2%;
-   	 		margin-top: -2%;
-   	 	}
-   	 	.botn_new{ 	
-   	 	    color: black; 		
-   	 		margin-top: 3%;
-   	 		padding-left: 28%;
-   	 		padding-right: 25%;
-   	 		height: 46px;
-   	 		justify-content: center;
-		    align-items: center;
-		    display: flex;
-		    border:2px solid;
- 		}
-    	.add{
-    		display: flex;
-    	}
-    	.add > p {
-    		margin-left: 2%;
-    	}
-   
-    	.characters{
-    		color: #666;
-    	}
-    	.des{
-    		margin-right: 45%;
-    	}
+	textarea {
+		width: 100%;
+		padding: 2%;
+		box-sizing: border-box;
+		color: #666;
+		box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+        border: 1px solid #dddddd !important;
+	}
+	/*input{
+        width: 100%;
+		padding: 2%;
+	    box-sizing: border-box;
+	}*/
+	.btn_cart{
+	 		width: 93%;
+	 		height: 12%;
+	 		margin-left: 2%;
+	 		margin-top: -2%;
+	 	}
+	 	.botn_new{ 
+        color: wheat;
+        background:black;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;	
+	 	    color: black; 		
+	 		margin-top: 3%;
+	 		padding-left: 28%;
+	 		padding-right: 25%;
+	 		height: 46px;
+	 		justify-content: center;
+	    align-items: center;
+	    display: flex;
+	    border:2px solid;
+		}
+	.add{
+		display: flex;
+	}
+	.add > p {
+		margin-left: 2%;
+	}
 
-    	.if{
-    	 display: flex;
-    	}
-    	.if > input{
-            color: #666;
-			box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
-    		width: 100%;
-    		padding: 2%;
-    	    box-sizing: border-box;
-    	}
-    	.din{
-    		display: flex;
-    	}
-    	.divcaja{
-    		background-color: black;
-    		position: relative;
-    		margin-left: 6%;
-    		width: 25%;
-    		height: 370px;
+	.characters{
+		color: #666;
+	}
+	.des{
+		margin-right: 45%;
+	}
 
-    	}
-    	.divcaja > img {
-           width: 100%;
-           height: 100%;
-    	}
-    	.divdestinos{
-    		width: 93%;
-    		height: 75px;
-    		margin-left: 2%;
-    	}
-        .divañaditr{
-        	margin-left: 2%;
-        	width: 93%;
-        }
-    	.info{
-            width:70%; 
-    	}
+	.if{
+	 display: flex;
+	}
+	.if > input{
+        color: #666;
+		box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+		width: 100%;
+		padding: 2%;
+	    box-sizing: border-box;
+	}
+	.din{
+		display: flex;
+	}
+	.divcaja{
+		background-color: black;
+		position: relative;
+		margin-left: 6%;
+		width: 25%;
+		height: 370px;
 
-    	.desti{
-    		margin-top:0%;
-    		margin-right:auto;
-    	}
-    	.desti2{
-    		margin:0%;
-    		margin-top: 0%;
-    		margin-left: 2%;
-    	}
-    	.destir{
-    		margin-left: 37%;
-            margin-top: 4%;
-    	}
-    	.divmessage{
-    		width: 93%;
-    		height: 224px;
-    		margin-left: 2%;
-    	}
-        .add-to-direcction{
-            margin-top: 3%;
-        }
-        .add-to-direcction-black{
-            background: black;
-            color:white;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            padding: 2%;
-        }
-        .div-img-ventana-emergente{ 
-            height: 600px;
-        }
+	}
+	.divcaja > img {
+       width: 100%;
+       height: 100%;
+	}
+	.divdestinos{
+		width: 93%;
+		height: 75px;
+		margin-left: 2%;
+	}
+    .divañaditr{
+    	margin-left: 2%;
+    	width: 93%;
+    }
+	.info{
+        width:70%; 
+	}
+
+	.desti{
+		margin-top:0%;
+		margin-right:auto;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
+	}
+	.desti2{
+		margin:0%;
+		margin-top: 0%;
+		margin-left: 2%;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
+	}
+	.destir{
+		margin-left: 37%;
+        margin-top: 4%;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
+	}
+	.divmessage{
+		width: 93%;
+		height: 224px;
+		margin-left: 2%;
+        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
+	}
+    .add-to-direcction{
+        margin-top: 3%;
+    }
+    .add-to-direcction-black{
+        background: black;
+        color:white;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        padding: 2%;
+    }
+    .div-img-ventana-emergente{ 
+        height: 600px;
+    }
 </style>
 
-<div class="ps-breadcrumb">
+<div class="ps-breadcrumb" style="margin-top: 12%;">
 
     <div 
     *ngIf="!preload"> 
@@ -452,7 +470,8 @@ a.animated-button.thar-three:before {
    	 </div><br> 
 
      <!-- Descripción  -->
-     <div class="imagecontainer"> <p class="parrafo"> Step 3 of 4 </p><br></div>
+     <div class="" style="justify-content:center;width: 100%;
+     font-family:'Neue Haas Grotesk Text Pro';"> <p class="parrafo"> Step 3 of 4 </p><br></div>
    	 <div class="imagecontainer"> <h2><b>WRITE YOUR MESSAGE</b><br><br><br></h2></div>
    	 <br>
 
@@ -465,29 +484,38 @@ a.animated-button.thar-three:before {
           <form id="formulario">
      		<div class="divdestinos">
      			<div class="if">
-	     			<p class="desti"><b>To</b></p>		
+	     			<p class="desti"><b style="font-family:'Neue Haas Grotesk Text Pro';">To</b></p>		
 	     			
-	     			<p class="des"><b>From</b></p>		
+	     			<p class="des"><b style="font-family:'Neue Haas Grotesk Text Pro';">From</b></p>		
 	     			<!-- <input class="desti2" type="" name=""> -->
      			</div>
 
      			<div class="if">
-     				<input  class="desti" type="tex" id="to-send">
-	     			<input class="desti2" type="tex" id="to-from">
+     				<input style="border:1px solid #dddddd !important;" 
+                    class="desti" type="tex" id="to-send">
+	     			<input style="border:1px solid #dddddd !important;"
+                     class="desti2" type="tex" id="to-from">
      			</div>
      		</div>
 
 	     	<div class="divmessage">
-	     		<p><b>Message</b></p>
+	     		<p><b style="font-family:'Neue Haas Grotesk Text Pro';">Message</b></p>
 
-	             <textarea name="Enter your card message here. 120 characters" id="to-message" rows="5" cols="30" id="to-message"></textarea>
+	            <textarea name="Enter your card message here. 120 characters" 
+                id="to-message" rows="5" cols="30" id="to-message"></textarea>
 
 	     	</div>
 	     	<div class="divañaditr">
-	     		<p class="characters">120 characters remaining</p>
+	     		<p class="characters" 
+                style="font-family:'Neue Haas Grotesk Text Pro'">
+                    120 characters remaining
+                </p>
 		     	    <div class="add">
 		     	    	<input type="checkbox" ng-model="model.card_blank" ng-checked="model.card_blank" >
-		     		    <p>click here and we'll send the card blank outside the box for you to write yourself!</p>
+		     		    <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 800;">
+                            click here and we'll send the card blank outside the box for you to write yourself!
+                        </p>
 		     	    </div> 
 		     	 
 	     	</div>
@@ -497,9 +525,13 @@ a.animated-button.thar-three:before {
                 id="guardar" 
                 (click)="HyperLinkTow()"
                 (click)="fncCarta()"
-                class="botn_new"
-                >
-                    ADD TO CART
+                class="botn_new">
+
+                    <p style="color: white; font-size: 21px;padding-top: 2%;
+                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 800;
+                    ">ADD TO CART</p>
+                    
                </a> 
                <!-- [routerLink]="['/done', id]" -->
 	     	</div>
@@ -521,7 +553,9 @@ a.animated-button.thar-three:before {
    	 <div class="previu">
 	   	 	<a routerLink="../selecction-paso-dos" 
             class="btn btn-sm animated-button thar-three"
-            (click)="fncPrevious()">PREVIOUS STEP</a>
+            (click)="fncPrevious()"
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 800;">PREVIOUS STEP</a>
 
 	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
 	 </div>

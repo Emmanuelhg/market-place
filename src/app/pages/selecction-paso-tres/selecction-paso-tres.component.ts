@@ -234,7 +234,7 @@ export class SelecctionPasoTresComponent implements OnInit {
     this.inputTo = (document.getElementById("to-send") as HTMLInputElement).value;
     this.inputFrom = (document.getElementById("to-from") as HTMLInputElement).value;
     this.inputMessage = (document.getElementById("to-message") as HTMLInputElement).value;
-
+ 
     console.log(this.inputTo);
     console.log(this.inputFrom);
     console.log(this.inputMessage);
