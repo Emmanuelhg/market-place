@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 declare var jQuery:any;
 declare var $:any;
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -281,7 +281,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account", "_top");
+								window.open("account/my-shopping", "_top");
 
 		      				}
 
@@ -493,7 +493,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account", "_top");
+								window.open("account/my-shopping", "_top");
 
 
 							})
@@ -632,7 +632,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account", "_top");
+								window.open("account/my-shopping", "_top");
 
 
 							})

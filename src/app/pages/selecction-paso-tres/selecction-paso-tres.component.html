@@ -1,5 +1,157 @@
- <style>
-	.contrainer{
+<div class="ps-breadcrumb" style="margin-top: 12%;">
+
+    <div 
+    *ngIf="!preload"> 
+
+	<!-- Barra de números --> 
+	<div class="contrainer">
+		<div>
+ 			<ul class="progressbar">
+     			<a class="active" (click)="HyperLink1()">Step 1</a>
+     			<a class="active" (click)="HyperLink2()">Step 2</a>
+         		<a class="active">Step 3</a>
+	        	<a >Done!</a>
+			</ul>
+			<br>
+   	 	</div><br>
+   	 </div><br> 
+
+    <!--=====================================
+    Descripción   
+    ======================================-->
+    <div class="container">
+        <div style="text-align: center; margin-top: 15%;
+        justify-content: center; margin-bottom: 14%;">
+
+          <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+          font-weight: 450; color: #6a6a6a;">
+            Step 3 of 4 
+          </h3>
+
+          <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
+          font-weight: 450; color: black;">
+            WRITE YOUR MESSAGE
+          </p>
+
+        </div>
+    </div>
+
+   	 <!-- Caja final -->
+   	 <div class="din">
+   	 	<div class="divcaja">
+     		<img src="{{path}}img/products_etre/carta.jpg" maxlength="30">
+     	</div>
+     	<div class="info">
+          <form id="formulario">
+     		<div class="divdestinos">
+     			<div class="if">
+	     			<p class="desti">
+                        <b style="font-family:'Neue Haas Grotesk Text Pro';
+                        font-size: 20px;font-weight: 20;">To</b>
+                    </p>		
+	     			
+	     			<p class="des">
+                        <b style="font-family:'Neue Haas Grotesk Text Pro';
+                        font-size: 20px;font-weight: 20;">From</b>
+                    </p>		
+	     			<!-- <input class="desti2" type="" name=""> -->
+     			</div>
+
+     			<div class="if">
+     				<input style="border:1px solid #dddddd !important;" 
+                    class="desti" type="tex" id="to-send">
+	     			<input style="border:1px solid #dddddd !important;"
+                     class="desti2" type="tex" id="to-from">
+     			</div>
+     		</div>
+
+	     	<div class="divmessage">
+	     		<p> 
+                    <b style="font-family:'Neue Haas Grotesk Text Pro';
+                    font-size: 20px;font-weight: 20;">Message</b>
+                </p>
+
+	            <textarea name="Enter your card message here. 120 characters" 
+                id="to-message" rows="5" cols="30" id="to-message"></textarea>
+
+	     	</div>
+	     	<div class="divañaditr">
+	     		<p class="characters" 
+                style="font-family:'Neue Haas Grotesk Text Pro';
+                font-size: 20px;font-weight: 20;">
+                    120 characters remaining
+                </p>
+		     	    <div class="add">
+		     	    	<input type="checkbox" ng-model="model.card_blank" ng-checked="model.card_blank" >
+		     		    <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-size: 20px;font-weight: 20;">
+                            click here and we'll send the card blank outside the box for you to write yourself!
+                        </p>
+		     	    </div> 
+		     	 
+	     	</div>
+	     	<div class="btn_cart">
+	     		<a 
+                style="cursor: pointer;" 
+                id="guardar" 
+                (click)="HyperLinkTow()"
+                (click)="fncCarta()"
+                class="botn_new">
+
+                    <p style="color: white;padding-top: 2%;
+                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-size: 20px;font-weight: 20;">
+                        ADD TO CART
+                    </p>
+                    
+               </a> 
+               <!-- [routerLink]="['/done', id]" -->
+	     	</div>
+
+            <!-- <div class="add-to-direcction">
+                <a class="add-to-direcction-black"
+                 data-toggle="modal" data-target=".bd-example-modal-xl">
+                    Add Address
+                </a>
+            </div>  -->
+ 		  </form>    
+     	</div>
+	     	
+	   	 
+   	 </div> <!-- Finaliza el armado de caja  -->
+
+     <!-- Boton previu -->
+
+   	 <div class="previu">
+        
+	   	 	<a routerLink="../selecction-paso-dos" 
+            class="btn btn-sm animated-button thar-three"
+            (click)="fncPrevious()"
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20;font-size: 15px;">  
+                PREVIOUS STEP
+            </a>
+
+	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
+	 </div>
+
+ </div>
+
+ <!--=====================================
+Preload
+======================================-->
+<div
+*ngIf="preload"
+class="d-flex justify-content-center">
+    
+    <div class="spinner-border text-muted my-5"></div>
+
+</div>   
+</div>	
+
+
+<style>
+    .contrainer{
         width: 100%;
         display:block;  
     } 
@@ -13,7 +165,8 @@
         position: relative;
         text-align: center;
         font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;
+        font-weight: 450;
+        font-size: 20px;
     }
     .progressbar a:before{
         content: counter(step);
@@ -24,7 +177,7 @@
         border: 1px solid #ddd;
         display: block;
         text-align: center;
-        margin: 0 auto 100px auto;
+        margin: 0 auto 50px auto;
         border-radius: 50px;
         background-color: white;
     }    
@@ -42,11 +195,11 @@
         content: none;
     }
     .progressbar a.active{
-    	display: block;
+        display: block;
         color: #6a6a6a;
     }
     .progressbar a.active:before{
-    	background-color: #6a6a6a;
+        background-color: #6a6a6a;
         border-color:#6a6a6a;
     }
     .progressbar a.active + a:after{
@@ -69,11 +222,11 @@
     /*Progressbar before*/
 
     .progressbar a.activetwo{
-    	display: block;
+        display: block;
         color: #F0B27A;
     }
     .progressbar a.activetwo:before{
-    	background-color: #F0B27A;
+        background-color: #F0B27A;
         border-color:#F0B27A;
     }
     .progressbar a.activetwo + a:after{
@@ -83,16 +236,16 @@
     /*Caja de productos*/
     
     .imagecontainer{
-    	display: flex;
-    	justify-content:center;
-    	width: 100%
+        display: flex;
+        justify-content:center;
+        width: 100%
         font-family:'Neue Haas Grotesk Text Pro'; 
         /*font-weight: 800;*/
     }
 
     .image-style{
-    	width: 49%;
-    	padding: 2px;
+        width: 49%;
+        padding: 2px;
     } 
 
     .image-style img{
@@ -100,15 +253,15 @@
     }
 
     #transition-image{
-    	position: absolute;
-    	top: 0px:
-    	left:0px;
-    	opacity: 0;
-    	transition: opacity 0.5s ease;
+        position: absolute;
+        top: 0px:
+        left:0px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
 
     }
     #transition-image:hover{
-    	opacity: 1;
+        opacity: 1;
     }
 
     /* Global Button Styles */
@@ -174,39 +327,39 @@
         transition: all 1s ease;
     }
 
-a.animated-button.thar-three {
-	color: #fff;
-	cursor: pointer;
-	display: block;
-	position: relative;
-	border: 2px solid #F7CA18;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-a.animated-button.thar-three:hover {
-	color: #000 !important;
-	background-color: transparent;
-	text-shadow: nthree;
-}
-a.animated-button.thar-three:hover:before {
-	left: 0%;
-	right: auto;
-	width: 100%;
-}
-a.animated-button.thar-three:before {
-	display: block;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 100%;
-	width: 0px;
-	z-index: -1;
-	content: '';
-	color: #000 !important;
-	background: black;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
+    a.animated-button.thar-three {
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        position: relative;
+        border: 2px solid #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
 
   
     /* Global Button Styles */
@@ -271,170 +424,168 @@ a.animated-button.thar-three:before {
         transition: all 1s ease;
     }
 
-	a.animated-button.thar-three {
-		 margin-top: 3px;
-	    background-color: white;
-		color: black;
-		cursor: pointer;
-		display: block;
-		position: absolute;
-		border: 2px solid black;
-		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-	0s;
-	}
-	a.animated-button.thar-three:hover {
-		color: white !important;
-		background-color: transparent;
-		text-shadow: nthree;
-	}
-	a.animated-button.thar-three:hover:before {
-		left: 0%;
-		right: auto;
-		width: 100%;
-	}
-	a.animated-button.thar-three:before {
-		display: block;
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		height: 100%;
-		width: 0px;
-		z-index: -1;
-		content: '';
-		color: white !important;
-		background: black; 
-		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
-	}
+    a.animated-button.thar-three {
+         margin-top: 3px;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        border: 2px solid black;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        color: white !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: white !important;
+        background: black; 
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
+    }
 
-	.parrafo{
-        text-align: center;
-		 margin-top:155px;
-		 font-size: 3.4rem;
+    .parrafo{
+        margin-top:155px;
+        font-size: 100%;
+    }
 
-	}
-
-	.images{
-   	display: flex;
+    .images{
+    display: flex;
     }
 
     .previu{ 
       margin-top: 5%;
       margin-left: 10%;
       margin-bottom: 26%;
-	}
+    }
     
-	textarea {
-		width: 100%;
-		padding: 2%;
-		box-sizing: border-box;
-		color: #666;
-		box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
-        border: 1px solid #dddddd !important;
-	}
-	/*input{
+    textarea {
         width: 100%;
-		padding: 2%;
-	    box-sizing: border-box;
-	}*/
-	.btn_cart{
-	 		width: 93%;
-	 		height: 12%;
-	 		margin-left: 2%;
-	 		margin-top: -2%;
-	 	}
-	 	.botn_new{ 
+        padding: 2%;
+        box-sizing: border-box;
+        color: #666;
+        box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+        border: 1px solid #dddddd !important;
+    }
+    /*input{
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+    }*/
+    .btn_cart{
+            width: 93%;
+            height: 12%;
+            margin-left: 2%;
+            margin-top: -2%;
+        }
+        .botn_new{ 
         color: wheat;
         background:black;
         font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;	
-	 	    color: black; 		
-	 		margin-top: 3%;
-	 		padding-left: 28%;
-	 		padding-right: 25%;
-	 		height: 46px;
-	 		justify-content: center;
-	    align-items: center;
-	    display: flex;
-	    border:2px solid;
-		}
-	.add{
-		display: flex;
-	}
-	.add > p {
-		margin-left: 2%;
-	}
+        font-weight: 800;   
+            color: black;       
+            margin-top: 3%;
+            padding-left: 28%;
+            padding-right: 25%;
+            height: 46px;
+            justify-content: center;
+        align-items: center;
+        display: flex;
+        border:2px solid;
+        }
+    .add{
+        display: flex;
+    }
+    .add > p {
+        margin-left: 2%;
+    }
 
-	.characters{
-		color: #666;
-	}
-	.des{
-		margin-right: 45%;
-	}
-
-	.if{
-	 display: flex;
-	}
-	.if > input{
+    .characters{
         color: #666;
-		box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
-		width: 100%;
-		padding: 2%;
-	    box-sizing: border-box;
-	}
-	.din{
-		display: flex;
-	}
-	.divcaja{
-		background-color: black;
-		position: relative;
-		margin-left: 6%;
-		width: 25%;
-		height: 370px;
+    }
+    .des{
+        margin-right: 45%;
+    }
 
-	}
-	.divcaja > img {
+    .if{
+     display: flex;
+    }
+    .if > input{
+        color: #666;
+        box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+        width: 100%;
+        padding: 2%;
+        box-sizing: border-box;
+    }
+    .din{
+        display: flex;
+    }
+    .divcaja{
+        background-color: black;
+        position: relative;
+        margin-left: 6%;
+        width: 25%;
+        height: 370px;
+
+    }
+    .divcaja > img {
        width: 100%;
        height: 100%;
-	}
-	.divdestinos{
-		width: 93%;
-		height: 75px;
-		margin-left: 2%;
-	}
-    .divañaditr{
-    	margin-left: 2%;
-    	width: 93%;
     }
-	.info{
+    .divdestinos{
+        width: 93%;
+        height: 75px;
+        margin-left: 2%;
+    }
+    .divañaditr{
+        margin-left: 2%;
+        width: 93%;
+    }
+    .info{
         width:70%; 
-	}
+    }
 
-	.desti{
-		margin-top:0%;
-		margin-right:auto;
+    .desti{
+        margin-top:0%;
+        margin-right:auto;
         font-family:'Neue Haas Grotesk Text Pro'; 
         font-weight: 800;
-	}
-	.desti2{
-		margin:0%;
-		margin-top: 0%;
-		margin-left: 2%;
+    }
+    .desti2{
+        margin:0%;
+        margin-top: 0%;
+        margin-left: 2%;
         font-family:'Neue Haas Grotesk Text Pro'; 
         font-weight: 800;
-	}
-	.destir{
-		margin-left: 37%;
+    }
+    .destir{
+        margin-left: 37%;
         margin-top: 4%;
         font-family:'Neue Haas Grotesk Text Pro'; 
         font-weight: 800;
-	}
-	.divmessage{
-		width: 93%;
-		height: 224px;
-		margin-left: 2%;
+    }
+    .divmessage{
+        width: 93%;
+        height: 224px;
+        margin-left: 2%;
         font-family:'Neue Haas Grotesk Text Pro'; 
         font-weight: 800;
-	}
+    }
     .add-to-direcction{
         margin-top: 3%;
     }
@@ -450,128 +601,3 @@ a.animated-button.thar-three:before {
         height: 600px;
     }
 </style>
-
-<div class="ps-breadcrumb" style="margin-top: 12%;">
-
-    <div 
-    *ngIf="!preload"> 
-
-	<!-- Barra de números --> 
-	<div class="contrainer">
-		<div>
- 			<ul class="progressbar">
-     			<a id="step1" (click)="HyperLink1()">Step 1</a>
-     			<a id="step2" (click)="HyperLink2()">Step 2</a>
-         		<a id="step3"  class="superActive">Step 3</a>
-	        	<a id="step4">Done!</a>
-			</ul>
-			<br>
-   	 	</div><br>
-   	 </div><br> 
-
-     <!-- Descripción  -->
-     <div class="" style="justify-content:center;width: 100%;
-     font-family:'Neue Haas Grotesk Text Pro';"> <p class="parrafo"> Step 3 of 4 </p><br></div>
-   	 <div class="imagecontainer"> <h2><b>WRITE YOUR MESSAGE</b><br><br><br></h2></div>
-   	 <br>
-
-   	 <!-- Caja final -->
-   	 <div class="din">
-   	 	<div class="divcaja">
-     		<img src="{{path}}img/products_etre/carta.jpg" maxlength="30">
-     	</div>
-     	<div class="info">
-          <form id="formulario">
-     		<div class="divdestinos">
-     			<div class="if">
-	     			<p class="desti"><b style="font-family:'Neue Haas Grotesk Text Pro';">To</b></p>		
-	     			
-	     			<p class="des"><b style="font-family:'Neue Haas Grotesk Text Pro';">From</b></p>		
-	     			<!-- <input class="desti2" type="" name=""> -->
-     			</div>
-
-     			<div class="if">
-     				<input style="border:1px solid #dddddd !important;" 
-                    class="desti" type="tex" id="to-send">
-	     			<input style="border:1px solid #dddddd !important;"
-                     class="desti2" type="tex" id="to-from">
-     			</div>
-     		</div>
-
-	     	<div class="divmessage">
-	     		<p><b style="font-family:'Neue Haas Grotesk Text Pro';">Message</b></p>
-
-	            <textarea name="Enter your card message here. 120 characters" 
-                id="to-message" rows="5" cols="30" id="to-message"></textarea>
-
-	     	</div>
-	     	<div class="divañaditr">
-	     		<p class="characters" 
-                style="font-family:'Neue Haas Grotesk Text Pro'">
-                    120 characters remaining
-                </p>
-		     	    <div class="add">
-		     	    	<input type="checkbox" ng-model="model.card_blank" ng-checked="model.card_blank" >
-		     		    <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;">
-                            click here and we'll send the card blank outside the box for you to write yourself!
-                        </p>
-		     	    </div> 
-		     	 
-	     	</div>
-	     	<div class="btn_cart">
-	     		<a 
-                style="cursor: pointer;" 
-                id="guardar" 
-                (click)="HyperLinkTow()"
-                (click)="fncCarta()"
-                class="botn_new">
-
-                    <p style="color: white; font-size: 21px;padding-top: 2%;
-                    font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-weight: 800;
-                    ">ADD TO CART</p>
-                    
-               </a> 
-               <!-- [routerLink]="['/done', id]" -->
-	     	</div>
-
-            <!-- <div class="add-to-direcction">
-                <a class="add-to-direcction-black"
-                 data-toggle="modal" data-target=".bd-example-modal-xl">
-                    Add Address
-                </a>
-            </div>  -->
- 		  </form>    
-     	</div>
-	     	
-	   	 
-   	 </div> <!-- Finaliza el armado de caja  -->
-
-     <!-- Boton previu -->
-
-   	 <div class="previu">
-	   	 	<a routerLink="../selecction-paso-dos" 
-            class="btn btn-sm animated-button thar-three"
-            (click)="fncPrevious()"
-            style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 800;">PREVIOUS STEP</a>
-
-	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
-	 </div>
-
- </div>
-
- <!--=====================================
-Preload
-======================================-->
-<div
-*ngIf="preload"
-class="d-flex justify-content-center">
-    
-    <div class="spinner-border text-muted my-5"></div>
-
-</div>   
-</div>	
-
-

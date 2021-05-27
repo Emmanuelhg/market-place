@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb">
 
   <!--=====================================
-  Slider 
+  Slider  
   ======================================-->
   <div style="margin-top: -2%;" lass="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
 
@@ -22,11 +22,14 @@
         <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
 
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="animated bounceInRight" style="animation-delay: 1s;color: {{coloTextoSlider[i]}};">
+          <h3 class="animated bounceInRight" 
+          style="animation-delay: 1s;color: {{coloTextoSlider[i]}};
+          font-size:24px; font-weight: 450;">
             {{textoSlider[i]}}
-          </h5>
+          </h3>
           <p class="animated bounceInRight" 
-          style="animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
+          style=" animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};
+          display: none;">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -52,10 +55,10 @@
   <div class="contenido">
        
     <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
-    font-weight: 800; color: black;">How it woeks?</h3>
+    font-size:24px; font-weight: 450; color: black;">How it woeks?</h3>
  
       <p class="mostrar" style="font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800; color: black;">
+        font-weight: 20; font-size: 20px; color: black;">
 	       	Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
   			Keep it personal. We curate the best products so you can create the most personal gifts.
   			We ́ll handle the rest. We take your masterpiece, pack it to perfection, and send it straight to
@@ -63,29 +66,31 @@
   		</p>
 
   		<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
-      font-weight: 800; color:black;">SHIPPING</h3>
+      font-size:24px; font-weight: 450; color:black;">SHIPPING</h3>
 
 
        
-       <!-- Pregunta y resúesta  -->
-       <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
+      <!-- Pregunta y resúesta  -->
+      <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
 	    	<p class="mostrar" 
         style="font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;color:black;">
+        font-weight: 20; font-size: 20px;color:black;">
 	    		{{pregunta.question}} 
 	    		<!-- Where do you ship? -->
-	          <img class="iconp" src="{{path}}img/icons/down.png" (click)="fncVisibility(i)" >
+	          <img class="iconp" src="{{path}}img/icons/down.png" 
+            (click)="fncVisibility(i)" style="cursor: pointer;">
 	    	</p>
-		    	<div *ngIf="visibility_1[i]">
+	    	<div *ngIf="visibility_1[i]">
 					<p class="respuesta" 
           style="font-family:'Neue Haas Grotesk Text Pro'; 
-          font-weight: 800;color:black;">
-						{{pregunta.answer}}
+          font-weight: 20; font-size: 20px;color:black;">
+					{{pregunta.answer}}
 						<!-- At this time, we only ship within Mexico. -->
-			          <img src="{{path}}img/icons/up.png"  href="javascript:void(0);" (click)="fncVisibility(i)">
-			        </p>
+		          <img src="{{path}}img/icons/up.png"  href="javascript:void(0);" 
+              (click)="fncVisibility(i)" style="cursor: pointer;">
+			   </p>
 				</div>
-        </div>
+      </div>
 
   </div>
   
@@ -172,7 +177,7 @@
 
   .contenido{
   	margin-top: 5%;
-  	margin-left: 6%;
+  	margin-left: 4%;
   	margin-right: 3%;
     height: px;
     margin-bottom: 2%;

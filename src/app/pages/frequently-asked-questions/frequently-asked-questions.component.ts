@@ -5,7 +5,7 @@ import { NegocioService } from '../../services/negocio.service';
 declare var jQuery:any;
 declare var $:any;
 
-@Component({
+@Component({ 
   selector: 'app-frequently-asked-questions',
   templateUrl: './frequently-asked-questions.component.html',
   styleUrls: ['./frequently-asked-questions.component.css'] 

@@ -148,11 +148,11 @@ export class AccountOrdersComponent implements OnInit, OnDestroy {
 
         this.editNextProcess.map((item, index)=>{
 
-            if(this.newNextProcess[index]["status"] != ""){
+            // if(this.newNextProcess[index]["status"] != ""){
 
-                item["status"] = this.newNextProcess[index]["status"];
+            //     item["status"] = this.newNextProcess[index]["status"];
 
-            }
+            // }
 
             if(this.newNextProcess[index]["comment"] != ""){
 

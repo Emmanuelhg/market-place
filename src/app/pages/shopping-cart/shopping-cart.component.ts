@@ -127,6 +127,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		      }
 		        
 		    })
+
+		    // setTimeout(() => {
+		    // 	this.router.navigated =false;
+		    // 	this.router.navigate([this.router.url]);
+		    // }, 5000);
 		  
 		}else{
 		  // Obtener caja

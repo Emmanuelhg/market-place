@@ -24,7 +24,8 @@ declare var $:any;
   styleUrls: ['./account-my-shopping.component.css']
 })
 export class AccountMyShoppingComponent implements OnInit, OnDestroy {
-@Input() childItem:any;
+
+	@Input() childItem:any;
 
 	path:string = Path.url;
 	myShopping: any[] = [];
@@ -434,3 +435,5 @@ export class AccountMyShoppingComponent implements OnInit, OnDestroy {
 
 
 }
+
+

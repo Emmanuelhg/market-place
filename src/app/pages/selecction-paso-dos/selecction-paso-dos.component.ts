@@ -18,7 +18,7 @@ import { NegocioService } from '../../services/negocio.service';
 
 
 declare var jQuery:any; 
-declare var $:any; 
+declare var $:any;  
 @Component({
   selector: 'app-selecction-paso-dos',
   templateUrl: './selecction-paso-dos.component.html',
@@ -212,11 +212,12 @@ export class SelecctionPasoDosComponent implements OnInit {
     .subscribe(resp=>{
           
 
-      let i;
+      let i; 
 
         for(i in resp){
 
           let product= resp[i];
+          // console.log("En consola esta:",product);
           product.id = i;
           if (product.category != "kits") {
             if(product.gallery[1]==undefined){
@@ -224,8 +225,60 @@ export class SelecctionPasoDosComponent implements OnInit {
             }else{
               product.image2=product.gallery[1];
             }
-            console.log("En consola esta:",product.gallery[1]);
+          
             this.getProduct.push(product);
+
+            // var arr = new Array("orange", "gol"); 
+            // this.getProduct = arr.sort(); 
+            // console.log("Returned string is : " + this.getProduct );
+
+
+            var items = ['réservé', 'premier', 'communiqué', 'café', 'adieu', 'éclair'];
+            var newOrden = this.getProduct.sort(function (a, b) {
+              return(b.color - a.color); //using String.prototype.localCompare
+            });
+
+            this.getProduct = newOrden;
+
+            for( i = 0; i < this.getProduct.length; i++){
+              // console.log("En consola esta:",  this.getProduct[i].color);
+
+            let cars = [{
+                id: 1,
+                items: [{
+                      name: 'ab',
+                      description: 'this is car1 description'
+                    },{
+                      name: 'cd',
+                      description: 'this is car2 description'
+                    },{
+                      name: 'car3',
+                      description: 'this is car3 description'
+                    },{
+                      name: 'aaa',
+                      description: 'this is car4 description'
+                    },{
+                     name: 'car5',
+                      description: 'this is car5 description'
+                    }]
+               }];
+
+              this.getProduct.sort((a,b) => a.color > b.color ? 1 : -1)
+              var newOrdenr = this.getProduct.sort((a,b) => a.color > b.color ? 1 : -1);
+              this.getProduct = newOrdenr;
+            }
+            
+
+
+            // this.getProduct.sort(function(a,b){
+
+            //   return(b.color - a.color)
+              
+            // });
+
+           
+
+            // console.log("En consola esta:",this.getProduct);
             // this.products.push(resp[i].)
             // this.almacenar_productos = [];
             this.products.push(i);

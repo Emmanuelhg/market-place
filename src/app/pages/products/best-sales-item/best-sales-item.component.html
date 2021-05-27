@@ -1,12 +1,12 @@
 <!--=====================================
-Best Sale Items      
+Best Sale Items       
 ======================================--> 
 
 <div  
 *ngIf="!preload && !notFound">
 
   <!--=====================================
-  Slider 
+  Slider  
   ======================================-->
   <div style="margin-top: 0%;" lass="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
 
@@ -27,11 +27,15 @@ Best Sale Items
         <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
 
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="animated bounceInRight" style="animation-delay: 1s;color: {{coloTextoSlider[i]}};">
+          <h3 class="animated bounceInRight" 
+          style="animation-delay: 1s; font-size: 24px; font-weight: 450;
+          color: {{coloTextoSlider[i]}};">
             {{textoSlider[i]}}
-          </h5>
+          </h3>
           <p class="animated bounceInRight" 
-          style="animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
+          style="animation-delay: 3s; font-size: 20px; font-weight: 20;
+          color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};
+          display: none;">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -55,19 +59,21 @@ Best Sale Items
   <!--=====================================
   Productos col-md-12 col-sm-12
   ======================================--> 
-  <div class="container" style="margin-left: 12%;">
+  <div class="container" >
 
     <div class="divimageness row">  
 
       <div
       *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-      class="col-lg-4 col-md-4 col-sm-6">
+      class="col-lg-3 col-md-4 col-sm-6">
 
-        <div class="ps-product__thumbnail" id="contenedorTow" style="margin-bottom: 12%;">
+        <div class="ps-product__thumbnail"  style="margin-bottom: 12%;">
           
           <a style=" position: relative;
           display: inline-block;
           text-align: center;"
+          class="imgHover" 
+          id="contenedorTow"
           routerLink="/product/{{product.url}}">
             <img 
             style="width: 247px; height: 247px;"
@@ -85,9 +91,29 @@ Best Sale Items
 
               <!-- (click)="detallesProducto(product)" -->
 
+            <!-- Boton para agregar productos al carrito -->
+            <div class="texto" id="botonTow">
+
+              <a style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
+              (click)="addShoppingCart(product,product.url, 1, [])" 
+               data-toggle="tooltip" data-placement="top" title="Add to Cart">
+
+                <p style="font-family: Neue Haas Grotesk Text Pro;
+                font-weight: 20; font-size: 15px; 
+                color: #353535;">
+                  Add to cart
+                </p>   
+                  
+              </a>
+
+            </div>  
+
             <style>
               #imgGalleryTow{
                 display: none;
+              }
+              #contenedorTow:hover #botonTow{
+                display: block;
               }
               #contenedorTow:hover #imgGalleryTow{
                 display: block;
@@ -108,22 +134,6 @@ Best Sale Items
 
           </div>
 
-          <!-- Boton para agregar productos al carrito -->
-          <div class="texto" id="botonTow">
-
-            <a style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
-            (click)="addShoppingCart(product,product.url, 1, [])" 
-             data-toggle="tooltip" data-placement="top" title="Add to Cart">
-
-              <p style="font-size: 20px; font-family: Neue Haas Grotesk Text Pro;
-              font-weight: 800;margin-top: -2%; color: #353535;">
-                Add to cart
-              </p>   
-                
-            </a>
-
-          </div>
-
           <!-- Información del producto -->
           <div style="width: 245px;">
 
@@ -131,7 +141,7 @@ Best Sale Items
             routerLink="/product/{{product.url}}">
 
               <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-              font-weight: 800; color: #353535;">
+              font-weight: 20; font-size: 17px; color: #353535;">
                 {{product.name}}
               </b>
 
@@ -139,12 +149,17 @@ Best Sale Items
             
             <div style="display: none;" [innerHTML]="price[i][0]"></div>
 
-            <p class="">
-              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                |font-weight: 800;">
-                $ {{product.price}}
-              </b>
-            </p>
+            <div style="display: flex;">
+
+              <p style="font-weight: 450; font-size: 17px;">$</p>
+              <p>
+                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  font-weight: 20; font-size: 17px; ">
+                   {{product.price}}
+                </b>
+              </p>
+                
+            </div>
             
           </div>
          
@@ -206,11 +221,11 @@ class="d-flex justify-content-center d-lg-none">
       transition: 4s;
       padding:2%;
   }    
-  .ps-product:hover .texto{
-    bottom: -50%;
-  }
-  .ps-product__thumbnail:hover .texto {
-    bottom: -54%;
+ /* .ps-product:hover .texto{
+    bottom: -4%;
+  }*/
+  .imgHover:hover .texto {
+    top: 82%;
 
     background-color:ps-form--quick-search button;
     color: #ffffff;

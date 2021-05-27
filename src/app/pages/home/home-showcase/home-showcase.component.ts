@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Path } from '../../../config';
 import { OwlCarouselConfig, Rating } from '../../../functions';
 
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any; 
- 
+  
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
 import { ProductsService } from '../../../services/products.service';
@@ -20,9 +20,9 @@ export class HomeShowcaseComponent implements OnInit {
 	SECTION_1_ONLY_IMAGE = 0;
 	SECTION_1_IMAGE_BUTTON = 1 ;
 	SECTION_1_ONLY_TEXT = 2;
-
 	SECTION_2_CARRUSEL = 3; 
-
+	
+	
 	
 	SECTION_NO_EXIST=0;
 	SECTION_LEFT = 100;
@@ -33,6 +33,7 @@ export class HomeShowcaseComponent implements OnInit {
 	SECTION_GRID = 120;
 	SECTION_SLIDER = 130;
 	SECTION_UNICO = 140;
+	SECTION_TRIPLE = 150;
 
 	/* Templates */
 
@@ -131,13 +132,13 @@ export class HomeShowcaseComponent implements OnInit {
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
 	    			var newArray=[];
 	    			let urls = section.section_middle.slider_urls;
-	    			console.log("Las urls:",urls);
+	    			// console.log("Las urls:",urls);
 	    			for(let num in urls){
 	    				newArray.push(urls[num]);
 	    			}
 	    			this.divs_sliders_urls.push(newArray);
 	    			this.divs_grids_urls.push([]);
-	    			console.log("slider urls:",this.divs_sliders_urls);
+	    			// console.log("slider urls:",this.divs_sliders_urls);
 	    		}
 
 	    		if(section.type==this.SECTION_GRID){
@@ -149,12 +150,19 @@ export class HomeShowcaseComponent implements OnInit {
 
 	    			var newArray=[];
 	    			let urls = section.section_middle.grid_urls;
-	    			console.log("Las urls:",urls);
+	    			// console.log("Las urls:",urls);
 	    			for(let num in urls){
 	    				newArray.push(urls[num]);
 	    			}
 	    			this.divs_grids_urls.push(newArray);
-	    			console.log("slider urls:",this.divs_grids_urls);
+	    			// console.log("slider urls:",this.divs_grids_urls);
+	    		}
+
+	    		if(section.type==this.SECTION_TRIPLE){
+	    			this.divs_visible.push(["none","none","none","block"]);
+	    			this.divs_section_left_type.push(["none","none","none"]);
+	    			this.divs_section_rigth_type.push(["none","none","none"]);
+	    			console.log("divs:",this.SECTION_TRIPLE);
 	    		}
 
 	    	}

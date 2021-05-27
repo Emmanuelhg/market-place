@@ -1,29 +1,36 @@
 <div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
-  Barra de números
+  Barra de números 
   ======================================--> 
   <div class="container">
 		<div style="margin-bottom: 4%;">
 			<ul class="progressbar">
-   			<a id="step1" (click)="HyperLink1()">Step 1</a>
-   			<a id="step2" (click)="HyperLink2()">Step 2</a>
-       	<a id="step3" (click)="HyperLink3()">Step 3</a>
-        <a id="step4" >Done!</a>
+   			<a  class="active" (click)="HyperLink1()">Step 1</a>
+   			<a  class="active" (click)="HyperLink2()">Step 2</a>
+       	<a (click)="HyperLink3()">Step 3</a>
+        <a >Done!</a>
 			</ul>
  	 	</div>
   </div>
 
   <!--=====================================
-  Descripción  
+  Descripción   
   ======================================-->
   <div class="container">
-    <div style="text-align: center; margin-top: 35%;
+    <div style="text-align: center; margin-top: 28%;
     justify-content: center; margin-bottom: 181px;">
-      <p class="parrafo" style="font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800; ">Step of 2 of 3</p>
-      <h2><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800; ">CHOOSE YOUR ITEMS</b></h2>
+
+      <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+      font-weight: 450; color: #6a6a6a;">
+        Step of 2 of 3
+      </h3>
+
+      <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
+      font-weight: 450; color: black;">
+        CHOOSE YOUR ITEMS
+      </p>
+
     </div>
   </div> 
 
@@ -42,7 +49,7 @@
            type="button"  data-toggle="modal" 
            data-target="#exampleModalCenter"
            style="font-family:'Neue Haas Grotesk Text Pro'; 
-           font-weight: 800;">
+           font-weight: 20; font-size: 20px;">
                 SMALL
            </a> 
 
@@ -51,7 +58,7 @@
            type="button"  data-toggle="modal" 
            data-target="#exampleModalCenter"
            style="font-family:'Neue Haas Grotesk Text Pro'; 
-           font-weight: 800; ">
+           font-weight: 20; font-size: 20px;">
                 REGULAR
             </a>
 
@@ -67,7 +74,7 @@
 
                   <p 
                   style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800;margin-top: 2%;">
+                  font-weight: 20; font-size: 20px;">
                     START SELECTING ITEMS TO FILL YOUR BOX
                   </p>
 
@@ -128,8 +135,10 @@
             <div class="div-info-new col-lg-5 col-md-12 col-sm-12" >
 
                 <div class="div_et">
-                  <p class="pzp"><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800; ">BOX CONTENTS</b></p>
+                  <p class="pzp" style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  font-weight: 20; font-size: 20px;"> 
+                    BOX CONTENTS
+                  </p>
                 </div>
              
                 <div class="div_edh">
@@ -144,22 +153,22 @@
 
                    <div style="width: 68%;">
 
-                       <p> 
-                            <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 800; ">
-                              Box {{box_json.box_name}}
-                           </b>
+                      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                      font-weight: 20; font-size: 20px;"> 
+                      
+                          Box {{box_json.box_name}}
+                           
                        </p>
 
                    </div>
 
                    <div style="width: 20%; text-align: center;">
 
-                       <p>
-                          <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                          font-weight: 800;">
-                            ${{box_json.box_price}} 
-                          </b>
+                       <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 20; font-size: 20px;">
+                          
+                          ${{box_json.box_price}} 
+                          
                       </p>
 
                    </div>
@@ -184,7 +193,7 @@
 
                             <p>
                               <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                              font-weight: 800; ">
+                              font-weight: 20; font-size: 20px;">
                                 {{product.name}} 
                               </b>    
                             </p>
@@ -194,7 +203,8 @@
                         <div style="width: 20%; text-align: center;">
                             
                            <p> 
-                              <b>
+                              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                              font-weight: 20; font-size: 20px;">
                                 ${{product.price}}
                               </b>
 
@@ -205,8 +215,7 @@
                          <!-- Eliminar productos de la caja -->
                         <div style="width: 5%; align-items: center;">
 
-                            <i
-                            (click)="fncNewR(i, product.name)"
+                            <i (click)="fncNewR(i, product.name)"
                             class="icon-cross"></i>
                             
                         </div>
@@ -220,8 +229,12 @@
 
                 <div class="div_ed" style="border-top: 1px solid #dddddd !important;
                 border-bottom: 1px solid  #dddddd !important;">
-                   <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                   font-weight: 800;">CURRENT PACKAGING | SMALL</p>
+
+                  <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  font-weight: 20; font-size: 20px;">
+                    CURRENT PACKAGING | SMALL
+                  </p>
+
                 </div>
 
                 <div class="div-price-new">
@@ -233,12 +246,12 @@
                    align-items: center;">
                     <b style="width: px;"
                     style="font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-weight: 800; "> BOX SUBTOTAL: ${{subTotal}}</b>
+                    font-weight: 20; font-size: 20px;"> BOX SUBTOTAL: ${{subTotal}}</b>
                   </p>
 
                   <a 
                   style="cursor: pointer; font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800;" 
+                  font-weight: 20; font-size: 15px;" 
                   (click)="guardaProductos()"
                   class="new-boton">
                     COMPLETE BOX
@@ -273,10 +286,10 @@
           style="height: 50px; font-size: 18px;">
 
             <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 800; ">Reason or Season</option>
+            font-weight: 20; font-size: 20px;">Reason or Season</option>
             <!-- <option selected>Reason or Season</option> -->
             <option *ngFor="let categoria of lista_categories; let lastIndex = last,let i = index"
-            style="font-family:'Neue Haas Grotesk Text Pro'; font-weight: 800;" 
+            style="font-family:'Neue Haas Grotesk Text Pro'; font-weight: 20; font-size: 20px;" 
             value="{{categoria}}">{{categoria}}
            </option>
 
@@ -294,11 +307,11 @@
             style="height: 50px; font-size: 18px;">
 
                 <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Color</option>
+                font-weight: 20; font-size: 20px; ">Color</option>
                 <!-- <option selected>Color</option> -->
                 <option *ngFor="let color of lista_colores; let lastIndex = last,let i = index"
                 value="{{color}}" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">{{color}}</option>
+                font-weight: 20; font-size: 20px;">{{color}}</option>
 
             </select>
 
@@ -312,16 +325,16 @@
             style="height: 50px; font-size: 18px;">
 
                 <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Sort by Options</option>
+                font-weight: 20; font-size: 20px;">Sort by Options</option>
                 <!-- <option selected>Sort by Options</option> -->
                 <option value="lower" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Price(Low to high)</option>
+                font-weight: 20; font-size: 20px;">Price(Low to high)</option>
                 <option value="higher" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Price(High to low)</option>
+                font-weight: 20; font-size: 20px;">Price(High to low)</option>
                 <option value="box-small" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Size(Small to large)</option>
+                font-weight: 20; font-size: 20px;">Size(Small to large)</option>
                 <option value="box-big" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; ">Size(Large to small)</option>
+                font-weight: 20; font-size: 20px;">Size(Large to small)</option>
 
             </select>
 
@@ -365,7 +378,8 @@
 
           <a style=" position: relative;
           display: inline-block;
-          text-align: center;">
+          text-align: center;"
+          class="Img-Hover">
 
             <div style="position: absolute;
             width: 100%;
@@ -378,7 +392,7 @@
             *ngIf="productsFull() == true">
 
                 <p style="color: black;font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; color: #353535; ">
+                font-weight: 20; font-size: 20px; color: #353535; ">
                     Oops!<br>
                     (too large to fit)
                 </p>
@@ -399,6 +413,77 @@
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
             src="{{products.image2}}" alt="">
+
+
+            <!-- Boton para agregar productos a la caja -->
+            <div id="boton">
+
+              <!-- BTN agregar a caja -->
+              <div 
+              class="texto" 
+              *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
+                <!-- (click)="myFunction(products.name)"   -->
+                <a 
+                (click)="fncNewAdd(products, products.name)"
+                style="cursor:pointer ;">
+                  <p style="font-family: Neue Haas Grotesk Text Pro;
+                  font-weight: 20; font-size: 15px; margin-top: 1%; color: #353535;">
+                    Add to box
+                  </p> 
+                </a>
+
+              </div>
+
+              <!-- BTN para agregar cantidad de productos -->
+              <div  *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false"
+              style="display: flex; width: 100% !important; justify-content: center;
+              justify-content:space-around; padding: 2%; position: absolute;
+              margin-top: -19%;">
+
+                <div style="display: flex; width: 244px; flex-direction: row">
+
+                  <!-- BTN menos -->
+                  <button style="width: 15%;"
+                  (click)="modificadorCantidadProductos(-1, i,products)"
+                  class="menos" type="button">-</button>
+
+                  <div 
+                  style="background: white;width: 70%; text-align: center;
+                  color:black; border: 1px solid black !important; 
+                  font-family:'Neue Haas Grotesk Text Pro'; "
+                  id="quantity"> 
+
+                    <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;">
+                      {{getNumArts(products)}} IN INBOX
+                    </p>  
+
+                  </div>
+
+                  <!-- BTN más -->
+                  <button style="width: 15%;" 
+
+                  (click)="modificadorCantidadProductos(1, i,products)"
+                  class="mas" type="button">+</button>
+                 
+                </div>
+                
+              </div>
+                              
+              <!-- Botón long -->
+              <div 
+              *ngIf="productsFull() == true" 
+              class="texto">
+
+                <a 
+                style="cursor:pointer; 
+                font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 20; font-size: 15px; color:#353535;">
+                  Too large
+                </a>
+
+              </div>
+
+            </div>
 
           </a>
           <style>
@@ -422,79 +507,6 @@
             </a>
           </div>
 
-          <div style="position: absolute;
-          top: 60%;
-          transform: translate(-5%, -12%);"> 
-
-            <!-- Boton para agregar productos a la caja -->
-            <div id="boton">
-
-              <!-- BTN agregar a caja -->
-              <div 
-              class="texto" 
-              *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
-                <!-- (click)="myFunction(products.name)"   -->
-                <a 
-                (click)="fncNewAdd(products, products.name)"
-                style="cursor:pointer ;">
-                  <p style="font-size: 20px; font-family: Neue Haas Grotesk Text Pro;
-                   font-weight: 800;margin-top: 1%; color: #353535;">
-                    Add to box
-                  </p> 
-                </a>
-
-              </div>
-
-              <!-- BTN para agregar cantidad de productos -->
-              <div  *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false"
-              style="display: flex; width: 100% !important; justify-content: center;
-              justify-content:space-around; margin: 5%; padding: 2%;">
-
-                <div style="display: flex; width: 244px; flex-direction: row">
-
-                  <!-- BTN menos -->
-                  <button style="width: 15%;"
-                  (click)="modificadorCantidadProductos(-1, i,products)"
-                  class="menos" type="button">-</button>
-
-                  <div 
-                  style="background: white;width: 70%; text-align: center;
-                  color:black; border: 1px solid black !important; 
-                  font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800;"
-                   id="quantity"> 
-
-                      {{getNumArts(products)}} IN INBOX
-
-                  </div>
-
-                  <!-- BTN más -->
-                  <button style="width: 15%;" 
-
-                  (click)="modificadorCantidadProductos(1, i,products)"
-                  class="mas" type="button">+</button>
-                 
-                </div>
-                
-              </div>
-                              
-              <!-- Botón long -->
-              <div 
-              *ngIf="productsFull() == true" 
-              class="texto">
-
-                <a 
-                style="cursor:pointer; 
-                font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800; color:#353535;">
-                  Too large
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
 
           <!-- Información de productos -->
           <div class="">
@@ -503,18 +515,24 @@
 
                 <a>
                   <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800; color:#353535;">
-                     {{products.name}}
+                  font-weight: 20; font-size: 17px; color:#353535;">
+                    {{products.name}}
                   </b>
                 </a>
 
 
-                <p class="">
-                  <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 800; color:#353535;">
-                    $ {{products.price}}
-                  </b>
-                </p>
+                <div class="" style="display: flex;">
+
+                  <p style="font-weight: 450; font-size: 17px;">$</p>
+
+                  <p >
+                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 20; font-size: 17px; color:#353535;">
+                      {{products.price}}
+                    </b>
+                  </p>
+                  
+                </div>
 
                 <!-- <div [innerHTML]="price[i][0]"></div> -->
 
@@ -558,18 +576,6 @@
                 <img
                 class="img-ventena"  src="{{product}}" alt="First slide">
               </div>
-              <!-- <div
-              class="carousel-item">
-                <img class="img-ventena"  src="{{img_gallery[1]}}" alt="First slide">
-              </div>
-              <div
-              class="carousel-item">
-                <img class="img-ventena"  src="{{img_gallery[2]}}" alt="First slide">
-              </div>
-              <div
-              class="carousel-item">
-                <img class="img-ventena"  src="{{img_gallery[3]}}" alt="First slide">
-              </div> -->
 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -1615,37 +1621,38 @@ margin-top: 5%;
 
 }
 .progressbar a{
-    font-family:'Neue Haas Grotesk Text Pro'; 
-    font-weight: 800; 
-    list-style-type: none;
-    float: left;
-    width: 23.33%;
-    position: relative;
-    text-align: center;
+  font-family:'Neue Haas Grotesk Text Pro'; 
+  list-style-type: none;
+  float: left;
+  width: 23.33%;
+  position: relative;
+  text-align: center;
+  font-weight: 450;
+  font-size: 20px;
 }
 .progressbar a:before{
-    content: counter(step);
-    counter-increment:step;
-    width: 30px;
-    height: 30px;
-    line-height: 27px;
-    border: 1px solid #ddd;
-    display: block;
-    text-align: center;
-    margin: 0 auto 100px auto;
-    border-radius: 50px;
-    background-color: white;
+  content: counter(step);
+  counter-increment:step;
+  width: 30px;
+  height: 30px;
+  line-height: 27px;
+  border: 1px solid #ddd;
+  display: block;
+  text-align: center;
+  margin: 0 auto 50px auto;
+  border-radius: 50px;
+  background-color: white;
 }  
  
 .progressbar a:after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: #ddd;
-    top: 15px;
-    left: -50%;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
 }
 .progressbar a:first-child:after{
     content: none;
@@ -1927,8 +1934,8 @@ a.animated-button.thar-three:before {
 }
 
 .parrafo{
-     margin-top:155px;
-     font-size: 100%;
+  margin-top:155px;
+  font-size: 100%;
 
 }
 
@@ -1993,6 +2000,7 @@ display: flex;
     display: flow-root;
     padding-top: 3%;
     padding-bottom: 4%;
+    margin-bottom: 4%;
     /*display: flex;*/
  }
  .img-new-product {
@@ -2033,6 +2041,8 @@ display: flex;
    overflow: hidden 
 }
 .texto {
+
+    margin-top: -18%;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -2054,11 +2064,11 @@ display: flex;
     padding:2%;
 }
  
-.ps-product:hover .texto {
+/*.ps-product:hover .texto {
     bottom: -10%;
-}
-.ps-product__thumbnail:hover .texto {
-  bottom: -20%;
+}*/
+.img-Hover:hover .boton {
+  top:5%;
 
   background-color:ps-form--quick-search button;
   color: #ffffff;
@@ -2095,7 +2105,7 @@ display: flex;
     height: px;
     transition: 4s;
 }    
-.ps-product:hover .textoTow{
+/*.ps-product:hover .textoTow{
     bottom: -50%;
 }
 .ps-product__thumbnail:hover .textoTow{
@@ -2103,7 +2113,7 @@ display: flex;
 
   background-color:ps-form--quick-search button;
   color: #ffffff;
-}
+}*/
 .quantity .mas {
     float: right;
     width: 15%;

@@ -1,13 +1,11 @@
-
 <!--=====================================
-Shopping Car 
+Shopping Car  
 ======================================--> 
 
 <div  style="margin-top: 12%;"> 
-    <!--=====================================
-    Título del carrito 
-    ======================================--> 
+   
     <div style="margin-left: 3%;">
+
         <!--=====================================
         Breadcrumb
         ======================================-->  
@@ -17,10 +15,11 @@ Shopping Car
             <ul class="breadcrumb" style="background-color: transparent;">
 
                 <li><a routerLink="/" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-weight: 800;">Home &nbsp; / &nbsp;</a></li>
+                    font-weight: 20; font-size: 20px;">Home &nbsp; / &nbsp;</a>
+                </li>
 
                 <li style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800;">Shopping cart</li>
+                font-weight: 20; font-size: 20px;">Shopping cart</li>
 
             </ul>
 
@@ -40,7 +39,7 @@ Shopping Car
             <div colspan="6" class="text-center">
 
                 <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 800;">
+                font-weight: 20; font-size: 20px;">
                     You haven't products in the shopping cart yet!
                 </p>
 
@@ -48,12 +47,12 @@ Shopping Car
 
         </div>
 
-        <h2 style="width: 176px; margin-left: 4%;
+        <h3 style="width: 176px; margin-left: 4%;
         border-top: 1px solid black !important;
         font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;">
+        font-weight: 450; font-size: 24px;">
             Your Cart
-        </h2>
+        </h3>
 
         <div *ngFor="let product of shoppingCart; let lastIndex = last">
 
@@ -88,11 +87,11 @@ Shopping Car
                 <div *ngIf="product.inbox == false"
                 class="product-cart-p col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
-                    <h3 style="font-size: 19px"> 
+                    <h3> 
 
                         <a href="product/{{product.url}}">
                             <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 800;">{{product.name}}</b> 
+                            font-weight: 450; font-size: 24px;">{{product.name}}</b> 
                         </a>
 
                     </h3>
@@ -102,7 +101,8 @@ Shopping Car
                      mwlConfirmationPopover
                      [popoverMessage]="popoverMessage"
                      placement="left"
-                     style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
+                     style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';
+                     font-weight: 450; font-size: 24px;" 
                      (confirm)="removeProduct(product.url, product.listDetails)">
                         REMOVE
                     </a>
@@ -120,15 +120,13 @@ Shopping Car
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
                                 <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Price</b>
+                                    font-weight: 20; font-size: 20px;">Price</b>
                                 </p>
                             </li> 
                             <li style="margin-top: 50%;">
                                 
-                                $ {{product.price2}}
-                                <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
-     
-                                <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>  -->              
+                                <p style="font-weight: 20; font-size: 20px;"> $ {{product.price2}}</p>
+            
                             </li>
                         </ul>
                     </div>
@@ -138,7 +136,7 @@ Shopping Car
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
                                 <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Quantity</b>
+                                    font-weight: 20; font-size: 20px;">Quantity</b>
                                 </p>
                             </li>
                             <li style="margin-top: 50%;">
@@ -169,22 +167,16 @@ Shopping Car
                         <ul style="font-family: sans-serif; list-style: none;">
                             <li>
                                 <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Total</b>
+                                    font-weight: 20; font-size: 20px;">Total</b>
                                 </p>
                             </li>
-                            <!-- <li style="margin-top: 50%;">
-
-                                <div class="subTotalPrice">
-                                    <div class="spinner-border subTotalPriceM"></div>
-                                </div>
-
-                            </li> -->
+                        
                             <li style="margin-top: 50%;">
                                 
-                                $ {{product.price2}}
-                                <!-- <div  class="ps-product pShoppingCart" [innerHTML]="product.price"></div>
-     
-                                <td style="display: none;" class="text-center">$<span class="sShoppingCart">{{product.shipping}}</span></td>  -->              
+                                <p style="font-weight: 20; font-size: 20px;"> 
+                                    $ {{product.price2}}
+                                </p>
+                                     
                             </li>
                         </ul>
                         
@@ -221,67 +213,74 @@ Shopping Car
                       Div para info de caja
                     ======================================-->
                     <div class="contenido col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+
                         <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;">{{box_json.box_name}}</h3>
+                        font-weight:450; font-size:24px;">
+                            {{box_json.box_name}}
+                        </h3>
                         <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;">matle black / Regular </p>
+                        font-weight: 20; font-size: 20px;">matle black / Regular </p>
                         <div style="display: flex;">
                             <p>
                                 <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">To:</b>
+                                font-weight: 20; font-size: 20px;">To:</b>
                             </p>&nbsp;
                             <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;"> 
+                            font-weight: 20; font-size: 20px;"> 
                                 {{box_json.box_deliver_to}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
                                 <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">From:</b>    
+                                font-weight: 20; font-size: 20px;">From:</b>    
                             </p>&nbsp;
                             <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 800;"> 
+                            font-weight: 20; font-size: 20px;"> 
                                 {{box_json.box_deliver_from}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
                                 <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">Message:</b>
+                                font-weight: 20; font-size: 20px;">Message:</b>
                             </p>&nbsp;
                             <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 800;"> 
+                            font-weight: 20; font-size: 20px;"> 
                                 {{box_json.box_deliver_message}}
                             </p>
                         </div>
                         <div style="display: flex;">
                             <p>
                                 <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">Card:</b>
+                                font-weight: 20; font-size: 20px;">Card:</b>
                             </p>&nbsp;
                             <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 800;">Nombre de carta</p>
+                            font-weight: 20; font-size: 20px;">Nombre de carta</p>
                         </div>
                         <div>
                             <a
                             data-toggle="modal" 
                             data-target=".bd-example-modal-xl"
                             style="cursor: pointer;">
-                                <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Add Address</b></p>   
+                                <p>
+                                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                    font-weight: 20; font-size: 20px;">
+                                        Add Address
+                                    </b>
+                                </p>   
                             </a>
 
                         </div>
                         <div>
                             <p>
                                 <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Gift Box Contentens:</b>
+                                    font-weight: 20; font-size: 20px;">Gift Box Contentens:</b>
                             </p>
 
                             <p *ngFor="let boxItem of boxArts; let ind = index; " 
                             style="display: flex; font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">
+                                 font-weight: 20; font-size: 20px;">
                                 <img src="{{boxItem.image}}" style="width: 40px; height: 40px; margin-right: 4%;"> 
                                 {{boxItem.name}} X {{cantArray[ind]}}
                             </p>
@@ -324,10 +323,10 @@ Shopping Car
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
                                     <p><b style="display: flex; font-family:'Neue Haas Grotesk Text Pro';
-                                    font-weight: 800;">Price</b></p>
+                                    font-weight: 20; font-size: 20px;">Price</b></p>
                                 </li>
                                 <li style="margin-top: 50%;font-family:'Neue Haas Grotesk Text Pro';
-                                    font-weight: 800;">
+                                   font-weight: 20; font-size: 20px;">
                                     $ {{box_json.box_price}}
                                 </li>
 
@@ -339,24 +338,14 @@ Shopping Car
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
                                     <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Quantity</b></p>
+                                    font-weight: 20; font-size: 20px;">Quantity</b></p>
                                 </li>
                                 <li style="margin-top: 50%;">
 
                                     <div  class="form-group--number quantity"style="margin-left: 18%;">
 
-                                        <p>1</p>
+                                        <p style="font-weight: 20; font-size: 20px;">1</p>
 
-                                        <!-- <button class="up">
-                                        +</button>
-
-                                        <button class="down">
-                                        -</button>
-
-                                        <input class="form-control qShoppingCart" 
-                                        type="number"  min="1" max="9" 
-                                        step="1"> -->
-                                            
                                     </div>
 
                                 </li>
@@ -367,11 +356,11 @@ Shopping Car
                             <ul style="font-family: sans-serif; list-style: none;">
                                 <li>
                                     <p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                    font-weight: 800;">Total</b></p>
+                                    font-weight: 20; font-size: 20px;">Total</b></p>
                                 </li>
                                 <li style="margin-top: 50%;
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">
+                                font-weight: 20; font-size: 20px;">
                                     ${{box_json.box_subtotal}}
                                 </li>
                             </ul>
@@ -406,7 +395,7 @@ Shopping Car
           <!-- <div [innerHTML]="totalP"></div>  -->
           <h3 style="margin-right: 5%;
           font-family:'Neue Haas Grotesk Text Pro'; 
-          font-weight: 800;">Sub Total $ {{total}}</h3>
+          font-weight: 450; font-size: 24px;">Sub Total $ {{total}}</h3>
                       
         </div>
 
@@ -414,7 +403,7 @@ Shopping Car
 
             <a class="btn btn-sm animated-button thar-three" routerLink="/" 
             style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 800;">
+            font-weight: 20; font-size: 15px;">
                 <i class="icon-arrow-left"></i> Back to Shop
             </a>
 
@@ -422,7 +411,7 @@ Shopping Car
             *ngIf="shoppingCart.length > 0"
             class="btn btn-sm animated-button thar-three" href="checkout"
             style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 800;">
+            font-weight: 20; font-size: 15px;">
                 Proceed to checkout <i class="icon-arrow-right"></i> 
             </a>
 
@@ -443,7 +432,11 @@ Shopping Car
         <div class="modal-content"  style="display: flex;">
                 <!-- Encabezado ventana modal  -->
                 <div class="modal-header">
-                    <h5 class="modal-title-rd" id="exampleModalCenterTitle">Box Addres</h5>
+                    <h3 style="font-weight: 450; font-size: 24px;" 
+                    class="modal-title-rd" 
+                    id="exampleModalCenterTitle">
+                        Box Addres
+                    </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -457,7 +450,7 @@ Shopping Car
                        <div class="modal-body">
                         <p class="modal-tex" style="
                         font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;">
+                        font-weight: 20; font-size: 20px;">
                             Contact information
                         </p>
                         <input (change)="obtenerInput($event.target.value, 'email')" 
@@ -470,7 +463,7 @@ Shopping Car
                                 <p class="modal-tex"
                                 style="
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">
+                                font-weight: 20; font-size: 20px;">
                                     Check me out                  
                                 </p>
                             </label>
@@ -478,7 +471,7 @@ Shopping Car
                         <p class="modal-tex"
                         style="
                         font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;">
+                        font-weight: 20; font-size: 20px;">
                             Shipping address
                         </p>
                         <div style="margin-bottom: 1%;">
@@ -518,11 +511,15 @@ Shopping Car
 
                                 <option value="300" selected style="
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">Defaul shipment</option>
+                                font-weight: 20; font-size: 20px;">
+                                    Defaul shipment
+                                </option>
                                
                                 <option *ngFor="let envio of anviosArray;let i = index; let lastIndex = last;"
-                                
-                                value="{{envio.price}}">{{envio.state}}</option>
+                                style="font-weight: 20; font-size: 20px;" 
+                                value="{{envio.price}}" >
+                                    {{envio.state}}
+                                </option>
 
                             </select>
 
@@ -554,7 +551,7 @@ Shopping Car
                                 <a href="product/{{product.url}}" 
                                 style="
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">
+                                font-weight: 20; font-size: 20px;">
                                     {{product.name}}
                                 </a>
 
@@ -564,7 +561,7 @@ Shopping Car
                                
                                 <a style="
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">
+                                font-weight: 20; font-size: 20px;">
                                     {{product.price2}}
                                 </a>
 
@@ -582,7 +579,7 @@ Shopping Car
             <button type="button" (click)="goIt()"
             style="background: black; width: 107px; height: 45px;
             font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 800;" 
+            font-weight: 20; font-size: 20px;" 
             class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
           </div>
         </div>

@@ -39,7 +39,7 @@ export class HomeTopCategoriesComponent implements OnInit {
 
 			/*=============================================
 			Ordenamos de mayor vistas a menor vistas el arreglo de objetos
-			=============================================*/
+			=============================================*/ 
 			
 			getCategories.sort(function(a,b){
 

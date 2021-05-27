@@ -22,11 +22,12 @@
         <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
 
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="animated bounceInRight" style="animation-delay: 1s;color: {{coloTextoSlider[i]}};">
+          <h3 class="animated bounceInRight" style="animation-delay: 1s; font-size: 24px;font-weight: 450;
+          color: {{coloTextoSlider[i]}};">
             {{textoSlider[i]}}
-          </h5>
+          </h3>
           <p class="animated bounceInRight" 
-          style="animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
+          style="animation-delay: 3s;display: none; color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -139,7 +140,7 @@
 	/*Contenido*/ 
 
 	.contenido{
-    margin-top: 42%;
+    margin-top: 10%;
   	margin-left: 6%;
   	margin-right: 3%;
     height: px;
@@ -151,7 +152,9 @@
     margin-bottom: 4%;
     margin-top: 4%;
     font-family:'Neue Haas Grotesk Text Pro'; 
-    font-weight: 800; color: black;
+    font-weight: 20; 
+    font-size: 20px;
+    color: black;
   }
   /*Carrusel*/
   .carousel-item {

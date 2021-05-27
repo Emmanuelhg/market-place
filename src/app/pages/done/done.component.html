@@ -4,21 +4,35 @@
 	<div class="contrainer">
 		<div> 
 			<ul class="progressbar">
-     			<a id="step1" routerLink="/selecction-caja">Step 1</a>
-     			<a id="step2">Step 2</a>
-         		<a id="step3">Step 3</a>
-	        	<a id="step4" class="superActive">Done!</a>
+     			<a  class="active" routerLink="/selecction-caja">Step 1</a>
+     			<a  class="active"  routerLink="/selecction-paso-dos">Step 2</a>
+         		<a  class="active"  routerLink="/selecction-paso-tres">Step 3</a>
+	        	<a  class="active">Done!</a>
 			</ul>
 			<br>
    	 	</div><br> 
    	 </div><br>
 
 
-   	 <!-- Descripción  -->
-     <div class="" style="justify-content:center;width: 100%;
-     font-family:'Neue Haas Grotesk Text Pro';"> <p class="parrafo">DONE!</p><br></div>
-   	 <div class="imagecontainer"> <h2><b>CURATING YOUR BOX</b><br><br><br></h2></div>
-   	 <br>
+   	<!--=====================================
+	Descripción   
+	======================================-->
+	<div class="container">
+	    <div style="text-align: center; margin-top: 18%;
+	    justify-content: center; margin-bottom: 181px;">
+
+	      <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+	      font-weight: 450; color: #6a6a6a;">
+	        DONE!
+	      </h3>
+
+	      <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
+	      font-weight: 450; color: black;">
+	        CURATING YOUR BOX
+	      </p>
+
+	    </div>
+	</div> 
 
    	<!--=====================================
 	Preload
@@ -26,12 +40,12 @@
 	<div
 	  *ngIf="!preload"> 
 		<div style="margin-bottom: 20%;">
-		   <h2 style="width: 176px; margin-left: 4%;
+		   <h3 style="width: 176px; margin-left: 4%;
 		    font-family:'Neue Haas Grotesk Text Pro'; 
-        	font-weight: 800;
+        	font-weight: 450; font-size: 24px;
 		    border-top: 1px solid black !important;">
 				Your Cart
-			</h2>
+			</h3>
 			<div class="row" style="padding: 0px;">
 				<!--=====================================
 				 Div para imagen
@@ -47,56 +61,60 @@
 				  Div para info de caja
 				 ======================================-->
 				<div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+
 					<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			font-weight: 800;">BUILD A BOXFOX</h3>
+           			font-weight: 450; font-size: 24px;">
+           				BUILD A BOXFOX
+           			</h3>
+
 					<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			font-weight: 800;">matle black / Regular </p>
+           			font-weight: 20;font-size: 20px;">matle black / Regular </p>
 					<div style="display: flex;">
 						<p>
 							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			        font-weight: 800;">To:</b>
+           			        font-weight: 20;font-size: 20px;">To:</b>
 						</p>&nbsp;
 						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           				font-weight: 800;"> 
+           				font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_to}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
 							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			        font-weight: 800;">From:</b>	
+           			        font-weight: 20;font-size: 20px;">From:</b>	
 						</p>&nbsp;
 						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			    font-weight: 800;"> 
+           			    font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_from}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
 							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           					font-weight: 800;">Message:</b>
+           					font-weight: 20;font-size: 20px;">Message:</b>
 						</p>&nbsp;
 						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           				font-weight: 800;"> 
+           				font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_message}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
 							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           					font-weight: 800;">Card:</b>
+           					font-weight: 20;font-size: 20px;">Card:</b>
 						</p>&nbsp;
 						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           				font-weight: 800;"> hol</p>
+           				font-weight: 20;font-size: 20px;"> hol</p>
 					</div>
 					<div>
 						<p>
 							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           					font-weight: 800;">Gift Box Contentens:</b>
+           					font-weight: 20;font-size: 20px;">Gift Box Contentens:</b>
 						</p>
 
 						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
-           				font-weight: 800;"
+           				font-weight: 20;font-size: 20px;"
 						*ngFor="let box_arts of products; let lastIndex = last">
 							{{box_arts.name}}
 						</p>
@@ -112,9 +130,9 @@
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
 								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           			 			font-weight: 800;">Price</b></p>
+           			 			font-weight: 20;font-size: 20px;">Price</b></p>
 							</li>
-							<li style="margin-top: 50%;">
+							<li style="margin-top: 50%;font-weight: 20;font-size: 20px;">
 								<!-- $345 -->
 								$ {{boxes.box_price}}
 							</li>
@@ -125,7 +143,7 @@
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
 								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           							font-weight: 800;">Quantity</b></p>
+           							font-weight: 20;font-size: 20px;">Quantity</b></p>
 							</li>
 							<li style="margin-top: 50%;">
 								<div class="quantity">
@@ -141,9 +159,9 @@
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
 								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
-           							font-weight: 800;">Total</b></p>
+           							font-weight: 20;font-size: 20px;">Total</b></p>
 							</li>
-							<li style="margin-top: 50%;">
+							<li style="margin-top: 50%; font-weight: 20;font-size: 20px;">
 								${{boxes.box_subtotal}}
 							</li>
 						</ul>
@@ -170,13 +188,13 @@
 	<!--=====================================
 	Botón para pasar al carrito 
 	======================================-->
-	<div >
+	<div style="margin-top: -7%;">
 		<div class="Checkout">
     	  <a 
     	  (click)="HyperLink()"	
     	  class="btn btn-sm animated-button thar-three" 
     	  style="font-family:'Neue Haas Grotesk Text Pro'; 
-   		  font-weight: 800;">Checkout</a>
+   		  font-weight: 20;font-size: 15px;">Checkout</a>
 		</div>
 	</div> 
 
@@ -188,7 +206,143 @@
 		justify-content:center;
 		margin-bottom: 10%;
 	}
+	
+	.col-lg-3, .col-md-3, .col-sm-12{
+		padding-right: 0px !important;
+	}
+	.contrainer{
+		width: 100%;
+		display:block;  
+	}
+
+	.progressbar{
+	counter-reset: step;
+	}
+	.progressbar a{
+		list-style-type: none;
+		float: left;
+		width: 24.33%;
+		position: relative;
+		text-align: center;
+		font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 450;
+  		font-size: 20px;
+	}
+	.progressbar a:before{
+		content: counter(step);
+		counter-increment:step;
+		width: 30px;
+		height: 30px;
+		line-height: 27px;
+		border: 1px solid #ddd;
+		display: block;
+		text-align: center;
+		margin: 0 auto 50px auto;
+		border-radius: 50px;
+		background-color: white;
+	}    
+	.progressbar a:after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background-color: #ddd;
+		top: 15px;
+		left: -50%;
+		z-index: -1;
+	}
+	.progressbar a:first-child:after{
+		content: none;
+	}
+	.progressbar a.active{
+		display: block;
+		color:#6a6a6a;
+	}
+	.progressbar a.active:before{
+		background-color:#6a6a6a;
+		border-color: #6a6a6a;
+	}
+	.progressbar a.active + a:after{
+		background-color:#6a6a6a;
+	}
+
+	/*Progressbar before*/
+
+	.progressbar a.activetwo{
+	display: block;
+	color: #6a6a6a;
+	}
+	.progressbar a.activetwo:before{
+	background-color: #6a6a6a;
+	border-color:#6a6a6a;
+	}
+	.progressbar a.activetwo + a:after{
+	background-color:#6a6a6a;
+	}
+	/*Caja de productos*/
+
+	.imagecontainer{
+		display: flex;
+		justify-content:center;
+		width: 100%
+		font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 800;
+	}
+	.parrafo{
+	  margin-top:155px;
+	  font-size: 100%;
+	}
+
+	/*Clase súper active */
+	.progressbar a.superActive{
+	display: block;
+	color: #b0714a;
+	}
+	.progressbar a.superActive:before{
+	background-color: #b0714a;
+	border-color:#b0714a;
+	}
+	.progressbar a.superActive + a:after{
+	background-color: #b0714a;
+	}
+	.quantity {
+	    display: flex;
+	}
+
+	.quantity .mas {
+	    float: right;
+	    width: 15%;
+	    height: 30px;
+	    border: 1px solid #000;
+	    color: #000;
+	    border-radius: 0;
+	    background: #fff
+	}
+	.quantity .menos {
+	    float: left;
+	    width: 15%;
+	    height: 30px;
+	    border: 1px solid #000;
+	    color: #000;
+	    border-radius: 0;
+	    background: #fff
+	}
+
+	.quantity input {
+	    
+	    border: none;
+	    border-top: 1px solid #000;
+	    border-bottom: 1px solid #000;
+	    text-align: center;
+	    width: 30%;
+	    font-size: 20px;
+	    color: #000;
+	    font-weight: 300;
+	}
+
 	/* Global Button Styles */
+
+    /* Global Button Styles */
     a.animated-button:link, a.animated-button:visited {
         position: relative;
         display: block;
@@ -250,39 +404,39 @@
         transition: all 1s ease;
     }
 
-a.animated-button.thar-three {
-	color: #fff;
-	cursor: pointer;
-	display: block;
-	position: relative;
-	border: 2px solid #F7CA18;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-a.animated-button.thar-three:hover {
-	color: #000 !important;
-	background-color: transparent;
-	text-shadow: nthree;
-}
-a.animated-button.thar-three:hover:before {
-	left: 0%;
-	right: auto;
-	width: 100%;
-}
-a.animated-button.thar-three:before {
-	display: block;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 100%;
-	width: 0px;
-	z-index: -1;
-	content: '';
-	color: #000 !important;
-	background: #F7CA18;
-	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
+	a.animated-button.thar-three {
+		color: black;
+		cursor: pointer;
+		display: block;
+		position: relative;
+		border: 2px solid #F7CA18;
+		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+	0s;
+	}
+	a.animated-button.thar-three:hover {
+		color: white !important;
+		background-color: transparent;
+		text-shadow: nthree;
+	}
+	a.animated-button.thar-three:hover:before {
+		left: 0%;
+		right: auto;
+		width: 100%;
+	}
+	a.animated-button.thar-three:before {
+		display: block;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		height: 100%;
+		width: 0px;
+		z-index: -1;
+		content: '';
+		color: #000 !important;
+		background: #F7CA18;
+		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+	0s;
+	}
 
   
     /* Global Button Styles */
@@ -349,10 +503,13 @@ a.animated-button.thar-three:before {
 
 	a.animated-button.thar-three {
         font-size: inherit;
+        display: flow-root;
         width: 15%;
-        height: 3%;
+       /* height: 3%;*/
+		/*margin-top: 93px;*/
 	    background-color: white;
 		color: black;
+		padding: 1%;
 		cursor: pointer;
 		display: block;
 		position: absolute;
@@ -361,7 +518,7 @@ a.animated-button.thar-three:before {
 	0s;
 	}
 	a.animated-button.thar-three:hover {
-		color: #000 !important;
+		color: white !important;
 		background-color: transparent;
 		text-shadow: nthree;
 	}
@@ -380,140 +537,7 @@ a.animated-button.thar-three:before {
 		z-index: -1;
 		content: '';
 		color: #000 !important;
-		background: #C4AE9D; 
+		background: black; 
 		transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);0s;
 	}
-	.col-lg-3, .col-md-3, .col-sm-12{
-		padding-right: 0px !important;
-	}
-	.contrainer{
-		width: 100%;
-		display:block;  
-	}
-
-	.progressbar{
-	counter-reset: step;
-	}
-	.progressbar a{
-		list-style-type: none;
-		float: left;
-		width: 24.33%;
-		position: relative;
-		text-align: center;
-		font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;
-	}
-	.progressbar a:before{
-		content: counter(step);
-		counter-increment:step;
-		width: 30px;
-		height: 30px;
-		line-height: 27px;
-		border: 1px solid #ddd;
-		display: block;
-		text-align: center;
-		margin: 0 auto 100px auto;
-		border-radius: 50px;
-		background-color: white;
-	}    
-	.progressbar a:after{
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 1px;
-		background-color: #ddd;
-		top: 15px;
-		left: -50%;
-		z-index: -1;
-	}
-	.progressbar a:first-child:after{
-		content: none;
-	}
-	.progressbar a.active{
-		display: block;
-		color:#6a6a6a;
-	}
-	.progressbar a.active:before{
-		background-color:#6a6a6a;
-		border-color: #6a6a6a;
-	}
-	.progressbar a.active + a:after{
-		background-color:#6a6a6a;
-	}
-
-	/*Progressbar before*/
-
-	.progressbar a.activetwo{
-	display: block;
-	color: #6a6a6a;
-	}
-	.progressbar a.activetwo:before{
-	background-color: #6a6a6a;
-	border-color:#6a6a6a;
-	}
-	.progressbar a.activetwo + a:after{
-	background-color:#6a6a6a;
-	}
-	/*Caja de productos*/
-
-	.imagecontainer{
-		display: flex;
-		justify-content:center;
-		width: 100%
-		font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;
-	}
-	.parrafo{
-		text-align: center;
-		margin-top:155px;
-		font-size: 3.4rem;
-	}
-
-	/*Clase súper active */
-	.progressbar a.superActive{
-	display: block;
-	color: #b0714a;
-	}
-	.progressbar a.superActive:before{
-	background-color: #b0714a;
-	border-color:#b0714a;
-	}
-	.progressbar a.superActive + a:after{
-	background-color: #b0714a;
-	}
-	.quantity {
-	    display: flex;
-	}
-
-	.quantity .mas {
-	    float: right;
-	    width: 15%;
-	    height: 30px;
-	    border: 1px solid #000;
-	    color: #000;
-	    border-radius: 0;
-	    background: #fff
-	}
-	.quantity .menos {
-	    float: left;
-	    width: 15%;
-	    height: 30px;
-	    border: 1px solid #000;
-	    color: #000;
-	    border-radius: 0;
-	    background: #fff
-	}
-
-	.quantity input {
-	    
-	    border: none;
-	    border-top: 1px solid #000;
-	    border-bottom: 1px solid #000;
-	    text-align: center;
-	    width: 30%;
-	    font-size: 20px;
-	    color: #000;
-	    font-weight: 300;
-	}
-	
 </style>

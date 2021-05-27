@@ -21,8 +21,8 @@ style="position: relative; z-index: 100%;">
                         <div class="menu--product-categories">
 
                             <a 
-                            style="color: {{color_text_menu}}; 
-                            font-family:'Neue Haas Grotesk Text Pro'; font-weight: 600;" 
+                            style="color: {{color_text_menu}}; font-size: 18px;
+                            font-family:'Neue Haas Grotesk Text Pro'; font-weight: 450;" 
                             href="#" 
                             *ngFor="let negocio of color; let lastIndex = last" >    
                                 {{negocio.title_menu_1}}    
@@ -37,8 +37,8 @@ style="position: relative; z-index: 100%;">
                                     *ngFor="let category of categories; let i = index; let lastIndex = last"
                                     class="menu-item-has-children has-mega-menu">
                                         
-                                        <a style="color: {{color_text_menu}}; 
-                                        font-family:'Neue Haas Grotesk Text Pro'; font-weight: 600;"
+                                        <a style="color: {{color_text_menu}}; font-size: 18px;
+                                        font-family:'Neue Haas Grotesk Text Pro'; font-weight: 450;"
                                         routerLink="products/{{category.url}}" target="_top">
                                             
                                             
@@ -62,8 +62,8 @@ style="position: relative; z-index: 100%;">
 
                             <div class="menu--product-categories">
 
-                                <a style="color: {{color_text_menu}}; 
-                                font-family:'Neue Haas Grotesk Text Pro'; font-weight: 600;" 
+                                <a style="color: {{color_text_menu}}; font-size: 18px;
+                                font-family:'Neue Haas Grotesk Text Pro'; font-weight: 450;" 
                                 *ngFor="let negocio of color; let lastIndex = last">
                                         {{negocio.title_menu_2}}    
                                     {{ lastIndex ? callback() : ""}}
@@ -77,22 +77,25 @@ style="position: relative; z-index: 100%;">
                                         <li class="menu-item-has-children has-mega-menu">
                                                 
                                             <a style="color: {{color_text_menu}}; 
-                                            font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-size: 18px;
+                                            font-family:'Neue Haas Grotesk Text Pro';
+                                            font-weight: 450;"
                                             routerLink="kits" target="_top">
                                                 Curated GIft Boxes
                                             </a>
 
                                             <a style="color: {{color_text_menu}}; 
-                                            font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-size: 18px;
+                                            font-family:'Neue Haas Grotesk Text Pro';
+                                            font-weight: 450;"
                                             routerLink="selecction-caja" target="_top">
                                                 Curate your box
                                             </a>
 
                                             <a  style="color: {{color_text_menu}}; 
+                                            font-size: 18px;
                                             font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;" 
+                                            font-weight: 450;" 
                                             routerLink="products/{{category.url}}" target="_top">
                                                 For you
                                             </a>
@@ -115,8 +118,9 @@ style="position: relative; z-index: 100%;">
                             <div class="menu--product-categories">
 
                                 <a  style="color: {{color_text_menu}}; 
+                                font-size: 18px;
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 600;"
+                                font-weight: 450;"
                                 *ngFor="let negocio of color; let lastIndex = last">
                                         {{negocio.title_menu_3}} 
                                     {{ lastIndex ? callback() : ""}}
@@ -129,8 +133,9 @@ style="position: relative; z-index: 100%;">
                                             <li class="menu-item-has-children has-mega-menu">
                                                 
                                                 <a   style="color: {{color_text_menu}}; 
-                                                font-family:'Neue Haas Grotesk Text Pro'; 
-                                                font-weight: 600;"
+                                                font-size: 18px;
+                                                font-family:'Neue Haas Grotesk Text Pro';
+                                                font-weight: 450;"
                                                 routerLink="frequently-asked-questions" target="_top">
                                                     How it works
                                                 </a>
@@ -140,8 +145,9 @@ style="position: relative; z-index: 100%;">
                                                 </a> -->
 
                                                 <a  style="color: {{color_text_menu}}; 
+                                                font-size: 18px;
                                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                                font-weight: 600;"
+                                                font-weight: 450;"
                                                 routerLink="our-story" target="_top">
                                                     Our story 
                                                 </a>
@@ -179,8 +185,9 @@ style="position: relative; z-index: 100%;">
 
                             <div class="ps-filter__header">
                                 <a  style="color: {{color_text_menu}}; 
+                                font-size: 18px;
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 600;"
+                                font-weight: 450;"
                                 *ngFor="let negocio of color; let lastIndex = last">
                                         {{negocio.title_menu_1}} 
                                     {{ lastIndex ? callback() : ""}}
@@ -199,8 +206,9 @@ style="position: relative; z-index: 100%;">
                                         class="current-menu-item menu-item-has-children">
 
                                             <a  style="color: {{color_text_menu}}; 
+                                            font-size: 18px;
                                             font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-weight: 450;"
                                             routerLink="products/{{category.url}}"><strong>{{category.name}}</strong></a>
 
                                             <span class="sub-toggle">
@@ -226,8 +234,9 @@ style="position: relative; z-index: 100%;">
                             ======================================-->
                             <div class="ps-filter__header">
                                 <a  style="color: {{color_text_menu}}; 
-                                font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 600;"
+                                font-size: 18px;
+                                font-family:'Neue Haas Grotesk Text Pro';
+                                font-weight: 450;"
                                 *ngFor="let negocio of color; let lastIndex = last">
                                         {{negocio.title_menu_2}} 
                                     {{ lastIndex ? callback() : ""}}
@@ -244,8 +253,9 @@ style="position: relative; z-index: 100%;">
 
                                             <a 
                                             style="color: {{color_text_menu}}; 
+                                            font-size: 18px;
                                             font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-weight: 450;"
                                             routerLink="kits"target="_top" style="margin-bottom: 3%;">
                                                 <strong>Curated GIft Boxes</strong> 
                                             </a>
@@ -271,8 +281,9 @@ style="position: relative; z-index: 100%;">
                             ======================================-->
                             <div class="ps-filter__header">
                                 <a  style="color: {{color_text_menu}}; 
+                                font-size: 18px;
                                 font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 600;"
+                                font-weight: 450;"
                                 *ngFor="let negocio of color; let lastIndex = last">
                                         {{negocio.title_menu_3}} 
                                     {{ lastIndex ? callback() : ""}}
@@ -289,15 +300,17 @@ style="position: relative; z-index: 100%;">
                                         <li class="current-menu-item menu-item-has-children">
 
                                             <a  style="color: {{color_text_menu}}; 
-                                            font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-size: 18px;
+                                            font-family:'Neue Haas Grotesk Text Pro';
+                                             font-weight: 450;"
                                             routerLink="frequently-asked-questions" target="_top" style="margin-bottom: 3%;">
                                                 <strong>How it works</strong> 
                                             </a>
 
                                             <a  style="color: {{color_text_menu}}; 
+                                            font-size: 18px;
                                             font-family:'Neue Haas Grotesk Text Pro'; 
-                                            font-weight: 600;"
+                                            font-weight: 450;"
                                             routerLink="our-story" target="_top">
                                                 <strong>Our story</strong> 
                                             </a>
@@ -352,7 +365,7 @@ style="position: relative; z-index: 100%;">
 
                     <a class="header__extra" style="cursor: pointer;" 
                     (click)="fncWindowCart()">
-                        <img src="{{path}}img/icons/cart.png"><span><i>{{totalShoppingCart}}</i></span>
+                        <img style="width: 100%;" src="{{path}}img/icons/cart.png"><span><i>{{totalShoppingCart}}</i></span>
                     </a>
 
                     <div 
@@ -367,7 +380,8 @@ style="position: relative; z-index: 100%;">
 
                                 <div class="ps-product__thumbnail">
                                     <a href="product/{{product.url}}">
-                                        <img id="img" src="{{product.image}}" >
+                                        <img id="img" style="height: 70px;" 
+                                        src="{{product.image}}" >
                                     </a>
                                 </div>
 
