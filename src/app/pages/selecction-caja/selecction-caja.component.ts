@@ -247,7 +247,7 @@ export class SelecctionCajaComponent implements OnInit {
   fncNoCaja(){ 
     console.log("La caja es null");
     if(this.type_box==10){
-       Sweetalert.fnc("error", "There is no box selected. Please select one");
+       // Sweetalert.fnc("error", "There is no box selected. Please select one");
     } else {
       this.newBoxes();
     }

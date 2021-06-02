@@ -81,231 +81,230 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
         <div class="col-lg-5 col-md-7 col-sm-12" style="margin-left:2%;">
 
+            <!--=====================================
+            Product Info
+            ======================================--> 
+
+            <div 
+            *ngFor="let p of product; let i = index"
+            class="ps-product__info">
+
+                <h3 style="text-align: center;
+                font-family:'Neue Haas Grotesk Text Pro'; 
+                font-weight: 450; font-size: 24px;">{{p.name}}</h3>
+
+                <div class="ps-product__meta">
+
+                </div>
+
+                <div style="text-align: center;" [innerHTML]="price[i][0]"></div>
+
                 <!--=====================================
-                Product Info
-                ======================================--> 
+                DESCRIPTION
+                ======================================-->
+                <div class="ps-product__desc">
 
-                <div 
-                *ngFor="let p of product; let i = index"
-                class="ps-product__info">
-
-                    <h3 style="text-align: center;
+                   <h3 (click)="fncVisibility(0)" 
+                    style="cursor: pointer;
                     font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-weight: 450; font-size: 24px;">{{p.name}}</h3>
-
-                    <div class="ps-product__meta">
-
-                    </div>
-
-                    <div style="text-align: center;" [innerHTML]="price[i][0]"></div>
-
-                    <!--=====================================
-                    DESCRIPTION
-                    ======================================-->
-                    <div class="ps-product__desc">
-
-                       <h3 (click)="fncVisibility(0)" 
-                        style="cursor: pointer;
-                        font-family:'Neue Haas Grotesk Text Pro'; 
-                        text-align: center;
-                        font-weight: 450; font-size: 24px;">
-                            DESCRIPTION
-                        </h3>
-                        
-
-                        <div 
-                        *ngIf="visibility_1[0]"
-                        class="ps-list--dot">
-                            
-                            <ul>
-                                
-                                <li style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 20; font-size: 20px;">
-                                    {{p.description}}
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                    <!--=====================================
-                    SUMMARY = ICLUDES
-                    ======================================-->
-                    <div class="ps-product__desc">
-
-                       <h3 (click)="fncVisibility(1)"
-                        style="cursor: pointer; text-align: center; 
-                        font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 450; font-size: 23px;">
-                            THE DETAILS
-                        </h3>
-                        
-
-                        <div 
-                        *ngIf="visibility_1[1]"
-                        class="ps-list--dot">
-                            
-                            <ul>
-                                
-                                <li *ngFor="let sum of summary[i]"
-                                style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 20; font-size: 20px;">
-                                    {{sum}}
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                    <!--=====================================
-                    DETAILS
-                    ======================================-->
-                    <!-- <div class="ps-product__desc">
-
-                       <p (click)="fncVisibility(2)" 
-                        style="cursor: pointer; text-align: center;
-                        font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 800;
-                        font-size: 100%;">
-                            THE DETAILS
-                        </p>
-                        
-
-                        <div 
-                         *ngIf="visibility_1[2]"
-                        class="ps-list--dot">
-                            
-                            <ul>
-                                
-                                <li style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 800;">
-                                    {{p.details}}
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div> -->
-
-                    <!--=====================================
-                    Quantity
-                    ======================================-->
-
-                    <div class="ps-product__shopping" style="justify-content: center;
-                      margin: 2%;">
-
-                        <figure style="text-align: center;">
-
-                            <figcaption>
-                                <h3 style="text-align: center;font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 450; font-size: 24px;">
-                                    Quantity
-                                </h3>
-                            </figcaption>
-
-                            <div class="form-group--number quantity" style="text-align: center;">
-
-                                <button class="up" (click)="changeQuantity(quantity.value, 1, 'up')">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-
-                                <button class="down" (click)="changeQuantity(quantity.value, 1, 'down')">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-
-                                <input class="form-control px-5" type="number" value="1" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
-
-                            </div>
-
-                        </figure>
-
-                    </div>
-
-                    <!--=====================================
-                    Box
-                    ======================================-->
+                    text-align: center;
+                    font-weight: 450; font-size: 24px;">
+                        DESCRIPTION
+                    </h3>
+                    
                     <div 
-                    *ngIf="p.category == compare ">
+                    *ngIf="visibility_1[0]"
+                    class="ps-list--dot">
+                        
+                        <ul>
+                            
+                            <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 20; font-size: 20px;">
+                                {{p.description}}
+                            </li>
 
-                        <div>
-                            <h3 style="text-align: center;
-                            font-family:'Neue Haas Grotesk Text Pro'; 
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+                SUMMARY = ICLUDES
+                ======================================-->
+                <div class="ps-product__desc">
+
+                   <h3 (click)="fncVisibility(1)"
+                    style="cursor: pointer; text-align: center; 
+                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 450; font-size: 23px;">
+                        THE DETAILS
+                    </h3>
+                    
+
+                    <div 
+                    *ngIf="visibility_1[1]"
+                    class="ps-list--dot">
+                        
+                        <ul>
+                            
+                            <li *ngFor="let sum of summary[i]"
+                            style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 20; font-size: 20px;">
+                                {{sum}}
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+                DETAILS
+                ======================================-->
+                <!-- <div class="ps-product__desc">
+
+                   <p (click)="fncVisibility(2)" 
+                    style="cursor: pointer; text-align: center;
+                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 800;
+                    font-size: 100%;">
+                        THE DETAILS
+                    </p>
+                    
+
+                    <div 
+                     *ngIf="visibility_1[2]"
+                    class="ps-list--dot">
+                        
+                        <ul>
+                            
+                            <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 800;">
+                                {{p.details}}
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div> -->
+
+                <!--=====================================
+                Quantity
+                ======================================-->
+
+                <div class="ps-product__shopping" style="justify-content: center;
+                  margin: 2%;">
+
+                    <figure style="text-align: center;">
+
+                        <figcaption>
+                            <h3 style="text-align: center;font-family:'Neue Haas Grotesk Text Pro'; 
                             font-weight: 450; font-size: 24px;">
-                                BOX COLOR
+                                Quantity
                             </h3>
-                            <div class="row" style="display: flex;">
-                                <img class="col-6" 
-                                style="width: 50px; height: 200px;" 
-                                src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2" >
-                                <img class="col-6" 
-                                style="width: 50px; height: 200px;"
-                                src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
-                            </div>
+                        </figcaption>
+
+                        <div class="form-group--number quantity" style="text-align: center;">
+
+                            <button class="up" (click)="changeQuantity(quantity.value, 1, 'up')">
+                                <i class="fa fa-plus"></i>
+                            </button>
+
+                            <button class="down" (click)="changeQuantity(quantity.value, 1, 'down')">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                            <input class="form-control px-5" type="number" value="1" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
+
                         </div>
 
-                        <!--=====================================
-                        Letter
-                        ======================================-->
-                        <div class="row" style="display: flex; margin-top: 3%;">
+                    </figure>
 
-                            <div class="col-6">
-                                <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 20; font-size: 20px;">To</p>
-                                <div class="input-group input-group-lg">
-                                    <input  
-                                      placeholder="To" 
-                                      type="text" class="form-control" 
-                                      aria-label="Sizing example input" 
-                                      aria-describedby="inputGroup-sizing-lg">
-                                </div>
-                            </div>
-                            
-                            <div class="col-6">
-                                <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                font-weight: 20; font-size: 20px;">From</p>
-                                <div class="input-group input-group-lg">
-                                    <input  
-                                    placeholder="From" 
-                                    type="text" class="form-control" 
-                                    aria-label="Sizing example input" 
-                                    aria-describedby="inputGroup-sizing-lg">
-                                </div>  
-                            </div>    
-                            
+                </div>
+
+                <!--=====================================
+                Box
+                ======================================-->
+                <div 
+                *ngIf="p.category == compare ">
+
+                    <div>
+                        <h3 style="text-align: center;
+                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 450; font-size: 24px;">
+                            BOX COLOR
+                        </h3>
+                        <div class="row" style="display: flex;">
+                            <img class="col-6" 
+                            style="width: 50px; height: 200px;" 
+                            src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2" >
+                            <img class="col-6" 
+                            style="width: 50px; height: 200px;"
+                            src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
                         </div>
+                    </div>
 
-                        <div style="margin-top: 3%;">
+                    <!--=====================================
+                    Letter
+                    ======================================-->
+                    <div class="row" style="display: flex; margin-top: 3%;">
+
+                        <div class="col-6">
                             <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                            font-weight: 20; font-size: 20px;">Message</p>
-
-                            <textarea placeholder="Enter your card message here. 120 characters" 
-                            id="to-message" rows="5" style="width: 100%"></textarea>
-
+                            font-weight: 20; font-size: 20px;">To</p>
+                            <div class="input-group input-group-lg">
+                                <input  
+                                  placeholder="To" 
+                                  type="text" class="form-control" 
+                                  aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-lg">
+                            </div>
                         </div>
+                        
+                        <div class="col-6">
+                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            font-weight: 20; font-size: 20px;">From</p>
+                            <div class="input-group input-group-lg">
+                                <input  
+                                placeholder="From" 
+                                type="text" class="form-control" 
+                                aria-label="Sizing example input" 
+                                aria-describedby="inputGroup-sizing-lg">
+                            </div>  
+                        </div>    
                         
                     </div>
 
-                
-                    <div style="margin-bottom: 3%; margin-top: 3%;">
+                    <div style="margin-top: 3%;">
+                        <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        font-weight: 20; font-size: 20px;">Message</p>
 
-                        <a class="btn btn-sm animated-button thar-three"
-                        style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 20; font-size: 15px;" 
-                        (click)="addShoppingCart(p.url, 1, [])">
-                            ADD TO CART $ {{p.price}}
-                        </a>
-                        <!-- <a class="btn btn-sm animated-button thar-three "> -->
-                            <!-- ADD TO CART $40.00 -->
-                        <!-- </a> -->
+                        <textarea placeholder="Enter your card message here. 120 characters" 
+                        id="to-message" rows="5" style="width: 100%"></textarea>
+
                     </div>
+                    
+                </div>
+
+            
+                <div style="margin-bottom: 3%; margin-top: 3%;">
+
+                    <a class="btn btn-sm animated-button thar-three"
+                    style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 20; font-size: 15px;" 
+                    (click)="addShoppingCart(p.url, 1, [])">
+                        ADD TO CART $ {{p.price}}
+                    </a>
+                    <!-- <a class="btn btn-sm animated-button thar-three "> -->
+                        <!-- ADD TO CART $40.00 -->
+                    <!-- </a> -->
+                </div>
 
 
-                </div> <!-- End Product Info -->
+            </div> <!-- End Product Info -->
 
         </div> 
 

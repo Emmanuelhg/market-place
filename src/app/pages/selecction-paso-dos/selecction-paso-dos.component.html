@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
-  Barra de números 
+  Barra de números    
   ======================================--> 
   <div class="container">
 		<div style="margin-bottom: 4%;">
@@ -41,228 +41,228 @@
 
     <div class="div-new">
 
-        <!-- Progres bar para el tamaño de la caja -->
-        <div class="divSubMenus">   
+      <!-- Progres bar para el tamaño de la caja -->
+      <div class="divSubMenus">   
 
-           <a  class="select-caja select-active-caja"
-           id="small-box-a" 
-           type="button"  data-toggle="modal" 
-           data-target="#exampleModalCenter"
-           style="font-family:'Neue Haas Grotesk Text Pro'; 
-           font-weight: 20; font-size: 20px;">
-                SMALL
-           </a> 
+        <a  class="select-caja select-active-caja"
+        id="small-box-a" 
+        type="button"  data-toggle="modal" 
+        data-target="#exampleModalCenter"
+        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 20; font-size: 20px;">
+          SMALL
+        </a> 
 
-           <a  class="select-caja" 
-           id="regular-box-a" 
-           type="button"  data-toggle="modal" 
-           data-target="#exampleModalCenter"
-           style="font-family:'Neue Haas Grotesk Text Pro'; 
-           font-weight: 20; font-size: 20px;">
-                REGULAR
-            </a>
+        <a  class="select-caja" 
+        id="regular-box-a" 
+        type="button"  data-toggle="modal" 
+        data-target="#exampleModalCenter"
+        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        font-weight: 20; font-size: 20px;">
+          REGULAR
+        </a>
+
+      </div>
+
+      <!-- Guardado de productos en caja  -->
+
+      <div class="row  col-sm-12" style="display: flex;">
+
+        <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
+
+          <!-- Titulo de la caja -->
+          <div class="div-title-new">
+
+            <p 
+            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">
+              START SELECTING ITEMS TO FILL YOUR BOX
+            </p>
+
+          </div>
+
+          <!-- Imágenes de los productos -->
+          <div class="contrainer ">
+
+            <div class="row">
+
+              <!-- Imágen de Caja -->
+              <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
+
+                <div  class="img-new-product ">
+
+                  <img style="height: 149px; display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
+
+                  <div class="circulo">{{1}}</div>
+
+                </div>
+
+              </div>
+
+                <!-- <style>
+                  @media screen and  (max-width: 280px) {
+                   
+                    .produc-agregado-new, .col-6{
+                        
+                      max-width: 100%;
+                      flex:0 0 100%;
+                    }
+                  }
+                </style> -->
+
+                <!-- Imágen de Productos -->
+                <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
+
+                  <div  class="img-new-product">
+
+                      <img style="display: flex; object-fit: cover; height: 149px;" src="{{product.image}}" alt="">
+
+                      <div class="circulo">{{cant_productos[i]}}</div>
+
+                  </div>
+
+                  {{ lastIndex ? callback() : ""}}
+
+                </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-        <!-- Guardado de productos en caja  -->
+        <!-- Infomración de todos los productos incluyendo la caja -->
+        <div class="div-info-new col-lg-5 col-md-12 col-sm-12" >
 
-        <div class="row  col-sm-12" style="display: flex;">
+          <div class="div_et">
+            <p class="pzp" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;"> 
+              BOX CONTENTS
+            </p>
+          </div>
+       
+          <div class="div_edh">
 
-            <div class="div-img-new col-lg-7 col-md-12 col-sm-12">
-                <!-- Titulo de la caja -->
-                <div class="div-title-new">
+            <div style="width: 5%; text-align: center;">
 
-                  <p 
-                  style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 20; font-size: 20px;">
-                    START SELECTING ITEMS TO FILL YOUR BOX
-                  </p>
+                <p>
+                  <b>1</b>
+                </p>
 
-                </div>
+            </div> 
 
-                <!-- Imágenes de los productos -->
+            <div style="width: 68%;">
 
-                <div class="contrainer ">
-                    <div class="row">
-
-                        <!-- Imágen de Caja -->
-                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6">
-
-                            <div  class="img-new-product ">
-
-                                <img style="height: 149px; display: flex; object-fit: cover;" src="{{box_json.box_img}}" alt="">
-
-                                <div class="circulo">{{1}}</div>
-
-                            </div>
-
-                        </div>
-
-                        <!-- <style>
-                          @media screen and  (max-width: 280px) {
-                           
-                            .produc-agregado-new, .col-6{
-                                
-                              max-width: 100%;
-                              flex:0 0 100%;
-                            }
-                          }
-                        </style> -->
-
-                        <!-- Imágen de Productos -->
-                        <div class="produc-agregado-new col-lg-4 col-sm-6 col-6" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
-
-                            <div  class="img-new-product">
-
-                                <img style="display: flex; object-fit: cover; height: 149px;" src="{{product.image}}" alt="">
-
-                                <div class="circulo">{{cant_productos[i]}}</div>
-
-                            </div>
-
-                           {{ lastIndex ? callback() : ""}}
-
-                        </div>
-
-                    </div>
-
-                </div>
+              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px;"> 
+                
+                Box {{box_json.box_name}}
+                     
+              </p>
 
             </div>
 
-            <!-- Infomración de todos los productos incluyendo la caja -->
+            <div style="width: 20%; text-align: center;">
 
-            <div class="div-info-new col-lg-5 col-md-12 col-sm-12" >
+              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px;">
+                    
+                ${{box_json.box_price}} 
+                    
+              </p>
 
-                <div class="div_et">
-                  <p class="pzp" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 20; font-size: 20px;"> 
-                    BOX CONTENTS
-                  </p>
-                </div>
-             
-                <div class="div_edh">
-
-                   <div style="width: 5%; text-align: center;">
-
-                        <p>
-                            <b>1</b>
-                        </p>
-
-                   </div> 
-
-                   <div style="width: 68%;">
-
-                      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                      font-weight: 20; font-size: 20px;"> 
-                      
-                          Box {{box_json.box_name}}
-                           
-                       </p>
-
-                   </div>
-
-                   <div style="width: 20%; text-align: center;">
-
-                       <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                        font-weight: 20; font-size: 20px;">
-                          
-                          ${{box_json.box_price}} 
-                          
-                      </p>
-
-                   </div>
-            
-                </div>
-
-                <!-- contenido de productos agregados -->
-
-                <div class="nwe-ptg">
-
-                     <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
-                        <div style="width: 5%; text-align: center;">
-
-                            <p class="tex_cont">
-                                <b> 
-                                  {{cant_productos[i]}}
-                                </b>
-                            </p> 
-                        </div>
-                        
-                        <div style="width: 70%;">
-
-                            <p>
-                              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                              font-weight: 20; font-size: 20px;">
-                                {{product.name}} 
-                              </b>    
-                            </p>
-                            
-                        </div>
-
-                        <div style="width: 20%; text-align: center;">
-                            
-                           <p> 
-                              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                              font-weight: 20; font-size: 20px;">
-                                ${{product.price}}
-                              </b>
-
-                           </p>  
-
-                        </div>
-                        
-                         <!-- Eliminar productos de la caja -->
-                        <div style="width: 5%; align-items: center;">
-
-                            <i (click)="fncNewR(i, product.name)"
-                            class="icon-cross"></i>
-                            
-                        </div>
-                       
-
-                        {{ lastIndex ? callback() : ""}}
-
-                      </div>  
-
-                </div>
-
-                <div class="div_ed" style="border-top: 1px solid #dddddd !important;
-                border-bottom: 1px solid  #dddddd !important;">
-
-                  <p style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 20; font-size: 20px;">
-                    CURRENT PACKAGING | SMALL
-                  </p>
-
-                </div>
-
-                <div class="div-price-new">
-
-                  <p style="
-                   height: 60px; 
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;">
-                    <b style="width: px;"
-                    style="font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-weight: 20; font-size: 20px;"> BOX SUBTOTAL: ${{subTotal}}</b>
-                  </p>
-
-                  <a 
-                  style="cursor: pointer; font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 20; font-size: 15px;" 
-                  (click)="guardaProductos()"
-                  class="new-boton">
-                    COMPLETE BOX
-                  </a>
+            </div>
       
+          </div>
 
-                </div>
+          <!-- contenido de productos agregados -->
 
-            </div>
+          <div class="nwe-ptg">
 
-        </div> 
+            <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index" class="div_er">
+
+              <div style="width: 5%; text-align: center;">
+
+                  <p class="tex_cont">
+                      <b> 
+                        {{cant_productos[i]}}
+                      </b>
+                  </p> 
+              </div>
+                
+              <div style="width: 70%;">
+
+                  <p>
+                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 20; font-size: 20px;">
+                      {{product.name}} 
+                    </b>    
+                  </p>
+                  
+              </div>
+
+              <div style="width: 20%; text-align: center;">
+                  
+                 <p> 
+                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-weight: 20; font-size: 20px;">
+                      ${{product.price}}
+                    </b>
+
+                 </p>  
+
+              </div>
+                
+              <!-- Eliminar productos de la caja -->
+              <div style="width: 5%; align-items: center;">
+
+                  <i (click)="fncNewR(i, product.name)"
+                  class="icon-cross"></i>
+                  
+              </div>
+               
+              {{ lastIndex ? callback() : ""}}
+
+            </div>  
+
+          </div>
+
+          <div class="div_ed" style="border-top: 1px solid #dddddd !important;
+          border-bottom: 1px solid  #dddddd !important;">
+
+            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">
+              CURRENT PACKAGING | SMALL
+            </p>
+
+          </div>
+
+          <div class="div-price-new">
+
+            <p style="
+             height: 60px; 
+             display: flex;
+             justify-content: center;
+             align-items: center;">
+              <b style="width: px;"
+              style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px;"> BOX SUBTOTAL: ${{subTotal}}</b>
+            </p>
+
+            <a 
+            style="cursor: pointer; font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 15px;" 
+            (click)="guardaProductos()"
+            class="new-boton">
+              COMPLETE BOX
+            </a>
+
+
+          </div>
+
+        </div>
+
+      </div> 
 
     </div>
 
@@ -278,8 +278,8 @@
       <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
 
         <!-- Filtro por Categoría -->
-        <div 
-        class="col-lg-3 col-md-3 col-sm-12" style=" padding: 0px;">
+        <div style=" padding: 0px;"
+        class="col-lg-3 col-md-3 col-sm-12" >
 
           <select class="custom-select" id="inputGroupSelect01" 
           (change)="filtradoProductos1(0,$event.target.value)"
@@ -291,73 +291,73 @@
             <option *ngFor="let categoria of lista_categories; let lastIndex = last,let i = index"
             style="font-family:'Neue Haas Grotesk Text Pro'; font-weight: 20; font-size: 20px;" 
             value="{{categoria}}">{{categoria}}
-           </option>
+            </option>
 
           </select>  
-
-          
 
         </div>
 
         <!-- Filtro por colores -->
         <div class="col-lg-3 col-md-3 col-sm-12">
 
-            <select class="custom-select" id="inputGroupSelect01" 
-            (change)="filtradoProductos1(1,$event.target.value)"
-            style="height: 50px; font-size: 18px;">
+          <select class="custom-select" id="inputGroupSelect01" 
+          (change)="filtradoProductos1(1,$event.target.value)"
+          style="height: 50px; font-size: 18px;">
 
-                <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px; ">Color</option>
-                <!-- <option selected>Color</option> -->
-                <option *ngFor="let color of lista_colores; let lastIndex = last,let i = index"
-                value="{{color}}" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">{{color}}</option>
+              <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px; ">Color</option>
+              <!-- <option selected>Color</option> -->
+              <option *ngFor="let color of lista_colores; let lastIndex = last,let i = index"
+              value="{{color}}" style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px;">{{color}}</option>
 
-            </select>
+          </select>
 
         </div>
 
         <!-- Filtro por precios  -->
         <div class="col-lg-3 col-md-3 col-sm-12">
 
-            <select class="custom-select" id="inputGroupSelect01" 
-            (change)="sortElementsByRange($event.target.value)"
-            style="height: 50px; font-size: 18px;">
+          <select class="custom-select" id="inputGroupSelect01" 
+          (change)="sortElementsByRange($event.target.value)"
+          style="height: 50px; font-size: 18px;">
 
-                <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">Sort by Options</option>
-                <!-- <option selected>Sort by Options</option> -->
-                <option value="lower" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">Price(Low to high)</option>
-                <option value="higher" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">Price(High to low)</option>
-                <option value="box-small" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">Size(Small to large)</option>
-                <option value="box-big" style="font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 20; font-size: 20px;">Size(Large to small)</option>
+            <option selected >
+              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 20px;">Sort by Options</p>
+            </option>
+            <!-- <option selected>Sort by Options</option> -->
+            <option value="lower" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">Price(Low to high)</option>
+            <option value="higher" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">Price(High to low)</option>
+            <option value="box-small" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">Size(Small to large)</option>
+            <option value="box-big" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-weight: 20; font-size: 20px;">Size(Large to small)</option>
 
-            </select>
+          </select>
 
         </div>
 
         <!-- Filtro por serch -->
         <div class="col-lg-3 col-md-3 col-sm-12">
 
-            <div id="inputGroupSelect01" style="height: 50px;">
+          <div id="inputGroupSelect01" style="height: 50px;">
 
-              <input
-              [(ngModel)] = "searh_filter_text"
-              (keyup.enter)="goSearch()"
-              class="form-control mr-sm-2" 
-              type="search" 
-              placeholder="Search" 
-              aria-label="Search">
+            <input
+            [(ngModel)] = "searh_filter_text"
+            (keyup.enter)="goSearch()"
+            class="form-control mr-sm-2" 
+            type="search" 
+            placeholder="Search" 
+            aria-label="Search">
 
-            </div>
+          </div>
 
         </div>
 
-      </div>
+      </div >
         
     </div>
   </div>
@@ -548,7 +548,7 @@
         
     </div>
 
-  </div>  
+  </div>
 
   <!--=====================================
   Ventana Modal para ver el producto detallado
@@ -558,90 +558,97 @@
 
     <div class="modal-dialog modal-xl row" role="document">
 
-        <!-- Ventana Modal imagen de producto -->
-        <div class="modal-content col-lg-6 col-md-12 col-sm-12">
+      <!-- Ventana Modal imagen de producto -->
+      <div class="modal-content col-lg-6 col-md-12 col-sm-12">
 
-          <!-- <img class="img-ventena" src="{{porductos_detalles_img}}"> -->
+        <!-- <img class="img-ventena" src="{{porductos_detalles_img}}"> -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
 
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-
-              <div class="carousel-item active">
-                <img class="img-ventena"  src="{{porductos_detalles_img}}" alt="First slide">
-              </div>
-
-              <div
-              *ngFor="let product of img_gallery; let lastIndex = last,let i = index"
-              class="carousel-item">
-                <img
-                class="img-ventena"  src="{{product}}" alt="First slide">
-              </div>
-
+            <div class="carousel-item active">
+              <img class="img-ventena"  src="{{porductos_detalles_img}}" alt="First slide">
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+
+            <div
+            *ngFor="let product of img_gallery; let lastIndex = last,let i = index"
+            class="carousel-item">
+              <img
+              class="img-ventena"  src="{{product}}" alt="First slide">
+            </div>
+
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
 
-
-        </div>  
+      </div>  
        
-        <!-- Ventana Modal detalles de producto -->
-        <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
+      <!-- Ventana Modal detalles de producto -->
+      <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" style="background: white;">
 
-          <!-- Título del producto ventana modal  -->
-          <div style="height: 9%; text-align: center; align-items: center; margin: 2%;">
+        <!-- Título del producto ventana modal  -->
+        <div style="height: 9%; text-align: center; align-items: center; margin: 2%;">
 
-            <h3 style="margin: 5%; font-size: 27px;">
+          <h3 style="margin: 5%; 
+          font-family:'Neue Haas Grotesk Text Pro';
+          font-size: 24px;
+          font-weight: 450;">
 
-              {{porductos_detalles_name}}
+            {{porductos_detalles_name}}
 
-            </h3>
-
-          </div>
-
-          <!-- Detalles del producto ventana modal  -->
-          <div style="">
-
-            <div [innerHTML] id="contenedor-descripciones">
-
-              <p style="margin-top: -1%;">{{porductos_detalles}}</p>
-
-            </div>
-
-          </div>
-
-          <!-- Botón del producto ventana modal  -->
-          <div style="text-align: center;align-items: center;">
-
-            <div 
-            class="col text-center" style="display: flow-root;
-            justify-content: center;
-            align-items: center;">
-
-              <a class="new-boton" 
-              (click)="fncNewAdd(products,porductos_detalles_name)"
-              style=" width: px; margin-top: 5%;cursor:pointer;">
-
-                Add to box $ {{porductos_detalles_precio}}
-
-              </a>
-
-            </div>  
+          </h3>
 
         </div>
 
+        <!-- Detalles del producto ventana modal  -->
+        <div style="">
+
+          <div [innerHTML] id="contenedor-descripciones">
+
+            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            font-size: 20px;
+            font-weight: 20; color: black;">
+              {{porductos_detalles}}
+            </p>
+
+          </div>
+
         </div>
+
+        <!-- Botón del producto ventana modal  -->
+        <div style="text-align: center;align-items: center;">
+
+          <div 
+          class="col text-center" style="display: flow-root;
+          justify-content: center;
+          align-items: center;">
+
+            <a class="new-boton" 
+            (click)="fncNewAdd(products,porductos_detalles_name)"
+            style=" width: px; margin-top: 5%;cursor:pointer;
+            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-size: 16px;
+            font-weight: 100;">
+
+              Add to box $ {{porductos_detalles_precio}}
+
+            </a>
+
+          </div>  
+
+        </div>
+
+      </div>
        
     </div>
 
   </div>
-
 
   <!--=====================================
   Ventana Modal para alerta de cajas
@@ -784,27 +791,47 @@
 
   <div style="justify-content: center; display: flex;">
 
-      <!-- Mensaje producto agregado --> 
-      <div  
-      id="snackbar">
-          {{txt_product_snackbar}} added to box
-      </div>
+    <!-- Mensaje producto agregado --> 
+    <div style="border-radius: 15px;" 
+    id="snackbar">
 
-      <!-- Mensaje producto removido -->
-      <div  
-      id="snackbarTow">
-          {{txt_product_snackbar}} removed to your box
-      </div>
+      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        {{txt_product_snackbar}} added to box
+      </p>      
+       
+    </div>
 
-      <div  
-      id="snackbarAgregarListaDeseos">
-          Added to your favorites
-      </div>
+    <!-- Mensaje producto removido -->
+    <div  style="border-radius: 15px;" 
+    id="snackbarTow">
 
-      <div  
-      id="snackbarQuitarListaDeseos">
-          Removed from your favorites
-      </div>
+      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        {{txt_product_snackbar}} removed to your box
+      </p>
+      
+    </div>
+
+    <div style="border-radius: 15px;" 
+    id="snackbarAgregarListaDeseos">
+
+      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        Added to your favorites
+      </p>
+        
+    </div>
+
+    <div style="border-radius: 15px;" 
+    id="snackbarQuitarListaDeseos">
+
+      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        Removed from your favorites
+      </p>
+        
+    </div>
       
   </div>
 
@@ -814,176 +841,173 @@
   <div class="modal fade bd-example-modal-xl lista-deseos" tabindex="-1" role="dialog" aria-labelledby="
   myExtraLargeModalLabel" aria-hidden="true">
 
-      <div class="modal-dialog modal-xl row" role="document">
+    <div class="modal-dialog modal-xl row" role="document">
 
-          <!-- Productos de la lista de deseos -->
-          <div class="modal-content">
+      <!-- Productos de la lista de deseos -->
+      <div class="modal-content">
 
-              <!-- Título lista de deseos -->
-              <h3 style="text-align: center; margin-top: 4%;
-              margin-bottom: -1%;">
-                  Your Favorites
-              </h3>
+        <!-- Título lista de deseos -->
+        <h3 style="text-align: center; margin-top: 4%;
+        margin-bottom: -1%;">
+            Your Favorites
+        </h3>
 
-              <div class="divimageness row">
+        <div class="divimageness row">
 
-                  <div
-                  *ngFor="let products of getProduct; let lastIndex = last,let i = index"
-                  class="ps-product col-lg-3 col-md-4 col-sm-6">
+          <div
+          *ngFor="let products of getProduct; let lastIndex = last,let i = index"
+          class="ps-product col-lg-3 col-md-4 col-sm-6">
 
-                      <!-- *ngIf="getVisibilityByFilter(products)" -->
-                      <div   
-                      class="ps-product__thumbnail">
+            <!-- *ngIf="getVisibilityByFilter(products)" -->
+            <div   
+            class="ps-product__thumbnail">
 
-                          <a>
-                              <div style="position: absolute;
-                              width: 100%;
-                              align-items: center;
-                              text-align: center;
-                              opacity: 0.7;
-                              background: white;
-                              top: 0%;" 
-                              id="to-large-to-fid" 
-                              *ngIf="productsFull() == true">
+              <a>
+                <div style="position: absolute;
+                width: 100%;
+                align-items: center;
+                text-align: center;
+                opacity: 0.7;
+                background: white;
+                top: 0%;" 
+                id="to-large-to-fid" 
+                *ngIf="productsFull() == true">
 
-                                  <p style="color: black;">
-                                      Oops!<br>
-                                      (too large to fit)
-                                  </p>
+                  <p style="color: black;">
+                    Oops!<br>
+                    (too large to fit)
+                  </p>  
 
-                              </div>  
+                </div>  
 
-                              <ul class="ps-product__actionsjy" style="position: absolute;">
+                <ul class="ps-product__actionsjy" style="position: absolute;">
 
-                                  <li>
+                  <li>
 
-                                      <a style="position: relative;">
+                    <a style="position: relative;">
 
-                                          <i class="icon-heart"
-                                           style=" background:pink;" 
-                                           data-toggle="modal" 
-                                           data-target=".lista-deseos"></i>
+                      <i class="icon-heart"
+                       style=" background:pink;" 
+                       data-toggle="modal" 
+                       data-target=".lista-deseos"></i>
 
-                                      </a>
+                    </a>
 
-                                  </li> 
+                  </li> 
 
-                              </ul>
+                </ul>
 
-                              <img 
-                              style="width: 100%; height: 278px; 
-                              object-fit: cover;" 
-                              (click)="detallesProducto(products)"
-                               type="button"  data-toggle="modal" 
-                               data-target=".bd-example-modal-xl"
-                               src="{{products.image}}" alt="">
+                  <img 
+                  style="width: 100%; height: 278px; 
+                  object-fit: cover;" 
+                  (click)="detallesProducto(products)"
+                   type="button"  data-toggle="modal" 
+                   data-target=".bd-example-modal-xl"
+                   src="{{products.image}}" alt="">
 
-                               <!-- <img 
-                              style="width: 100%; height: 278px; 
-                              object-fit: cover;  " 
-                              (click)="detallesProducto(products)"
-                               type="button"  data-toggle="modal" 
-                               data-target=".bd-example-modal-xl"
-                               src="{{path}}img/products_etre/prod5.png" alt=""> -->
+                   <!-- <img 
+                  style="width: 100%; height: 278px; 
+                  object-fit: cover;  " 
+                  (click)="detallesProducto(products)"
+                   type="button"  data-toggle="modal" 
+                   data-target=".bd-example-modal-xl"
+                   src="{{path}}img/products_etre/prod5.png" alt=""> -->
 
-                          </a>
+              </a>
 
-                          <!-- Boton para agregar productos a la caja -->
-                          <div 
-                           class="texto"
-                           *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
-                                  <!-- (click)="myFunction(products.name)"   -->
-                              <a 
-                              (click)="fncNewAdd(products, products.name)"
-                               style="cursor:pointer">
-                                   Add to box
-                              </a>
-                          </div>
+              <!-- Boton para agregar productos a la caja -->
+              <div 
+              class="texto"
+              *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
+                      <!-- (click)="myFunction(products.name)"   -->
+                  <a 
+                  (click)="fncNewAdd(products, products.name)"
+                   style="cursor:pointer">
+                       Add to box
+                  </a>
+              </div>
 
-                          <!-- BTN para agregar cantidad de productos -->
-                          <div class="texto"
-                          *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
+              <!-- BTN para agregar cantidad de productos -->
+              <div class="texto"
+              *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
 
-                              <div  style="width: 100%; display: flex;">
-                                  <!-- BTN menos -->
-                                  <button style="width: 15%; background:black;"
-                                  (click)="modificadorCantidadProductos(-1, i,products)"
-                                  class="menos" type="button">-</button>
+                  <div  style="width: 100%; display: flex;">
+                      <!-- BTN menos -->
+                      <button style="width: 15%; background:black;"
+                      (click)="modificadorCantidadProductos(-1, i,products)"
+                      class="menos" type="button">-</button>
 
-                                  <div 
-                                  style="background: white;width: 70%; text-align: center;
-                                   color:black; border: 1px solid black !important;"
-                                   id="quantity"> 
+                      <div 
+                      style="background: white;width: 70%; text-align: center;
+                       color:black; border: 1px solid black !important;"
+                       id="quantity"> 
 
-                                      {{getNumArts(products)}} IN INBOX
-
-                                  </div>
-                                  <!-- BTN más -->
-                                  <button style="width: 15%; background:black;" 
-                                  (click)="modificadorCantidadProductos(1, i,products)"
-                                  class="mas" type="button">+</button>
-                              </div>
-                                  
-                          </div>
-                                                  
-                          <!-- Botón long -->
-                          <div 
-                           *ngIf="productsFull() == true"
-                            class="texto">
-
-                              <a 
-                               style="cursor:pointer">
-                                  Too large
-                              </a>
-
-                          </div>
+                          {{getNumArts(products)}} IN INBOX
 
                       </div>
-
+                      <!-- BTN más -->
+                      <button style="width: 15%; background:black;" 
+                      (click)="modificadorCantidadProductos(1, i,products)"
+                      class="mas" type="button">+</button>
+                  </div>
                       
+              </div>
+                                      
+              <!-- Botón long -->
+              <div 
+               *ngIf="productsFull() == true"
+                class="texto">
 
-                     <!-- Información de productos -->
+                  <a 
+                   style="cursor:pointer">
+                      Too large
+                  </a>
 
-                     <div class="ps-product__containerT">
+              </div>
 
-                          <div class="ps-product__content">
+            </div>
 
-                              <a class="ps-product__title">
-                                 {{products.name}}
-                              </a>
+            <!-- Información de productos -->
+            <div class="ps-product__containerT">
+
+                <div class="ps-product__content">
+
+                  <a class="ps-product__title">
+                     {{products.name}}
+                  </a>
 
 
-                              <p class="tex_product">
-                                 $ {{products.price}}
-                              </p>
+                  <p class="tex_product">
+                     $ {{products.price}}
+                  </p>
 
-                            
-                              <!-- <div [innerHTML]="price[i][0]"></div> -->
+                
+                    <!-- <div [innerHTML]="price[i][0]"></div> -->
 
-                          </div>
+                </div>
 
-                          <div class="ps-product__content hover">
+                <div class="ps-product__content hover">
 
-                              <a class="ps-product__title">
-                                  {{products.name}}
-                              </a>
+                    <a class="ps-product__title">
+                        {{products.name}}
+                    </a>
 
-                              <!-- <div [innerHTML]="price[i][0]"></div> -->
+                    <!-- <div [innerHTML]="price[i][0]"></div> -->
 
-                          </div>
+                </div>
 
-                      </div>
+            </div>
 
-                   {{ lastIndex ? callback() : ""}}
+           {{ lastIndex ? callback() : ""}}
 
-                  </div><!-- End Product --> 
+          </div><!-- End Product --> 
 
-              </div>    
+        </div>    
 
-          </div>
-         
-         
       </div>
+       
+       
+    </div>
 
   </div>
     

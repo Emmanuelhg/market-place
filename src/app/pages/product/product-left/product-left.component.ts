@@ -601,7 +601,7 @@ export class ProductLeftComponent implements OnInit {
 
             if(!resp){
 
-                Sweetalert.fnc("error", "Please login to send your question", null);
+                // Sweetalert.fnc("error", "Please login to send your question", null);
 
                 return;
 
@@ -660,7 +660,7 @@ export class ProductLeftComponent implements OnInit {
 
                                     if(resp["status"] == 200){
 
-                                        Sweetalert.fnc("success", "The message has been sent", "product/"+url);
+                                        // Sweetalert.fnc("success", "The message has been sent", "product/"+url);
 
                                     }
 
@@ -670,7 +670,7 @@ export class ProductLeftComponent implements OnInit {
 
                         }, err =>{
 
-                            Sweetalert.fnc("error", err.error.error.message, null)
+                            // Sweetalert.fnc("error", err.error.error.message, null)
 
                         })
                     }

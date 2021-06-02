@@ -333,7 +333,7 @@ export class CheckoutComponent implements OnInit {
 			   	this.usersService.patchData(this.id, body)
 			   	.subscribe(resp=>{
 
-			   		Sweetalert.fnc("success", "Your data was updated", null)
+			   		// Sweetalert.fnc("success", "Your data was updated", null)
 
 			   	})
 
@@ -341,7 +341,7 @@ export class CheckoutComponent implements OnInit {
 
 				inputSaveAddress.checked = false;
 
-				Sweetalert.fnc("error", "Please fill in the required fields", null)
+				// Sweetalert.fnc("error", "Please fill in the required fields", null)
 
 			}
 			
@@ -634,7 +634,7 @@ export class CheckoutComponent implements OnInit {
 
 		if(f.invalid ){
 
-			Sweetalert.fnc("error", "Invalid Request", null);
+			// Sweetalert.fnc("error", "Invalid Request", null);
 
 			return;
 
@@ -644,7 +644,7 @@ export class CheckoutComponent implements OnInit {
   		Sweetalert para esperar el proceso de ejecución
   		=============================================*/
 
-	    Sweetalert.fnc("loading", "Loading...", null)  
+	    // Sweetalert.fnc("loading", "Loading...", null)  
    
    		/*=============================================
   		Pasarelas de pago
@@ -829,14 +829,14 @@ export class CheckoutComponent implements OnInit {
 						localStorage.removeItem("list");
 						Cookies.remove('coupon');
 
-						Sweetalert.fnc("success", "The purchase was successful", "checkout");
+						// Sweetalert.fnc("success", "The purchase was successful", "checkout");
 					
 					}						
 
 				}else{
 
 
-					Sweetalert.fnc("error", "The purchase was not made, please try again", null);
+					// Sweetalert.fnc("error", "The purchase was not made, please try again", null);
 
 				}
 
@@ -917,7 +917,7 @@ export class CheckoutComponent implements OnInit {
 			Sacar el botón de Payu en una alerta suave
 			=============================================*/	
 
-			Sweetalert.fnc("html", formPayu, null);
+			// Sweetalert.fnc("html", formPayu, null);
 
 
 		}else if(f.value.paymentMethod == "mercado-pago"){
@@ -933,7 +933,7 @@ export class CheckoutComponent implements OnInit {
 			Sacar el botón de MercadoPago en una alerta suave
 			=============================================*/	
 
-			Sweetalert.fnc("html", formMP, null);
+			// Sweetalert.fnc("html", formMP, null);
 
 			/*=============================================
 			Abrir ventana emergente de MP
@@ -1177,7 +1177,7 @@ export class CheckoutComponent implements OnInit {
 						localStorage.removeItem("list");
 						Cookies.remove('coupon');
 
-						Sweetalert.fnc("success", "The purchase was successful", "checkout");
+						// Sweetalert.fnc("success", "The purchase was successful", "checkout");
 					
 					}			
 
@@ -1199,7 +1199,7 @@ export class CheckoutComponent implements OnInit {
 			
 		}else{
 
-			Sweetalert.fnc("error", "Invalid request", null)
+			// Sweetalert.fnc("error", "Invalid request", null)
 
 	      	return;
 

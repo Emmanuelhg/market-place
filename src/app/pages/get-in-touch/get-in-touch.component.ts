@@ -38,9 +38,13 @@ export class GetInTouchComponent implements OnInit {
 	.subscribe(data => {
 	
 	})
-
-	Sweetalert.fnc("success", " E-mail sent", "#");
+    this.refresh();
+	// Sweetalert.fnc("success", " E-mail sent", "#");
 
   }
+
+  refresh(): void {
+   window.location.reload(); 
+ }
 
 }

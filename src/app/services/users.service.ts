@@ -405,7 +405,7 @@ export class UsersService {
 
       if(!resp){
 
-        Sweetalert.fnc("error", "The user must be logged in", null)
+        // Sweetalert.fnc("error", "The user must be logged in", null)
 
         return;
 
@@ -461,7 +461,7 @@ export class UsersService {
 
                   if(length != wishlist.length){
 
-                    Sweetalert.fnc("error", "It already exists on your wishlist", null);
+                    // Sweetalert.fnc("error", "It already exists on your wishlist", null);
 
                   }else{
 
@@ -481,7 +481,7 @@ export class UsersService {
                         
                         $(".totalWishlist").html(totalWishlist+1); 
 
-                        Sweetalert.fnc("success","Product added to wishlist", null);
+                        // Sweetalert.fnc("success","Product added to wishlist", null);
                       }
 
                     })
@@ -506,7 +506,7 @@ export class UsersService {
                         
                       $(".totalWishlist").html(totalWishlist+1); 
 
-                      Sweetalert.fnc("success","Product added to wishlist", null);
+                      // Sweetalert.fnc("success","Product added to wishlist", null);
                     }
 
 
@@ -534,7 +534,7 @@ export class UsersService {
                         
                     $(".totalWishlist").html(totalWishlist+1); 
 
-                    Sweetalert.fnc("success","Product added to wishlist", null);
+                    // Sweetalert.fnc("success","Product added to wishlist", null);
                   }
 
                 })
@@ -583,7 +583,7 @@ export class UsersService {
 
                 if(resp[i]["stock"] == 0){
                      // console.log("El stock está vacío");
-                    Sweetalert.fnc("error", "Out of Stock", null);
+                    // Sweetalert.fnc("error", "Out of Stock", null);
 
                     return;
                 }
@@ -670,8 +670,9 @@ export class UsersService {
             }         
 
             localStorage.setItem("list", JSON.stringify(arrayList));
+            this.refresh();
 
-            Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
+            // Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
         }else{
             // console.log("No hay lista se crea un nuevo carrito");
@@ -679,7 +680,8 @@ export class UsersService {
             arrayList.push(item);
             // console.log("array list es:"+JSON.stringify(arrayList)); 
             localStorage.setItem("list", JSON.stringify(arrayList));
-            Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
+            this.refresh();
+            // Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
         }
     
@@ -694,5 +696,13 @@ export class UsersService {
       return this.http.get('./assets/json/countries.json');
     
     }
+
+    /*=============================================
+    Actualizar página
+    =============================================*/
+    refresh(): void { 
+      window.location.reload(); 
+    }
+
 
 }

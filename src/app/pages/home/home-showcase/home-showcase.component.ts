@@ -181,6 +181,7 @@ export class HomeShowcaseComponent implements OnInit {
 	   	
 	}
 
+
 }	
 	// 	this.cargando = true;
 

@@ -74,7 +74,7 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
   	this.visibility_1[index]=!this.visibility_1[index];
 
   }
-
+ 
   
 
 }

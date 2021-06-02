@@ -28,10 +28,10 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   // Variables del funcionamiento 
  box_steps=[true,true,false,false] 
- id:string = null; 
+ id:string = null;  
    
   path:string = Path.url;
-  id_to_box=null; 
+  id_to_box=null;  
   boxes:BoxesModel;
   box_json= JSON.parse(`{
       "box_deliver_checkbox" : false,
@@ -96,13 +96,13 @@ export class SelecctionPasoDosComponent implements OnInit {
   gallery_producto=[];
 
   constructor(private usersService:UsersService, 
-               private boxesService:BoxesService,
-               private activateRoute: ActivatedRoute,
-               private subCategoriesService: SubCategoriesService,
-               private router:Router,
-               private productsService: ProductsService,
-               private listaDeseosService: ListaDeseosService,
-               private _router: Router) { 
+              private boxesService:BoxesService,
+              private activateRoute: ActivatedRoute,
+              private subCategoriesService: SubCategoriesService,
+              private router:Router,
+              private productsService: ProductsService,
+              private listaDeseosService: ListaDeseosService,
+              private _router: Router) { 
               this.boxes = new BoxesModel();
               
      
@@ -207,7 +207,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
     // Filtrar productos para agregar a la caja
     let getCategories = []; 
-
+    document.getElementById("small-box-a").classList.remove("select-active-caja");
     this.productsService.getDatta()
     .subscribe(resp=>{
           
@@ -552,6 +552,7 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   // Calcular porcentaje de los productos agregados
   calculatePercentage(){
+
     this.used_space = 0;
       for(let i = 0; i< this.almacenar_productos.length; i++){
         this.used_space += (this.original_size/this.almacenar_productos[i].size) * this.cant_productos[i];
@@ -561,25 +562,37 @@ export class SelecctionPasoDosComponent implements OnInit {
 
     if(this.used_space<=this.regular_box_size){
 
+      if (this.used_space == 0) {
+        document.getElementById("regular-box-a").classList.remove("select-active-caja");
+        document.getElementById("small-box-a").classList.remove("select-active-caja");
+      }else{
+        document.getElementById("regular-box-a").classList.remove("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
+      }
+
       if(this.box_size == this.regular_box_size && this.used_space<= this.small_box_size) {
 
-          this.box_size = this.small_box_size;
-          this.full_percentage_bar = 50;
-          document.getElementById("regular-box-a").classList.remove("select-active-caja");
-          document.getElementById("small-box-a").classList.add("select-active-caja");
+        this.box_size = this.small_box_size;
+        this.full_percentage_bar = 50;
+        document.getElementById("regular-box-a").classList.remove("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
 
       } else if(this.box_size == this.small_box_size && this.used_space> this.small_box_size) {
 
-          // console.log("Hace cambio a big");
-          this.box_size = this.regular_box_size;
-          this.full_percentage_bar = 100;
-          document.getElementById("regular-box-a").classList.add("select-active-caja");
-          document.getElementById("small-box-a").classList.add("select-active-caja");
-          Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
+        // console.log("Hace cambio a big");
+        this.box_size = this.regular_box_size;
+        this.full_percentage_bar = 100;
+        document.getElementById("regular-box-a").classList.add("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
+        // Sweetalert.fnc("success", "We want your gifts to look perfect!, that's why we have three different box sizes. Never too much or too little space, and perfectly packed everytime!");
+      }
+      if(this.full_percentage_bar == 100 ){
+        document.getElementById("regular-box-a").classList.add("select-active-caja");
+        document.getElementById("small-box-a").classList.add("select-active-caja");
       }
     }  else {
         // ENVIO ERROR 
-        Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
+        // Sweetalert.fnc("error", "There are too many products for the size of the box. Remove a product so the other products fit in the box.");
     }
     this.asignFullMessage();
   }
@@ -822,7 +835,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     if( this.id_to_favs == undefined){
 
         this.usersService.authActivate().then(resp=>{
-
+          console.log("user", resp);
           if(resp){
             this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
             .subscribe(resp=>{
@@ -846,30 +859,30 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
   
   crearLista(products,idToken){
-     this.id_to_favs = Cookies.get('fav_id');
+  this.id_to_favs = Cookies.get('fav_id');
 
-     if( this.id_to_favs == undefined){
+    if( this.id_to_favs == undefined){
 
-        this.usersService.authActivate().then(resp=>{
+      this.usersService.authActivate().then(resp=>{
 
-          if(resp){
-            this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
-            .subscribe(resp=>{
-              // console.log("respuesta:", Object.keys(resp).toString());
-              this.id_to_favs = Object.keys(resp).toString();
-                // console.log('el id es', this.id );  
-                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
-            })
+        if(resp){
+          this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+          .subscribe(resp=>{
+ 
+            this.id_to_favs = Object.keys(resp).toString();
+              
+              Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+          })
 
-          }else {
-            this.id_to_favs = Id_box.fnc()
-                Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
-            
-          }
-            
-        }) 
+        }else {
+          this.id_to_favs = Id_box.fnc()
+              Cookies.set('fav_id', this.id_to_favs, { expires: 7 });
+          
+        }
+          
+      }) 
 
-     }
+    }
 
     // console.log(this.id_to_favs);
     let body ={
