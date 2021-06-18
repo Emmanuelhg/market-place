@@ -1,17 +1,10 @@
 <div style="width: 100%; height: px;">
 
   <!--=====================================
-  Slider
+  Slider 
   ======================================-->
-	<div style="margin-top: 0%;" lass="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+	<div style="margin-top: 0%;" id="carouselExampleControlsS" class="carousel slide" data-ride="carousel">
 
-    <ol class="carousel-indicators">
-      <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="4" data-target="#carouselExampleIndicators"></li>
-    </ol>
 
     <div class="carousel-inner">
 
@@ -35,13 +28,12 @@
 
     </div>
 
-    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
-      <span aria-hidden="true" class="carousel-control-prev-icon"></span> 
+    <a class="carousel-control-prev" href="#carouselExampleControlsS" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-
-    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
-      <span aria-hidden="true" class="carousel-control-next-icon"></span> 
+    <a class="carousel-control-next" href="#carouselExampleControlsS" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
 
@@ -50,8 +42,7 @@
 	<!--=====================================
   Colecciones
   ======================================-->
-	<div 
-	class="row" style="padding: 0px; display: flex;">
+	<div class="row" style="padding: 0px; display: none;">
 
 		<div 
 		*ngFor="let colection of colecciones_get; let i = index"
@@ -81,24 +72,118 @@
 	</div>
 
   <!--=====================================
-  Categorías
-  ======================================-->
+  Productos col-md-12 col-sm-12
+  ======================================--> 
+  <div class="container"  style="margin-left: 4%; margin-right: 4%; margin-top: 5%;">
 
-  <div style="width: 100%;">
-   
-    <div class="row" style="display: flex; margin: 5%;">
-      <div *ngFor="let category of category_get; let i = index"
-      class="col-lg-3" style=";position: relative; display: inline-block;padding: 0px">
+    <div class="divimageness row">  
 
-        <img class="col-12" style="padding: 0px; border: 1px solid #dee2e6!important width:270px;height: 232px;" 
-        src="{{category.image}}">
+      <div
+      *ngFor="let colection of colecciones_get; let i = index"
+      class="col-lg-3 col-md-4 col-sm-6">
 
-        {{ lastIndex ? callback() : "" }}
-      </div>
+        <div class="ps-product__thumbnail"  style="margin-bottom: 12%;">
+          
+          <a style=" position: relative;
+          display: inline-block;
+          text-align: center;"
+          class="imgHover" 
+          id="contenedorTow"
+          routerLink="">
+            <img 
+            style="width: 247px; height: 247px;"
+            type="button"  data-toggle="modal" 
+            data-target=".bd-example-modal-xl"
+            src="{{colection.image}}" alt="">
+
+            <!-- <img *ngIf="product.gallery[1] != undefined"
+            id="imgGalleryTow" 
+            style="width: 247px; height: 247px;position: 
+            absolute;margin-top: -100%;" 
+            type="button"  data-toggle="modal" 
+            data-target=".bd-example-modal-xl"
+            src="{{product.gallery[1]}}" alt=""> -->
+
+              <!-- (click)="detallesProducto(product)" -->
+
+            <!-- Boton para agregar productos al carrito -->
+            <div class="texto" id="botonTow">
+
+              <a style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
+              (click)="addShoppingCart(product,product.url, 1, [])" 
+               data-toggle="tooltip" data-placement="top" title="Add to Cart">
+
+                <p style="font-family: Neue Haas Grotesk Text Pro;
+                font-weight: 20; font-size: 15px; 
+                color: #353535;">
+                  Add to cart
+                </p>   
+                  
+              </a>
+
+            </div>  
+
+            <style>
+              #imgGalleryTow{
+                display: none;
+              }
+              #contenedorTow:hover #botonTow{
+                display: block;
+              }
+              #contenedorTow:hover #imgGalleryTow{
+                display: block;
+              }
+            </style>
+          </a>
+          
+          <!--  Lista de deseos  -->
+          <div id="heartTow">
+
+            <a title="Add to Whishlist">
+    
+              <i  
+              class="icon-heart"
+              style="cursor: pointer;"></i>
+
+            </a>    
+
+          </div>
+
+          <!-- Información del producto -->
+          <div style="width: 245px;">
+
+            <a title="Add to Whishlist">
+
+              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+              font-weight: 20; font-size: 17px; color: #353535;">
+                {{colection.name}}
+              </b>
+
+            </a>
+
+            <div style="display: flex;">
+
+              <p style="font-weight: 450; font-size: 17px;">$</p>
+              <p>
+                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  font-weight: 20; font-size: 17px; ">
+                   {{colection.price}}
+                </b>
+              </p>
+                
+            </div>
+            
+          </div>
+         
+        </div>
+        {{ lastIndex ? callback() : ""}}
+
+      </div><!-- End Product --> 
+      
     </div>
 
   </div>
-	
+
 </div>
 
 
@@ -192,7 +277,7 @@
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 220px;
+    bottom: 305px;
   }
   .carousel-caption h5 {
     font-size: 45px;
@@ -264,5 +349,189 @@
       font-size: 14px;
       font-weight: normal;
     }
-  }  
+  }
+  .texto {
+
+    margin-top: -18%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /*bottom: - 100%;*/
+    /*padding: 10px 20px;*/
+}
+.texto a{
+    border: 1px solid black !important;
+    background: white;
+    width: 247px;
+    height: 40px;
+    display: flow-root;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    height: px;
+    transition: 4s;
+    padding:2%;
+} 
+/*.ps-product:hover .texto {
+    bottom: -10%;
+}*/
+.img-Hover:hover .boton {
+  top:5%;
+
+  background-color:ps-form--quick-search button;
+  color: #ffffff;
+}
+
+.textoTow{
+  border: 1px solid black !important;
+    background: white;
+    width: 100%;
+    height: px;
+    display: flow-root;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    height: px;
+    transition: 4s;
+}   
+.textoTow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /*bottom: - 100%;*/
+    padding: 10px 20px;
+    bottom: -75%;
+}
+.textoTow a{
+    border: 1px solid black !important;
+    background: white;
+    display: flow-root;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    height: px;
+    transition: 4s;
+}    
+/*.ps-product:hover .textoTow{
+    bottom: -50%;
+}
+.ps-product__thumbnail:hover .textoTow{
+  bottom: -60%;
+
+  background-color:ps-form--quick-search button;
+  color: #ffffff;
+}*/
+.quantity .mas {
+    float: right;
+    width: 15%;
+    height: px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+    background: #fff
+}
+.quantity .menos {
+    float: left;
+    width: 15%;
+    height: px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+    background: #fff
+}
+
+.quantity input {
+    height: 32px;
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    width: 70%;
+    font-size: 20px;
+    color: #000;
+    font-weight: 300;
+}
+.div-img-ventana-emergente{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    transition: .5s;
+    /*background: red;*/
+}
+.div-img-ventana-emergente>h2{
+    text-align: center;
+    font-size: 100%;
+    margin: 7%;
+    margin-bottom: 4%;
+    
+}
+.div-img-ventana-emergente>p{
+    text-align: center;
+    font-size: 100%;
+}
+.div-img-ventana-emergente>a{
+    text-align:  center;
+     background: black;
+     color:white;
+     justify-content: center;
+     align-items: center;
+     margin-top: 4%;
+     margin-bottom: 7%;
+     display: flow-root;
+}
+.img-ventena{
+    height: 550px;
+    width: 95%;
+    margin: 4%;
+    object-fit: cover;
+}
+.modal-tex{
+    font-size: 100%;
+    margin: 3%;
+}
+.modal-title-rd{
+    font-size: 100%;
+    margin: 3%;
+}
+
+#boton{
+  display: none;
+}
+#contenedor:hover #boton{
+  display: block;
+}
+
+#heart{
+  display: none;
+  margin-top:-243px;
+  position:absolute;
+  margin-left: 3%;
+}
+#contenedor:hover #heart{
+  display: block;
+}
+  #imgGallery{
+    display: none;
+  }
+  #contenedor:hover #imgGallery{
+    display: block;
+  }
+  #heartTow{
+    display: none;
+    margin-top:-243px;
+    position:absolute;
+    margin-left: 3%;
+  }
+  #contenedorTow:hover #heartTow{
+    display: block;
+  }
+
+  #botonTow{
+    display: none;
+  }
+  #contenedorTow:hover #botonTow{
+   
+        
 </style>

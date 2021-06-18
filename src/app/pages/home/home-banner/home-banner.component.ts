@@ -14,17 +14,19 @@ export class HomeBannerComponent implements OnInit {
 	path:string = Path.url;	
 	banner_home:any[] = [];
 	category:any[] = [];
-	url:any[] = [];
-	render:boolean = true;
+	url:any[] = []; 
+	render:boolean = true; 
 	preload:boolean = false;
  
 	negocio = null;
 
-	img_slider='';
-	img_slider2='';
-	img_slider3='';
-	img_slider4=''; 
-	img_slider5='';
+	coloTextoSlider;
+	textoSlider;
+	colorTextoBtn;
+	coloBtn;
+	linkBtn;
+	textoBtn;
+	description;
 	icon="";
 
 	img_slider_array:string[] = [];
@@ -35,28 +37,39 @@ export class HomeBannerComponent implements OnInit {
 	ngOnInit(): void {
 
 		this.negocioService.getData()
-        .subscribe(resp=>{
-        	this.negocio = resp['personalization'];
-        	this.img_slider = this.negocio['slider_url_1'];
-        	this.img_slider2 = this.negocio['slider_url_2']
-        	this.img_slider3= this.negocio['slider_url_3']
-        	this.img_slider4 = this.negocio['slider_url_4']
-        	this.img_slider5 = this.negocio['slider_url_5']
-        	this.icon = this.negocio['icon_cart']
-        	// if(this.negocio['slider_url_2'] != "null"){ 
-        	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
-        	// } 
-        	// if(this.negocio['slider_url_3'] != "null"){
-        	// 	this.img_slider_array.push(this.negocio['slider_url_3']);
-        	// }
-        	// if(this.negocio['slider_url_4'] != "null"){
-        	// 	this.img_slider_array.push(this.negocio['slider_url_4']);
-        	// }
-        	// if(this.negocio['slider_url_5'] != "null"){
-        	// 	this.img_slider_array.push(this.negocio['slider_url_5']);
-        	// }
-      
-        })
+    .subscribe(resp=>{
+    	this.negocio = resp['personalization'].Home_urls;
+
+    	this.coloTextoSlider = resp["personalization"].Home_slider_buttoncolor;
+      // Texto de slider
+      this.textoSlider = resp["personalization"].Home_slider_text;
+      // Color de texto de botón
+      this.colorTextoBtn = resp["personalization"].Home_slider_buttontextcolor;
+      // Color de botón
+      this.coloBtn = resp["personalization"].Home_slider_buttoncolor;
+      // Link de botón
+      this.linkBtn = resp["personalization"].Home_slider_links;
+      // Texto de botón
+      this.textoBtn = resp["personalization"].Home_slider_buttontext;
+
+      this.description = resp["personalization"].Home_slider_description;
+
+  		this.icon = this.negocio['icon_cart']
+    	console.log("resp:",this.negocio.Home_urls);
+    	// if(this.negocio['slider_url_2'] != "null"){ 
+    	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
+    	// } 
+    	// if(this.negocio['slider_url_3'] != "null"){
+    	// 	this.img_slider_array.push(this.negocio['slider_url_3']);
+    	// }
+    	// if(this.negocio['slider_url_4'] != "null"){
+    	// 	this.img_slider_array.push(this.negocio['slider_url_4']);
+    	// }
+    	// if(this.negocio['slider_url_5'] != "null"){
+    	// 	this.img_slider_array.push(this.negocio['slider_url_5']);
+    	// }
+  
+    })
 
 		this.preload = true;
 

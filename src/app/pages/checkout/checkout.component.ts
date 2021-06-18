@@ -20,7 +20,7 @@ import * as Cookies from 'js-cookie';
 
 import { Md5 } from 'md5-typescript'; 
 
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any;
 
 @Component({

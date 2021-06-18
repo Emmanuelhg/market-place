@@ -8,20 +8,12 @@ Best Sale Items
   <!--=====================================
   Slider  
   ======================================-->
-  <div style="margin-top: 0%;" lass="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
-
-    <ol class="carousel-indicators">
-      <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
-      <li data-slide-to="4" data-target="#carouselExampleIndicators"></li>
-    </ol>
+  <div style="margin-top: 0%;" id="carouselExampleControlsH" class="carousel slide" data-ride="carousel">
 
     <div class="carousel-inner">
 
       <div *ngFor="let slidertCant of img_slider; let i = index;let isFirst = first"
-      class="carousel-item active"
+      class="carousel-item "
        [class]="{'active': isFirst}" >
 
         <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
@@ -44,13 +36,12 @@ Best Sale Items
 
     </div>
 
-    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
-      <span aria-hidden="true" class="carousel-control-prev-icon"></span> 
+    <a class="carousel-control-prev" href="#carouselExampleControlsH" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-
-    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
-      <span aria-hidden="true" class="carousel-control-next-icon"></span> 
+    <a class="carousel-control-next" href="#carouselExampleControlsH" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
 
@@ -306,7 +297,7 @@ class="d-flex justify-content-center d-lg-none">
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 220px;
+    bottom: 305px;
   }
   .carousel-caption h5 {
     font-size: 45px;

@@ -1,5 +1,5 @@
 <!--=====================================
-Shopping Car  
+Shopping Car   
 ======================================--> 
 
 <div  style="margin-top: 12%;"> 
@@ -64,9 +64,9 @@ Shopping Car
             class="row" style="padding: 0px; margin-bottom: 3%;">
 
                 <!--=====================================
-                 Div para imagen
+                 Div para imagen  *ngIf="product.inbox == false" 
                 ======================================-->
-                <div *ngIf="product.inbox == false" 
+                <div 
                 class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
                 height: px; justify-content:center;display: flex;">
 
@@ -81,10 +81,10 @@ Shopping Car
                 </div>
 
                 <!--=====================================
-                Div para info de caja
+                Div para info de caja *ngIf="product.inbox == false"
                 ======================================-->
 
-                <div *ngIf="product.inbox == false"
+                <div 
                 class="product-cart-p col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
                     <h3> 
@@ -106,13 +106,29 @@ Shopping Car
                      (confirm)="removeProduct(product.url, product.listDetails)">
                         REMOVE
                     </a>
+
+                    <div  >
+                        <a *ngIf="product.inbox == false"
+                        (click)="addess(product)"
+                        data-toggle="modal" 
+                        data-target=".bd-example-modal-xl"
+                        style="cursor: pointer;">
+                            <p>
+                                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                font-weight: 20; font-size: 20px;">
+                                    Add Address
+                                </b>
+                            </p>   
+                        </a>
+
+                    </div>
                     
                 </div>
 
                 <!--=====================================
-                Div precio cantidad y total
+                Div precio cantidad y total *ngIf="product.inbox == false"
                 ======================================-->
-                <div *ngIf="product.inbox == false"
+                <div 
                 class="product-price-h col-lg-6 col-md-6 col-sm-12" 
                 style="padding: 0px; height: px; display: flex;">
                     <!-- Precio -->
@@ -399,6 +415,16 @@ Shopping Car
                       
         </div>
 
+        <div 
+        *ngIf="shoppingCart.length > 0"
+        class="d-flex flex-row-reverse">
+          <!-- <div [innerHTML]="totalP"></div>  -->
+          <h3 style="margin-right: 5%;
+          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-weight: 450; font-size: 24px;">Costo de Envíos $ {{totalShipping}}</h3>
+                      
+        </div>
+
         <div class="" style="margin-bottom: 18%; margin-left: 4%; display: flex;">
 
             <a class="btn btn-sm animated-button thar-three" routerLink="/" 
@@ -536,7 +562,7 @@ Shopping Car
                     <div class="div-img-ventana-emergente col-lg-6 col-md-12 col-sm-12" 
                     style="background: white;overflow-y: scroll; height: 500px;">
 
-                        <div *ngFor="let product of shoppingCart; let lastIndex = last"
+                        <div *ngFor="let product of productToAddress; let lastIndex = last"
                         style="display: flex;" class="ps-cart--mini">
 
                             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -579,7 +605,7 @@ Shopping Car
             <button type="button" (click)="goIt()"
             style="background: black; width: 107px; height: 45px;
             font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 20; font-size: 20px;" 
+            font-weight: 20; font-size: 20px;" id="goIt" 
             class="btn btn-secondary" data-dismiss="modal">GOT IT!</button>
           </div>
         </div>

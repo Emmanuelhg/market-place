@@ -3,12 +3,14 @@ import { Path } from '../../config';
 import { NegocioService } from '../../services/negocio.service';
 import { CategoriesService } from '../../services/categories.service';
 import { SubCategoriesService } from '../../services/sub-categories.service';
+import { UsersService } from '../../services/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var jQuery:any;
-declare var $:any;
+declare var $:any; 
 
 
-@Component({
+@Component({ 
   selector: 'app-kits',
   templateUrl: './kits.component.html',
   styleUrls: ['./kits.component.css']
@@ -39,8 +41,10 @@ export class KitsComponent implements OnInit {
   colecciones_get =[];
 
   constructor(private categoriesService: CategoriesService,
-  			  private negocioService: NegocioService,
-  			  private subCategoriesService: SubCategoriesService) { }
+		  			  private negocioService: NegocioService,
+		  			  private usersService: UsersService,
+		  			  private subCategoriesService: SubCategoriesService,
+		  			  private router: Router) { }
 
   ngOnInit(): void {
 
@@ -211,5 +215,35 @@ export class KitsComponent implements OnInit {
 	}
 
 
+	/*=============================================
+	Función para agregar productos al carrito de compras 
+	=============================================*/
+
+	addShoppingCart(object,product,unit,details){
+		// console.log("Producto:",product);
+		// console.log("unidad:",unit);
+		// console.log("detalles:",details);
+		// Esta variable te mantiene en el mismo componente
+		let url = this.router.url;
+
+		let numtime = new Date();
+		let newtime =numtime.getTime();
+		
+		// console.log(":",newtime);
+
+		let item = {
+			object:object,
+			product: product,
+			unit: unit,
+			details: details,
+			url:url,
+			date:newtime
+			// lastmodified: lastmodified
+			// 
+		}
+		// Se mandan los parámetros al a la funcion del servicio
+		this.usersService.addSoppingCart(item);
+
+	}
 }
  

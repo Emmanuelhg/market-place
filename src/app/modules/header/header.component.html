@@ -80,7 +80,7 @@ style="position: relative; z-index: 100%;">
                                             font-size: 18px;
                                             font-family:'Neue Haas Grotesk Text Pro';
                                             font-weight: 450;"
-                                            routerLink="kits" target="_top">
+                                            routerLink="products/kits" target="_top">
                                                 Curated GIft Boxes
                                             </a>
 
@@ -389,10 +389,16 @@ style="position: relative; z-index: 100%;">
                                     <a class="ps-product__remove" style="cursor:pointer" (click)="removeProduct(product.url, product.listDetails)">
                                         <i class="icon-cross"></i>
                                     </a>
-                                    <a href="product/{{product.url}}">{{product.name}}</a>
+                                    <a style="font-weight: 100;  font-size: 16px;
+                                    font-family:'Neue Haas Grotesk Text Pro'; " 
+                                    href="product/{{product.url}}">{{product.name}}</a>
                                     
-                                    <div [innerHTML]="product.details"></div>                                        
-                                    <small class="ps-product text-left p-0 m-0">
+                                    <div style="font-weight: 100;  font-size: 16px;
+                                    font-family:'Neue Haas Grotesk Text Pro';"
+                                     [innerHTML]="product.details"></div>                                        
+                                    <small class="ps-product text-left p-0 m-0"
+                                    style="font-weight: 100;  font-size: 16px;
+                                    font-family:'Neue Haas Grotesk Text Pro'; ">
                                         
                                         Quantity:
                                         <span class="qShoppingHeaderM">{{product.quantity}}</span> 

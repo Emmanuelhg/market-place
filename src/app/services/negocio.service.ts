@@ -18,6 +18,12 @@ export class NegocioService {
 
 	}
 
+	getSection(){
+
+		return this.http.get(`${this.api}negocio/menu.json?orderBy="$key/position"&startAt=0&print=pretty`);
+
+	}
+
 	getFilterData(orderBy:string, equalTo:string){
 
 		return this.http.get(`${this.api}negocio.json?&print=pretty`);

@@ -19,7 +19,7 @@ import { NegocioService } from '../../services/negocio.service';
 
 declare var jQuery:any; 
 declare var $:any;  
-@Component({
+@Component({ 
   selector: 'app-selecction-paso-dos',
   templateUrl: './selecction-paso-dos.component.html',
   styleUrls: ['./selecction-paso-dos.component.css']
@@ -211,7 +211,6 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.productsService.getDatta()
     .subscribe(resp=>{
           
-
       let i; 
 
         for(i in resp){
@@ -219,7 +218,8 @@ export class SelecctionPasoDosComponent implements OnInit {
           let product= resp[i];
           // console.log("En consola esta:",product);
           product.id = i;
-          if (product.category != "kits") {
+          if(product.name != 'Small Kraft' && product.name != 'Regular Kraft' && product.name != 'Small Black' && product.name != 'Regular black'){
+            if (product.category != "kits") {
             if(product.gallery[1]==undefined){
               product.image2=product.image;
             }else{
@@ -292,6 +292,9 @@ export class SelecctionPasoDosComponent implements OnInit {
             
            
           }
+          }
+
+          
            
         }
           
@@ -626,6 +629,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   }  
 
   getData(){
+
     this.getProduct.splice(0);
     this.products.splice(0);
     this.product_name.splice(0);
@@ -640,17 +644,21 @@ export class SelecctionPasoDosComponent implements OnInit {
       for(i in resp){
         let product= resp[i];
         product.id = i;
-        if (product.category != "kits") {
-         if(this.getVisibilityByFilter(resp[i])) {
-          this.getProduct.push(resp[i]);
-          this.products.push(i);
-          this.product_name.push(resp[i].name);
-          this.product_price.push(resp[i].price);
-          this.product_img.push(resp[i].image);
-          this.tamaño_caja.push(resp[i].size);
-          this.producto_url.push(resp[i].url);
+
+        if(product.name != 'Small Kraft' && product.name != 'Regular Kraft' && product.name != 'Small Black' && product.name != 'Regular black'){
+            if (product.category != "kits") {
+             if(this.getVisibilityByFilter(resp[i])) {
+              this.getProduct.push(resp[i]);
+              this.products.push(i);
+              this.product_name.push(resp[i].name);
+              this.product_price.push(resp[i].price);
+              this.product_img.push(resp[i].image);
+              this.tamaño_caja.push(resp[i].size);
+              this.producto_url.push(resp[i].url);
+              }
+            }
           }
-        }
+        
        
       }
           

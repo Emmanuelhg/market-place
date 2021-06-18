@@ -10,9 +10,11 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
  
 import notie from 'notie';
-import { confirm } from 'notie';
+import { confirm } from 'notie'; 
 
 import { BoxesModel } from '../../models/boxes.model';
+import { AddressModel } from '../../models/address.model';
+import { ItemsAddressModel } from '../../models/ItemsAddress.model';
 import { BoxesService } from '../../services/boxes.service';
 import { UsersService } from '../../services/users.service';
 import { NegocioService } from '../../services/negocio.service';
@@ -59,7 +61,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
   	); 
   	shimpment_default = JSON.parse(
 		`{
-			"product_id":"",
+		  "product_id":"",
 	      "email" : "",
 	      "shipping":"",
 	      "first_name":"",
@@ -85,17 +87,25 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
  	cantArray=[];
  	boxArts=[];
  	boxes:BoxesModel;
+ 	// shoppin:AddressModel;
  	anviosArray=[];
  	products;
  	costo_envio=0;
  	total=0;
+
+ 	productToAddress;
+
+ 	listShippings=[];
+ 	addressNeeded=0;
+ 	totalShipping=0;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
 				private usersService:UsersService,
 				private negocioService:NegocioService,
 				private boxesService:BoxesService) {
-				this.boxes = new BoxesModel(); 
+				this.boxes = new BoxesModel();
+				// this.shoppin = new AddressModel(); 
 			}
 
 	ngOnInit(): void {
@@ -137,7 +147,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		  // Obtener caja
 		  this.boxesService.obtenerBox(this.id_to_box)
 		  .subscribe(resp=>{
-		    // console.log("id es ",resp["box_type"]);
+		    console.log("La espuesta jeje:",resp);
 		    if(resp !=null){
 		        this.box_json = resp;
 		        // console.log("aqui esta la caja:",this.box_json);
@@ -180,134 +190,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 	  		processing: true
 	  	}
 
-	  	/*=============================================
-		Tomamos la data del Carrito de Compras del LocalStorage
-		=============================================*/
-
-		if(localStorage.getItem("list")){
-
-			let list = JSON.parse(localStorage.getItem("list"));
-
-			this.totalShoppingCart = list.length;
-
-			/*=============================================
-			Recorremos el arreglo del listado
-			=============================================*/
-			let load = 0;
-			
-			for(const i in list){
-
-				/*=============================================
-				Filtramos los productos del carrito de compras
-				=============================================*/
-
-				this.productsService.getFilterData("url", list[i].product)
-				.subscribe(resp=>{
-					
-					for(const f in resp){
-
-						load++;
-
-						let details = `<div class="list-details small text-secondary">`
-
-						if(list[i].details.length > 0){
-
-							let specification = JSON.parse(list[i].details);	
-
-							for(const i in specification){
-
-								let property = Object.keys(specification[i]);
-
-								for(const f in property){
-
-									details += `<div>${property[f]}: ${specification[i][property[f]]}</div>`
-								}
-
-							}
-
-						}else{
-
-							/*=============================================
-							Mostrar los detalles por defecto del producto 
-							=============================================*/
-
-							if(resp[f].specification != ""){
-
-								let specification = JSON.parse(resp[f].specification);
-
-								for(const i in specification){
-
-									let property = Object.keys(specification[i]).toString();
-
-									details += `<div>${property}: ${specification[i][property][0]}</div>`
-
-								}
-
-							}
-
-						}
-
-						details += `</div>`;
-
-					    var inbox= false;
-					    var num =0;
-						// console.log("Array:",this.boxArray);
-
-						for(let count in this.boxArray){
-							// console.log("Count es tal:",this.boxArray[count].url);
-							// console.log("La lista es:",list[i].product);
-							if(this.boxArray[count].url == list[i].product){
-								// console.log("Es el mismo url:");
-								this.boxArray.splice(num,1);
-								inbox = true;
-							}else{
-								// console.log("No es el mismo url:");
-							}
-							num += 1;
-
-						}
-
-						// console.log("Ahora es esto  ja ja ja:",resp[f].category);
-						console.log("La respuesta de resp en F:",DinamicPrice.fnc(resp[f])[0]);
-						this.shoppingCart.push({
-
-							url:resp[f].url,
-							name:resp[f].name,
-							category:resp[f].category,
-							image:resp[f].image,
-							delivery_time:resp[f].delivery_time,
-							quantity:list[i].unit,
-							price: DinamicPrice.fnc(resp[f])[0],
-							price2: DinamicPrice2.fnc(resp[f])[0],
-							inbox:inbox,
-							shipping:1,
-							details:details,
-							listDetails:list[i].details
-
-						})
-						// console.log("url producto:",resp[f].url);
-						// console.log(this.shoppingCart);
-						if(load == list.length){
-							var subT = 0;
-							console.log("Esta es la lista del envio:",this.shoppingCart.length);
-							for(let i in this.shoppingCart){
-								subT = subT+(this.shoppingCart[i].price2 * this.shoppingCart[i].quantity);
-						
-							}
-							this.total=subT;
-							this.dtTrigger.next();
-
-						}
-
-					}
-
-				})
-			
-			}
-
-
-
-		}
+	  	
 	}
 
 	/*=============================================
@@ -515,9 +398,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       this.boxes.box_img=this.box_json.box_img;
       this.boxArray = this.box_json.box_arts;
 
-      
+      console.log(" Este es el valor de arts :", this.box_json.box_arts);
       for(const [i,item] of Object.entries(this.box_json.box_arts)){
-      	// console.log(" i Es esto:", i);
+      	
       	// console.log(" item Es esto:", item);
       	this.boxArts.push(item);
       }
@@ -559,22 +442,24 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       // this.fncDetallesFinales(this.boxes);
       // console.log("box_arts",this.fncDetallesFinales(this.boxes));
       // console.log("contenido",this.boxes.box_type);
+
+      this.newFnc();
       
   	}
  
 	fnfEnvio(envio){
 		let enviop = parseFloat(envio);
 
-		console.log("envio:",envio);
+		// console.log("envio:",envio);
 		this.costo_envio = enviop
 		
 	}
 
 	obtenerInput(envio, whosend){
 
-		let enviop = envio;
+		let enviop = whosend;
 
-		console.log("envio:",envio);
+		console.log("obtener input:",envio);
 
 		if(enviop == 'email') {
 			this.email = enviop;
@@ -601,11 +486,30 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		}
 		
 	}
-
+ 
 	goIt(){
-		console.log("envio:");
+		// console.log("envio:");
+		let addressBlock = new AddressModel();
+		let itemAddress = new ItemsAddressModel();
+
+		addressBlock.optional= this.optional;
+		addressBlock.email= this.email;
+		addressBlock.first_name= this.first_name;
+		addressBlock.last_name= this.last_name;
+		addressBlock.company= this.company;
+		addressBlock.address= this.address;
+
+		let product = this.productToAddress[0];
+		console.log("El products:",product);
+
+		itemAddress.address= addressBlock;
+		itemAddress.itemUrl= product.url;
+		
+		// console.log(this.optional);	
+		this.listShippings.push(itemAddress);
 
 		var envio_box=this.shimpment_default;
+
 		envio_box.optional = this.optional;
 
 		
@@ -622,13 +526,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		
 		envio_box.address = this.address;
 
-		console.log("Esta es la lista del envio:",envio_box);
 
+		// console.log("Esta es la lista del envio:",envio_box);
+		if( envio_box.email == undefined){
+			document.getElementById("goIt").setAttribute('disabled', 'disabled');
+		}
+		this.updateAllShippings();
 	}
 
 	calculateTotal(){
 		var subT = 0;
-		console.log("Esta es la lista del envio:",this.shoppingCart.length);
+		// console.log("Esta es la lista del envio:",this.shoppingCart.length);
 		for(let i in this.shoppingCart){
 			subT = subT+(this.shoppingCart[i].price2 * this.box_json.box_arts_cant[i]);
 	
@@ -636,5 +544,164 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		this.total=subT;
 	}
 
+	newFnc(){
+		console.log("entro la funcion");
+		/*=============================================
+		Tomamos la data del Carrito de Compras del LocalStorage
+		=============================================*/
 
+		if(localStorage.getItem("list")){
+
+			let list = JSON.parse(localStorage.getItem("list"));
+
+			this.totalShoppingCart = list.length;
+
+			/*=============================================
+			Recorremos el arreglo del listado
+			=============================================*/
+			let load = 0;
+			console.log("list es :",list);
+			for(const i in list){
+
+				load++;
+				/*=============================================
+				Filtramos los productos del carrito de compras
+				=============================================*/
+				console.log("Esta es la url:",list[i].product);
+				this.productsService.getFilterData("url", list[i].product)
+				.subscribe(resp=>{
+					console.log("entro la funcion a los productos",resp);
+					for(const f in resp){
+
+					
+
+						let details = `<div class="list-details small text-secondary">`
+						console.log("antes de if:",list[i].details.length);
+						if(list[i].details.length > 0){
+
+							console.log("tambien aqui:",list[i].details.length);
+
+							let specification = JSON.parse(list[i].details);	
+
+							for(const i in specification){
+
+								let property = Object.keys(specification[i]);
+
+								for(const f in property){
+
+									details += `<div>${property[f]}: ${specification[i][property[f]]}</div>`
+								}
+
+							}
+
+						}else{
+
+							/*=============================================
+							Mostrar los detalles por defecto del producto 
+							=============================================*/
+
+							if(resp[f].specification != ""){
+
+								console.log("tambien hasta aca");
+
+								let specification = JSON.parse(resp[f].specification);
+
+								for(const i in specification){
+
+									let property = Object.keys(specification[i]).toString();
+
+									details += `<div>${property}: ${specification[i][property][0]}</div>`
+
+								}
+
+							}
+
+						}
+
+						details += `</div>`;
+
+					    var inbox= false;
+					    var num =0;
+						// console.log("Array:",this.boxArray);
+						console.log("La lista es:",this.boxArray);
+						for(let count in this.boxArray){
+							
+							
+							if(this.boxArray[count].url == list[i].product){
+								
+								// console.log("Es el mismo url:");
+								// this.boxArray.splice(num,1);
+								inbox = true;
+							}else{
+								// console.log("No es el mismo url:");
+							}
+							num += 1;
+
+						}
+						console.log("inbox  es:",inbox);
+						// console.log("Ahora es esto  ja ja ja:",resp[f].category);
+						// console.log("La respuesta de resp en F:",DinamicPrice.fnc(resp[f])[0]);
+						this.shoppingCart.push({
+							id:f,
+							url:resp[f].url,
+							name:resp[f].name,
+							category:resp[f].category,
+							image:resp[f].image,
+							delivery_time:resp[f].delivery_time,
+							quantity:list[i].unit,
+							price: DinamicPrice.fnc(resp[f])[0],
+							price2: DinamicPrice2.fnc(resp[f])[0],
+							inbox:inbox,
+							shipping:1,
+							details:details,
+							listDetails:list[i].details
+
+						})
+						// console.log("url producto:",resp[f].url);
+						// console.log(this.shoppingCart);
+						console.log("items",list);
+						console.log("load",load);
+
+						if(load == list.length){
+
+							var subT = 0;
+							// console.log("Esta es la lista del envio:",this.shoppingCart.length);
+							for(let i in this.shoppingCart){
+								subT = subT+(this.shoppingCart[i].price2 * this.shoppingCart[i].quantity);
+						
+							}
+							this.total=subT;
+							this.dtTrigger.next();
+
+						}
+
+					}
+
+				})
+				
+
+			}
+
+
+
+		}
+	}
+
+	addess(product){
+		console.log("Fnc",product)
+		let array = [];
+		array.push(product);
+
+		this.productToAddress = array;
+	}
+
+	updateAllShippings(){
+		
+		var pivote =0;
+		for(let i in this.listShippings ){
+			let shipping = this.listShippings[i];
+			let add = shipping.address;
+			console.log("Este es el address:",add);
+		}
+	}
 }

@@ -670,7 +670,7 @@ export class UsersService {
             }         
 
             localStorage.setItem("list", JSON.stringify(arrayList));
-            this.refresh();
+            // this.refresh();
 
             // Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
@@ -680,7 +680,7 @@ export class UsersService {
             arrayList.push(item);
             // console.log("array list es:"+JSON.stringify(arrayList)); 
             localStorage.setItem("list", JSON.stringify(arrayList));
-            this.refresh();
+            // this.refresh();
             // Sweetalert.fnc("success", "Product added to Shopping Cart", item["url"])
 
         }

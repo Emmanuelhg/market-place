@@ -1,11 +1,11 @@
 <!--=====================================
-Section Gray     
+Section Gray      
 ======================================-->
 
 <div id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;">
 
   <!--=====================================
-  Primera sección
+  Primera sección 
   ======================================-->
 
   <div *ngIf="div.type == SECTION_DOUBLE"
@@ -366,17 +366,17 @@ Section Gray
   <div  class="div-main col-lg-12" style=" padding: 0px;
   height: px;  display:{{divs_visible[i][1]}};">
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls{{i}}" class="carousel slide" data-ride="carousel">
 
         <div class="carousel-inner">
         
           <div *ngFor="let sliderItem of divs_sliders_urls[i]; let ind = index; let isFirst = first"
-          class="carousel-item active"
+          class="carousel-item "
           [class]="{'active': isFirst}">
-
+        
             <img class="d-block w-100"
             style="width: 100%; height: 600px;" 
-            src="{{div.section_middle.slider_urls[ind]}}" alt="First slide">
+            src="{{sliderItem}}" alt="First slide">
 
             <div style="position: absolute; left: 2%;
             top: {{div.section_middle.slider_align_x[ind]}};
@@ -384,7 +384,8 @@ Section Gray
             [ngStyle]="{'padding-left': div.section_right.img_padd_izq}">
      
               <h4  
-              style="font-size: 24px; margin-top: 10px; color: white;
+              style="font-size: 24px; margin-top: 10px; 
+              color: {{div.section_middle.slider_title_color}}; 
               margin-right: 20px; margin-left: 20px; margin-bottom: 30px;
               font-family:'Neue Haas Grotesk Text Pro'; 
               font-weight: 450; ">
@@ -392,9 +393,11 @@ Section Gray
                 <!-- 20 percent discount -->
               </h4> 
               
-              <a style="font-family:'Neue Haas Grotesk Text Pro'; 
-              font-weight: 100; font-size: 16px;" 
-              class="btn btn-sm animated-button thar-three" 
+              <a style="font-weight: 100;  font-size: 16px;
+              color: white;
+              background:{{div.section_middle.slider_btn_color}} ;
+              font-family:'Neue Haas Grotesk Text Pro';
+              padding: 9.5% 15%; " 
               href="{{div.section_middle.slider_links[ind]}}">
                 {{div.section_middle.slider_textos_botones[ind]}}
               </a>
@@ -405,11 +408,11 @@ Section Gray
       
 
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleControls{{i}}" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleControls{{i}}" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -444,9 +447,11 @@ Section Gray
 
       <div class="row" style="display: flex; padding: 0px;">
 
-        <a  *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
-        class="img_insta col-lg-3 col-md-6 col-sm-12" href="{{div.section_middle.grid_links[ind]}}">
+        <img src="">
 
+        <a  *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
+        class="img_insta col-lg-3 col-md-6 col-sm-12" >
+        <!-- href="{{div.section_middle.grid_links[ind]}}" -->
           <img
           src="{{divs_grids_urls[i][ind]}}"
           style="width: 100%; height: 300px; object-fit: cover;"/>
@@ -491,9 +496,10 @@ Section Gray
         style="margin-bottom: 3%;padding: 0px;text-align: center;display: 
         inline-grid;width: 100%;font-size: 100%;">
 
-          <img  target="_top"  src="{{div.section_left.img_src}}" 
+          <img  *ngIf="div.section_left.img_src != '' "
+          target="_top"  src="{{div.section_left.img_src}}" 
           style="margin-bottom: 4%;width: 100%;height: 349px;"
-          routerLink="/selecction-caja">
+          routerLink="{{div.section_left.img_link}}">
 
           <h3 style="font-size: 24px; 
           font-family:'Neue Haas Grotesk Text Pro'; 
@@ -516,7 +522,8 @@ Section Gray
         <div class="div_centrot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
 
-            <img  routerLink="/" class="img_centro" src="{{div.section_middle.img_src}}" 
+            <img  *ngIf="div.section_middle.img_src != '' "
+            routerLink="{{div.section_middle.img_link}}" class="img_centro" src="{{div.section_middle.img_src}}" 
             style="margin-bottom: 4%;width: 100%; height: 349px;">
 
             <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
@@ -538,7 +545,8 @@ Section Gray
         <div class="div_derechot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
 
-          <img routerLink="/" class="img_derecha" src="{{div.section_right.img_src}}" 
+          <img *ngIf="div.section_right.img_src != '' "
+          routerLink="{{div.section_right.img_link}}" class="img_derecha" src="{{div.section_right.img_src}}" 
           style="margin-bottom: 4%;width: 100%;height: 349px;">
 
           <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
@@ -559,6 +567,34 @@ Section Gray
         </div>
         
     </div> 
+  </div>
+
+  <!--=====================================
+  Sección única
+  ======================================-->
+
+  <div class="div-main col-lg-12"
+  style=" display: {{divs_visible[i][4]}}; 
+  height: 560px; background-image: url('{{div.section_middle.slider_url_1}}') ;
+  background-repeat: no-repeat; background-size: 100%;">
+
+    <div style="padding-left: 6%; padding-top: 20%;">
+
+      <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
+      font-weight: 450; font-size: 24px; 
+      color: {{div.section_middle.slider_title_color}};
+       padding-bottom: 3%;"> 
+        {{div.section_middle.slider_title_1}}
+      </h3>
+      <a style="background: {{div.section_middle.slider_btn_color}};
+      font-weight: 100;  font-size: 16px;
+      color: white;padding-top: 1.5%; font-family:'Neue Haas Grotesk Text Pro';
+      padding-bottom: 1.5%; padding-left: 6%; padding-right: 6%; ">
+        {{div.section_middle.slider_button_txt_1}}
+      </a>
+
+    </div>
+
   </div>
 
 </div> 

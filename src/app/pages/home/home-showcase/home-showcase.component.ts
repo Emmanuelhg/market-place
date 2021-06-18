@@ -4,13 +4,13 @@ import { OwlCarouselConfig, Rating } from '../../../functions';
 
 declare var jQuery:any; 
 declare var $:any; 
-  
+    
 import { CategoriesService } from '../../../services/categories.service';
 import { SubCategoriesService } from '../../../services/sub-categories.service';
 import { ProductsService } from '../../../services/products.service';
 import { NegocioService } from '../../../services/negocio.service';
  
-@Component({
+@Component({ 
   selector: 'app-home-showcase',
   templateUrl: './home-showcase.component.html',
   styleUrls: ['./home-showcase.component.css'] 
@@ -83,8 +83,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    		if(section.type==this.SECTION_DOUBLE){
 
 	    			// console.log("el tipo es de tipo 1");
-	    			this.divs_visible.push(["block","none","none","none"]);
-
+	    			this.divs_visible.push(["block","none","none","none","none"]);
 
 
 	    			if(section.section_left.tipo == this.SECTION_1_ONLY_TEXT){
@@ -127,7 +126,7 @@ export class HomeShowcaseComponent implements OnInit {
 
 	    		if(section.type==this.SECTION_SLIDER){
 
-	    			this.divs_visible.push(["none","block","none","none"]);
+	    			this.divs_visible.push(["none","block","none","none","none"]);
 	    			this.divs_section_left_type.push(["none","none","none"]);
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
 	    			var newArray=[];
@@ -136,33 +135,44 @@ export class HomeShowcaseComponent implements OnInit {
 	    			for(let num in urls){
 	    				newArray.push(urls[num]);
 	    			}
+	    			console.log("las urls almacenadas son;", newArray);
 	    			this.divs_sliders_urls.push(newArray);
 	    			this.divs_grids_urls.push([]);
+	    			console.log("las urls almacenadas son;", this.divs_sliders_urls);
 	    			// console.log("slider urls:",this.divs_sliders_urls);
 	    		}
 
 	    		if(section.type==this.SECTION_GRID){
 
-	    			this.divs_visible.push(["none","none","block","none"]);
+	    			this.divs_visible.push(["none","none","block","none","none"]);
 	    			this.divs_section_left_type.push(["none","none","none"]);
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
 	    			this.divs_sliders_urls.push([]);
 
 	    			var newArray=[];
 	    			let urls = section.section_middle.grid_urls;
-	    			// console.log("Las urls:",urls);
+	    			console.log("Las urls:",urls);
 	    			for(let num in urls){
 	    				newArray.push(urls[num]);
 	    			}
 	    			this.divs_grids_urls.push(newArray);
-	    			// console.log("slider urls:",this.divs_grids_urls);
+	    			console.log("slider urls:",this.divs_grids_urls);
 	    		}
 
 	    		if(section.type==this.SECTION_TRIPLE){
-	    			this.divs_visible.push(["none","none","none","block"]);
+	    			this.divs_visible.push(["none","none","none","block","none"]);
 	    			this.divs_section_left_type.push(["none","none","none"]);
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
-	    			console.log("divs:",this.SECTION_TRIPLE);
+	    			this.divs_grids_urls.push([]);
+	    			this.divs_sliders_urls.push([]);
+	    		}
+
+	    		if(section.type == this.SECTION_UNICO){
+	    			this.divs_visible.push(["none","none","none","none", "block"]);
+	    			this.divs_section_left_type.push(["none","none","none"]);
+	    			this.divs_section_rigth_type.push(["none","none","none"]);
+	    			this.divs_grids_urls.push([]);
+	    			this.divs_sliders_urls.push([]);
 	    		}
 
 	    	}
