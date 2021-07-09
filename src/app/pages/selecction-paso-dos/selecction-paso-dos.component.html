@@ -1,12 +1,12 @@
 <div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
-  Barra de números    
+  Barra de números      
   ======================================--> 
-  <div class="container">
+  <div class="container numeros-tre">
 		<div style="margin-bottom: 4%;">
 			<ul class="progressbar">
-   			<a  class="active" (click)="HyperLink1()">Step 1</a>
+   			<a style="cursor:pointer;" class="active step1" (click)="HyperLink1()">Step 1</a>
    			<a  class="active" (click)="HyperLink2()">Step 2</a>
        	<a (click)="HyperLink3()">Step 3</a>
         <a >Done!</a>
@@ -17,16 +17,16 @@
   <!--=====================================
   Descripción   
   ======================================-->
-  <div class="container">
-    <div style="text-align: center; margin-top: 28%;
-    justify-content: center; margin-bottom: 181px;">
+  <div class="container step-et">
+    <div style="text-align: center; margin-top: 20%;
+    justify-content: center; margin-bottom: 8%;">
 
-      <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+      <h3 class="parrafo"  style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
       font-weight: 450; color: #6a6a6a;">
         Step of 2 of 3
       </h3>
 
-      <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
+      <p style="font-family:'Libre Franklin', sans-serif; font-size: 24px;
       font-weight: 450; color: black;">
         CHOOSE YOUR ITEMS
       </p>
@@ -34,33 +34,31 @@
     </div>
   </div> 
 
-  <!--=====================================
-  Pintamos formulario para caja y productos 
-  ======================================-->
-  <div class="container">
+  
+  <div class="container" style="display: none;">
 
     <div class="div-new">
 
       <!-- Progres bar para el tamaño de la caja -->
       <div class="divSubMenus">   
 
-        <a  class="select-caja select-active-caja"
+        <h4  class="select-caja select-active-caja"
         id="small-box-a" 
         type="button"  data-toggle="modal" 
         data-target="#exampleModalCenter"
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 20; font-size: 20px;">
           SMALL
-        </a> 
+        </h4> 
 
-        <a  class="select-caja" 
+        <h4 class="select-caja" 
         id="regular-box-a" 
         type="button"  data-toggle="modal" 
         data-target="#exampleModalCenter"
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 20; font-size: 20px;">
           REGULAR
-        </a>
+        </h4>
 
       </div>
 
@@ -73,11 +71,11 @@
           <!-- Titulo de la caja -->
           <div class="div-title-new">
 
-            <p 
-            style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 20; font-size: 20px;">
+            <h4 
+            style="font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20; font-size: 20px; margin-top: 1%;">
               START SELECTING ITEMS TO FILL YOUR BOX
-            </p>
+            </h4>
 
           </div>
 
@@ -135,41 +133,42 @@
         <div class="div-info-new col-lg-5 col-md-12 col-sm-12" >
 
           <div class="div_et">
-            <p class="pzp" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <h4 class="pzp" style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 20px;"> 
               BOX CONTENTS
-            </p>
+            </h4>
           </div>
        
           <div class="div_edh">
 
             <div style="width: 5%; text-align: center;">
 
-                <p>
-                  <b>1</b>
+                <p style="font-family:'Libre Franklin', sans-serif; 
+                font-weight: 20; font-size: 20px;">
+                  1
                 </p>
 
             </div> 
 
             <div style="width: 68%;">
 
-              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <h4 style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px;"> 
                 
                 Box {{box_json.box_name}}
                      
-              </p>
+              </h4>
 
             </div>
 
             <div style="width: 20%; text-align: center;">
 
-              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <h4 style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px;">
                     
                 ${{box_json.box_price}} 
                     
-              </p>
+              </h4>
 
             </div>
       
@@ -183,17 +182,18 @@
 
               <div style="width: 5%; text-align: center;">
 
-                  <p class="tex_cont">
-                      <b> 
-                        {{cant_productos[i]}}
-                      </b>
-                  </p> 
+                  <h4 class="tex_cont" style="font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20; font-size: 20px;">
+                      
+                    {{cant_productos[i]}}
+                  
+                  </h4> 
               </div>
                 
               <div style="width: 70%;">
 
-                  <p>
-                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  <p style="padding-top: 2%;">
+                    <b style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 20; font-size: 20px;">
                       {{product.name}} 
                     </b>    
@@ -204,7 +204,7 @@
               <div style="width: 20%; text-align: center;">
                   
                  <p> 
-                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    <b style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 20; font-size: 20px;">
                       ${{product.price}}
                     </b>
@@ -230,32 +230,31 @@
           <div class="div_ed" style="border-top: 1px solid #dddddd !important;
           border-bottom: 1px solid  #dddddd !important;">
 
-            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <h4 style="font-family:'Libre Franklin', sans-serif;margin-top: 2%; 
             font-weight: 20; font-size: 20px;">
               CURRENT PACKAGING | SMALL
-            </p>
+            </h4>
 
           </div>
 
           <div class="div-price-new">
 
-            <p style="
+            <h4 style=" 
              height: 60px; 
              display: flex;
              justify-content: center;
              align-items: center;">
-              <b style="width: px;"
-              style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <b style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px;"> BOX SUBTOTAL: ${{subTotal}}</b>
-            </p>
+            </h4>
 
-            <a 
-            style="cursor: pointer; font-family:'Neue Haas Grotesk Text Pro'; 
+            <h4 
+            style="cursor: pointer; font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 15px;" 
             (click)="guardaProductos()"
             class="new-boton">
               COMPLETE BOX
-            </a>
+            </h4>
 
 
           </div>
@@ -263,6 +262,254 @@
         </div>
 
       </div> 
+
+    </div>
+
+  </div>
+
+
+  <!--=====================================
+  Pintamos formulario para caja y productos 
+  ======================================-->
+
+  <div class="container" style="margin-top: 5%;">
+
+    <!--=====================================
+    Progres bar
+    ======================================-->
+
+    <div class="row" style="display:flex; border:1px solid #dddddd!important; margin-left: 3%;margin-right: 4%;">
+
+      <div class="select-caja select-active-caja col-lg-6" data-target="#exampleModalCenter"
+      id="small-box-a" type="button"  data-toggle="modal" style="height: px; text-align:center; ">
+
+        <h6 style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 15px; margin-top: 2%;">
+          SMALL
+        </h6> 
+
+      </div>
+
+      <div class="col-lg-6 select-caja" style="height: px;text-align: center;"
+      id="regular-box-a" type="button"  data-toggle="modal" data-target="#exampleModalCenter">
+
+        <h6 style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 15px; margin-top: 2%;">
+          REGULAR
+        </h6>
+
+      </div>
+
+    </div>
+
+    <!--=====================================
+    Caja con información
+    ======================================-->
+
+    <div class="row" style="display:flex; border-left: 1px solid #dddddd!important;
+    border-bottom: 1px solid #dddddd!important; border-right: 1px solid #dddddd!important;
+    margin-left: 3%;margin-right: 4%;">
+
+      <!--=====================================
+      Título, imagen de cajas
+      ======================================-->
+
+      <div class="col-lg-8" style="border-right: 1px solid #dddddd!important;">
+
+        <!--=====================================
+        Título
+        ======================================-->
+
+        <div class="titulo-star-selecting" 
+        style="border: 1px solid black !important; display: flow-root;height: px; text-align: center;
+        margin-top: 2%; margin-left: 2%; margin-right: 2%;">
+
+          START SELECTING ITEMS TO FILL YOUR BOX
+          
+        </div>
+
+        <!--=====================================
+        Imágens
+        ======================================-->
+
+        <div class="contrainer ">
+
+          <div class="row">
+
+            <!-- Imágen de Caja -->
+            <div class="produc-agregado-new col-lg-4 col-md-6 col-sm-12">
+
+              <div class="img-new-product">
+
+                <img class="img-caja-add" style="height: 149px; display: flex; object-fit: cover;" 
+                src="{{box_json.box_img}}" alt="">
+
+                <div class="circulo">{{1}}</div>
+
+              </div>
+
+            </div>
+
+            <!-- Imágen de Productos -->
+            <div class="produc-agregado-new col-lg-4 col-md-6 col-sm-12" *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" id="alm_{{index}}">
+
+              <div  class="img-new-product">
+
+                <img class="img-producto-add" src="{{product.image}}" alt=""
+                style="display: flex; object-fit: cover; height: 149px;" >
+
+                <div class="circulo">{{cant_productos[i]}}</div>
+
+              </div>
+
+              {{ lastIndex ? callback() : ""}}
+
+            </div>
+
+          </div>
+
+        </div>  
+        
+      </div>
+
+      <!--=====================================
+      Información de la caja con productos
+      ======================================-->
+
+      <div class="col-lg-4">
+
+        <div style="text-align:center; padding-top: 1%;">
+          
+          <h6 class="pzp" style="font-family:'Libre Franklin', sans-serif; 
+          font-weight: 20; font-size: 15px;"> 
+            BOX CONTENTS
+          </h6>
+
+        </div>
+
+        <!--=====================================
+        Información para de la caja
+        ======================================-->
+
+        <div style="display:flex; padding-top:2%;">
+
+          <div class="col-1">
+            <h6 style="font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20; font-size: 15px;">
+              1
+            </h6>
+          </div>
+
+          <div class="col-8">
+            <h6 style="font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20; font-size: 15px;"> 
+              
+              Box {{box_json.box_name}}
+                   
+            </h6> 
+          </div>
+
+          <div class="col-2">
+            <h6 style="font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20; font-size: 15px;">
+                  
+              ${{box_json.box_price}} 
+                  
+            </h6> 
+          </div>
+
+        </div>
+
+        <!--=====================================
+        Información de productos agregados a la caja
+        ======================================-->
+
+        <div style="padding-top: 2%;">
+
+          <div *ngFor="let product of almacenar_productos; let lastIndex = last ,let i = index"
+          style="display:flex;">
+
+            <div class="col-1" style="width: 5%; text-align: center;">
+
+                <h6 class="tex_cont" style="font-family:'Libre Franklin', sans-serif; 
+                font-weight: 20; font-size: 15px;">
+                    
+                  {{cant_productos[i]}}
+                
+                </h6>
+
+            </div>
+            
+            <div class="col-8" style="width: 70%;">
+
+              <h6 style="padding-top: 2%;font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 15px;">
+               
+                {{product.name}} 
+                
+              </h6>
+              
+            </div>
+
+            <div class="col-2" style="width: 20%; text-align: center;">
+              
+             <h6 style="font-family:'Libre Franklin', sans-serif; 
+                font-weight: 20; font-size: 15px;"> 
+             
+                ${{product.price}}
+
+             </h6>  
+
+            </div>
+            
+            <!-- Eliminar productos de la caja -->
+            <div class="col-1" style="width: 5%; align-items: center; font-size: 15px;
+            font-family:'Libre Franklin', sans-serif; font-weight: 20;">
+
+              <i (click)="fncNewR(i, product.name)"
+              class="icon-cross"></i>
+              
+            </div>
+           
+            {{ lastIndex ? callback() : ""}}
+
+          </div> 
+          
+        </div>
+
+        <!--=====================================
+        Información de productos agregados a la caja
+        ======================================-->
+
+        <div class="row" style="padding-top: 2%; border-top: 1px solid #dddddd !important;
+        border-bottom: 1px solid  #dddddd !important; justify-content: center;">
+
+          <h6 style="font-family:'Libre Franklin', sans-serif;margin-top: 2%; 
+          font-weight: 20; font-size: 15px;">
+            CURRENT PACKAGING | SMALL
+          </h6>          
+          
+        </div>
+
+        <div style="padding-top:3%; display: flex; justify-content: center;">
+
+          <h6 style="font-family:'Libre Franklin', sans-serif; 
+          font-weight: 20; font-size: 15px;">
+            BOX SUBTOTAL: $ {{subTotal}}
+          </h6>          
+
+        </div>
+
+        <div style="padding-top:3%;">
+
+          <a style="cursor: pointer; font-family:'Libre Franklin', sans-serif;font-weight: 20; 
+          font-size: 15px; text-align: center;" (click)="guardaProductos()" class="new-boton">
+            COMPLETE BOX
+          </a>
+          
+        </div>        
+        
+      </div>
 
     </div>
 
@@ -278,18 +525,23 @@
       <div style="width: 100%; display: flex; margin: 3%;" class="select-box row">
 
         <!-- Filtro por Categoría -->
-        <div style=" padding: 0px;"
-        class="col-lg-3 col-md-3 col-sm-12" >
+        <div class="col-lg-3 col-md-3 col-sm-12 filtros-gty" 
+        style="padding: 0px;">
 
           <select class="custom-select" id="inputGroupSelect01" 
           (change)="filtradoProductos1(0,$event.target.value)"
-          style="height: 50px; font-size: 18px;">
+          style="height: 50px; font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 20px;">
 
-            <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
-            font-weight: 20; font-size: 20px;">Reason or Season</option>
+            <option selected >
+              <p style="font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 20px;">
+                Reason or Season
+              </p>
+            </option>
             <!-- <option selected>Reason or Season</option> -->
             <option *ngFor="let categoria of lista_categories; let lastIndex = last,let i = index"
-            style="font-family:'Neue Haas Grotesk Text Pro'; font-weight: 20; font-size: 20px;" 
+            style="font-family:'Libre Franklin', sans-serif; font-weight: 20; font-size: 20px;" 
             value="{{categoria}}">{{categoria}}
             </option>
 
@@ -298,17 +550,18 @@
         </div>
 
         <!-- Filtro por colores -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 filtros-gty">
 
           <select class="custom-select" id="inputGroupSelect01" 
           (change)="filtradoProductos1(1,$event.target.value)"
-          style="height: 50px; font-size: 18px;">
+          style="height: 50px; font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 20px; ">
 
-              <option selected style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <option selected style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px; ">Color</option>
               <!-- <option selected>Color</option> -->
               <option *ngFor="let color of lista_colores; let lastIndex = last,let i = index"
-              value="{{color}}" style="font-family:'Neue Haas Grotesk Text Pro'; 
+              value="{{color}}" style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px;">{{color}}</option>
 
           </select>
@@ -316,24 +569,25 @@
         </div>
 
         <!-- Filtro por precios  -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 filtros-gty">
 
           <select class="custom-select" id="inputGroupSelect01" 
           (change)="sortElementsByRange($event.target.value)"
-          style="height: 50px; font-size: 18px;">
+          style="height: 50px;font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 20px;">
 
             <option selected >
-              <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <p style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 20px;">Sort by Options</p>
             </option>
             <!-- <option selected>Sort by Options</option> -->
-            <option value="lower" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <option value="lower" style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 20px;">Price(Low to high)</option>
-            <option value="higher" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <option value="higher" style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 20px;">Price(High to low)</option>
-            <option value="box-small" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <option value="box-small" style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 20px;">Size(Small to large)</option>
-            <option value="box-big" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <option value="box-big" style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 20px;">Size(Large to small)</option>
 
           </select>
@@ -341,11 +595,13 @@
         </div>
 
         <!-- Filtro por serch -->
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 filtros-gty">
 
           <div id="inputGroupSelect01" style="height: 50px;">
 
             <input
+            style="font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20; font-size: 20px;"
             [(ngModel)] = "searh_filter_text"
             (keyup.enter)="goSearch()"
             class="form-control mr-sm-2" 
@@ -391,7 +647,7 @@
             id="to-large-to-fid" 
             *ngIf="productsFull() == true">
 
-                <p style="color: black;font-family:'Neue Haas Grotesk Text Pro'; 
+                <p style="color: black;font-family:'Libre Franklin', sans-serif; 
                 font-weight: 20; font-size: 20px; color: #353535; ">
                     Oops!<br>
                     (too large to fit)
@@ -399,14 +655,15 @@
 
             </div>
 
-            <img 
+            <img class="img-producto-cty" 
             style="width: 247px; height: 247px;" 
             (click)="detallesProducto(products)"
-             type="button"  data-toggle="modal" 
-             data-target=".bd-example-modal-xl"
-             src="{{products.image}}" alt="">
+            type="button"  data-toggle="modal" 
+            data-target=".bd-example-modal-xl"
+            src="{{products.image}}" alt="">
 
             <img id="imgGallery" 
+            class="img-producto-cty" 
             style="width: 247px; height: 247px;position: 
             absolute;margin-top: -100%;" 
             (click)="detallesProducto(products)"
@@ -426,7 +683,7 @@
                 <a 
                 (click)="fncNewAdd(products, products.name)"
                 style="cursor:pointer ;">
-                  <p style="font-family: Neue Haas Grotesk Text Pro;
+                  <p style="font-family:'Libre Franklin', sans-serif;
                   font-weight: 20; font-size: 15px; margin-top: 1%; color: #353535;">
                     Add to box
                   </p> 
@@ -449,11 +706,11 @@
 
                   <div 
                   style="background: white;width: 70%; text-align: center;
-                  color:black; border: 1px solid black !important; 
-                  font-family:'Neue Haas Grotesk Text Pro'; "
+                  color:black; border: 1px solid black !important;"
                   id="quantity"> 
 
-                    <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;">
+                    <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;
+                     font-family:'Libre Franklin', sans-serif; ">
                       {{getNumArts(products)}} IN INBOX
                     </p>  
 
@@ -476,7 +733,7 @@
 
                 <a 
                 style="cursor:pointer; 
-                font-family:'Neue Haas Grotesk Text Pro'; 
+                font-family:'Libre Franklin', sans-serif; 
                 font-weight: 20; font-size: 15px; color:#353535;">
                   Too large
                 </a>
@@ -502,20 +759,20 @@
                data-toggle="modal" 
                data-target=".lista-deseos " -->
               <i (click)="crearLista(products)" 
-              class="icon-heart"
+              class="icon-heart"    
               style="cursor: pointer;"></i>
             </a>
           </div>
-
+   
 
           <!-- Información de productos -->
           <div class="">
 
               <div style="margin-left: 1% ">
 
-                <a>
-                  <b style="font-family:'Neue Haas Grotesk Text Pro'; 
-                  font-weight: 20; font-size: 17px; color:#353535;">
+                <a>  
+                  <b style="font-family:'Libre Franklin', sans-serif; 
+                  font-weight: 20; font- : 17px; color:#353535;">
                     {{products.name}}
                   </b>
                 </a>
@@ -523,10 +780,11 @@
 
                 <div class="" style="display: flex;">
 
-                  <p style="font-weight: 450; font-size: 17px;">$</p>
+                  <p style="font-weight: 20; font-size: 17px;
+                  font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
 
-                  <p >
-                    <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                  <p style="margin-top:1%;">
+                    <b style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 20; font-size: 17px; color:#353535;">
                       {{products.price}}
                     </b>
@@ -562,7 +820,7 @@
       <div class="modal-content col-lg-6 col-md-12 col-sm-12">
 
         <!-- <img class="img-ventena" src="{{porductos_detalles_img}}"> -->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControlsVB" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
 
             <div class="carousel-item active">
@@ -577,11 +835,11 @@
             </div>
 
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselExampleControlsVB" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselExampleControlsVB" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
@@ -595,14 +853,14 @@
         <!-- Título del producto ventana modal  -->
         <div style="height: 9%; text-align: center; align-items: center; margin: 2%;">
 
-          <h3 style="margin: 5%; 
-          font-family:'Neue Haas Grotesk Text Pro';
+          <h4 style="margin: 5%; 
+          font-family:'Libre Franklin', sans-serif;
           font-size: 24px;
           font-weight: 450;">
 
             {{porductos_detalles_name}}
 
-          </h3>
+          </h4>
 
         </div>
 
@@ -611,7 +869,7 @@
 
           <div [innerHTML] id="contenedor-descripciones">
 
-            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+            <p style="font-family:'Libre Franklin', sans-serif; 
             font-size: 20px;
             font-weight: 20; color: black;">
               {{porductos_detalles}}
@@ -621,19 +879,29 @@
 
         </div>
 
-        <!-- Botón del producto ventana modal  -->
+        <div style="display:flex;">
+
+          <p style="font-family:'Libre Franklin', sans-serif; 
+          font-size: 20px; font-weight: 20; color: black;">Marca : &nbsp;</p>  
+            
+          <p style="font-family:'Libre Franklin', sans-serif; 
+          font-size: 20px; font-weight: 20; color: black;">{{porductos_marca}}</p>  
+
+        </div>
+
+        <!-- Botón del producto ventana modal   (click)="fncModal(porductos_detalles_name,porductos_detalles)" -->
         <div style="text-align: center;align-items: center;">
 
           <div 
           class="col text-center" style="display: flow-root;
-          justify-content: center;
+          justify-content: center; cursor: pointer;
           align-items: center;">
 
             <a class="new-boton" 
-            (click)="fncNewAdd(products,porductos_detalles_name)"
+            
             style=" width: px; margin-top: 5%;cursor:pointer;
-            font-family:'Neue Haas Grotesk Text Pro'; 
-            font-size: 16px;
+            font-family:'Libre Franklin', sans-serif; 
+            font-size: 16px; cursor: pointer;
             font-weight: 100;">
 
               Add to box $ {{porductos_detalles_precio}}
@@ -662,8 +930,8 @@
         <div class="modal-header">
 
           <h5 class="modal-title-rd" id="exampleModalCenterTitle"
-          style=" font-family: Neue Haas Grotesk Text Pro;
-          font-weight: 800;">
+          style=" font-family:'Libre Franklin', sans-serif;
+          font-weight: 450; font-size: 24px;">
               Box Sizes
           </h5>
 
@@ -677,8 +945,8 @@
 
         <div class="modal-body">
 
-          <p class="modal-tex" style=" font-family: Neue Haas Grotesk Text Pro;
-          font-weight: 800;">
+          <p class="modal-tex" style=" font-family: 'Libre Franklin', sans-serif;
+          font-weight: 20; font-size:20px;">
 
             We want your gifts to look perfect!, that's why we have three different
             box sizes. Never too much or too little space, and perfectly packed everytime!   
@@ -690,8 +958,8 @@
         <div class="modal-footer">
 
           <button type="button" 
-          style="background: black; width: 107px; height: 45px; font-family: Neue Haas Grotesk Text Pro;
-          font-weight: 800;" 
+          style="background: black; width: 107px; height: 45px; font-family: 'Libre Franklin', sans-serif;
+          font-weight: 100; font-size:16px;" 
           class="btn btn-secondary" data-dismiss="modal">
               GOT IT!
           </button>
@@ -755,9 +1023,9 @@
 
                 <a class="byn-tyt-white" 
                 id="small-box-a" 
-           type="button"  data-toggle="modal" 
-           data-target="#exampleModalCenter"
-                style=" font-family: Neue Haas Grotesk Text Pro;
+                type="button"  data-toggle="modal" 
+                data-target="#exampleModalCenter"
+                style=" font-family:'Libre Franklin', sans-serif;
                 font-weight: 800;">CURRENT BOX REGULAR</a>
                 
               </div>
@@ -771,7 +1039,7 @@
             <div class="col text-center" style="padding-left: 0px;padding-right: 3px">
 
               <a (click)="guardaProductos()" class="byn-tyt"
-              style=" font-family: Neue Haas Grotesk Text Pro;
+              style="font-family:'Libre Franklin', sans-serif;
               font-weight: 800;">
                 COMPLETE BOX 
               </a>
@@ -795,7 +1063,7 @@
     <div style="border-radius: 15px;" 
     id="snackbar">
 
-      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <p style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 20; font-size: 17px; color: whitesmoke;">
         {{txt_product_snackbar}} added to box
       </p>      
@@ -806,7 +1074,7 @@
     <div  style="border-radius: 15px;" 
     id="snackbarTow">
 
-      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <p style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 20; font-size: 17px; color: whitesmoke;">
         {{txt_product_snackbar}} removed to your box
       </p>
@@ -816,7 +1084,7 @@
     <div style="border-radius: 15px;" 
     id="snackbarAgregarListaDeseos">
 
-      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <p style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 20; font-size: 17px; color: whitesmoke;">
         Added to your favorites
       </p>
@@ -826,7 +1094,7 @@
     <div style="border-radius: 15px;" 
     id="snackbarQuitarListaDeseos">
 
-      <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <p style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 20; font-size: 17px; color: whitesmoke;">
         Removed from your favorites
       </p>
@@ -922,8 +1190,8 @@
                       <!-- (click)="myFunction(products.name)"   -->
                   <a 
                   (click)="fncNewAdd(products, products.name)"
-                   style="cursor:pointer">
-                       Add to box
+                  style="cursor:pointer">
+                    Add to box
                   </a>
               </div>
 
@@ -1014,7 +1282,62 @@
     
 </div>
 
-<style>  
+<style>
+
+@media screen and  (max-width: 360px) {
+
+  .numeros-tre {
+    margin-top: 15%  !important;
+  }
+
+  .step-et {
+    margin-top: 65%  !important;
+    margin-bottom: 21%  !important;
+  }
+
+  .titulo-star-selecting {
+    margin-top: 7% !important;
+    margin-bottom: 7%  !important;
+  }
+
+  .img-producto-add {
+    height: auto !important;
+  }
+
+  .img-caja-add {
+    height: auto !important;
+  }
+
+  .img-producto-cty {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .byn-tyt {
+
+    background: black !important;
+    color: white !important;
+    display: flow-root !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    align-content: center !important;
+    font-size: 71% !important;
+    border: 1px solid #000 !important;
+    margin-right: -7% !important;
+    padding-top: 4% !important;
+    padding-bottom: 4% !important;
+    margin-left: 4% !important;
+    margin-bottom: 3% !important;
+
+  }
+
+  .filtros-gty {
+    padding: 0px !important; 
+    margin-bottom: 2% !important;
+  }
+
+}  
+
 .modal-content{
   border: 0px solid rgba( 0,0,0,.2) !important;
 }
@@ -1301,7 +1624,7 @@
     padding-bottom: 8%;
 }
 .byn-tyt-white{
-    padding-top: 6%;
+    padding-top: 4%;
     background: white;
     color: black;
     cursor: pointer;
@@ -1552,7 +1875,7 @@
 }
 .div_er{
     /*border-bottom:1px solid #dee2e6!important; */
-    border-top: 1px solid  #dddddd!important;
+    /*border-top: 1px solid  #dddddd!important;*/
     height: px;   
     /*justify-content: center;
     align-items: center;*/
@@ -1645,7 +1968,7 @@ margin-top: 5%;
 
 }
 .progressbar a{
-  font-family:'Neue Haas Grotesk Text Pro'; 
+  font-family:'Libre Franklin', sans-serif; 
   list-style-type: none;
   float: left;
   width: 23.33%;
@@ -1663,7 +1986,7 @@ margin-top: 5%;
   border: 1px solid #ddd;
   display: block;
   text-align: center;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 25px auto;
   border-radius: 50px;
   background-color: white;
 }  
@@ -1681,17 +2004,17 @@ margin-top: 5%;
 .progressbar a:first-child:after{
     content: none;
 }
-.progressbar a.active{
+.active{
     display: block;
     color: #6a6a6a;
 }
-.progressbar a.active:before{
+/*.progressbar a.active:before{
     background-color: #6a6a6a;
     border-color:#6a6a6a;
 }
 .progressbar a.active + a:after{
     background-color: #6a6a6a;
-}
+}*/
 
 /*Clase súper active */
 .progressbar a.superActive{
@@ -2029,7 +2352,7 @@ display: flex;
  }
  .img-new-product {
     display: flex; 
-    margin:11%;
+    margin:7%;
  }
 .progressbartow a:before{
     content: counter();
@@ -2047,7 +2370,7 @@ display: flex;
 
 }
 .circulo {
-    width: 50px;
+    width: 30px;
     height: 30px;
     line-height: 27px;
     border: 1px solid #ddd;

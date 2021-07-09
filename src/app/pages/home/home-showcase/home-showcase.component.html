@@ -2,10 +2,10 @@
 Section Gray      
 ======================================-->
 
-<div id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;">
+<div class="container container-new-r" id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;">
 
   <!--=====================================
-  Primera sección 
+  Primera sección  
   ======================================-->
 
   <div *ngIf="div.type == SECTION_DOUBLE"
@@ -35,7 +35,7 @@ Section Gray
 
             <h3 style="text-align: {{div.section_left.txt_title_alignment}};
             font-size: 24px; 
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 450;
             color: {{div.section_left.txt_title_color}};">
               {{div.section_left.txt_title}}
@@ -45,39 +45,39 @@ Section Gray
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
             font-size: 20px;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
             padding-right:{{div.section_left.txt_padd_der}};
             padding-left: {{div.section_left.txt_padd_izq}};
             padding-top:{{div.section_left.txt_padd_sup}}">
-              {{div.section_left.txt_description}}
+             <b>Need a gift?</b> {{div.section_left.txt_description}}
             </p><br>
 
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
             font-size: 20px;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
             padding-right:{{div.section_left.txt_padd_der}};
             padding-left: {{div.section_left.txt_padd_izq}};
             padding-top:{{div.section_left.txt_padd_sup}}">
-              {{div.section_left.txt_description2}}
+              <b>Keep it personal.</b>{{div.section_left.txt_description2}}
             </p><br>
 
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
             font-size: 20px;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
             padding-right:{{div.section_left.txt_padd_der}};
             padding-left: {{div.section_left.txt_padd_izq}};
             padding-top:{{div.section_left.txt_padd_sup}}">
-              {{div.section_left.txt_description3}}
+              <b>We  ́ll handle the rest.</b>{{div.section_left.txt_description3}}
             </p>
 
 
@@ -91,7 +91,7 @@ Section Gray
               width: 40%;
               margin-left: 30%;
               height: 100%;
-              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-family:'Libre Franklin', sans-serif; 
               font-weight: 100;
               font-size: 16px; 
               border-color: {{div.section_left.txt_button_border_color}};
@@ -133,7 +133,7 @@ Section Gray
             color: {{div.section_left.txt_button_color_text}};
             width: 40%;
             height: 100%;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
             font-size: 16px; 
             border-color: {{div.section_left.txt_button_border_color}};
@@ -167,7 +167,7 @@ Section Gray
             width: 40%;
             height: 50px;
             top: 50%;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
             font-size: 16px; 
             border-color: {{div.section_left.img_button_border_color}};
@@ -212,7 +212,7 @@ Section Gray
           <div class="tex_home" style="width: 100%;
           height:px;
           margin-top: ;
-          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-family:'Libre Franklin', sans-serif; 
           font-weight: 600; 
           padding-left: 40px;
           padding-right:20px;
@@ -221,7 +221,7 @@ Section Gray
 
             <h3 style="text-align: {{div.section_right.txt_title_alignment}};
             font-size: 24px;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 450; 
             color: {{div.section_right.txt_title_color}};">
               {{div.section_right.txt_title}}
@@ -231,7 +231,7 @@ Section Gray
             text-align: {{div.section_right.txt_description_alignment}};
             margin-top: 11%;
             font-size: 20px;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; 
             color:black; 
             padding-right:{{div.section_right.txt_padd_der}};
@@ -250,7 +250,7 @@ Section Gray
               width: 40%;
               margin-left: 30%;
               height: 100%;
-              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-family:'Libre Franklin', sans-serif; 
               font-weight: 100;
               font-size: 16px; 
               border-color: {{div.section_right.txt_button_border_color}};
@@ -294,7 +294,7 @@ Section Gray
             color:  {{div.section_right.img_button_text_color}};
             width: 40%;
             height: 100%;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
             font-size: 16px; 
             border-color: {{div.section_right.img_button_border_color}};
@@ -325,7 +325,7 @@ Section Gray
             background-color: {{div.section_right.img_button_color}};
             color: {{div.section_right.img_button_text_color}};
             width: 40%;
-            font-family:'Neue Haas Grotesk Text Pro'; 
+            font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
             font-size: 16px; 
             height: 50px;
@@ -378,8 +378,8 @@ Section Gray
             style="width: 100%; height: 600px;" 
             src="{{sliderItem}}" alt="First slide">
 
-            <div style="position: absolute; left: 2%;
-            top: {{div.section_middle.slider_align_x[ind]}};
+            <div style="position: absolute; left: 10%;
+            top:  70%;
             margin-left: 8%;"
             [ngStyle]="{'padding-left': div.section_right.img_padd_izq}">
      
@@ -387,7 +387,7 @@ Section Gray
               style="font-size: 24px; margin-top: 10px; 
               color: {{div.section_middle.slider_title_color}}; 
               margin-right: 20px; margin-left: 20px; margin-bottom: 30px;
-              font-family:'Neue Haas Grotesk Text Pro'; 
+              font-family:'Libre Franklin', sans-serif; 
               font-weight: 450; ">
                 {{div.section_middle.slider_textos[ind]}}
                 <!-- 20 percent discount -->
@@ -396,7 +396,7 @@ Section Gray
               <a style="font-weight: 100;  font-size: 16px;
               color: white;
               background:{{div.section_middle.slider_btn_color}} ;
-              font-family:'Neue Haas Grotesk Text Pro';
+              font-family:'Libre Franklin', sans-serif;
               padding: 9.5% 15%; " 
               href="{{div.section_middle.slider_links[ind]}}">
                 {{div.section_middle.slider_textos_botones[ind]}}
@@ -428,7 +428,7 @@ Section Gray
     <div class="div3" >
       <div class="title_div3">
 
-        <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+        <h3 style="font-family:'Libre Franklin', sans-serif; 
         font-size: 24px; font-weight: 450;" >
           {{div.section_middle.grid_title}}</h3>
 
@@ -436,7 +436,7 @@ Section Gray
         style="text-align: center;">
 
           <p style="margin-bottom: 3%;
-          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; font-size: 20px;">
               {{div.section_middle.grid_description}}
           </p>
@@ -472,14 +472,14 @@ Section Gray
     <!-- style="height:px; width: 100%; display:{{divs_visible[i][2]}};" -->
 
     <div class="div-title" style="margin-top:3%; width:100%; font-size:100%; height:px;margin-bottom: 3%;">
-      <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <h3 style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 450; font-size:24px; margin-top: 4%;text-align: center; 
       font-size: 24px;">
 
         {{div.section_middle.triple_section_title}}
           <!-- CURATED & CRAFTED FOR YOU -->
       </h3>
-      <p style=" font-family:'Neue Haas Grotesk Text Pro'; 
+      <p style=" font-family:'Libre Franklin', sans-serif; 
       font-weight: 20;margin-left: 20%;margin-right: 20%;
       font-size: 20px;margin-top: 3%;text-align: center;">
 
@@ -490,6 +490,7 @@ Section Gray
         easy-to-send boxes. -->
       </p>
     </div>
+
     <div class="divs-imgs row" style="display: flex;height: px;padding: 0px;">
 
         <div class="div_izquiedat col-lg-4 col-md-12 col-sm-12" 
@@ -498,18 +499,19 @@ Section Gray
 
           <img  *ngIf="div.section_left.img_src != '' "
           target="_top"  src="{{div.section_left.img_src}}" 
-          style="margin-bottom: 4%;width: 100%;height: 349px;"
-          routerLink="{{div.section_left.img_link}}">
+          style="margin-bottom: 4%;width: 90%;height: 349px;"
+          routerLink="{{div.section_left.img_link}}"
+          class="img-trilple">
 
           <h3 style="font-size: 24px; 
-          font-family:'Neue Haas Grotesk Text Pro'; 
+          font-family:'Libre Franklin', sans-serif; 
           font-weight: 450; font-size: 24px;
           margin-top: 6%;">
             {{div.section_left.txt_title}}
               <!-- Need a gift? -->
           </h3>
 
-          <p style="font-size: 20px; font-family:'Neue Haas Grotesk Text Pro'; 
+          <p style="font-size: 20px; font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
             {{div.section_left.txt_description}}
              <!--  Choose from a range of gifts for
@@ -522,18 +524,18 @@ Section Gray
         <div class="div_centrot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
 
-            <img  *ngIf="div.section_middle.img_src != '' "
-            routerLink="{{div.section_middle.img_link}}" class="img_centro" src="{{div.section_middle.img_src}}" 
-            style="margin-bottom: 4%;width: 100%; height: 349px;">
+            <img  *ngIf="div.section_middle.img_src != '' " 
+            routerLink="{{div.section_middle.img_link}}" class="img_centro img-trilple" src="{{div.section_middle.img_src}}" 
+            style="margin-bottom: 4%;width: 90%; height: 349px;">
 
-            <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
+            <h3 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
             font-weight: 450; font-size: 24px;
             margin-top: 6%;">
               {{div.section_middle.txt_title}}
               <!-- Keep it personal -->
             </h3>
 
-            <p style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
+            <p style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
               {{div.section_middle.txt_description}}
              <!--  We curate the best products
@@ -542,21 +544,26 @@ Section Gray
             </p>
 
         </div>
+
         <div class="div_derechot col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;width: 100%;font-size: 100%;">
 
-          <img *ngIf="div.section_right.img_src != '' "
-          routerLink="{{div.section_right.img_link}}" class="img_derecha" src="{{div.section_right.img_src}}" 
-          style="margin-bottom: 4%;width: 100%;height: 349px;">
+          <div style="text-align:right;">
 
-          <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
+            <img *ngIf="div.section_right.img_src != '' "
+            routerLink="{{div.section_right.img_link}}" class="img_derecha img-trilple" src="{{div.section_right.img_src}}" 
+            style="margin-bottom: 4%;width: 90%;height: 349px;">
+
+          </div>  
+
+          <h3 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
           font-weight: 450; font-size: 24px;
           margin-top: 6%;">
             {{div.section_right.txt_title}}
               <!-- We ́ll handle the rest -->
           </h3>
 
-          <p style="font-size: 20px;font-family:'Neue Haas Grotesk Text Pro'; 
+          <p style="font-size: 20px;font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
             {{div.section_right.txt_description}}
               <!-- We take your boxes, pack it to
@@ -580,7 +587,7 @@ Section Gray
 
     <div style="padding-left: 6%; padding-top: 20%;">
 
-      <h3 style="font-size: 24px;font-family:'Neue Haas Grotesk Text Pro'; 
+      <h3 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
       font-weight: 450; font-size: 24px; 
       color: {{div.section_middle.slider_title_color}};
        padding-bottom: 3%;"> 
@@ -588,7 +595,7 @@ Section Gray
       </h3>
       <a style="background: {{div.section_middle.slider_btn_color}};
       font-weight: 100;  font-size: 16px;
-      color: white;padding-top: 1.5%; font-family:'Neue Haas Grotesk Text Pro';
+      color: white;padding-top: 1.5%; font-family:'Libre Franklin', sans-serif;
       padding-bottom: 1.5%; padding-left: 6%; padding-right: 6%; ">
         {{div.section_middle.slider_button_txt_1}}
       </a>
@@ -601,158 +608,171 @@ Section Gray
 
 
 <style>
-     .div-section-container{
+
+  /*Media query*/
+
+  @media (max-width: 360px) {
+    .img-trilple {
+      width: 100% !important;   
+    }
+  }
+
+  .container-new-r{
+    max-width: 100% !important;
+  }
+  
+  .div-section-container{
         background: red;
         width: 100%;
         height: 300px;
-    }
-    .div3{
-        width: 100%;
-        height: 100%;
-        /*margin-bottom: 3%;*/
-    }
-    .title_div3>h3{
-        margin-top: 6%;
-        text-align: center;
-        font-size: 100%;
-    }
-    .title_div3>p{
-        font-size: 100%;
-        text-align: center;
-        margin-bottom: 3%;
-    }
-    .img_insta{
-        position: relative;
-        margin: 0px;
-        display: flex;
-        width: 100%;
-        width: 100%;
-    }
-    .img_insta>img{
-        width: 100%;
-        height: 100%;
-        border:0px;
-    }
-    .col-lg-3 {
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .col-md-6{
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .col-sm-12{
-        position: relative;
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    .div3{
-        width: 100%;
-        height: px;
-    }
-    .slider{
-        width: 100%;
-        margin: auto;
-        overflow: hidden;
-    }
-    .slider ul{
-        margin-bottom: auto;
-        display: flex;
-        padding:0;
-        width: 500%;
-        animation: cambio 20s infinite;
-        animation-direction: alternate;
-    }
-    .slider li{
-        width: 100%;
-        list-style: none;
-    }
-    .slider img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: .5s;
-    }
-    @keyframes cambio{
-        0%{ margin-left: 0; }
-        20%{ margin-left: 0; }
+}
+.div3{
+    width: 100%;
+    height: 100%;
+    /*margin-bottom: 3%;*/
+}
+.title_div3>h3{
+    margin-top: 6%;
+    text-align: center;
+    font-size: 100%;
+}
+.title_div3>p{
+    font-size: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+.img_insta{
+    position: relative;
+    margin: 0px;
+    display: flex;
+    width: 100%;
+    width: 100%;
+}
+.img_insta>img{
+    width: 100%;
+    height: 100%;
+    border:0px;
+}
+.col-lg-3 {
+    position: relative;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.col-md-6{
+    position: relative;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.col-sm-12{
+    position: relative;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.div3{
+    width: 100%;
+    height: px;
+}
+.slider{
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+.slider ul{
+    margin-bottom: auto;
+    display: flex;
+    padding:0;
+    width: 500%;
+    animation: cambio 20s infinite;
+    animation-direction: alternate;
+}
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+.slider img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+@keyframes cambio{
+    0%{ margin-left: 0; }
+    20%{ margin-left: 0; }
 
-        25%{ margin-left: -100%; }
-        45%{ margin-left: -100%; }
+    25%{ margin-left: -100%; }
+    45%{ margin-left: -100%; }
 
-        50%{ margin-left: -200%; }
-        70%{ margin-left: -200%; }
+    50%{ margin-left: -200%; }
+    70%{ margin-left: -200%; }
 
-        75%{ margin-left: -300%; }
-        100%{ margin-left: -300%; }
-    }
+    75%{ margin-left: -300%; }
+    100%{ margin-left: -300%; }
+}
 
-     /* Global Button Styles */
-    a.animated-button:link, a.animated-button:visited {
-        position: relative;
-        display: block;
-        margin: 30px auto 0;
-        padding: 14px 15px;
-        color: #fff;
-        font-size:14px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        overflow: hidden;
-        letter-spacing: .08em;
-        border-radius: 0;
-        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-        -webkit-transition: all 1s ease;
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        transition: all 1s ease;
-    }
-    a.animated-button:link:after, a.animated-button:visited:after {
-        content: "";
-        position: absolute;
-        height: 0%;
-        left: 50%;
-        top: 50%;
-        width: 50%;
-        z-index: -1;
-        -webkit-transition: all 0.75s ease 0s;
-        -moz-transition: all 0.75s ease 0s;
-        -o-transition: all 0.75s ease 0s;
-        transition: all 0.75s ease 0s;
-    }
-    a.animated-button:link:hover, a.animated-button:visited:hover {
-        color: #FFF;
-        text-shadow: none;
-    }
-    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
-        height: 50%;
-    }
-    a.animated-button:link, a.animated-button:visited {
-        position: relative;
-        display: block;
-        margin: 30px auto 0;
-        padding: 14px 15px;
-        color: #fff;
-        font-size:14px;
-        border-radius: 0;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        overflow: hidden;
-        letter-spacing: .08em;
-        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
-        -webkit-transition: all 1s ease;
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        transition: all 1s ease;
-    }
+ /* Global Button Styles */
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #fff;
+    font-size:14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    border-radius: 0;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+    color: #FFF;
+    text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+    height: 50%;
+}
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #fff;
+    font-size:14px;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
 
 a.animated-button.thar-three {
     color: #fff;

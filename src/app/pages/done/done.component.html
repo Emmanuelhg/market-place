@@ -1,4 +1,4 @@
-<div style="width: 100%;margin-top: 15%; height: px;">
+<div class="div-step-4fg" style="width: 100%;margin-top: 15%; height: px;">
     
     <!-- Barra de números -->  
 	<div class="contrainer">
@@ -12,21 +12,21 @@
 			<br>
    	 	</div><br> 
    	 </div><br>
-
+ 
 
    	<!--=====================================
 	Descripción   
 	======================================-->
-	<div class="container">
-	    <div style="text-align: center; margin-top: 18%;
-	    justify-content: center; margin-bottom: 181px;">
+	<div class="container des-tgh">
+	    <div style="text-align: center; margin-top: 14%;
+	    justify-content: center; margin-bottom: 104px;">
 
-	      <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+	      <h3 class="parrafo"  style="font-family:'Libre Franklin', sans-serif;; font-size: 27px;
 	      font-weight: 450; color: #6a6a6a;">
 	        DONE!
 	      </h3>
 
-	      <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
+	      <p style="font-family:'Libre Franklin', sans-serif;; font-size: 24px;
 	      font-weight: 450; color: black;">
 	        CURATING YOUR BOX
 	      </p>
@@ -37,83 +37,85 @@
    	<!--=====================================
 	Preload
 	======================================-->
-	<div
-	  *ngIf="!preload"> 
-		<div style="margin-bottom: 20%;">
-		   <h3 style="width: 176px; margin-left: 4%;
-		    font-family:'Neue Haas Grotesk Text Pro'; 
+	<div *ngIf="!preload">
+ 
+		<div class="container" style="margin-bottom: 20%;">
+
+		   <h3 style="width: 176px; margin-left: 4%; padding-top: 4%;
+		    font-family:'Libre Franklin', sans-serif;; 
         	font-weight: 450; font-size: 24px;
 		    border-top: 1px solid black !important;">
 				Your Cart
 			</h3>
+
 			<div class="row" style="padding: 0px;">
 				<!--=====================================
 				 Div para imagen
 				======================================-->
 				<div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
-				display: flex;">
+				display: flex; margin-bottom: 9%;">
 					<div style="height: 100%; display: flex; align-items: center;">
 						<img style="width:200px; height:200px;
 						"src="{{boxes.box_img}}">
 					</div>
 				</div>
 				<!--=====================================
-				  Div para info de caja
-				 ======================================-->
-				<div class="col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+				Div para info de caja
+				======================================-->
+				<div class=" col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
-					<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+					<h3 style="font-family:'Libre Franklin', sans-serif;; 
            			font-weight: 450; font-size: 24px;">
            				BUILD A BOXFOX
            			</h3>
 
-					<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+					<p style="font-family:'Libre Franklin', sans-serif;; 
            			font-weight: 20;font-size: 20px;">matle black / Regular </p>
 					<div style="display: flex;">
 						<p>
-							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+							<b style="font-family:'Libre Franklin', sans-serif;; 
            			        font-weight: 20;font-size: 20px;">To:</b>
 						</p>&nbsp;
-						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+						<p style="font-family:'Libre Franklin', sans-serif;; 
            				font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_to}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
-							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+							<b style="font-family:'Libre Franklin', sans-serif;; 
            			        font-weight: 20;font-size: 20px;">From:</b>	
 						</p>&nbsp;
-						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+						<p style="font-family:'Libre Franklin', sans-serif;; 
            			    font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_from}}
 					  	</p>
 					</div>
 					<div style="display: flex;">
 						<p>
-							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+							<b style="font-family:'Libre Franklin', sans-serif;; 
            					font-weight: 20;font-size: 20px;">Message:</b>
 						</p>&nbsp;
-						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+						<p style="font-family:'Libre Franklin', sans-serif;; 
            				font-weight: 20;font-size: 20px;"> 
 							{{boxes.box_deliver_message}}
 					  	</p>
 					</div>
 					<!-- <div style="display: flex;">
 						<p>
-							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+							<b style="font-family:'Libre Franklin', sans-serif;; 
            					font-weight: 20;font-size: 20px;">Card:</b>
 						</p>&nbsp;
-						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+						<p style="font-family:'Libre Franklin', sans-serif;; 
            				font-weight: 20;font-size: 20px;"> hol</p>
 					</div> -->
 					<div>
 						<p>
-							<b style="font-family:'Neue Haas Grotesk Text Pro'; 
+							<b style="font-family:'Libre Franklin', sans-serif;; 
            					font-weight: 20;font-size: 20px;">Gift Box Contentens:</b>
 						</p>
 
-						<p style="font-family:'Neue Haas Grotesk Text Pro'; 
+						<p style="font-family:'Libre Franklin', sans-serif;; 
            				font-weight: 20;font-size: 20px;"
 						*ngFor="let box_arts of products; let lastIndex = last">
 							{{box_arts.name}}
@@ -129,7 +131,7 @@
 					<div class="col-4" style="margin: 1%;">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+								<p><b style="font-family:'Libre Franklin', sans-serif;; 
            			 			font-weight: 20;font-size: 20px;">Price</b></p>
 							</li>
 							<li style="margin-top: 50%;font-weight: 20;font-size: 20px;">
@@ -142,7 +144,7 @@
 					<div class="col-4">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+								<p><b style="font-family:'Libre Franklin', sans-serif;; 
            							font-weight: 20;font-size: 20px;">Quantity</b></p>
 							</li>
 							<li style="margin-top: 50%;">
@@ -158,7 +160,7 @@
 					<div class="col-4">
 						<ul style="font-family: sans-serif; list-style: none;">
 							<li>
-								<p><b style="font-family:'Neue Haas Grotesk Text Pro'; 
+								<p><b style="font-family:'Libre Franklin', sans-serif;; 
            							font-weight: 20;font-size: 20px;">Total</b></p>
 							</li>
 							<li style="margin-top: 50%; font-weight: 20;font-size: 20px;">
@@ -188,19 +190,37 @@
 	<!--=====================================
 	Botón para pasar al carrito 
 	======================================-->
-	<div style="margin-top: -7%;">
+	<div style="margin-top: -9%;margin-bottom: 22%;">
 		<div class="Checkout">
     	  <a 
     	  (click)="HyperLink()"	
     	  class="btn btn-sm animated-button thar-three" 
-    	  style="font-family:'Neue Haas Grotesk Text Pro'; 
-   		  font-weight: 20;font-size: 15px;">Checkout</a>
+    	  style="font-family:'Libre Franklin', sans-serif;; 
+   		  font-weight: 20;font-size: 15px;
+   		  padding-right: 3%; padding-left: 3%;">Checkout</a>
 		</div>
 	</div> 
 
 </div>	
 
 <style>
+
+	@media screen and  (max-width: 360px) {
+
+      .contr-gt {
+        margin-top: 28%  !important;
+      }
+      .des-tgh {
+      	margin-bottom: 31% !important;
+      	margin-top: -11% !important;
+      }
+      .div-step-4fg {
+      	margin-top: 31% !important;
+      }
+
+    }
+    
+
 	.Checkout{
 		display: flex;
 		justify-content:center;
@@ -212,7 +232,7 @@
 	}
 	.contrainer{
 		width: 100%;
-		display:block;  
+		display:block;
 	}
 
 	.progressbar{
@@ -224,7 +244,7 @@
 		width: 24.33%;
 		position: relative;
 		text-align: center;
-		font-family:'Neue Haas Grotesk Text Pro'; 
+		font-family:'Libre Franklin', sans-serif;; 
         font-weight: 450;
   		font-size: 20px;
 	}
@@ -237,7 +257,7 @@
 		border: 1px solid #ddd;
 		display: block;
 		text-align: center;
-		margin: 0 auto 50px auto;
+		margin: 0 auto 25px auto;
 		border-radius: 50px;
 		background-color: white;
 	}    
@@ -285,7 +305,7 @@
 		display: flex;
 		justify-content:center;
 		width: 100%
-		font-family:'Neue Haas Grotesk Text Pro'; 
+		font-family:'Libre Franklin', sans-serif;; 
         font-weight: 800;
 	}
 	.parrafo{
@@ -504,7 +524,7 @@
 	a.animated-button.thar-three {
         font-size: inherit;
         display: flow-root;
-        width: 15%;
+        /*width: 15%;*/
        /* height: 3%;*/
 		/*margin-top: 93px;*/
 	    background-color: white;

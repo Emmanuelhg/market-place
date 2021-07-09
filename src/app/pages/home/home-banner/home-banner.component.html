@@ -1,5 +1,5 @@
 <!--=====================================
-Home Banner 
+Home Banner  
 ================================= =====-->  
 
 <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
@@ -10,31 +10,34 @@ Home Banner
     [class]="{'active': isFirst}"
     class="carousel-item ">
 
-      <img alt="First slide" class="d-block w-100" src="{{negocio[i]}}">
+      <img alt="First slide" class="d-block w-100" style="object-fit: cover;" src="{{negocio[i]}}">
       <div class="carousel-caption d-none d-md-block">
 
         <h5 class="animated bounceInRight" 
-        style="animation-delay: 1s;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        style="animation-delay: 1s; 
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 450; font-size: 24px;">
           {{textoSlider[i]}}
         </h5>
 
         <p class="animated bounceInLeft" 
         style="animation-delay: 2s;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 20;
         font-size: 20px;">
           {{description[i]}}
         </p>
 
-        <p class="animated bounceInRight" 
-        style="animation-delay: 3s;">
-          <a style="background:black;color: 
-          white;font-family:'Neue Haas Grotesk Text Pro'; 
-          font-weight: 20;
-          font-size: 16px;" href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
-        </p>
+        <div style=" display: {{vista}};">
+          <p class="animated bounceInRight" 
+          style="animation-delay: 3s;">
+            <a style="background:black;color: 
+            white;font-family:'Libre Franklin', sans-serif; 
+            font-weight: 20;
+            font-size: 16px;" href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
+          </p>
+        </div>
+        
 
       </div>
     </div>
@@ -115,7 +118,7 @@ Home Banner
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 220px;
+    bottom: 40%;
   }
   .carousel-caption h5 {
     font-size: 45px;

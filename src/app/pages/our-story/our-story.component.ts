@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Path } from '../../config';
+import { Path } from '../../config'; 
 
 import { NegocioService } from '../../services/negocio.service';
  
@@ -21,7 +21,7 @@ export class OurStoryComponent implements OnInit {
   colorTextoBtn;
   coloBtn;
   linkBtn;
-
+  vista;
   textoBtn;
   color_texto_slider='';
 
@@ -47,6 +47,8 @@ img_slider_array:string[] = [];
         this.linkBtn = resp["personalization"].Behind_slider_links;
         // Texto de botón
         this.textoBtn = resp["personalization"].Behind_slider_buttontext;
+
+        this.vista = resp["personalization"].Behind_slider_buttons_visibility;
       
     })
 

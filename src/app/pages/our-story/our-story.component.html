@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb">
 
 	<!--=====================================
-  Slider 
+  Slider  
   ======================================-->
   <div style="margin-top: -2%;" id="carouselExampleControlsR" class="carousel slide" data-ride="carousel">
 
@@ -16,11 +16,12 @@
 
         <div class="carousel-caption d-none d-md-block">
           <h3 class="animated bounceInRight" style="animation-delay: 1s; font-size: 24px;font-weight: 450;
-          color: {{coloTextoSlider[i]}};">
+          color: {{coloTextoSlider[i]}}; font-family: 'Libre Franklin', sans-serif;">
             {{textoSlider[i]}}
           </h3>
           <p class="animated bounceInRight" 
-          style="animation-delay: 3s;display: none; color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};">
+          style="animation-delay: 3s;display: {{vista}}; color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};
+          font-family: 'Libre Franklin', sans-serif;">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -143,7 +144,7 @@
     font-size: 24px;
     margin-bottom: 4%;
     margin-top: 4%;
-    font-family:'Neue Haas Grotesk Text Pro'; 
+    font-family:'Libre Franklin', sans-serif; 
     font-weight: 20; 
     font-size: 20px;
     color: black;
@@ -154,7 +155,7 @@
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 305px;
+    bottom: 40%;
   }
   .carousel-caption h5 {
     font-size: 45px;

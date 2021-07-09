@@ -18,11 +18,9 @@ import { NegocioService } from '../../../services/negocio.service';
 export class HomeShowcaseComponent implements OnInit {
  
 	SECTION_1_ONLY_IMAGE = 0;
-	SECTION_1_IMAGE_BUTTON = 1 ;
+	SECTION_1_IMAGE_BUTTON = 1 ; 
 	SECTION_1_ONLY_TEXT = 2;
-	SECTION_2_CARRUSEL = 3; 
-	
-	
+	SECTION_2_CARRUSEL = 3; 		
 	
 	SECTION_NO_EXIST=0;
 	SECTION_LEFT = 100;
@@ -52,6 +50,7 @@ export class HomeShowcaseComponent implements OnInit {
 	divs_section_middle=[];
 	divs_sliders_urls=[];
 	divs_grids_urls=[];
+	position: any[] = [];
 
    	constructor(private categoriesService: CategoriesService,
    		        private subCategoriesService: SubCategoriesService,
@@ -65,20 +64,67 @@ export class HomeShowcaseComponent implements OnInit {
         
 	    	// console.log("el div fnc es:",resp);
 	    	let array = resp['menu'];
-	    	// console.log("el div fnc es:", array);
+	    	// console.log("el div fnc es:",array)
 
-	    	// console.log("array es:",array);
+	    	for(let sectionOrder in array){
+
+	    		let i = array[sectionOrder];
+ 			
+
+	    		this.position.push(i);
+
+	    		
+	    	}
+
+
+	    	var newOrdenr = this.position.sort((a,b) => a.position > b.position ? 1 : -1);
+
+	    	console.log("el div fnc es:",newOrdenr);
+        array = newOrdenr;
+
+
+
 
 	    	for(let count in array){
 
+
 	    		let section = array[count];
-	    		// console.log("el array en for:",section);
-	    		this.divs.push(section);
-	    		
-	    		this.divs_id.push(count);
-	    		
-	    		this.divs_name.push(section.name);
-	    		
+
+
+	    // 		var sortedArray = section.sort((n1,n2) => {
+					//     if (n1.position > n2.position) {
+					//         return 1;
+					//     }
+
+					//     if (n1.position < n2.position) {
+					//         return -1;
+					//     }
+
+					//     return 0;
+					// });
+
+
+	    		let visibility = section.visible;
+
+	    		let position = section.position
+
+	    		if (visibility == true) {
+
+	    			this.divs.push(section);
+		    		
+		    		this.divs_id.push(count);
+		    		
+		    		this.divs_name.push(section.name);
+
+		    		this.position.push(position);
+
+
+		    		// 
+
+    				// console.log("position",this.position);
+
+		    	  // console.log("position:",this.position);
+
 
 	    		if(section.type==this.SECTION_DOUBLE){
 
@@ -174,6 +220,8 @@ export class HomeShowcaseComponent implements OnInit {
 	    			this.divs_grids_urls.push([]);
 	    			this.divs_sliders_urls.push([]);
 	    		}
+	    		}
+	    		
 
 	    	}
 

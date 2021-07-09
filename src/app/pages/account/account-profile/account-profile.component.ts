@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-
+ 
 import { Path, Server } from '../../../config';
 import { Sweetalert, Tooltip } from '../../../functions';
 

@@ -4,7 +4,7 @@ import { NegocioService } from '../../services/negocio.service';
 
 declare var jQuery:any;
 declare var $:any;
-
+ 
 @Component({ 
   selector: 'app-frequently-asked-questions',
   templateUrl: './frequently-asked-questions.component.html',
@@ -27,7 +27,7 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
   coloBtn;
   linkBtn;
   textoBtn;
-
+  vista;
   img_slider_array:string[] = [];
 
   questions=[];
@@ -55,6 +55,8 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
         this.linkBtn = resp["personalization"].FAQS_slider_links;
         // Texto de botón
         this.textoBtn = resp["personalization"].FAQS_slider_buttontext;
+
+        this.vista = resp["personalization"].FAQS_slider_buttons_visibility;
       
     })
 

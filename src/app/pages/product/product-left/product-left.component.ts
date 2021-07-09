@@ -509,6 +509,7 @@ export class ProductLeftComponent implements OnInit {
 
         this.quantity = number;
 
+        console.log("cantidad",this.quantity);
 
     }
 
@@ -703,6 +704,19 @@ export class ProductLeftComponent implements OnInit {
   boxNone(){
 
 
+  }
+
+  mostrarDescripcion(){
+
+    document.getElementById('description').style.display = 'block';
+    document.getElementById('detail').style.display = 'none';
+
+  }
+
+  mostrrarDetails(){
+    document.getElementById('detail').style.display = 'block';
+    document.getElementById('description').style.display = 'none';
+    
   }
 
 }

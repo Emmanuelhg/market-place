@@ -15,9 +15,8 @@ import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
-
-
-declare var jQuery:any; 
+ 
+declare var jQuery:any;  
 declare var $:any;  
 @Component({ 
   selector: 'app-selecction-paso-dos',
@@ -39,7 +38,7 @@ export class SelecctionPasoDosComponent implements OnInit {
       "box_deliver_message" : "",
       "box_deliver_to" : "",
       "box_id" : "",
-      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_img" : "",
       "box_name" : "caja 1 selecionada",
       "box_price" : 10,
       "box_size" : 30,
@@ -71,6 +70,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles_img;
   porductos_detalles_precio;
   porductos_detalles_name;
+  porductos_marca;
   subTotal:string = "0";
   text_box:string;
   box_size=30;
@@ -431,10 +431,11 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
   
   detallesProducto(products){
-    // console.log("detalles",products);
+    // console.log("detalles",products); 
 
     this.porductos_detalles=products.description;
     this.porductos_detalles_img=products.image;
+    this.porductos_marca = products.store;
 
     // console.log("Es esto je je je :",products);
 
@@ -774,6 +775,9 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
 
   fncNewR(i, name){
+    console.log(i);
+    console.log(name);
+
     this.eliminarProducto(i);
     this.myFunctionTow(name);
   }
@@ -781,6 +785,11 @@ export class SelecctionPasoDosComponent implements OnInit {
   fncNewAdd(id, name){
     this.almacenarProductos(id);
     this.myFunction(name);
+  }
+
+  fncModal(){
+
+
   }
 
   getvisibilityForAdd(name){

@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb">
 
   <!--=====================================
-  Slider  
+  Slider   
   ======================================-->
   <div style="margin-top: -2%;"  id="carouselExampleControlsT" class="carousel slide" data-ride="carousel">
    
@@ -16,12 +16,12 @@
         <div class="carousel-caption d-none d-md-block">
           <h3 class="animated bounceInRight" 
           style="animation-delay: 1s;color: {{coloTextoSlider[i]}};
-          font-size:24px; font-weight: 450;">
+          font-size:24px; font-weight: 450; font-family:'Libre Franklin', sans-serif;">
             {{textoSlider[i]}}
           </h3>
           <p class="animated bounceInRight" 
           style=" animation-delay: 3s;color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};
-          display: none;">
+          display: {{vista}}; font-family: 'Libre Franklin', sans-serif;">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -45,10 +45,10 @@
   <!-- Contenido -->
   <div class="contenido">
        
-    <h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+    <h3 style="font-family:'Libre Franklin', sans-serif; 
     font-size:24px; font-weight: 450; color: black;">How it woeks?</h3>
  
-      <p class="mostrar" style="font-family:'Neue Haas Grotesk Text Pro'; 
+      <p class="mostrar" style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 20; font-size: 20px; color: black;">
 	       	Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
   			Keep it personal. We curate the best products so you can create the most personal gifts.
@@ -56,31 +56,39 @@
   			their doorstep.
   		</p>
 
-  		<h3 style="font-family:'Neue Haas Grotesk Text Pro'; 
+  		<h3 style="font-family:'Libre Franklin', sans-serif; 
       font-size:24px; font-weight: 450; color:black;">SHIPPING</h3>
 
 
        
       <!-- Pregunta y resúesta  -->
       <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
-	    	<p class="mostrar" 
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 20; font-size: 20px;color:black;">
-	    		{{pregunta.question}} 
-	    		<!-- Where do you ship? -->
-	          <img class="iconp" src="{{path}}img/icons/down.png" 
-            (click)="fncVisibility(i)" style="cursor: pointer;">
-	    	</p>
+
+        <div style="display:flex;">
+          <i  class="fas fa-angle-right" (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 4.5%;
+          margin-right: 1%;"></i>
+
+  	    	<p class="mostrar" 
+          style="font-family:'Libre Franklin', sans-serif; 
+          font-weight: 20; font-size: 20px;color:black;">
+  	    		{{pregunta.question}} 
+
+  	    	</p>
+        </div>  
+
 	    	<div *ngIf="visibility_1[i]">
 					<p class="respuesta" 
-          style="font-family:'Neue Haas Grotesk Text Pro'; 
+          style="font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; font-size: 20px;color:black;">
 					{{pregunta.answer}}
 						<!-- At this time, we only ship within Mexico. -->
-		          <img src="{{path}}img/icons/up.png"  href="javascript:void(0);" 
-              (click)="fncVisibility(i)" style="cursor: pointer;">
-			   </p>
+            <a><i class="fas fa-chevron-up" style="color:black;cursor: pointer;"
+               href="javascript:void(0);" 
+              (click)="fncVisibility(i)"></i></a>
+
+			    </p>
 				</div>
+
       </div>
 
   </div>
@@ -191,7 +199,7 @@
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 305px;
+    bottom: 40%;
   }
   .carousel-caption h5 {
     font-size: 45px;

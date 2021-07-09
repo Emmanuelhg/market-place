@@ -5,7 +5,7 @@ import { DinamicPrice, DinamicPrice2 ,Quantity, Sweetalert, Id_box } from '../..
 
 import { ProductsService } from '../../services/products.service';
 
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs'; 
 
 import { Router } from '@angular/router';
  
@@ -20,7 +20,7 @@ import { UsersService } from '../../services/users.service';
 import { NegocioService } from '../../services/negocio.service';
 
 
-import * as Cookies from 'js-cookie';
+import * as Cookies from 'js-cookie'; 
 
 @Component({
   selector: 'app-shopping-cart',
@@ -98,6 +98,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
  	listShippings=[];
  	addressNeeded=0;
  	totalShipping=0;
+ 	correo;
+ 	nombre;
+ 	apellido;
+ 	compañia;
+	direcion;
+ 	contAddress=[];
+ 	envio;
+ 	aparamento;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
@@ -399,51 +407,59 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
       this.boxArray = this.box_json.box_arts;
 
       console.log(" Este es el valor de arts :", this.box_json.box_arts);
-      for(const [i,item] of Object.entries(this.box_json.box_arts)){
-      	
-      	// console.log(" item Es esto:", item);
-      	this.boxArts.push(item);
-      }
+      if (this.box_json != undefined){
+
+      	if (this.box_json.box_arts != undefined){
+
+	      	for(const [i,item] of Object.entries(this.box_json.box_arts)){
+	      	
+	      		// console.log(" item Es esto:", item);
+	      		this.boxArts.push(item);
+		    }
 
 
-      for(const [i,item] of Object.entries(this.box_json.box_arts_cant)){
-      	// console.log(" i Es esto:", i);
-      	// console.log(" item Es esto:", item);
-      	this.cantArray.push(item);
-      }
-      console.log("Box array es:", this.boxArts.length);
-      console.log("Box cant es:", this.cantArray.length);
+		    for(const [i,item] of Object.entries(this.box_json.box_arts_cant)){
+		      	// console.log(" i Es esto:", i);
+		      	// console.log(" item Es esto:", item);
+		      	this.cantArray.push(item);
+		    }
+		      console.log("Box array es:", this.boxArts.length);
+		      console.log("Box cant es:", this.cantArray.length);
 
 
-      // this.boxArts =  this.box_json.box_arts; 
-      this.boxes.box_arts=this.box_json.box_arts;
-      this.boxes.box_steps = this.box_steps;
-      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
-      this.boxes.box_size_small=this.box_json.box_size_small;
-      this.boxes.box_size_regular= this.box_json.box_size_regular;
+		      // this.boxArts =  this.box_json.box_arts; 
+		      this.boxes.box_arts=this.box_json.box_arts;
+		      this.boxes.box_steps = this.box_steps;
+		      this.boxes.box_arts_cant=this.box_json.box_arts_cant;
+		      this.boxes.box_size_small=this.box_json.box_size_small;
+		      this.boxes.box_size_regular= this.box_json.box_size_regular;
 
 
-      this.boxes.box_subtotal= this.box_json.box_subtotal;
+	      this.boxes.box_subtotal= this.box_json.box_subtotal;
 
-      this.products=this.boxes.box_arts;
+	      this.products=this.boxes.box_arts;
 
-      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
-      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
-      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
-      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
+	      this.boxes.box_id_small_negro=this.box_json.box_id_small_negro;
+	      this.boxes.box_id_small_kraft=this.box_json.box_id_small_kraft;
+	      this.boxes.box_id_regular_negro=this.box_json.box_id_regular_negro;
+	      this.boxes.box_id_regular_kraft=this.box_json.box_id_regular_kraft;
 
-      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
-      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
-      this.calculateTotal();
-      // console.log("tipo",this.box_json["box_type"]);
-      // console.log("tamaño",this.box_json.box_size_blocks_small);
-      // console.log("tipo",this.boxes);
+	      this.boxes.box_size_blocks_small=this.box_json.box_size_blocks_small;
+	      this.boxes.box_size_blocks_reular=this.box_json.box_size_blocks_reular;
+	      this.calculateTotal();
 
-      // this.fncDetallesFinales(this.boxes);
-      // console.log("box_arts",this.fncDetallesFinales(this.boxes));
-      // console.log("contenido",this.boxes.box_type);
+	      // console.log("tipo",this.box_json["box_type"]);
+	      // console.log("tamaño",this.box_json.box_size_blocks_small);
+	      // console.log("tipo",this.boxes);
 
-      this.newFnc();
+	      // this.fncDetallesFinales(this.boxes);
+	      // console.log("box_arts",this.fncDetallesFinales(this.boxes));
+	      // console.log("contenido",this.boxes.box_type);
+
+	      }
+	    }  
+
+     	 this.newFnc();
       
   	}
  
@@ -458,32 +474,38 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 	obtenerInput(envio, whosend){
 
 		let enviop = whosend;
-
+		console.log("Aqui envia "+whosend);
 		console.log("obtener input:",envio);
 
 		if(enviop == 'email') {
-			this.email = enviop;
+			this.email = envio;
 		}
 
 		if(enviop == 'first_name') {
-			this.first_name = enviop;
+			this.first_name = envio;
 		}
 
 		if(enviop == 'last_name') {
-			this.last_name = enviop;
+			this.last_name = envio;
 		}
 
 		if(enviop == 'company') {
-			this.company = enviop;
+			this.company = envio;
 		}
 
 		if(enviop == 'address') {
-			this.address = enviop;
+			this.address = envio;
 		}
 
 		if(enviop == 'appartament') {
-			this.optional = enviop;
+			this.optional = envio;
 		}
+
+		if(enviop == 'envio') {
+			this.envio = envio;
+		}
+
+		console.log(this.envio); 
 		
 	}
  
@@ -498,6 +520,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		addressBlock.last_name= this.last_name;
 		addressBlock.company= this.company;
 		addressBlock.address= this.address;
+		addressBlock.envio= this.envio;
 
 		let product = this.productToAddress[0];
 		console.log("El products:",product);
@@ -525,6 +548,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 		
 		envio_box.address = this.address;
+
+
+		envio_box.envio = this.envio;
+		console.log(this.envio); 
 
 
 		// console.log("Esta es la lista del envio:",envio_box);
@@ -652,7 +679,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 							price: DinamicPrice.fnc(resp[f])[0],
 							price2: DinamicPrice2.fnc(resp[f])[0],
 							inbox:inbox,
-							shipping:1,
+							shipping:this.costo_envio,
 							details:details,
 							listDetails:list[i].details
 
@@ -688,20 +715,137 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 	}
 
 	addess(product){
-		console.log("Fnc",product)
+		
+
 		let array = [];
+
 		array.push(product);
 
+		console.log("arreglo que necesito:",array);
+
 		this.productToAddress = array;
+
+		let input = document.getElementById("input-email-shopping") as HTMLInputElement;
+
+		let inputNombre = document.getElementById("input-nombre-shopping") as HTMLInputElement;
+
+		let inputApellido = document.getElementById("input-apellido-shopping") as HTMLInputElement;
+
+		let inputCompañia = document.getElementById("input-compañia-shopping") as HTMLInputElement;
+
+		let inputDireccion = document.getElementById("input-direcion-shopping") as HTMLInputElement;
+
+		let inputAparatmento = document.getElementById("input-apartamento-shopping") as HTMLInputElement;
+
+		let inputEnvio = document.getElementById("input-envio-shopping") as HTMLInputElement;
+
+		input.value = "";
+		inputNombre.value = "";
+		inputApellido.value = "";
+		inputCompañia.value = "";
+		inputDireccion.value = "";
+		inputAparatmento.value = "";
+		inputEnvio.value = "" ;
+
+		console.log(inputEnvio); 
+
+		for (let num in this.listShippings ) {
+
+			let address = this.contAddress[num];
+			console.log("este es address:",address);
+
+			if (address.item_name == product.name) {
+				console.log("Es el mismo");
+
+				this.correo = address.email;
+				
+				input.value = ""+this.correo;
+				
+				console.log("correo",this.correo);
+
+
+				this.nombre = address.first_name;
+				
+				inputNombre.value = ""+this.nombre;
+				
+				console.log("nombre",this.nombre);
+
+
+				this.apellido = address.last_name;
+				
+				inputApellido.value = ""+this.apellido;
+				
+				console.log("apellido",this.apellido);
+
+
+				this.compañia = address.company;
+				
+				inputCompañia.value = ""+this.compañia;
+				
+				console.log("compañia",this.compañia);
+
+
+				this.direcion = address.address;
+				
+				inputDireccion.value = ""+this.direcion.address;
+				
+				console.log("direcion",this.direcion.address);
+
+
+				this.aparamento = address.optional;
+				
+				inputAparatmento.value = ""+this.aparamento;
+				
+				console.log("correo",this.aparamento);
+
+
+				this.envio = address.envio;
+				
+				inputEnvio.value = ""+this.envio;
+				
+				console.log("correo",this.envio);
+
+			}
+		}
 	}
 
 	updateAllShippings(){
-		
+		console.log("se ejecutó");
 		var pivote =0;
+		var shipping;
+		var add;
+		var cost = 0;
 		for(let i in this.listShippings ){
-			let shipping = this.listShippings[i];
-			let add = shipping.address;
-			console.log("Este es el address:",add);
+			console.log("listShippings:",this.listShippings)
+			shipping = this.listShippings[i];
+			add = shipping.address;
+			console.log("Este es el address:",this.listShippings[i]);
+
+
+			
+
+			console.log("Este es el address:",this.contAddress);
 		}
+
+		this.contAddress.push({
+			item_name: this.productToAddress[0].name,
+			address: add,
+			company:add.company,
+			email:add.email,
+			first_name:add.first_name,
+			last_name:add.last_name,
+			optional:add.optional,
+			price:this.envio
+
+		});
+
+		for(let i in this.contAddress ){
+			let cost_add = parseInt(this.contAddress[i].price);
+			cost += cost_add;
+		}
+
+		this.costo_envio = cost;
+		console.log("el precio del envio es :",this.costo_envio);
+
 	}
 }

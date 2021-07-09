@@ -281,7 +281,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account/my-shopping", "_top");
+								window.open("shopping-cart ", "_top");
 
 		      				}
 
@@ -493,7 +493,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account/my-shopping", "_top");
+								window.open("shopping-cart", "_top");
 
 
 							})
@@ -632,7 +632,7 @@ export class LoginComponent implements OnInit {
 								Redireccionar al usuario a la página de su cuenta
 								=============================================*/
 
-								window.open("account/my-shopping", "_top");
+								window.open("shopping-cart", "_top");
 
 
 							})

@@ -7,7 +7,7 @@ Checkout
 
         <div class="ps-section__header">
 
-            <h3 style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+            <h3 style="font-family:'Libre Franklin', sans-serif;; font-size: 27px;
           font-weight: 450;">Checkout</h3>
 
         </div>
@@ -26,13 +26,13 @@ Checkout
                         <div class="ps-form__billing-info">
 
                             <h3 class="ps-form__heading"
-                            style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+                            style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
                             font-weight: 450;"
                             >Billing Details</h3>
 
                             <div class="form-group">
 
-                                <label style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                <label style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                             font-weight: 20;">Name</label>
 
                                 <div class="form-group__content">
@@ -51,7 +51,7 @@ Checkout
 
                             <div class="form-group">
 
-                                <label style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                <label style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                             font-weight: 20;">Email Address</label>
 
                                 <div class="form-group__content">
@@ -71,7 +71,7 @@ Checkout
 
                             <div class="form-group">
 
-                                <label style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                <label style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                             font-weight: 20;">Country<sup>*</sup></label>
 
                                 <div class="form-group__content">
@@ -85,7 +85,7 @@ Checkout
                                     (change)="changeCountry(inputCountry)"
                                     >
                                     <option
-                                    style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    style="font-family:'Libre Franklin', sans-serif;; font-size: 20px;
                                     font-weight: 20;"
                                     *ngFor="let country of countries"
                                     [value]="country.name">{{country.name}}</option>    
@@ -94,7 +94,7 @@ Checkout
                                     </select>
 
                                     <div 
-                                    style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;"
                                     *ngIf="f.submitted && f.controls['country'].errors"
                                     class="text-danger">Please fill out this field.</div>
@@ -106,7 +106,7 @@ Checkout
                              <div class="form-group">
 
                                 <label
-                                style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                 font-weight: 20;">City<sup>*</sup></label>
 
                                 <div class="form-group__content">
@@ -120,7 +120,7 @@ Checkout
                                     #inputCity
                                     >
 
-                                    <div style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    <div style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;"
                                     *ngIf="f.submitted && f.controls['city'].errors"
                                     class="text-danger">Please fill out this field.</div>
@@ -132,14 +132,14 @@ Checkout
 
                             <div class="form-group">
 
-                                <label style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                <label style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                 font-weight: 20;">Phone<sup>*</sup></label>
 
                                 <div class="form-group__content input-group">
 
                                     <div class="input-group-append">
                                         <span class="input-group-text"
-                                        style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                        style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                          font-weight: 20;">{{dialCode}}</span>
                                     </div>
 
@@ -152,7 +152,7 @@ Checkout
                                     #inputPhone
                                     >
 
-                                    <div style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    <div style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;"
                                     *ngIf="f.submitted && f.controls['phone'].errors"
                                     class="text-danger">Please fill out this field.</div>
@@ -165,7 +165,7 @@ Checkout
                             <div class="form-group">
 
                                 <label
-                                style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                 font-weight: 20;">Address<sup>*</sup></label>
 
                                 <div class="form-group__content">
@@ -179,7 +179,7 @@ Checkout
                                     #inputAddress
                                     >
 
-                                    <div style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    <div style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;"
                                     *ngIf="f.submitted && f.controls['address'].errors"
                                     class="text-danger">Please fill out this field.</div>
@@ -203,19 +203,19 @@ Checkout
                                     (change)="saveAddressFnc(inputCountry, inputCity, inputPhone, inputAddress, inputSaveAddress)">
 
                                     <label for="create-account"
-                                    style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                    style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;">Save address?</label>
 
                                 </div>
 
                             </div>
 
-                            <h3 class="mt-40" style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+                            <h3 class="mt-40" style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
                             font-weight: 450;"> Addition information</h3>
 
                             <div class="form-group">
 
-                                <label style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                <label style="font-family:'Libre Franklin', sans-serif; font-size: 20px;
                                     font-weight: 20;">Order Notes</label>
 
                                 <div class="form-group__content">
@@ -240,7 +240,7 @@ Checkout
                         <div class="ps-form__total">
 
                             <h3 class="ps-form__heading"
-                            style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+                            style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
                             font-weight: 450;">Your Order</h3>
 
                             <div class="content">
@@ -249,10 +249,10 @@ Checkout
 
                                     <div class="ps-block__header d-flex justify-content-between">
 
-                                        <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                        <p style="font-family:'Libre Franklin', sans-serif;; font-size: 20px;
                                         font-weight: 20;">Product</p>
 
-                                        <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 20px;
+                                        <p style="font-family:'Libre Franklin', sans-serif;; font-size: 20px;
                                         font-weight: 20;">Total</p>
 
                                     </div>
@@ -269,34 +269,34 @@ Checkout
 
                                                     <td>
                                                         <a href="product/{{product.url}}"
-                                                        style="font-family:'Neue Haas Grotesk Text Pro';
+                                                        style="font-family:'Libre Franklin', sans-serif;
                                                          font-size: 20px;
                                                         font-weight: 20;"> {{product.name}}</a>
-                                                        <div style="font-family:'Neue Haas Grotesk Text Pro';
+                                                        <div style="font-family:'Libre Franklin', sans-serif;
                                                          font-size: 20px;
                                                         font-weight: 20;" [innerHTML]="product.details"></div>
                                                         <div class="small text-secondary"
-                                                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                                        style="font-family:'Libre Franklin', sans-serif;
                                                         font-size: 20px;
                                                         font-weight: 20;">Quantity:
                                                             <span 
-                                                            style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                                            style="font-family:'Libre Franklin', sans-serif;
                                                             font-size: 20px;
                                                             font-weight: 20;"
                                                             class="qCheckout">{{product.quantity}}</span>
                                                         </div>
-                                                        <div style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                                        <div style="font-family:'Libre Franklin', sans-serif;
                                                             font-size: 20px;
                                                             font-weight: 20;"
                                                         class="d-none sCheckout">{{product.shipping}}</div>
                                                     </td>
 
                                                     <td class="text-right ps-product">
-                                                        <div style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                                        <div style="font-family:'Libre Franklin', sans-serif;; 
                                                             font-size: 20px;
                                                             font-weight: 20;"
                                                         class="d-none pCheckout" [innerHTML]="product.price"></div>
-                                                        <div style="font-family:'Neue Haas Grotesk Text Pro'; 
+                                                        <div style="font-family:'Libre Franklin', sans-serif;
                                                             font-size: 20px;
                                                             font-weight: 20;"
                                                         class="subTotalPriceCheckout"><div class="spinner-border"></div></div>
@@ -312,9 +312,9 @@ Checkout
                                         </table>
                                         
                                         <div
-                                        style="font-family:'Neue Haas Grotesk Text Pro'; 
-                                                            font-size: 20px;
-                                                            font-weight: 20;" [innerHTML]="totalP"></div>
+                                        style="font-family:'Libre Franklin', sans-serif; 
+                                        font-size: 20px;
+                                        font-weight: 20;" [innerHTML]="totalP"></div>
 
                                     </div>
 
@@ -322,11 +322,11 @@ Checkout
 
                                 <hr class="py-3">
 
-                                <h3 style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+                                <h3 style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
                                 font-weight: 450;"
                                 class="ps-form__heading">Select Pay Method</h3>
 
-                                <div style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
+                                <div style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
                                 font-weight: 450;"
                                 *ngIf="f.submitted && f.controls['paymentMethod'].errors"
                                 class="text-danger">Please select pay method.</div>

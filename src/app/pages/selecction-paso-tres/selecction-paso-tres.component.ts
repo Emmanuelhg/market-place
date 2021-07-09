@@ -12,7 +12,7 @@ import { Rating,
        Quantity,
        DinamicRating, 
        DinamicReviews, 
-       DinamicPrice,
+       DinamicPrice, 
        Pagination,
        Select2Cofig,
        Tabs } from '../../functions';
@@ -49,7 +49,7 @@ export class SelecctionPasoTresComponent implements OnInit {
       "box_deliver_message" : "",
       "box_deliver_to" : "",
       "box_id" : "",
-      "box_img" : "https://kartox.com/blog/img-post/2016/05/caja_solapas_2.png",
+      "box_img" : "",
       "box_name" : "caja 1 selecionada",
       "box_price" : 10,
       "box_size" : 0,
@@ -246,7 +246,7 @@ export class SelecctionPasoTresComponent implements OnInit {
     this._router.navigate(['/selecction-paso-dos', this.id]);
   }
 
-  // Guardar productos en la caja
+  // Guardar productos en la caja  
   guardaProductos(){ 
     console.log("id to box es:", this.box_json.box_type);
     // Variables para guardar 

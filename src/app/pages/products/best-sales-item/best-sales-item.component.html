@@ -6,7 +6,7 @@ Best Sale Items
 *ngIf="!preload && !notFound">
 
   <!--=====================================
-  Slider  
+  Slider   
   ======================================-->
   <div style="margin-top: 0%;" id="carouselExampleControlsH" class="carousel slide" data-ride="carousel">
 
@@ -21,13 +21,13 @@ Best Sale Items
         <div class="carousel-caption d-none d-md-block">
           <h3 class="animated bounceInRight" 
           style="animation-delay: 1s; font-size: 24px; font-weight: 450;
-          color: {{coloTextoSlider[i]}};">
+          color: {{coloTextoSlider[i]}}; font-family: 'Libre Franklin', sans-serif;">
             {{textoSlider[i]}}
           </h3>
           <p class="animated bounceInRight" 
           style="animation-delay: 3s; font-size: 20px; font-weight: 20;
-          color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}};
-          display: none;">
+          color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}}; font-family: 'Libre Franklin', sans-serif;
+          display: {{vista}};">
             <a href="{{linkBtn[i]}}">{{textoBtn[i]}}</a>
           </p>
         </div>
@@ -66,14 +66,14 @@ Best Sale Items
           class="imgHover" 
           id="contenedorTow"
           routerLink="/product/{{product.url}}">
-            <img 
+            <img class="movil-img-t" 
             style="width: 247px; height: 247px;"
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
             src="{{product.image}}" alt="">
 
             <img *ngIf="product.gallery[1] != undefined"
-            id="imgGalleryTow" 
+            id="imgGalleryTow"  class="movil-img-t" 
             style="width: 247px; height: 247px;position: 
             absolute;margin-top: -100%;" 
             type="button"  data-toggle="modal" 
@@ -85,11 +85,11 @@ Best Sale Items
             <!-- Boton para agregar productos al carrito -->
             <div class="texto" id="botonTow">
 
-              <a style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro';" 
+              <a style="cursor:pointer;font-family:'Libre Franklin', sans-serif;" 
               (click)="addShoppingCart(product,product.url, 1, [])" 
                data-toggle="tooltip" data-placement="top" title="Add to Cart">
 
-                <p style="font-family: Neue Haas Grotesk Text Pro;
+                <p style="font-family:'Libre Franklin', sans-serif;
                 font-weight: 20; font-size: 15px; 
                 color: #353535;">
                   Add to cart
@@ -131,7 +131,7 @@ Best Sale Items
             <a title="Add to Whishlist"
             routerLink="/product/{{product.url}}">
 
-              <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+              <b style="font-family:'Libre Franklin', sans-serif; 
               font-weight: 20; font-size: 17px; color: #353535;">
                 {{product.name}}
               </b>
@@ -144,7 +144,7 @@ Best Sale Items
 
               <p style="font-weight: 450; font-size: 17px;">$</p>
               <p>
-                <b style="font-family:'Neue Haas Grotesk Text Pro'; 
+                <b style="font-family:'Libre Franklin', sans-serif; 
                   font-weight: 20; font-size: 17px; ">
                    {{product.price}}
                 </b>
@@ -179,6 +179,52 @@ class="d-flex justify-content-center d-lg-none">
 </div>
 
 <style>
+
+  /*Media query*/
+
+  @media (max-width: 360px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+
+  @media (max-width: 411px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 375px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 414px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 375px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 540px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
   .psd{
     color: white;
     text-align: center;
@@ -297,7 +343,7 @@ class="d-flex justify-content-center d-lg-none">
     min-height: 300px;
   }
   .carousel-caption {
-    bottom: 305px;
+    bottom: 40%;
   }
   .carousel-caption h5 {
     font-size: 45px;

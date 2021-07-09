@@ -6,4 +6,5 @@ export class AddressModel{
 	company:string;
 	address:string;
 	optional:string;
+	envio:string;
 }

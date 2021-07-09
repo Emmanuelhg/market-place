@@ -1,141 +1,140 @@
-<div class="ps-breadcrumb" style="margin-top: 12%;">
+<div class="ps-breadcrumb div-min-df" style="margin-top: 14%;">
 
     <div 
     *ngIf="!preload"> 
 
-	<!-- Barra de números --> 
-	<div class="contrainer">
-		<div>
- 			<ul class="progressbar">
-     			<a class="active" (click)="HyperLink1()">Step 1</a>
-     			<a class="active" (click)="HyperLink2()">Step 2</a>
-         		<a class="active">Step 3</a>
-	        	<a >Done!</a>
-			</ul>
-			<br>
-   	 	</div><br>
-   	 </div><br> 
+    	<!-- Barra de números --> 
+    	<div class="contrainer">
+    		<div>
+     			<ul class="progressbar">
+         			<a class="active" (click)="HyperLink1()">Step 1</a>
+         			<a class="active" (click)="HyperLink2()">Step 2</a>
+             		<a class="active">Step 3</a>
+    	        	<a >Done!</a>
+    			</ul>
+    			<br>
+       	 	</div><br>
+       	</div><br> 
 
-    <!--=====================================
-    Descripción   
-    ======================================-->
-    <div class="container">
-        <div style="text-align: center; margin-top: 15%;
-        justify-content: center; margin-bottom: 14%;">
+        <!--=====================================
+        Descripción    
+        ======================================-->
+        <div class="container step-3gf">
+            <div style="text-align: center; margin-top: 12%;
+            justify-content: center; margin-bottom: 9%;">
 
-          <h3 class="parrafo"  style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 27px;
-          font-weight: 450; color: #6a6a6a;">
-            Step 3 of 4 
-          </h3>
+              <h3 class="parrafo"  style="font-family:'Libre Franklin', sans-serif; font-size: 27px;
+              font-weight: 450; color: #6a6a6a;">
+                Step 3 of 4 
+              </h3>
 
-          <p style="font-family:'Neue Haas Grotesk Text Pro'; font-size: 24px;
-          font-weight: 450; color: black;">
-            WRITE YOUR MESSAGE
-          </p>
+              <p style="font-family:'Libre Franklin', sans-serif; font-size: 24px;
+              font-weight: 450; color: black;">
+                WRITE YOUR MESSAGE
+              </p>
 
+            </div>
         </div>
-    </div>
 
-   	 <!-- Caja final -->
-   	 <div class="din">
-   	 	<div class="divcaja">
-     		<img src="{{path}}img/products_etre/carta.jpg" maxlength="30">
-     	</div>
-     	<div class="info">
-          <form id="formulario">
-     		<div class="divdestinos">
-     			<div class="if">
-	     			<p class="desti">
-                        <b style="font-family:'Neue Haas Grotesk Text Pro';
-                        font-size: 20px;font-weight: 20;">To</b>
-                    </p>		
-	     			
-	     			<p class="des">
-                        <b style="font-family:'Neue Haas Grotesk Text Pro';
-                        font-size: 20px;font-weight: 20;">From</b>
-                    </p>		
-	     			<!-- <input class="desti2" type="" name=""> -->
-     			</div>
+    
+        <div class="container" style="">
+            <div class="row" style="padding: 0px;">
 
-     			<div class="if">
-     				<input style="border:1px solid #dddddd !important;" 
-                    class="desti" type="tex" id="to-send">
-	     			<input style="border:1px solid #dddddd !important;"
-                     class="desti2" type="tex" id="to-from">
-     			</div>
-     		</div>
+                <div class="col-lg-3 col-md-3 col-sm-12" >
+                    <img src="{{path}}img/products_etre/carta.jpg" maxlength="30"
+                    style="height: 370px; width: auto;">
+                </div>
 
-	     	<div class="divmessage">
-	     		<p> 
-                    <b style="font-family:'Neue Haas Grotesk Text Pro';
-                    font-size: 20px;font-weight: 20;">Message</b>
-                </p>
+                <div class="col-lg-9 col-md-8 col-sm-12">
 
-	            <textarea name="Enter your card message here. 120 characters" 
-                id="to-message" rows="5" cols="30" id="to-message"></textarea>
+                    <div style="display: flex;">
+                        <div class="col-6" style="padding:0px;">
 
-	     	</div>
-	     	<div class="divañaditr">
-	     		<p class="characters" 
-                style="font-family:'Neue Haas Grotesk Text Pro';
-                font-size: 20px;font-weight: 20;">
-                    120 characters remaining
-                </p>
-		     	    <div class="add">
-		     	    	<input type="checkbox" ng-model="model.card_blank" ng-checked="model.card_blank" >
-		     		    <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            <label for="exampleInputPassword1"
+                            style="font-family:'Libre Franklin', sans-serif;
+                            font-size: 20px;font-weight: 20;">
+                                To
+                            </label>
+
+                            <input class="form-control" style="border:1px solid #dddddd !important;" 
+                            type="tex" id="to-send">
+
+                        </div>
+
+                        <div class="col-6" >
+
+                            <label for="exampleInputPassword1"
+                            style="font-family:'Libre Franklin', sans-serif;
+                            font-size: 20px;font-weight: 20;">
+                                From
+                            </label>
+
+                            <input class="form-control" style="border:1px solid #dddddd !important;" 
+                            type="tex" id="to-from">
+
+                        </div>
+
+                    </div>  
+
+                    <div style="">
+
+                        <label for="exampleInputPassword1"
+                        style="font-family:'Libre Franklin', sans-serif;
+                        font-size: 20px;font-weight: 20;">
+                            Message
+                        </label>
+
+                        <textarea name="Enter your card message here. 120 characters" 
+                        id="to-message" rows="5" cols="30" id="to-message"></textarea>
+
+                        <p style="font-family:'Libre Franklin', sans-serif;
+                        font-size: 20px;font-weight: 20;padding-top: 2%;padding-bottom: 3%;">
+                            120 characters remaining
+                        </p>
+                        
+                    </div>  
+
+                    <div style="display: flex;">
+
+                        <input type="checkbox" ng-model="model.card_blank" ng-checked="model.card_blank" >
+                        <p style="font-family:'Libre Franklin', sans-serif; margin-left: 2%;
                         font-size: 20px;font-weight: 20;">
                             click here and we'll send the card blank outside the box for you to write yourself!
                         </p>
-		     	    </div> 
-		     	 
-	     	</div>
-	     	<div class="btn_cart">
-	     		<a 
-                style="cursor: pointer;" 
-                id="guardar" 
-                (click)="HyperLinkTow()"
-                (click)="fncCarta()"
-                class="botn_new">
+                        
+                    </div>
 
-                    <p style="color: white;padding-top: 2%;
-                    font-family:'Neue Haas Grotesk Text Pro'; 
-                    font-size: 20px;font-weight: 20;">
+                    <a id="guardar" 
+                    (click)="HyperLinkTow()"
+                    (click)="fncCarta()"
+                    style="display: flow-root; background: black; color: white; padding-top: 2%;
+                    text-align: center; cursor: pointer;font-family:'Libre Franklin', sans-serif; 
+                    font-size: 20px; font-weight: 20; padding-bottom: 2%;">
                         ADD TO CART
-                    </p>
-                    
-               </a> 
-               <!-- [routerLink]="['/done', id]" -->
-	     	</div>
+                    </a>
+                
+                </div>
+            
+            </div>
+        </div>    
+               	
 
-            <!-- <div class="add-to-direcction">
-                <a class="add-to-direcction-black"
-                 data-toggle="modal" data-target=".bd-example-modal-xl">
-                    Add Address
-                </a>
-            </div>  -->
- 		  </form>    
-     	</div>
-	     	
-	   	 
-   	 </div> <!-- Finaliza el armado de caja  -->
+        <!-- Boton previu -->
 
-     <!-- Boton previu -->
-
-   	 <div class="previu">
-        
-	   	 	<a routerLink="../selecction-paso-dos" 
+       	<div class="previu">
+            
+       	 	<a routerLink="../selecction-paso-dos" 
             class="btn btn-sm animated-button thar-three"
             (click)="fncPrevious()"
-            style="font-family:'Neue Haas Grotesk Text Pro'; 
+            style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;font-size: 15px;">  
                 PREVIOUS STEP
             </a>
 
-	   	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
-	 </div>
+       	 	<!-- <a routerLink="../selecction-paso-dos">PREVIOUS STEP</a> -->
+    	</div>
 
- </div>
+    </div>
 
  <!--=====================================
 Preload
@@ -151,6 +150,29 @@ class="d-flex justify-content-center">
 
 
 <style>
+
+    @media screen and  (max-width: 360px) {
+
+      .img-cart {
+        margin-left: -4%  !important;
+      }
+
+      .previu {
+        margin-left: 4% !important;
+      }
+      .step-3gf {
+        margin-top: 18%;
+        margin-bottom: 21% !important;
+      }
+      .parrafo {
+        margin-top: 22% !important;
+      }
+      .div-min-df {
+        margin-top: 28% !important;
+      }
+    } 
+
+
     .contrainer{
         width: 100%;
         display:block;  
@@ -164,7 +186,7 @@ class="d-flex justify-content-center">
         width: 24.33%;
         position: relative;
         text-align: center;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 450;
         font-size: 20px;
     }
@@ -177,7 +199,7 @@ class="d-flex justify-content-center">
         border: 1px solid #ddd;
         display: block;
         text-align: center;
-        margin: 0 auto 50px auto;
+        margin: 0 auto 25px auto;
         border-radius: 50px;
         background-color: white;
     }    
@@ -239,7 +261,7 @@ class="d-flex justify-content-center">
         display: flex;
         justify-content:center;
         width: 100%
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-family:'Libre Franklin', sans-serif; 
         /*font-weight: 800;*/
     }
 
@@ -479,7 +501,7 @@ class="d-flex justify-content-center">
         padding: 2%;
         box-sizing: border-box;
         color: #666;
-        box-shadow: 0 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
+        box-shadow: -1 0px 1px rgba(229, 103, 23, 0.075)inset, 0 0 2px;
         border: 1px solid #dddddd !important;
     }
     /*input{
@@ -493,21 +515,24 @@ class="d-flex justify-content-center">
             margin-left: 2%;
             margin-top: -2%;
         }
-        .botn_new{ 
-        color: wheat;
+    .botn_new{
         background:black;
-        font-family:'Neue Haas Grotesk Text Pro'; 
-        font-weight: 800;   
-            color: black;       
-            margin-top: 3%;
-            padding-left: 28%;
-            padding-right: 25%;
-            height: 46px;
-            justify-content: center;
+        font-family:'Libre Franklin', sans-serif; 
+        font-weight: 800;         
+        color: black;
+        display: flow-root;
+
+
+        /*color: wheat;       
+        margin-top: 3%;
+        padding-left: 28%;
+        padding-right: 25%;
+        height: 46px;
+        justify-content: center;
         align-items: center;
         display: flex;
-        border:2px solid;
-        }
+        border:2px solid;*/
+    }
     .add{
         display: flex;
     }
@@ -536,10 +561,10 @@ class="d-flex justify-content-center">
         display: flex;
     }
     .divcaja{
-        background-color: black;
+        
         position: relative;
         margin-left: 6%;
-        width: 25%;
+        /*width: 25%;*/
         height: 370px;
 
     }
@@ -548,42 +573,42 @@ class="d-flex justify-content-center">
        height: 100%;
     }
     .divdestinos{
-        width: 93%;
+        /*width: 93%;*/
         height: 75px;
-        margin-left: 2%;
+        /*margin-left: 2%;*/
     }
     .divañaditr{
-        margin-left: 2%;
+        /*margin-left: 2%;*/
         width: 93%;
     }
     .info{
-        width:70%; 
+        /*width:70%; */
     }
 
     .desti{
         margin-top:0%;
         margin-right:auto;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 800;
     }
     .desti2{
         margin:0%;
         margin-top: 0%;
-        margin-left: 2%;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        /*margin-left: 2%;*/
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 800;
     }
     .destir{
-        margin-left: 37%;
+        /*margin-left: 37%;*/
         margin-top: 4%;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 800;
     }
     .divmessage{
-        width: 93%;
+        /*width: 93%;*/
         height: 224px;
-        margin-left: 2%;
-        font-family:'Neue Haas Grotesk Text Pro'; 
+        /*margin-left: 2%;*/
+        font-family:'Libre Franklin', sans-serif; 
         font-weight: 800;
     }
     .add-to-direcction{

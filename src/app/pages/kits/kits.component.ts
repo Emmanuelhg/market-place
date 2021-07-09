@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 declare var jQuery:any;
 declare var $:any; 
 
-
+ 
 @Component({ 
   selector: 'app-kits',
   templateUrl: './kits.component.html',

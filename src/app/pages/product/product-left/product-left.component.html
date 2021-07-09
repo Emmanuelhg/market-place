@@ -4,7 +4,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
     
     <div style="display: flex; padding: 0px;" class="row">
 
-        <div class="col-lg-6 col-md-7 col-sm-12" style="">
+        <div class="col-lg-8 col-md-7 col-sm-12" style="">
 
             <div 
             *ngIf="!preload"
@@ -12,7 +12,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                 <!--=====================================
                 Gallery   
-                ======================================--> 
+                ========================= =============--> 
 
                 <div 
                 id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -79,7 +79,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
             
         </div>
 
-        <div class="col-lg-5 col-md-7 col-sm-12" style="margin-left:2%;">
+        <div class="col-lg-3 col-md-7 col-sm-12" style="margin-left:2%;">
 
             <!--=====================================
             Product Info
@@ -89,9 +89,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
             *ngFor="let p of product; let i = index"
             class="ps-product__info">
 
-                <h3 style="text-align: center;
-                font-family:'Neue Haas Grotesk Text Pro'; 
-                font-weight: 450; font-size: 24px;">{{p.name}}</h3>
+                <h4 style="text-align: center;
+                font-family:'Libre Franklin', sans-serif; 
+                font-weight: 450; font-size: 24px;">{{p.name}}</h4>
 
                 <div class="ps-product__meta">
 
@@ -102,23 +102,25 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 <!--=====================================
                 DESCRIPTION
                 ======================================-->
-                <div class="ps-product__desc">
+                <div class="ps-product__desc" >
 
-                   <h3 (click)="fncVisibility(0)" 
+                    <h4 (click)="fncVisibility(0)"
+                    (click)="mostrarDescripcion()" 
                     style="cursor: pointer;
-                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-family:'Libre Franklin', sans-serif; 
                     text-align: center;
                     font-weight: 450; font-size: 24px;">
                         DESCRIPTION
-                    </h3>
+                    </h4>
                     
                     <div 
                     *ngIf="visibility_1[0]"
-                    class="ps-list--dot">
+                    class="ps-list--dot"
+                    id="description" >
                         
                         <ul>
                             
-                            <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            <li style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;">
                                 {{p.description}}
                             </li>
@@ -132,24 +134,26 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 <!--=====================================
                 SUMMARY = ICLUDES
                 ======================================-->
-                <div class="ps-product__desc">
+                <div class="ps-product__desc" >
 
-                   <h3 (click)="fncVisibility(1)"
+                   <h4 (click)="fncVisibility(1)"
+                    (click)="mostrrarDetails()"
                     style="cursor: pointer; text-align: center; 
-                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-family:'Libre Franklin', sans-serif; 
                     font-weight: 450; font-size: 23px;">
                         THE DETAILS
-                    </h3>
+                    </h4>
                     
 
                     <div 
                     *ngIf="visibility_1[1]"
-                    class="ps-list--dot">
+                    class="ps-list--dot"
+                    id="detail">
                         
                         <ul>
                             
                             <li *ngFor="let sum of summary[i]"
-                            style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;">
                                 {{sum}}
                             </li>
@@ -167,7 +171,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
 
                    <p (click)="fncVisibility(2)" 
                     style="cursor: pointer; text-align: center;
-                    font-family:'Neue Haas Grotesk Text Pro'; 
+                    font-family:'Libre Franklin', sans-serif; 
                     font-weight: 800;
                     font-size: 100%;">
                         THE DETAILS
@@ -180,9 +184,9 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         
                         <ul>
                             
-                            <li style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            <li style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 800;">
-                                {{p.details}}
+                               <div [innerHTML]="p.details"></div>   
                             </li>
 
                         </ul>
@@ -201,10 +205,10 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                     <figure style="text-align: center;">
 
                         <figcaption>
-                            <h3 style="text-align: center;font-family:'Neue Haas Grotesk Text Pro'; 
+                            <h4 style="text-align: center;font-family:'Libre Franklin', sans-serif; 
                             font-weight: 450; font-size: 24px;">
                                 Quantity
-                            </h3>
+                            </h4>
                         </figcaption>
 
                         <div class="form-group--number quantity" style="text-align: center;">
@@ -217,7 +221,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                                 <i class="fa fa-minus"></i>
                             </button>
 
-                            <input class="form-control px-5" type="number" value="1" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
+                            <input class="form-control px-5" type="number" value="{{quantity}}" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
 
                         </div>
 
@@ -232,17 +236,17 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 *ngIf="p.category == compare ">
 
                     <div>
-                        <h3 style="text-align: center;
-                        font-family:'Neue Haas Grotesk Text Pro'; 
+                        <h4 style="text-align: center;
+                        font-family:'Libre Franklin', sans-serif; 
                         font-weight: 450; font-size: 24px;">
                             BOX COLOR
-                        </h3>
+                        </h4>
                         <div class="row" style="display: flex;">
                             <img class="col-6" 
-                            style="width: 50px; height: 200px;" 
+                            style="width: auto; height: 115px;" 
                             src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2" >
                             <img class="col-6" 
-                            style="width: 50px; height: 200px;"
+                            style="width: auto; height: 115px;"
                             src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
                         </div>
                     </div>
@@ -253,7 +257,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                     <div class="row" style="display: flex; margin-top: 3%;">
 
                         <div class="col-6">
-                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            <p style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;">To</p>
                             <div class="input-group input-group-lg">
                                 <input  
@@ -265,7 +269,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                         </div>
                         
                         <div class="col-6">
-                            <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            <p style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;">From</p>
                             <div class="input-group input-group-lg">
                                 <input  
@@ -279,11 +283,12 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                     </div>
 
                     <div style="margin-top: 3%;">
-                        <p style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        <p style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 20; font-size: 20px;">Message</p>
 
                         <textarea placeholder="Enter your card message here. 120 characters" 
-                        id="to-message" rows="5" style="width: 100%"></textarea>
+                        id="to-message" rows="5" style="width: 100%;border: 1px solid #e1e1e1;
+                         padding: 3%;"></textarea>
 
                     </div>
                     
@@ -293,7 +298,7 @@ class="ps-product--detail ps-product--fullwidth" style=" padding: 0px;">
                 <div style="margin-bottom: 3%; margin-top: 3%;">
 
                     <a class="btn btn-sm animated-button thar-three"
-                    style="cursor:pointer;font-family:'Neue Haas Grotesk Text Pro'; 
+                    style="cursor:pointer;font-family:'Libre Franklin', sans-serif; 
                     font-weight: 20; font-size: 15px;" 
                     (click)="addShoppingCart(p.url, 1, [])">
                         ADD TO CART $ {{p.price}}
@@ -445,4 +450,7 @@ class="d-flex justify-content-center">
    
 
 </style>
+
+
+
 

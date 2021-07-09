@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from  './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductComponent } from './pages/product/product.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -22,6 +22,7 @@ import { GetInTouchComponent } from './pages/get-in-touch/get-in-touch.component
 import { TermsComponent } from './pages/terms/terms.component';
 import { EmptyComponent } from './pages/empty/empty.component';
 import { KitsComponent } from './pages/kits/kits.component';
+import { PruebaComponentComponent } from './pages/prueba-component/prueba-component.component';
 
 
 import { AuthGuard } from './guards/auth.guard';
@@ -46,6 +47,7 @@ const routes: Routes = [
 	{path: 'frequently-asked-questions', component: FrequentlyAskedQuestionsComponent},
 	{path: 'our-story', component: OurStoryComponent},
 	{path: 'get-in-touch', component: GetInTouchComponent},
+	{path: 'prueba-component', component: PruebaComponentComponent},
 	{path: 'terms', component: TermsComponent},
 	{path: 'empty', component: EmptyComponent},
 	{path: 'kits', component: KitsComponent},

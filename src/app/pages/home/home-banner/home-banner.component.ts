@@ -9,7 +9,7 @@ import { ProductsService } from '../../../services/products.service';
   templateUrl: './home-banner.component.html',
   styleUrls: ['./home-banner.component.css']
 })
-export class HomeBannerComponent implements OnInit {
+export class HomeBannerComponent implements OnInit { 
 
 	path:string = Path.url;	
 	banner_home:any[] = [];
@@ -27,6 +27,7 @@ export class HomeBannerComponent implements OnInit {
 	linkBtn;
 	textoBtn;
 	description;
+	vista;
 	icon="";
 
 	img_slider_array:string[] = [];
@@ -38,6 +39,8 @@ export class HomeBannerComponent implements OnInit {
 
 		this.negocioService.getData()
     .subscribe(resp=>{
+
+
     	this.negocio = resp['personalization'].Home_urls;
 
     	this.coloTextoSlider = resp["personalization"].Home_slider_buttoncolor;
@@ -54,8 +57,10 @@ export class HomeBannerComponent implements OnInit {
 
       this.description = resp["personalization"].Home_slider_description;
 
+      this.vista = resp["personalization"].Home_slider_buttons_visibility;
+
   		this.icon = this.negocio['icon_cart']
-    	console.log("resp:",this.negocio.Home_urls);
+    	console.log("resp:",this.vista);
     	// if(this.negocio['slider_url_2'] != "null"){ 
     	// 	this.img_slider_array.push(this.negocio['slider_url_2']);
     	// } 

@@ -15,7 +15,7 @@ Login - Register Content
             <li class="active">
 
             	<p>
-                    <a href="login" style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    <a href="login" style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 800;">Login</a>
 
                 </p>
@@ -24,7 +24,7 @@ Login - Register Content
             /
             <li class="">
 
-            	<p><a href="register" style="font-family:'Neue Haas Grotesk Text Pro'; 
+            	<p><a href="register" style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 800; color: black;">Register</a>
                 </p>
 
@@ -42,7 +42,7 @@ Login - Register Content
 
                 <div class="ps-form__content">
 
-                    <h5 style="font-family:'Neue Haas Grotesk Text Pro'; 
+                    <h5 style="font-family:'Libre Franklin', sans-serif; 
                     font-weight: 800; color: black;">Log In Your Account</h5>
 
                     <div class="form-group">
@@ -57,12 +57,12 @@ Login - Register Content
                         required>
 
                         <div class="valid-feedback" 
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">Valid.</div>
                         <div 
                         *ngIf="f.submitted && f.controls['email'].errors"
                         class="invalid-feedback" 
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">
                             Please fill out this field.
                         </div>
@@ -81,18 +81,18 @@ Login - Register Content
                         >
 
                         <div class="valid-feedback" 
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">Valid.</div>
                         <div 
                         *ngIf="f.submitted && f.controls['password'].errors"
                         class="invalid-feedback"
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">
                             Please fill out this field.
                         </div>
 
                         <a href="#resetPassword" data-toggle="modal" 
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">
                             Forgot?
                         </a>
@@ -111,7 +111,7 @@ Login - Register Content
                             [(ngModel)]="rememberMe">
 
                             <label for="remember-me" 
-                            style="font-family:'Neue Haas Grotesk Text Pro'; 
+                            style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 800; color: black;">
                                 Remember me
                             </label>
@@ -123,7 +123,7 @@ Login - Register Content
                     <div class="form-group submtit">
 
                         <button class="btn btn-sm animated-button thar-three"
-                        style="font-family:'Neue Haas Grotesk Text Pro'; 
+                        style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 800; color: black;">
                             Login
                         </button>
@@ -152,7 +152,7 @@ Ventana modal para recuperar contraseña
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" 
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 800; color: black;">
             Reset Password
         </h4>
@@ -176,12 +176,12 @@ Ventana modal para recuperar contraseña
                 required>
 
                 <div class="valid-feedback" 
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Valid.
                 </div>
                 <div class="invalid-feedback" 
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Please fill in this field correctly.
                 </div>
@@ -194,7 +194,7 @@ Ventana modal para recuperar contraseña
                 type="button"
                 (click)="resetPassword(email.value)"
                 class="ps-btn ps-btn--fullwidth"
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Submit
                 </button>
@@ -225,7 +225,7 @@ Ventana modal para escribir nueva contraseña
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" 
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 800; color: black;">
             New Password
         </h4>
@@ -253,12 +253,12 @@ Ventana modal para escribir nueva contraseña
                 required>
 
                 <div class="valid-feedback"
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Valid.
                 </div>
                 <div class="invalid-feedback"
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Please fill in this field correctly.
                 </div>
@@ -271,7 +271,7 @@ Ventana modal para escribir nueva contraseña
                 type="button"
                 (click)="newPassword(password.value)"
                 class="ps-btn ps-btn--fullwidth"
-                style="font-family:'Neue Haas Grotesk Text Pro'; 
+                style="font-family:'Libre Franklin', sans-serif; 
                 font-weight: 800; color: black;">
                     Submit
                 </button>
@@ -285,7 +285,7 @@ Ventana modal para escribir nueva contraseña
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal"
-        style="font-family:'Neue Haas Grotesk Text Pro'; 
+        style="font-family:'Libre Franklin', sans-serif; 
         font-weight: 800; color: black;">
             Close
         </button>
