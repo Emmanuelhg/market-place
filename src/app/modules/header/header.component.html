@@ -1,15 +1,15 @@
-<header id ="fondo" class="header header--standard header--market-place-4" data-sticky="true" 
+<header id ="fondo" class="container header header--standard header--market-place-4" data-sticky="true" 
 style="position: relative; z-index: 100%;"> 
 
     <div class="header__content fixed-top" style="padding: 0px;">   
 
-        <div style=" display: flex; margin-top:4%; margin-bottom: 2%;">
+        <div style=" display: flex; margin-top:2%; margin-bottom: 2%;">
 
             <!--=====================================
             Menús de Banner 
             ======================================-->
 
-            <div  style="display: flex; width: 40%; margin-top: 3%;">
+            <div class="menu-pequeño-ty" style="display: flex; width: 40%; margin-top: 3%;">
 
                 <!--=====================================
                 Menús de Banner normal 
@@ -20,8 +20,7 @@ style="position: relative; z-index: 100%;">
                         <!-- Menú  HOME -->
                         <div class="menu--product-categories">
 
-                            <a 
-                            style="color: {{color_text_menu}}; font-size: 18px;
+                            <a style="color: {{color_text_menu}}; font-size: 18px;
                             font-family:'Libre Franklin', sans-serif; font-weight: 450;" 
                             href="#" 
                             *ngFor="let negocio of color; let lastIndex = last" >    
@@ -81,7 +80,7 @@ style="position: relative; z-index: 100%;">
                                             font-family:'Libre Franklin', sans-serif;
                                             font-weight: 450;"
                                             routerLink="products/kits" target="_top">
-                                                Curated GIft Boxes
+                                                Curated Gift Boxes
                                             </a>
 
                                             <a style="color: {{color_text_menu}}; 
@@ -188,45 +187,13 @@ style="position: relative; z-index: 100%;">
                                 font-size: 18px;
                                 font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 450;"
+                                href="/" 
                                 *ngFor="let negocio of color; let lastIndex = last">
-                                        {{negocio.title_menu_1}} 
+                                    {{negocio.title_menu_1}} 
                                     {{ lastIndex ? callback() : ""}}
                                 </a>
-                                <a class="ps-btn--close ps-btn--no-boder" href="#"></a>
-                            </div>
-
-                            <div class="ps-filter__content">
-
-                                <aside class="widget widget_shop">
-
-                                    <ul class="ps-list--categories">
-                                       
-                                        <li 
-                                        *ngFor="let category of categories; let lastIndex = last"
-                                        class="current-menu-item menu-item-has-children">
-
-                                            <a  style="color: {{color_text_menu}}; 
-                                            font-size: 18px;
-                                            font-family:'Libre Franklin', sans-serif; 
-                                            font-weight: 450;"
-                                            routerLink="products/{{category.url}}"><strong>{{category.name}}</strong></a>
-
-                                            <span class="sub-toggle">
-                                                <i class="fa fa-angle-down"></i>
-                                            </span>
-
-                                            <ul class="sub-menu" [attr.category]="category.name">
-
-                                            </ul>
-
-                                        {{ lastIndex ? callback() : "" }}
-
-                                        </li>
-
-                                    </ul>
-
-                                </aside>   
-
+                                <a class="ps-btn--close ps-btn--no-boder" href="#" 
+                                style="height:15px;width: 43px;"></a>
                             </div>
 
                             <!--=====================================
@@ -241,32 +208,57 @@ style="position: relative; z-index: 100%;">
                                         {{negocio.title_menu_2}} 
                                     {{ lastIndex ? callback() : ""}}
                                 </a>
+
+                                <a class="btn ps-btn--no-boder" data-toggle="collapse" href="#multiCollapseExample1"
+                                aria-expanded="false" aria-controls="multiCollapseExample1"
+                                style="float: right;text-decoration: none; background: :transparent;">
+                                    <i _ngcontent-unx-c103="" class="fa fa-angle-down"></i>
+                                </a>
+                                
                             </div>
 
-                            <div class="ps-filter__content">
+                            <div class=" collapse multi-collapse" id="multiCollapseExample1" 
+                            >
 
                                 <aside class="widget widget_shop">
 
-                                    <ul class="ps-list--categories">
+                                    <ul class="ps-list--categories" style="margin-left:7%;">
+
+                                        <li class="current-menu-item menu-item-has-children">
+
+                                            <a href="products/kits">
+                                                <strong  style="color: {{color_text_menu}}; 
+                                                font-size: 18px; font-weight: 450;
+                                                font-family:'Libre Franklin', sans-serif; ">
+                                                    Curated Gift Boxes
+                                                </strong>
+                                            </a> 
+
+                                        </li>
                                        
                                         <li class="current-menu-item menu-item-has-children">
 
-                                            <a 
-                                            style="color: {{color_text_menu}}; 
-                                            font-size: 18px;
-                                            font-family:'Libre Franklin', sans-serif; 
-                                            font-weight: 450;"
-                                            routerLink="kits"target="_top" style="margin-bottom: 3%;">
-                                                <strong>Curated Gift Boxes</strong> 
-                                            </a>
-
-                                            <a  style="color: {{color_text_menu}}; 
-                                            font-family:'Libre Franklin', sans-serif; 
-                                            font-weight: 600;"
-                                            routerLink="selecction-caja" target="_top">
-                                                <strong>Curate your box</strong> 
+                                            <a routerLink="selecction-caja" target="_top">
+                                                <strong style="color: {{color_text_menu}}; 
+                                                font-family:'Libre Franklin', sans-serif; 
+                                                font-weight: 450;">
+                                                    Curate your box
+                                                </strong> 
                                             </a>
                                         
+                                        </li>
+
+                                        <li class="current-menu-item menu-item-has-children">
+
+                                            <a href ="products/articles">
+                                                <strong style="color: {{color_text_menu}}; 
+                                                font-size: 18px;
+                                                font-family:'Libre Franklin', sans-serif; 
+                                                font-weight: 450;">
+                                                    For you
+                                                </strong>
+                                            </a> 
+
                                         </li>
 
                                     </ul>
@@ -280,39 +272,48 @@ style="position: relative; z-index: 100%;">
                             About
                             ======================================-->
                             <div class="ps-filter__header">
+
                                 <a  style="color: {{color_text_menu}}; 
                                 font-size: 18px;
                                 font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 450;"
                                 *ngFor="let negocio of color; let lastIndex = last">
-                                        {{negocio.title_menu_3}} 
+                                    {{negocio.title_menu_3}} 
                                     {{ lastIndex ? callback() : ""}}
+                                </a>
+
+                                <a class="btn ps-btn--no-boder" data-toggle="collapse" href="#multiCollapseExample2"
+                                aria-expanded="false" aria-controls="multiCollapseExample1"
+                                style="float: right; text-decoration: none; background: :transparent;">
+                                    <i _ngcontent-unx-c103="" class="fa fa-angle-down"></i>
                                 </a>
                                 
                             </div>
 
-                            <div class="ps-filter__content">
+                            <div class=" collapse multi-collapse" id="multiCollapseExample2">
 
                                 <aside class="widget widget_shop">
 
-                                    <ul class="ps-list--categories">
+                                    <ul class="ps-list--categories" style="margin-left:7%;">
                                        
                                         <li class="current-menu-item menu-item-has-children">
 
-                                            <a  style="color: {{color_text_menu}}; 
-                                            font-size: 18px;
-                                            font-family:'Libre Franklin', sans-serif;
-                                             font-weight: 450;"
-                                            routerLink="frequently-asked-questions" target="_top" style="margin-bottom: 3%;">
-                                                <strong>How it works</strong> 
+                                            <a routerLink="frequently-asked-questions" target="_top" style="margin-bottom: 3%;">
+                                                <strong style="color: {{color_text_menu}}; 
+                                                font-size: 18px;
+                                                font-family:'Libre Franklin', sans-serif;
+                                                font-weight: 450;">
+                                                    How it works
+                                                </strong> 
                                             </a>
 
-                                            <a  style="color: {{color_text_menu}}; 
-                                            font-size: 18px;
-                                            font-family:'Libre Franklin', sans-serif; 
-                                            font-weight: 450;"
-                                            routerLink="our-story" target="_top">
-                                                <strong>Our story</strong> 
+                                            <a routerLink="our-story" target="_top">
+                                                <strong style="color: {{color_text_menu}}; 
+                                                font-size: 18px;
+                                                font-family:'Libre Franklin', sans-serif; 
+                                                font-weight: 450;">
+                                                    Our story
+                                                </strong> 
                                             </a>
                                         
                                         </li>
@@ -323,9 +324,7 @@ style="position: relative; z-index: 100%;">
 
                             </div>
 
-                        </div> 
-
-                               
+                        </div>        
 
                     </div><!-- End menu-->
                 
@@ -336,7 +335,7 @@ style="position: relative; z-index: 100%;">
             <!--=====================================
             Logo 
             ======================================-->
-            <div style="width: 20%;  margin-top: 2%;">
+            <div class="etre-mini-rtf" style="width: 20%;  margin-top: 2%;">
 
                 <div class="col-12">
 
@@ -355,7 +354,6 @@ style="position: relative; z-index: 100%;">
             ======================================-->
 
             <div class="mg-beta" style="width: 40%;  margin-top: 3%;">
-
 
                 <!--=====================================
                 Cart    
@@ -380,7 +378,7 @@ style="position: relative; z-index: 100%;">
 
                         <a class="header__extra" style="cursor: pointer;" 
                         (click)="fncWindowCart()">
-                            <img style="width: 100%;" src="{{path}}img/icons/cart.png"><span><i>{{totalShoppingCart}}</i></span>
+                            <img style="width: 94%;" src="{{icon}}"><span><i>{{totalShoppingCart}}</i></span>
                         </a>
                         
                     </div>  
@@ -460,6 +458,10 @@ style="position: relative; z-index: 100%;">
 </header>
 
 <style>
+    .container {
+        max-width: 100%;
+    }
+
     a.animated-button:link, a.animated-button:visited {
         position: relative;
         display: block;
@@ -691,14 +693,73 @@ a.animated-button.thar-three:before {
 
 
     @media screen and  (max-width: 414px) {
-        .mg-beta  {
-            margin-left: -4% !important;
+    
+        .menu-pequeño-ty  {
+            margin-top: 0% !important;
         }
-
-
+        .etre-mini-rtf {
+            width: auto !important;
+            margin-top: 1% !important;
+        }
+        .ps-filter--sidebar {
+            width: 80% !important;
+            height: auto !important;
+        }
+        .ps-cart--mini {
+            margin-right: 25% !important;
+        }    
     }
 
+    @media screen and  (max-width: 360px) {
+        .menu-pequeño-ty  {
+            margin-top: 0% !important;
+        }
+        .etre-mini-rtf {
+            width: auto !important;
+            margin-top: 1% !important;
+        }
+        .ps-filter--sidebar {
+            width: 80% !important;
+            height: auto !important;
+        }
+    }
 
-    
+    @media screen and  (max-width: 411px) {
+        .menu-pequeño-ty  {
+            margin-top: 0% !important;
+        }
+        .etre-mini-rtf {
+            width: auto !important;
+            margin-top: 1% !important;
+        }
+        .ps-filter--sidebar {
+            width: 80% !important;
+            height: auto !important;
+        }
+        .ps-cart--mini {
+            margin-right: 25% !important;
+        }
+    }
+    @media screen and  (max-width: 768px) {
 
+        .menu-pequeño-ty{
+            width: 47% !important;
+        }
+    }
+    @media screen and  (max-width: 540px) {
+        .menu-pequeño-ty  {
+            margin-top: 0% !important;
+        }
+        .etre-mini-rtf {
+            width: auto !important;
+            margin-top: 1% !important;
+        }
+        .ps-filter--sidebar {
+            width: 80% !important;
+            height: auto !important;
+        }
+        .ps-cart--mini {
+            margin-right: 25% !important;
+        }
+    }    
 </style>

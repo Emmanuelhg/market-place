@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,Input } from '@angular/core';
 import { Path } from '../../config';
 import { UsersService } from '../../services/users.service';
 import { BoxesService } from '../../services/boxes.service';
@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 import notie from 'notie';
 import { confirm } from 'notie';
 import { NegocioService } from '../../services/negocio.service';
- 
+
 declare var jQuery:any;  
 declare var $:any;  
 @Component({ 
@@ -27,8 +27,8 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   // Variables del funcionamiento 
  box_steps=[true,true,false,false] 
- id:string = null;  
-   
+ // id:string = null; 
+  id:string; 
   path:string = Path.url;
   id_to_box=null;  
   boxes:BoxesModel;
@@ -94,6 +94,13 @@ export class SelecctionPasoDosComponent implements OnInit {
   lista_categories=[];
   lista_colores=[];
   gallery_producto=[];
+  wishlistEtre:any[]= [];
+  wishlist:number = 0;
+  productosListaDeseos:any[]= [];
+  displayName:string;
+  username:string;
+  idLista:string;
+
 
   constructor(private usersService:UsersService, 
               private boxesService:BoxesService,
@@ -102,7 +109,8 @@ export class SelecctionPasoDosComponent implements OnInit {
               private router:Router,
               private productsService: ProductsService,
               private listaDeseosService: ListaDeseosService,
-              private _router: Router) { 
+              private _router: Router,
+              private activatedRoute:ActivatedRoute) { 
               this.boxes = new BoxesModel();
               
      
@@ -301,9 +309,120 @@ export class SelecctionPasoDosComponent implements OnInit {
     }) 
 
       this.id_to_box
-    }
 
- // Callback para filtrar los filtrar los productos
+    /*=============================================
+    Validar si existe usuario autenticado
+    =============================================*/  
+
+    this.usersService.authActivate().then(resp =>{
+
+      console.log(resp);
+
+      if(resp){
+
+        this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+        .subscribe(resp=>{
+
+          console.log(resp);
+
+          this.idLista = Object.keys(resp).toString();
+          console.log("nombre usurario-:" ,this.idLista);
+
+
+          /*=============================================
+          Tomamos la data de lista de deseos 
+          =============================================*/ 
+
+          this.usersService.getUniqueData(Object.keys(resp).toString())
+          .subscribe(resp=>{
+
+            console.log("usurario:",resp);
+            
+            if(resp ["wishlist"] != undefined){
+
+              console.log("usurario:",resp);
+
+              this.wishlistEtre = JSON.parse(resp["wishlist"]);
+
+              let load = 0;
+              
+              /*=============================================
+              Realizamos el for en la lista de deseos
+              =============================================*/
+
+              if(this.wishlistEtre.length >0){
+
+                this.wishlistEtre.forEach(list =>{
+                  console.log(this.wishlist)
+                  /*=============================================
+                  Realizamos el for en la lista de deseos
+                  =============================================*/
+                  
+                  this.productsService.getFilterData("url", list)
+                  .subscribe(resp =>{
+                    console.log(resp)
+                    /*=============================================
+                    Recorrer la data de los productos
+                    =============================================*/
+
+                    for(const i in resp){
+
+                      load ++;
+
+                      this.productosListaDeseos.push(resp[i]);
+
+                    }  
+                    console.log("lista de deseos:", this.productosListaDeseos);               
+
+                  })
+
+                })
+
+              }
+
+            }
+
+          })
+
+
+          for(const i in resp){
+
+             console.log(resp);
+
+            if(resp[i].wishlist != undefined){
+
+              this.wishlist = Number(JSON.parse(resp[i].wishlist).length);
+              console.log("id es:",this.wishlist);
+
+            }
+
+            /*=============================================
+            Asignamos nombre completo del usuario
+            =============================================*/
+
+            this.displayName = resp[i].displayName;
+            console.log("nombre usurario:" ,this.displayName);
+         
+            /*=============================================
+            Asignamos username
+            =============================================*/
+
+            this.username = resp[i].username; 
+
+            
+          }
+
+        }) 
+
+      }
+
+
+    })
+
+
+  }
+
+  // Callback para filtrar los filtrar los productos
   callback(){
 
     if (this.render){
@@ -370,31 +489,13 @@ export class SelecctionPasoDosComponent implements OnInit {
 
   }
 
-  /*=============================================
-  Función para agregar productos a la lista de deseos
-  =============================================*/
-
-  addWishlist(products){
-
-    this.usersService.addWishlist(products);
-  }
-
-
-  mostrarAddToList(products){
-    this.addWishlist(products);
-    // console.log("esto es la lista de deseos:", this.addWishlist(products));
-  }
-
-
-
-
   configureUi(){
     this.activateODeactivate();
   }
 
   activateODeactivate(){
     let steps = this.box_steps;
-    // console.log("estos son los steps:",this.box_steps);
+ 
     window.onload = function(){
       if(steps[0]) {
         document.getElementById("step1").classList.add("active");
@@ -908,6 +1009,15 @@ export class SelecctionPasoDosComponent implements OnInit {
     } 
     // console.log("un body:",body);
     this.listaDeseosService.crearLista(this.id_to_favs, products)
+  }
+
+  /*=============================================
+  Función para agregar productos a la lista de deseos
+  =============================================*/
+
+  addWishlist(products){
+
+    this.usersService.addWishlist(products);
   }
 
 }

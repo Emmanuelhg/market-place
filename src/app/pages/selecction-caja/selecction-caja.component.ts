@@ -17,7 +17,7 @@ import { Sweetalert } from '../../functions';
  
 @Component({
   selector: 'app-selecction-caja',
-  templateUrl: './selecction-caja.component.html',
+  templateUrl: './selecction-caja.component.html', 
   styleUrls: ['./selecction-caja.component.css']
 })
 export class SelecctionCajaComponent implements OnInit {

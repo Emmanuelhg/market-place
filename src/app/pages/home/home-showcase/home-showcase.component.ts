@@ -11,7 +11,7 @@ import { ProductsService } from '../../../services/products.service';
 import { NegocioService } from '../../../services/negocio.service';
  
 @Component({ 
-  selector: 'app-home-showcase',
+  selector: 'app-home-showcase', 
   templateUrl: './home-showcase.component.html',
   styleUrls: ['./home-showcase.component.css'] 
 })
@@ -50,6 +50,7 @@ export class HomeShowcaseComponent implements OnInit {
 	divs_section_middle=[];
 	divs_sliders_urls=[];
 	divs_grids_urls=[];
+	links_grid=[];
 	position: any[] = [];
 
    	constructor(private categoriesService: CategoriesService,
@@ -167,6 +168,7 @@ export class HomeShowcaseComponent implements OnInit {
 
 	    			this.divs_sliders_urls.push([]);
 	    			this.divs_grids_urls.push([]);
+	    			this.links_grid.push([]);
 	    		}
 	    		// console.log("el tipo es:",section.type);
 
@@ -184,6 +186,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    			console.log("las urls almacenadas son;", newArray);
 	    			this.divs_sliders_urls.push(newArray);
 	    			this.divs_grids_urls.push([]);
+	    			this.links_grid.push([]);
 	    			console.log("las urls almacenadas son;", this.divs_sliders_urls);
 	    			// console.log("slider urls:",this.divs_sliders_urls);
 	    		}
@@ -194,6 +197,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    			this.divs_section_left_type.push(["none","none","none"]);
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
 	    			this.divs_sliders_urls.push([]);
+	    			this.links_grid.push([]);
 
 	    			var newArray=[];
 	    			let urls = section.section_middle.grid_urls;
@@ -203,6 +207,16 @@ export class HomeShowcaseComponent implements OnInit {
 	    			}
 	    			this.divs_grids_urls.push(newArray);
 	    			console.log("slider urls:",this.divs_grids_urls);
+
+	    			var newLinks = [];
+	    			let links = section.section_middle.grid_links;
+	    			console.log("los links:",links);
+
+	    			for(let numLinks in links){
+	    				newLinks.push(links[numLinks]);
+	    			}
+	    			this.links_grid.push(newLinks);
+	    			console.log("links:",this.links_grid);
 	    		}
 
 	    		if(section.type==this.SECTION_TRIPLE){
@@ -219,6 +233,7 @@ export class HomeShowcaseComponent implements OnInit {
 	    			this.divs_section_rigth_type.push(["none","none","none"]);
 	    			this.divs_grids_urls.push([]);
 	    			this.divs_sliders_urls.push([]);
+	    			this.links_grid.push([]);
 	    		}
 	    		}
 	    		

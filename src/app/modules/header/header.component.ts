@@ -33,25 +33,20 @@ export class HeaderComponent implements OnInit {
 	totalShoppingCart:number = 0;
 	renderShopping:boolean = true;
 	subTotal:string = `<h3>Sub Total:<strong class="subTotalHeader"><div class="spinner-border"></div></strong></h3>`;
-    
-    img_logo = "";
-
-    color_text_menu = "#FFFFFF";
-
-    personalization:any[] = [];
+  img_logo = "";
+  color_text_menu = "#FFFFFF";
+  personalization:any[] = [];
 	color:any[] = [];
 	negocio = null;
 	colorCambio:any[] = [];
-    letra:any[] = [];
-    colorLetra:any[] = [];
-    letraMenu1:any[] = [];
-    letraMenu2:any[] = [];
-    letraMenu3:any[] = [];
-
-    List_favorite=[];
-
-    icon="";
-    postId;
+  letra:any[] = [];
+  colorLetra:any[] = [];
+  letraMenu1:any[] = [];
+  letraMenu2:any[] = [];
+  letraMenu3:any[] = [];
+  List_favorite=[];
+  icon="";
+  postId;
 
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
@@ -71,28 +66,28 @@ export class HeaderComponent implements OnInit {
 		// Llamar los nuevos colores y texto
 
 		this.negocioService.getData()
-        .subscribe(resp=>{
-        
-           let i;
-           this.negocio = resp['personalization'];
-           this.img_logo = this.negocio['img_logo'];
-           this.color_text_menu = this.negocio['color_text_menu'];
-           this.icon = this.negocio['icon_cart'];
-           // console.log("resp es "+this.img_logo);
+    .subscribe(resp=>{
+    
+       let i;
+       this.negocio = resp['personalization'];
+       this.img_logo = this.negocio['img_logo'];
+       this.color_text_menu = this.negocio['color_text_menu'];
+       this.icon = this.negocio['icon_cart'];
+       // console.log("resp es :",this.icon);
 
-           for(i in resp){
+       for(i in resp){
 
-           	this.color.push(resp[i]);
+       	this.color.push(resp[i]); 
 
-           	this.colorCambio.push(resp[i].colorbotonheaders);
-            this.colorLetra.push(resp[i].textotopheader);
-            this.letraMenu1.push(resp[i].title_menu_1);
-                    
+       	this.colorCambio.push(resp[i].colorbotonheaders);
+        this.colorLetra.push(resp[i].textotopheader);
+        this.letraMenu1.push(resp[i].title_menu_1);
+                
 
-           }
+       }
 
             // console.log(resp);
-       })
+    })
  
 
 		/*=============================================
@@ -492,6 +487,11 @@ export class HeaderComponent implements OnInit {
     	localStorage.removeItem('expiresIn');
     	window.open('login', '_top')
 
+	}
+
+	ocultarsShop() {
+		document.getElementById('shop').style.display = 'block';
+    // document.getElementById('shop').style.display = 'none';
 	}
 
 

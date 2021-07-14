@@ -3,7 +3,7 @@
 	<!--=====================================
   Slider  
   ======================================-->
-  <div style="margin-top: -2%;" id="carouselExampleControlsR" class="carousel slide" data-ride="carousel">
+  <div style="margin-top: -3%;" id="carouselExampleControlsR" class="carousel slide" data-ride="carousel">
 
 
     <div class="carousel-inner">
@@ -12,7 +12,7 @@
       class="carousel-item active"
        [class]="{'active': isFirst}" >
 
-        <img alt="First slide" class="d-block w-100" src="{{img_slider[i]}}">
+        <img alt="First slide" class="d-block w-100 img-ourstory-der" src="{{img_slider[i]}}">
 
         <div class="carousel-caption d-none d-md-block">
           <h3 class="animated bounceInRight" style="animation-delay: 1s; font-size: 24px;font-weight: 450;
@@ -60,7 +60,34 @@
 
 </div>
 
- <style>
+<style>
+
+  @media screen and  (max-width: 360px) {
+    .img-ourstory-der {
+      height: auto !important;
+    } 
+    .carousel-item {
+      height: auto !important;
+    }   
+  }
+  @media screen and  (max-width: 411px) {
+    .img-ourstory-der {
+      height: auto !important;
+    } 
+    .carousel-item {
+      height: auto !important;
+    }   
+  }
+
+  @media screen and  (max-width: 414px) {
+    .img-ourstory-der {
+      height: auto !important;
+    } 
+    .carousel-item {
+      height: auto !important;
+    }   
+  }
+
  	.navImage  {
    /*background-color: #490D40;*/
    /*background: url("https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/Images%2FGWD9nWQzdS23k3hr.png?alt=media&token=2daac6db-45f8-46a0-ac05-7a34680a14e1") no-repeat center center;*/

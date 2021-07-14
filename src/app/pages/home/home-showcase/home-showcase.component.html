@@ -2,10 +2,11 @@
 Section Gray      
 ======================================-->
 
-<div class="container container-new-r" id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;">
+<div class="container container-new-r" id="divs" *ngFor="let div of divs; let i = index; let lastIndex = last;"
+style="background: #eeedeb;">
 
   <!--=====================================
-  Primera sección  
+  Primera sección  margin-top: -1%;
   ======================================-->
 
   <div *ngIf="div.type == SECTION_DOUBLE"
@@ -31,7 +32,7 @@ Section Gray
           position: absolute;
           padding-left: 40px;
           padding-right:20px;
-          transform: translate(0%, 24%);">
+          transform: translate(0%, 33%);">
 
             <h3 style="text-align: {{div.section_left.txt_title_alignment}};
             font-size: 24px; 
@@ -44,7 +45,7 @@ Section Gray
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
-            font-size: 20px;
+            font-size: 18px;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
@@ -57,7 +58,7 @@ Section Gray
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
-            font-size: 20px;
+            font-size: 18px;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
@@ -70,7 +71,7 @@ Section Gray
             <p style="
             text-align: {{div.section_left.txt_description_alignment}};
             margin-top: 6px;
-            font-size: 20px;
+            font-size: 18px;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 20;          
             color: {{div.section_left.txt_description_color}}; 
@@ -93,7 +94,7 @@ Section Gray
               height: 100%;
               font-family:'Libre Franklin', sans-serif; 
               font-weight: 100;
-              font-size: 16px; 
+              font-size: 18px; 
               border-color: {{div.section_left.txt_button_border_color}};
               border-radius: {{div.section_left.txt_button_border_radius}};
               border-width: {{div.section_left.txt_button_border_width}};
@@ -117,12 +118,14 @@ Section Gray
         ======================================-->
         <div style="display: {{divs_section_left_type[i][1]}};">
 
-          <img style=" width: 100%; height: 558px;"
-          [ngStyle]="{'padding-left':div.section_left.img_padd_izq,
-                      'padding-right':div.section_left.img_padd_der,
-                      'padding-top':div.section_left.img_padd_sup,
-                      'padding-bottom':div.section_left.img_padd_inf}"
-          class="img_home" src="{{div.section_left.img_src}}" >
+          <a href="{{div.section_left.img_link}}">
+            <img style=" width: 100%; height: 558px; object-fit: cover;"
+            [ngStyle]="{'padding-left':div.section_left.img_padd_izq,
+                        'padding-right':div.section_left.img_padd_der,
+                        'padding-top':div.section_left.img_padd_sup,
+                        'padding-bottom':div.section_left.img_padd_inf}"
+            class="img_home" src="{{div.section_left.img_src}}">
+          </a>  
 
           <div style="display: {{div.section_left.txt_button_display}};">
 
@@ -135,7 +138,7 @@ Section Gray
             height: 100%;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
-            font-size: 16px; 
+            font-size: 18px; 
             border-color: {{div.section_left.txt_button_border_color}};
             border-radius: {{div.section_left.txt_button_border_radius}} ;
             border-width: {{div.section_left.txt_button_border_width}};
@@ -169,7 +172,7 @@ Section Gray
             top: 50%;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
-            font-size: 16px; 
+            font-size: 18px; 
             border-color: {{div.section_left.img_button_border_color}};
             border-radius: {{div.section_left.img_button_border_radius}};
             border-width: {{div.section_left.img_button_border_width}};
@@ -182,13 +185,15 @@ Section Gray
             padding: 2%;"
             >
               {{div.section_left.img_button_text}}
+            </a>
+            <a href="{{div.section_left.img_link}}">  
+              <img style=" width: 100%; height: 558px; object-fit: cover"
+              [ngStyle]="{'padding-left': div.section_left.img_padd_izq,
+                          'padding-right': div.section_left.img_padd_der,
+                          'padding-top': div.section_left.img_padd_sup,
+                          'padding-bottom': div.section_left.img_padd_inf}" 
+              class="img_home" src="{{div.section_left.img_src}}">
             </a>  
-            <img style=" width: 100%; height: 558px;"
-            [ngStyle]="{'padding-left': div.section_left.img_padd_izq,
-                        'padding-right': div.section_left.img_padd_der,
-                        'padding-top': div.section_left.img_padd_sup,
-                        'padding-bottom': div.section_left.img_padd_inf}" 
-            class="img_home" src="{{div.section_left.img_src}}">
 
           </div>
 
@@ -217,7 +222,7 @@ Section Gray
           padding-left: 40px;
           padding-right:20px;
           position: absolute;
-          transform: translate(0%, 40%);">
+          transform: translate(0%, 33%);">
 
             <h3 style="text-align: {{div.section_right.txt_title_alignment}};
             font-size: 24px;
@@ -230,7 +235,7 @@ Section Gray
             <p style="
             text-align: {{div.section_right.txt_description_alignment}};
             margin-top: 11%;
-            font-size: 20px;
+            font-size: 18px;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; 
             color:black; 
@@ -252,7 +257,7 @@ Section Gray
               height: 100%;
               font-family:'Libre Franklin', sans-serif; 
               font-weight: 100;
-              font-size: 16px; 
+              font-size: 18px; 
               border-color: {{div.section_right.txt_button_border_color}};
               border-radius: {{div.section_right.txt_button_border_radius}} ;
               border-width: {{div.section_right.txt_button_border_width}};
@@ -278,12 +283,14 @@ Section Gray
 
         <div style="display: {{divs_section_rigth_type[i][1]}};">
 
-          <img style=" width: 100%; height: 558px;"
-          [ngStyle]="{'padding-left': div.section_right.img_padd_izq,
-                      'padding-right': div.section_right.img_padd_der,
-                      'padding-top': div.section_left.img_padd_sup,
-                      'padding-bottom': div.section_right.img_padd_inf}" 
-          class="img_home" src="{{div.section_right.img_src}}">
+          <a href="{{div.section_right.img_link}}">
+            <img style=" width: 100%; height: 558px;object-fit: cover;"
+            [ngStyle]="{'padding-left': div.section_right.img_padd_izq,
+                        'padding-right': div.section_right.img_padd_der,
+                        'padding-top': div.section_left.img_padd_sup,
+                        'padding-bottom': div.section_right.img_padd_inf}" 
+            class="img_home" src="{{div.section_right.img_src}}">
+          </a>  
 
           <div style="display: {{div.section_right.img_button_display}};">
 
@@ -296,7 +303,7 @@ Section Gray
             height: 100%;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
-            font-size: 16px; 
+            font-size: 18px; 
             border-color: {{div.section_right.img_button_border_color}};
             border-radius: {{div.section_right.img_button_border_radius}} ;
             border-width: {{div.section_right.img_button_border_width}};
@@ -327,7 +334,7 @@ Section Gray
             width: 40%;
             font-family:'Libre Franklin', sans-serif; 
             font-weight: 100;
-            font-size: 16px; 
+            font-size: 18px; 
             height: 50px;
             top: 50%;
             border-color: {{div.section_right.img_button_border_color}};
@@ -341,12 +348,14 @@ Section Gray
               {{div.section_right.img_button_text}}
             </a>
 
-            <img style=" width: 100%; height: 558px; "
-            [ngStyle]="{'padding-left': div.section_right.img_padd_izq,
-                      'padding-right': div.section_right.img_padd_der,
-                      'padding-top': div.section_right.img_padd_sup,
-                      'padding-bottom': div.section_right.img_padd_inf}" 
-            class="img_home" src="{{div.section_right.img_src}}">
+            <a href="{{div.section_right.img_link}}">
+              <img style=" width: 100%; height: 558px; object-fit: cover;"
+              [ngStyle]="{'padding-left': div.section_right.img_padd_izq,
+                        'padding-right': div.section_right.img_padd_der,
+                        'padding-top': div.section_right.img_padd_sup,
+                        'padding-bottom': div.section_right.img_padd_inf}" 
+              class="img_home" src="{{div.section_right.img_src}}">
+            </a>  
 
           </div>
 
@@ -363,59 +372,58 @@ Section Gray
   Slider 
   ======================================-->
 
-  <div  class="div-main col-lg-12" style=" padding: 0px;
+  <div  class="div-main slider-home col-lg-12" style=" padding: 0px;
   height: px;  display:{{divs_visible[i][1]}};">
 
     <div id="carouselExampleControls{{i}}" class="carousel slide" data-ride="carousel">
 
-        <div class="carousel-inner">
-        
-          <div *ngFor="let sliderItem of divs_sliders_urls[i]; let ind = index; let isFirst = first"
-          class="carousel-item "
-          [class]="{'active': isFirst}">
-        
-            <img class="d-block w-100"
-            style="width: 100%; height: 600px;" 
-            src="{{sliderItem}}" alt="First slide">
-
-            <div style="position: absolute; left: 10%;
-            top:  70%;
-            margin-left: 8%;"
-            [ngStyle]="{'padding-left': div.section_right.img_padd_izq}">
-     
-              <h4  
-              style="font-size: 24px; margin-top: 10px; 
-              color: {{div.section_middle.slider_title_color}}; 
-              margin-right: 20px; margin-left: 20px; margin-bottom: 30px;
-              font-family:'Libre Franklin', sans-serif; 
-              font-weight: 450; ">
-                {{div.section_middle.slider_textos[ind]}}
-                <!-- 20 percent discount -->
-              </h4> 
-              
-              <a style="font-weight: 100;  font-size: 16px;
-              color: white;
-              background:{{div.section_middle.slider_btn_color}} ;
-              font-family:'Libre Franklin', sans-serif;
-              padding: 9.5% 15%; " 
-              href="{{div.section_middle.slider_links[ind]}}">
-                {{div.section_middle.slider_textos_botones[ind]}}
-              </a>
-
-            </div>
-
-          </div>
+      <div class="carousel-inner">
       
+        <div *ngFor="let sliderItem of divs_sliders_urls[i]; let ind = index; let isFirst = first"
+        class="carousel-item "
+        [class]="{'active': isFirst}">
+      
+          <img class="d-block w-100"
+          style="width: 100%; object-fit: cover; height: 700px;" 
+          src="{{sliderItem}}" alt="First slide">
+
+          <div *ngIf="section_right != 0" 
+          style="position: absolute; left: 10%; top:  55%; margin-left: 6%;"
+          [ngStyle]="{'padding-left': div.section_right.img_padd_izq}">
+   
+            <h4 style="font-size: 24px; margin-top: 10px; 
+            color: {{div.section_middle.slider_title_color}}; 
+            margin-right: 20px; margin-left: 4px; margin-bottom: 30px;
+            font-family:'Libre Franklin', sans-serif; 
+            font-weight: 450; ">
+              {{div.section_middle.slider_textos[ind]}}
+              <!-- 20 percent discount -->
+            </h4>
+
+            <a *ngIf="div.section_middle.slider_textos_botones[ind] != undefined"
+            style="font-weight: 100;  font-size: 16px;
+            color: white; display: {{div.section_middle}};
+            background:{{div.section_middle.slider_btn_color}} ;
+            font-family:'Libre Franklin', sans-serif;
+            padding:5% 8%;" 
+            href="{{div.section_middle.slider_links[ind]}}">
+              {{div.section_middle.slider_textos_botones[ind]}}
+            </a> 
+    
+          </div>
 
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls{{i}}" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls{{i}}" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+    
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls{{i}}" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls{{i}}" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
 
     </div>
 
@@ -447,13 +455,11 @@ Section Gray
 
       <div class="row" style="display: flex; padding: 0px;">
 
-        <img src="">
-
-        <a  *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
-        class="img_insta col-lg-3 col-md-6 col-sm-12" >
+        <a *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
+        class="img_insta col-lg-3 col-md-6 col-sm-12" 
+        href="{{links_grid[i][ind]}}">
         <!-- href="{{div.section_middle.grid_links[ind]}}" -->
-          <img
-          src="{{divs_grids_urls[i][ind]}}"
+          <img src="{{divs_grids_urls[i][ind]}}"
           style="width: 100%; height: 300px; object-fit: cover;"/>
           
         </a>
@@ -466,22 +472,22 @@ Section Gray
 
 
   <!--=====================================
-  Sección que falta por hacer
+  Sección triple
   ======================================-->
   <div class="div-main2"  style=" display:{{divs_visible[i][3]}};">
     <!-- style="height:px; width: 100%; display:{{divs_visible[i][2]}};" -->
 
-    <div class="div-title" style="margin-top:3%; width:100%; font-size:100%; height:px;margin-bottom: 3%;">
-      <h3 style="font-family:'Libre Franklin', sans-serif; 
+    <div class="div-title" style="padding-top:3%; width:100%; font-size:100%; height:px;padding-bottom: 3%;">
+      <h6 style="font-family:'Libre Franklin', sans-serif; 
       font-weight: 450; font-size:24px; margin-top: 4%;text-align: center; 
       font-size: 24px;">
 
         {{div.section_middle.triple_section_title}}
           <!-- CURATED & CRAFTED FOR YOU -->
-      </h3>
+      </h6>
       <p style=" font-family:'Libre Franklin', sans-serif; 
       font-weight: 20;margin-left: 20%;margin-right: 20%;
-      font-size: 20px;margin-top: 3%;text-align: center;">
+      font-size: 18px;margin-top: 3%;text-align: center;">
 
         {{div.section_middle.triple_section_description}}
         <!-- Etre focuses on becoming your number one, go-to source for gifts. 
@@ -499,19 +505,19 @@ Section Gray
 
           <img  *ngIf="div.section_left.img_src != '' "
           target="_top"  src="{{div.section_left.img_src}}" 
-          style="margin-bottom: 4%;width: 90%;height: 349px;"
+          style="margin-bottom: 4%;width: 90%;height: 460px; object-fit: cover;"
           routerLink="{{div.section_left.img_link}}"
           class="img-trilple">
 
-          <h3 style="font-size: 24px; 
+          <h6 style="font-size: 24px; 
           font-family:'Libre Franklin', sans-serif; 
           font-weight: 450; font-size: 24px;
           margin-top: 6%;">
             {{div.section_left.txt_title}}
               <!-- Need a gift? -->
-          </h3>
+          </h6>
 
-          <p style="font-size: 20px; font-family:'Libre Franklin', sans-serif; 
+          <p style="font-size: 18px; font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
             {{div.section_left.txt_description}}
              <!--  Choose from a range of gifts for
@@ -526,16 +532,16 @@ Section Gray
 
             <img  *ngIf="div.section_middle.img_src != '' " 
             routerLink="{{div.section_middle.img_link}}" class="img_centro img-trilple" src="{{div.section_middle.img_src}}" 
-            style="margin-bottom: 4%;width: 90%; height: 349px;">
+            style="margin-bottom: 4%;width: 90%; height: 460px; object-fit:cover;">
 
-            <h3 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
+            <h6 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
             font-weight: 450; font-size: 24px;
             margin-top: 6%;">
               {{div.section_middle.txt_title}}
               <!-- Keep it personal -->
-            </h3>
+            </h6>
 
-            <p style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
+            <p style="font-size: 18px;font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
               {{div.section_middle.txt_description}}
              <!--  We curate the best products
@@ -552,7 +558,7 @@ Section Gray
 
             <img *ngIf="div.section_right.img_src != '' "
             routerLink="{{div.section_right.img_link}}" class="img_derecha img-trilple" src="{{div.section_right.img_src}}" 
-            style="margin-bottom: 4%;width: 90%;height: 349px;">
+            style="margin-bottom: 4%;width: 90%;height: 460px; object-fit:cover;">
 
           </div>  
 
@@ -563,7 +569,7 @@ Section Gray
               <!-- We ́ll handle the rest -->
           </h3>
 
-          <p style="font-size: 20px;font-family:'Libre Franklin', sans-serif; 
+          <p style="font-size: 18px;font-family:'Libre Franklin', sans-serif; 
           font-weight: 20; margin-left: 17%; margin-right: 17%; margin-top: 5%;">
             {{div.section_right.txt_description}}
               <!-- We take your boxes, pack it to
@@ -582,10 +588,11 @@ Section Gray
 
   <div class="div-main col-lg-12"
   style=" display: {{divs_visible[i][4]}}; 
-  height: 560px; background-image: url('{{div.section_middle.slider_url_1}}') ;
-  background-repeat: no-repeat; background-size: 100%;">
+  height: 560px; background-image: url('{{div.section_middle.slider_url_1}}');
+  background-repeat: no-repeat; background-size: cover;
+  width: 100%; padding-right: 0px; margin-top: -1%;">
 
-    <div style="padding-left: 6%; padding-top: 20%;">
+    <div style="padding-left: 6%; padding-top: 16%;">
 
       <h3 style="font-size: 24px;font-family:'Libre Franklin', sans-serif; 
       font-weight: 450; font-size: 24px; 
@@ -593,7 +600,8 @@ Section Gray
        padding-bottom: 3%;"> 
         {{div.section_middle.slider_title_1}}
       </h3>
-      <a style="background: {{div.section_middle.slider_btn_color}};
+      <a href="{{div.section_middle.slider_link_1}}" 
+      style="background: {{div.section_middle.slider_btn_color}};
       font-weight: 100;  font-size: 16px;
       color: white;padding-top: 1.5%; font-family:'Libre Franklin', sans-serif;
       padding-bottom: 1.5%; padding-left: 6%; padding-right: 6%; ">
@@ -615,9 +623,102 @@ Section Gray
     .img-trilple {
       width: 100% !important;   
     }
+    .tex_home {
+      transform: translate(0%,9%) !important;
+    }
+    .btn_home {
+      width: auto !important;
+    }
+  }
+
+  @media (max-width: 411px) {
+    .img-trilple {
+      width: auto !important; 
+      height: auto !important;  
+    }
+    .tex_home {
+      transform: translate(0px,15px) !important;
+    } 
+
+    .img_centro {
+      width: auto !important; 
+      height: auto !important;
+    }
+
+    .img_derecha {
+      width: auto !important; 
+      height: auto !important;
+    }
+ 
+    .slider-home {
+      height: auto;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    .btn_home {
+      width: auto !important;
+    }
+
+  }
+
+  @media (max-width: 414px) {
+    .img-trilple {
+      width: auto !important; 
+      height: auto !important;  
+    }
+    .tex_home {
+      transform: translate(0px,15px) !important;
+    } 
+
+    .img_centro {
+      width: auto !important; 
+      height: auto !important;
+    }
+
+    .img_derecha {
+      width: auto !important; 
+      height: auto !important;
+    }
+ 
+    .slider-home {
+      height: auto;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    ..btn_home {
+      width: auto !important;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .img-trilple {
+      width: auto !important; 
+      height: auto !important;  
+    }
+    
+    .img_centro {
+      width: auto !important; 
+      height: auto !important;
+    }
+
+    .img_derecha {
+      width: auto !important; 
+      height: auto !important;
+    }
+ 
+    .slider-home {
+      height: auto;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    .btn_home {
+      width: auto !important;
+    }
   }
 
   .container-new-r{
+    padding: 0px;
     max-width: 100% !important;
   }
   
@@ -632,14 +733,14 @@ Section Gray
     /*margin-bottom: 3%;*/
 }
 .title_div3>h3{
-    margin-top: 6%;
+    padding-top: 6%;
     text-align: center;
     font-size: 100%;
 }
 .title_div3>p{
     font-size: 100%;
     text-align: center;
-    margin-bottom: 3%;
+    padding-bottom: 3%;
 }
 .img_insta{
     position: relative;

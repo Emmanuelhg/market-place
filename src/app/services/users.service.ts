@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
  
 import {Api, 
-		Register, 
+		Register,  
 		Login, 
 		SendEmailVerification, 
 		ConfirmEmailVerification, 
@@ -226,13 +226,14 @@ export class UsersService {
 
   	}
 
-  	/*=============================================
+  /*=============================================
 	Tomar información de un solo usuario
 	=============================================*/
 
-  	getUniqueData(value:string){
-
+  getUniqueData(value:string){
+      console.log("funciona", value)
   		return this.http.get(`${this.api}users/${value}.json`);
+      console.log("",this.http)
   	}
 
 	/*=============================================
@@ -242,8 +243,8 @@ export class UsersService {
 	addWishlist(product:string){
 
 		/*=============================================
-    	Validamos que el usuario esté autenticado
-    	=============================================*/
+  	Validamos que el usuario esté autenticado
+  	=============================================*/
 
     	this.authActivate().then(resp =>{
 
@@ -261,6 +262,7 @@ export class UsersService {
     		this.getFilterData("idToken", localStorage.getItem("idToken"))
     		.subscribe(resp=>{
 
+          console.log("resp lista desesos",resp);
     			/*=============================================
     			Capturamos el id del usuario
     			=============================================*/
@@ -270,73 +272,48 @@ export class UsersService {
     			for(const i in resp){
     			
     				/*=============================================
-      				Pregutnamos si existe una lista de deseos
-      				=============================================*/
+    				Pregutnamos si existe una lista de deseos
+    				=============================================*/
 
-      				if(resp[i].wishlist != undefined){
+    				if(resp[i].wishlist != undefined){
 
-      					let wishlist = JSON.parse(resp[i].wishlist);
+    					let wishlist = JSON.parse(resp[i].wishlist);
 
-      					let length = 0;
+    					let length = 0;
 
-      					/*=============================================
-      					Pregutnamos si existe un producto en la lista de deseos
-      					=============================================*/
+    					/*=============================================
+    					Pregutnamos si existe un producto en la lista de deseos
+    					=============================================*/
 
-      					if(wishlist.length > 0){
+    					if(wishlist.length > 0){
 
-      						wishlist.forEach((list, index)=>{
+    						wishlist.forEach((list, index)=>{
 
-            					if(list == product){
+          					if(list == product){
 
-            						length --
-            					
-            					}else{
+          						length --
+          					
+          					}else{
 
-            						length ++
+          						length ++
 
-            					}
-
-      						})
-
-      						/*=============================================
-    						  Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
-        					=============================================*/ 
-
-      						if(length != wishlist.length){
-
-      							Sweetalert.fnc("error", "It already exists on your wishlist", null);
-
-      						}else{
-
-      							wishlist.push(product);
-
-      							let body = {
-
-          						wishlist: JSON.stringify(wishlist)
           					}
 
-          					this.patchData(id, body)
-          					.subscribe(resp=>{
+    						})
 
-          						if(resp["wishlist"] != ""){
+    						/*=============================================
+  						  Preguntamos si no ha agregado este producto a la lista de deseos anteriormente
+      					=============================================*/ 
 
-                        let totalWishlist = Number($(".totalWishlist").html());
-                        
-                        $(".totalWishlist").html(totalWishlist+1); 
+    						if(length != wishlist.length){
 
-          							Sweetalert.fnc("success","Product added to wishlist", null);
-          						}
+    							Sweetalert.fnc("error", "It already exists on your wishlist", null);
 
-          					})
+    						}else{
 
-      						}
+    							wishlist.push(product);
 
-      					}else{
-
-      						wishlist.push(product);
-
-  							let body = {
+    							let body = {
 
         						wishlist: JSON.stringify(wishlist)
         					}
@@ -347,20 +324,45 @@ export class UsersService {
         						if(resp["wishlist"] != ""){
 
                       let totalWishlist = Number($(".totalWishlist").html());
-                        
+                      
                       $(".totalWishlist").html(totalWishlist+1); 
 
         							Sweetalert.fnc("success","Product added to wishlist", null);
         						}
 
-
         					})
 
+    						}
+
+    					}else{
+
+    						wishlist.push(product);
+
+							let body = {
+
+      						wishlist: JSON.stringify(wishlist)
       					}
 
-      				/*=============================================
+      					this.patchData(id, body)
+      					.subscribe(resp=>{
+
+      						if(resp["wishlist"] != ""){
+
+                    let totalWishlist = Number($(".totalWishlist").html());
+                      
+                    $(".totalWishlist").html(totalWishlist+1); 
+
+      							Sweetalert.fnc("success","Product added to wishlist", null);
+      						}
+
+
+      					})
+
+    					}
+
+    				/*=============================================
      				Cuando no exista lista de deseos inicialmente
-      				=============================================*/
+    				=============================================*/
 
       				}else{
 

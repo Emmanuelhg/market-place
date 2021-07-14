@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
-  Barra de números      
+  Barra de números       
   ======================================--> 
   <div class="container numeros-tre">
 		<div style="margin-bottom: 4%;">
@@ -758,7 +758,7 @@
               <!-- (click)="fncMostrarListaDeseos()"
                data-toggle="modal" 
                data-target=".lista-deseos " -->
-              <i (click)="crearLista(products)" 
+              <i (click)="addWishlist(products.url)" 
               class="icon-heart"    
               style="cursor: pointer;"></i>
             </a>
@@ -1123,146 +1123,176 @@
         <div class="divimageness row">
 
           <div
-          *ngFor="let products of getProduct; let lastIndex = last,let i = index"
-          class="ps-product col-lg-3 col-md-4 col-sm-6">
+          *ngFor="let productsLista of productosListaDeseos;"
+          class="col-lg-3 col-md-4 col-sm-6" style="margin-top: 4%;">
 
             <!-- *ngIf="getVisibilityByFilter(products)" -->
-            <div   
-            class="ps-product__thumbnail">
+            <div class="ps-product__thumbnail" id="contenedor">
 
-              <a>
+              <a style=" position: relative;
+              display: inline-block;
+              text-align: center;"
+              class="Img-Hover">
+
                 <div style="position: absolute;
                 width: 100%;
                 align-items: center;
                 text-align: center;
                 opacity: 0.7;
                 background: white;
-                top: 0%;" 
+                top: 37%;" 
                 id="to-large-to-fid" 
                 *ngIf="productsFull() == true">
 
-                  <p style="color: black;">
-                    Oops!<br>
-                    (too large to fit)
-                  </p>  
+                    <p style="color: black;font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20; font-size: 20px; color: #353535; ">
+                        Oops!<br>
+                        (too large to fit)
+                    </p>
 
-                </div>  
+                </div>
 
-                <ul class="ps-product__actionsjy" style="position: absolute;">
+                <img class="img-producto-cty" 
+                style="width: 247px; height: 247px;" 
+                (click)="detallesProducto(products)"
+                type="button"  data-toggle="modal" 
+                data-target=".bd-example-modal-xl"
+                src="{{productsLista.image}}" alt="">
 
-                  <li>
+                <img id="imgGallery" 
+                class="img-producto-cty" 
+                style="width: 247px; height: 247px;position: 
+                absolute;margin-top: -100%;" 
+                (click)="detallesProducto(products)"
+                type="button"  data-toggle="modal" 
+                data-target=".bd-example-modal-xl"
+                src="{{productsLista.image2}}" alt="">
 
-                    <a style="position: relative;">
 
-                      <i class="icon-heart"
-                       style=" background:pink;" 
-                       data-toggle="modal" 
-                       data-target=".lista-deseos"></i>
+                <!-- Boton para agregar productos a la caja -->
+                <div id="boton">
 
+                  <!-- BTN agregar a caja -->
+                  <div 
+                  class="texto" 
+                  *ngIf="productsFull() == false && getvisibilityForAdd(productsLista.name) == false">
+                    <!-- (click)="myFunction(products.name)"   -->
+                    <a 
+                    (click)="fncNewAdd(productsLista, productsLista.name)"
+                    style="cursor:pointer ;">
+                      <p style="font-family:'Libre Franklin', sans-serif;
+                      font-weight: 20; font-size: 15px; margin-top: 1%; color: #353535;">
+                        Add to box
+                      </p> 
                     </a>
 
-                  </li> 
+                  </div>
 
-                </ul>
+                  <!-- BTN para agregar cantidad de productos -->
+                  <div  *ngIf="getvisibilityForAdd(productsLista.name) == true && productsFull() == false"
+                  style="display: flex; width: 100% !important; justify-content: center;
+                  justify-content:space-around; padding: 2%; position: absolute;
+                  margin-top: -19%;">
 
-                  <img 
-                  style="width: 100%; height: 278px; 
-                  object-fit: cover;" 
-                  (click)="detallesProducto(products)"
-                   type="button"  data-toggle="modal" 
-                   data-target=".bd-example-modal-xl"
-                   src="{{products.image}}" alt="">
+                    <div style="display: flex; width: 244px; flex-direction: row">
 
-                   <!-- <img 
-                  style="width: 100%; height: 278px; 
-                  object-fit: cover;  " 
-                  (click)="detallesProducto(products)"
-                   type="button"  data-toggle="modal" 
-                   data-target=".bd-example-modal-xl"
-                   src="{{path}}img/products_etre/prod5.png" alt=""> -->
-
-              </a>
-
-              <!-- Boton para agregar productos a la caja -->
-              <div 
-              class="texto"
-              *ngIf="productsFull() == false && getvisibilityForAdd(products.name) == false">
-                      <!-- (click)="myFunction(products.name)"   -->
-                  <a 
-                  (click)="fncNewAdd(products, products.name)"
-                  style="cursor:pointer">
-                    Add to box
-                  </a>
-              </div>
-
-              <!-- BTN para agregar cantidad de productos -->
-              <div class="texto"
-              *ngIf="getvisibilityForAdd(products.name) == true && productsFull() == false">
-
-                  <div  style="width: 100%; display: flex;">
                       <!-- BTN menos -->
-                      <button style="width: 15%; background:black;"
-                      (click)="modificadorCantidadProductos(-1, i,products)"
+                      <button style="width: 15%;"
+                      (click)="modificadorCantidadProductos(-1, i,productsLista)"
                       class="menos" type="button">-</button>
 
                       <div 
                       style="background: white;width: 70%; text-align: center;
-                       color:black; border: 1px solid black !important;"
-                       id="quantity"> 
+                      color:black; border: 1px solid black !important;"
+                      id="quantity"> 
 
+                        <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;
+                         font-family:'Libre Franklin', sans-serif; ">
                           {{getNumArts(products)}} IN INBOX
+                        </p>  
 
                       </div>
+
                       <!-- BTN más -->
-                      <button style="width: 15%; background:black;" 
-                      (click)="modificadorCantidadProductos(1, i,products)"
+                      <button style="width: 15%;" 
+
+                      (click)="modificadorCantidadProductos(1, i,productsLista)"
                       class="mas" type="button">+</button>
+                     
+                    </div>
+                    
                   </div>
-                      
-              </div>
-                                      
-              <!-- Botón long -->
-              <div 
-               *ngIf="productsFull() == true"
-                class="texto">
+                                  
+                  <!-- Botón long -->
+                  <div 
+                  *ngIf="productsFull() == true" 
+                  class="texto">
 
-                  <a 
-                   style="cursor:pointer">
+                    <a 
+                    style="cursor:pointer; 
+                    font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20; font-size: 15px; color:#353535;">
                       Too large
-                  </a>
-
-              </div>
-
-            </div>
-
-            <!-- Información de productos -->
-            <div class="ps-product__containerT">
-
-                <div class="ps-product__content">
-
-                  <a class="ps-product__title">
-                     {{products.name}}
-                  </a>
-
-
-                  <p class="tex_product">
-                     $ {{products.price}}
-                  </p>
-
-                
-                    <!-- <div [innerHTML]="price[i][0]"></div> -->
-
-                </div>
-
-                <div class="ps-product__content hover">
-
-                    <a class="ps-product__title">
-                        {{products.name}}
                     </a>
 
-                    <!-- <div [innerHTML]="price[i][0]"></div> -->
+                  </div>
 
                 </div>
+
+              </a>
+              <style>
+                #imgGallery{
+                  display: none;
+                }
+                #contenedor:hover #imgGallery{
+                  display: block;
+                }
+              </style>
+
+              <!-- Lista de deseos -->
+              <div id="heart" style=""> 
+                <a title="Add to Whishlist">
+                  <!-- (click)="fncMostrarListaDeseos()"
+                   data-toggle="modal" 
+                   data-target=".lista-deseos " -->
+                  <i class="icon-heart"    
+                  style="cursor: pointer; color: pink;"></i>
+                </a>
+              </div>
+       
+
+              <!-- Información de productos -->
+              <div class="">
+
+                  <div style="margin-left: 1% ">
+
+                    <a>  
+                      <b style="font-family:'Libre Franklin', sans-serif; 
+                      font-weight: 20; font- : 17px; color:#353535;">
+                        {{productsLista.name}}
+                      </b>
+                    </a>
+
+
+                    <div class="" style="display: flex;">
+
+                      <p style="font-weight: 20; font-size: 17px;
+                      font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
+
+                      <p style="margin-top:1%;">
+                        <b style="font-family:'Libre Franklin', sans-serif; 
+                        font-weight: 20; font-size: 17px; color:#353535;">
+                          {{productsLista.price}}
+                        </b>
+                      </p>
+                      
+                    </div>
+
+                    <!-- <div [innerHTML]="price[i][0]"></div> -->
+
+                  </div>
+
+              </div>            
 
             </div>
 
@@ -1336,7 +1366,115 @@
     margin-bottom: 2% !important;
   }
 
-}  
+}
+
+@media screen and  (max-width: 411px) {
+
+  .numeros-tre {
+    margin-top: 15%  !important;
+  }
+
+  .step-et {
+    margin-top: 65%  !important;
+    margin-bottom: 21%  !important;
+  }
+
+  .titulo-star-selecting {
+    margin-top: 7% !important;
+    margin-bottom: 7%  !important;
+  }
+
+  .img-producto-add {
+    height: auto !important;
+  }
+
+  .img-caja-add {
+    height: auto !important;
+  }
+
+  .img-producto-cty {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .byn-tyt {
+
+    background: black !important;
+    color: white !important;
+    display: flow-root !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    align-content: center !important;
+    font-size: 71% !important;
+    border: 1px solid #000 !important;
+    margin-right: -7% !important;
+    padding-top: 4% !important;
+    padding-bottom: 4% !important;
+    margin-left: 4% !important;
+    margin-bottom: 3% !important;
+
+  }
+
+  .filtros-gty {
+    padding: 0px !important; 
+    margin-bottom: 2% !important;
+  }
+
+}
+
+@media screen and  (max-width: 414px) {
+
+  .numeros-tre {
+    margin-top: 15%  !important;
+  }
+
+  .step-et {
+    margin-top: 65%  !important;
+    margin-bottom: 21%  !important;
+  }
+
+  .titulo-star-selecting {
+    margin-top: 7% !important;
+    margin-bottom: 7%  !important;
+  }
+
+  .img-producto-add {
+    height: auto !important;
+  }
+
+  .img-caja-add {
+    height: auto !important;
+  }
+
+  .img-producto-cty {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .byn-tyt {
+
+    background: black !important;
+    color: white !important;
+    display: flow-root !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    align-content: center !important;
+    font-size: 71% !important;
+    border: 1px solid #000 !important;
+    margin-right: -7% !important;
+    padding-top: 4% !important;
+    padding-bottom: 4% !important;
+    margin-left: 4% !important;
+    margin-bottom: 3% !important;
+
+  }
+
+  .filtros-gty {
+    padding: 0px !important; 
+    margin-bottom: 2% !important;
+  }
+
+}   
 
 .modal-content{
   border: 0px solid rgba( 0,0,0,.2) !important;
@@ -1492,11 +1630,20 @@
   }
 }
 @media screen and  (max-width: 768px) {
-  #snackbar{
-    margin-bottom: 25%;
+   #snackbar{
+    margin-bottom: 20%;
     align-items: center;
     margin-right: 4%;
   }
+  .btn-none{
+     
+    display: none !important; 
+   }
+  .byn-tyt{
+      padding-top: 3% !important;
+      padding-bottom: 3% !important;
+  }
+   
 }
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbarTow {
