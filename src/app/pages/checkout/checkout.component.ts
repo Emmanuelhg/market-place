@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+ 
 import { Path, Payu, MercadoPago  } from '../../config';
 import { Sweetalert, DinamicPrice, Paypal, Id_box } from '../../functions';
 
@@ -69,6 +69,11 @@ export class CheckoutComponent implements OnInit {
  	// id:string = null;
  	boxes:BoxesModel;
  	products;
+ 	pay_orders;
+ 	artsBox;
+ 	paypal_total = 0;
+ 	payplal_shipping = 0;
+ 	pricePayplay = 0 ;
 
 	constructor(private router:Router,
 				private usersService:UsersService,
@@ -90,6 +95,7 @@ export class CheckoutComponent implements OnInit {
 		this.id_to_box = Cookies.get('box_id');
 
 	    // Cookies.set('box_id', this.prueba, { expires: 7 });
+	    // console.log("id_to_box",this.id_to_box);
 
 		/*=============================================
 		Obtener el id de la caja
@@ -135,17 +141,17 @@ export class CheckoutComponent implements OnInit {
 		}
 
 		/*=============================================
-  		Validar la existencia de un cupón de la tienda
-  		=============================================*/
-  		if(Cookies.get('coupon') != undefined){
+		Validar la existencia de un cupón de la tienda
+		=============================================*/
+		if(Cookies.get('coupon') != undefined){
 
-  			this.storesService.getFilterData("url", Cookies.get('coupon'))
-  			.subscribe(resp=>{
+			this.storesService.getFilterData("url", Cookies.get('coupon'))
+			.subscribe(resp=>{
 
-  				this.validateCoupon = true;		
+				this.validateCoupon = true;		
 
-  			})
-  		}
+			})
+		}
 
 
 		/*=============================================
@@ -195,6 +201,38 @@ export class CheckoutComponent implements OnInit {
 				})
 
 			}
+
+		})
+
+		/*=============================================
+		Traer pay_orders
+		=============================================*/
+		this.boxesService.getPayOrders()
+		.subscribe(resp=>{
+
+      let cont = [];
+      let arts = [];
+      let total = 0;
+      let shipping = 0;
+      let status =[];
+
+      for(let i in resp){
+      	if(resp[i].id_user){
+      		cont.push(resp[i]);
+      		arts.push(resp[i].list_arts);
+      		total = resp[i].total;
+      		shipping = resp[i].shippingTotal;
+      	}
+      }
+      this.pay_orders = cont;
+      this.artsBox = arts;
+      this.paypal_total = total;
+      this.payplal_shipping = shipping;
+      // console.log("pay_orders",this.pay_orders);
+      // console.log("pay_orders",this.artsBox);
+     	this.pricePayplay = this.paypal_total + this.payplal_shipping;
+
+     	console.log("pricePayplay",this.pricePayplay);
 
 		})
 
@@ -482,6 +520,11 @@ export class CheckoutComponent implements OnInit {
 
 						})
 
+						// this.boxesService.changePayOrderStatus()
+						// .subscribe(resp=>{
+							
+						// })
+
 						/*=============================================
 						Crear el proceso de entrega de la venta
 						=============================================*/
@@ -661,8 +704,9 @@ export class CheckoutComponent implements OnInit {
 			/*=============================================
 			Ejecutamos función de Paypal pasando el precio total de la venta
 			=============================================*/	
+			
 
-			Paypal.fnc(this.totalPrice[0]).then(resp=>{
+			Paypal.fnc(this.pricePayplay).then(resp=>{
 				
 				if(resp){
 
@@ -829,14 +873,14 @@ export class CheckoutComponent implements OnInit {
 						localStorage.removeItem("list");
 						Cookies.remove('coupon');
 
-						// Sweetalert.fnc("success", "The purchase was successful", "checkout");
+						Sweetalert.fnc("success", "The purchase was successful. Check your email", "/");
 					
 					}						
 
 				}else{
 
 
-					// Sweetalert.fnc("error", "The purchase was not made, please try again", null);
+					Sweetalert.fnc("error", "The purchase was not made, please try again", null);
 
 				}
 

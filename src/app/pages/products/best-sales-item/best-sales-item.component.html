@@ -5,7 +5,7 @@ Best Sale Items
 <div  
 *ngIf="!preload && !notFound">
 
-  <!--=====================================
+  <!--======================= ==============
   Slider   
   ======================================-->
   <div style="margin-top: 0%;" id="carouselExampleControlsH" class="carousel slide" data-ride="carousel">
@@ -24,6 +24,8 @@ Best Sale Items
           color: {{coloTextoSlider[i]}}; font-family: 'Libre Franklin', sans-serif;">
             {{textoSlider[i]}}
           </h3>
+          <p class="animated bounceInRight" style=" font-size: 24px; font-weight: 450;
+          color: {{coloTextoSlider[i]}}; font-family: 'Libre Franklin', sans-serif;">{{description}}</p>
           <p class="animated bounceInRight" 
           style="animation-delay: 3s; font-size: 20px; font-weight: 20;
           color:{{colorTextoBtn[i]}}; background:{{coloBtn[i]}}; font-family: 'Libre Franklin', sans-serif;
@@ -67,14 +69,14 @@ Best Sale Items
           id="contenedorTow"
           routerLink="/product/{{product.url}}">
             <img class="movil-img-t" 
-            style="width: 247px; height: 247px;"
+            style="width: 247px; height: auto;"
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
             src="{{product.image}}" alt="">
 
             <img *ngIf="product.gallery[1] != undefined"
             id="imgGalleryTow"  class="movil-img-t" 
-            style="width: 247px; height: 247px;position: 
+            style="width: 247px; height: auto;position: 
             absolute;margin-top: -100%;" 
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
@@ -142,8 +144,9 @@ Best Sale Items
 
             <div style="display: flex;">
 
-              <p style="font-weight: 450; font-size: 17px;">$</p>
-              <p>
+              <p style="font-weight: 20; font-size: 17px;
+              font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
+              <p style="margin-top:1%;">
                 <b style="font-family:'Libre Franklin', sans-serif; 
                   font-weight: 20; font-size: 17px; ">
                    {{product.price}}
@@ -269,7 +272,7 @@ class="d-flex justify-content-center d-lg-none">
   .texto a{
       border: 1px solid black !important;
       background: white;
-      width: 247px;
+      width: auto;
       height: 40px;
       display: flow-root;
       text-align: center;
@@ -374,7 +377,7 @@ class="d-flex justify-content-center d-lg-none">
     font-family: merienda;
   }
   .carousel-caption p {
-    width: 30%;
+    width: auto;
     margin: auto;
     font-size: 18px;
     line-height: 1.9;

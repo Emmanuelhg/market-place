@@ -2,13 +2,13 @@
 Products found
 ======================================--> 
 
-<div class="ps-shopping ps-tab-root">
+<div class="ps-shopping ps-tab-root" style="margin-top: 12%;">
 
     <!--=====================================
     Shoping Header
     ======================================--> 
 
-    <div class="ps-shopping__header">
+    <div class="ps-shopping__header" style="display:none;">
 
         <p><strong> {{productFound}}</strong> Products found</p>
 
@@ -75,7 +75,7 @@ Products found
                     Product
                     ======================================--> 
 
-                    <div 
+                    <div style="display:none;" 
                     *ngFor="let product of products; let i = index;"
                     class="col-lg-2 col-md-4 col-6">
 
@@ -84,7 +84,7 @@ Products found
                             <div class="ps-product__thumbnail">
 
                                 <a routerLink="/product/{{product.url}}">
-                                    <img src="{{path}}img/products/{{product.category}}/{{product.image}}" alt="{{product.name}}">
+                                    <img src="{{product.image}}" alt="{{product.name}}">
                                 </a>
 
                                 <div [innerHTML]="price[i][1]"></div>
@@ -157,11 +157,129 @@ Products found
                   
                     </div><!-- End Product -->
 
+
+                    <!--=====================================
+                    Productos col-md-12 col-sm-12
+                    ======================================--> 
+                    <div class="container" >
+
+                        <div class="divimageness row">  
+
+                            <div
+                            *ngFor="let product of products; let i = index;"
+                            class="col-lg-3 col-md-4 col-sm-6">
+
+                                <div class="ps-product__thumbnail"  style="margin-bottom: 12%;">
+                                  
+                                  <a style=" position: relative;
+                                  display: inline-block;
+                                  text-align: center;"
+                                  class="imgHover" 
+                                  id="contenedorTow"
+                                  routerLink="/product/{{product.url}}">
+                                    <img class="movil-img-t" 
+                                    style="width: 247px; height: 247px;"
+                                    type="button"  data-toggle="modal" 
+                                    data-target=".bd-example-modal-xl"
+                                    src="{{product.image}}" alt="">
+
+                                    <img *ngIf="product.gallery[1] != undefined"
+                                    id="imgGalleryTow"  class="movil-img-t" 
+                                    style="width: 247px; height: 247px;position: 
+                                    absolute;margin-top: -100%;" 
+                                    type="button"  data-toggle="modal" 
+                                    data-target=".bd-example-modal-xl"
+                                    src="{{product.gallery[1]}}" alt="">
+
+                                      <!-- (click)="detallesProducto(product)" -->
+
+                                    <!-- Boton para agregar productos al carrito -->
+                                    <div class="texto" id="botonTow">
+
+                                      <a style="cursor:pointer;font-family:'Libre Franklin', sans-serif;" 
+                                      (click)="addShoppingCart(product,product.url, 1, [])" 
+                                       data-toggle="tooltip" data-placement="top" title="Add to Cart">
+
+                                        <p style="font-family:'Libre Franklin', sans-serif;
+                                        font-weight: 20; font-size: 15px; 
+                                        color: #353535;">
+                                          Add to cart
+                                        </p>   
+                                          
+                                      </a>
+
+                                    </div>  
+
+                                    <style>
+                                      #imgGalleryTow{
+                                        display: none;
+                                      }
+                                      #contenedorTow:hover #botonTow{
+                                        display: block;
+                                      }
+                                      #contenedorTow:hover #imgGalleryTow{
+                                        display: block;
+                                      }
+                                    </style>
+                                  </a>
+                                  
+                                  <!--  Lista de deseos  -->
+                                  <div id="heartTow">
+
+                                    <a title="Add to Whishlist">
+                            
+                                      <i  
+                                      class="icon-heart"
+                                      style="cursor: pointer;"></i>
+
+                                    </a>    
+
+                                  </div>
+
+                                  <!-- Información del producto -->
+                                  <div style="width: 245px;">
+
+                                    <a title="Add to Whishlist"
+                                    routerLink="/product/{{product.url}}">
+
+                                      <b style="font-family:'Libre Franklin', sans-serif; 
+                                      font-weight: 20; font-size: 17px; color: #353535;">
+                                        {{product.name}}
+                                      </b>
+
+                                    </a>
+                                    
+                                    <div style="display: none;" [innerHTML]="price[i][0]"></div>
+
+                                    <div style="display: flex;">
+
+                                      <p style="font-weight: 20; font-size: 17px;
+                                      font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
+                                      <p style="margin-top:1%;">
+                                        <b style="font-family:'Libre Franklin', sans-serif; 
+                                          font-weight: 20; font-size: 17px; ">
+                                           {{product.price}}
+                                        </b>
+                                      </p>
+                                        
+                                    </div>
+                                    
+                                  </div>
+                                 
+                                </div>
+                                {{ lastIndex ? callback() : ""}}
+
+                            </div><!-- End Product --> 
+                          
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
-            <div class="ps-pagination">
+            <div class="ps-pagination" style="display:none;">
 
                 <ul class="pagination"
                 [attr.data-total-pages]="totalPage"
@@ -275,3 +393,265 @@ Products found
     </div>
 
 </div>
+
+
+<style>
+
+  /*Media query*/
+
+  @media (max-width: 360px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+    .img-banner-etre {
+      height: auto !important;
+    }
+    .carousel-item {
+      height: auto !important;
+      margin-bottom: 4% !important;
+    }
+  }
+
+
+  @media (max-width: 411px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+    .img-banner-etre {
+      height: auto !important;
+    }
+    .carousel-item {
+      height: auto !important;
+      margin-bottom: 4% !important;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 414px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+    .img-banner-etre {
+      height: auto !important;
+    }
+    .carousel-item {
+      height: auto !important;
+      margin-bottom: 4% !important;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  @media (max-width: 540px) {
+    .movil-img-t {
+      width: 100%  !important;   
+      height: 100%  !important; 
+    }
+  }
+
+  .psd{
+    color: white;
+    text-align: center;
+    margin-top: -27%;
+    margin-bottom: 29%;
+  }
+  .divimageness{
+     /* border-top:solid #dee2e6!important;*/
+      margin: 2%;
+      margin-top: 5%;
+      display: flex;
+  }
+  .texto{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      /*bottom: - 100%;*/
+      /*padding: 10px 20px;*/
+  }
+  .texto a{
+      border: 1px solid black !important;
+      background: white;
+      width: auto;
+      height: 40px;
+      display: flow-root;
+      text-align: center;
+      color: black;
+      font-size: 20px;
+      height: px;
+      transition: 4s;
+      padding:4%;
+  }    
+ /* .ps-product:hover .texto{
+    bottom: -4%;
+  }*/
+  .imgHover:hover .texto {
+    top: 82%;
+
+    background-color:ps-form--quick-search button;
+    color: #ffffff;
+  }
+
+  .navImage  {
+   /*background-color: #490D40;*/
+   /*background: url("https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/Images%2FGWD9nWQzdS23k3hr.png?alt=media&token=2daac6db-45f8-46a0-ac05-7a34680a14e1") no-repeat center center;*/
+   width: 100%;
+   background-size: cover;
+   height: 685px;
+   transition: .5s;
+   margin-top: px;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   margin-bottom: 16%;
+  }
+
+  .slider {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .navImage ul {
+    display: flex;
+    padding: 0;
+    width: 500%;
+    margin-bottom: auto;
+    animation: cambio 20s infinite alternate linear;
+    animation-direction: alternate;
+  }
+
+  .navImage li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .navImage img {
+   width: 100%;
+   height: 800px;
+   transition: .5s;
+  }
+
+  @keyframes cambio {
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+    
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+    
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+    
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+  }
+  #heartTow{
+    display: none;
+    margin-top:-243px;
+    position:absolute;
+    margin-left: 3%;
+  }
+  #contenedorTow:hover #heartTow{
+    display: block;
+  }
+
+  #botonTow{
+    display: none;
+  }
+  #contenedorTow:hover #botonTow{
+    display: block;
+  }
+
+  /*Carrusel*/
+  .carousel-item {
+    height: 100vh;
+    min-height: 300px;
+  }
+  .carousel-caption {
+    bottom: 40%;
+  }
+  .carousel-caption h5 {
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    font-family: merienda;
+  }
+  .carousel-caption p {
+    width: auto;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+    font-family: poppins;
+  }
+  .carousel-caption a {
+    text-transform: uppercase;
+    /*background: #262626;*/
+    padding: 10px 30px;
+    display: inline-block;
+    /*color: #fff;*/
+    margin-top: 3px;
+  }
+  .navbar-nav a {
+    font-family: poppins;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .navbar-light .navbar-brand {
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #fff;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    color: #fff;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+  .nav-link {
+    padding: .2rem 1rem;
+  }
+  .nav-link.active, .nav-link:focus {
+    color: #fff;
+  }
+  .navbar-toggler {
+    padding: 1px 5px;
+    font-size: 18px;
+    line-height: 0.3;
+    background: #fff;
+  }
+  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff;
+  }
+  .w-100 {
+    height: 100vh;
+  }
+  @media only screen and (max-width: 767px) {
+    .navbar-nav.ml-auto {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .navbar-nav a {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  } 
+</style>

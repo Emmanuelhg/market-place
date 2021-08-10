@@ -51,6 +51,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   box_content:any[] = [];
   bestSalesItem:any[] = [];
   price:any[] = [];
+  authValidate:boolean = false;
 
   // Variables de productos
   getProduct:any[] = [];
@@ -71,6 +72,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   porductos_detalles_precio;
   porductos_detalles_name;
   porductos_marca;
+  porductos_details;
   subTotal:string = "0";
   text_box:string;
   box_size=30;
@@ -320,6 +322,8 @@ export class SelecctionPasoDosComponent implements OnInit {
 
       if(resp){
 
+        
+
         this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
         .subscribe(resp=>{
 
@@ -366,7 +370,7 @@ export class SelecctionPasoDosComponent implements OnInit {
                     =============================================*/
 
                     for(const i in resp){
-
+                      this.authValidate = true;
                       load ++;
 
                       this.productosListaDeseos.push(resp[i]);
@@ -537,6 +541,7 @@ export class SelecctionPasoDosComponent implements OnInit {
     this.porductos_detalles=products.description;
     this.porductos_detalles_img=products.image;
     this.porductos_marca = products.store;
+    this.porductos_details = products.details;
 
     // console.log("Es esto je je je :",products);
 
@@ -875,6 +880,14 @@ export class SelecctionPasoDosComponent implements OnInit {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
+  // Mostrar alerta para quitar productos
+  fncQuitarProductosDeseos() {
+    var x = document.getElementById("snackbarListaDeseos");
+    x.className = "show";
+    
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
   fncNewR(i, name){
     console.log(i);
     console.log(name);
@@ -1018,6 +1031,45 @@ export class SelecctionPasoDosComponent implements OnInit {
   addWishlist(products){
 
     this.usersService.addWishlist(products);
+  }
+
+  /*=============================================
+  Eliminar el producto de la lista de deseos
+  =============================================*/
+
+  eliminarProductos(products){
+
+    this.wishlistEtre.forEach((list,index)=>{
+
+      if(list ==  products){
+
+        this.wishlistEtre.splice(index ,1);
+
+      }
+
+    })
+
+    /*=============================================
+    Actualizamos en firebase la lista de deseos
+    =============================================*/
+
+    let body = {
+
+      wishlist: JSON.stringify(this.wishlistEtre)
+
+    }
+
+    this.usersService.patchData(this.idLista ,body)
+    .subscribe(resp=>{
+
+      if(resp["wishlist"] != ""){
+
+        Sweetalert.fnc("success","Se removió el producto de la lista de deseos")
+
+      }
+
+    })
+
   }
 
 }

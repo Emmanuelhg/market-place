@@ -3,10 +3,10 @@ style="position: relative; z-index: 100%;">
 
     <div class="header__content fixed-top" style="padding: 0px;">   
 
-        <div style=" display: flex; margin-top:2%; margin-bottom: 2%;">
+        <div style="display: flex; margin-top:2%; margin-bottom: 2%;">
 
             <!--=====================================
-            Menús de Banner 
+            Menús de Banner  
             ======================================-->
 
             <div class="menu-pequeño-ty" style="display: flex; width: 40%; margin-top: 3%;">
@@ -22,7 +22,7 @@ style="position: relative; z-index: 100%;">
 
                             <a style="color: {{color_text_menu}}; font-size: 18px;
                             font-family:'Libre Franklin', sans-serif; font-weight: 450;" 
-                            href="#" 
+                            href="#" id="titulo1" 
                             *ngFor="let negocio of color; let lastIndex = last" >    
                                 {{negocio.title_menu_1}}    
                              {{ lastIndex ? callback() : ""}}
@@ -79,6 +79,7 @@ style="position: relative; z-index: 100%;">
                                             font-size: 18px;
                                             font-family:'Libre Franklin', sans-serif;
                                             font-weight: 450;"
+                                            class="title-home-etre" 
                                             routerLink="products/kits" target="_top">
                                                 Curated Gift Boxes
                                             </a>
@@ -87,6 +88,7 @@ style="position: relative; z-index: 100%;">
                                             font-size: 18px;
                                             font-family:'Libre Franklin', sans-serif;
                                             font-weight: 450;"
+                                            class="title-home-etre" 
                                             routerLink="selecction-caja" target="_top">
                                                 Curate your box
                                             </a>
@@ -94,7 +96,8 @@ style="position: relative; z-index: 100%;">
                                             <a  style="color: {{color_text_menu}}; 
                                             font-size: 18px;
                                             font-family:'Libre Franklin', sans-serif; 
-                                            font-weight: 450;" 
+                                            font-weight: 450;"
+                                            class="title-home-etre"  
                                             routerLink="products/{{category.url}}" target="_top">
                                                 For you
                                             </a>
@@ -135,6 +138,7 @@ style="position: relative; z-index: 100%;">
                                                 font-size: 18px;
                                                 font-family:'Libre Franklin', sans-serif;
                                                 font-weight: 450;"
+                                                class="title-home-etre" 
                                                 routerLink="frequently-asked-questions" target="_top">
                                                     How it works
                                                 </a>
@@ -147,6 +151,7 @@ style="position: relative; z-index: 100%;">
                                                 font-size: 18px;
                                                 font-family:'Libre Franklin', sans-serif; 
                                                 font-weight: 450;"
+                                                class="title-home-etre" 
                                                 routerLink="our-story" target="_top">
                                                     Our story 
                                                 </a>
@@ -187,7 +192,7 @@ style="position: relative; z-index: 100%;">
                                 font-size: 18px;
                                 font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 450;"
-                                href="/" 
+                                href="/"  
                                 *ngFor="let negocio of color; let lastIndex = last">
                                     {{negocio.title_menu_1}} 
                                     {{ lastIndex ? callback() : ""}}
@@ -229,7 +234,8 @@ style="position: relative; z-index: 100%;">
                                             <a href="products/kits">
                                                 <strong  style="color: {{color_text_menu}}; 
                                                 font-size: 18px; font-weight: 450;
-                                                font-family:'Libre Franklin', sans-serif; ">
+                                                font-family:'Libre Franklin', sans-serif; "
+                                                class="title-home-etre" >
                                                     Curated Gift Boxes
                                                 </strong>
                                             </a> 
@@ -241,7 +247,8 @@ style="position: relative; z-index: 100%;">
                                             <a routerLink="selecction-caja" target="_top">
                                                 <strong style="color: {{color_text_menu}}; 
                                                 font-family:'Libre Franklin', sans-serif; 
-                                                font-weight: 450;">
+                                                font-weight: 450;"
+                                                class="title-home-etre" >
                                                     Curate your box
                                                 </strong> 
                                             </a>
@@ -254,7 +261,8 @@ style="position: relative; z-index: 100%;">
                                                 <strong style="color: {{color_text_menu}}; 
                                                 font-size: 18px;
                                                 font-family:'Libre Franklin', sans-serif; 
-                                                font-weight: 450;">
+                                                font-weight: 450;"
+                                                class="title-home-etre" >
                                                     For you
                                                 </strong>
                                             </a> 
@@ -302,7 +310,8 @@ style="position: relative; z-index: 100%;">
                                                 <strong style="color: {{color_text_menu}}; 
                                                 font-size: 18px;
                                                 font-family:'Libre Franklin', sans-serif;
-                                                font-weight: 450;">
+                                                font-weight: 450;"
+                                                class="title-home-etre" >
                                                     How it works
                                                 </strong> 
                                             </a>
@@ -311,7 +320,8 @@ style="position: relative; z-index: 100%;">
                                                 <strong style="color: {{color_text_menu}}; 
                                                 font-size: 18px;
                                                 font-family:'Libre Franklin', sans-serif; 
-                                                font-weight: 450;">
+                                                font-weight: 450;"
+                                                class="title-home-etre" >
                                                     Our story
                                                 </strong> 
                                             </a>
@@ -335,13 +345,13 @@ style="position: relative; z-index: 100%;">
             <!--=====================================
             Logo 
             ======================================-->
-            <div class="etre-mini-rtf" style="width: 20%;  margin-top: 2%;">
+            <div class="etre-mini-rtf" style="width: 20%;  margin-top: 3%;">
 
                 <div class="col-12">
 
                     <div class="d-flex align-items-center justify-content-center">
 
-                        <img class="img2" style="width: 160px; height: 45px; border: " src="{{img_logo}}"  routerLink="/">
+                        <img class="img2" style="width: 128px; height: 34px; border: " src="{{img_logo}}"  routerLink="/">
 
                     </div>
                     
@@ -353,17 +363,37 @@ style="position: relative; z-index: 100%;">
             Íconos de carrito y buscador
             ======================================-->
 
-            <div class="mg-beta" style="width: 40%;  margin-top: 3%;">
+            <div class="mg-beta" style="width: 40%; margin-top: 3%;">
+ 
+                <div class="ps-cart--mini" style=" float: right; margin-right: 15%;">
 
-                <!--=====================================
-                Cart    
-                ======================================-->
-                 
-                <div class="ps-cart--mini" style=" float: right; margin-right: 10%;">
+                    <div style="display:flex; ">
 
-                    <div style="display:flex;">
+                        <!--=====================================
+                        Buscador    
+                        ======================================-->
 
-                        <div *ngIf="!authValidate" style="margin-right: 2%;">
+                        <div style="margin-right:8%; display: flex;">
+
+                            <!-- <input *ngIf="visibility_1[0]" 
+                            (keyup.enter)="goSearch(search.value)"
+                            #search
+                            class="form-control" 
+                            type="text" 
+                            placeholder="Search..." 
+                            id="search-movil-d">  --> 
+
+                            <a (click)="fncVisibility(0)" style="cursor:pointer;padding-left: 4%;">
+                                <i class="fas fa-search"></i>
+                            </a>   
+
+                        </div>
+
+                        <!--=====================================
+                        Usuario    
+                        ======================================-->
+
+                        <div *ngIf="!authValidate" style="margin-right: 8%;">
                             <a routerLink="login">
                                 <i class="far fa-user" style="color:black;"></i>
                             </a>
@@ -376,11 +406,16 @@ style="position: relative; z-index: 100%;">
                             (click)="logout()">Logout</a>
                         </div>
 
-                        <a class="header__extra" style="cursor: pointer;" 
-                        (click)="fncWindowCart()">
-                            <img style="width: 94%;" src="{{icon}}"><span><i>{{totalShoppingCart}}</i></span>
-                        </a>
-                        
+                        <!--=====================================
+                        Cart    
+                        ======================================-->
+                        <div style="cursor: poiter; ">
+                            <a class="header__extra" style="margin-right:1%;" 
+                            (click)="fncWindowCart()">
+                                <img style="width: 100%;" src="{{icon}}"><span><i>{{totalShoppingCart}}</i></span>
+                            </a>
+                        </div>
+
                     </div>  
 
                     <div 
@@ -451,13 +486,32 @@ style="position: relative; z-index: 100%;">
                 
             </div>
 
-        </div>  
+        </div>
 
-    </div>            
+        <!--=====================================
+        Buscador móbil
+        ======================================--> 
+
+        <div id="buscador-movil-e" style="margin-left: 1%; margin-right: 4%;margin-top: 2%;
+        margin-bottom: 2%;display: none;">
+
+            <input *ngIf="visibility_1[0]" 
+            (keyup.enter)="goSearch(search.value)"
+            #search
+            class="form-control" 
+            type="text" 
+            placeholder="Search..." > 
+
+        </div>
+
+    </div>
 
 </header>
 
 <style>
+    .title-home-etre:hover{
+        font-weight: 900 !important;
+    }
     .container {
         max-width: 100%;
     }
@@ -523,39 +577,39 @@ style="position: relative; z-index: 100%;">
         transition: all 1s ease;
     }
 
-a.animated-button.thar-three {
-    color: #fff;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    border: 2px solid #F7CA18;
-    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
-a.animated-button.thar-three:hover {
-    color: #000 !important;
-    background-color: transparent;
-    text-shadow: nthree;
-}
-a.animated-button.thar-three:hover:before {
-    left: 0%;
-    right: auto;
-    width: 100%;
-}
-a.animated-button.thar-three:before {
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    height: 100%;
-    width: 0px;
-    z-index: -1;
-    content: '';
-    color: #000 !important;
-    background: #F7CA18;
-    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-0s;
-}
+    a.animated-button.thar-three {
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        position: relative;
+        border: 2px solid #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
+    a.animated-button.thar-three:hover {
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nthree;
+    }
+    a.animated-button.thar-three:hover:before {
+        left: 0%;
+        right: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-three:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    0s;
+    }
 
   
     /* Global Button Styles */
@@ -673,6 +727,32 @@ a.animated-button.thar-three:before {
         padding: 0px;
     }
 
+    @media screen and  (max-width: 360px) {
+        .menu-pequeño-ty  {
+            margin-top: 0% !important;
+        }
+        .etre-mini-rtf {
+            width: auto !important;
+            margin-top: 1% !important;
+        }
+        .ps-filter--sidebar {
+            width: 80% !important;
+            height: auto !important;
+        }
+        #search-movil-d {
+            display: none !important;
+        }
+
+        .form-control {
+            width: 100% !important;
+        }
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        } 
+    } 
+
     @media screen and  (max-width: 768px) {
         .ntn_xd{
             display: block !important;
@@ -680,6 +760,11 @@ a.animated-button.thar-three:before {
         .ahorita_si_joven{
             display: none !important;
         }
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        }  
     }
 
     @media screen and  (min-width: 768px) {
@@ -689,6 +774,12 @@ a.animated-button.thar-three:before {
         .ntn_xd{
             display: none !important;
         }
+
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        }  
     }
 
 
@@ -707,22 +798,24 @@ a.animated-button.thar-three:before {
         }
         .ps-cart--mini {
             margin-right: 25% !important;
-        }    
+        }   
+
+        #search-movil-d {
+            display: none !important;
+        }
+
+        .form-control {
+            width: 100% !important;
+        } 
+
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        }  
     }
 
-    @media screen and  (max-width: 360px) {
-        .menu-pequeño-ty  {
-            margin-top: 0% !important;
-        }
-        .etre-mini-rtf {
-            width: auto !important;
-            margin-top: 1% !important;
-        }
-        .ps-filter--sidebar {
-            width: 80% !important;
-            height: auto !important;
-        }
-    }
+    
 
     @media screen and  (max-width: 411px) {
         .menu-pequeño-ty  {
@@ -739,12 +832,37 @@ a.animated-button.thar-three:before {
         .ps-cart--mini {
             margin-right: 25% !important;
         }
+        #search-movil-d {
+            display: none !important;
+        }
+
+        .form-control {
+            width: 100% !important;
+        }
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        }   
     }
     @media screen and  (max-width: 768px) {
 
         .menu-pequeño-ty{
             width: 47% !important;
         }
+
+        #search-movil-d {
+            display: none !important;
+        }
+
+        .form-control {
+            width: 100% !important;
+        }
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        } 
     }
     @media screen and  (max-width: 540px) {
         .menu-pequeño-ty  {
@@ -761,5 +879,24 @@ a.animated-button.thar-three:before {
         .ps-cart--mini {
             margin-right: 25% !important;
         }
-    }    
+        #search-movil-d {
+            display: none !important;
+        }
+
+        .form-control {
+            width: 100% !important;
+        }
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        }  
+    } 
+    @media screen and  (max-width: 1024px) {  
+        #buscador-movil-e {
+            display: block !important;
+            margin-left: 5% !important;
+            margin-bottom: 4% !important;
+        } 
+    }
 </style>

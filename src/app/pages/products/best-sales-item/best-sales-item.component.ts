@@ -3,7 +3,7 @@ import { Path } from '../../../config';
 import { OwlCarouselConfig, 
 	     CarouselNavigation, 
 	     Rating, 
-	     DinamicRating, 
+	     DinamicRating,  
 	     DinamicReviews,  
 	     DinamicPrice,
 	     Sweetalert } from '../../../functions'; 
@@ -43,6 +43,7 @@ export class BestSalesItemComponent implements OnInit {
   	coloBtn;
   	linkBtn;
 	textoBtn;
+	description;
   vista;
 	img_slider_array:string[] = [];
 	getProduct:any[] = [];
@@ -76,7 +77,9 @@ export class BestSalesItemComponent implements OnInit {
 	        // Texto de botón
 	        this.textoBtn = resp["personalization"].Kits_slider_buttontext;
 
-	         this.vista = resp["personalization"].Kits_slider_buttons_visibility;
+	        this.description = resp["personalization"].Kits_slider_description;
+
+	        this.vista = resp["personalization"].Kits_slider_buttons_visibility;
 	      
 	    })
 

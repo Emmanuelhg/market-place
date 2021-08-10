@@ -13,6 +13,7 @@ export class BoxesService {
 
   private api:string = Api.url;	
 
+
   constructor(private http:HttpClient) { }
 
    /*=============================================
@@ -31,6 +32,12 @@ export class BoxesService {
 		console.log("ruta:", this.api);
 		console.log("id:", id);
 		return this.http.put(`${this.api}/boxes/${id}.json`, body);
+
+	}
+
+	crearShipping(isUser:string,shippingObject:object){
+
+		return this.http.put(`${this.api}/pay_orders/${isUser}.json`,shippingObject);
 
 	}
 	////////////
@@ -64,4 +71,15 @@ export class BoxesService {
 		return this.http.patch(`${this.api}boxes/${id}/${child}.json?auth=${id}`,value);
 
 	}	
+
+	getPayOrders(){
+		return this.http.get(`${this.api}pay_orders.json`);
+	}
+
+	changePayOrderStatus(isUser:string, status:string){
+
+		return this.http.patch(`${this.api}pay_orders/${isUser}.json`,status);		
+
+	}
+
 }

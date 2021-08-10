@@ -109,10 +109,11 @@ export class UsersService {
   	=============================================*/
 
   	patchData(id:string, value:object){
+      console.log("id del servicio:",id);
 
 		return this.http.patch(`${this.api}users/${id}.json`,value);
-
-	}
+ 
+	 }
 
 	/*=============================================
   	Validar idToken de Autenticación

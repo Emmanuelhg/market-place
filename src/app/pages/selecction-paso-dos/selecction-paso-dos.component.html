@@ -15,7 +15,7 @@
   </div>
 
   <!--=====================================
-  Descripción   
+  Descripción    
   ======================================-->
   <div class="container step-et">
     <div style="text-align: center; margin-top: 20%;
@@ -28,13 +28,61 @@
 
       <p style="font-family:'Libre Franklin', sans-serif; font-size: 24px;
       font-weight: 450; color: black;">
-        CHOOSE YOUR ITEMS
+        Choose your items
       </p>
 
     </div>
   </div> 
 
-  
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <h5 class="modal-title-rd" id="exampleModalCenterTitle"
+            style=" font-family:'Libre Franklin', sans-serif;
+            font-weight: 450; font-size: 24px;">
+                Box Sizes
+            </h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+              <span aria-hidden="true">&times;</span>
+
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+
+            <p class="modal-tex" style=" font-family: 'Libre Franklin', sans-serif;
+            font-weight: 20; font-size:20px;">
+
+              We want your gifts to look perfect!, that's why we have three different
+              box sizes. Never too much or too little space, and perfectly packed everytime!   
+
+            </p>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <button type="button" 
+            style="background: black; width: 107px; height: 45px; font-family: 'Libre Franklin', sans-serif;
+            font-weight: 100; font-size:16px;" 
+            class="btn btn-secondary" data-dismiss="modal">
+                GOT IT!
+            </button>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="container" style="display: none;">
 
     <div class="div-new">
@@ -280,21 +328,26 @@
 
     <div class="row" style="display:flex; border:1px solid #dddddd!important; margin-left: 3%;margin-right: 4%;">
 
-      <div class="select-caja select-active-caja col-lg-6" data-target="#exampleModalCenter"
-      id="small-box-a" type="button"  data-toggle="modal" style="height: px; text-align:center; ">
+      <div class="select-caja select-active-caja col-lg-6"
+      style="height: px; text-align:center; "
+      id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
-        <h6 style="font-family:'Libre Franklin', sans-serif; 
-        font-weight: 20; font-size: 15px; margin-top: 2%;">
+        <h6 style="font-family:'Libre Franklin', sans-serif; cursor: pointer;
+        font-weight: 20; font-size: 15px; margin-top: 2%; "
+        data-toggle="modal" data-target="#exampleModalCenter"
+        id="small-box-a" >
           SMALL
         </h6> 
 
       </div>
 
       <div class="col-lg-6 select-caja" style="height: px;text-align: center;"
-      id="regular-box-a" type="button"  data-toggle="modal" data-target="#exampleModalCenter">
+       id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
-        <h6 style="font-family:'Libre Franklin', sans-serif; 
-        font-weight: 20; font-size: 15px; margin-top: 2%;">
+        <h6 style="font-family:'Libre Franklin', sans-serif; cursor: pointer; 
+        font-weight: 20; font-size: 15px; margin-top: 2%;" 
+        data-toggle="modal" data-target="#exampleModalCenter"
+        id="small-box-a" >
           REGULAR
         </h6>
 
@@ -341,7 +394,7 @@
 
               <div class="img-new-product">
 
-                <img class="img-caja-add" style="height: 149px; display: flex; object-fit: cover;" 
+                <img class="img-caja-add" style="height: auto;width: 100%; display: flex; object-fit: cover;" 
                 src="{{box_json.box_img}}" alt="">
 
                 <div class="circulo">{{1}}</div>
@@ -356,7 +409,7 @@
               <div  class="img-new-product">
 
                 <img class="img-producto-add" src="{{product.image}}" alt=""
-                style="display: flex; object-fit: cover; height: 149px;" >
+                style="display: flex; object-fit: cover; height: auto;" >
 
                 <div class="circulo">{{cant_productos[i]}}</div>
 
@@ -482,7 +535,7 @@
         ======================================-->
 
         <div class="row" style="padding-top: 2%; border-top: 1px solid #dddddd !important;
-        border-bottom: 1px solid  #dddddd !important; justify-content: center;">
+        border-bottom: 1px solid  #dddddd !important; justify-content: center; background:#e5e5e5;">
 
           <h6 style="font-family:'Libre Franklin', sans-serif;margin-top: 2%; 
           font-weight: 20; font-size: 15px;">
@@ -601,10 +654,14 @@
 
             <input
             style="font-family:'Libre Franklin', sans-serif; 
-            font-weight: 20; font-size: 20px;"
+            font-weight: 20; font-size: 20px;outline: none;
+            width: 100%;padding: 0 11px;border: none;height: 50px;
+            background-color: transparent; border: 1px solid  #ced4da;
+            box-shadow: 0 0 rgb(0 0 0 / 0%);-webkit-transition: all .4s ease;
+            transition: all .4s ease;box-shadow: 0 0 0 #000;"
             [(ngModel)] = "searh_filter_text"
             (keyup.enter)="goSearch()"
-            class="form-control mr-sm-2" 
+            class="mr-sm-2" 
             type="search" 
             placeholder="Search" 
             aria-label="Search">
@@ -623,11 +680,11 @@
   ======================================-->
   <div class="container">
 
-    <div class="divimageness row">
+    <div class="divimageness  row">
 
-      <div
-      *ngFor="let products of getProduct; let lastIndex = last,let i = index"
-      class="col-lg-3 col-md-4 col-sm-6" style="margin-top: 4%;">
+      <div *ngFor="let products of getProduct; let lastIndex = last,let i = index"
+      class="col-6 col-lg-3 col-md-6 col-sm-6" style="width: 100%;margin-top: 4%; 
+      height: auto; ">
 
         <!-- *ngIf="getVisibilityByFilter(products)" -->
         <div class="ps-product__thumbnail" id="contenedor">
@@ -647,16 +704,16 @@
             id="to-large-to-fid" 
             *ngIf="productsFull() == true">
 
-                <p style="color: black;font-family:'Libre Franklin', sans-serif; 
-                font-weight: 20; font-size: 20px; color: #353535; ">
-                    Oops!<br>
-                    (too large to fit)
-                </p>
+              <p style="color: black;font-family:'Libre Franklin', sans-serif; 
+              font-weight: 20; font-size: 20px; color: #353535; ">
+                Oops!<br>
+                (too large to fit)
+              </p>
 
             </div>
 
             <img class="img-producto-cty" 
-            style="width: 247px; height: 247px;" 
+            style="width: 247px; height: auto;" 
             (click)="detallesProducto(products)"
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
@@ -664,7 +721,7 @@
 
             <img id="imgGallery" 
             class="img-producto-cty" 
-            style="width: 247px; height: 247px;position: 
+            style="width: 247px; height: auto;position: 
             absolute;margin-top: -100%;" 
             (click)="detallesProducto(products)"
             type="button"  data-toggle="modal" 
@@ -753,7 +810,8 @@
           </style>
 
           <!-- Lista de deseos -->
-          <div id="heart" style=""> 
+          <div *ngIf="authValidate"
+          id="heart" style=""> 
             <a title="Add to Whishlist">
               <!-- (click)="fncMostrarListaDeseos()"
                data-toggle="modal" 
@@ -761,6 +819,16 @@
               <i (click)="addWishlist(products.url)" 
               class="icon-heart"    
               style="cursor: pointer;"></i>
+            </a>
+          </div>
+
+
+          <div *ngIf="!authValidate"
+          id="heart" style=""> 
+            <a title="Add to Whishlist"
+            (click)="eliminarProductos(productsLista.url)">
+              <i class="fas fa-heart"    
+              style="cursor: pointer; color: #e51164;"></i>
             </a>
           </div>
    
@@ -798,14 +866,156 @@
 
           </div>            
 
-        </div>
+        </div><!-- End Product -->
 
-       {{ lastIndex ? callback() : ""}}
+        {{ lastIndex ? callback() : ""}}
+        
+      </div>
 
-      </div><!-- End Product --> 
+      
         
     </div>
 
+  </div>
+
+  <!--=====================================
+  Sticky bottom bar productos
+  ======================================-->
+  <div class="sticky_btn" id="sticky_btn">
+    <div class="fixed-bottom row" id ="fixed-bottom-heart"
+    style="width: 100%; height: 120px; margin:0px; ">
+
+      <div style="width: 100%; position: absolute;" class="col-lg-12 col-ms-12 col-sm-12">
+        <img style="float: right; height: 36px; margin: .5%;" 
+        (click)="fncMostrarListaDeseos()"
+        data-toggle="modal" 
+        data-target=".lista-deseos"
+        src="{{path}}img/products_etre/icons8-me-gusta-64.png">
+      </div>
+             
+    </div>
+
+    <div class="fixed-bottom row" style="background: white; 
+    border-top:1px solid #000; width: 100%; height: px; margin:0px;">
+
+
+        <!-- Imagenes -->
+        <div class="col-lg-7 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
+        margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
+
+            <div class="row-yt" 
+            *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
+            id="alm_{{index}}">
+
+                <div class="" style="display: flex;">
+
+                    <img style="width: 100%; height:px; display: flex;" 
+                    src="{{product.image}}">
+
+                    <div class="circulo">{{cant_productos[i]}}</div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Botón 1 -->
+        <div class="btn-none col-lg-3 col-md-12 sol-sm-12" style="display: flex;
+        justify-content: center; align-items: center;">
+
+            <div class="col text-center">
+
+              <a class="byn-tyt-white" 
+              id="small-box-a" 
+              type="button"  data-toggle="modal" 
+              data-target="#exampleModalCenter"
+              style=" font-family:'Libre Franklin', sans-serif;
+              font-weight: 800;">CURRENT BOX REGULAR</a>
+              
+            </div>
+
+        </div>
+
+        <!-- Botón 2 -->
+        <div class="col-lg-2 col-md-12 sol-sm-12" style="display: flex;
+        justify-content: center; align-items: center;margin-left: -4%; ">
+
+          <div class="col text-center" style="padding-left: 0px;padding-right: 3px">
+
+            <a (click)="guardaProductos()" class="byn-tyt"
+            style="font-family:'Libre Franklin', sans-serif;
+            font-weight: 800;">
+              COMPLETE BOX 
+            </a>
+
+          </div>
+
+        </div>
+  
+    </div>
+
+  </div>
+
+  <!--=====================================
+  Mensajes para avisar al usuario que se 
+  agregó o removió un  producto de la caja
+  ======================================-->
+
+  <div style="justify-content: center; display: flex;">
+
+    <!-- Mensaje producto agregado --> 
+    <div style="border-radius: 15px;" 
+    id="snackbar">
+
+      <p style="font-family:'Libre Franklin', sans-serif; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        {{txt_product_snackbar}} added to box
+      </p>      
+       
+    </div>
+
+    <!-- Mensaje producto removido -->
+    <div  style="border-radius: 15px;" 
+    id="snackbarTow">
+
+      <p style="font-family:'Libre Franklin', sans-serif; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        {{txt_product_snackbar}} removed to your box
+      </p>
+      
+    </div>
+
+    <div style="border-radius: 15px;" 
+    id="snackbarAgregarListaDeseos">
+
+      <p style="font-family:'Libre Franklin', sans-serif; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        Added to your favorites
+      </p>
+        
+    </div>
+
+    <div style="border-radius: 15px;" 
+    id="snackbarQuitarListaDeseos">
+
+      <p style="font-family:'Libre Franklin', sans-serif; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        Removed from your favorites
+      </p>
+        
+    </div>
+
+    <div style="border-radius: 15px;" 
+    id="snackbarListaDeseos">
+
+      <p style="font-family:'Libre Franklin', sans-serif; 
+      font-weight: 20; font-size: 17px; color: whitesmoke;">
+        Removed from your favorites
+      </p>
+        
+    </div>
+      
   </div>
 
   <!--=====================================
@@ -879,6 +1089,8 @@
 
         </div>
 
+      <!--   <p>{{porductos_details}}</p> -->
+
         <div style="display:flex;">
 
           <p style="font-family:'Libre Franklin', sans-serif; 
@@ -890,7 +1102,7 @@
         </div>
 
         <!-- Botón del producto ventana modal   (click)="fncModal(porductos_detalles_name,porductos_detalles)" -->
-        <div style="text-align: center;align-items: center;">
+        <div style="text-align: center;align-items: center;display: none;">
 
           <div 
           class="col text-center" style="display: flow-root;
@@ -913,11 +1125,11 @@
         </div>
 
       </div>
-       
-    </div>
+        
 
   </div>
 
+  
   <!--=====================================
   Ventana Modal para alerta de cajas
   ======================================--> 
@@ -971,345 +1183,202 @@
     </div>
 
   </div>
+    
+</div>
 
-  
-  <!--=====================================
-  Sticky bottom bar productos
-  ======================================-->
-  <div class="sticky_btn" id="sticky_btn">
-      <div class="fixed-bottom row" id ="fixed-bottom-heart"
-      style="width: 100%; height: 120px; margin:0px; ">
+<!--=====================================
+Ventana modal de la lista de deseos
+======================================-->
+<div class="modal fade bd-example-modal-xl lista-deseos" tabindex="-1" role="dialog" aria-labelledby="
+myExtraLargeModalLabel" aria-hidden="true">
 
-        <div style="width: 100%; position: absolute;" class="col-lg-12 col-ms-12 col-sm-12">
-          <img style="float: right; height: 36px; margin: .5%;" 
-          (click)="fncMostrarListaDeseos()"
-          data-toggle="modal" 
-          data-target=".lista-deseos "
-          src="{{path}}img/products_etre/icons8-me-gusta-64.png">
-        </div>
-               
-      </div>
+  <div class="modal-dialog modal-xl row" role="document">
 
-      <div class="fixed-bottom row" style="background: white; 
-      border-top:1px solid #000; width: 100%; height: px; margin:0px;">
+    <!-- Productos de la lista de deseos -->
+    <div class="modal-content">
 
+      <!-- Título lista de deseos -->
+      <h3 style="text-align: center; margin-top: 4%;
+      margin-bottom: -1%;">
+          Your Favorites
+      </h3>
 
-          <!-- Imagenes -->
-          <div class="col-lg-7 col-md-12 sol-sm-12" style=" width: 100%; height: 74px; 
-          margin:0px; padding: 0px; display: flex; justify-content: flex-start;">
+      <div class="divimageness row">
 
-              <div class="row-yt" 
-              *ngFor="let product of almacenar_productos; let lastIndex = last, let i = index" 
-              id="alm_{{index}}">
+        <div
+        *ngFor="let productsLista of productosListaDeseos;"
+        class="col-lg-3 col-md-4 col-sm-6" style="margin-top: 4%;">
+
+          <!-- *ngIf="getVisibilityByFilter(products)" -->
+          <div class="ps-product__thumbnail" id="contenedor">
+
+            <a style=" position: relative;
+            display: inline-block;
+            text-align: center;"
+            class="Img-Hover">
+
+              <div style="position: absolute;
+              width: 100%;
+              align-items: center;
+              text-align: center;
+              opacity: 0.7;
+              background: white;
+              top: 37%;" 
+              id="to-large-to-fid" 
+              *ngIf="productsFull() == true">
+
+                  <p style="color: black;font-family:'Libre Franklin', sans-serif; 
+                  font-weight: 20; font-size: 20px; color: #353535; ">
+                      Oops!<br>
+                      (too large to fit)
+                  </p>
+
+              </div>
+
+              <img class="img-producto-cty" 
+              style="width: 247px; height: 247px;" 
+              (click)="detallesProducto(products)"
+              type="button"  data-toggle="modal" 
+              data-target=".bd-example-modal-xl"
+              src="{{productsLista.image}}" alt="">
+
+              <!-- Boton para agregar productos a la caja -->
+              <div id="boton">
+
+                <!-- BTN agregar a caja -->
+                <div 
+                class="texto" 
+                *ngIf="productsFull() == false && getvisibilityForAdd(productsLista.name) == false">
+                  <!-- (click)="myFunction(products.name)"   -->
+                  <a 
+                  (click)="fncNewAdd(productsLista, productsLista.name)"
+                  style="cursor:pointer ;">
+                    <p style="font-family:'Libre Franklin', sans-serif;
+                    font-weight: 20; font-size: 15px; margin-top: 1%; color: #353535;">
+                      Add to box
+                    </p> 
+                  </a>
+
+                </div>
+
+                <!-- BTN para agregar cantidad de productos -->
+                <div  *ngIf="getvisibilityForAdd(productsLista.name) == true && productsFull() == false"
+                style="display: flex; width: 100% !important; justify-content: center;
+                justify-content:space-around; padding: 2%; position: absolute;
+                margin-top: -19%;">
+
+                  <div style="display: flex; width: 244px; flex-direction: row">
+
+                    <!-- BTN menos -->
+                    <button style="width: 15%;"
+                    (click)="modificadorCantidadProductos(-1, i,productsLista)"
+                    class="menos" type="button">-</button>
+
+                    <div 
+                    style="background: white;width: 70%; text-align: center;
+                    color:black; border: 1px solid black !important;"
+                    id="quantity"> 
+
+                      <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;
+                       font-family:'Libre Franklin', sans-serif; ">
+                        {{getNumArts(products)}} IN INBOX
+                      </p>  
+
+                    </div>
+
+                    <!-- BTN más -->
+                    <button style="width: 15%;" 
+
+                    (click)="modificadorCantidadProductos(1, i,productsLista)"
+                    class="mas" type="button">+</button>
+                   
+                  </div>
+                  
+                </div>
+                                
+                <!-- Botón long -->
+                <div 
+                *ngIf="productsFull() == true" 
+                class="texto">
+
+                  <a 
+                  style="cursor:pointer; 
+                  font-family:'Libre Franklin', sans-serif; 
+                  font-weight: 20; font-size: 15px; color:#353535;">
+                    Too large
+                  </a>
+
+                </div>
+
+              </div>
+
+            </a>
+            <style>
+              #imgGallery{
+                display: none;
+              }
+              #contenedor:hover #imgGallery{
+                display: block;
+              }
+            </style>
+
+            <!-- Lista de deseos -->
+            <div id="heartList" style=""> 
+              <a title="Add to Whishlist"
+              [attr.remove]="productsLista.url"
+              (click)="eliminarProductos(productsLista.url)">
+                <i class="fas fa-heart"    
+                style="cursor: pointer; color: #e51164;"></i>
+              </a>
+            </div>
+     
+
+            <!-- Información de productos -->
+            <div class="">
+
+                <div style="margin-left: 1% ">
+
+                  <a>  
+                    <b style="font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20; font- : 17px; color:#353535;">
+                      {{productsLista.name}}
+                    </b>
+                  </a>
+
 
                   <div class="" style="display: flex;">
 
-                      <img style="width: 100%; height:px; display: flex;" 
-                      src="{{product.image}}">
+                    <p style="font-weight: 20; font-size: 17px;
+                    font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
 
-                      <div class="circulo">{{cant_productos[i]}}</div>
-                      
-                  </div>
-
-              </div>
-
-          </div>
-
-          <!-- Botón 1 -->
-          <div class="btn-none col-lg-3 col-md-12 sol-sm-12" style="display: flex;
-          justify-content: center; align-items: center;">
-
-              <div class="col text-center">
-
-                <a class="byn-tyt-white" 
-                id="small-box-a" 
-                type="button"  data-toggle="modal" 
-                data-target="#exampleModalCenter"
-                style=" font-family:'Libre Franklin', sans-serif;
-                font-weight: 800;">CURRENT BOX REGULAR</a>
-                
-              </div>
-
-          </div>
-
-          <!-- Botón 2 -->
-          <div class="col-lg-2 col-md-12 sol-sm-12" style="display: flex;
-          justify-content: center; align-items: center;margin-left: -4%; ">
-
-            <div class="col text-center" style="padding-left: 0px;padding-right: 3px">
-
-              <a (click)="guardaProductos()" class="byn-tyt"
-              style="font-family:'Libre Franklin', sans-serif;
-              font-weight: 800;">
-                COMPLETE BOX 
-              </a>
-
-            </div>
-
-          </div>
-    
-      </div>
-
-  </div>
-
-  <!--=====================================
-  Mensajes para avisar al usuario que se 
-  agregó o removió un  producto de la caja
-  ======================================-->
-
-  <div style="justify-content: center; display: flex;">
-
-    <!-- Mensaje producto agregado --> 
-    <div style="border-radius: 15px;" 
-    id="snackbar">
-
-      <p style="font-family:'Libre Franklin', sans-serif; 
-      font-weight: 20; font-size: 17px; color: whitesmoke;">
-        {{txt_product_snackbar}} added to box
-      </p>      
-       
-    </div>
-
-    <!-- Mensaje producto removido -->
-    <div  style="border-radius: 15px;" 
-    id="snackbarTow">
-
-      <p style="font-family:'Libre Franklin', sans-serif; 
-      font-weight: 20; font-size: 17px; color: whitesmoke;">
-        {{txt_product_snackbar}} removed to your box
-      </p>
-      
-    </div>
-
-    <div style="border-radius: 15px;" 
-    id="snackbarAgregarListaDeseos">
-
-      <p style="font-family:'Libre Franklin', sans-serif; 
-      font-weight: 20; font-size: 17px; color: whitesmoke;">
-        Added to your favorites
-      </p>
-        
-    </div>
-
-    <div style="border-radius: 15px;" 
-    id="snackbarQuitarListaDeseos">
-
-      <p style="font-family:'Libre Franklin', sans-serif; 
-      font-weight: 20; font-size: 17px; color: whitesmoke;">
-        Removed from your favorites
-      </p>
-        
-    </div>
-      
-  </div>
-
-  <!--=====================================
-  Ventana modal de la lista de deseos
-  ======================================-->
-  <div class="modal fade bd-example-modal-xl lista-deseos" tabindex="-1" role="dialog" aria-labelledby="
-  myExtraLargeModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-xl row" role="document">
-
-      <!-- Productos de la lista de deseos -->
-      <div class="modal-content">
-
-        <!-- Título lista de deseos -->
-        <h3 style="text-align: center; margin-top: 4%;
-        margin-bottom: -1%;">
-            Your Favorites
-        </h3>
-
-        <div class="divimageness row">
-
-          <div
-          *ngFor="let productsLista of productosListaDeseos;"
-          class="col-lg-3 col-md-4 col-sm-6" style="margin-top: 4%;">
-
-            <!-- *ngIf="getVisibilityByFilter(products)" -->
-            <div class="ps-product__thumbnail" id="contenedor">
-
-              <a style=" position: relative;
-              display: inline-block;
-              text-align: center;"
-              class="Img-Hover">
-
-                <div style="position: absolute;
-                width: 100%;
-                align-items: center;
-                text-align: center;
-                opacity: 0.7;
-                background: white;
-                top: 37%;" 
-                id="to-large-to-fid" 
-                *ngIf="productsFull() == true">
-
-                    <p style="color: black;font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 20; font-size: 20px; color: #353535; ">
-                        Oops!<br>
-                        (too large to fit)
+                    <p style="margin-top:1%;">
+                      <b style="font-family:'Libre Franklin', sans-serif; 
+                      font-weight: 20; font-size: 17px; color:#353535;">
+                        {{productsLista.price}}
+                      </b>
                     </p>
-
-                </div>
-
-                <img class="img-producto-cty" 
-                style="width: 247px; height: 247px;" 
-                (click)="detallesProducto(products)"
-                type="button"  data-toggle="modal" 
-                data-target=".bd-example-modal-xl"
-                src="{{productsLista.image}}" alt="">
-
-                <img id="imgGallery" 
-                class="img-producto-cty" 
-                style="width: 247px; height: 247px;position: 
-                absolute;margin-top: -100%;" 
-                (click)="detallesProducto(products)"
-                type="button"  data-toggle="modal" 
-                data-target=".bd-example-modal-xl"
-                src="{{productsLista.image2}}" alt="">
-
-
-                <!-- Boton para agregar productos a la caja -->
-                <div id="boton">
-
-                  <!-- BTN agregar a caja -->
-                  <div 
-                  class="texto" 
-                  *ngIf="productsFull() == false && getvisibilityForAdd(productsLista.name) == false">
-                    <!-- (click)="myFunction(products.name)"   -->
-                    <a 
-                    (click)="fncNewAdd(productsLista, productsLista.name)"
-                    style="cursor:pointer ;">
-                      <p style="font-family:'Libre Franklin', sans-serif;
-                      font-weight: 20; font-size: 15px; margin-top: 1%; color: #353535;">
-                        Add to box
-                      </p> 
-                    </a>
-
-                  </div>
-
-                  <!-- BTN para agregar cantidad de productos -->
-                  <div  *ngIf="getvisibilityForAdd(productsLista.name) == true && productsFull() == false"
-                  style="display: flex; width: 100% !important; justify-content: center;
-                  justify-content:space-around; padding: 2%; position: absolute;
-                  margin-top: -19%;">
-
-                    <div style="display: flex; width: 244px; flex-direction: row">
-
-                      <!-- BTN menos -->
-                      <button style="width: 15%;"
-                      (click)="modificadorCantidadProductos(-1, i,productsLista)"
-                      class="menos" type="button">-</button>
-
-                      <div 
-                      style="background: white;width: 70%; text-align: center;
-                      color:black; border: 1px solid black !important;"
-                      id="quantity"> 
-
-                        <p style="font-weight: 20; font-size: 15px;margin-top: 2%;color: black;
-                         font-family:'Libre Franklin', sans-serif; ">
-                          {{getNumArts(products)}} IN INBOX
-                        </p>  
-
-                      </div>
-
-                      <!-- BTN más -->
-                      <button style="width: 15%;" 
-
-                      (click)="modificadorCantidadProductos(1, i,productsLista)"
-                      class="mas" type="button">+</button>
-                     
-                    </div>
                     
                   </div>
-                                  
-                  <!-- Botón long -->
-                  <div 
-                  *ngIf="productsFull() == true" 
-                  class="texto">
 
-                    <a 
-                    style="cursor:pointer; 
-                    font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 20; font-size: 15px; color:#353535;">
-                      Too large
-                    </a>
-
-                  </div>
+                  <!-- <div [innerHTML]="price[i][0]"></div> -->
 
                 </div>
 
-              </a>
-              <style>
-                #imgGallery{
-                  display: none;
-                }
-                #contenedor:hover #imgGallery{
-                  display: block;
-                }
-              </style>
+            </div>            
 
-              <!-- Lista de deseos -->
-              <div id="heart" style=""> 
-                <a title="Add to Whishlist">
-                  <!-- (click)="fncMostrarListaDeseos()"
-                   data-toggle="modal" 
-                   data-target=".lista-deseos " -->
-                  <i class="icon-heart"    
-                  style="cursor: pointer; color: pink;"></i>
-                </a>
-              </div>
-       
+          </div>
 
-              <!-- Información de productos -->
-              <div class="">
+         {{ lastIndex ? callback() : ""}}
 
-                  <div style="margin-left: 1% ">
+        </div><!-- End Product --> 
 
-                    <a>  
-                      <b style="font-family:'Libre Franklin', sans-serif; 
-                      font-weight: 20; font- : 17px; color:#353535;">
-                        {{productsLista.name}}
-                      </b>
-                    </a>
+      </div>    
 
-
-                    <div class="" style="display: flex;">
-
-                      <p style="font-weight: 20; font-size: 17px;
-                      font-family:'Libre Franklin', sans-serif;">$ &nbsp;</p>
-
-                      <p style="margin-top:1%;">
-                        <b style="font-family:'Libre Franklin', sans-serif; 
-                        font-weight: 20; font-size: 17px; color:#353535;">
-                          {{productsLista.price}}
-                        </b>
-                      </p>
-                      
-                    </div>
-
-                    <!-- <div [innerHTML]="price[i][0]"></div> -->
-
-                  </div>
-
-              </div>            
-
-            </div>
-
-           {{ lastIndex ? callback() : ""}}
-
-          </div><!-- End Product --> 
-
-        </div>    
-
-      </div>
-       
-       
     </div>
-
+     
+     
   </div>
-    
-    
+
 </div>
 
 <style>
@@ -1365,6 +1434,13 @@
     padding: 0px !important; 
     margin-bottom: 2% !important;
   }
+  .texto {
+    margin-top: -27% !important; 
+  }
+
+  .texto a {
+    height: 34px !important; 
+  }
 
 }
 
@@ -1419,6 +1495,13 @@
     padding: 0px !important; 
     margin-bottom: 2% !important;
   }
+  .texto {
+    margin-top: -27% !important; 
+  }
+
+  .texto a {
+    height: 34px !important; 
+  }
 
 }
 
@@ -1472,6 +1555,14 @@
   .filtros-gty {
     padding: 0px !important; 
     margin-bottom: 2% !important;
+  }
+
+  .texto {
+    margin-top: -27% !important; 
+  }
+
+  .texto a {
+    height: 34px !important; 
   }
 
 }   
@@ -1598,6 +1689,9 @@
  
     display: none !important; 
   }
+  #boton {
+    display: block !important;
+  }
 }
 @media screen and  (max-width: 411px) {
   #snackbar{
@@ -1609,6 +1703,9 @@
      
     display: none !important; 
    }
+   #boton {
+    display: block !important;
+  }
 }
 
 @media screen and  (max-width: 414px) {
@@ -1620,13 +1717,20 @@
   .btn-none{
      
     display: none !important; 
-   }
+  }
+
+  #boton {
+    display: block !important;
+  } 
 }
 @media screen and  (max-width: 540px) {
   #snackbar{
     margin-bottom: 20%;
     align-items: center;
     margin-right: 4%;
+  }
+  #boton {
+    display: block !important;
   }
 }
 @media screen and  (max-width: 768px) {
@@ -1642,6 +1746,9 @@
   .byn-tyt{
       padding-top: 3% !important;
       padding-bottom: 3% !important;
+  }
+  #boton {
+    display: block !important;
   }
    
 }
@@ -2547,7 +2654,7 @@ display: flex;
 .texto a{
     border: 1px solid black !important;
     background: white;
-    width: 247px;
+    width:auto;
     height: 40px;
     display: flow-root;
     text-align: center;
@@ -2690,6 +2797,11 @@ display: flex;
 
 #heart{
   display: none;
+  margin-top:-243px;
+  position:absolute;
+  margin-left: 3%;
+}
+#heartList{
   margin-top:-243px;
   position:absolute;
   margin-left: 3%;

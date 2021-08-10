@@ -4,7 +4,7 @@ import { NegocioService } from '../../services/negocio.service';
 
 declare var jQuery:any;
 declare var $:any;
- 
+  
 @Component({ 
   selector: 'app-frequently-asked-questions',
   templateUrl: './frequently-asked-questions.component.html',
@@ -15,6 +15,9 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
 
   path:string = Path.url; 
   visibility_1 =[];
+  visibility_1_payments =[];
+  visibility_1_everything =[];
+  visibility_1_returns = [];
   fncNone; 
  
 
@@ -31,6 +34,9 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
   img_slider_array:string[] = [];
 
   questions=[];
+  payments=[];
+  everything=[];
+  returns=[];
 
   constructor(  private negocioService: NegocioService) { } 
   	
@@ -63,9 +69,27 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
     this.negocioService.getDataQuestions()
     .subscribe(resp=>{
       for(let contador in resp){
-        this.visibility_1.push(false); 
-        this.questions.push(resp[contador]);
-        // console.log("preguntas:",this.questions[contador])
+
+        if(resp[contador].title == "SHIPPING"){
+          this.visibility_1.push(false); 
+          this.questions.push(resp[contador]);
+        }
+        if (resp[contador].title == "PAYMENTS"){
+          this.visibility_1_payments.push(false); 
+          this.payments.push(resp[contador]);
+
+        }
+        if (resp[contador].title == "EVERYTHING ELSE"){
+          this.visibility_1_everything.push(false); 
+          this.everything.push(resp[contador]);
+       
+        }
+        if (resp[contador].title == "RETURNS"){
+          this.visibility_1_returns.push(false); 
+          this.returns.push(resp[contador]);
+    
+        }  
+
       }
 
     })
@@ -75,8 +99,14 @@ export class FrequentlyAskedQuestionsComponent implements OnInit {
  
   	this.visibility_1[index]=!this.visibility_1[index];
 
-  }
+  } 
  
-  
+  mostrar(){
+    document.getElementById('mostrarP').style.display = 'block';
+  }
+
+  ocultar(){
+    document.getElementById('mostrarP').style.display = 'none';
+  }  
 
 }

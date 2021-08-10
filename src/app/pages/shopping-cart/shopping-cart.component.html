@@ -100,7 +100,7 @@ Shopping Car
                      [popoverMessage]="popoverMessage"
                      placement="left"
                      style="cursor:pointer;font-family:'Libre Franklin', sans-serif;
-                     font-weight: 20; font-size: 18px;" 
+                     font-weight: 20; font-size: 17px;" 
                      (confirm)="removeProduct(product.url, product.listDetails)">
                         REMOVE
                     </a>
@@ -113,7 +113,7 @@ Shopping Car
                         style="cursor: pointer;">
                             <p>
                                 <b style="font-family:'Libre Franklin', sans-serif; 
-                                font-weight: 20; font-size: 20px;">
+                                font-weight: 20; font-size: 17px;">
                                     Add Address
                                 </b>
                             </p>   
@@ -429,20 +429,24 @@ Shopping Car
 
         <div class="row" style="margin-bottom: 18%; margin-left: 4%; display: flex;">
 
-            <a class="col-lg-6 col-md-6 col-sm-12 btn btn-sm animated-button thar-three" routerLink="/" 
+            <a class="col-lg-3 col-md-6 col-sm-12 btn btn-sm animated-button thar-three" 
+            routerLink="/" 
             style="font-family:'Libre Franklin', sans-serif; 
             font-weight: 20; font-size: 15px; margin-left: -1%;">
                 <i class="icon-arrow-left"></i> Back to Shop
             </a>
 
-            <a 
-            *ngIf="shoppingCart.length > 0"
-            class="col-lg-6 col-md-6 col-sm-12 btn btn-sm animated-button thar-three" href="checkout"
-            style="font-family:'Libre Franklin', sans-serif; 
-            font-weight: 20; font-size: 15px;">
-                Proceed to checkout <i class="icon-arrow-right"></i> 
-            </a>
-
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a *ngIf="shoppingCart.length > 0"
+                class=" btn btn-sm animated-button thar-three" 
+                style="font-family:'Libre Franklin', sans-serif; 
+                font-weight: 20; font-size: 15px;"
+                href="checkout"
+                (click)="enviarCheckout()">
+                    Checkout <i class="icon-arrow-right"></i> 
+                </a>
+            </div>
+            
         </div>
 
     </div>
@@ -712,10 +716,10 @@ Shopping Car
 
     a.animated-button.thar-three {
         font-size: inherit;
-        padding-left: 7%;
-        padding-right: 7%;
-        padding-top: 1%;
-        padding-bottom: 1%;
+        /*padding-left: 7%;
+        padding-right: 7%;*/
+        /*padding-top: 1%;
+        padding-bottom: 1%;*/
         margin-top: 93px;
         background-color: white;
         color: black;

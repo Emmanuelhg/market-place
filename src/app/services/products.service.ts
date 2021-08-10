@@ -241,6 +241,12 @@ export class ProductsService {
 
 	}
 
+	// changePayOrderStatus(){
+
+	// 	return this.http.patch(`${this.api}products/${id}.json?auth=${idToken}`,value);		
+
+	// }
+
 }
 
 

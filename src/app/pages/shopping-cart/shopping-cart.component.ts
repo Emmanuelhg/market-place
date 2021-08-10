@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
  
 import notie from 'notie';
-import { confirm } from 'notie'; 
+import { confirm } from 'notie';  
 
 import { BoxesModel } from '../../models/boxes.model';
 import { AddressModel } from '../../models/address.model';
@@ -18,7 +18,7 @@ import { ItemsAddressModel } from '../../models/ItemsAddress.model';
 import { BoxesService } from '../../services/boxes.service';
 import { UsersService } from '../../services/users.service';
 import { NegocioService } from '../../services/negocio.service';
-
+import { EmailService } from '../../services/email.service';
 
 import * as Cookies from 'js-cookie'; 
 
@@ -72,6 +72,18 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
         }`
 	);
 
+	shippingObject = JSON.parse(
+
+		`{
+			"list_arts": {},
+			"list_shippings":{},
+			"id_user":"",
+			"status":"pending",
+			"date":""
+		}
+		`
+	)
+
 	email : "";
   	shipping:"";
   	first_name:"";
@@ -106,19 +118,27 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
  	contAddress=[];
  	envio;
  	aparamento;
+ 	isUser:string;
+ 	date;
+ 	NewDate;
+ 	id_box_shipping;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
 				private usersService:UsersService,
 				private negocioService:NegocioService,
-				private boxesService:BoxesService) {
+				private boxesService:BoxesService,
+				private emailService:EmailService) {
 				this.boxes = new BoxesModel();
+				
 				// this.shoppin = new AddressModel(); 
 			}
 
 	ngOnInit(): void {
-
+ 
 		this.id_to_box = Cookies.get('box_id');
+
+		console.log("id_to_box",this.id_to_box );
 
 		/*=============================================
 		Obtener el id de la caja 
@@ -128,6 +148,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		if (this.id_to_box === null) {
 
 		    this.usersService.authActivate().then(resp=>{
+
+
 
 		      if(resp){
 		        this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
@@ -685,7 +707,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 						})
 						// console.log("url producto:",resp[f].url);
-						// console.log(this.shoppingCart);
+						console.log("El shooping cart es tal:",this.shoppingCart);
 						console.log("items",list);
 						console.log("load",load);
 
@@ -814,7 +836,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		var pivote =0;
 		var shipping;
 		var add;
-		var cost = 0;
+		var cost = 0; 
 		for(let i in this.listShippings ){
 			console.log("listShippings:",this.listShippings)
 			shipping = this.listShippings[i];
@@ -824,7 +846,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 			
 
-			console.log("Este es el address:",this.contAddress);
+			console.log("Este es Tld:",this.contAddress);
 		}
 
 		this.contAddress.push({
@@ -848,4 +870,56 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		console.log("el precio del envio es :",this.costo_envio);
 
 	}
+
+	enviarCheckout(shoppingCart, contAddress){
+		console.log("el shoppingCart:",this.shoppingCart);
+		console.log("el contAddress:",this.contAddress);
+
+		let id_caja = [];
+		id_caja.push(this.id_to_box);
+
+		this.id_box_shipping =	id_caja;	
+
+		this.date  = new Date();
+	        const month = '' + (this.date.getMonth() + 1);
+	        const day = '' + this.date.getDate();
+	        const year = this.date.getFullYear();
+
+
+		this.NewDate = ""+day+"/"+month+"/"+year    
+
+		console.log("el date:",this.NewDate);
+
+
+		this.usersService.authActivate().then(resp =>{
+			console.log("pasó userServices");
+		    if(resp){
+		    	console.log("resp",resp);
+		        this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
+		        .subscribe(resp=>{
+		        	console.log("pasó getFilterData");
+		           	this.isUser = Object.keys(resp).toString();
+
+		           	this.shippingObject.list_arts = this.shoppingCart;
+		           	this.shippingObject.list_shippings = this.contAddress;
+		           	this.shippingObject.id_user = this.isUser;
+		           	this.shippingObject.date = this.NewDate;
+		           	this.shippingObject.total = this.total;
+		           	this.shippingObject.shippingTotal = this.costo_envio;
+		           	this.shippingObject.id_box = this.id_box_shipping;
+
+		           	this.boxesService.crearShipping(this.isUser, this.shippingObject)
+		     		.subscribe(resp=>{
+
+		     			console.log("pasó shippingObject:", this.shippingObject);
+		     		})
+		          	
+		    	}) 
+		    }
+		})
+
+		
+
+
+	} 
 }

@@ -12,7 +12,7 @@ import { EmailService } from '../../services/email.service';
 import { Router } from '@angular/router';
 
 declare var jQuery:any;
-declare var $:any; 
+declare var $:any;  
 
 @Component({
   selector: 'app-header',
@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit {
   List_favorite=[];
   icon="";
   postId;
+  visibility_1 =[];
 
 	constructor(private categoriesService: CategoriesService, 
 		        private subCategoriesService: SubCategoriesService,
@@ -65,7 +66,11 @@ export class HeaderComponent implements OnInit {
 
 		// Llamar los nuevos colores y texto
 
-		this.negocioService.getData()
+	    for (let i = 0; i < 16; i++) {
+	        this.visibility_1.push(false);
+	    }	
+
+	this.negocioService.getData()
     .subscribe(resp=>{
     
        let i;
@@ -494,5 +499,9 @@ export class HeaderComponent implements OnInit {
     // document.getElementById('shop').style.display = 'none';
 	}
 
+	fncVisibility(index){
+ 
+	    this.visibility_1[index]=!this.visibility_1[index];
 
+	}
 }

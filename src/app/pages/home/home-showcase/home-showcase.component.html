@@ -13,13 +13,13 @@ style="background: #eeedeb;">
   class="div-main col-lg-12" style=" padding: 0px;
   height: px;  display:{{divs_visible[i][0]}};" >
 
-    <div class="div-select1 row" style="height:px; display: flex;">
+    <div class="div-select1 row" style="height:px; display: flex; padding:0px;margin: 0px;">
 
       <!--=====================================
       Section Left 
       ======================================-->
      
-      <div class="div-left" class="col-lg-6 col-sm-12" style="height: 560px;">
+      <div class="div-left" class="col-lg-6 col-sm-12" style="height: 560px; padding-right:0px;margin: 0px;">
 
         <!--=====================================
         Text section
@@ -206,7 +206,7 @@ style="background: #eeedeb;">
       Section Rigth 
       ======================================-->
 
-      <div class="div-right" class="col-lg-6 col-sm-12" style="height: 560px; padding: 0px;">
+      <div class="div-right" class="col-lg-6 col-sm-12" style="height: 560px;padding:0px;margin: 0px;">
 
         <!--=====================================
         Section Texto con botón
@@ -372,7 +372,7 @@ style="background: #eeedeb;">
   Slider 
   ======================================-->
 
-  <div  class="div-main slider-home col-lg-12" style=" padding: 0px;
+  <div  class="div-main slider-home col-lg-12" style="padding:0px; margin: 0px;
   height: px;  display:{{divs_visible[i][1]}};">
 
     <div id="carouselExampleControls{{i}}" class="carousel slide" data-ride="carousel">
@@ -453,7 +453,7 @@ style="background: #eeedeb;">
 
       </div>
 
-      <div class="row" style="display: flex; padding: 0px;">
+      <div class="row" style="display: flex; padding: 0px;margin: 0px;">
 
         <a *ngFor="let urlsGrid of divs_grids_urls[i]; let ind = index; let isFirst = first"
         class="img_insta col-lg-3 col-md-6 col-sm-12" 
@@ -497,7 +497,7 @@ style="background: #eeedeb;">
       </p>
     </div>
 
-    <div class="divs-imgs row" style="display: flex;height: px;padding: 0px;">
+    <div class="divs-imgs row" style="display: flex;height: px;padding: 0px; margin: 0px;">
 
         <div class="div_izquiedat col-lg-4 col-md-12 col-sm-12" 
         style="margin-bottom: 3%;padding: 0px;text-align: center;display: 
@@ -693,17 +693,17 @@ style="background: #eeedeb;">
 
   @media (max-width: 768px) {
     .img-trilple {
-      width: auto !important; 
+      width: 100% !important; 
       height: auto !important;  
     }
     
     .img_centro {
-      width: auto !important; 
+      width: 100% !important; 
       height: auto !important;
     }
 
     .img_derecha {
-      width: auto !important; 
+      width: 100% !important; 
       height: auto !important;
     }
  

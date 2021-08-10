@@ -12,7 +12,7 @@ import { NegocioService } from '../../services/negocio.service';
 export class OurStoryComponent implements OnInit {
 
  path:string = Path.url;	
-
+ 
  negocio = null;
 
  img_slider;
@@ -23,6 +23,7 @@ export class OurStoryComponent implements OnInit {
   linkBtn;
   vista;
   textoBtn;
+  description;
   color_texto_slider='';
 
 img_slider_array:string[] = [];
@@ -47,6 +48,8 @@ img_slider_array:string[] = [];
         this.linkBtn = resp["personalization"].Behind_slider_links;
         // Texto de botón
         this.textoBtn = resp["personalization"].Behind_slider_buttontext;
+
+        this.description = resp["personalization"].BehindETRE_slider_description;
 
         this.vista = resp["personalization"].Behind_slider_buttons_visibility;
       

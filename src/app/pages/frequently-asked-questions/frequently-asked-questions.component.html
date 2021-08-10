@@ -3,7 +3,7 @@
   <!--=====================================
   Slider    
   ======================================-->
-  <div style="margin-top: -3%;"  id="carouselExampleControlsT" class="carousel slide" data-ride="carousel">
+  <div style="margin-top: -1.5%;"  id="carouselExampleControlsT" class="carousel slide" data-ride="carousel">
    
     <div class="carousel-inner">
 
@@ -44,55 +44,237 @@
     
   <!-- Contenido -->
   <div class="contenido">
+    
+    <div class="pregunta-etre" style="display:flex; display: none;">
+      <img src="https://img.icons8.com/ios/24/000000/more-than.png" (click)="mostrar()" 
+      style="cursor: pointer;margin-top: 0.2%; height: fit-content; margin-right: 1%;"/>
+      <h3 class="mostrar" 
+      style="font-family:'Libre Franklin', sans-serif; 
+      font-size:24px; font-weight: 450; color: black;">How it works?</h3>
+      
+    </div> 
+
+    <div style="display:none" id="mostrarP">
+      <div style="display:flex;">
+        
+        <h3 class="respuesta" style="font-family:'Libre Franklin', sans-serif; 
+          font-weight: 20; font-size: 20px; color: black; margin-top: 3%;">
+            Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
+          Keep it personal. We curate the best products so you can create the most personal gifts.
+          We ́ll handle the rest. We take your masterpiece, pack it to perfection, and send it straight to
+          their doorstep.
+          <img src="https://img.icons8.com/ios/24/000000/collapse-arrow--v2.png"
+          (click)="ocultar()" style="cursor: pointer; margin-left: 1%;"/>
+        </h3>
+     
+      </div>  
+    </div>
+
+  	<!--=====================================
+    SHIPPING    
+    ======================================-->
+    <h3 class="title-shipping" style="font-family:'Libre Franklin', sans-serif; margin-bottom: 2%; margin-top: 2%;
+    font-size:24px; font-weight: 450; color:black;">Shipping</h3>
        
-    <h3 style="font-family:'Libre Franklin', sans-serif; 
-    font-size:24px; font-weight: 450; color: black;">How it woeks?</h3>
- 
-      <p class="mostrar" style="font-family:'Libre Franklin', sans-serif; 
-        font-weight: 20; font-size: 20px; color: black;">
-	       	Need a gift? Select your giftbox and choose from a range of gifts for all tastes and occasions.
-  			Keep it personal. We curate the best products so you can create the most personal gifts.
-  			We ́ll handle the rest. We take your masterpiece, pack it to perfection, and send it straight to
-  			their doorstep.
-  		</p>
+    <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index"
+    class="title-shipping">
 
-  		<h3 style="font-family:'Libre Franklin', sans-serif; 
-      font-size:24px; font-weight: 450; color:black;">SHIPPING</h3>
+      <!--=====================================
+      Pregunta   
+      ======================================-->
 
+      <div *ngIf="pregunta.visible"
+      style="display:flex;margin-bottom: 1%;">
 
+        <img src="https://img.icons8.com/ios/24/000000/more-than.png"
+        (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 0.2%;
+        height: fit-content; margin-right: 1%;"/>
+
+	    	<h3 class="mostrar" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+	    		{{pregunta.question}} 
+
+	    	</h3>
+      </div> 
+
+      <!--=====================================
+      Respuesta   
+      ======================================--> 
+
+    	<div *ngIf="visibility_1[i]">
+				<p class="respuesta" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+				{{pregunta.answer}}
+					<!-- At this time, we only ship within Mexico. -->
+        <img src="https://img.icons8.com/ios/24/000000/collapse-arrow--v2.png"
+        style="color:black;cursor: pointer;margin-left: 1%;" href="javascript:void(0);" 
+        (click)="fncVisibility(i)"/>
+		    </p>
+			</div>
+
+    </div>
+
+    <!--=====================================
+    RETURNS    
+    ======================================--> 
+
+    <h3 class="title-shipping" style="font-family:'Libre Franklin', sans-serif; margin-bottom: 2%; margin-top: 2%;
+    font-size:24px; font-weight: 450; color:black;">Returns</h3>
        
-      <!-- Pregunta y resúesta  -->
-      <div *ngFor="let pregunta of questions;let lastIndex = last, let i = index">
+    <!-- Pregunta y resúesta  -->
+    <div *ngFor="let preguntaReturns of returns;let lastIndex = last, let i = index"
+    class="title-shipping">
 
-        <div style="display:flex;">
-          <i  class="fas fa-angle-right" (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 4.5%;
-          margin-right: 1%;"></i>
+      <!--=====================================
+      Pregunta   
+      ======================================-->
 
-  	    	<p class="mostrar" 
-          style="font-family:'Libre Franklin', sans-serif; 
-          font-weight: 20; font-size: 20px;color:black;">
-  	    		{{pregunta.question}} 
+      <div *ngIf="preguntaReturns.visible"
+      style="display:flex;margin-bottom: 1%;">
 
-  	    	</p>
-        </div>  
+        <img src="https://img.icons8.com/ios/24/000000/more-than.png"
+        (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 0.2%;
+        height: fit-content; margin-right: 1%;"/>
 
-	    	<div *ngIf="visibility_1[i]">
-					<p class="respuesta" 
-          style="font-family:'Libre Franklin', sans-serif; 
-          font-weight: 20; font-size: 20px;color:black;">
-					{{pregunta.answer}}
-						<!-- At this time, we only ship within Mexico. -->
-            <a><i class="fas fa-chevron-up" style="color:black;cursor: pointer;"
-               href="javascript:void(0);" 
-              (click)="fncVisibility(i)"></i></a>
+        <h3 class="mostrar" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+          {{preguntaReturns.question}} 
 
-			    </p>
-				</div>
+        </h3>
+      </div>  
 
+      <!--=====================================
+      Respuesta   
+      ======================================-->
+
+      <div *ngIf="visibility_1[i]">
+        <p class="respuesta" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+        {{preguntaReturns.answer}}
+          <!-- At this time, we only ship within Mexico. -->
+        <img src="https://img.icons8.com/ios/24/000000/collapse-arrow--v2.png"
+        style="color:black;cursor: pointer;margin-left: 1%;" href="javascript:void(0);" 
+        (click)="fncVisibility(i)"/>
+        </p>
       </div>
+
+    </div>
+
+    <!--=====================================
+    PAYMENTS    
+    ======================================-->
+
+    <h3 class="title-shipping"
+    style="font-family:'Libre Franklin', sans-serif; margin-bottom: 2%; margin-top: 2%;
+    font-size:24px; font-weight: 450; color:black;">Payments</h3>
+
+    <div *ngFor="let preguntaPayments of payments;let lastIndex = last, let i = index"
+    class="title-shipping">
+
+      <!--=====================================
+      Pregunta   
+      ======================================-->
+
+      <div *ngIf="preguntaPayments.visible"
+      style="display:flex;margin-bottom: 1%;">
+
+        <img src="https://img.icons8.com/ios/24/000000/more-than.png"
+        (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 0.2%;
+        height: fit-content; margin-right: 1%;"/>
+
+        <h3 class="mostrar" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+          {{preguntaPayments.question}} 
+
+        </h3>
+      </div>  
+
+      <!--=====================================
+      Respuesta   
+      ======================================-->
+
+      <div *ngIf="visibility_1[i]">
+        <p class="respuesta" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+        {{preguntaPayments.answer}}
+          <!-- At this time, we only ship within Mexico. -->
+        <img src="https://img.icons8.com/ios/24/000000/collapse-arrow--v2.png"
+        style="color:black;cursor: pointer;margin-left: 1%;" href="javascript:void(0);" 
+        (click)="fncVisibility(i)"/>
+        </p>
+      </div>
+
+    </div>
+
+    <!--=====================================
+    EVERYTHING ELSE    
+    ======================================-->
+
+    <h3 class="title-shipping" 
+    style="font-family:'Libre Franklin', sans-serif; margin-bottom: 2%; margin-top: 2%;
+    font-size:24px; font-weight: 450; color:black;">Everything else</h3>
+
+    <div *ngFor="let preguntaEverything of everything;let lastIndex = last, let i = index"
+    class="title-shipping">
+
+      <!--=====================================
+      Pregunta   
+      ======================================-->
+
+      <div *ngIf="preguntaEverything.visible"
+      style="display:flex;margin-bottom: 1%;">
+
+        <img src="https://img.icons8.com/ios/24/000000/more-than.png"
+        (click)="fncVisibility(i)" style="cursor: pointer;margin-top: 0.2%;
+        height: fit-content; margin-right: 1%;"/>
+
+        <h3 class="mostrar" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+          {{preguntaEverything.question}} 
+
+        </h3>
+      </div>  
+
+      <!--=====================================
+      Respuesta   
+      ======================================-->
+
+      <div *ngIf="visibility_1[i]">
+        <p class="respuesta" 
+        style="font-family:'Libre Franklin', sans-serif; 
+        font-weight: 20; font-size: 20px;color:black;">
+        {{preguntaEverything.answer}}
+          <!-- At this time, we only ship within Mexico. -->
+        <img src="https://img.icons8.com/ios/24/000000/collapse-arrow--v2.png"
+        style="color:black;cursor: pointer;margin-left: 1%;" href="javascript:void(0);" 
+        (click)="fncVisibility(i)"/>
+        </p>
+      </div>
+
+    </div>
 
   </div>
   
+</div>
+
+
+<div>
+
+  <div style="justify-content: center;">
+
+    <img src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/navegacion%2F57582ec0-e0ed-11eb-bba2-5b47cb5afb9f.png?alt=media&token=29fe08be-d860-40ee-8b58-ebeef1619f59"
+    style="width:200px; height:200px;">
+    
+  </div>
+
+    
 </div>	
 
 <style>
@@ -103,7 +285,22 @@
     } 
     .carousel-item {
       height: auto !important;
-    }   
+    }  
+    .carousel {
+      margin-top: -3% !important;
+    } 
+    .pregunta-etre {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .title-shipping {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .respuesta {
+      margin-top: 10% !important;
+    }
+
   }
   @media screen and  (max-width: 411px) {
     .img-faqs-rtd {
@@ -111,6 +308,17 @@
     } 
     .carousel-item {
       height: auto !important;
+    }
+    .pregunta-etre {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .title-shipping {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .respuesta {
+      margin-top: 10% !important;
     }   
   }
   @media screen and  (max-width: 414px) {
@@ -119,6 +327,17 @@
     } 
     .carousel-item {
       height: auto !important;
+    }
+    .pregunta-etre {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .title-shipping {
+      margin-top: 10% !important;
+      margin-bottom: 10% !important;
+    }
+    .respuesta {
+      margin-top: 10% !important;
     }   
   }
   .navImage  {
@@ -200,7 +419,7 @@
   }
 
   .contenido{
-  	margin-top: 5%;
+  	margin-top: 3%;
   	margin-left: 4%;
   	margin-right: 3%;
     height: px;
@@ -208,13 +427,15 @@
   }
   .mostrar{
     font-size: 24px;
-    margin-bottom: 4%;
-    margin-top: 4%;
+    margin-bottom: 0%;
+ /*   margin-top: 2%;*/
   }
 
   .respuesta{
     margin-left: 7%;
     font-size: 23px;
+    /*margin-top: -1%;*/
+    margin-bottom: 2%;
     /*display: none;*/
   }
 

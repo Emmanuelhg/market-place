@@ -49,7 +49,7 @@ export class ProductsShowcaseComponent implements OnInit {
  		this.cargando = true;
 
  		/*=============================================
-		Capturamos el parámetro URL
+		Capturamos el parámetro URL 
 		=============================================*/	
 
 		this.params = this.activateRoute.snapshot.params["param"].split("&")[0];
@@ -108,7 +108,7 @@ export class ProductsShowcaseComponent implements OnInit {
 			
 		})
 
-  	}
+  }
 
   	/*=============================================
 	Declaramos función para mostrar el catálogo de productos
@@ -119,20 +119,20 @@ export class ProductsShowcaseComponent implements OnInit {
   		this.products = [];
 
   		/*=============================================
-		Hacemos un recorrido por la respuesta que nos traiga el filtrado
-		=============================================*/	
+			Hacemos un recorrido por la respuesta que nos traiga el filtrado
+			=============================================*/	
 
-  		let i;
-  		let getProducts = [];
-  		let total = 0;
+	  		let i;
+	  		let getProducts = [];
+	  		let total = 0;
 
-  		for(i in response){
+	  		for(i in response){
 
-  			total++;
+	  			total++;
 
-			getProducts.push(response[i]);						
-				
-		}
+				getProducts.push(response[i]);						
+					
+			}
 
 		/*=============================================
 		Definimos el total de productos y la paginación de productos

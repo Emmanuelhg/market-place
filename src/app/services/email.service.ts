@@ -29,4 +29,16 @@ export class EmailService {
 
   }
 
+  checkout(shoppingCart,shipping){
+
+    // console.log("shoppingCart",shoppingCart);
+
+    // console.log("shipping",shipping);
+
+    // console.log("idUser",idUser);    
+
+    // return this.https.post<any>('https://api.shop-etre.com/mail/prev_checkout/',{ "checkout": shoppingCart, "shippings":shipping});
+    return this.https.post<any>('https://api.shop-etre.com/mail/prev_checkout/',{ "checkout": shoppingCart, "shippings":shipping});
+  }
+
 }  

@@ -2060,13 +2060,14 @@ button {
 .form-control {
   outline: none;
   height: 50px;
+  width: 100%;
   font-size: 14px;
   padding: 0 11px;
   border: none;
-  height: 50px;
+  height: 33px;
   background-color: transparent;
   border: 1px solid #dddddd;
-  border-radius: 0;
+  /*border-radius: 11px;*/
   box-shadow: 0 0 rgba(0, 0, 0, 0);
   -webkit-transition: all .4s ease;
   transition: all .4s ease;

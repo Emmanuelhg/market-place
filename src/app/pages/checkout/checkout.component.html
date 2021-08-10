@@ -1,5 +1,5 @@
 <!--=====================================
-Checkout 
+Checkout  
 ======================================--> 
 <div class="ps-checkout ps-section--shopping" style="margin-top: 5%;">
 
@@ -292,14 +292,16 @@ Checkout
                                                     </td>
 
                                                     <td class="text-right ps-product">
+
                                                         <div style="font-family:'Libre Franklin', sans-serif;; 
-                                                            font-size: 20px;
-                                                            font-weight: 20;"
+                                                        font-size: 20px; font-weight: 20;"
                                                         class="d-none pCheckout" [innerHTML]="product.price"></div>
+
                                                         <div style="font-family:'Libre Franklin', sans-serif;
-                                                            font-size: 20px;
-                                                            font-weight: 20;"
-                                                        class="subTotalPriceCheckout"><div class="spinner-border"></div></div>
+                                                        font-size: 20px;  font-weight: 20;"
+                                                        class="subTotalPriceCheckout">
+                                                            <div class="spinner-border"></div>
+                                                        </div>
 
                                                     </td>
 
@@ -313,8 +315,22 @@ Checkout
                                         
                                         <div
                                         style="font-family:'Libre Franklin', sans-serif; 
-                                        font-size: 20px;
-                                        font-weight: 20;" [innerHTML]="totalP"></div>
+                                        font-size: 20px; font-weight: 20;
+                                        display: none;" [innerHTML]="totalP"></div>
+
+                                        <div *ngFor="let envio of pay_orders">
+
+                                            <h3 style="text-align: right;font-family:'Libre Franklin', sans-serif; 
+                                            font-size: 20px; font-weight: 100;">
+                                                Total: $ {{envio.total}}
+                                            </h3>
+
+                                            <h3 style="text-align: right;font-family:'Libre Franklin', sans-serif; 
+                                             font-size: 20px; font-weight: 100;"> 
+                                                Shipping: $ {{envio.shippingTotal}}
+                                            </h3>
+
+                                        </div>
 
                                     </div>
 
