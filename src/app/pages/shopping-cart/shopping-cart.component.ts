@@ -122,6 +122,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
  	date;
  	NewDate;
  	id_box_shipping;
+ 	arreglo:any[] = [];
+ 	galleta:any[] = [];
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
@@ -140,16 +142,27 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 		console.log("id_to_box",this.id_to_box );
 
+		this.arreglo.push([
+			"Emmanuel",
+			"Carlos",
+			"Cesar"
+		]);
+
+		Cookies.set( 'info' ,this.arreglo.toString(), { expires: 7 });
+
+		let galleta2 = Cookies.get('info');
+
+		// let  galleta3 =  Array.from(galleta2);
+		let galleta4 = galleta2.split(",",100);
+		console.log("this.galleta4:", galleta4);
+
 		/*=============================================
 		Obtener el id de la caja 
 		=============================================*/
 
-
 		if (this.id_to_box === null) {
 
 		    this.usersService.authActivate().then(resp=>{
-
-
 
 		      if(resp){
 		        this.usersService.getFilterData("idToken", localStorage.getItem("idToken"))
@@ -162,7 +175,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 		      }else {
 		        this.id_to_box = Id_box.fnc()
-		            Cookies.set('box_id', this.id_to_box, { expires: 7 });
+		        Cookies.set('box_id', this.id_to_box, { expires: 7 });
 		        
 		      }
 		        

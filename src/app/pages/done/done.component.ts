@@ -13,7 +13,7 @@ import notie from 'notie';
 import { confirm } from 'notie';
  
   
-declare var jQuery:any;
+declare var jQuery:any; 
 declare var $:any;
 
 @Component({
@@ -164,7 +164,7 @@ export class DoneComponent implements OnInit {
     }
 
   }
-
+ 
 
   guardaProductos(){ 
     // console.log("id to box es:", this.id_to_box);
@@ -273,8 +273,31 @@ export class DoneComponent implements OnInit {
             url:[]
           }
          this.usersService.addSoppingCart(item);
-        }
 
+         let idAnt = Cookies.get('box_id');
+
+         let stringBoxes = Cookies.get('box_array');
+
+         if( stringBoxes != undefined){
+
+          var arregloBoxes = stringBoxes.split(",",100);
+          arregloBoxes.push(idAnt);
+          console.log("arregloBoxes:",arregloBoxes);
+          Cookies.set( 'box_array' , arregloBoxes.toString(), { expires: 7 });
+
+         }else{
+
+          var arregloBoxes: string[] = [];
+          arregloBoxes.push(idAnt); 
+          console.log("arregloBoxes:",arregloBoxes);
+          Cookies.set( 'box_array' , arregloBoxes.toString(), { expires: 7 });
+
+         }
+         console.log("arregloBoxes:",arregloBoxes);
+         let idBox = Id_box.fnc()
+         Cookies.set('box_id', idBox, { expires: 7 });
+        }
+ 
       // this.productcart= resp["box_arts"];
       // console.log("Tipo de articulos:",this.productcart);
     })
@@ -306,7 +329,7 @@ export class DoneComponent implements OnInit {
         var id="";
 
         // console.log("si es igual JAJAJA es grande:",this.box_json.type_box);
-        console.log("type_box:",this.box_json["box_type"]);
+        // console.log("type_box:",this.box_json["box_type"]);
         var idbox = "";
         if(this.box_json["box_type"] == 0){
           if(this.boxes.box_size == this.box_json["box_size_small"]){
