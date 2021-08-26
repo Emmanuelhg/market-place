@@ -92,8 +92,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
   	address:"";
   	optional:"";	
 
-  	tpCheck = 'kits'
-	box_steps=[false,false,false,false]
+  	tpCheck = 'kits';
+	box_steps=[false,false,false,false];
  	id:string = null;
  	boxArray=[];
  	cantArray=[];
@@ -124,6 +124,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
  	id_box_shipping;
  	arreglo:any[] = [];
  	galleta:any[] = [];
+ 	arts_box = [];
+ 	get_boxes_array = [];
+ 	indefinido = 'undefined';
+ 	preload:boolean;
+ 	total_arts_products = [];
+ 	array_boxes_list = [];
+ 	new_array_boxes;
 
 	constructor(private productsService: ProductsService,
 				private router:Router,
@@ -137,24 +144,90 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 			}
 
 	ngOnInit(): void {
+
+		this.preload = false;
  
-		this.id_to_box = Cookies.get('box_id');
+ 		// localStorage.getItem("list")
+		// console.log("localStorage:",localStorage);
 
-		console.log("id_to_box",this.id_to_box );
+		// let  shoppingCart = JSON.parse(localStorage.getItem("list"));
+		// console.log("shoppingCart:", shoppingCart);
 
-		this.arreglo.push([
-			"Emmanuel",
-			"Carlos",
-			"Cesar"
-		]);
+		this.id_to_box = Cookies.get('box_array');
+		
+		// console.log("id_to_box:",this.id_to_box )
 
-		Cookies.set( 'info' ,this.arreglo.toString(), { expires: 7 });
 
-		let galleta2 = Cookies.get('info');
+		let ids_boxes = this.id_to_box.split(",",100);
+		console.log("this.ids_boxes:", ids_boxes);
 
+		console.log("this.array_boxes_list:", this.array_boxes_list);
+
+
+		let cont = 0;
+
+		for(let i in ids_boxes){
+
+			this.boxesService.obtenerBox(ids_boxes[i])
+			.subscribe( resp =>{
+
+				for(let i in resp){
+
+					// let articulos
+					var articulos = resp;
+ 
+					console.log("articulos es:",articulos);
+					// console.log("box en rrs ", typeof resp);
+					 
+					this.get_boxes_array.push(articulos);
+					// console.log("get_boxes_array:",this.get_boxes_array);
+
+					if(articulos['box_arts'] != undefined){
+						console.log("si pasó el if de artículos")
+						for(let d in articulos['box_arts']){
+
+							// console.log("d:",resp.box_arts);
+							this.arts_box.push(resp['box_arts'][d]);
+							let prd =  resp['box_arts'][d];
+							prd.box_id = articulos['box_id'];
+							prd.box_name = articulos['box_name'];
+							console.log("se va allenar totalproducts:", prd);
+							this.total_arts_products.push(resp['box_arts'][d]);
+							this.array_boxes_list.push(resp['box_arts'][d]);
+						}
+
+
+						console.log("arts_box:",this.arts_box)
+						this.preload = true;
+					}
+				
+					cont ++;
+
+					if(cont == (ids_boxes.length-1)){
+
+						this.newFnc();
+
+					}
+
+				}
+	
+			})
+
+		}
+
+		
+		// this.arreglo.push([
+		// 	"Emmanuel",
+		// 	"Carlos",
+		// 	"Cesar"
+		// ]);
+
+		// Cookies.set( 'info' ,this.arreglo.toString(), { expires: 7 });
+
+		// let galleta2 = Cookies.get('info');
+		// console.log("galleta2",galleta2);
 		// let  galleta3 =  Array.from(galleta2);
-		let galleta4 = galleta2.split(",",100);
-		console.log("this.galleta4:", galleta4);
+		
 
 		/*=============================================
 		Obtener el id de la caja 
@@ -306,9 +379,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
         if(localStorage.getItem("list")){
 
         	let shoppingCart = JSON.parse(localStorage.getItem("list"));
-
+        	
         	shoppingCart.forEach(list=>{
-
+        		console.log("list es:",list);
         		if(list.product == product && list.details == details.toString()){
 
         			list.unit = number;
@@ -340,7 +413,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
     		let total = 0;
 
-    		console.log("price:",price.length);
+    		// console.log("price:",price.length);
 
     		for(let i = 0; i < price.length; i++){			
     			
@@ -384,7 +457,32 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 	=============================================*/
 
 	removeProduct(product, details){
+
+		// console.log("product:", product);
+		// console.log("details:", details);
 		
+		// console.log("hola");
+		// this.id_to_box = Cookies.get('box_array');
+		// console.log("id_to_box:",this.id_to_box )
+
+		// this.boxesService.obtenerBox(this.id_to_box)
+		// .subscribe(resp =>{
+
+		// 	console.log(resp);
+
+		// 	for(let i in resp){
+
+		// 		let contBox = [];
+
+		// 		contBox.push(resp[i]);
+		// 		console.log("contBox:", contBox);
+		// 	}
+
+		// })
+
+
+		// let ids_boxes = this.id_to_box.split(",",100);
+
 		/*=============================================
 	    Buscamos coincidencia para remover el producto
 	    =============================================*/
@@ -403,9 +501,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 			})
 
-			 /*=============================================
-    		Actualizamos en LocalStorage la lista del carrito de compras
-    		=============================================*/
+			 // =============================================
+    		// Actualizamos en LocalStorage la lista del carrito de compras
+    		// =============================================
 
     		localStorage.setItem("list", JSON.stringify(shoppingCart));
 
@@ -427,6 +525,39 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 	recuperarCajas(){ 
     // console.log("id to box es:", this.id_to_box);
+    // var boxJS = {
+    // 	box_id: this.id_to_box,
+    // 	box_type: caja.box_type,
+    // 	box_deliver_checkbox:this.box_json.box_deliver_checkbox,
+    // 	box_deliver_from:this.box_json.box_deliver_from,
+    // 	box_deliver_to:this.box_json.box_deliver_to,
+    // 	box_deliver_message: this.box_json.box_deliver_message,
+
+    // };
+    // boxJS.box_id=this.id_to_box;
+    // boxJS.box_type=this.box_json.box_type;
+    // boxJS.box_deliver_checkbox=this.box_json.box_deliver_checkbox;
+    // boxJS.box_deliver_from= this.box_json.box_deliver_from;
+    // boxJS.box_deliver_to=this.box_json.box_deliver_to;
+    // boxJS.box_deliver_message= this.box_json.box_deliver_message;
+ //    boxJS.box_price=this.box_json.box_price;
+ //    boxJS.box_size=this.box_json.box_size;
+ //    boxJS.box_status=this.box_json.box_status;
+ //    boxJS.box_name=this.box_json.box_name;
+ //    boxJS.box_img=this.box_json.box_img;
+
+	// for(let i in this.box_json.box_arts){
+
+	// 	let contBox = [];
+
+	// 	contBox.push(this.box_json.box_arts[i]);
+	// 	console.log("contBox es:",contBox);
+
+	// }
+
+      // this.boxArray = this.box_json.box_arts;
+
+
     // Almacenar Info en base de datos  
       this.boxes.box_id=this.id_to_box;
       this.boxes.box_type=this.box_json.box_type;
@@ -635,8 +766,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 					console.log("entro la funcion a los productos",resp);
 					for(const f in resp){
 
-					
-
 						let details = `<div class="list-details small text-secondary">`
 						console.log("antes de if:",list[i].details.length);
 						if(list[i].details.length > 0){
@@ -684,23 +813,69 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 
 					    var inbox= false;
 					    var num =0;
-						// console.log("Array:",this.boxArray);
-						console.log("La lista es:",this.boxArray);
-						for(let count in this.boxArray){
-							
-							
-							if(this.boxArray[count].url == list[i].product){
+					    var idAsigned = Id_box.fnc();
+
+					    console.log("list[i].product es:",list[i])
+						console.log("La lista es:",this.total_arts_products);
+						console.log("this.get_boxes_array:",this.get_boxes_array);
+												
+						this.new_array_boxes = this.get_boxes_array;
+						console.log("this.new_array_boxes:",this.new_array_boxes);
+						console.log(":resp[f].url:",resp[f].url);
+
+						for(let count in this.array_boxes_list){
+							console.log("ll 234:", this.array_boxes_list[count]);
+							console.log(this.array_boxes_list[count].url , list[i].product)
+							if(this.array_boxes_list[count].url == list[i].product){
 								
-								// console.log("Es el mismo url:");
+								console.log("Es el mismo url:");
+
 								// this.boxArray.splice(num,1);
 								inbox = true;
+								this.array_boxes_list.splice(num, 1);
 							}else{
-								// console.log("No es el mismo url:");
+								console.log("No es el mismo url:");
 							}
 							num += 1;
 
 						}
 						console.log("inbox  es:",inbox);
+
+						for(let count in this.new_array_boxes){
+
+							console.log("el array normal es:",this.new_array_boxes);
+							console.log("XXX new array:",this.new_array_boxes[count].box_price);
+							// console.log("tipo es ", product)
+							if(this.new_array_boxes[count].box_price < 75){
+								if (this.new_array_boxes[count].box_name == "BLACK"){
+									console.log("Este es black small");
+									if(resp[f].url == "small-black") {
+										idAsigned = this.new_array_boxes[count].box_id;
+									}
+								} else {
+									console.log("Este es black regular");
+									if(resp[f].url == "small-kraft") {
+										idAsigned = this.new_array_boxes[count].box_id;
+									}
+								}
+							} else {
+								if (this.new_array_boxes[count].box_name == "BLACK"){
+									console.log("Este es kraft small");
+									if(resp[f].url == "regular-black") {
+										idAsigned = this.new_array_boxes[count].box_id;
+									}
+
+								} else {
+									console.log("Este es kraft regular");
+									if(resp[f].url == "regular-kraft") {
+										idAsigned = this.new_array_boxes[count].box_id;
+									}
+								}
+							}
+							this.new_array_boxes.splice(num, 1);
+						}
+						
+						console.log("este necesito nns  es:",this.get_boxes_array);
 						// console.log("Ahora es esto  ja ja ja:",resp[f].category);
 						// console.log("La respuesta de resp en F:",DinamicPrice.fnc(resp[f])[0]);
 						this.shoppingCart.push({
@@ -716,7 +891,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 							inbox:inbox,
 							shipping:this.costo_envio,
 							details:details,
-							listDetails:list[i].details
+							listDetails:list[i].details,
+							especialId: idAsigned
 
 						})
 						// console.log("url producto:",resp[f].url);
@@ -757,6 +933,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		array.push(product);
 
 		console.log("arreglo que necesito:",array);
+
+		for(let i in this.total_arts_products){
+
+			if(this.total_arts_products[i].box_id == product.especialId){
+				array.push(this.total_arts_products[i]);
+
+			}
+		}
 
 		this.productToAddress = array;
 
@@ -931,8 +1115,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy  {
 		    }
 		})
 
-		
-
-
 	} 
+
+	cleanCart(){
+
+		console.log("Hola;");
+
+		Cookies.set('box_id', this.id_to_box, { expires: 7 });
+
+		localStorage.setItem("list", "");
+		window.open('/shopping-cart','_self');
+
+	}
+
 }

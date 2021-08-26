@@ -13,7 +13,7 @@ import { Rating,
          Quantity,
          Tooltip,
          Sweetalert } from '../../../functions';
-       
+        
   
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -174,6 +174,7 @@ export class ProductLeftComponent implements OnInit {
     getProduct.forEach((product, index)=>{
 
       this.product.push(product);
+      console.log("el  this.product es:",this.product);
       
       this.rating.push(DinamicRating.fnc(this.product[index]));
       
@@ -467,6 +468,9 @@ export class ProductLeftComponent implements OnInit {
     =============================================*/ 
 
     changeQuantity(quantity, unit, move){
+        console.log("quantity es:",quantity);
+        console.log("unit es:",unit);
+        console.log("move es:",move);
 
         let number = 1;
 
@@ -511,6 +515,19 @@ export class ProductLeftComponent implements OnInit {
 
         console.log("cantidad",this.quantity);
 
+    }
+
+    cantidad(add){
+        var number = this.quantity;
+        let addS = Number(add);
+        number += addS;
+        if(number > 9){
+            number = 9;
+        }
+        if(number < 1){
+            number = 1;
+        }
+        this.quantity= number;
     }
 
     /*=============================================

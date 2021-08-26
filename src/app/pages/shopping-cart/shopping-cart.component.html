@@ -7,7 +7,7 @@ Shopping Car
     <div style="margin-left: 3%;">
 
         <!--=====================================
-        Breadcrumb  
+        Breadcrumb   
         ======================================-->  
 
         <div class="shop-heder">
@@ -54,20 +54,21 @@ Shopping Car
             Your Cart
         </h3>
 
-        <div *ngFor="let product of shoppingCart; let lastIndex = last">
 
+        <div *ngFor="let product of shoppingCart; let lastIndex = last">
+          
             <!--===================================== 
             Contenido productos indivuduales 
             ======================================-->
 
-            <div *ngIf="product.category != tpCheck"
+            <div *ngIf="product.object != indefinido"
             class="row" style="padding: 0px; margin-bottom: 3%;">
-
+                {{product.object}}
                 <!--=====================================
-                 Div para imagen  *ngIf="product.inbox == false" 
+                 Div para imagen  
                 ======================================-->
-                <div 
-                class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
+
+                <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; 
                 height: px; justify-content:center;display: flex;">
 
                     <a  href="product/{{product.url}}"
@@ -81,11 +82,10 @@ Shopping Car
                 </div>
 
                 <!--=====================================
-                Div para info de caja *ngIf="product.inbox == false"
+                Div para info de caja 
                 ======================================-->
 
-                <div 
-                class="product-cart-p col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
+                <div class="product-cart-p col-lg-3 col-md-3 col-sm-12" style="padding-top: 1px; height: px">
 
                     <h3> 
                         <a href="product/{{product.url}}">
@@ -100,9 +100,9 @@ Shopping Car
                      [popoverMessage]="popoverMessage"
                      placement="left"
                      style="cursor:pointer;font-family:'Libre Franklin', sans-serif;
-                     font-weight: 20; font-size: 17px;" 
+                     font-weight: 20; font-size: 15px;" 
                      (confirm)="removeProduct(product.url, product.listDetails)">
-                        REMOVE
+                        Remove
                     </a>
 
                     <div  >
@@ -124,7 +124,7 @@ Shopping Car
                 </div>
 
                 <!--=====================================
-                Div precio cantidad y total *ngIf="product.inbox == false"
+                Div precio cantidad y total 
                 ======================================-->
                 <div 
                 class="product-price-h col-lg-6 col-md-6 col-sm-12" 
@@ -206,11 +206,11 @@ Shopping Car
 
             </div>
 
-
             <!--=====================================
             Contenido de cajas y productos *ngIf="products.category == tpCheck"
             ======================================-->
-            <div *ngIf="product.category == tpCheck" >
+
+            <div *ngIf="product.box_id_small_kraft != undefined" >
 
                 <div 
                 class="row" style="padding: 0px;">
@@ -218,15 +218,17 @@ Shopping Car
                     <!--=====================================
                      Div para imagen
                     ======================================-->
-                    <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px; justify-content:center;
-                    display: flex;">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12" style=" padding:0px; height: px;
+                    justify-content:center; display: flex;">
 
                         <div style="height: 100%; display: flex; align-items: center;">
                             <img style="width:200px; height:200px;"
-                             src="{{box_json.box_img}}">
+                             src="{{product.box_img}}">
                         </div>
 
                     </div>
+
                     <!--=====================================
                       Div para info de caja
                     ======================================-->
@@ -234,10 +236,17 @@ Shopping Car
 
                         <h3 style="font-family:'Libre Franklin', sans-serif; 
                         font-weight:450; font-size:18px;">
-                            {{box_json.box_name}}
+                            {{product.box_name}}
                         </h3>
+
+                        <p style="font-family:'Libre Franklin', sans-serif; 
+                        font-weight: 20; font-size: 18px;"> {{product.box_name}} / Regular </p>
+
                         <p style="font-family:'Libre Franklin', sans-serif; 
                         font-weight: 20; font-size: 18px;">matle black / Regular </p>
+
+
+
                         <div style="display: flex;">
                             <p>
                                 <b style="font-family:'Libre Franklin', sans-serif; 
@@ -245,7 +254,7 @@ Shopping Car
                             </p>&nbsp;
                             <p style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;"> 
-                                {{box_json.box_deliver_to}}
+                                {{product.box_deliver_to}}
                             </p>
                         </div>
                         <div style="display: flex;">
@@ -255,7 +264,7 @@ Shopping Car
                             </p>&nbsp;
                             <p style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;"> 
-                                {{box_json.box_deliver_from}}
+                                {{product.box_deliver_from}}
                             </p>
                         </div>
                         <div style="display: flex;">
@@ -265,16 +274,16 @@ Shopping Car
                             </p>&nbsp;
                             <p style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 20; font-size: 20px;"> 
-                                {{box_json.box_deliver_message}}
+                                {{product.box_deliver_message}}
                             </p>
                         </div>
-                        <div style="display: flex;">
+                        <div style="display: flex; display: none;">
                             <p>
                                 <b style="font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 20; font-size: 20px;">Card:</b>
                             </p>&nbsp;
-                            <p style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">Nombre de carta</p>
+                          <!--   <p style="font-family:'Libre Franklin', sans-serif; 
+                            font-weight: 20; font-size: 20px;">Nombre de carta</p> -->
                         </div>
                         <div>
                             <a
@@ -296,15 +305,13 @@ Shopping Car
                                     font-weight: 20; font-size: 20px;">Gift Box Contentens:</b>
                             </p>
 
-                            <p *ngFor="let boxItem of boxArts; let ind = index; " 
+                            <p *ngFor="let boxItem of product.box_arts; let ind = index; " 
                             style="display: flex; font-family:'Libre Franklin', sans-serif; 
                                  font-weight: 20; font-size: 20px;">
                                 <img src="{{boxItem.image}}" style="width: 40px; height: 40px; margin-right: 4%;"> 
-                                {{boxItem.name}} X {{cantArray[ind]}}
+                                {{boxItem.name}}&nbsp; X&nbsp; 1
                             </p>
-
                             
-
                         </div>
 
                         <div style="display: none;">
@@ -316,7 +323,7 @@ Shopping Car
                             Ícono abajo
                             ======================================--> 
 
-                            <div style="margin-top:-3%;cursor: pointer; ustify-content: center;
+                            <div style="margin-top:-3%;cursor: pointer; justify-content: center;
                             align-items: center;">
 
                                 <img *ngFor="let boxItem of boxArray; let lastIndex = last;let indexb = index;"
@@ -345,7 +352,7 @@ Shopping Car
                                 </li>
                                 <li style="margin-top: 50%;font-family:'Libre Franklin', sans-serif;
                                    font-weight: 20; font-size: 20px;">
-                                    $ {{box_json.box_price}}
+                                    $ {{product.box_price}}
                                 </li>
 
 
@@ -379,7 +386,7 @@ Shopping Car
                                 <li style="margin-top: 50%;
                                 font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 20; font-size: 20px;">
-                                    ${{box_json.box_subtotal}}
+                                    ${{product.box_subtotal}}
                                 </li>
                             </ul>
                             
@@ -389,20 +396,11 @@ Shopping Car
 
                 </div>
 
-
-                <!--=====================================
-                Div para los productos dentro de la caja 
-                <div class="collapse" id="collapseExample">
-                ======================================-->
-
-               
-
             </div>
 
         </div>    
 
     </div>
-
 
     <!-- Botónes para el proceso de compra  -->
     <div style="margin-right: 4%;">
@@ -426,6 +424,16 @@ Shopping Car
           font-weight: 450; font-size: 24px;">Shipping $ {{costo_envio}}</h3>
                       
         </div>
+
+
+        <div style="margin-left: 4%;">
+            
+            <h3 style="margin-right: 5%; cursor:pointer ;
+            font-family:'Libre Franklin', sans-serif; 
+            font-weight: 450; font-size: 16px;"
+            (click)="cleanCart()">Clean cart</h3>
+
+        </div> 
 
         <div class="row" style="margin-bottom: 18%; margin-left: 4%; display: flex;">
 
@@ -476,8 +484,7 @@ Shopping Car
 
                 <div class="row" style="margin-right: 0px; margin-left: 0px;">
                     <!-- DIV IZQUIERDA -->
-                    <div 
-                    class="modal-content col-lg-6 col-md-12 col-sm-12"
+                    <div class="modal-content col-lg-6 col-md-12 col-sm-12"
                     style="height:500px;">
                         <!-- Formulario para ingresar dirección  -->
                         <div class="modal-body">
@@ -489,28 +496,16 @@ Shopping Car
                             </p>
 
 
-                            <input  
+                            <input  style="width: 100%;" 
                             id="input-email-shopping" 
                             (change)="obtenerInput($event.target.value, 'email')" 
                             type="email" class="form-control" 
                             aria-describedby="emailHelp" placeholder="Enter email">                
 
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input">
-                                <label class="form-check-label" for="exampleCheck1">      
-                                    <p class="modal-tex"
-                                    style="
-                                    font-family:'Libre Franklin', sans-serif; 
-                                    font-weight: 20; font-size: 20px;">
-                                        Check me out                  
-                                    </p>
-                                </label>
-                            </div>
-
                             <p class="modal-tex"
                             style="
                             font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">
+                            font-weight: 20; font-size: 14px;">
                                 Shipping address
                             </p>
 
@@ -556,7 +551,7 @@ Shopping Car
                                
                                 <select class="form-control"   
                                 (change)="obtenerInput($event.target.value, 'envio' )"
-                                style="height: 50px; font-size: 18px;">
+                                style="height: auto; font-size: 14px; padding: 1%;">
 
                                     <option value="300" selected style="
                                     font-family:'Libre Franklin', sans-serif; 
@@ -576,7 +571,8 @@ Shopping Car
                                 type="text" class="form-control" readonly required
                                 (change)="obtenerInput($event.target.value, 'envio')"
                                 placeholder=" Precio del envío a {{envio.state}} {{envio.price}}"
-                                id="input-envio-shopping"> 
+                                id="input-envio-shopping"
+                                style="margin-top: 4%;"> 
 
                             </div>
 
@@ -642,6 +638,15 @@ Shopping Car
 </div>
 
 <style>
+    .form-control{
+        margin-top: 4%;
+        font-size: 14px;
+    }   
+    .modal-content {
+        border-radius: 0px solid rgba(0,0,0,.2);
+        border: 0px;
+    } 
+
     @media screen and  (max-width: 414px) {
         .shop-heder  {
             margin-top: 27% !important;

@@ -48,7 +48,7 @@ export class BestSalesItemComponent implements OnInit {
 	img_slider_array:string[] = [];
 	getProduct:any[] = [];
 	gallery_producto=[];
-
+	parmsd;
 
   	constructor(private productsService: ProductsService,
   		        private activateRoute: ActivatedRoute,
@@ -88,7 +88,9 @@ export class BestSalesItemComponent implements OnInit {
 		=============================================*/	
 
 		let params = this.activateRoute.snapshot.params["param"].split("&")[0];
+		this.parmsd = this.activateRoute.snapshot.params["param"];
 
+		console.log(this.parmsd);
 
 		/*=============================================
 		Filtramos data de productos con categorías
@@ -274,11 +276,11 @@ export class BestSalesItemComponent implements OnInit {
 			details: details,
 			url:url,
 			date:newtime
-			// lastmodified: lastmodified
-			// 
+			// lastmodified: lastmodified			
 		}
+		// window.open('/best-sales-item'+this.parmsd,'_self');
 		// Se mandan los parámetros al a la funcion del servicio
 		this.usersService.addSoppingCart(item);
-
 	}
+
 }

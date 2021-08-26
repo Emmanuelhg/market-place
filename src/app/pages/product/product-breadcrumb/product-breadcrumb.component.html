@@ -11,14 +11,32 @@ Breadcrumb
             <li>
             	<a routerLink="/" 
             	style="font-family:'Libre Franklin', sans-serif; 
-                font-weight: 20;font-size: 20px;">
+                font-weight: 20;font-size: 18px;">
                 	Home &nbsp; / &nbsp; 
             	</a> 
             </li>
+
+            <div *ngFor="let p of product;">
+                <div *ngIf="p.category != compare ">
+                    <!-- https://angular.io/api/core/PipeTransform -->
+                    <li style="font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20;font-size: 18px;">
+                        For your  &nbsp; / &nbsp;
+                    </li>
+                </div>    
+
+                <div  *ngIf="p.category == compare "> 
+                    <li style="font-family:'Libre Franklin', sans-serif; 
+                    font-weight: 20;font-size: 18px;">
+                        Kits &nbsp; / &nbsp;
+                    </li>
+                </div>    
+
+            </div>     
 	
 			<!-- https://angular.io/api/core/PipeTransform -->
             <li style="font-family:'Libre Franklin', sans-serif; 
-            font-weight: 20;font-size: 20px;">
+            font-weight: 20;font-size: 18px;">
                 {{breadcrumb | titlecase}}
             </li>
 

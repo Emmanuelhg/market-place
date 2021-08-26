@@ -9,7 +9,7 @@ import { Id_box, Search, Sweetalert, DinamicPrice ,Rating } from '../../function
 import * as Cookies from 'js-cookie';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BoxesModel } from '../../models/boxes.model';
+import { BoxesModel } from '../../models/boxes.model'; 
 import { DeseosModel } from '../../models/deseos.models';
 import { Subject } from 'rxjs';
 import notie from 'notie';
@@ -79,7 +79,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   box_selection=1;
   full_percentage_bar=0;
   small_box_size = 30;
-  regular_box_size = 60;
+  regular_box_size = 90;
   original_size = 30;
   visibility_1 =[];
   used_space = 0;
@@ -184,10 +184,11 @@ export class SelecctionPasoDosComponent implements OnInit {
           if (resp["box_steps"] != undefined) {
              this.box_steps = resp["box_steps"];
           }
-           this.original_size = this.box_json.box_size;
+            console.log("this.box_json en add json:",this.box_json);
+            this.original_size = this.box_json.box_size;
             this.small_box_size = this.box_json.box_size_blocks_small;
-            this.regular_box_size = this.box_json.box_size_blocks_reular;
-
+            //this.regular_box_size = this.box_json.box_size_blocks_reular;
+            this.regular_box_size = 90;
             this.box_size = this.box_json.box_size;
             // console.log("es esto:",this.almacenar_productos);
             // console.log("es esto 2:",this.cant_productos);
@@ -466,9 +467,14 @@ export class SelecctionPasoDosComponent implements OnInit {
   // Función para  guardar los productos en la caja
   almacenarProductos(id){
     
+    console.log("id en fnc:",id);
+
     if(this.almacenar_productos.length != 0){
+
       var esta_en_el_arreglo = false;
+
       for(var i = 0; i < this.almacenar_productos.length; i++){
+
         if ( id.url == this.almacenar_productos[i].url) {
           // console.log("Es igual");
           this.cant_productos[i] = this.cant_productos[i] + 1;
@@ -664,15 +670,21 @@ export class SelecctionPasoDosComponent implements OnInit {
   calculatePercentage(){
 
     this.used_space = 0;
+    console.log("this.used_space en calculatePercentage:",this.used_space);
       for(let i = 0; i< this.almacenar_productos.length; i++){
         this.used_space += (this.original_size/this.almacenar_productos[i].size) * this.cant_productos[i];
+        console.log("this.used_space en calculatePercentage:",this.used_space);
       }
-    var pivote = this.box_size - this.used_space;
-    // console.log("used space es "+this.used_space+" y box size es "+this.box_size);
+   
+    console.log("this.box_size es :",this.box_size);
+    console.log("this.used_space es :", this.used_space);
+    console.log("this.original_size es :", this.original_size);
+    console.log("this.regular_box_siz es :", this.regular_box_size);
 
     if(this.used_space<=this.regular_box_size){
 
       if (this.used_space == 0) {
+        console.log("aqui se vacia la barra:");
         document.getElementById("regular-box-a").classList.remove("select-active-caja");
         document.getElementById("small-box-a").classList.remove("select-active-caja");
       }else{
@@ -899,6 +911,7 @@ export class SelecctionPasoDosComponent implements OnInit {
   fncNewAdd(id, name){
     this.almacenarProductos(id);
     this.myFunction(name);
+
   }
 
   fncModal(){
@@ -937,6 +950,11 @@ export class SelecctionPasoDosComponent implements OnInit {
   }
 
   modificadorCantidadProductos(add_num, indx_num, products){
+
+    console.log("add_num en add to box:",add_num);
+    console.log("indx_num en add to box:",indx_num);
+    console.log("products en add to box:",products);
+
     for(let i = 0; i< this.almacenar_productos.length; i++){
         if (this.almacenar_productos[i].name == products.name) {
           // console.log(this.cant_productos[i]);

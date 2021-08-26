@@ -14,6 +14,9 @@ import * as Cookies from 'js-cookie';
 export class ProductBreadcrumbComponent implements OnInit {
 
    breadcrumb:string = null;
+   product = [];
+   category:string = "";
+   compare:string = "kits";
 
  	constructor(private activateRoute: ActivatedRoute,
               private productsService: ProductsService,
@@ -38,6 +41,7 @@ export class ProductBreadcrumbComponent implements OnInit {
 
               console.log("este es el i en resp xdxdxd XD:",resp[i]);
 
+              this.product.push(resp[i]);
 
               let id = resp[i].id;
 

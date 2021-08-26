@@ -951,6 +951,7 @@ p span {
   font-family: inherit;
   color: inherit;
   font-size: inherit;
+  font-weight: 100;
 }
 
 a {
@@ -2064,7 +2065,7 @@ button {
   font-size: 14px;
   padding: 0 11px;
   border: none;
-  height: 33px;
+  height: auto;
   background-color: transparent;
   border: 1px solid #dddddd;
   /*border-radius: 11px;*/
@@ -2190,7 +2191,7 @@ textarea.form-control {
 .ps-checkbox label {
   margin-bottom: 0;
   position: relative;
-  padding-left: 30px;
+  padding-left:20px;
   font-family: "Work Sans", sans-serif;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 400;
@@ -2203,10 +2204,10 @@ textarea.form-control {
   position: absolute;
   left: 0;
   top: 0px;
-  height: 20px;
-  width: 20px;
+  height: 14px;
+  width: 14px;
   z-index: 10;
-  border: 1px solid #000;
+  border: 1px solid #dddddd;
   -webkit-transition: all .4s ease;
   transition: all .4s ease;
 }
@@ -2671,7 +2672,7 @@ textarea.form-control {
 
 .form-group--number .form-control {
   border: 1px solid #ccc;
-  height: 40px;
+  height: 28px;
   padding: 0 25px;
   text-align: center;
   font-size: 14px;
@@ -9052,7 +9053,7 @@ input[type=number]
 .ps-product--detail .ps-product__price {
   margin-bottom: 20px;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 100;
   color: #000;
 }
 
@@ -12015,8 +12016,8 @@ input[type=number]
 }
 
 .ps-form--account .ps-tab-list {
-  text-align: center;
-  margin-bottom: 30px;
+  /*text-align: center;*/
+  margin-bottom: 10px;
 }
 
 .ps-form--account .ps-tab-list li {

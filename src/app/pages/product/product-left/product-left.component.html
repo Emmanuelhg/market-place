@@ -11,7 +11,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
             class="ps-product--detail ps-product--fullwidth">
 
                 <!--=====================================
-                Gallery   
+                Gallery     
                 ========================= =============--> 
 
                 <div 
@@ -91,7 +91,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
 
                 <h4 style="text-align: center;
                 font-family:'Libre Franklin', sans-serif; 
-                font-weight: 450; font-size: 24px;">{{p.name}}</h4>
+                font-weight: 450; font-size: 19px;">{{p.name}}</h4>
 
                 <div class="ps-product__meta">
 
@@ -111,7 +111,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                     style="cursor: pointer;
                     font-family:'Libre Franklin', sans-serif; 
                     text-align: center;
-                    font-weight: 450; font-size: 24px;">
+                    font-weight: 450; font-size: 19px;">
                         Description
                     </h4>
                     
@@ -123,7 +123,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                         <ul>
                             
                             <li style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">
+                            font-weight: 20; font-size: 19px;">
                                 <p style="font-family:'Libre Franklin', sans-serif; 
                                 font-weight: 20; font-size: 13px; color: black;">
                                     {{p.description}}
@@ -146,7 +146,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                    <h4 (click)="fncVisibility(2)" 
                     style="cursor: pointer; text-align: center; 
                     font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 450; font-size: 23px;">
+                    font-weight: 450; font-size: 19px;">
                         Includes
                     </h4>
                     
@@ -159,7 +159,9 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                             
                             <li style="font-family:'Libre Franklin', sans-serif; 
                             font-weight: 800;">
-                               <div [innerHTML]="p.details"></div>   
+                               <div [innerHTML]="p.details"
+                                style="font-family:'Libre Franklin', sans-serif; 
+                                font-weight: 800; font-size: 19px;"></div>   
                             </li>
 
                         </ul>
@@ -177,7 +179,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                     (click)="mostrrarDetails()"
                     style="cursor: pointer; text-align: center; 
                     font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 450; font-size: 23px;">
+                    font-weight: 450; font-size: 19px;">
                         The Details
                     </h4>
                     
@@ -191,7 +193,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                             
                             <li *ngFor="let sum of summary[i]"
                             style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">
+                            font-weight: 20; font-size: 19px;">
                                 {{sum}}
                             </li>
 
@@ -212,22 +214,22 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
 
                         <figcaption>
                             <h4 style="text-align: center;font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 450; font-size: 24px;">
+                            font-weight: 450; font-size: 19px;">
                                 Quantity
                             </h4>
                         </figcaption>
 
                         <div class="form-group--number quantity" style="text-align: center;">
 
-                            <button class="up" (click)="changeQuantity(quantity.value, 1, 'up')">
+                            <button class="up" (click)="cantidad(1)">
                                 <i class="fa fa-plus"></i>
                             </button>
 
-                            <button class="down" (click)="changeQuantity(quantity.value, 1, 'down')">
+                            <button class="down" (click)="cantidad(-1)">
                                 <i class="fa fa-minus"></i>
                             </button>
 
-                            <input class="form-control px-5" type="number" value="{{quantity}}" min="1" max="9" step="1" #quantity (change)="changeQuantity(quantity.value, 0, null)">
+                            <input class="form-control px-5" type="number" value="{{quantity}}" min="1" max="9" step="1">
 
                         </div>
 
@@ -244,15 +246,15 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                     <div>
                         <h4 style="text-align: center;
                         font-family:'Libre Franklin', sans-serif; 
-                        font-weight: 450; font-size: 24px;">
+                        font-weight: 450; font-size: 19px;">
                             Box color
                         </h4>
                         <div class="row" style="display: flex;">
                             <img class="col-6" 
-                            style="width: auto; height: 115px;" 
+                            style="width: auto; height: auto;" 
                             src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct2.jpg?alt=media&token=92a5807b-4832-41c9-bf97-17e6ea9e4fa2" >
                             <img class="col-6" 
-                            style="width: auto; height: 115px;"
+                            style="width: auto; height: auto;"
                             src="https://firebasestorage.googleapis.com/v0/b/market-place-31cf1.appspot.com/o/backup%2Fproduct.jpg?alt=media&token=b971bf3d-137c-4d05-852a-fa923fb66db0">
                         </div>
                     </div>
@@ -264,7 +266,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
 
                         <div class="col-6">
                             <p style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">To</p>
+                            font-weight: 20; font-size: 19px;">To</p>
                             <div class="input-group input-group-lg">
                                 <input  
                                   placeholder="To" 
@@ -276,7 +278,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                         
                         <div class="col-6">
                             <p style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 20; font-size: 20px;">From</p>
+                            font-weight: 20; font-size: 19px;">From</p>
                             <div class="input-group input-group-lg">
                                 <input  
                                 placeholder="From" 
@@ -290,7 +292,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
 
                     <div style="margin-top: 3%;">
                         <p style="font-family:'Libre Franklin', sans-serif; 
-                        font-weight: 20; font-size: 20px;">Message</p>
+                        font-weight: 20; font-size: 19px;">Message</p>
 
                         <textarea placeholder="Enter your card message here. 120 characters" 
                         id="to-message" rows="5" style="width: 100%;border: 1px solid #e1e1e1;
@@ -301,7 +303,7 @@ class="container ps-product--detail ps-product--fullwidth" style=" padding: 0px;
                 </div>
 
             
-                <div style="margin-bottom: 3%; margin-top: 3%;">
+                <div style="margin-bottom: 3%; margin-top: 1%;">
 
                     <a class="btn btn-sm animated-button thar-three"
                     style="cursor:pointer;font-family:'Libre Franklin', sans-serif; 
@@ -462,14 +464,14 @@ class="d-flex justify-content-center">
         /*padding-right: 7%;*/
         padding-top: 3%;
         padding-bottom: 3%;
-        margin-top: 93px;
+        margin-top: 35px;
         background-color: white;
         color: black;
         cursor: pointer;
         /*display: block;*/
         display:flow-root;
         /*position: absolute;*/
-        border: 2px solid black;
+        border: 1px solid black;
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
     0s;
     }

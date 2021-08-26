@@ -25,7 +25,7 @@ export class SelecctionCajaComponent implements OnInit {
   // Variables del funcionamiento
    box_steps=[true,false,false,false] 
  
-
+ 
   path:string = Path.url;
   id:string = null; 
   id_to_box=null;
@@ -86,12 +86,12 @@ export class SelecctionCajaComponent implements OnInit {
 
     			}else {
     				this.id = Id_box.fnc()
-                Cookies.set('box_id', this.id, { expires: 7 });
+            Cookies.set('box_id', this.id, { expires: 7 });
     				
     			}
             
 		    })
-
+         window.open('/selecction-caja','_self');
      }else{
       // Obtener caja
       this.boxesService.obtenerBox(this.id_to_box)

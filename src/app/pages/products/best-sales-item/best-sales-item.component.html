@@ -6,7 +6,7 @@ Best Sale Items
 *ngIf="!preload && !notFound">
 
   <!--======================= ==============
-  Slider   
+  Slider    
   ======================================-->
   <div style="margin-top: 0%;" id="carouselExampleControlsH" class="carousel slide" data-ride="carousel">
 
@@ -58,18 +58,21 @@ Best Sale Items
 
       <div
       *ngFor="let product of bestSalesItem; let i = index; let lastIndex = last"
-      class="col-lg-3 col-md-4 col-sm-6">
+      class="col-6 col-lg-3 col-md-6 col-sm-6" style="border-radius: 0px !important;">
 
-        <div class="ps-product__thumbnail"  style="margin-bottom: 12%;">
+        <div class="ps-product__thumbnail"  style="margin-bottom: 12%;
+        border-radius: 0px !important;">
           
           <a style=" position: relative;
           display: inline-block;
-          text-align: center;"
+          text-align: center;
+          border-radius: 0px !important;"
           class="imgHover" 
           id="contenedorTow"
           routerLink="/product/{{product.url}}">
             <img class="movil-img-t" 
-            style="width: 247px; height: auto;"
+            style="width: 247px; height: auto;
+            border-radius:0px !important;"
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
             src="{{product.image}}" alt="">
@@ -77,7 +80,8 @@ Best Sale Items
             <img *ngIf="product.gallery[1] != undefined"
             id="imgGalleryTow"  class="movil-img-t" 
             style="width: 247px; height: auto;position: 
-            absolute;margin-top: -100%;" 
+            absolute;margin-top: -100%; 
+            border-radius:0px !important;" 
             type="button"  data-toggle="modal" 
             data-target=".bd-example-modal-xl"
             src="{{product.gallery[1]}}" alt="">
@@ -128,7 +132,7 @@ Best Sale Items
           </div>
 
           <!-- Información del producto -->
-          <div style="width: 245px;">
+          <div style="width: auto;" class="nombre-movil">
 
             <a title="Add to Whishlist"
             routerLink="/product/{{product.url}}">
@@ -197,6 +201,16 @@ class="d-flex justify-content-center d-lg-none">
       height: auto !important;
       margin-bottom: 4% !important;
     }
+    #botonTow{
+      display: block !important;
+    }
+    .nombre-movil{
+      margin-top: 54% !important;
+
+    }
+    .texto{
+      margin-top: 17%  !important;
+    }
   }
 
 
@@ -212,12 +226,32 @@ class="d-flex justify-content-center d-lg-none">
       height: auto !important;
       margin-bottom: 4% !important;
     }
+    #botonTow{
+      display: block !important;
+    }
+    .nombre-movil{
+      margin-top: 54% !important;
+
+    }
+    .texto{
+      margin-top: 17%  !important;
+    }
   }
 
   @media (max-width: 375px) {
     .movil-img-t {
       width: 100%  !important;   
       height: 100%  !important; 
+    }
+    #botonTow{
+      display: block !important;
+    }
+    .nombre-movil{
+      margin-top: 54% !important;
+
+    }
+    .texto{
+      margin-top: 17%  !important;
     }
   }
 
@@ -233,12 +267,32 @@ class="d-flex justify-content-center d-lg-none">
       height: auto !important;
       margin-bottom: 4% !important;
     }
+    #botonTow{
+      display: block !important;
+    }
+    .nombre-movil{
+      margin-top: 54% !important;
+
+    }
+    .texto{
+      margin-top: 17%  !important;
+    }
   }
 
   @media (max-width: 375px) {
     .movil-img-t {
       width: 100%  !important;   
       height: 100%  !important; 
+    }
+    #botonTow{
+      display: block !important;
+    }
+    .nombre-movil{
+      margin-top: 54% !important;
+
+    }
+    .texto{
+      margin-top: 17%  !important;
     }
   }
 

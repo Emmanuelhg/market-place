@@ -1,7 +1,7 @@
 <div class="ps-breadcrumb" style="margin-top: 12%;">
    
   <!--=====================================
-  Barra de números       
+  Barra de números        
   ======================================--> 
   <div class="container numeros-tre">
 		<div style="margin-bottom: 4%;">
@@ -28,7 +28,7 @@
 
       <p style="font-family:'Libre Franklin', sans-serif; font-size: 24px;
       font-weight: 450; color: black;">
-        Choose your items
+        Choose Your Items
       </p>
 
     </div>
@@ -328,7 +328,7 @@
 
     <div class="row" style="display:flex; border:1px solid #dddddd!important; margin-left: 3%;margin-right: 4%;">
 
-      <div class="select-caja select-active-caja col-lg-6"
+      <div class="select-caja col-lg-6"
       style="height: px; text-align:center; "
       id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
@@ -836,7 +836,7 @@
           <!-- Información de productos -->
           <div class="">
 
-              <div style="margin-left: 1% ">
+              <div style="margin-left: 1% " class="movil-gth">
 
                 <a>  
                   <b style="font-family:'Libre Franklin', sans-serif; 
@@ -1021,6 +1021,7 @@
   <!--=====================================
   Ventana Modal para ver el producto detallado
   ======================================--> 
+  <!-- Extra large modal -->
   <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="
   myExtraLargeModalLabel" aria-hidden="true">
 
@@ -1089,7 +1090,7 @@
 
         </div>
 
-      <!--   <p>{{porductos_details}}</p> -->
+        <!--   <p>{{porductos_details}}</p> -->
 
         <div style="display:flex;">
 
@@ -1138,22 +1139,6 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
 
       <div class="modal-content">
-
-        <div class="modal-header">
-
-          <h5 class="modal-title-rd" id="exampleModalCenterTitle"
-          style=" font-family:'Libre Franklin', sans-serif;
-          font-weight: 450; font-size: 24px;">
-              Box Sizes
-          </h5>
-
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-            <span aria-hidden="true">&times;</span>
-
-          </button>
-
-        </div>
 
         <div class="modal-body">
 
@@ -1364,7 +1349,7 @@ myExtraLargeModalLabel" aria-hidden="true">
 
                 </div>
 
-            </div>            
+            </div>             
 
           </div>
 
@@ -1435,11 +1420,17 @@ myExtraLargeModalLabel" aria-hidden="true">
     margin-bottom: 2% !important;
   }
   .texto {
-    margin-top: -27% !important; 
+    margin-top: 12% !important; 
+  }
+  .movil-gth {
+    margin-top: 49% !important;
   }
 
   .texto a {
     height: 34px !important; 
+  }
+  .btn-modal-cerrar{
+    display: block !important;
   }
 
 }
@@ -1496,7 +1487,10 @@ myExtraLargeModalLabel" aria-hidden="true">
     margin-bottom: 2% !important;
   }
   .texto {
-    margin-top: -27% !important; 
+    margin-top: 12% !important; 
+  }
+  .movil-gth {
+    margin-top: 49% !important;
   }
 
   .texto a {
@@ -1558,7 +1552,10 @@ myExtraLargeModalLabel" aria-hidden="true">
   }
 
   .texto {
-    margin-top: -27% !important; 
+    margin-top: 12% !important; 
+  }
+  .movil-gth {
+    margin-top: 49% !important;
   }
 
   .texto a {
@@ -1690,9 +1687,28 @@ myExtraLargeModalLabel" aria-hidden="true">
     display: none !important; 
   }
   #boton {
-    display: block !important;
+    display: none !important;
   }
+  #heart{
+    display: block !important;
+    margin-top:-126px !important;
+  }
+  .img-ventena{
+    height: auto !important;
+    width: auto !important;
+    /*margin: 0px !important;*/
+    margin-top: 4% !important;
+    margin-bottom: 4% !important;
+  }
+
+  .div-img-ventana-emergente{
+
+    height: auto !important;
+
+  }
+
 }
+
 @media screen and  (max-width: 411px) {
   #snackbar{
     margin-bottom: 20%;
@@ -1706,6 +1722,25 @@ myExtraLargeModalLabel" aria-hidden="true">
    #boton {
     display: block !important;
   }
+
+  #heart{
+    display: block !important;
+    margin-top:-126px !important;
+  }
+  .img-ventena{
+    height: auto !important;
+    width: auto !important;
+    margin-top: 4% !important;
+    margin: 0px !important;
+    margin-bottom: 4% !important;
+  }
+
+  .div-img-ventana-emergente{
+
+    height: auto !important;
+
+  }
+
 }
 
 @media screen and  (max-width: 414px) {
@@ -1722,6 +1757,25 @@ myExtraLargeModalLabel" aria-hidden="true">
   #boton {
     display: block !important;
   } 
+
+  #heart{
+    display: block !important;
+    margin-top:-126px !important;
+  }
+  .img-ventena{
+    height: auto !important;
+    width: auto !important;
+    margin-top: 4% !important;
+    margin: 0px !important;
+    margin-bottom: 4% !important;
+  }
+
+  .div-img-ventana-emergente{
+
+    height: auto !important;
+
+  }
+
 }
 @media screen and  (max-width: 540px) {
   #snackbar{
@@ -1732,6 +1786,25 @@ myExtraLargeModalLabel" aria-hidden="true">
   #boton {
     display: block !important;
   }
+
+  #heart{
+    display: block !important;
+    margin-top:-126px !important;
+  }
+  .img-ventena{
+    height: auto !important;
+    width: auto !important;
+    margin-top: 4% !important;
+    margin: 0px !important;
+    margin-bottom: 4% !important;
+  }
+
+  .div-img-ventana-emergente{
+
+    height: auto !important;
+
+  }
+
 }
 @media screen and  (max-width: 768px) {
    #snackbar{
@@ -1749,6 +1822,24 @@ myExtraLargeModalLabel" aria-hidden="true">
   }
   #boton {
     display: block !important;
+  }
+
+  #heart{
+    display: block !important;
+    margin-top:-126px !important;
+  }
+  .img-ventena{
+    height: auto !important;
+    width: auto !important;
+    margin-top: 4% !important;
+    margin: 0px !important;
+    margin-bottom: 4% !important;
+  }
+
+  .div-img-ventana-emergente{
+
+    height: auto !important;
+
   }
    
 }

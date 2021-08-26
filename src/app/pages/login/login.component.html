@@ -8,15 +8,15 @@ Login - Register Content
     (ngSubmit)="onSubmit(f)"
     #f="ngForm"
     class="ps-form--account ps-tab-root needs-validation" 
-    novalidate>
+    novalidate> 
 
-        <ul class="ps-tab-list">
+        <ul class="ps-tab-list" style="text-align: none; margin-top:11%;">
 
-            <li class="active">
+            <li class="active" style="margin-left: 3%;">
 
             	<p>
                     <a href="login" style="font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 800;">Login</a>
+                    font-weight: 450; font-size:23px;">Sign in</a>
 
                 </p>
 
@@ -25,7 +25,7 @@ Login - Register Content
             <li class="">
 
             	<p><a href="register" style="font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 800; color: black;">Register</a>
+                    font-weight: 450; font-size:23px; color: black;">Create Account</a>
                 </p>
 
             </li>
@@ -43,7 +43,7 @@ Login - Register Content
                 <div class="ps-form__content">
 
                     <h5 style="font-family:'Libre Franklin', sans-serif; 
-                    font-weight: 800; color: black;">Log In Your Account</h5>
+                    font-weight: 450; color: black;">Sign In Your Account</h5>
 
                     <div class="form-group">
 
@@ -93,7 +93,7 @@ Login - Register Content
 
                         <a href="#resetPassword" data-toggle="modal" 
                         style="font-family:'Libre Franklin', sans-serif; 
-                        font-weight: 800; color: black;">
+                        font-weight: 450; color: black; font-size: 13px;">
                             Forgot?
                         </a>
 
@@ -112,7 +112,7 @@ Login - Register Content
 
                             <label for="remember-me" 
                             style="font-family:'Libre Franklin', sans-serif; 
-                            font-weight: 800; color: black;">
+                            font-weight: 450; font-size: 13px; color: black;">
                                 Remember me
                             </label>
 
@@ -120,13 +120,20 @@ Login - Register Content
 
                     </div>
 
-                    <div class="form-group submtit">
+                    <div style="display: flow-root;">
 
-                        <button class="btn btn-sm animated-button thar-three"
-                        style="font-family:'Libre Franklin', sans-serif; 
-                        font-weight: 800; color: black;">
-                            Login
-                        </button>
+                        <a  class="btn btn-sm animated-button thar-three">
+
+                            <button
+                            style="font-family:'Libre Franklin', sans-serif; 
+                            font-weight: 800;     background: transparent;
+                            border: none;">
+                                
+                                SignIn
+
+                            </button>
+                            
+                        </a>
 
                     </div>
 
@@ -364,13 +371,13 @@ Ventana modal para escribir nueva contraseña
         padding-right: 7%;
         padding-top: 1%;
         padding-bottom: 1%;
-        margin-top: 93px;
+        margin-top: 27px;
         background-color: white;
         color: black;
         cursor: pointer;
         display: block;
         /*position: absolute;*/
-        border: 2px solid black;
+        border: 1px solid black;
         transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
     0s;
     }
